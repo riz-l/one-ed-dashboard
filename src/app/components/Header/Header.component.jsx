@@ -10,6 +10,7 @@ import {
   Container,
   Logo,
   LogoContainer,
+  LogoLink,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -23,9 +24,11 @@ export default function Header() {
       <Container data-testid={"header"}>
         <Wrapper>
           <LogoContainer>
-            <Logo>
-              <span>OneED</span>
-            </Logo>
+            <LogoLink to="/one-ed/ward/dashboard">
+              <Logo>
+                <span>OneED</span>
+              </Logo>
+            </LogoLink>
           </LogoContainer>
 
           <UserContainer>

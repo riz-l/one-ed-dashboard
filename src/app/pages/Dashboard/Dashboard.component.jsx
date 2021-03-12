@@ -2,20 +2,44 @@
 import React from "react";
 
 // Import: Elements
-import { Container } from "./Dashboard.elements";
+import {
+  Bottom,
+  Container,
+  Layout,
+  List,
+  Main,
+  Top,
+} from "./Dashboard.elements";
+
+// Import: Components
+import {
+  PatientList,
+  PatientStream,
+  PatientSuggestions,
+  PatientSummary,
+} from "../../components";
 
 // Component: Dashboard
 export default function Dashboard() {
   return (
     <>
       <Container data-testid={"dashboard"}>
-        <h2>Dashboard</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          dolores autem et quo tempora cupiditate dolor laborum totam nesciunt
-          nulla aliquid voluptate, fuga maxime vitae eos? Quas fuga provident
-          cum.
-        </p>
+        <Layout>
+          <List>
+            <PatientList />
+          </List>
+
+          <Main>
+            <Top>
+              <PatientSummary />
+            </Top>
+
+            <Bottom>
+              <PatientStream />
+              <PatientSuggestions />
+            </Bottom>
+          </Main>
+        </Layout>
       </Container>
     </>
   );

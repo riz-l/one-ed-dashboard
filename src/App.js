@@ -1,11 +1,11 @@
 // Import: Packages
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
-import { Dashboard, Home, Login, Unauthorized } from "./app/pages";
+import { Dashboard, EDOverview, Home, Login, Unauthorized } from "./app/pages";
 
 // Component: App
 export default function App() {
@@ -51,8 +51,8 @@ export default function App() {
         {!isLoggedIn && <Redirect to="/" />}
         {isLoggedIn && (
           <>
-            <Header handleLogout={handleLogout} />
-            <Navigation />
+            <Header />
+            <Navigation handleLogout={handleLogout} />
           </>
         )}
 
@@ -69,6 +69,11 @@ export default function App() {
           <Route exact path="/one-ed/ward/dashboard">
             <Dashboard />
           </Route>
+
+          {/* Ward - ED Overview */}
+          <Route exact path="/one-ed/ward/ed-overview">
+            <EDOverview />
+          </Route>
         </Switch>
       </Container>
     </>
@@ -83,7 +88,7 @@ const Container = styled.div`
     "header header"
     "navigation content";
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: auto auto;
   height: 100%;
   width: 100%;
 `;

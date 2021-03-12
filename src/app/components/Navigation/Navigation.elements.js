@@ -1,9 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
+import { NavLink } from "react-router-dom";
 
 // Element: Container
 export const Container = styled.nav`
-  /* background-color: rgba(0, 255, 0, 0.1); */
   background-color: #f7f8fa;
   border-right: 1px solid #edeff2;
   grid-area: navigation;
@@ -50,6 +50,11 @@ export const OptionHeading = styled.span`
   color: #6b7a99;
   padding: 0.4rem 0;
   font-weight: 500;
+`;
+
+// Element: OptionLink
+export const OptionLink = styled(NavLink)`
+  width: 100%;
 `;
 
 // Element: OptionItem

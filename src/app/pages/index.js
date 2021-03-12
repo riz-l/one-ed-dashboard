@@ -1,6 +1,9 @@
 // Export: Dashboard
 export { default as Dashboard } from "./Dashboard/Dashboard.component";
 
+// Export: EDOverview
+export { default as EDOverview } from "./EDOverview/EDOverview.component";
+
 // Export: Home
 export { default as Home } from "./Home/Home.component";
 

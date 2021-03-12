@@ -19,6 +19,7 @@ import {
   Container,
   OptionHeading,
   OptionItem,
+  OptionLink,
   Options,
   OptionsContainer,
   Settings,
@@ -27,7 +28,7 @@ import {
 } from "./Navigation.elements";
 
 // Component: Navigation
-export default function Navigation() {
+export default function Navigation({ handleLogout }) {
   return (
     <>
       <Container data-testid={"navigation"}>
@@ -36,15 +37,19 @@ export default function Navigation() {
             {/* Ward */}
             <OptionsContainer>
               <OptionHeading>Ward</OptionHeading>
-              <OptionItem>
-                <WardDashboardIcon />
-                <span>Dashboard</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/ward/dashboard">
+                <OptionItem>
+                  <WardDashboardIcon />
+                  <span>Dashboard</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <WardEDIcon />
-                <span>ED Overview</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/ward/ed-overview">
+                <OptionItem>
+                  <WardEDIcon />
+                  <span>ED Overview</span>
+                </OptionItem>
+              </OptionLink>
             </OptionsContainer>
 
             {/* Patient */}
@@ -97,7 +102,7 @@ export default function Navigation() {
               <span>Settings</span>
             </SettingsItem>
 
-            <SettingsItem>
+            <SettingsItem onClick={handleLogout}>
               <SettingsLogoutIcon />
               <span>Log Out</span>
             </SettingsItem>

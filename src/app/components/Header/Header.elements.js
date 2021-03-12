@@ -1,5 +1,6 @@
 // Import: Packages
 import styled from "styled-components/macro";
+import { NavLink } from "react-router-dom";
 
 // Element: Container
 export const Container = styled.header`
@@ -28,6 +29,11 @@ export const LogoContainer = styled.div`
   display: flex;
   height: 100%;
   justify-content: center;
+`;
+
+// Element: LogoLink
+export const LogoLink = styled(NavLink)`
+  width: 100%;
 `;
 
 // Element: Logo
