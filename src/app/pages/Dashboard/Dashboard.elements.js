@@ -17,6 +17,7 @@ export const Layout = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
+  max-height: calc(100vh - 80px);
   justify-content: center;
   width: 100%;
 `;
@@ -46,6 +47,7 @@ export const Main = styled.div`
 export const Top = styled.div`
   align-items: center;
   display: flex;
+  flex: 0.5;
   height: 100%;
   justify-content: center;
   width: 100%;
@@ -55,6 +57,7 @@ export const Top = styled.div`
 export const Bottom = styled.div`
   align-items: center;
   display: flex;
+  flex: 1;
   height: 100%;
   justify-content: center;
   width: 100%;

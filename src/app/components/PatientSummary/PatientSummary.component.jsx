@@ -21,7 +21,7 @@ export default function PatientSummary() {
     <>
       <Container data-testid={"patientSummary"}>
         <Header>
-          <h2>Patient Summary</h2>
+          <h2>Summary</h2>
           <span>Detailed Patient information</span>
         </Header>
 

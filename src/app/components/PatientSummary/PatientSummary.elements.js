@@ -4,9 +4,7 @@ import styled from "styled-components/macro";
 // Element: Container
 export const Container = styled.div`
   background-color: #f7f8fa;
-  height: auto;
-  max-height: calc((100vh - 80px) / 2);
-  min-height: calc((100vh - 80px) / 2);
+  height: 100%;
   width: 100%;
 `;
 
@@ -39,7 +37,7 @@ export const Header = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   background-color: #f7f8fa;
-  height: 100%;
+  height: auto;
   width: 100%;
 `;
 
