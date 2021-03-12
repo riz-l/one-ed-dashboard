@@ -2,14 +2,14 @@
 import React from "react";
 
 // Import: Elements
-import { Container } from "./EDOverview.elements";
+import { Container } from "./ClinicalNotes.elements";
 
-// Component: EDOverview
-export default function EDOverview() {
+// Component: ClinicalNotes
+export default function ClinicalNotes() {
   return (
     <>
-      <Container data-testid={"edOverview"}>
-        <h2>ED Overview</h2>
+      <Container data-testid={"clinicalNotes"}>
+        <h2>Clinical Notes</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
           dolores autem et quo tempora cupiditate dolor laborum totam nesciunt

@@ -55,52 +55,68 @@ export default function Navigation({ handleLogout }) {
             {/* Patient */}
             <OptionsContainer>
               <OptionHeading>Patient</OptionHeading>
-              <OptionItem>
-                <PatientOverviewIcon />
-                <span>Overview</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/patient/overview">
+                <OptionItem>
+                  <PatientOverviewIcon />
+                  <span>Overview</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <PatientCasIcon />
-                <span>CAS Card</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/patient/cas-card">
+                <OptionItem>
+                  <PatientCasIcon />
+                  <span>CAS Card</span>
+                </OptionItem>
+              </OptionLink>
             </OptionsContainer>
 
             {/* Assessments */}
             <OptionsContainer>
               <OptionHeading>Assessments</OptionHeading>
-              <OptionItem>
-                <AssessmentsTriageIcon />
-                <span>Triage</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/assessments/triage">
+                <OptionItem>
+                  <AssessmentsTriageIcon />
+                  <span>Triage</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <AssessmentsObservationsIcon />
-                <span>Observations</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/assessments/observations">
+                <OptionItem>
+                  <AssessmentsObservationsIcon />
+                  <span>Observations</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <AssessmentsSeenIcon />
-                <span>Seen</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/assessments/seen">
+                <OptionItem>
+                  <AssessmentsSeenIcon />
+                  <span>Seen</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <AssessmentsClinicalIcon />
-                <span>Clinical Notes</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/assessments/clinical-notes">
+                <OptionItem>
+                  <AssessmentsClinicalIcon />
+                  <span>Clinical Notes</span>
+                </OptionItem>
+              </OptionLink>
 
-              <OptionItem>
-                <AssessmentsViewIcon />
-                <span>View Seen</span>
-              </OptionItem>
+              <OptionLink to="/one-ed/assessments/view-seen">
+                <OptionItem>
+                  <AssessmentsViewIcon />
+                  <span>View Seen</span>
+                </OptionItem>
+              </OptionLink>
             </OptionsContainer>
           </Options>
 
           <Settings>
-            <SettingsItem>
-              <SettingsSettingsIcon />
-              <span>Settings</span>
-            </SettingsItem>
+            <OptionLink to="/one-ed/user/settings">
+              <SettingsItem>
+                <SettingsSettingsIcon />
+                <span>Settings</span>
+              </SettingsItem>
+            </OptionLink>
 
             <SettingsItem onClick={handleLogout}>
               <SettingsLogoutIcon />

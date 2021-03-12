@@ -2,14 +2,14 @@
 import React from "react";
 
 // Import: Elements
-import { Container } from "./EDOverview.elements";
+import { Container } from "./Seen.elements";
 
-// Component: EDOverview
-export default function EDOverview() {
+// Component: Seen
+export default function Seen() {
   return (
     <>
-      <Container data-testid={"edOverview"}>
-        <h2>ED Overview</h2>
+      <Container data-testid={"seen"}>
+        <h2>Seen</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
           dolores autem et quo tempora cupiditate dolor laborum totam nesciunt

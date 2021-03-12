@@ -5,7 +5,21 @@ import styled from "styled-components/macro";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
-import { Dashboard, EDOverview, Home, Login, Unauthorized } from "./app/pages";
+import {
+  CASCard,
+  ClinicalNotes,
+  Dashboard,
+  EDOverview,
+  Home,
+  Login,
+  Observations,
+  Overview,
+  Seen,
+  Settings,
+  Triage,
+  Unauthorized,
+  ViewSeen,
+} from "./app/pages";
 
 // Component: App
 export default function App() {
@@ -73,6 +87,46 @@ export default function App() {
           {/* Ward - ED Overview */}
           <Route exact path="/one-ed/ward/ed-overview">
             <EDOverview />
+          </Route>
+
+          {/* Patient - Overview */}
+          <Route exact path="/one-ed/patient/overview">
+            <Overview />
+          </Route>
+
+          {/* Patient - CAS Card */}
+          <Route exact path="/one-ed/patient/cas-card">
+            <CASCard />
+          </Route>
+
+          {/* Assessments - Triage */}
+          <Route exact path="/one-ed/assessments/triage">
+            <Triage />
+          </Route>
+
+          {/* Assessments - Observations */}
+          <Route exact path="/one-ed/assessments/observations">
+            <Observations />
+          </Route>
+
+          {/* Assessments - Seen */}
+          <Route exact path="/one-ed/assessments/seen">
+            <Seen />
+          </Route>
+
+          {/* Assessments - Clinical Notes */}
+          <Route exact path="/one-ed/assessments/clinical-notes">
+            <ClinicalNotes />
+          </Route>
+
+          {/* Assessments - View Seen */}
+          <Route exact path="/one-ed/assessments/view-seen">
+            <ViewSeen />
+          </Route>
+
+          {/* User - Settings */}
+          <Route exact path="/one-ed/user/settings">
+            <Settings />
           </Route>
         </Switch>
       </Container>

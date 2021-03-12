@@ -2,14 +2,14 @@
 import React from "react";
 
 // Import: Elements
-import { Container } from "./EDOverview.elements";
+import { Container } from "./Settings.elements";
 
-// Component: EDOverview
-export default function EDOverview() {
+// Component: Settings
+export default function Settings() {
   return (
     <>
-      <Container data-testid={"edOverview"}>
-        <h2>ED Overview</h2>
+      <Container data-testid={"settings"}>
+        <h2>Settings</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
           dolores autem et quo tempora cupiditate dolor laborum totam nesciunt
