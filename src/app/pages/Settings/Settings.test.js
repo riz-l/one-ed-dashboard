@@ -3,15 +3,15 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Page
-import Triage from "./Triage.component";
+import Settings from "./Settings.component";
 
-// Test: Checks that Triage renders
-it("checkTriageRender", () => {
+// Test: Checks that Settings renders
+it("checkSettingsRender", () => {
   const { queryByTestId } = render(
     <Router>
-      <Triage />
+      <Settings />
     </Router>
   );
-  const page = queryByTestId("triage");
+  const page = queryByTestId("settings");
   expect(page).toBeTruthy();
 });
