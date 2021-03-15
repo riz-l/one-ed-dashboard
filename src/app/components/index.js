@@ -19,5 +19,14 @@ export { default as PatientSuggestions } from "./PatientSuggestions/PatientSugge
 // Export: PatientSummary
 export { default as PatientSummary } from "./PatientSummary/PatientSummary.component";
 
+// Export: PrimaryNavigation
+export { default as PrimaryNavigation } from "./PrimaryNavigation/PrimaryNavigation.component";
+
 // Export: ProtectedRoute
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.component";
+
+// Export: ReportSection
+export { default as ReportSection } from "./ReportSection/ReportSection.component";
+
+// Export: SecondaryNavigation
+export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryNavigation.component";

@@ -1,8 +1,23 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
+import React from "react";
+
+// Import: Assets
+import { ReactComponent as TestIcon } from "../../../assets/img/icon/ward-ed.svg";
 
 // Import: Elements
-import { Container, Wrapper } from "./Overview.elements";
+import {
+  Container,
+  ContentWrapper,
+  Header,
+  Wrapper,
+} from "./Overview.elements";
+
+// Import: Components
+import {
+  // PrimaryNavigation,
+  ReportSection,
+  SecondaryNavigation,
+} from "../../components";
 
 // Component: Overview
 export default function Overview() {
@@ -10,13 +25,27 @@ export default function Overview() {
     <>
       <Container data-testid={"overview"}>
         <Wrapper>
-          <h2>Overview</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-            dolores autem et quo tempora cupiditate dolor laborum totam nesciunt
-            nulla aliquid voluptate, fuga maxime vitae eos? Quas fuga provident
-            cum.
-          </p>
+          <Header>
+            <h2>Overview</h2>
+            <span>Patient details and history</span>
+          </Header>
+
+          <ContentWrapper>
+            <ReportSection
+              primaryNavigation={<p>Primary Navigation</p>}
+              secondaryNavigation={
+                <SecondaryNavigation>
+                  <SecondaryNavigation.Item>
+                    <SecondaryNavigation.Icon>
+                      <TestIcon />
+                    </SecondaryNavigation.Icon>
+                    <SecondaryNavigation.Text>Test</SecondaryNavigation.Text>
+                  </SecondaryNavigation.Item>
+                </SecondaryNavigation>
+              }
+              content={<p>Content</p>}
+            />
+          </ContentWrapper>
         </Wrapper>
       </Container>
     </>
