@@ -17,8 +17,7 @@ export const Container = styled.div`
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
-  height: 100%;
-  margin-right: 0.8rem;
+  margin-right: 0.4rem;
   width: auto;
 `;
 
@@ -33,8 +32,10 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
+  /* background-color: #f7f8fa; */
+  background-color: #ffffff;
+  border: 1px solid #edeff2;
   border-radius: 8px;
-  border-top: 4px solid #f7f8fa;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -45,7 +46,12 @@ export const ItemWrapper = styled.div`
   width: 100%;
 
   &:hover {
-    border-top: 4px solid #4d5e80;
+    background-color: #e6e9ef;
     transition: all 100ms linear;
+
+    & ${TextContainer} {
+      color: #4d5e80;
+      transition: all 100ms linear;
+    }
   }
 `;

@@ -1,3 +1,6 @@
+// Export: Grid
+export { default as Grid } from "./Grid/Grid.component";
+
 // Export: Header
 export { default as Header } from "./Header/Header.component";
 
@@ -27,6 +30,9 @@ export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.compo
 
 // Export: ReportSection
 export { default as ReportSection } from "./ReportSection/ReportSection.component";
+
+// Export: Radio
+export { default as Radio } from "./Radio/Radio.component";
 
 // Export: SecondaryNavigation
 export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryNavigation.component";

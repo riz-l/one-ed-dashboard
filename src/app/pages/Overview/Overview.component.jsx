@@ -12,12 +12,13 @@ import {
   Wrapper,
 } from "./Overview.elements";
 
-// Import: Components
+// Import: Components, SubPages
 import {
   PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
+import { Details } from "./subPages";
 
 // Component: Overview
 export default function Overview() {
@@ -35,11 +36,11 @@ export default function Overview() {
               primaryNavigation={
                 <PrimaryNavigation>
                   <PrimaryNavigation.Item>
-                    <PrimaryNavigation.Text>Primary</PrimaryNavigation.Text>
+                    <PrimaryNavigation.Text>Details</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item>
-                    <PrimaryNavigation.Text>Primary</PrimaryNavigation.Text>
+                    <PrimaryNavigation.Text>History</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }
@@ -49,11 +50,15 @@ export default function Overview() {
                     <SecondaryNavigation.Icon>
                       <TestIcon />
                     </SecondaryNavigation.Icon>
-                    <SecondaryNavigation.Text>Test</SecondaryNavigation.Text>
+                    <SecondaryNavigation.Text>Details</SecondaryNavigation.Text>
                   </SecondaryNavigation.Item>
                 </SecondaryNavigation>
               }
-              content={<p>Content</p>}
+              content={
+                <>
+                  <Details />
+                </>
+              }
             />
           </ContentWrapper>
         </Wrapper>

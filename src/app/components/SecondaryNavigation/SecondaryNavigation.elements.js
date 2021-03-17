@@ -57,11 +57,13 @@ export const ItemWrapper = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
   justify-content: center;
   padding: 0.4rem 1.8rem;
   transition: all 100ms linear;
   width: 100%;
+  min-width: 100px;
+  max-width: 100px;
 
   &:hover {
     background-color: #e6e9ef;

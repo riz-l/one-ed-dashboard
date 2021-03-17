@@ -52,7 +52,7 @@ export const SecondaryNavigation = styled.div`
 // Element: Content
 export const Content = styled.div`
   align-items: center;
-  background-color: rgba(0, 0, 255, 0.1);
+  background-color: #f7f8fa;
   display: flex;
   grid-area: content;
   height: auto;
