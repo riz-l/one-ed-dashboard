@@ -17,6 +17,7 @@ export const Text = styled.span``;
 
 // Element: Input
 export const Input = styled.input`
+  -webkit-appearance: none;
   cursor: pointer;
   height: 100%;
   opacity: 0;
@@ -38,15 +39,18 @@ export const VisualBox = styled.div`
   position: relative;
   transition: all 100ms linear;
   width: 50px;
+
   & svg {
     fill: ${({ checked }) => (checked ? "#f1f1f1" : "#3a3a40")};
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
   }
+
   &:hover {
     background: ${({ checked }) => (checked ? "#00687a" : "#bfbfc5")};
     transition: all 100ms linear;
+
     & svg {
       fill: ${({ checked }) => (checked ? "#ffffff" : "#2a2a2e")};
       transition: all 100ms linear;
