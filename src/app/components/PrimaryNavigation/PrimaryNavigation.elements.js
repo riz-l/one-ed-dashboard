@@ -34,7 +34,7 @@ export const TextContainer = styled.span`
 export const ItemWrapper = styled.div`
   align-items: center;
   border-radius: 8px;
-  border-top: 4px solid #4d5e80;
+  border-top: 4px solid #f7f8fa;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -43,4 +43,9 @@ export const ItemWrapper = styled.div`
   padding: 0.4rem 1.8rem;
   transition: all 100ms linear;
   width: 100%;
+
+  &:hover {
+    border-top: 4px solid #4d5e80;
+    transition: all 100ms linear;
+  }
 `;
