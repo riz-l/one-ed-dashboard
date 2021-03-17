@@ -14,7 +14,7 @@ import {
 
 // Import: Components
 import {
-  // PrimaryNavigation,
+  PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
@@ -32,7 +32,17 @@ export default function Overview() {
 
           <ContentWrapper>
             <ReportSection
-              primaryNavigation={<p>Primary Navigation</p>}
+              primaryNavigation={
+                <PrimaryNavigation>
+                  <PrimaryNavigation.Item>
+                    <PrimaryNavigation.Text>Primary</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item>
+                    <PrimaryNavigation.Text>Primary</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+                </PrimaryNavigation>
+              }
               secondaryNavigation={
                 <SecondaryNavigation>
                   <SecondaryNavigation.Item>

@@ -22,7 +22,7 @@ export const Container = styled.div`
 // Element: PrimaryNavigation
 export const PrimaryNavigation = styled.div`
   align-items: center;
-  background-color: rgba(0, 255, 0, 0.1);
+  background-color: #f7f8fa;
   display: flex;
   grid-area: primary-navigation;
   height: 60px;
