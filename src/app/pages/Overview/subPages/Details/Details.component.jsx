@@ -16,18 +16,11 @@ export default function Details() {
           <Grid>
             <Grid.Column>
               <Grid.Item>
-                <h3>Component: Radio</h3>
-                <Radio />
+                <Radio text="Component: Radio" />
               </Grid.Item>
 
               <Grid.Item>
-                <h3>Component: Input</h3>
-                <Input />
-              </Grid.Item>
-
-              <Grid.Item>
-                <h3>Test item</h3>
-                <p>Test item text</p>
+                <Input labelText="Component: Input" />
               </Grid.Item>
             </Grid.Column>
           </Grid>

@@ -13,7 +13,9 @@ export const Container = styled.div`
 export const Label = styled.label``;
 
 // Element: Text
-export const Text = styled.span``;
+export const Text = styled.span`
+  color: #6b7a99;
+`;
 
 // Element: Input
 export const Input = styled.input`
@@ -28,7 +30,7 @@ export const Input = styled.input`
 // Element: VisualBox
 export const VisualBox = styled.div`
   align-items: center;
-  background: ${({ checked }) => (checked ? "#008ba3" : "#d4d4d8")};
+  background: ${({ checked }) => (checked ? "#008ba3" : "#edeff2")};
   border-radius: 50%;
   content: "";
   cursor: pointer;
@@ -41,18 +43,18 @@ export const VisualBox = styled.div`
   width: 50px;
 
   & svg {
-    fill: ${({ checked }) => (checked ? "#f1f1f1" : "#3a3a40")};
+    fill: ${({ checked }) => (checked ? "#f1f1f1" : "#6b7a99")};
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
   }
 
   &:hover {
-    background: ${({ checked }) => (checked ? "#00687a" : "#bfbfc5")};
+    background: ${({ checked }) => (checked ? "#00687a" : "#c3cad9")};
     transition: all 100ms linear;
 
     & svg {
-      fill: ${({ checked }) => (checked ? "#ffffff" : "#2a2a2e")};
+      fill: ${({ checked }) => (checked ? "#ffffff" : "#4d5e80")};
       transition: all 100ms linear;
     }
   }

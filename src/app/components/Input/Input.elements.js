@@ -20,6 +20,7 @@ export const Container = styled.div`
 
 // Element: Label
 export const Label = styled.label`
+  color: #6b7a99;
   ${({ left }) =>
     left
       ? css`
@@ -33,7 +34,8 @@ export const Label = styled.label`
 // Element: InputField
 export const InputField = styled.input`
   -webkit-appearance: none;
-  border: 2px solid #dfdfe2;
+  border: 2px solid #edeff2;
+  color: #4d5e80;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
   width: ${({ width }) => width ?? width};

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import: Assets
-// import { ReactComponent as LogoutIcon } from "../../../assets/img/icon/settings-logout.svg";
+import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
 import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.svg";
 
 // Import: Elements
@@ -11,6 +11,7 @@ import {
   Logo,
   LogoContainer,
   LogoLink,
+  MenuContainer,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -18,7 +19,7 @@ import {
 } from "./Header.elements";
 
 // Component: Header
-export default function Header() {
+export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
   return (
     <>
       <Container data-testid={"header"}>
@@ -29,6 +30,14 @@ export default function Header() {
                 <span>OneED</span>
               </Logo>
             </LogoLink>
+
+            <MenuContainer
+              onClick={() =>
+                setIsNavigationOpen((isNavigationOpen) => !isNavigationOpen)
+              }
+            >
+              <MenuIcon />
+            </MenuContainer>
           </LogoContainer>
 
           <UserContainer>

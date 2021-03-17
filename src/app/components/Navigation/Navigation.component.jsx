@@ -28,7 +28,11 @@ import {
 } from "./Navigation.elements";
 
 // Component: Navigation
-export default function Navigation({ handleLogout }) {
+export default function Navigation({
+  isNavigationOpen,
+  setIsNavigationOpen,
+  handleLogout,
+}) {
   return (
     <>
       <Container data-testid={"navigation"}>

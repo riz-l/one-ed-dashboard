@@ -23,8 +23,9 @@ import {
 
 // Component: App
 export default function App() {
-  // State: isLoggedIn
+  // State: isLoggedIn, isNavigationOpen
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isNavigationOpen, setIsNavigationOpen] = useState(true);
 
   // Sets isLoggedIn === true
   const handleLogin = (e) => {
@@ -65,8 +66,15 @@ export default function App() {
         {!isLoggedIn && <Redirect to="/" />}
         {isLoggedIn && (
           <>
-            <Header />
-            <Navigation handleLogout={handleLogout} />
+            <Header
+              isNavigationOpen={isNavigationOpen}
+              setIsNavigationOpen={setIsNavigationOpen}
+            />
+            <Navigation
+              isNavigationOpen={isNavigationOpen}
+              setIsNavigationOpen={setIsNavigationOpen}
+              handleLogout={handleLogout}
+            />
           </>
         )}
 
@@ -145,4 +153,8 @@ const Container = styled.div`
   grid-template-rows: auto auto;
   height: 100%;
   width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 0 1fr;
+  }
 `;

@@ -33,7 +33,7 @@ export const LogoContainer = styled.div`
 
 // Element: LogoLink
 export const LogoLink = styled(NavLink)`
-  width: 100%;
+  width: auto;
 `;
 
 // Element: Logo
@@ -49,6 +49,34 @@ export const Logo = styled.div`
     color: #4d5e80;
     font-size: 2rem;
     font-weight: 600;
+  }
+`;
+
+// Element: MenuContainer
+export const MenuContainer = styled.div`
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  margin-left: 0.8rem;
+  padding: 0.4rem;
+  transition: all 100ms linear;
+
+  & svg {
+    fill: #6b7a99;
+    height: 45px;
+    padding: 0.4rem;
+    transition: all 100ms linear;
+    width: auto;
+  }
+
+  &:hover {
+    & svg {
+      fill: #4d5e80;
+      transition: all 100ms linear;
+    }
   }
 `;
 

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import: Assets
-import { ReactComponent as TestIcon } from "../../../assets/img/icon/ward-ed.svg";
+import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
 
 // Import: Elements
 import {
@@ -48,7 +48,7 @@ export default function Overview() {
                 <SecondaryNavigation>
                   <SecondaryNavigation.Item>
                     <SecondaryNavigation.Icon>
-                      <TestIcon />
+                      <DetailsIcon />
                     </SecondaryNavigation.Icon>
                     <SecondaryNavigation.Text>Details</SecondaryNavigation.Text>
                   </SecondaryNavigation.Item>
