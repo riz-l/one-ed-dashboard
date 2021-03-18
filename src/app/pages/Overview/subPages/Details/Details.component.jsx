@@ -24,21 +24,27 @@ export default function Details() {
               </Grid.Item>
 
               <Grid.Item>
-                <Text>Component: Text (Default)</Text>
+                <Text as="p">Component: Text (Default)</Text>
               </Grid.Item>
             </Grid.Column>
 
             <Grid.Column>
               <Grid.Item>
-                <Text heading>Component: Text (Heading)</Text>
+                <Text as="h2" heading>
+                  Component: Text (Heading)
+                </Text>
               </Grid.Item>
 
               <Grid.Item>
-                <Text subheading>Component: Text (SubHeading)</Text>
+                <Text as="h3" subheading>
+                  Component: Text (SubHeading)
+                </Text>
               </Grid.Item>
 
               <Grid.Item>
-                <Text text>Component: Text (Text)</Text>
+                <Text as="p" text>
+                  Component: Text (Text)
+                </Text>
               </Grid.Item>
             </Grid.Column>
           </Grid>
