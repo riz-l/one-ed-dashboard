@@ -28,13 +28,14 @@ export const IconContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-bottom: 4px;
   width: 100%;
 
   & svg {
     fill: #c3cad9;
-    height: 40px;
+    height: 28px;
     transition: all 100ms linear;
-    width: 40px;
+    width: 28px;
   }
 `;
 
@@ -60,10 +61,11 @@ export const ItemWrapper = styled.div`
   height: 100%;
   justify-content: center;
   padding: 0.4rem 1.4rem;
+  text-align: center;
   transition: all 100ms linear;
   width: 100%;
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 120px;
+  max-width: 120px;
 
   &:hover {
     background-color: #e6e9ef;

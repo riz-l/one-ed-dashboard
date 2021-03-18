@@ -2,19 +2,19 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./Details.elements";
+import { Container, Wrapper } from "./History.elements";
 
 // Import: Components
 import { Grid, Input, Radio, Text } from "../../../../components";
 
-// SubPage: Details
-export default function Details() {
+// SubPage: History
+export default function History() {
   return (
     <>
-      <Container data-testid={"details"}>
+      <Container data-testid={"history"}>
         <Wrapper>
           <Text heading as="h2">
-            DETAILS
+            HISTORY
           </Text>
           <Grid>
             <Grid.Column>

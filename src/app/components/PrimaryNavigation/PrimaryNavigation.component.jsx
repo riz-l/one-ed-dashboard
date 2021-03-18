@@ -21,14 +21,13 @@ const PrimaryNavigationGroupContext = createContext();
 //       `PrimaryNavigation compound components cannot be rendered outside of the PrimaryNavigation component`
 //     );
 //   }
-
 //   return context;
 // };
 
 // Compound Component: Item
 function Item({ ...props }) {
   return (
-    <ItemContainer>
+    <ItemContainer onClick={props.onClick}>
       <ItemWrapper>{props.children}</ItemWrapper>
     </ItemContainer>
   );
