@@ -32,16 +32,16 @@ export const IconContainer = styled.div`
 
   & svg {
     fill: #c3cad9;
-    height: 35px;
+    height: 40px;
     transition: all 100ms linear;
-    width: 35px;
+    width: 40px;
   }
 `;
 
 // Element: TextContainer
 export const TextContainer = styled.span`
   color: #6b7a99;
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition: all 100ms linear;
 `;
 
@@ -57,13 +57,13 @@ export const ItemWrapper = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  height: 100%;
   justify-content: center;
-  padding: 0.4rem 1.8rem;
+  padding: 0.4rem 1.4rem;
   transition: all 100ms linear;
   width: 100%;
-  min-width: 100px;
-  max-width: 100px;
+  min-width: 80px;
+  max-width: 80px;
 
   &:hover {
     background-color: #e6e9ef;

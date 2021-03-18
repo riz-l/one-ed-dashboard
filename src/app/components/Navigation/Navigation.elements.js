@@ -1,5 +1,5 @@
 // Import: Packages
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { NavLink } from "react-router-dom";
 
 // Element: Container
@@ -10,6 +10,14 @@ export const Container = styled.nav`
   height: 100%;
   max-height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
+  ${({ isNavigationOpen }) =>
+    !isNavigationOpen
+      ? css`
+          opacity: 0;
+          visibility: hidden;
+        `
+      : null};
+  transition: all 100ms linear;
   width: 300px;
   max-width: 300px;
   min-width: 300px;

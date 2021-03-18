@@ -39,3 +39,6 @@ export { default as Radio } from "./Radio/Radio.component";
 
 // Export: SecondaryNavigation
 export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryNavigation.component";
+
+// Export: Text
+export { default as Text } from "./Text/Text.component";

@@ -61,7 +61,17 @@ export default function App() {
       {/* 403: Unauthorized */}
       <Route exact path="/unauthorized" component={Unauthorized} />
 
-      <Container>
+      <Container
+        style={
+          !isNavigationOpen
+            ? {
+                gridTemplateColumns: "0 1fr",
+              }
+            : {
+                gridTemplateColumns: "300px 1fr",
+              }
+        }
+      >
         {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
         {!isLoggedIn && <Redirect to="/" />}
         {isLoggedIn && (
@@ -152,6 +162,7 @@ const Container = styled.div`
   grid-template-columns: 300px 1fr;
   grid-template-rows: auto auto;
   height: 100%;
+  transition: all 100ms linear;
   width: 100%;
 
   @media screen and (max-width: 1024px) {

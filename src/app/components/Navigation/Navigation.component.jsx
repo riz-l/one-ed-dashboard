@@ -35,7 +35,7 @@ export default function Navigation({
 }) {
   return (
     <>
-      <Container data-testid={"navigation"}>
+      <Container data-testid={"navigation"} isNavigationOpen={isNavigationOpen}>
         <Wrapper>
           <Options>
             {/* Ward */}

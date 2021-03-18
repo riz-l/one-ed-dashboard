@@ -55,25 +55,27 @@ export const Logo = styled.div`
 // Element: MenuContainer
 export const MenuContainer = styled.div`
   align-items: center;
-  border-radius: 8px;
   cursor: pointer;
   display: flex;
-  height: auto;
+  /* height: 100%; */
   justify-content: center;
   margin-left: 0.8rem;
-  padding: 0.4rem;
+  /* padding: 0.4rem; */
   transition: all 100ms linear;
 
   & svg {
+    background-color: #f7f8fa;
+    border-radius: 8px;
     fill: #6b7a99;
     height: 45px;
-    padding: 0.4rem;
+    padding: 0.6rem;
     transition: all 100ms linear;
     width: auto;
   }
 
   &:hover {
     & svg {
+      background-color: #e6e9ef;
       fill: #4d5e80;
       transition: all 100ms linear;
     }
