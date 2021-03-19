@@ -15,7 +15,7 @@ export default function Input({
   width,
 }) {
   return (
-    <Container left={left}>
+    <Container left={left} data-testid={"input"}>
       {labelText && (
         <Label htmlfor={htmlFor} left={left}>
           {labelText}

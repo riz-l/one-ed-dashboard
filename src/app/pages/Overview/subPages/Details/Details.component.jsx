@@ -14,8 +14,9 @@ export default function Details() {
       <Container data-testid={"details"}>
         <Wrapper>
           <Text heading as="h2">
-            DETAILS
+            Details
           </Text>
+
           <Grid>
             <Grid.Column>
               <Grid.Item>

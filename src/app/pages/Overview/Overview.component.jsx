@@ -18,7 +18,7 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { Details, History } from "./subPages";
+import { Alerts, Allergies, Details } from "./subPages";
 
 // Component: Overview
 export default function Overview() {
@@ -29,22 +29,42 @@ export default function Overview() {
   // State: History SubPages
   const [isAlerts, setIsAlerts] = useState(true);
   const [isAllergies, setIsAllergies] = useState(false);
-  const [isComplications, setIsComplications] = useState(false);
-  const [isDiagnosis, setIsDiagnosis] = useState(false);
-  const [isFindings, setIsFindings] = useState(false);
-  const [isComplaint, setIsComplaint] = useState(false);
-  const [isProcedures, setIsProcedures] = useState(false);
-  const [isSymptoms, setIsSymptoms] = useState(false);
+  // const [isComplications, setIsComplications] = useState(false);
+  // const [isDiagnosis, setIsDiagnosis] = useState(false);
+  // const [isFindings, setIsFindings] = useState(false);
+  // const [isComplaint, setIsComplaint] = useState(false);
+  // const [isProcedures, setIsProcedures] = useState(false);
+  // const [isSymptoms, setIsSymptoms] = useState(false);
 
   // onClick: Renders Details SubPage
   function renderDetails() {
+    setIsAlerts(false);
+    setIsAllergies(false);
     setIsHistory(false);
     setIsDetails(true);
   }
 
   // onClick: Renders History SubPage
   function renderHistory() {
+    setIsAllergies(false);
     setIsDetails(false);
+    setIsAlerts(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Alerts SubPage
+  function renderAlerts() {
+    setIsAllergies(false);
+    setIsDetails(false);
+    setIsAlerts(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Allergies SubPage
+  function renderAllergies() {
+    setIsAlerts(false);
+    setIsDetails(false);
+    setIsAllergies(true);
     setIsHistory(true);
   }
 
@@ -85,7 +105,7 @@ export default function Overview() {
                     </>
                   ) : isHistory ? (
                     <>
-                      <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Item onClick={renderAlerts}>
                         <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
@@ -94,7 +114,7 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Item onClick={renderAllergies}>
                         <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
@@ -171,7 +191,15 @@ export default function Overview() {
                   )}
                 </SecondaryNavigation>
               }
-              content={isDetails ? <Details /> : isHistory ? <History /> : null}
+              content={
+                isDetails ? (
+                  <Details />
+                ) : isAlerts ? (
+                  <Alerts />
+                ) : isAllergies ? (
+                  <Allergies />
+                ) : null
+              }
             />
           </ContentWrapper>
         </Wrapper>

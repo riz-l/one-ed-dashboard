@@ -14,6 +14,7 @@ export default function Text({ heading, subheading, text, ...props }) {
         subheading={subheading}
         text={text}
         {...props}
+        data-testid={"text"}
       >
         {props.children}
       </StyledText>

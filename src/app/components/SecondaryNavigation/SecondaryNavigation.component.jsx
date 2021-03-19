@@ -29,7 +29,7 @@ const SecondaryNavigationGroupContext = createContext();
 // Compound Component: Item
 function Item({ ...props }) {
   return (
-    <ItemContainer>
+    <ItemContainer onClick={props.onClick}>
       <ItemWrapper>{props.children}</ItemWrapper>
     </ItemContainer>
   );
