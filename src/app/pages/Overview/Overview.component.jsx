@@ -81,11 +81,17 @@ export default function Overview() {
             <ReportSection
               primaryNavigation={
                 <PrimaryNavigation>
-                  <PrimaryNavigation.Item onClick={renderDetails}>
+                  <PrimaryNavigation.Item
+                    isActive={isDetails ? true : false}
+                    onClick={renderDetails}
+                  >
                     <PrimaryNavigation.Text>Details</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
-                  <PrimaryNavigation.Item onClick={renderHistory}>
+                  <PrimaryNavigation.Item
+                    isActive={isHistory ? true : false}
+                    onClick={renderHistory}
+                  >
                     <PrimaryNavigation.Text>History</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
@@ -94,7 +100,9 @@ export default function Overview() {
                 <SecondaryNavigation>
                   {isDetails ? (
                     <>
-                      <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Item
+                        isActive={isDetails ? true : false}
+                      >
                         <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
@@ -105,7 +113,10 @@ export default function Overview() {
                     </>
                   ) : isHistory ? (
                     <>
-                      <SecondaryNavigation.Item onClick={renderAlerts}>
+                      <SecondaryNavigation.Item
+                        isActive={isAlerts ? true : false}
+                        onClick={renderAlerts}
+                      >
                         <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
@@ -114,7 +125,10 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item onClick={renderAllergies}>
+                      <SecondaryNavigation.Item
+                        isActive={isAllergies ? true : false}
+                        onClick={renderAllergies}
+                      >
                         <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>

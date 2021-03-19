@@ -25,10 +25,10 @@ const PrimaryNavigationGroupContext = createContext();
 // };
 
 // Compound Component: Item
-function Item({ ...props }) {
+function Item({ isActive, ...props }) {
   return (
     <ItemContainer onClick={props.onClick}>
-      <ItemWrapper>{props.children}</ItemWrapper>
+      <ItemWrapper isActive={isActive}>{props.children}</ItemWrapper>
     </ItemContainer>
   );
 }

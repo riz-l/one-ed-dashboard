@@ -23,7 +23,6 @@ export const ItemContainer = styled.div`
 
 // Element: TextContainer
 export const TextContainer = styled.span`
-  color: #6b7a99;
   font-size: 1.2rem;
   font-weight: 500;
   transition: all 100ms linear;
@@ -32,9 +31,9 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  /* background-color: #f7f8fa; */
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
+  background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#ffffff")};
+  border: ${({ isActive }) =>
+    isActive ? "1px solid #e6e9ef" : "1px solid #edeff2"};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -44,6 +43,10 @@ export const ItemWrapper = styled.div`
   padding: 0.4rem 1.8rem;
   transition: all 100ms linear;
   width: 100%;
+
+  & ${TextContainer} {
+    color: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+  }
 
   &:hover {
     background-color: #e6e9ef;

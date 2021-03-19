@@ -32,7 +32,6 @@ export const IconContainer = styled.div`
   width: 100%;
 
   & svg {
-    fill: #c3cad9;
     height: 28px;
     transition: all 100ms linear;
     width: 28px;
@@ -49,13 +48,14 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#ffffff")};
   border-bottom: 1px solid #edeff2;
   border-left: 1px solid #edeff2;
   border-radius: 8px;
   border-right: 1px solid #edeff2;
-  border-top: 4px solid #4d5e80;
-  cursor: pointer;
+  border-top: ${({ isActive }) =>
+    isActive ? "4px solid #4d5e80" : "4px solid #ffffff"};
+  cursor: ${({ isActive }) => (isActive ? "default" : "pointer")};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -67,8 +67,14 @@ export const ItemWrapper = styled.div`
   min-width: 120px;
   max-width: 120px;
 
+  & ${IconContainer} {
+    fill: ${({ isActive }) => (isActive ? "#6b7a99" : "#c3cad9")};
+  }
+
   &:hover {
     background-color: #e6e9ef;
+    border-top: ${({ isActive }) =>
+      isActive ? "4px solid #4d5e80" : "4px solid #e6e9ef"};
     transition: all 100ms linear;
 
     & ${IconContainer} {
