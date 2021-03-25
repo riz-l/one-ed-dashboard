@@ -17,6 +17,7 @@ export const Container = styled.nav`
           visibility: hidden;
         `
       : null};
+  overflow-y: auto;
   transition: all 100ms linear;
   width: 300px;
   max-width: 300px;

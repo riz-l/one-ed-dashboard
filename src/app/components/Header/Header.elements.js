@@ -9,8 +9,10 @@ export const Container = styled.header`
   grid-area: header;
   height: 80px;
   max-height: 80px;
-  width: 100%;
-  min-width: 100%;
+  min-height: 80px;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
 `;
 
 // Element: Wrapper
@@ -28,6 +30,7 @@ export const LogoContainer = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
+  max-height: 100%;
   justify-content: center;
 `;
 
@@ -57,10 +60,8 @@ export const MenuContainer = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
-  /* height: 100%; */
   justify-content: center;
   margin-left: 0.8rem;
-  /* padding: 0.4rem; */
   transition: all 100ms linear;
 
   & svg {
@@ -89,6 +90,7 @@ export const UserContainer = styled.div`
   cursor: pointer;
   display: flex;
   height: 100%;
+  max-height: 100%;
   justify-content: center;
   padding: 2rem;
   transition: all 100ms linear;

@@ -18,7 +18,7 @@ export const Container = styled.div`
 // Element: ItemContainer
 export const ItemContainer = styled.div`
   height: 100%;
-  padding: 0.4rem 0;
+  /* padding: 0.4rem 0; */
   margin-right: 0.4rem;
   width: auto;
 `;
@@ -49,12 +49,12 @@ export const TextContainer = styled.span`
 export const ItemWrapper = styled.div`
   align-items: center;
   background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#ffffff")};
-  border-bottom: 1px solid #edeff2;
   border-left: 1px solid #edeff2;
-  border-radius: 8px;
   border-right: 1px solid #edeff2;
   border-top: ${({ isActive }) =>
-    isActive ? "4px solid #4d5e80" : "4px solid #ffffff"};
+    isActive ? "4px solid #4d5e80" : "1px solid #edeff2"};
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   cursor: ${({ isActive }) => (isActive ? "default" : "pointer")};
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ export const ItemWrapper = styled.div`
   &:hover {
     background-color: #e6e9ef;
     border-top: ${({ isActive }) =>
-      isActive ? "4px solid #4d5e80" : "4px solid #e6e9ef"};
+      isActive ? "4px solid #4d5e80" : "1px solid #edeff2"};
     transition: all 100ms linear;
 
     & ${IconContainer} {
