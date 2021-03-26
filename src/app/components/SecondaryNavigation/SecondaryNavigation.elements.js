@@ -30,12 +30,27 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-right: 8px;
+  position: relative;
 
   & svg {
     height: 18px;
     transition: all 100ms linear;
     width: 18px;
+    z-index: 1;
   }
+`;
+
+// Element: Indicator
+export const Indicator = styled.div`
+  background-color: tomato;
+  border-radius: 80%;
+  content: "";
+  height: 10px;
+  position: absolute;
+  right: -4px;
+  top: 2px;
+  width: 10px;
+  z-index: 2;
 `;
 
 // Element: TextContainer

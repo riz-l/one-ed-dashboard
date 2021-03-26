@@ -8,6 +8,7 @@ import React, {
 import {
   Container,
   IconContainer,
+  Indicator,
   ItemContainer,
   ItemWrapper,
   TextContainer,
@@ -37,7 +38,12 @@ function Item({ isActive, ...props }) {
 
 // Compound Component: Icon
 function Icon({ ...props }) {
-  return <IconContainer>{props.children}</IconContainer>;
+  return (
+    <IconContainer>
+      {props.children}
+      <Indicator />
+    </IconContainer>
+  );
 }
 
 // Compound Component: Text
