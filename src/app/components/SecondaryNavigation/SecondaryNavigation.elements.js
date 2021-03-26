@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   align-items: center;
   display: flex;
-  /* height: 100%; */
+  height: 100%;
   justify-content: flex-start;
   /* overflow-x: auto;
   overflow-y: hidden;
@@ -14,13 +14,15 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
 
-  margin-bottom: 0.8rem;
+  /* margin-bottom: 0.8rem; */
 `;
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
-  height: 100%;
-  margin-right: 1rem;
+  /* height: 100%; */
+
+  margin-right: 0.4rem;
+  margin-top: auto;
   width: auto;
 `;
 
@@ -65,7 +67,11 @@ export const TextContainer = styled.span`
 export const ItemWrapper = styled.div`
   align-items: center;
   background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#f7f8fa")};
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  border: 1px solid #edeff2;
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   cursor: pointer;
   display: flex;
   height: 100%;

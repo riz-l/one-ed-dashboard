@@ -32,7 +32,9 @@ export const TextContainer = styled.span`
 export const ItemWrapper = styled.div`
   align-items: center;
   border-bottom: ${({ isActive }) =>
-    isActive ? "2px solid #008ba3" : "2px solid #e6e9ef"};
+    isActive ? "2px solid #008ba3" : "2px solid #f7f8fa"};
+  /* border-bottom: ${({ isActive }) =>
+    isActive ? "2px solid #008ba3" : "2px solid #e6e9ef"}; */
   cursor: pointer;
   display: flex;
   flex-direction: column;

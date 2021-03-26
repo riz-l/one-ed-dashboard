@@ -10,7 +10,7 @@ export const Container = styled.div`
     "secondary-navigation"
     "content";
   grid-template-columns: 100%;
-  grid-template-rows: 60px 80px auto;
+  grid-template-rows: 60px 50px auto;
   height: 100%;
   max-height: 100%;
   min-height: 100%;
@@ -41,7 +41,7 @@ export const SecondaryNavigation = styled.div`
   /* background-color: red; */
   display: flex;
   grid-area: secondary-navigation;
-  height: 100px;
+  height: 50px;
   max-height: 100%;
   min-height: 100%;
   justify-content: center;
