@@ -2,7 +2,15 @@
 import React, { useState } from "react";
 
 // Import: Assets
-// import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
+import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
+import { ReactComponent as ComplaintIcon } from "../../../assets/img/icon/presenting-complaint.svg";
+import { ReactComponent as ComplicationsIcon } from "../../../assets/img/icon/complications.svg";
+import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+import { ReactComponent as DiagnosisIcon } from "../../../assets/img/icon/assessments-seen.svg";
+import { ReactComponent as FindingsIcon } from "../../../assets/img/icon/findings.svg";
+import { ReactComponent as ProceduresIcon } from "../../../assets/img/icon/procedures.svg";
+import { ReactComponent as SymptomsIcon } from "../../../assets/img/icon/symptoms.svg";
 
 // Import: Elements
 import {
@@ -103,9 +111,9 @@ export default function Overview() {
                       <SecondaryNavigation.Item
                         isActive={isDetails ? true : false}
                       >
-                        {/* <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon>
                           <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Details
                         </SecondaryNavigation.Text>
@@ -117,9 +125,9 @@ export default function Overview() {
                         isActive={isAlerts ? true : false}
                         onClick={renderAlerts}
                       >
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <AlertsIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Alerts
                         </SecondaryNavigation.Text>
@@ -129,63 +137,63 @@ export default function Overview() {
                         isActive={isAllergies ? true : false}
                         onClick={renderAllergies}
                       >
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <AllergiesIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Allergies
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <ComplicationsIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Complications
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <DiagnosisIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Diagnosis
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <FindingsIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Findings
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <ComplaintIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Complaint
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <ProceduresIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Procedures
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        <SecondaryNavigation.Icon>
+                          <SymptomsIcon />
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Symptoms
                         </SecondaryNavigation.Text>
@@ -194,9 +202,9 @@ export default function Overview() {
                   ) : (
                     <>
                       <SecondaryNavigation.Item>
-                        {/* <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon>
                           <DetailsIcon />
-                        </SecondaryNavigation.Icon> */}
+                        </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Details
                         </SecondaryNavigation.Text>

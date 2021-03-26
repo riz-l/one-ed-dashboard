@@ -31,10 +31,11 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#ffffff")};
-  border: ${({ isActive }) =>
-    isActive ? "1px solid #e6e9ef" : "1px solid #edeff2"};
-  border-radius: 8px;
+  /* background-color: ${({ isActive }) =>
+    isActive ? "#e6e9ef" : "#ffffff"}; */
+  /* border: ${({ isActive }) =>
+    isActive ? "1px solid #e6e9ef" : "1px solid #edeff2"}; */
+  /* border-radius: 8px; */
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -49,8 +50,8 @@ export const ItemWrapper = styled.div`
   }
 
   &:hover {
-    background-color: #e6e9ef;
-    transition: all 100ms linear;
+    /* background-color: #e6e9ef;
+    transition: all 100ms linear; */
 
     & ${TextContainer} {
       color: #4d5e80;

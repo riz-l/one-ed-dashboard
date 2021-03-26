@@ -5,21 +5,22 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   align-items: center;
   display: flex;
-  height: 100%;
+  /* height: 100%; */
   justify-content: flex-start;
-  overflow-x: auto;
+  /* overflow-x: auto;
   overflow-y: hidden;
   scrollbar-color: #c3cad9 #edeff2;
-  scrollbar-width: thin;
+  scrollbar-width: thin; */
   width: 100%;
   max-width: 100%;
+
+  margin-bottom: 0.8rem;
 `;
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
   height: 100%;
-  /* padding: 0.4rem 0; */
-  margin-right: 0.4rem;
+  margin-right: 1rem;
   width: auto;
 `;
 
@@ -28,13 +29,12 @@ export const IconContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 4px;
-  width: 100%;
+  margin-right: 8px;
 
   & svg {
-    height: 28px;
+    height: 18px;
     transition: all 100ms linear;
-    width: 28px;
+    width: 18px;
   }
 `;
 
@@ -48,44 +48,39 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#ffffff")};
-  border-left: 1px solid #edeff2;
-  border-right: 1px solid #edeff2;
-  border-top: ${({ isActive }) =>
-    isActive ? "4px solid #4d5e80" : "1px solid #edeff2"};
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  cursor: ${({ isActive }) => (isActive ? "default" : "pointer")};
+  border-bottom: ${({ isActive }) =>
+    isActive ? "4px solid #008ba3" : "4px solid #f7f8fa"};
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 0.4rem 1.4rem;
-  text-align: center;
+  padding: 0.8rem 0;
   transition: all 100ms linear;
   width: 100%;
-  min-width: 120px;
-  max-width: 120px;
+  min-width: 100px;
 
   & ${IconContainer} {
-    fill: ${({ isActive }) => (isActive ? "#6b7a99" : "#c3cad9")};
+    fill: ${({ isActive }) => (isActive ? "#008ba3" : "#c3cad9")};
+  }
+
+  & ${TextContainer} {
+    color: ${({ isActive }) => (isActive ? "#008ba3" : "#6b7a99")};
   }
 
   &:hover {
-    background-color: #e6e9ef;
-    border-top: ${({ isActive }) =>
-      isActive ? "4px solid #4d5e80" : "1px solid #edeff2"};
+    border-bottom: ${({ isActive }) =>
+      isActive ? "4px solid #008ba3" : "4px solid #95ccd7"};
     transition: all 100ms linear;
 
     & ${IconContainer} {
       & svg {
-        fill: #6b7a99;
+        fill: ${({ isActive }) => (isActive ? "#008ba3" : "#6b7a99")};
         transition: all 100ms linear;
       }
     }
 
     & ${TextContainer} {
-      color: #4d5e80;
+      color: ${({ isActive }) => (isActive ? "#008ba3" : "#4d5e80")};
       transition: all 100ms linear;
     }
   }
