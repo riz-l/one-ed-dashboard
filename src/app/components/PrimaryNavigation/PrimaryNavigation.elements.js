@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
-  margin-right: 0.4rem;
+  margin-right: 1.4rem;
   width: auto;
 `;
 
@@ -31,17 +31,14 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  /* background-color: ${({ isActive }) =>
-    isActive ? "#e6e9ef" : "#ffffff"}; */
-  /* border: ${({ isActive }) =>
-    isActive ? "1px solid #e6e9ef" : "1px solid #edeff2"}; */
-  /* border-radius: 8px; */
+  border-bottom: ${({ isActive }) =>
+    isActive ? "2px solid #008ba3" : "2px solid #e6e9ef"};
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 0.4rem 1.8rem;
+  margin-bottom: 0.4rem;
   transition: all 100ms linear;
   width: 100%;
 
@@ -50,8 +47,7 @@ export const ItemWrapper = styled.div`
   }
 
   &:hover {
-    /* background-color: #e6e9ef;
-    transition: all 100ms linear; */
+    transition: all 100ms linear;
 
     & ${TextContainer} {
       color: #4d5e80;
