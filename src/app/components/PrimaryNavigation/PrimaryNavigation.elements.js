@@ -39,6 +39,7 @@ export const ItemWrapper = styled.div`
   height: 100%;
   justify-content: center;
   margin-bottom: 0.4rem;
+  padding: 0.4rem 0;
   transition: all 100ms linear;
   width: 100%;
 

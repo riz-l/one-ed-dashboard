@@ -10,7 +10,7 @@ export const Container = styled.div`
     "secondary-navigation"
     "content";
   grid-template-columns: 100%;
-  grid-template-rows: 60px 50px auto;
+  grid-template-rows: 60px 80px auto;
   height: 100%;
   max-height: 100%;
   min-height: 100%;
