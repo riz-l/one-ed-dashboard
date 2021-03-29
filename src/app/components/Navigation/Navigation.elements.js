@@ -103,33 +103,6 @@ export const OptionItem = styled.div`
   }
 `;
 
-// Element: OptionLink
-export const OptionLink = styled(NavLink).attrs({ activeClassName })`
-  width: 100%;
-
-  &.${activeClassName} {
-    & ${OptionItem} {
-      background-color: #e6e9ef;
-      color: red;
-
-      & svg {
-        fill: #6b7a99;
-      }
-    }
-  }
-`;
-
-// Element: Settings
-export const Settings = styled.div`
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: auto;
-  padding-bottom: 0.8rem;
-  width: 100%;
-`;
-
 // Element: SettingsItem
 export const SettingsItem = styled.div`
   align-items: center;
@@ -169,4 +142,46 @@ export const SettingsItem = styled.div`
       transition: all 100ms linear;
     }
   }
+`;
+
+// Element: OptionLink
+export const OptionLink = styled(NavLink).attrs({ activeClassName })`
+  width: 100%;
+
+  &.${activeClassName} {
+    & ${OptionItem} {
+      background-color: #e6e9ef;
+
+      & svg {
+        fill: #6b7a99;
+      }
+
+      & span {
+        color: #4d5e80;
+      }
+    }
+
+    & ${SettingsItem} {
+      background-color: #e6e9ef;
+
+      & svg {
+        fill: #6b7a99;
+      }
+
+      & span {
+        color: #4d5e80;
+      }
+    }
+  }
+`;
+
+// Element: Settings
+export const Settings = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: auto;
+  padding-bottom: 0.8rem;
+  width: 100%;
 `;
