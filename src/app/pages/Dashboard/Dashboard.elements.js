@@ -10,6 +10,12 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-width: calc(100vh - 300px);
+
+  @media screen and (max-width: 1077px) {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
+  }
 `;
 
 // Element: Layout

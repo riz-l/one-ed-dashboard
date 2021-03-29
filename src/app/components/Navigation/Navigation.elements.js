@@ -23,6 +23,12 @@ export const Container = styled.nav`
   width: 300px;
   max-width: 300px;
   min-width: 300px;
+
+  @media screen and (max-width: 1077px) {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
+  }
 `;
 
 // Element: Wrapper

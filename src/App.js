@@ -63,15 +63,15 @@ export default function App() {
 
       <Container
         isNavigationOpen={isNavigationOpen}
-        style={
-          !isNavigationOpen
-            ? {
-                gridTemplateColumns: "0 1fr",
-              }
-            : {
-                gridTemplateColumns: "300px 1fr",
-              }
-        }
+        // style={
+        //   !isNavigationOpen
+        //     ? {
+        //         gridTemplateColumns: "0 1fr",
+        //       }
+        //     : {
+        //         gridTemplateColumns: "300px 1fr",
+        //       }
+        // }
       >
         {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
         {!isLoggedIn && <Redirect to="/" />}
@@ -160,9 +160,15 @@ const Container = styled.div`
   grid-template-areas:
     "header header"
     "navigation content";
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: ${({ isNavigationOpen }) =>
+    isNavigationOpen ? "300px 1fr" : "0 1fr"};
   grid-template-rows: auto auto;
   height: 100%;
   transition: all 100ms linear;
   width: 100%;
+
+  @media screen and (max-width: 1077px) {
+    grid-template-columns: ${({ isNavigationOpen }) =>
+      isNavigationOpen ? "1fr 0" : "0 1fr"};
+  }
 `;
