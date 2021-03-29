@@ -1,6 +1,7 @@
 // Import: Packages
 import styled, { css } from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+const activeClassName = "nav-item-active"; //NavLink: activeClassName
 
 // Element: Container
 export const Container = styled.nav`
@@ -66,11 +67,6 @@ export const OptionHeading = styled.span`
   font-weight: 500;
 `;
 
-// Element: OptionLink
-export const OptionLink = styled(NavLink)`
-  width: 100%;
-`;
-
 // Element: OptionItem
 export const OptionItem = styled.div`
   align-items: center;
@@ -97,7 +93,7 @@ export const OptionItem = styled.div`
   }
 
   &:hover {
-    background-color: #e6e9ef;
+    background-color: #eef0f4;
     transition: all 100ms linear;
 
     & svg {
@@ -108,6 +104,22 @@ export const OptionItem = styled.div`
     & span {
       color: #4d5e80;
       transition: all 100ms linear;
+    }
+  }
+`;
+
+// Element: OptionLink
+export const OptionLink = styled(NavLink).attrs({ activeClassName })`
+  width: 100%;
+
+  &.${activeClassName} {
+    & ${OptionItem} {
+      background-color: #e6e9ef;
+      color: red;
+
+      & svg {
+        fill: #6b7a99;
+      }
     }
   }
 `;
