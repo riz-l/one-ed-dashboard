@@ -124,6 +124,12 @@ export const UserDetails = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  @media screen and (max-width: 474px) {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+
   & span {
     &:nth-child(1) {
       color: #4d5e80;

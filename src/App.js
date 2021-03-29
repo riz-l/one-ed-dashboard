@@ -61,18 +61,7 @@ export default function App() {
       {/* 403: Unauthorized */}
       <Route exact path="/unauthorized" component={Unauthorized} />
 
-      <Container
-        isNavigationOpen={isNavigationOpen}
-        // style={
-        //   !isNavigationOpen
-        //     ? {
-        //         gridTemplateColumns: "0 1fr",
-        //       }
-        //     : {
-        //         gridTemplateColumns: "300px 1fr",
-        //       }
-        // }
-      >
+      <Container isNavigationOpen={isNavigationOpen}>
         {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
         {!isLoggedIn && <Redirect to="/" />}
         {isLoggedIn && (
@@ -166,9 +155,11 @@ const Container = styled.div`
   height: 100%;
   transition: all 100ms linear;
   width: 100%;
+  max-width: 100vw;
 
   @media screen and (max-width: 1077px) {
     grid-template-columns: ${({ isNavigationOpen }) =>
       isNavigationOpen ? "1fr 0" : "0 1fr"};
+    overflow-x: hidden;
   }
 `;

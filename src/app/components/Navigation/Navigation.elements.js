@@ -25,6 +25,13 @@ export const Container = styled.nav`
   min-width: 300px;
 
   @media screen and (max-width: 1077px) {
+    ${({ isNavigationOpen }) =>
+      !isNavigationOpen
+        ? css`
+            opacity: 0;
+            visibility: hidden;
+          `
+        : null};
     width: 100vw;
     max-width: 100vw;
     min-width: 100vw;
