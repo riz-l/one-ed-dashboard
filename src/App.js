@@ -62,6 +62,7 @@ export default function App() {
       <Route exact path="/unauthorized" component={Unauthorized} />
 
       <Container
+        isNavigationOpen={isNavigationOpen}
         style={
           !isNavigationOpen
             ? {
@@ -164,8 +165,4 @@ const Container = styled.div`
   height: 100%;
   transition: all 100ms linear;
   width: 100%;
-
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 0 1fr;
-  }
 `;
