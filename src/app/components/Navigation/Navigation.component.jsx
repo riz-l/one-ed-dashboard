@@ -41,14 +41,34 @@ export default function Navigation({
             {/* Ward */}
             <OptionsContainer>
               <OptionHeading>Ward</OptionHeading>
-              <OptionLink to="/one-ed/ward/dashboard">
+              <OptionLink
+                to="/one-ed/ward/dashboard"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <WardDashboardIcon />
                   <span>Dashboard</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/ward/ed-overview">
+              <OptionLink
+                to="/one-ed/ward/ed-overview"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <WardEDIcon />
                   <span>ED Overview</span>
@@ -59,14 +79,34 @@ export default function Navigation({
             {/* Patient */}
             <OptionsContainer>
               <OptionHeading>Patient</OptionHeading>
-              <OptionLink to="/one-ed/patient/overview">
+              <OptionLink
+                to="/one-ed/patient/overview"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <PatientOverviewIcon />
                   <span>Overview</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/patient/cas-card">
+              <OptionLink
+                to="/one-ed/patient/cas-card"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <PatientCasIcon />
                   <span>CAS Card</span>
@@ -77,35 +117,85 @@ export default function Navigation({
             {/* Assessments */}
             <OptionsContainer>
               <OptionHeading>Assessments</OptionHeading>
-              <OptionLink to="/one-ed/assessments/triage">
+              <OptionLink
+                to="/one-ed/assessments/triage"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <AssessmentsTriageIcon />
                   <span>Triage</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/assessments/observations">
+              <OptionLink
+                to="/one-ed/assessments/observations"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <AssessmentsObservationsIcon />
                   <span>Observations</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/assessments/seen">
+              <OptionLink
+                to="/one-ed/assessments/seen"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <AssessmentsSeenIcon />
                   <span>Seen</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/assessments/clinical-notes">
+              <OptionLink
+                to="/one-ed/assessments/clinical-notes"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <AssessmentsClinicalIcon />
                   <span>Clinical Notes</span>
                 </OptionItem>
               </OptionLink>
 
-              <OptionLink to="/one-ed/assessments/view-seen">
+              <OptionLink
+                to="/one-ed/assessments/view-seen"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
                 <OptionItem>
                   <AssessmentsViewIcon />
                   <span>View Seen</span>
@@ -115,7 +205,17 @@ export default function Navigation({
           </Options>
 
           <Settings>
-            <OptionLink to="/one-ed/user/settings">
+            <OptionLink
+              to="/one-ed/user/settings"
+              onClick={
+                window.innerWidth <= 1077
+                  ? () =>
+                      setIsNavigationOpen(
+                        (isNavigationOpen) => !isNavigationOpen
+                      )
+                  : null
+              }
+            >
               <SettingsItem>
                 <SettingsSettingsIcon />
                 <span>Settings</span>
