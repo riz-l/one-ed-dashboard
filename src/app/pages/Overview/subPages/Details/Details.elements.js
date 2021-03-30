@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   /* border-radius: 8px; */
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
   border: 1px solid #edeff2;
   height: 100%;
   padding: 1rem;

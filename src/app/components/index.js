@@ -10,6 +10,9 @@ export { default as Input } from "./Input/Input.component";
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";
 
+// Export: PatientDemographics
+export { default as PatientDemographics } from "./PatientDemographics/PatientDemographics.component";
+
 // Export: PatientItem
 export { default as PatientItem } from "./PatientItem/PatientItem.component";
 

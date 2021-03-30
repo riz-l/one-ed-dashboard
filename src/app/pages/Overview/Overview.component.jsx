@@ -22,6 +22,7 @@ import {
 
 // Import: Components, SubPages
 import {
+  PatientDemographics,
   PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
@@ -84,6 +85,8 @@ export default function Overview() {
             <h2>Overview</h2>
             <span>Patient details and history</span>
           </Header>
+
+          <PatientDemographics />
 
           <ContentWrapper>
             <ReportSection

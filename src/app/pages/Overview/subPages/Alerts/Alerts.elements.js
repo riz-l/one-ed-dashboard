@@ -13,11 +13,8 @@ export const Wrapper = styled.div`
   /* border-radius: 8px; */
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  /* border: 1px solid #edeff2; */
-  border-bottom: 1px solid #edeff2;
-  border-left: 1px solid #edeff2;
-  border-right: 1px solid #edeff2;
-  border-top: 1px solid #edeff2;
+  border-top-right-radius: 8px;
+  border: 1px solid #edeff2;
   height: 100%;
   padding: 1rem;
   width: 100%;
