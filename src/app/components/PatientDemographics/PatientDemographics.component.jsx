@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
-import "./PatientDemographics.styles.css";
 
 // Import: Assets
 import { ReactComponent as InformationIcon } from "../../../assets/img/icon/information.svg";
 
 // Import: Elements
 import { Container, Header, Wrapper } from "./PatientDemographics.elements";
+import "./PatientDemographics.styles.css";
 
 // Import: Components
 import { Text } from "../index";
@@ -28,9 +28,6 @@ export default function PatientDemographics() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
-  // Assigns Modal to root id used for App.js
-  Modal.setAppElement("#root");
-
   return (
     <>
       <Container data-testid={"patientDemographics"}>
@@ -48,6 +45,7 @@ export default function PatientDemographics() {
           className="Modal"
           overlayClassName="Overlay"
           closeTimeoutMS={100}
+          ariaHideApp={false}
         >
           <Text heading as="h3">
             Patient Demographics
