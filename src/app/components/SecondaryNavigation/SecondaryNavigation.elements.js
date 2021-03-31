@@ -38,7 +38,6 @@ export const IconContainer = styled.div`
     height: 18px;
     transition: all 100ms linear;
     width: 18px;
-    z-index: 1;
   }
 `;
 
@@ -52,7 +51,6 @@ export const Indicator = styled.div`
   right: -4px;
   top: 2px;
   width: 10px;
-  z-index: 2;
 `;
 
 // Element: TextContainer

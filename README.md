@@ -59,3 +59,7 @@ $ npm install
 - `react-detect-offline`
 
   - Used to detect online/offline state of React application
+
+- `react-modal`
+
+  - Used to create modal pop-outs

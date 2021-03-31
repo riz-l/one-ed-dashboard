@@ -8,6 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   min-height: 5vh;
   justify-content: flex-start;
+  position: relative;
   width: 100%;
 `;
 

@@ -11,7 +11,6 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-width: calc(100vh - 300px);
-  z-index: 2;
 `;
 
 // Element: Wrapper
