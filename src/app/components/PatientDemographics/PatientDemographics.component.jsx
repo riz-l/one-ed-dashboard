@@ -1,6 +1,5 @@
 // Import: Packages
 import React, { useState } from "react";
-import Modal from "react-modal";
 import ReactModal from "react-modal";
 
 // Import: Assets
@@ -40,7 +39,7 @@ export default function PatientDemographics() {
 
         <ReactModal
           isOpen={isModalOpen}
-          contentLabel="onRequestClose Example"
+          contentLabel="Patient Demographics"
           onRequestClose={closeModal}
           className="Modal"
           overlayClassName="Overlay"

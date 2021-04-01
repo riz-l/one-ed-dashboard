@@ -1,5 +1,6 @@
 // Import: Packages
-import React from "react";
+import React, { useState } from "react";
+import ReactModal from "react-modal";
 
 // Import: Assets
 import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
@@ -18,8 +19,24 @@ import {
   Wrapper,
 } from "./Header.elements";
 
+// Import: Components
+import { Text } from "../index";
+
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
+  // State: isModalOpen
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // onClick: Opens Modal
+  function openModal() {
+    setIsModalOpen((isModalOpen) => !isModalOpen);
+  }
+
+  // onClick: Closes Modal
+  function closeModal() {
+    setIsModalOpen((isModalOpen) => !isModalOpen);
+  }
+
   return (
     <>
       <Container data-testid={"header"}>
@@ -40,7 +57,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             </MenuContainer>
           </LogoContainer>
 
-          <UserContainer>
+          <UserContainer onClick={openModal}>
             <UserIcon>
               <UserSvg />
             </UserIcon>
@@ -51,6 +68,23 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             </UserDetails>
           </UserContainer>
         </Wrapper>
+
+        <ReactModal
+          isOpen={isModalOpen}
+          contentLabel="User Information"
+          onRequestClose={closeModal}
+          className="Modal"
+          overlayClassName="Overlay"
+          closeTimeoutMS={100}
+          ariaHideApp={false}
+        >
+          <Text heading as="h3">
+            User Information
+          </Text>
+          <button type="button" onClick={closeModal}>
+            Close Modal
+          </button>
+        </ReactModal>
       </Container>
     </>
   );
