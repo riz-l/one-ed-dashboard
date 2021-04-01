@@ -1,0 +1,40 @@
+/*#region PatientDemographics: Modal */
+.Modal {
+  background-color: #ffffff;
+  border: 1px solid #edeff2;
+  border-radius: 8px;
+  bottom: 4rem;
+  box-shadow: 0 0 20px #edeff2;
+  left: 4rem;
+  padding: 4rem;
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+  transition: all 100ms linear;
+}
+
+.Overlay {
+  background-color: rgba(247, 248, 250, 0.7);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all 100ms linear;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: all 100ms linear;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: all 100ms linear;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transition: all 100ms linear;
+}
+/*#endregion /PatientDemographics: Modal */
