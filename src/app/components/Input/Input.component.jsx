@@ -27,7 +27,7 @@ export default function Input({
         left={left}
         name={htmlFor}
         onChange={onChange}
-        type={type}
+        type={type ? type : "text"}
         value={value}
         width={width}
       />
