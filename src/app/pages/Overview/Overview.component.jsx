@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Import: Assets
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
@@ -9,6 +9,7 @@ import { ReactComponent as ComplicationsIcon } from "../../../assets/img/icon/co
 import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
 import { ReactComponent as DiagnosisIcon } from "../../../assets/img/icon/assessments-seen.svg";
 import { ReactComponent as FindingsIcon } from "../../../assets/img/icon/findings.svg";
+import { ReactComponent as MoreIcon } from "../../../assets/img/icon/more.svg";
 import { ReactComponent as ProceduresIcon } from "../../../assets/img/icon/procedures.svg";
 import { ReactComponent as SymptomsIcon } from "../../../assets/img/icon/symptoms.svg";
 
@@ -31,6 +32,12 @@ import { Alerts, Allergies, Details } from "./subPages";
 
 // Component: Overview
 export default function Overview() {
+  // State: windowDimensions
+  const [windowDimensions, setWindowDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
   // State: isDetails, isHistory
   const [isDetails, setIsDetails] = useState(true);
   const [isHistory, setIsHistory] = useState(false);
@@ -44,6 +51,22 @@ export default function Overview() {
   // const [isComplaint, setIsComplaint] = useState(false);
   // const [isProcedures, setIsProcedures] = useState(false);
   // const [isSymptoms, setIsSymptoms] = useState(false);
+
+  // Effect: Checks window height and width
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // onClick: Renders Details SubPage
   function renderDetails() {
@@ -124,6 +147,17 @@ export default function Overview() {
                     </>
                   ) : isHistory ? (
                     <>
+                      {windowDimensions.width <= 1470 ? (
+                        <SecondaryNavigation.Item>
+                          <SecondaryNavigation.Icon>
+                            <MoreIcon />
+                          </SecondaryNavigation.Icon>
+                          <SecondaryNavigation.Text>
+                            More
+                          </SecondaryNavigation.Text>
+                        </SecondaryNavigation.Item>
+                      ) : null}
+
                       <SecondaryNavigation.Item
                         isActive={isAlerts ? true : false}
                         onClick={renderAlerts}
@@ -166,41 +200,45 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon>
-                          <FindingsIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Findings
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
+                      {windowDimensions.width <= 1470 ? null : (
+                        <>
+                          <SecondaryNavigation.Item>
+                            <SecondaryNavigation.Icon>
+                              <FindingsIcon />
+                            </SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Text>
+                              Findings
+                            </SecondaryNavigation.Text>
+                          </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon>
-                          <ComplaintIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Complaint
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item>
+                            <SecondaryNavigation.Icon>
+                              <ComplaintIcon />
+                            </SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Text>
+                              Complaint
+                            </SecondaryNavigation.Text>
+                          </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon>
-                          <ProceduresIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Procedures
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item>
+                            <SecondaryNavigation.Icon>
+                              <ProceduresIcon />
+                            </SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Text>
+                              Procedures
+                            </SecondaryNavigation.Text>
+                          </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon>
-                          <SymptomsIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Symptoms
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item>
+                            <SecondaryNavigation.Icon>
+                              <SymptomsIcon />
+                            </SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Text>
+                              Symptoms
+                            </SecondaryNavigation.Text>
+                          </SecondaryNavigation.Item>
+                        </>
+                      )}
                     </>
                   ) : (
                     <>

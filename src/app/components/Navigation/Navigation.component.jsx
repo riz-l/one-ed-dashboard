@@ -1,5 +1,5 @@
 // Import: Packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Import: Assets
 import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
@@ -33,6 +33,28 @@ export default function Navigation({
   setIsNavigationOpen,
   handleLogout,
 }) {
+  // State: windowDimensions
+  const [windowDimensions, setWindowDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
+  // Effect: Checks window height and width
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Container data-testid={"navigation"} isNavigationOpen={isNavigationOpen}>
@@ -44,7 +66,7 @@ export default function Navigation({
               <OptionLink
                 to="/one-ed/ward/dashboard"
                 onClick={
-                  window.innerWidth <= 1077
+                  windowDimensions.width <= 1077
                     ? () =>
                         setIsNavigationOpen(
                           (isNavigationOpen) => !isNavigationOpen
