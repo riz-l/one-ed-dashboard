@@ -25,6 +25,15 @@ export default function Alerts() {
             // slideStatus={isEntrySlideOpen}
             // slideToggle={setIsEntrySlideOpen}
           />
+
+          <ReportEntry
+            alerts
+            type="Impairment"
+            details="Communication difficulties"
+            status="Active"
+            // slideStatus={isEntrySlideOpen}
+            // slideToggle={setIsEntrySlideOpen}
+          />
         </Wrapper>
       </Container>
     </>

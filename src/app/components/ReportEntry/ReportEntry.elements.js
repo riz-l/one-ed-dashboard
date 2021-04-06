@@ -112,7 +112,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: auto;
   justify-content: center;
-  margin: 1rem 1rem 0 1rem;
+  margin-top: 1rem;
   transition: all 100ms linear;
 
   &:hover {
