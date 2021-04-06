@@ -27,6 +27,7 @@ export const Label = styled.label`
 export const Select = styled.select`
   -webkit-appearance: none;
   border: 2px solid #edeff2;
+  border-radius: 8px;
   color: #4d5e80;
   cursor: pointer;
   font-size: 1rem;

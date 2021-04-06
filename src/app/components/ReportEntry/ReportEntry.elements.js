@@ -152,6 +152,10 @@ export const Heading = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.4rem;
+
+  & h3 {
+    color: #4d5e80;
+  }
 `;
 
 // Element: Icon
@@ -211,6 +215,10 @@ export const Detail = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-start;
+
+  & p {
+    color: #4d5e80;
+  }
 `;
 
 // Element: Right
@@ -221,6 +229,10 @@ export const Right = styled.div`
   justify-content: center;
   margin-right: 2rem;
   padding: 1rem;
+
+  & p {
+    color: #4d5e80;
+  }
 `;
 
 // Element: Status

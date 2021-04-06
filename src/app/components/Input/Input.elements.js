@@ -35,6 +35,7 @@ export const Label = styled.label`
 export const InputField = styled.input`
   -webkit-appearance: none;
   border: 2px solid #edeff2;
+  border-radius: 8px;
   color: #4d5e80;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
