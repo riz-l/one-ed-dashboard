@@ -5,7 +5,14 @@ import React from "react";
 import { Container, Wrapper } from "./Details.elements";
 
 // Import: Components
-import { Grid, Input, Radio, Text } from "../../../../components";
+import {
+  Checkbox,
+  Dropdown,
+  Grid,
+  Input,
+  Radio,
+  Text,
+} from "../../../../components";
 
 // SubPage: Details
 export default function Details() {
@@ -49,6 +56,18 @@ export default function Details() {
                 <Text as="p" text>
                   Component: Text (Text)
                 </Text>
+              </Grid.Item>
+            </Grid.Column>
+
+            <Grid.Column>
+              <Grid.Item>
+                <Text as="p">Component: Checkbox</Text>
+                <Checkbox />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Text as="p">Component: Dropdown</Text>
+                <Dropdown />
               </Grid.Item>
             </Grid.Column>
           </Grid>

@@ -3,24 +3,16 @@ import styled, { css } from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
-  align-items: flex-start;
+  align-items: ${({ left }) => (left ? "center" : "flex-start")};
   display: flex;
+  flex-direction: ${({ left }) => (left ? "row" : "column")};
   justify-content: center;
-  ${({ left }) =>
-    left
-      ? css`
-          align-items: center;
-          flex-direction: row;
-        `
-      : css`
-          flex-direction: column;
-        `}
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 `;
 
 // Element: Label
 export const Label = styled.label`
-  color: #6b7a99;
+  font-size: 1rem;
   ${({ left }) =>
     left
       ? css`
@@ -31,23 +23,19 @@ export const Label = styled.label`
         `}
 `;
 
-// Element: InputField
-export const InputField = styled.input`
+// Element: Select
+export const Select = styled.select`
   -webkit-appearance: none;
   border: 2px solid #edeff2;
   color: #4d5e80;
-  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
   transition: all 100ms linear;
-  -webkit-user-select: auto;
-  -khtml-user-select: auto;
-  -moz-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
   width: ${({ width }) => width ?? width};
 
   @media screen and (max-width: 848px) {
     width: 180px;
-    max-width: 180px;
   }
 
   &:hover {
@@ -61,4 +49,12 @@ export const InputField = styled.input`
     outline: none !important;
     transition: all 100ms linear;
   }
+`;
+
+// Element: Option
+export const Option = styled.option`
+  color: #4d5e80;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
 `;
