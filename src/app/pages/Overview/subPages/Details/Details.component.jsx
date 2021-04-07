@@ -31,7 +31,27 @@ export default function Details() {
               </Grid.Item>
 
               <Grid.Item>
-                <Input labelText="Component: Input" />
+                <Input labelText="Component: Input (text)" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Input type="number" labelText="Component: Input (number)" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Input type="email" labelText="Component: Input (email)" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Input type="date" labelText="Component: Input (date)" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Input type="time" labelText="Component: Input (time)" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <Input type="tel" labelText="Component: Input (tel)" />
               </Grid.Item>
 
               <Grid.Item>

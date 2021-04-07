@@ -33,6 +33,7 @@ export const Label = styled.label`
 
 // Element: InputField
 export const InputField = styled.input`
+  appearance: none;
   -webkit-appearance: none;
   border: 2px solid #edeff2;
   border-radius: 8px;
@@ -45,6 +46,67 @@ export const InputField = styled.input`
   -ms-user-select: auto;
   user-select: auto;
   width: ${({ width }) => width ?? width};
+
+  /* Input type="number" */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Input type="date" */
+  &[type="date"]::-webkit-clear-button {
+    display: none;
+  }
+
+  &[type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  &[type="date"]::-webkit-calendar-picker-indicator {
+    color: #4d5e80;
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(0.5);
+    transition: all 100ms linear;
+
+    &:hover {
+      opacity: 0.9;
+      transition: all 100ms linear;
+    }
+  }
+
+  &[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #4d5e80;
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* Input type="time" */
+  &[type="time"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #4d5e80;
+    font-family: "Poppins", sans-serif;
+  }
+
+  &[type="time"]::-webkit-calendar-picker-indicator {
+    color: #4d5e80;
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(0.5);
+    transition: all 100ms linear;
+
+    &:hover {
+      opacity: 0.9;
+      transition: all 100ms linear;
+    }
+  }
 
   @media screen and (max-width: 848px) {
     width: 180px;
