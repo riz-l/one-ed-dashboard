@@ -10,9 +10,8 @@ export const Container = styled.header`
   height: 80px;
   max-height: 80px;
   min-height: 80px;
-  width: 100vw;
+  width: 100%;
   max-width: 100vw;
-  min-width: 100vw;
 `;
 
 // Element: Wrapper

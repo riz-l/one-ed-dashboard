@@ -55,7 +55,7 @@ export const ContentWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   justify-content: center;
   padding: 1rem 2rem;
   width: 100%;
