@@ -21,7 +21,7 @@ import {
 import "./Header.styles.css";
 
 // Import: Components
-import { Text } from "../index";
+import { Button, Text } from "../index";
 
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
@@ -82,9 +82,8 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           <Text heading as="h3">
             User Information
           </Text>
-          <button type="button" onClick={closeModal}>
-            Close Modal
-          </button>
+
+          <Button text="Close" onClick={closeModal} />
         </ReactModal>
       </Container>
     </>

@@ -31,7 +31,7 @@ import {
 import "./ReportEntry.styles.css";
 
 // Import: Components
-import { Text } from "../index";
+import { Button, Text } from "../index";
 
 // Component: ReportEntry
 export default function ReportEntry({
@@ -65,7 +65,7 @@ export default function ReportEntry({
   }
 
   return (
-    <Container>
+    <Container data-testid={"reportEntry"}>
       <Wrapper
         // onClick={
         //   slideToggle ? () => slideToggle((slideStatus) => !slideStatus) : null
@@ -195,9 +195,8 @@ export default function ReportEntry({
             ? "Symptoms"
             : "Default Entry"}
         </Text>
-        <button type="button" onClick={closeModal}>
-          Close Modal
-        </button>
+
+        <Button text="Close" onClick={closeModal} />
       </ReactModal>
     </Container>
   );

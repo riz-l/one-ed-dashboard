@@ -1,3 +1,6 @@
+// Export: Button
+export { default as Button } from "./Button/Button.component";
+
 // Export: Checkbox
 export { default as Checkbox } from "./Checkbox/Checkbox.component";
 

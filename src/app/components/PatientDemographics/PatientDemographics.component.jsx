@@ -10,7 +10,7 @@ import { Container, Header, Wrapper } from "./PatientDemographics.elements";
 import "./PatientDemographics.styles.css";
 
 // Import: Components
-import { Text } from "../index";
+import { Button, Text } from "../index";
 
 // Component: PatientDemographics
 export default function PatientDemographics() {
@@ -49,9 +49,8 @@ export default function PatientDemographics() {
           <Text heading as="h3">
             Patient Demographics
           </Text>
-          <button type="button" onClick={closeModal}>
-            Close Modal
-          </button>
+
+          <Button text="Close" onClick={closeModal} />
         </ReactModal>
       </Container>
     </>
