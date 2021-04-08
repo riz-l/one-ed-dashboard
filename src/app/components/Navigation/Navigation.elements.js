@@ -24,6 +24,11 @@ export const Container = styled.nav`
   max-width: 300px;
   min-width: 300px;
 
+  position: fixed;
+  -webkit-position: fixed;
+  top: 80px;
+  z-index: 1;
+
   @media screen and (max-width: 1077px) {
     ${({ isNavigationOpen }) =>
       !isNavigationOpen

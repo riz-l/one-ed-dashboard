@@ -11,10 +11,10 @@ export default function CASCard() {
       <Container data-testid={"casCard"}>
         <h2>CAS Card</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          dolores autem et quo tempora cupiditate dolor laborum totam nesciunt
-          nulla aliquid voluptate, fuga maxime vitae eos? Quas fuga provident
-          cum.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt tempora
+          veniam tenetur molestiae corporis laudantium aliquam distinctio eos?
+          Cum omnis officiis tempora ipsa esse. Minima unde velit voluptatum
+          doloribus natus.
         </p>
       </Container>
     </>

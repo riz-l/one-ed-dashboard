@@ -2,4 +2,6 @@
 import styled from "styled-components/macro";
 
 // Element: Container
-export const Container = styled.div``;
+export const Container = styled.div`
+  grid-area: content;
+`;

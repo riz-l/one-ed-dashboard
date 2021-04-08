@@ -12,6 +12,11 @@ export const Container = styled.header`
   min-height: 80px;
   width: 100%;
   max-width: 100vw;
+
+  position: sticky;
+  -webkit-position: sticky;
+  top: 0;
+  z-index: 2;
 `;
 
 // Element: Wrapper

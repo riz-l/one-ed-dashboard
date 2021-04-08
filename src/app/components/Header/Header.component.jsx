@@ -18,6 +18,7 @@ import {
   UserIcon,
   Wrapper,
 } from "./Header.elements";
+import "./Header.styles.css";
 
 // Import: Components
 import { Text } from "../index";

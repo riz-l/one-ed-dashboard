@@ -33,9 +33,9 @@ export const Header = styled.div`
   height: auto;
   justify-content: center;
   padding: 1rem 2rem 0 2rem;
-  position: sticky;
+  /* position: sticky;
   -webkit-position: sticky;
-  top: 0;
+  top: 0; */
   width: 100%;
 
   & h2 {

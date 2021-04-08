@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: auto;
   margin-bottom: -1.4rem;
   justify-content: flex-start;
-  position: relative;
+  /* position: relative; */
   width: 100%;
 `;
 
@@ -22,9 +22,9 @@ export const Wrapper = styled.div`
   height: auto;
   justify-content: center;
   padding: 1rem 2rem;
-  position: sticky;
+  /* position: sticky;
   -webkit-position: sticky;
-  top: 0;
+  top: 0; */
   width: 100%;
 `;
 
