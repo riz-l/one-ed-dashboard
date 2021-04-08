@@ -85,6 +85,7 @@ export const InputField = styled.input`
     -webkit-appearance: none;
     background-color: #ffffff;
     color: #4d5e80;
+    cursor: pointer;
     font-family: "Poppins", sans-serif;
   }
 
@@ -94,6 +95,7 @@ export const InputField = styled.input`
     -webkit-appearance: none;
     background-color: #ffffff;
     color: #4d5e80;
+    cursor: pointer;
     font-family: "Poppins", sans-serif;
   }
 
