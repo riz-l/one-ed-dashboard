@@ -10,12 +10,11 @@ export const Container = styled.header`
   height: 80px;
   max-height: 80px;
   min-height: 80px;
-  width: 100%;
-  max-width: 100vw;
-
   position: sticky;
   -webkit-position: sticky;
   top: 0;
+  width: 100%;
+  max-width: 100vw;
   z-index: 2;
 `;
 

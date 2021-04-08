@@ -19,14 +19,13 @@ export const Container = styled.nav`
         `
       : null};
   overflow-y: auto;
+  position: fixed;
+  -webkit-position: fixed;
+  top: 80px;
   transition: all 100ms linear;
   width: 300px;
   max-width: 300px;
   min-width: 300px;
-
-  position: fixed;
-  -webkit-position: fixed;
-  top: 80px;
   z-index: 1;
 
   @media screen and (max-width: 1077px) {
@@ -46,6 +45,7 @@ export const Container = styled.nav`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
+  background-color: #f7f8fa;
   display: flex;
   flex-direction: column;
   height: 100%;
