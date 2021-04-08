@@ -25,7 +25,9 @@ export const Label = styled.label`
 
 // Element: Select
 export const Select = styled.select`
+  appearance: none;
   -webkit-appearance: none;
+  background-color: #ffffff;
   border: 2px solid #edeff2;
   border-radius: 8px;
   color: #4d5e80;

@@ -83,6 +83,7 @@ export const InputField = styled.input`
   &[type="date"] {
     appearance: none;
     -webkit-appearance: none;
+    background-color: #ffffff;
     color: #4d5e80;
     font-family: "Poppins", sans-serif;
   }
@@ -91,6 +92,7 @@ export const InputField = styled.input`
   &[type="time"] {
     appearance: none;
     -webkit-appearance: none;
+    background-color: #ffffff;
     color: #4d5e80;
     font-family: "Poppins", sans-serif;
   }
