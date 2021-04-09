@@ -253,6 +253,7 @@ export default function Details({ db }) {
                 <Grid.Item>
                   <Form.Input
                     htmlFor="addressPostcode"
+                    labelText="Postcode"
                     onChange={handleSetFormValues("addressPostcode")}
                     type="text"
                     value={detailsForm.addressPostcode}
