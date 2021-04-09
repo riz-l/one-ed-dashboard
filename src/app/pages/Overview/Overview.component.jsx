@@ -1,5 +1,6 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
+import Dexie from "dexie";
 
 // Import: Assets
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
@@ -99,6 +100,9 @@ export default function Overview() {
     setIsAllergies(true);
     setIsHistory(true);
   }
+
+  // Dexie: database = ODetails
+  const detailsDb = new Dexie("ODetails");
 
   return (
     <>
@@ -256,7 +260,7 @@ export default function Overview() {
               }
               content={
                 isDetails ? (
-                  <Details />
+                  <Details db={detailsDb} />
                 ) : isAlerts ? (
                   <Alerts />
                 ) : isAllergies ? (

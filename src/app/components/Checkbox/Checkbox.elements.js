@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: ${({ under }) => (under ? "column" : "row")};
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
   width: 100%;
 `;

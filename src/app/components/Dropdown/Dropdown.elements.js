@@ -32,6 +32,7 @@ export const Select = styled.select`
   border-radius: 8px;
   color: #4d5e80;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   padding: 0.3rem 0.8rem;
   transition: all 100ms linear;
@@ -56,8 +57,12 @@ export const Select = styled.select`
 
 // Element: Option
 export const Option = styled.option`
+  appearance: none;
+  -webkit-appearance: none;
   color: #4d5e80;
   cursor: pointer;
+  font-family: "Poppins", sans-serif !important;
   font-size: 1rem;
+  font-weight: 400;
   padding: 0.4rem 1rem;
 `;

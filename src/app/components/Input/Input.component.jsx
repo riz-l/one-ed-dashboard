@@ -10,6 +10,7 @@ export default function Input({
   labelText,
   left,
   onChange,
+  placeholder,
   type,
   value,
   width,
@@ -28,6 +29,7 @@ export default function Input({
         name={htmlFor}
         onChange={onChange}
         type={type ? type : "text"}
+        placeholder={placeholder}
         value={value}
         width={width}
       />

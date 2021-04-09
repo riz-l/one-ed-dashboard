@@ -45,7 +45,23 @@ export const InputField = styled.input`
   -moz-user-select: auto;
   -ms-user-select: auto;
   user-select: auto;
-  width: ${({ width }) => width ?? width};
+  width: ${({ width }) => (width ? width : "auto")};
+
+  ::-webkit-input-placeholder {
+    font-family: "Poppins", sans-serif;
+  }
+
+  ::-moz-placeholder {
+    font-family: "Poppins", sans-serif;
+  }
+
+  :-ms-input-placeholder {
+    font-family: "Poppins", sans-serif;
+  }
+
+  :-moz-placeholder {
+    font-family: "Poppins", sans-serif;
+  }
 
   /* Input type="number" */
   &::-webkit-outer-spin-button,
@@ -55,7 +71,12 @@ export const InputField = styled.input`
   }
 
   &[type="number"] {
+    appearance: textfield;
     -moz-appearance: textfield;
+    background-color: #ffffff;
+    color: #4d5e80;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
   }
 
   /* Input type="date" */
