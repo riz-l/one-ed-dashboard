@@ -12,6 +12,7 @@ import {
   Input,
   Radio,
   Text,
+  TextArea,
 } from "../../../../components";
 
 // SubPage: Details
@@ -26,10 +27,6 @@ export default function Details() {
 
           <Grid>
             <Grid.Column>
-              <Grid.Item>
-                <Radio text="Component: Radio" />
-              </Grid.Item>
-
               <Grid.Item>
                 <Input labelText="Component: Input (text)" />
               </Grid.Item>
@@ -55,11 +52,16 @@ export default function Details() {
               </Grid.Item>
 
               <Grid.Item>
-                <Text as="p">Component: Text (Default)</Text>
+                <Text as="p">Component: Dropdown</Text>
+                <Dropdown />
               </Grid.Item>
             </Grid.Column>
 
             <Grid.Column>
+              <Grid.Item>
+                <Text as="p">Component: Text (Default)</Text>
+              </Grid.Item>
+
               <Grid.Item>
                 <Text as="h2" heading>
                   Component: Text (Heading)
@@ -81,13 +83,15 @@ export default function Details() {
 
             <Grid.Column>
               <Grid.Item>
-                <Text as="p">Component: Checkbox</Text>
-                <Checkbox />
+                <Checkbox text="Component: Checkbox" />
               </Grid.Item>
 
               <Grid.Item>
-                <Text as="p">Component: Dropdown</Text>
-                <Dropdown />
+                <Radio text="Component: Radio" />
+              </Grid.Item>
+
+              <Grid.Item>
+                <TextArea labelText="Component: TextArea" />
               </Grid.Item>
             </Grid.Column>
           </Grid>

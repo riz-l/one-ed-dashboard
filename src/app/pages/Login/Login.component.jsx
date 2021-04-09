@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // Import: Elements
 import { Container } from "./Login.elements";
 
+// Import: Components
+import { Button } from "../../components";
+
 // Component: Login
 export default function Login(props) {
   return (
@@ -15,7 +18,8 @@ export default function Login(props) {
           <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
         </p>
         <p>Logged in status: {props.isLoggedIn}</p>
-        <button onClick={props.handleLogin}>Log In</button>
+
+        <Button onClick={props.handleLogin} text="Login" />
       </Container>
     </>
   );

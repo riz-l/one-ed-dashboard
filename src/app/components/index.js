@@ -60,3 +60,6 @@ export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryN
 
 // Export: Text
 export { default as Text } from "./Text/Text.component";
+
+// Export: TextArea
+export { default as TextArea } from "./TextArea/TextArea.component";

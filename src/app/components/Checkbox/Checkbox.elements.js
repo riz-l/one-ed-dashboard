@@ -41,12 +41,13 @@ export const Text = styled.label`
 export const VisualBox = styled.div`
   align-items: center;
   background: ${({ checked }) => (checked ? "#008ba3" : "#edeff2")};
-  border-radius: 50%;
+  border-radius: 8px;
   content: "";
   cursor: pointer;
   display: flex;
   height: 50px;
   justify-content: center;
+  margin-top: 0.8rem;
   transition: all 100ms linear;
   width: 50px;
 
