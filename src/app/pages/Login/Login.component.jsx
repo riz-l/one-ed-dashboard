@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Import: Elements
-import { Container } from "./Login.elements";
+import { Container, Wrapper } from "./Login.elements";
 
 // Import: Components
 import { Button } from "../../components";
@@ -13,13 +13,15 @@ export default function Login(props) {
   return (
     <>
       <Container data-testid={"login"}>
-        <h1>Login</h1>
-        <p>
-          <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
-        </p>
-        <p>Logged in status: {props.isLoggedIn}</p>
+        <Wrapper>
+          <h1>Login</h1>
+          <p>
+            <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
+          </p>
+          <p>Logged in status: {props.isLoggedIn}</p>
 
-        <Button onClick={props.handleLogin} text="Login" />
+          <Button onClick={props.handleLogin} text="Login" />
+        </Wrapper>
       </Container>
     </>
   );
