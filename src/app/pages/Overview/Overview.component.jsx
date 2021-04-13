@@ -29,7 +29,17 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { Alerts, Allergies, Details } from "./subPages";
+import {
+  Alerts,
+  Allergies,
+  Complaint,
+  Complications,
+  Details,
+  Diagnosis,
+  Findings,
+  Procedures,
+  Symptoms,
+} from "./subPages";
 
 // Component: Overview
 export default function Overview() {
@@ -46,12 +56,12 @@ export default function Overview() {
   // State: History SubPages
   const [isAlerts, setIsAlerts] = useState(true);
   const [isAllergies, setIsAllergies] = useState(false);
-  // const [isComplications, setIsComplications] = useState(false);
-  // const [isDiagnosis, setIsDiagnosis] = useState(false);
-  // const [isFindings, setIsFindings] = useState(false);
-  // const [isComplaint, setIsComplaint] = useState(false);
-  // const [isProcedures, setIsProcedures] = useState(false);
-  // const [isSymptoms, setIsSymptoms] = useState(false);
+  const [isComplications, setIsComplications] = useState(false);
+  const [isDiagnosis, setIsDiagnosis] = useState(false);
+  const [isFindings, setIsFindings] = useState(false);
+  const [isComplaint, setIsComplaint] = useState(false);
+  const [isProcedures, setIsProcedures] = useState(false);
+  const [isSymptoms, setIsSymptoms] = useState(false);
 
   // Effect: Checks window height and width
   useEffect(() => {
@@ -73,14 +83,26 @@ export default function Overview() {
   function renderDetails() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
     setIsHistory(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
     setIsDetails(true);
   }
 
   // onClick: Renders History SubPage
   function renderHistory() {
     setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
     setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
     setIsAlerts(true);
     setIsHistory(true);
   }
@@ -88,7 +110,13 @@ export default function Overview() {
   // onClick: Renders Alerts SubPage
   function renderAlerts() {
     setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
     setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
     setIsAlerts(true);
     setIsHistory(true);
   }
@@ -96,9 +124,99 @@ export default function Overview() {
   // onClick: Renders Allergies SubPage
   function renderAllergies() {
     setIsAlerts(false);
+    setIsComplaint(false);
+    setIsComplications(false);
     setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
     setIsAllergies(true);
     setIsHistory(true);
+  }
+
+  // onClick: Renders Complications SubPage
+  function renderComplications() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplaint(false);
+    setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
+    setIsComplications(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Diagnosis SubPage
+  function renderDiagnosis() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
+    setIsDetails(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
+    setIsDiagnosis(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Findings SubPage
+  function renderFindings() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
+    setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
+    setIsFindings(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Complaint SubPage
+  function renderComplaint() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplications(false);
+    setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsSymptoms(false);
+    setIsComplaint(true);
+    setIsHistory(true);
+  }
+
+  // onClick: Renders Procedures SubPage
+  function renderProcedures() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
+    setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsSymptoms(false);
+    setIsHistory(true);
+    setIsProcedures(true);
+  }
+
+  // onClick: Renders Symptoms SubPage
+  function renderSymptoms() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsComplaint(false);
+    setIsComplications(false);
+    setIsDetails(false);
+    setIsDiagnosis(false);
+    setIsFindings(false);
+    setIsProcedures(false);
+    setIsHistory(true);
+    setIsSymptoms(true);
   }
 
   // Dexie: database = ODetails
@@ -186,7 +304,10 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Item
+                        isActive={isComplications ? true : false}
+                        onClick={renderComplications}
+                      >
                         <SecondaryNavigation.Icon>
                           <ComplicationsIcon />
                         </SecondaryNavigation.Icon>
@@ -195,7 +316,10 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Item
+                        isActive={isDiagnosis ? true : false}
+                        onClick={renderDiagnosis}
+                      >
                         <SecondaryNavigation.Icon>
                           <DiagnosisIcon />
                         </SecondaryNavigation.Icon>
@@ -206,7 +330,10 @@ export default function Overview() {
 
                       {windowDimensions.width <= 1470 ? null : (
                         <>
-                          <SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item
+                            isActive={isFindings ? true : false}
+                            onClick={renderFindings}
+                          >
                             <SecondaryNavigation.Icon>
                               <FindingsIcon />
                             </SecondaryNavigation.Icon>
@@ -215,7 +342,10 @@ export default function Overview() {
                             </SecondaryNavigation.Text>
                           </SecondaryNavigation.Item>
 
-                          <SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item
+                            isActive={isComplaint ? true : false}
+                            onClick={renderComplaint}
+                          >
                             <SecondaryNavigation.Icon>
                               <ComplaintIcon />
                             </SecondaryNavigation.Icon>
@@ -224,7 +354,10 @@ export default function Overview() {
                             </SecondaryNavigation.Text>
                           </SecondaryNavigation.Item>
 
-                          <SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item
+                            isActive={isProcedures ? true : false}
+                            onClick={renderProcedures}
+                          >
                             <SecondaryNavigation.Icon>
                               <ProceduresIcon />
                             </SecondaryNavigation.Icon>
@@ -233,7 +366,10 @@ export default function Overview() {
                             </SecondaryNavigation.Text>
                           </SecondaryNavigation.Item>
 
-                          <SecondaryNavigation.Item>
+                          <SecondaryNavigation.Item
+                            isActive={isSymptoms ? true : false}
+                            onClick={renderSymptoms}
+                          >
                             <SecondaryNavigation.Icon>
                               <SymptomsIcon />
                             </SecondaryNavigation.Icon>
@@ -265,6 +401,18 @@ export default function Overview() {
                   <Alerts />
                 ) : isAllergies ? (
                   <Allergies />
+                ) : isComplications ? (
+                  <Complications />
+                ) : isDiagnosis ? (
+                  <Diagnosis />
+                ) : isFindings ? (
+                  <Findings />
+                ) : isComplaint ? (
+                  <Complaint />
+                ) : isProcedures ? (
+                  <Procedures />
+                ) : isSymptoms ? (
+                  <Symptoms />
                 ) : null
               }
             />

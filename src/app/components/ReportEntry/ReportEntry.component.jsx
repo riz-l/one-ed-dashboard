@@ -6,10 +6,10 @@ import ReactModal from "react-modal";
 import { MdKeyboardArrowRight as ArrowIcon } from "react-icons/md";
 import { GoAlert as AlertsIcon } from "react-icons/go";
 import { GiMedicines as AllergiesIcon } from "react-icons/gi";
+import { FaUserInjured as ComplaintIcon } from "react-icons/fa";
 import { FaBandAid as ComplicationsIcon } from "react-icons/fa";
 import { RiStethoscopeFill as DiagnosisIcon } from "react-icons/ri";
 import { FaSearch as FindingsIcon } from "react-icons/fa";
-import { FaUserInjured as PresentingIcon } from "react-icons/fa";
 import { FaUserNurse as ProceduresIcon } from "react-icons/fa";
 import { FaBed as SymptomsIcon } from "react-icons/fa";
 import { BiPlusMedical as DefaultIcon } from "react-icons/bi";
@@ -37,10 +37,10 @@ import { Button, Text } from "../index";
 export default function ReportEntry({
   alerts,
   allergies,
+  complaint,
   complications,
   diagnosis,
   findings,
-  presenting,
   procedures,
   // slideStatus,
   // slideToggle,
@@ -73,10 +73,10 @@ export default function ReportEntry({
         onClick={openModal}
         alerts={alerts}
         allergies={allergies}
+        complaint={complaint}
         complications={complications}
         diagnosis={diagnosis}
         findings={findings}
-        presenting={presenting}
         procedures={procedures}
         symptoms={symptoms}
         themeColor={themeColor}
@@ -87,10 +87,10 @@ export default function ReportEntry({
               <Icon
                 alerts={alerts}
                 allergies={allergies}
+                complaint={complaint}
                 complications={complications}
                 diagnosis={diagnosis}
                 findings={findings}
-                presenting={presenting}
                 procedures={procedures}
                 symptoms={symptoms}
                 themeColor={themeColor}
@@ -99,14 +99,14 @@ export default function ReportEntry({
                   <AlertsIcon />
                 ) : allergies ? (
                   <AllergiesIcon />
+                ) : complaint ? (
+                  <ComplaintIcon />
                 ) : complications ? (
                   <ComplicationsIcon />
                 ) : diagnosis ? (
                   <DiagnosisIcon />
                 ) : findings ? (
                   <FindingsIcon />
-                ) : presenting ? (
-                  <PresentingIcon />
                 ) : procedures ? (
                   <ProceduresIcon />
                 ) : symptoms ? (
@@ -134,10 +134,10 @@ export default function ReportEntry({
           <ArrowContainer
             alerts={alerts}
             allergies={allergies}
+            complaint={complaint}
             complications={complications}
             diagnosis={diagnosis}
             findings={findings}
-            presenting={presenting}
             procedures={procedures}
             symptoms={symptoms}
             style={{ background: `${themeColor}` }}
@@ -156,14 +156,14 @@ export default function ReportEntry({
             ? "Alerts"
             : allergies
             ? "Allergies"
+            : complaint
+            ? "Complaint"
             : complications
             ? "Complications"
             : diagnosis
             ? "Diagnosis"
             : findings
             ? "Findings"
-            : presenting
-            ? "Presenting"
             : procedures
             ? "Procedures"
             : symptoms
@@ -181,14 +181,14 @@ export default function ReportEntry({
             ? "Alerts"
             : allergies
             ? "Allergies"
+            : complaint
+            ? "Complaint"
             : complications
             ? "Complications"
             : diagnosis
             ? "Diagnosis"
             : findings
             ? "Findings"
-            : presenting
-            ? "Presenting"
             : procedures
             ? "Procedures"
             : symptoms

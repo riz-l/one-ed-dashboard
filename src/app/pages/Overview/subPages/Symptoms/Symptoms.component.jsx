@@ -2,23 +2,23 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./Alerts.elements";
+import { Container, Wrapper } from "./Symptoms.elements";
 
 // Import: Components
 import { ReportEntry, Text } from "../../../../components";
 
-// SubPage: Alerts
-export default function Alerts() {
+// SubPage: Symptoms
+export default function Symptoms() {
   return (
     <>
-      <Container data-testid={"alerts"}>
+      <Container data-testid={"symptoms"}>
         <Wrapper>
           <Text as="h2" heading>
-            Alerts
+            Symptoms
           </Text>
 
           <ReportEntry
-            alerts
+            symptoms
             type="Impairment"
             details="Communication difficulties"
             status="Active"

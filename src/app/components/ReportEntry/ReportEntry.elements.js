@@ -24,10 +24,10 @@ export const ArrowContainer = styled.div`
   background: ${({
     alerts,
     allergies,
+    complaint,
     complications,
     diagnosis,
     findings,
-    presenting,
     procedures,
     symptoms,
     themeColor,
@@ -36,14 +36,14 @@ export const ArrowContainer = styled.div`
       ? "#ff6347"
       : allergies
       ? "#ffaf85"
+      : complaint
+      ? "#5398be"
       : complications
       ? "#9bc53d"
       : diagnosis
       ? "#ba2c73"
       : findings
       ? "#1b998b"
-      : presenting
-      ? "#5398be"
       : procedures
       ? "#585481"
       : symptoms
@@ -79,10 +79,10 @@ export const Wrapper = styled.div`
   border: ${({
     alerts,
     allergies,
+    complaint,
     complications,
     diagnosis,
     findings,
-    presenting,
     procedures,
     symptoms,
     themeColor,
@@ -91,14 +91,14 @@ export const Wrapper = styled.div`
       ? "1px solid #ff6347"
       : allergies
       ? "1px solid #ffaf85"
+      : complaint
+      ? "1px solid #5398be"
       : complications
       ? "1px solid #9bc53d"
       : diagnosis
       ? "1px solid #ba2c73"
       : findings
       ? "1px solid #1b998b"
-      : presenting
-      ? "1px solid #5398be"
       : procedures
       ? "1px solid #585481"
       : symptoms
@@ -164,10 +164,10 @@ export const Icon = styled.div`
   background: ${({
     alerts,
     allergies,
+    complaint,
     complications,
     diagnosis,
     findings,
-    presenting,
     procedures,
     symptoms,
     themeColor,
@@ -176,14 +176,14 @@ export const Icon = styled.div`
       ? "#ff6347"
       : allergies
       ? "#ffaf85"
+      : complaint
+      ? "#5398be"
       : complications
       ? "#9bc53d"
       : diagnosis
       ? "#ba2c73"
       : findings
       ? "#1b998b"
-      : presenting
-      ? "#5398be"
       : procedures
       ? "#585481"
       : symptoms

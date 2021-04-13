@@ -22,8 +22,6 @@ export default function Allergies() {
             type="Impairment"
             details="Communication difficulties"
             status="Active"
-            // slideStatus={isEntrySlideOpen}
-            // slideToggle={setIsEntrySlideOpen}
           />
         </Wrapper>
       </Container>
