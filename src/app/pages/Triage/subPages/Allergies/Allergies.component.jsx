@@ -14,7 +14,7 @@ export default function Allergies() {
       <Container data-testid={"allergies"}>
         <Wrapper>
           <Text heading as="h2">
-            Alerts
+            Allergies
           </Text>
         </Wrapper>
       </Container>
