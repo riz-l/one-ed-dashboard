@@ -63,3 +63,7 @@ $ npm install
 - `react-modal`
 
   - Used to create modal pop-outs
+
+- `react-autosuggest`
+
+  - Used to create auto suggest search inputs
