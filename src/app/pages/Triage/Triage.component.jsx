@@ -213,7 +213,7 @@ export default function Triage() {
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          CED Obvs
+                          CED Obs
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
@@ -225,7 +225,7 @@ export default function Triage() {
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          Neuro Obvs
+                          Neuro Obs
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
@@ -237,7 +237,7 @@ export default function Triage() {
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          Urine Obvs
+                          Urine Obs
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
