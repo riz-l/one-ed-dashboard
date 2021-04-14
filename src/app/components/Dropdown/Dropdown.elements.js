@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 // Element: Label
 export const Label = styled.label`
-  font-size: 1rem;
+  color: #6b7a99;
   ${({ left }) =>
     left
       ? css`

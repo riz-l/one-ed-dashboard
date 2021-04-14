@@ -56,8 +56,7 @@ export default function EDOverview() {
                           </Grid.Item>
 
                           <Grid.Item>
-                            <Form.Text as="p">Component: Dropdown</Form.Text>
-                            <Form.Dropdown />
+                            <Form.Dropdown labelText="Component: Dropdown" />
                           </Grid.Item>
                         </Grid.Column>
 
