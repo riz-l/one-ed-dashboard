@@ -1,6 +1,5 @@
 // Import: Packages
-import React, { useState } from "react";
-import Autosuggest from "react-autosuggest";
+import React from "react";
 
 // Import: Elements
 import {
@@ -13,78 +12,10 @@ import {
 } from "./EDOverview.elements";
 
 // Import: Components
-import { Form, Grid, ReportSection } from "../../components";
-
-const languages = [
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-];
-
-const getSuggestions = (value) => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    : languages.filter(
-        (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
-
-const getSuggestionValue = (suggestion) => suggestion.name;
-
-const renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
+import { AutoSuggest, Form, Grid, ReportSection } from "../../components";
 
 // Component: EDOverview
 export default function EDOverview() {
-  // State: value, suggestions
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-
-  const onChange = (event, { newValue }) => {
-    setValue(newValue);
-  };
-
-  const onSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value));
-  };
-
-  const onSuggestionsClearRequested = () => {
-    setSuggestions([]);
-  };
-
-  const inputProps = {
-    placeholder: "Type a programming language",
-    value,
-    onChange: onChange,
-  };
-
   return (
     <>
       <Container data-testid={"edOverview"}>
@@ -109,18 +40,7 @@ export default function EDOverview() {
                       <Grid>
                         <Grid.Column>
                           <Grid.Item>
-                            <Autosuggest
-                              suggestions={suggestions}
-                              onSuggestionsFetchRequested={
-                                onSuggestionsFetchRequested
-                              }
-                              onSuggestionsClearRequested={
-                                onSuggestionsClearRequested
-                              }
-                              getSuggestionValue={getSuggestionValue}
-                              renderSuggestion={renderSuggestion}
-                              inputProps={inputProps}
-                            />
+                            <AutoSuggest labelText="Component: AutoSuggest" />
                           </Grid.Item>
 
                           <Grid.Item>

@@ -1,3 +1,6 @@
+// Export: AutoSuggest
+export { default as AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
+
 // Export: Button
 export { default as Button } from "./Button/Button.component";
 
