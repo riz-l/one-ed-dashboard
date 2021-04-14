@@ -9,6 +9,7 @@ import { Container } from "./Form.elements";
 
 // Import: Components
 import {
+  AutoSuggest,
   Button,
   Checkbox,
   Dropdown,
@@ -30,6 +31,11 @@ const FormGroupContext = createContext();
 
 //   return context;
 // };
+
+// Compound Component: FormAutoSuggest
+function FormAutoSuggest({ labelText }) {
+  return <AutoSuggest labelText={labelText} />;
+}
 
 // Compound Component: FormButton
 function FormButton({ onClick, text, type }) {
@@ -160,8 +166,8 @@ export default function Form(props) {
   );
 }
 
-// Export: Column
-// Form.Column = Column;
+// Export: AutoSuggest, Button, Checkbox, Dropdown, Input, Radio, Text, TextArea
+Form.AutoSuggest = FormAutoSuggest;
 Form.Button = FormButton;
 Form.Checkbox = FormCheckbox;
 Form.Dropdown = FormDropdown;

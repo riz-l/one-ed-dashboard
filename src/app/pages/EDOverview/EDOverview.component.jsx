@@ -40,7 +40,7 @@ export default function EDOverview() {
                       <Grid>
                         <Grid.Column>
                           <Grid.Item>
-                            <AutoSuggest labelText="Component: AutoSuggest" />
+                            <Form.AutoSuggest labelText="Component: AutoSuggest" />
                           </Grid.Item>
 
                           <Grid.Item>
