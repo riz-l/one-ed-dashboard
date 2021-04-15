@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components/macro";
+// delete this comment.
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
