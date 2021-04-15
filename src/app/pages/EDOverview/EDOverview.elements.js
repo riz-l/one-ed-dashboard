@@ -60,21 +60,3 @@ export const ContentWrapper = styled.div`
   padding: 1rem 2rem;
   width: 100%;
 `;
-
-// Elements: FormContainer
-export const FormContainer = styled.div`
-  height: 100%;
-  width: 100%;
-`;
-
-// Elements: FormWrapper
-export const FormWrapper = styled.div`
-  background-color: #ffffff;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-right-radius: 8px;
-  border: 1px solid #edeff2;
-  height: 100%;
-  padding: 1rem;
-  width: 100%;
-`;

@@ -5,6 +5,8 @@ import React from "react";
 import {
   Container,
   Content,
+  ContentContainer,
+  ContentWrapper,
   PrimaryNavigation,
   SecondaryNavigation,
 } from "./ReportSection.elements";
@@ -17,10 +19,24 @@ export default function ReportSection({
 }) {
   return (
     <>
-      <Container data-testid={"reportSection"}>
-        <PrimaryNavigation>{primaryNavigation}</PrimaryNavigation>
-        <SecondaryNavigation>{secondaryNavigation}</SecondaryNavigation>
-        <Content>{content}</Content>
+      <Container
+        data-testid={"reportSection"}
+        primaryNavigation={primaryNavigation}
+        secondaryNavigation={secondaryNavigation}
+      >
+        <PrimaryNavigation>
+          {primaryNavigation ? primaryNavigation : null}
+        </PrimaryNavigation>
+        <SecondaryNavigation>
+          {secondaryNavigation ? secondaryNavigation : null}
+        </SecondaryNavigation>
+        <Content>
+          <ContentContainer>
+            <ContentWrapper secondaryNavigation={secondaryNavigation}>
+              {content}
+            </ContentWrapper>
+          </ContentContainer>
+        </Content>
       </Container>
     </>
   );
