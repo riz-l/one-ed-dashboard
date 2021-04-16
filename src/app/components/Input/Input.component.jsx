@@ -6,17 +6,26 @@ import { Container, InputField, Label } from "./Input.elements";
 
 // Component: Input
 export default function Input({
+  center,
   htmlFor,
   labelText,
   left,
   onChange,
+  onClick,
+  margin,
   placeholder,
   type,
   value,
   width,
 }) {
   return (
-    <Container left={left} data-testid={"input"}>
+    <Container
+      onClick={onClick}
+      center={center}
+      left={left}
+      margin={margin}
+      data-testid={"input"}
+    >
       {labelText && (
         <Label htmlfor={htmlFor} left={left}>
           {labelText}

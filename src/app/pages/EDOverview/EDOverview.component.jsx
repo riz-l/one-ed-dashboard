@@ -5,8 +5,6 @@ import React from "react";
 import {
   Container,
   ContentWrapper,
-  FormContainer,
-  FormWrapper,
   Header,
   Wrapper,
 } from "./EDOverview.elements";
