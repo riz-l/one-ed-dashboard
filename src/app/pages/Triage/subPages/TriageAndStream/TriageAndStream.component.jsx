@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./TriageAndStream.elements";
 
 // Import: Components
-import { Grid, Input, Text } from "../../../../components";
+import { Grid, Text, Form } from "../../../../components";
 
 // SubPage: TriageAndStream
 export default function TriageAndStream() {
@@ -17,73 +17,73 @@ export default function TriageAndStream() {
             Triage
           </Text>
 
-          <Grid>
-            {/* <Grid.Column>
-              <Grid.Item>
-                <Radio text="Component: Radio" />
-              </Grid.Item>
+          <Form>
+            <Grid>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Arrival Date/Time"
+                    labelText="Arrival Date/Time"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Triage Date"
+                    labelText="Triage Date"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Triage Time"
+                    labelText="Triage Time"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Triage System"
+                    labelText="Triage System"
+                    type="text"
+                  />
+                </Grid.Item>
+              </Grid.Column>
 
-              <Grid.Item>
-                <Input labelText="Component: Input" />
-              </Grid.Item>
-
-              <Grid.Item>
-                <Text as="p">Component: Text (Default)</Text>
-              </Grid.Item>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Grid.Item>
-                <Text as="h2" heading>
-                  Component: Text (Heading)
-                </Text>
-              </Grid.Item>
-
-              <Grid.Item>
-                <Text as="h3" subheading>
-                  Component: Text (SubHeading)
-                </Text>
-              </Grid.Item>
-
-              <Grid.Item>
-                <Text as="p" text>
-                  Component: Text (Text)
-                </Text>
-              </Grid.Item>
-            </Grid.Column> */}
-
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Arrival Date/Time" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Triage Date" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Triage Time" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Triage System" />
-              </Grid.Item>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Location" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Cheif Complaint" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Triage Category" />
-              </Grid.Item>
-            </Grid.Column>
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Triage By" />
-              </Grid.Item>
-            </Grid.Column>
-          </Grid>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Location"
+                    labelText="Location"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Chief Complaint"
+                    labelText="Chief Complaint"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Triage Category"
+                    labelText="Triage Category"
+                    type="text"
+                  />
+                </Grid.Item>
+              </Grid.Column>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Triage By"
+                    labelText="Triage By"
+                    type="text"
+                  />
+                </Grid.Item>
+              </Grid.Column>
+            </Grid>
+          </Form>
         </Wrapper>
       </Container>
     </>
