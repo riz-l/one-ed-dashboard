@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper, } from "./NeuroObs.elements";
 
 // Import: Components
-import { Form, Grid, Input, Radio, Text } from "../../../../components";
+import { Form, Grid, } from "../../../../components";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
