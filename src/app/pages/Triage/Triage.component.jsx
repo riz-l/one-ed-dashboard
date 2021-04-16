@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // Import: Assets
 import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+import {ReactComponent as NeuroObsIcon} from "../../../assets/img/icon/neuroObs.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
@@ -222,7 +223,7 @@ export default function Triage() {
                         onClick={renderNeuroObs}
                       >
                         <SecondaryNavigation.Icon>
-                          <DetailsIcon />
+                          <NeuroObsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Neuro Obs
