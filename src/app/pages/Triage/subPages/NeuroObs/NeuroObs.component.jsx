@@ -2,10 +2,10 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./NeuroObs.elements";
+import { Container, Wrapper, } from "./NeuroObs.elements";
 
 // Import: Components
-import { Grid, Input, Radio, Text } from "../../../../components";
+import { Form, Grid, Input, Radio, Text } from "../../../../components";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
@@ -13,105 +13,101 @@ export default function NeuroObs() {
     <>
       <Container data-testid={"neuroObs"}>
         <Wrapper>
-          <Text heading as="h2">
-            Neuro Observations
-          </Text>
-          <Text heading as="h2">
-            GCS
-          </Text>
+          <Form>
+          
+                  <Form.Text as="h2" heading>
+                   Neuro Obs
+                  </Form.Text>
+                      
+                  <Grid>
+                    <Grid.Column>
+                    <Grid.Item>
+                        <Form.Text as="h3" subheading>
+                          GCS
+                        </Form.Text>
+                      </Grid.Item>
+                    <Grid.Item>
+                        <Form.Dropdown labelText="Eyes" />
+                      </Grid.Item>
 
-          <Grid>
-            {/* <Grid.Column>
-              <Grid.Item>
-                <Radio text="Component: Radio" />
-              </Grid.Item>
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Verbal" />
+                      </Grid.Item>
 
-              <Grid.Item>
-                <Input labelText="Component: Input" />
-              </Grid.Item>
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Motor"/>
+                      </Grid.Item>
 
-              <Grid.Item>
-                <Text as="p">Component: Text (Default)</Text>
-              </Grid.Item>
-            </Grid.Column>
+                      {/* GCS Total needs to be a calculated value adding up the scored for Eyes, Verbal and Motor. */}
 
-            <Grid.Column>
-              <Grid.Item>
-                <Text as="h2" heading>
-                  Component: Text (Heading)
-                </Text>
-              </Grid.Item>
+                      <Grid.Item>
+                        <Form.Input
+                          type="number"
+                          labelText="GCS Total"
+                        />
+                      </Grid.Item>
+                      </Grid.Column>
 
-              <Grid.Item>
-                <Text as="h3" subheading>
-                  Component: Text (SubHeading)
-                </Text>
-              </Grid.Item>
+                      <Grid.Column>
+                        <Grid.Item>
+                          <Form.Text as="h3" subheading>
+                            Pupils
+                          </Form.Text>
+                        </Grid.Item>
 
-              <Grid.Item>
-                <Text as="p" text>
-                  Component: Text (Text)
-                </Text>
-              </Grid.Item>
-            </Grid.Column> */}
+                        <Grid.Item>
+                          <Form.Radio text="Equal"/>
+                          <Form.Radio text="Unequal"/>
+                        </Grid.Item>
 
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Eyes" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Verbal" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Motor" />
-              </Grid.Item>
-            </Grid.Column>
-            <Text heading as="h2">
-              GCS Total
-            </Text>
+                        
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Left Pupil Size"/>
+                      </Grid.Item>
 
-            <Text heading as="h2">
-              Pupils
-            </Text>
-            <Grid.Column>
-              <Grid.Item>
-                <Radio text="Equal" />
-              </Grid.Item>
-              <Grid.Item>
-                <Radio text="Unequal" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Left Pupil Size (mm)" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Left Pupil Reaction" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Right Pupil Size (mm)" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Right Pupil Reaction" />
-              </Grid.Item>
-            </Grid.Column>
+                      
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Left Pupil Reaction"/>
+                      </Grid.Item>
 
-            <Text heading as="h2">
-              Limb Movement
-            </Text>
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Left Arm" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Left Leg" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Right Arm" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Right Leg" />
-              </Grid.Item>
-            </Grid.Column>
-          </Grid>
+                      
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Right Pupil Size"/>
+                      </Grid.Item>
+
+                      
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Right Pupil Reaction"/>
+                      </Grid.Item>
+
+                      </Grid.Column>
+
+                      <Grid.Column>
+
+                      <Grid.Item>
+                      <Form.Text as="h3" subheading>Limb Movement</Form.Text>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Left Arm"/>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Left Leg"/>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Right Arm"/>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Dropdown labelText="Right Leg"/>
+                      </Grid.Item>
+
+                      </Grid.Column>
+                    </Grid>
+                    </Form>
+
         </Wrapper>
       </Container>
     </>
