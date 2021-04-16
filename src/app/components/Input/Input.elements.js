@@ -3,7 +3,7 @@ import styled, { css } from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
-  align-items: flex-start;
+  align-items: ${({ center }) => (center === true ? "center" : "flex-start")};
   display: flex;
   justify-content: center;
   ${({ left }) =>
@@ -16,6 +16,7 @@ export const Container = styled.div`
           flex-direction: column;
         `}
   margin-bottom: 1rem;
+  margin: ${({ margin }) => margin && margin};
 `;
 
 // Element: Label
@@ -61,6 +62,39 @@ export const InputField = styled.input`
 
   :-moz-placeholder {
     font-family: "Poppins", sans-serif;
+  }
+
+  /* Input type="password" */
+  &[type="password"] {
+    color: #4d5e80;
+  }
+
+  /* Input type="submit" */
+  &[type="submit"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #f7f8fa;
+    border: 1px solid #edeff2;
+    border-radius: 8px;
+    color: #6b7a99;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    transition: all 100ms linear;
+
+    &:hover {
+      background-color: #eef0f4;
+      box-shadow: none !important;
+      color: #4d5e80;
+      transition: all 100ms linear;
+    }
+
+    &:focus {
+      border: 1px solid #edeff2;
+      box-shadow: none !important;
+      outline: none !important;
+    }
   }
 
   /* Input type="number" */

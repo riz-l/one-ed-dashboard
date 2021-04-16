@@ -81,10 +81,13 @@ function FormDropdown({
 
 // Compound Component: FormInput
 function FormInput({
+  center,
   htmlFor,
   labelText,
   left,
+  margin,
   onChange,
+  onClick,
   placeholder,
   type,
   value,
@@ -92,10 +95,13 @@ function FormInput({
 }) {
   return (
     <Input
+      center={center}
       htmlFor={htmlFor}
       labelText={labelText}
       left={left}
+      margin={margin}
       onChange={onChange}
+      onClick={onClick}
       placeholder={placeholder}
       type={type}
       value={value}

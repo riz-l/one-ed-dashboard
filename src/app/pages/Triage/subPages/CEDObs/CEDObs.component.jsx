@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./CEDObs.elements";
 
 // Import: Components
-import { Grid, Input, Text } from "../../../../components";
+import { Grid, Form, Text } from "../../../../components";
 
 // SubPage: CEDObs
 export default function CEDObs() {
@@ -17,102 +17,129 @@ export default function CEDObs() {
             CED Observations
           </Text>
 
-          <Grid>
-            {/* <Grid.Column>
-              <Grid.Item>
-                <Radio text="Component: Radio" />
-              </Grid.Item>
+          <Form>
+            <Grid>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="Pain Score"
+                    labelText="Pain Score"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Pulse Rate"
+                    labelText="Pulse Rate"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="BP Systolic First"
+                    labelText="BP Systolic First"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="BP Systolic Second"
+                    labelText="BP Systolic Second"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Rest Rate"
+                    labelText="Rest Rate"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Oxygen SATS"
+                    labelText="Oxygen SATS"
+                    type="text"
+                  />
+                </Grid.Item>
+              </Grid.Column>
 
-              <Grid.Item>
-                <Input labelText="Component: Input" />
-              </Grid.Item>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="Supplemental 02"
+                    labelText="Supplemental 02"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input htmlFor="Temp" labelText="Temp" type="text" />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Weight (kg)"
+                    labelText="Weight (kg)"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Height (cm)"
+                    labelText="Height (cm)"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="Blood sugar (mmol/l)"
+                    labelText="Blood sugar (mmol/l)"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="PEFR (l/min)"
+                    labelText="PEFR (l/min)"
+                    type="text"
+                  />
+                </Grid.Item>
+              </Grid.Column>
 
-              <Grid.Item>
-                <Text as="p">Component: Text (Default)</Text>
-              </Grid.Item>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Grid.Item>
-                <Text as="h2" heading>
-                  Component: Text (Heading)
-                </Text>
-              </Grid.Item>
-
-              <Grid.Item>
-                <Text as="h3" subheading>
-                  Component: Text (SubHeading)
-                </Text>
-              </Grid.Item>
-
-              <Grid.Item>
-                <Text as="p" text>
-                  Component: Text (Text)
-                </Text>
-              </Grid.Item>
-            </Grid.Column> */}
-
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Pain Score" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Pulse Rate" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="BP Systolic First" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="BP Systolic Second" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Resp Rate" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Oxygen SATS" />
-              </Grid.Item>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Supplemental O2" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Temp" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Weight (kg)" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Height (cm)" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="Blood Sugar (mmol/l)" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="PEFR (l/min)" />
-              </Grid.Item>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Grid.Item>
-                <Input labelText="Capillary Refill" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="POPS Other" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="POPS Gut Feeling" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="POPS Breathing" />
-              </Grid.Item>
-              <Grid.Item>
-                <Input labelText="AVPU" />
-              </Grid.Item>
-            </Grid.Column>
-          </Grid>
-
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="Capillary Refill"
+                    labelText="Capillary Refill"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="POPS Other"
+                    labelText="POPS Other"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="POPS Gut Feeling"
+                    labelText="POPS Gut Feeling"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="POPS Breathing"
+                    labelText="POPS Breathing"
+                    type="text"
+                  />
+                </Grid.Item>
+                <Grid.Item>
+                  <Form.Dropdown htmlFor="AVPU" labelText="AVPU" type="text" />
+                </Grid.Item>
+              </Grid.Column>
+            </Grid>
+          </Form>
           <Text heading as="h2">
             POPS Score
           </Text>
