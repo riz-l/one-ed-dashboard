@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./Alerts.elements";
 
 // Import: Components
-import { Text } from "../../../../components";
+import { ReportEntry, Text } from "../../../../components";
 
 // SubPage: Alerts
 export default function Alerts() {
@@ -13,9 +13,23 @@ export default function Alerts() {
     <>
       <Container data-testid={"alerts"}>
         <Wrapper>
-          <Text heading as="h2">
+          <Text as="h2" heading>
             Alerts
           </Text>
+
+          <ReportEntry
+            alerts
+            type="Impairment"
+            details="Communication difficulties"
+            status="Active"
+          />
+
+          <ReportEntry
+            alerts
+            type="End of Life"
+            details="Advance decision in effect"
+            status="Active"
+          />
         </Wrapper>
       </Container>
     </>

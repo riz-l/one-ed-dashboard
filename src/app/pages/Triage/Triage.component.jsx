@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // Import: Assets
 import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
@@ -184,7 +185,7 @@ export default function Triage() {
                         onClick={renderAlerts}
                       >
                         <SecondaryNavigation.Icon>
-                          <DetailsIcon />
+                          <AlertsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Alerts
