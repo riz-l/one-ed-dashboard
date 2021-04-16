@@ -6,7 +6,9 @@ import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.
 import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
 import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
+import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
 import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
+
 
 // Import: Elements
 import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
@@ -238,7 +240,7 @@ export default function Triage() {
                         onClick={renderUrineObs}
                       >
                         <SecondaryNavigation.Icon>
-                          <DetailsIcon />
+                          <UrineObsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Urine Obs
