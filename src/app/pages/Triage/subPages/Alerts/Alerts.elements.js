@@ -10,9 +10,6 @@ export const Container = styled.div`
 // Elements: Wrapper
 export const Wrapper = styled.div`
   background-color: #ffffff;
-  border: 1px solid #edeff2;
-  border-radius: 8px;
   height: 100%;
-  padding: 1rem;
   width: 100%;
 `;
