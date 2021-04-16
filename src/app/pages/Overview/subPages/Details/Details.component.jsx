@@ -266,7 +266,7 @@ export default function Details({ db }) {
                   <Form.Input
                     htmlFor="contactOne"
                     onChange={handleSetFormValues("contactOne")}
-                    labelText="Contaact 1"
+                    labelText="Contact 1"
                     value={detailsForm.contactOne}
                   />
                 </Grid.Item>
@@ -275,7 +275,7 @@ export default function Details({ db }) {
                   <Form.Input
                     htmlFor="contactTwo"
                     onChange={handleSetFormValues("contactTwo")}
-                    labelText="Contaact 2"
+                    labelText="Contact 2"
                     value={detailsForm.contactTwo}
                   />
                 </Grid.Item>
@@ -284,7 +284,7 @@ export default function Details({ db }) {
                   <Form.Input
                     htmlFor="contactThree"
                     onChange={handleSetFormValues("contactThree")}
-                    labelText="Contaact 3"
+                    labelText="Contact 3"
                     value={detailsForm.contactThree}
                   />
                 </Grid.Item>

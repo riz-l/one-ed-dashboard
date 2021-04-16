@@ -52,7 +52,8 @@ export default function App() {
         render={(props) => (
           <Login
             {...props}
-            isLoggedIn={isLoggedIn.toString()}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
             handleLogin={handleLogin}
           />
         )}
