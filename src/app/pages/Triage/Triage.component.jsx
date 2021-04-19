@@ -4,6 +4,7 @@ import React, { useState } from "react";
 // Import: Assets
 import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
 import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
+import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
 import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
@@ -202,7 +203,7 @@ export default function Triage() {
                         onClick={renderAllergies}
                       >
                         <SecondaryNavigation.Icon>
-                          <DetailsIcon />
+                          <AllergiesIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
                           Allergies
