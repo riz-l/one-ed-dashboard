@@ -1,5 +1,9 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, {
+  useState,
+  // useEffect,
+} from "react";
+import Dexie from "dexie";
 import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components/macro";
 
@@ -33,11 +37,25 @@ export default function App() {
     setIsLoggedIn(true);
   };
 
+  // Delete IndexedDB LoginDetails database
+  function pleaseDelete() {
+    indexedDB.deleteDatabase("LoginDetails");
+  }
+
   // Sets isLoggedIn === false
   const handleLogout = (e) => {
     e.preventDefault();
     setIsLoggedIn(false);
+    pleaseDelete();
   };
+
+  // Dexie: database = LoginDetails
+  const loginDb = new Dexie("LoginDetails");
+
+  // Effect: Creates the loginDb on each render
+  // useEffect(() => {
+  //     return () => loginDb.open();
+  // }, [loginDb]);
 
   return (
     <>
@@ -51,6 +69,7 @@ export default function App() {
         handleLogin={handleLogin}
         render={(props) => (
           <Login
+            db={loginDb}
             {...props}
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}

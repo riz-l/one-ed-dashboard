@@ -10,30 +10,48 @@ import { Container, Wrapper } from "./Login.elements";
 import { Form } from "../../components";
 
 // Component: Login
-export default function Login(props) {
-  // State: loginForm, apiData, tokenData
+export default function Login({ db, ...props }) {
+  // State: loginForm, claimSetData
   const [loginForm, setLoginForm] = useState({
     username: "",
     password: "",
   });
-  const [apiData, setApiData] = useState([]);
-  const [token, setToken] = useState("");
+  const [claimSetData, setClaimSetData] = useState({
+    apiData: [],
+    authToken: "",
+  });
 
-  // Sets the values in the state
-  const setFormValues = (id) => (value) => {
-    // Update state
-    setLoginForm((prevFormValues) => ({
-      ...prevFormValues,
-      [id]: value,
-    }));
-  };
+  // Effect: Set claimSetData values to === values.LoginDetails
+  // ... if no values are in the database, set values === ""
+  useEffect(() => {
+    // Create database store
+    db.version(1).stores({ formData: "id, value" });
 
-  // Partial application to make on change handler easier to apply
-  // ... used for text/password inputs
-  const handleSetFormValues = (id) => (e) => setFormValues(id)(e.target.value);
+    // Read/write transaction on new database store
+    db.transaction("rw", db.formData, async () => {
+      // Get all claimSetData values from database data
+      // const dbApiData = await db.formData.get("apiData");
+      // const dbAuthToken = await db.formData.get("authToken");
+      // If the claimSetData values have not been added, populate with []/""
+      // if (!dbApiData) await db.formData.add({ id: "apiData", value: [] });
+      // if (!dbAuthToken) await db.formData.add({ id: "authToken", value: "" });
+      // Set the initial values
+      // setClaimSetData({
+      //   apiData: dbApiData ? dbApiData.value : [],
+      //   authToken: dbAuthToken ? dbAuthToken.value : "",
+      // });
+    }).catch((error) => {
+      console.log(error.stack || error);
+      throw new Error(error.stack || error);
+    });
+
+    // Close the database connection if Login is unmounted
+    // ... or if the database connection changes
+    return () => db.close();
+  }, [db]);
 
   // Fetch Lorenzo authentication token
-  const fetchLorenzoToken = () => {
+  const fetchLorenzoToken = (e) => {
     async function getClaimSetToken() {
       const apiUrl = process.env.REACT_APP_URL;
       const apiService = process.env.REACT_APP_SERVICE;
@@ -47,10 +65,24 @@ export default function Login(props) {
         },
       };
 
+      // Sets the values in LoginDetails
+      const setStoreDetails = (id) => (value) => {
+        // Update store
+        db.formData.put({ id, value });
+      };
+
       axios(config)
         .then(function (response) {
-          setApiData(response.data);
-          setToken(
+          // Update state
+          setClaimSetData({
+            apiData: response.data,
+            authToken:
+              response.data.ControlActEvent.Subject.Value[0].SecurityToken,
+          });
+
+          // Update LoginDetails
+          setStoreDetails("apiData")(response.data);
+          setStoreDetails("authToken")(
             response.data.ControlActEvent.Subject.Value[0].SecurityToken
           );
         })
@@ -60,16 +92,49 @@ export default function Login(props) {
     }
 
     getClaimSetToken();
+    e.preventDefault();
   };
 
-  // Effect: If token retrieval is successful, redirect to Dashboard
+  // Effect: If auth token retrieval is successful, redirect to Dashboard
   useEffect(() => {
-    if (token !== "" && token.length > 0) {
+    // Checks if the auth token is retrieved on login attempt
+    if (claimSetData.authToken !== "" && claimSetData.authToken.length > 0) {
       props.setIsLoggedIn(true);
     } else {
       props.setIsLoggedIn(false);
     }
-  }, [props, token]);
+  }, [props, claimSetData.authToken]);
+
+  // Sets the values in the state
+  const setLoginFormValues = (id) => (value) => {
+    // Update state
+    setLoginForm((prevFormValues) => ({
+      ...prevFormValues,
+      [id]: value,
+    }));
+  };
+
+  // Partial application to make on change handler easier to apply
+  // ... used for text/password inputs
+  const handleLoginFormValues = (id) => (e) => {
+    setLoginFormValues(id)(e.target.value);
+  };
+
+  // Delete IndexedDB LoginDetails database
+  function pleaseDelete() {
+    indexedDB.deleteDatabase("LoginDetails").onsuccess = function () {
+      console.log("LoginDetails Delete Successful");
+    };
+  }
+
+  // Delete IndexedDB data on browser/tab close and/or refresh
+  // ... prompts user that they are about to leave the page/lose data
+  // window.addEventListener("beforeunload", () => pleaseDelete());
+  window.addEventListener("beforeunload", (e) => {
+    e.preventDefault();
+    e.returnValue = "Are you sure you want to close?";
+    pleaseDelete();
+  });
 
   return (
     <>
@@ -80,20 +145,20 @@ export default function Login(props) {
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>
 
-          <Form>
+          <Form onSubmit={fetchLorenzoToken}>
             <Form.Input
-              labelText="Username"
-              type="text"
               htmlFor="username"
-              onChange={handleSetFormValues("username")}
+              labelText="Username"
+              onChange={handleLoginFormValues("username")}
+              type="text"
               value={loginForm.username}
             />
 
             <Form.Input
-              labelText="Password"
-              type="password"
               htmlFor="password"
-              onChange={handleSetFormValues("password")}
+              labelText="Password"
+              onChange={handleLoginFormValues("password")}
+              type="password"
               value={loginForm.password}
             />
 
@@ -102,16 +167,8 @@ export default function Login(props) {
               value="Login"
               center
               margin="1.8rem 0 0 0"
-              onClick={fetchLorenzoToken}
+              onSubmit={fetchLorenzoToken}
             />
-
-            {/* <Form.Input
-              type="submit"
-              value="Login"
-              center
-              margin="1.8rem 0 0 0"
-              onClick={props.handleLogin}
-            /> */}
           </Form>
         </Wrapper>
       </Container>

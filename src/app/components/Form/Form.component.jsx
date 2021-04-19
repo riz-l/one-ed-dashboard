@@ -5,7 +5,7 @@ import React, {
 } from "react";
 
 // Import: Elements
-import { Container } from "./Form.elements";
+import { Container, StyledForm } from "./Form.elements";
 
 // Import: Components
 import {
@@ -167,7 +167,9 @@ function FormTextArea({
 export default function Form(props) {
   return (
     <FormGroupContext.Provider value={props}>
-      <Container data-testid={"form"}>{props.children}</Container>
+      <Container data-testid={"form"}>
+        <StyledForm onSubmit={props.onSubmit}>{props.children}</StyledForm>
+      </Container>
     </FormGroupContext.Provider>
   );
 }
