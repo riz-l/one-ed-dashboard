@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./Allergies.elements";
 
 // Import: Components
-import { Text } from "../../../../components";
+import { ReportEntry, Text } from "../../../../components";
 
 // SubPage: Allergies
 export default function Allergies() {
@@ -13,9 +13,22 @@ export default function Allergies() {
     <>
       <Container data-testid={"allergies"}>
         <Wrapper>
-          <Text heading as="h2">
+          <Text as="h2" heading>
             Allergies
           </Text>
+
+          <ReportEntry
+          allergies
+            type="Food Allergy"
+            details="Peanuts"
+            status="Active"/>
+
+          <ReportEntry
+          allergies
+            type="Drug Allergy"
+            details="Penicillin"
+            status="Active"/>
+
         </Wrapper>
       </Container>
     </>
