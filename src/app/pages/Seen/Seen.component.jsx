@@ -2,20 +2,34 @@
 import React from "react";
 
 // Import: Elements
-import { Container } from "./Seen.elements";
+import { Container,
+  ContentWrapper,
+  Header,
+  Wrapper, } from "./Seen.elements";
+
+// Import: Components
+import {PatientDemographics} from "../../components"  
 
 // Component: Seen
 export default function Seen() {
   return (
     <>
       <Container data-testid={"seen"}>
+      <Wrapper>
+        <Header>
         <h2>Seen</h2>
+        <span>The Seen page records when a clinican has seen a patient.</span>
+        </Header>
+        <PatientDemographics/>
+        <ContentWrapper>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt tempora
           veniam tenetur molestiae corporis laudantium aliquam distinctio eos?
           Cum omnis officiis tempora ipsa esse. Minima unde velit voluptatum
           doloribus natus.
         </p>
+        </ContentWrapper>
+      </Wrapper>
       </Container>
     </>
   );
