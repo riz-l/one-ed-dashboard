@@ -28,6 +28,12 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
+//Element: Form Wrapper
+export const FormWrapper = styled.div`
+  max-height: 100%;
+  overflow-y: scroll;
+`;
+
 // Element: Header
 export const Header = styled.div`
   align-items: center;
