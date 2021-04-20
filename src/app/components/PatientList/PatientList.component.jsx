@@ -13,7 +13,17 @@ import {
 import { PatientItem } from "../index";
 
 // Component: PatientList
-export default function PatientList() {
+export default function PatientList({ db }) {
+  db.transaction("r", db.formData, async () => {
+    const dbAuthToken = await db.formData.get("authToken");
+    if (dbAuthToken) {
+      console.log("AuthToken: ", dbAuthToken.value);
+    }
+  }).catch((error) => {
+    console.log(error.stack || error);
+    throw new Error(error.stack || error);
+  });
+
   return (
     <>
       <Container data-testid={"patientList"}>

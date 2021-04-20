@@ -8,6 +8,7 @@ import { Container } from "./ProtectedRoute.elements";
 // Component: ProtectedRoute
 export default function ProtectedRoute({
   component: Component,
+  db,
   isLoggedIn,
   ...rest
 }) {
@@ -17,7 +18,7 @@ export default function ProtectedRoute({
         {...rest}
         render={(props) => {
           if (isLoggedIn) {
-            return <Component {...rest} {...props} />;
+            return <Component db={db} {...rest} {...props} />;
           } else {
             return (
               <Redirect

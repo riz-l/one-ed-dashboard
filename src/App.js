@@ -105,11 +105,12 @@ export default function App() {
             path="/one-ed/ward/dashboard"
             isLoggedIn={isLoggedIn}
             component={Dashboard}
+            db={loginDb}
           />
 
           {/* Ward - Dashboard */}
           <Route exact path="/one-ed/ward/dashboard">
-            <Dashboard />
+            <Dashboard db={loginDb} />
           </Route>
 
           {/* Ward - ED Overview */}
