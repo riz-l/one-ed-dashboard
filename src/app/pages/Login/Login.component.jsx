@@ -47,7 +47,7 @@ export default function Login({ db, ...props }) {
 
     // Close the database connection if Login is unmounted
     // ... or if the database connection changes
-    return () => db.close();
+    // return () => db.close();
   }, [db]);
 
   // Fetch Lorenzo authentication token

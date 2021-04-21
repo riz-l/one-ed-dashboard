@@ -1,5 +1,6 @@
 // Import: Packages
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Import: Elements
 import {
@@ -14,15 +15,48 @@ import { PatientItem } from "../index";
 
 // Component: PatientList
 export default function PatientList({ db }) {
+  // State: localToken, patientData
+  const [localToken, setLocalToken] = useState("");
+  const [patientData, setPatientData] = useState([]);
+
   db.transaction("r", db.formData, async () => {
     const dbAuthToken = await db.formData.get("authToken");
     if (dbAuthToken) {
-      console.log("AuthToken: ", dbAuthToken.value);
+      setLocalToken(dbAuthToken.value);
+      // console.log("AuthToken: ", dbAuthToken.value);
+      // console.log("LocalToken: ", localToken);
     }
-  }).catch((error) => {
-    console.log(error.stack || error);
-    throw new Error(error.stack || error);
   });
+
+  // db.open();
+
+  useEffect(() => {
+    // Fetch Lorenzo authentication token
+    const fetchLorenzoToken = () => {
+      const apiGetPatient = process.env.REACT_GET_PATIENT_LIST;
+
+      var config = {
+        method: "get",
+        url: `${apiGetPatient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": localToken,
+        },
+      };
+
+      axios(config)
+        .then(function (response) {
+          // Update state
+          setPatientData(response.data);
+          console.log(patientData);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    fetchLorenzoToken();
+  }, []);
 
   return (
     <>
