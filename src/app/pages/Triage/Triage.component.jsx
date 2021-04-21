@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 
 // Import: Assets
-import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+// import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
 import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
 import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
 import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
 import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
+import { ReactComponent as NEWSIcon } from "../../../assets/img/icon/NEWS.svg"
 
 
 // Import: Elements
@@ -28,13 +29,15 @@ import {
   NeuroObs,
   UrineObs,
   TriageAndStream,
+  NEWS2,
 } from "./subPages";
 
 // Component: Triage
 export default function Triage() {
-  // State: isTriage, isPaediatricObs
+  // State: isTriage, isPaediatricObs, isNEWS
   const [isTriage, setIsTriage] = useState(true);
   const [isPaediatricObs, setIsPaediatricObs] = useState(false);
+  const [isNEWS, setIsNEWS] = useState(false);
 
   // State: Triage SubPages
   const [isTriageAndStream, setIsTriageAndStream] = useState(true);
@@ -43,6 +46,7 @@ export default function Triage() {
   const [isCEDObs, setIsCEDObs] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
+  const [isNEWS2, setIsNEWS2] = useState(false)
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -50,6 +54,8 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsUrineObs(false);
     setIsPaediatricObs(false);
     setIsTriage(true);
@@ -61,6 +67,8 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -68,12 +76,28 @@ export default function Triage() {
     setIsPaediatricObs(true);
   }
 
+    // onClick: Renders NEWS SubPage
+    function renderNEWS() {
+      setIsAlerts(false);
+      setIsAllergies(false);
+      setIsCEDObs(false);
+      setIsNeuroObs(false);      
+      setIsPaediatricObs(false);
+      setIsTriage(false);
+      setIsTriageAndStream(false);
+      setIsUrineObs(false);
+      setIsNEWS (true);
+      setIsNEWS2(true);      
+    }
+
   // onClick: Renders TriageAndStream SubPage
   function renderTriageAndStream() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsPaediatricObs(false);
     setIsUrineObs(false);
     setIsTriage(true);
@@ -85,6 +109,8 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(false);
     setIsUrineObs(false);
@@ -97,6 +123,8 @@ export default function Triage() {
     setIsAlerts(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(false);
     setIsUrineObs(false);
@@ -109,6 +137,8 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -121,6 +151,8 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -134,10 +166,26 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsNEWS (false);
+    setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(true);
     setIsUrineObs(true);
+  }
+
+   // onClick: Renders NEWS2 SubPage
+   function renderNEWS2() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsPaediatricObs(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsNEWS (true);
+    setIsNEWS2(true);
   }
 
   return (
@@ -167,6 +215,13 @@ export default function Triage() {
                     onClick={renderPaediatricObs}
                   >
                     <PrimaryNavigation.Text>POPS Score</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isNEWS ? true : false}
+                    onClick={renderNEWS}
+                  >
+                    <PrimaryNavigation.Text>NEWS</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }
@@ -248,7 +303,21 @@ export default function Triage() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
-                  ) : null}
+                  ) : isNEWS ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isNEWS2 ? true : false}
+                        onClick={renderNEWS2}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <NEWSIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          NEWS2
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
+                  ): null}
                 </SecondaryNavigation>
               }
               content={
@@ -264,6 +333,8 @@ export default function Triage() {
                   <NeuroObs />
                 ) : isUrineObs ? (
                   <UrineObs />
+                ) : isNEWS2 ? (
+                  <NEWS2 />
                 ) : null
               }
             />
