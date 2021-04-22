@@ -10,6 +10,9 @@ export { default as CEDObs } from "./CEDObs/CEDObs.component";
 // Export: NeuroObs
 export { default as NeuroObs } from "./NeuroObs/NeuroObs.component";
 
+// Export: NEWS2
+export { default as NEWS2 } from "./NEWS2/NEWS2.component"
+
 // Export: UrineObs
 export { default as UrineObs } from "./UrineObs/UrineObs.component";
 
