@@ -19,7 +19,21 @@ import {
 } from "./PatientItem.elements";
 
 // Component: PatientItem
-export default function PatientItem() {
+export default function PatientItem({
+  add1,
+  add2,
+  add3,
+  diagnosis,
+  dob,
+  encounterID,
+  gender,
+  id,
+  location,
+  name,
+  participant,
+  period,
+  postcode,
+}) {
   return (
     <>
       <Container data-testid={"patientItem"}>
@@ -36,30 +50,30 @@ export default function PatientItem() {
                 <DetailsColumn>
                   <DetailsItem>
                     <DetailsHeading>Name</DetailsHeading>
-                    <Details>Johnathan Smith Doe Black</Details>
+                    <Details>{name}</Details>
                   </DetailsItem>
                 </DetailsColumn>
 
                 <DetailsColumn>
                   <DetailsItem>
                     <DetailsHeading>Complaint</DetailsHeading>
-                    <Details>A00 - Cardiac arrest</Details>
+                    <Details>{diagnosis}</Details>
                   </DetailsItem>
                 </DetailsColumn>
 
                 <DetailsColumn>
                   <DetailsRow>
                     <DetailsItem>
-                      <DetailsHeading>Age</DetailsHeading>
-                      <Details>34 years</Details>
+                      <DetailsHeading>Date of Birth</DetailsHeading>
+                      <Details>{dob}</Details>
                     </DetailsItem>
 
                     <DetailsItem>
-                      <DetailsHeading>Duration</DetailsHeading>
+                      <DetailsHeading>Period</DetailsHeading>
                       <Details
                         style={{ borderBottom: "2px solid rgba(255,0,0,0.6)" }}
                       >
-                        154 minutes
+                        {period}
                       </Details>
                     </DetailsItem>
                   </DetailsRow>

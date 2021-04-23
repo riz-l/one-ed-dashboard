@@ -10,6 +10,8 @@ export const Container = styled.article`
   margin-bottom: 0.8rem;
   transition: all 100ms linear;
   width: 100%;
+  max-width: 450px;
+  min-width: 450px;
 
   &:hover {
     box-shadow: 0 0 20px #edeff2;
@@ -24,6 +26,8 @@ export const Wrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   padding: 1rem;
+  width: 100%;
+  min-width: 100%;
 `;
 
 // Element: IconContainer

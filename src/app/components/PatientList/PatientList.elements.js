@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: #f7f8fa;
   height: 100%;
   max-height: calc(100vh - 80px);
+  overflow-x: hidden;
   overflow-y: auto;
   scrollbar-color: #c3cad9 #edeff2;
   scrollbar-width: thin;
