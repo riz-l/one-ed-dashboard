@@ -12,7 +12,7 @@ import {
 // Import: Components
 import { PatientDemographics } from "../../components";
 
-// Component: Settings
+// Page: Settings
 export default function Settings() {
   return (
     <>
@@ -24,7 +24,9 @@ export default function Settings() {
               The Seen page records when a clinican has seen a patient.
             </span>
           </Header>
+
           <PatientDemographics />
+
           <ContentWrapper>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt

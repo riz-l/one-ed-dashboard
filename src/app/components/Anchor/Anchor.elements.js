@@ -63,7 +63,3 @@ export const StyledText = styled.a`
     }
   }}
 `;
-
-// .topnav li:hover {
-//   border-bottom: 4px solid white;
-// }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // Import: Elements
 import { Container, Wrapper } from "./Home.elements";
 
-// Component: Home
+// Page: Home
 export default function Home() {
   return (
     <>

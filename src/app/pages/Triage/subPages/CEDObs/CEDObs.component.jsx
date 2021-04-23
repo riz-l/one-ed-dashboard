@@ -27,6 +27,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Pulse Rate"
@@ -34,6 +35,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="BP Systolic First"
@@ -41,6 +43,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="BP Systolic Second"
@@ -48,6 +51,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Rest Rate"
@@ -55,6 +59,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Oxygen SATS"
@@ -72,9 +77,11 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input htmlFor="Temp" labelText="Temp" type="text" />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Weight (kg)"
@@ -82,6 +89,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Height (cm)"
@@ -89,6 +97,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="Blood sugar (mmol/l)"
@@ -96,6 +105,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input
                     htmlFor="PEFR (l/min)"
@@ -113,6 +123,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="POPS Other"
@@ -120,6 +131,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="POPS Gut Feeling"
@@ -127,6 +139,7 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="POPS Breathing"
@@ -134,12 +147,14 @@ export default function CEDObs() {
                     type="text"
                   />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Dropdown htmlFor="AVPU" labelText="AVPU" type="text" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
           </Form>
+
           <Text heading as="h2">
             POPS Score
           </Text>

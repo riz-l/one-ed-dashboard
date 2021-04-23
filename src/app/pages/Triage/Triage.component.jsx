@@ -9,8 +9,7 @@ import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.sv
 import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
 import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
-import { ReactComponent as NEWSIcon } from "../../../assets/img/icon/NEWS.svg"
-
+import { ReactComponent as NEWSIcon } from "../../../assets/img/icon/NEWS.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
@@ -27,12 +26,12 @@ import {
   Allergies,
   CEDObs,
   NeuroObs,
+  NEWS2,
   UrineObs,
   TriageAndStream,
-  NEWS2,
 } from "./subPages";
 
-// Component: Triage
+// Page: Triage
 export default function Triage() {
   // State: isTriage, isPaediatricObs, isNEWS
   const [isTriage, setIsTriage] = useState(true);
@@ -46,7 +45,7 @@ export default function Triage() {
   const [isCEDObs, setIsCEDObs] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
-  const [isNEWS2, setIsNEWS2] = useState(false)
+  const [isNEWS2, setIsNEWS2] = useState(false);
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -54,7 +53,7 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsUrineObs(false);
     setIsPaediatricObs(false);
@@ -67,7 +66,7 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -76,19 +75,19 @@ export default function Triage() {
     setIsPaediatricObs(true);
   }
 
-    // onClick: Renders NEWS SubPage
-    function renderNEWS() {
-      setIsAlerts(false);
-      setIsAllergies(false);
-      setIsCEDObs(false);
-      setIsNeuroObs(false);      
-      setIsPaediatricObs(false);
-      setIsTriage(false);
-      setIsTriageAndStream(false);
-      setIsUrineObs(false);
-      setIsNEWS (true);
-      setIsNEWS2(true);      
-    }
+  // onClick: Renders NEWS SubPage
+  function renderNEWS() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsPaediatricObs(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsNEWS(true);
+    setIsNEWS2(true);
+  }
 
   // onClick: Renders TriageAndStream SubPage
   function renderTriageAndStream() {
@@ -96,7 +95,7 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsPaediatricObs(false);
     setIsUrineObs(false);
@@ -109,7 +108,7 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(false);
@@ -123,7 +122,7 @@ export default function Triage() {
     setIsAlerts(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(false);
@@ -137,7 +136,7 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -151,7 +150,7 @@ export default function Triage() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -166,7 +165,7 @@ export default function Triage() {
     setIsAllergies(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
-    setIsNEWS (false);
+    setIsNEWS(false);
     setIsNEWS2(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -174,8 +173,8 @@ export default function Triage() {
     setIsUrineObs(true);
   }
 
-   // onClick: Renders NEWS2 SubPage
-   function renderNEWS2() {
+  // onClick: Renders NEWS2 SubPage
+  function renderNEWS2() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
@@ -184,7 +183,7 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
-    setIsNEWS (true);
+    setIsNEWS(true);
     setIsNEWS2(true);
   }
 
@@ -317,7 +316,7 @@ export default function Triage() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
-                  ): null}
+                  ) : null}
                 </SecondaryNavigation>
               }
               content={

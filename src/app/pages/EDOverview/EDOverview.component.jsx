@@ -12,7 +12,7 @@ import {
 // Import: Components
 import { Form, Grid, ReportSection } from "../../components";
 
-// Component: EDOverview
+// Page: EDOverview
 export default function EDOverview() {
   return (
     <>

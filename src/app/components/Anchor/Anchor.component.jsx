@@ -1,7 +1,7 @@
 // Import: Dependencies
 import React from "react";
 
-//Import:Elements
+// Import:Elements
 import { StyledText } from "./Anchor.elements";
 
 // Component: Anchor

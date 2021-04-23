@@ -19,7 +19,7 @@ import {
   PatientSummary,
 } from "../../components";
 
-// Component: Dashboard
+// Page: Dashboard
 export default function Dashboard({ db }) {
   return (
     <>

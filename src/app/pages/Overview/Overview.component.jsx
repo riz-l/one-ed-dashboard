@@ -41,7 +41,7 @@ import {
   Symptoms,
 } from "./subPages";
 
-// Component: Overview
+// Page: Overview
 export default function Overview() {
   // State: windowDimensions
   const [windowDimensions, setWindowDimensions] = useState({

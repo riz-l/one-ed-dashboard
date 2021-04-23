@@ -9,7 +9,7 @@ import { Container, Wrapper } from "./Login.elements";
 // Import: Components
 import { Form } from "../../components";
 
-// Component: Login
+// Page: Login
 export default function Login({ db, ...props }) {
   // State: loginForm, claimSetData
   const [loginForm, setLoginForm] = useState({
@@ -28,26 +28,10 @@ export default function Login({ db, ...props }) {
     db.version(1).stores({ formData: "id, value" });
 
     // Read/write transaction on new database store
-    db.transaction("rw", db.formData, async () => {
-      // Get all claimSetData values from database data
-      // const dbApiData = await db.formData.get("apiData");
-      // const dbAuthToken = await db.formData.get("authToken");
-      // If the claimSetData values have not been added, populate with []/""
-      // if (!dbApiData) await db.formData.add({ id: "apiData", value: [] });
-      // if (!dbAuthToken) await db.formData.add({ id: "authToken", value: "" });
-      // Set the initial values
-      // setClaimSetData({
-      //   apiData: dbApiData ? dbApiData.value : [],
-      //   authToken: dbAuthToken ? dbAuthToken.value : "",
-      // });
-    }).catch((error) => {
+    db.transaction("rw", db.formData, async () => {}).catch((error) => {
       console.log(error.stack || error);
       throw new Error(error.stack || error);
     });
-
-    // Close the database connection if Login is unmounted
-    // ... or if the database connection changes
-    // return () => db.close();
   }, [db]);
 
   // Fetch Lorenzo authentication token
