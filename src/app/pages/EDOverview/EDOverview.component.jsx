@@ -123,6 +123,12 @@ export default function EDOverview() {
                           Component: Text (Text)
                         </Form.Text>
                       </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Text as="p" bold>
+                          Component: Text (Bold)
+                        </Form.Text>
+                      </Grid.Item>
                     </Grid.Column>
                   </Grid>
                 </Form>

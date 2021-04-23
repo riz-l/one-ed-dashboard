@@ -140,10 +140,10 @@ function FormRadio({ checked, name, onChange, text, value }) {
 }
 
 // Compound Component: FormText
-function FormText({ as, heading, subheading, text, ...props }) {
+function FormText({ bold, heading, subheading, text, ...props }) {
   return (
     <Text
-      as={as}
+      bold={bold}
       heading={heading}
       subheading={subheading}
       text={text}

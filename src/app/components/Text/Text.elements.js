@@ -6,7 +6,7 @@ export const StyledText = styled.span`
   color: ${(props) => props.color ?? "#6b7a99;"};
   margin: ${(props) => props.margin ?? 0};
   padding: ${(props) => props.padding ?? 0};
-  ${({ heading, subheading, text }) => {
+  ${({ bold, heading, subheading, text }) => {
     switch (true) {
       case heading:
         return css`
@@ -25,6 +25,12 @@ export const StyledText = styled.span`
           color: #6b7a99;
           font-size: 1rem;
           font-weight: 400;
+        `;
+      case bold:
+        return css`
+          color: #6b7a99;
+          font-size: 1rem;
+          font-weight: 600;
         `;
       default:
         return css`

@@ -5,11 +5,12 @@ import React from "react";
 import { StyledText } from "./Text.elements";
 
 // Component: Text
-export default function Text({ heading, subheading, text, ...props }) {
+export default function Text({ bold, heading, subheading, text, ...props }) {
   return (
     <>
       <StyledText
         as={props.as}
+        bold={bold}
         heading={heading}
         subheading={subheading}
         text={text}
