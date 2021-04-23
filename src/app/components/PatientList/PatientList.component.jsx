@@ -60,6 +60,17 @@ export default function PatientList({ db }) {
     console.log("PATIENT DATA: ", patientData);
   }, [patientData]);
 
+  // Maps patientData through PatientItem
+  const patientListRender = patientData.map(
+    ({ patientID, ...otherPatientProps }) => (
+      <div key={patientID}>
+        <div>
+          <PatientItem {...otherPatientProps} />
+        </div>
+      </div>
+    )
+  );
+
   return (
     <>
       <Container data-testid={"patientList"}>
@@ -70,13 +81,14 @@ export default function PatientList({ db }) {
 
         <Wrapper>
           <ItemContainer>
+            {patientListRender}
+            {/* <PatientItem />
             <PatientItem />
             <PatientItem />
             <PatientItem />
             <PatientItem />
             <PatientItem />
-            <PatientItem />
-            <PatientItem />
+            <PatientItem /> */}
           </ItemContainer>
         </Wrapper>
       </Container>
