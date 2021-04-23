@@ -19,44 +19,46 @@ export default function PatientList({ db }) {
   const [localToken, setLocalToken] = useState("");
   const [patientData, setPatientData] = useState([]);
 
-  db.transaction("r", db.formData, async () => {
-    const dbAuthToken = await db.formData.get("authToken");
-    if (dbAuthToken) {
-      setLocalToken(dbAuthToken.value);
-      // console.log("AuthToken: ", dbAuthToken.value);
-      // console.log("LocalToken: ", localToken);
-    }
-  });
-
-  // db.open();
-
+  // Effect: Fetches authToken from the IndexedDB, and sets localToken === authToken
   useEffect(() => {
-    // Fetch Lorenzo authentication token
-    const fetchLorenzoToken = () => {
-      const apiGetPatient = process.env.REACT_GET_PATIENT_LIST;
+    const fetchDbToken = async () => {
+      const dbAuthToken = await db.formData.get("authToken");
+      setLocalToken(dbAuthToken.value);
+    };
 
-      var config = {
-        method: "get",
-        url: `${apiGetPatient}`,
-        headers: {
-          accept: "application/json",
-          "Authorization-Token": localToken,
-        },
-      };
+    fetchDbToken();
+  }, [db.formData]);
 
+  // Effect: Logs value of localToken on change
+  // Effect: Upon change to localToken, fetches patientData from
+  // ... Lorenzo api/GetPatientList
+  useEffect(() => {
+    var config = {
+      method: "get",
+      url: `https://oneedfhirtest.azurewebsites.net/GetPatientList`,
+      headers: {
+        accept: "application/json",
+        "Authorization-Token": localToken,
+      },
+    };
+
+    if (localToken.length > 10) {
       axios(config)
         .then(function (response) {
-          // Update state
           setPatientData(response.data);
-          console.log(patientData);
         })
         .catch(function (error) {
           console.log(error);
         });
-    };
+    } else {
+      return null;
+    }
+  }, [localToken]);
 
-    fetchLorenzoToken();
-  }, []);
+  // Effect: Logs patientData on change to value
+  useEffect(() => {
+    console.log("PATIENT DATA: ", patientData);
+  }, [patientData]);
 
   return (
     <>
