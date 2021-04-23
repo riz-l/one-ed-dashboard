@@ -48,6 +48,12 @@ export default function EDOverview() {
                       <Grid.Item>
                         <Form.Dropdown labelText="Component: Dropdown" />
                       </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Anchor href="https://www.bing.com">
+                          Link to Bing
+                        </Form.Anchor>
+                      </Grid.Item>
                     </Grid.Column>
 
                     <Grid.Column>

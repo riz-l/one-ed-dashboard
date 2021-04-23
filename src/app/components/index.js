@@ -1,3 +1,6 @@
+// Export: Anchor
+export { default as Anchor } from "./Anchor/Anchor.component"
+
 // Export: AutoSuggest
 export { default as AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
 
