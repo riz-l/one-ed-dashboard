@@ -80,16 +80,7 @@ export default function PatientList({ db }) {
         </Header>
 
         <Wrapper>
-          <ItemContainer>
-            {patientListRender}
-            {/* <PatientItem />
-            <PatientItem />
-            <PatientItem />
-            <PatientItem />
-            <PatientItem />
-            <PatientItem />
-            <PatientItem /> */}
-          </ItemContainer>
+          <ItemContainer>{patientListRender}</ItemContainer>
         </Wrapper>
       </Container>
     </>
