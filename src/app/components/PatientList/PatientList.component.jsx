@@ -27,7 +27,7 @@ export default function PatientList({ db }) {
     };
 
     fetchDbToken();
-  }, [db]);
+  }, [db, db.formData]);
 
   // Effect: Logs value of localToken on change
   // Effect: Upon change to localToken, fetches patientData from
