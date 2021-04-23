@@ -9,6 +9,7 @@ import { Container, StyledForm } from "./Form.elements";
 
 // Import: Components
 import {
+  Anchor,
   AutoSuggest,
   Button,
   Checkbox,
@@ -31,6 +32,21 @@ const FormGroupContext = createContext();
 
 //   return context;
 // };
+
+// Compound Component: Anchor
+function FormAnchor({ href, heading, subheading, text, ...props }) {
+  return (
+    <Anchor
+      href={href}
+      heading={heading}
+      subheading={subheading}
+      text={text}
+      {...props}
+    >
+      {props.children}
+    </Anchor>
+  );
+}
 
 // Compound Component: FormAutoSuggest
 function FormAutoSuggest({ labelText }) {
@@ -174,7 +190,8 @@ export default function Form(props) {
   );
 }
 
-// Export: AutoSuggest, Button, Checkbox, Dropdown, Input, Radio, Text, TextArea
+// Export: Anchor, AutoSuggest, Button, Checkbox, Dropdown, Input, Radio, Text, TextArea
+Form.Anchor = FormAnchor;
 Form.AutoSuggest = FormAutoSuggest;
 Form.Button = FormButton;
 Form.Checkbox = FormCheckbox;
