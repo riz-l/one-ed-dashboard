@@ -6,7 +6,8 @@ import axios from "axios";
 import {
   Container,
   Header,
-  ItemContainer,
+  Table,
+  TableWrapper,
   Wrapper,
 } from "./PatientList.elements";
 
@@ -63,11 +64,7 @@ export default function PatientList({ db }) {
   // Maps patientData through PatientItem
   const patientListRender = patientData.map(
     ({ patientID, ...otherPatientProps }) => (
-      <div key={patientID}>
-        <div>
-          <PatientItem {...otherPatientProps} />
-        </div>
-      </div>
+      <PatientItem key={patientID} {...otherPatientProps} />
     )
   );
 
@@ -80,7 +77,22 @@ export default function PatientList({ db }) {
         </Header>
 
         <Wrapper>
-          <ItemContainer>{patientListRender}</ItemContainer>
+          <TableWrapper>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>DOB</th>
+                  <th>Gender</th>
+                  <th>Diagnosis</th>
+                  <th>Period</th>
+                </tr>
+              </thead>
+              <tbody>{patientListRender}</tbody>
+            </Table>
+          </TableWrapper>
+
+          {/* {patientListRender} */}
         </Wrapper>
       </Container>
     </>
