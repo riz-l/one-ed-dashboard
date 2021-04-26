@@ -16,7 +16,7 @@ export const Container = styled.tr`
         transition: all 100ms linear;
       }
 
-      background-color: #9ba7bf;
+      background-color: #6a7ca0;
       transition: all 100ms linear;
     }
   }
@@ -27,7 +27,7 @@ export const Container = styled.tr`
       transition: all 100ms linear;
     }
 
-    background-color: #9ba7bf;
+    background-color: #6a7ca0;
     transition: all 100ms linear;
   }
 `;
