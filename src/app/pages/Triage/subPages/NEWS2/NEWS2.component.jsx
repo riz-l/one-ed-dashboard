@@ -23,21 +23,14 @@ export default function NEWS2() {
                 <Grid.Item>
                   <Form.Input
                     type="number"
-                    labelText="Heart Rate (beats per min)"
+                    labelText="Heart Rate (beats/min)"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
                     type="number"
-                    labelText="Respiratory Rate (breaths per min)"
-                  />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Input
-                    type="number"
-                    labelText="Systolic Blood Pressue (mmHg)"
+                    labelText="Respiratory Rate (breaths/min)"
                   />
                 </Grid.Item>
 
@@ -78,13 +71,13 @@ export default function NEWS2() {
                 <Grid.Item>
                   <Form.Checkbox text="Supplemental Oxygen" />
                 </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Dropdown labelText="Adult AVPU" />
-                </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
+                <Grid.Item>
+                  <Form.Dropdown labelText="Adult AVPU" />
+                </Grid.Item>
+
                 <Grid.Item>
                   <Form.Checkbox text="Adult PERLA" />
                 </Grid.Item>

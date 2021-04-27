@@ -10,6 +10,7 @@ import styled from "styled-components/macro";
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
 import {
+  AdmitOrReferral,
   CASCard,
   ClinicalNotes,
   Dashboard,
@@ -151,6 +152,11 @@ export default function App() {
           {/* Assessments - View Seen */}
           <Route exact path="/one-ed/assessments/view-seen">
             <ViewSeen />
+          </Route>
+
+          {/* Admit or Referral */}
+          <Route exact path="/one-ed/admitorreferral">
+            <AdmitOrReferral />
           </Route>
 
           {/* User - Settings */}

@@ -1,3 +1,6 @@
+// Export: AdmitOrReferral
+export { default as AdmitOrReferral } from "./AdmitOrReferral/AdmitOrReferral.component";
+
 // Export: CASCard
 export { default as CASCard } from "./CASCard/CASCard.component";
 
