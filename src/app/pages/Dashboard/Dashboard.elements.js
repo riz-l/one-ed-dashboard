@@ -27,7 +27,7 @@ export const Layout = styled.div`
 export const List = styled.div`
   align-items: center;
   display: flex;
-  flex: 1.5;
+  flex: 2;
   height: 100%;
   justify-content: center;
   width: 100%;
@@ -37,7 +37,7 @@ export const List = styled.div`
 export const Main = styled.div`
   align-items: center;
   display: flex;
-  flex: 3;
+  flex: 1.25;
   flex-direction: column;
   height: 100%;
   justify-content: center;
