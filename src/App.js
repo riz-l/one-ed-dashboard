@@ -20,6 +20,7 @@ import {
   Overview,
   Seen,
   Settings,
+  Training,
   Triage,
   Unauthorized,
   ViewSeen,
@@ -151,6 +152,11 @@ export default function App() {
           {/* Assessments - View Seen */}
           <Route exact path="/one-ed/assessments/view-seen">
             <ViewSeen />
+          </Route>
+
+          {/* Assessments - Training */}
+          <Route exact path="/one-ed/training">
+            <Training />
           </Route>
 
           {/* User - Settings */}
