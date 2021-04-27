@@ -154,7 +154,7 @@ export default function App() {
             <ViewSeen />
           </Route>
 
-          {/* Assessments - Training */}
+          {/* User - Training */}
           <Route exact path="/one-ed/training">
             <Training />
           </Route>

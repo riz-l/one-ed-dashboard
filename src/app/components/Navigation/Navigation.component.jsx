@@ -228,7 +228,7 @@ export default function Navigation({
           </Options>
 
           <Settings>
-            <OptionHeading>App</OptionHeading>
+            <OptionHeading>User</OptionHeading>
 
             <OptionLink
               to="/one-ed/training"
