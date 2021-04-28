@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // Import: Assets
+import { ReactComponent as AdmitOrReferralIcon } from "../../../assets/img/icon/admitOrReferralIcon.svg";
 import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
 import { ReactComponent as WardEDIcon } from "../../../assets/img/icon/ward-ed.svg";
 import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
@@ -222,6 +223,25 @@ export default function Navigation({
                 <OptionItem>
                   <AssessmentsViewIcon />
                   <span>View Seen</span>
+                </OptionItem>
+              </OptionLink>
+
+              <OptionLink
+                to="/one-ed/admitorreferral"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
+                <OptionHeading>Admit or Referral</OptionHeading>
+
+                <OptionItem>
+                  <AdmitOrReferralIcon />
+                  <span>Admit or Referral</span>
                 </OptionItem>
               </OptionLink>
             </OptionsContainer>
