@@ -13,6 +13,7 @@ import {
   AutoSuggest,
   Button,
   Checkbox,
+  Display,
   Dropdown,
   Input,
   Radio,
@@ -68,6 +69,29 @@ function FormCheckbox({ checked, onChange, under, text, htmlFor, value }) {
       text={text}
       htmlFor={htmlFor}
       value={value}
+    />
+  );
+}
+
+// Compound Component: FormDisplay
+function FormDisplay({
+  heading,
+  htmlFor,
+  labelText,
+  left,
+  subheading,
+  text,
+  ...props
+}) {
+  return (
+    <Display
+      heading={heading}
+      htmlFor={htmlFor}
+      labelText={labelText}
+      left={left}
+      subheading={subheading}
+      text={text}
+      {...props}
     />
   );
 }
@@ -190,11 +214,12 @@ export default function Form(props) {
   );
 }
 
-// Export: Anchor, AutoSuggest, Button, Checkbox, Dropdown, Input, Radio, Text, TextArea
+// Export: Anchor, AutoSuggest, Button, Checkbox, Display, Dropdown, Input, Radio, Text, TextArea
 Form.Anchor = FormAnchor;
 Form.AutoSuggest = FormAutoSuggest;
 Form.Button = FormButton;
 Form.Checkbox = FormCheckbox;
+Form.Display = FormDisplay;
 Form.Dropdown = FormDropdown;
 Form.Input = FormInput;
 Form.Radio = FormRadio;

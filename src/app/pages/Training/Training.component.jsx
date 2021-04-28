@@ -52,6 +52,16 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
+                        <Form.Display
+                          htmlFor="displayComponent"
+                          labelText="Component: Display"
+                        >
+                          Display Component
+                        </Form.Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Text as="p">Component: Anchor</Form.Text>
                         <Form.Anchor href="https://www.bing.com">
                           Link to Bing
                         </Form.Anchor>
