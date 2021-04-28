@@ -1,5 +1,5 @@
 // Export: Anchor
-export { default as Anchor } from "./Anchor/Anchor.component"
+export { default as Anchor } from "./Anchor/Anchor.component";
 
 // Export: AutoSuggest
 export { default as AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
@@ -9,6 +9,9 @@ export { default as Button } from "./Button/Button.component";
 
 // Export: Checkbox
 export { default as Checkbox } from "./Checkbox/Checkbox.component";
+
+// Export: Display
+export { default as Display } from "./Display/Display.component";
 
 // Export: Dropdown
 export { default as Dropdown } from "./Dropdown/Dropdown.component";
