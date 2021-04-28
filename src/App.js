@@ -21,6 +21,7 @@ import {
   Overview,
   Seen,
   Settings,
+  Training,
   Triage,
   Unauthorized,
   ViewSeen,
@@ -154,9 +155,14 @@ export default function App() {
             <ViewSeen />
           </Route>
 
-          {/* Admit or Referral */}
+          {/* Assessments - Admit or Referral */}
           <Route exact path="/one-ed/admitorreferral">
             <AdmitOrReferral />
+          </Route>
+
+          {/* User - Training */}
+          <Route exact path="/one-ed/training">
+            <Training />
           </Route>
 
           {/* User - Settings */}

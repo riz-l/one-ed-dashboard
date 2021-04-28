@@ -14,6 +14,7 @@ import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/i
 import { ReactComponent as AssessmentsViewIcon } from "../../../assets/img/icon/assessments-view.svg";
 import { ReactComponent as SettingsSettingsIcon } from "../../../assets/img/icon/settings-settings.svg";
 import { ReactComponent as SettingsLogoutIcon } from "../../../assets/img/icon/settings-logout.svg";
+import { ReactComponent as TrainingIcon } from "../../../assets/img/icon/training.svg";
 
 // Import: Elements
 import {
@@ -247,6 +248,25 @@ export default function Navigation({
           </Options>
 
           <Settings>
+            <OptionHeading>User</OptionHeading>
+
+            <OptionLink
+              to="/one-ed/training"
+              onClick={
+                window.innerWidth <= 1077
+                  ? () =>
+                      setIsNavigationOpen(
+                        (isNavigationOpen) => !isNavigationOpen
+                      )
+                  : null
+              }
+            >
+              <SettingsItem>
+                <TrainingIcon />
+                <span>Training</span>
+              </SettingsItem>
+            </OptionLink>
+
             <OptionLink
               to="/one-ed/user/settings"
               onClick={

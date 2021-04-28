@@ -31,6 +31,9 @@ export { default as Seen } from "./Seen/Seen.component";
 // Export: Settings
 export { default as Settings } from "./Settings/Settings.component";
 
+// Export: Training
+export { default as Training } from "./Training/Training.component";
+
 // Export: Triage
 export { default as Triage } from "./Triage/Triage.component";
 
