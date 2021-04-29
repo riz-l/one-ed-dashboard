@@ -1,5 +1,8 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPatientList } from "../../../redux/slices/patientListSlice";
+import { getUserDetails } from "../../../redux/slices/userDetailsSlice";
 import axios from "axios";
 
 // Import: Elements
@@ -16,6 +19,14 @@ import { PatientItem } from "../index";
 
 // Component: PatientList
 export default function PatientList({ db }) {
+  // Redux state management
+  // const { patients } = useSelector((state) => state.patientList);
+  const dispatch = useDispatch();
+  const reduxUserDetails = useSelector((state) => state.userDetails);
+  const reduxToken = useSelector((state) => state.userDetails.token);
+  console.log("userDetails: ", reduxUserDetails);
+  console.log("userDetails/token: ", reduxToken);
+
   // State: localToken, patientData
   const [localToken, setLocalToken] = useState("");
   const [patientData, setPatientData] = useState([]);
@@ -44,17 +55,20 @@ export default function PatientList({ db }) {
     };
 
     if (localToken.length > 10) {
-      axios(config)
-        .then(function (response) {
-          setPatientData(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      dispatch(getPatientList());
+      dispatch(getUserDetails());
+
+      // axios(config)
+      //   .then(function (response) {
+      //     setPatientData(response.data);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
     } else {
       return null;
     }
-  }, [localToken]);
+  }, [localToken, dispatch]);
 
   // Effect: Logs patientData on change to value
   useEffect(() => {
@@ -88,11 +102,9 @@ export default function PatientList({ db }) {
                   <th>Period</th>
                 </tr>
               </thead>
-              <tbody>{patientListRender}</tbody>
+              {/* <tbody>{patientListRender}</tbody> */}
             </Table>
           </TableWrapper>
-
-          {/* {patientListRender} */}
         </Wrapper>
       </Container>
     </>

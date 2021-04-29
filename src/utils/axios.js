@@ -7,12 +7,12 @@ import axios from "axios";
 // const apiVersion = process.env.REACT_APP_API_VERSION;
 
 // GET: Lorenzo Token
-export const lorenzoToken = axios.create({
-  baseUrl: `https://lorenzosv.demo.cloud.healthcare-uk.dxc.technology/LMHIAService/api/v2/claimSet?UserName=jlayton&Password=Lorenzo!23`,
-  headers: {
-    accept: "application/json",
-  },
-});
+// export const lorenzoToken = axios.create({
+//   baseUrl: `https://lorenzosv.demo.cloud.healthcare-uk.dxc.technology/LMHIAService/api/v2/claimSet?UserName=jlayton&Password=Lorenzo!23`,
+//   headers: {
+//     accept: "application/json",
+//   },
+// });
 
 // export const lorenzoToken = axios.create({
 //   baseURL: `${apiUrl}/${apiService}/${apiVersion}`,

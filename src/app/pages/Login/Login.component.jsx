@@ -1,6 +1,8 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getUserDetails } from "../../../redux/slices/userDetailsSlice";
 import axios from "axios";
 
 // Import: Elements
@@ -11,6 +13,10 @@ import { Form } from "../../components";
 
 // Page: Login
 export default function Login({ db, ...props }) {
+  // Redux state management
+  // const { patients } = useSelector((state) => state.patientList);
+  // const dispatch = useDispatch();
+
   // State: loginForm, claimSetData
   const [loginForm, setLoginForm] = useState({
     username: "",
