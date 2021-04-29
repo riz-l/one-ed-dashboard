@@ -275,7 +275,7 @@ export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
     <>
       <Container left={left} data-testid={"autoSuggest"}>
         {labelText && (
-          <Label htmlfor={htmlFor} left={left}>
+          <Label htmlFor={htmlFor} left={left}>
             {labelText}
           </Label>
         )}

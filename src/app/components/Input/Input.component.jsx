@@ -27,7 +27,7 @@ export default function Input({
       data-testid={"input"}
     >
       {labelText && (
-        <Label htmlfor={htmlFor} left={left}>
+        <Label htmlFor={htmlFor} left={left}>
           {labelText}
         </Label>
       )}

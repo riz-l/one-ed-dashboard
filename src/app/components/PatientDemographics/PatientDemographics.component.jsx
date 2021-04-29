@@ -63,72 +63,48 @@ export default function PatientDemographics() {
               <Grid>
                 <Grid.Column>
                   <Grid.Item>
-                    <Form.Input
+                    <Form.Display
                       htmlFor="Last Updated"
                       labelText="Last Updated"
-                      type="text"
                     />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
-                      htmlFor="Identifier"
-                      labelText="Identifier"
-                      type="text"
-                    />
+                    <Form.Display htmlFor="Identifier" labelText="Identifier" />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
+                    <Form.Display
                       htmlFor="Department ID"
                       labelText="Department ID"
-                      type="text"
                     />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
-                      htmlFor="Pas No."
-                      labelText="Pas No."
-                      type="text"
-                    />
+                    <Form.Display htmlFor="Pas No." labelText="Pas No." />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
+                    <Form.Display
                       htmlFor="Family Name"
                       labelText="Family Name"
-                      type="text"
                     />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
-                      htmlFor="Given Name"
-                      labelText="Given Name"
-                      type="text"
-                    />
+                    <Form.Display htmlFor="Given Name" labelText="Given Name" />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
-                      htmlFor="Prefix"
-                      labelText="Prefix"
-                      type="text"
-                    />
+                    <Form.Display htmlFor="Prefix" labelText="Prefix" />
                   </Grid.Item>
                 </Grid.Column>
 
                 <Grid.Column>
                   <Grid.Item>
-                    <Form.Input htmlFor="Phone" labelText="Phone" type="text" />
-                    <Form.Input htmlFor="Phone" type="text" />
-                    <Form.Input htmlFor="Phone" type="text" />
-                    <Form.Input
-                      htmlFor="Gender"
-                      labelText="Gender"
-                      type="text"
-                    />
+                    <Form.Display htmlFor="Phone" labelText="Phone" />
+                    <Form.Display htmlFor="Phone" type="text" />
+                    <Form.Display htmlFor="Phone" type="text" />
+                    <Form.Display htmlFor="Gender" labelText="Gender" />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input
+                    <Form.Display
                       htmlFor="Date of Birth"
                       labelText="Date of Birth"
-                      type="text"
                     />
                   </Grid.Item>
                   <Grid.Item>
@@ -142,14 +118,10 @@ export default function PatientDemographics() {
 
                 <Grid.Column>
                   <Grid.Item>
-                    <Form.Input
-                      htmlFor="Address"
-                      labelText="Address"
-                      type="text"
-                    />
-                    <Form.Input htmlFor="Address" type="text" />
-                    <Form.Input htmlFor="Address" type="text" />
-                    <Form.Input htmlFor="Address" type="text" />
+                    <Form.Display htmlFor="Address" labelText="Address" />
+                    <Form.Display htmlFor="Address" type="text" />
+                    <Form.Display htmlFor="Address" type="text" />
+                    <Form.Display htmlFor="Address" type="text" />
                   </Grid.Item>
                   <Grid.Item>
                     <Form.Text as="h3" subheading>
@@ -162,10 +134,10 @@ export default function PatientDemographics() {
                     <Form.Radio text="False" />
                   </Grid.Item>
                   <Grid.Item>
-                    <Form.Input htmlFor="GP" labelText="GP" type="text" />
-                    <Form.Input htmlFor="GP" type="text" />
-                    <Form.Input htmlFor="GP" type="text" />
-                    <Form.Input htmlFor="GP" type="text" />
+                    <Form.Display htmlFor="GP" labelText="GP" type="text" />
+                    <Form.Display htmlFor="GP" type="text" />
+                    <Form.Display htmlFor="GP" type="text" />
+                    <Form.Display htmlFor="GP" type="text" />
                   </Grid.Item>
                 </Grid.Column>
               </Grid>
