@@ -1,5 +1,5 @@
 // Export: Anchor
-export { default as Anchor } from "./Anchor/Anchor.component"
+export { default as Anchor } from "./Anchor/Anchor.component";
 
 // Export: AutoSuggest
 export { default as AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
@@ -21,6 +21,9 @@ export { default as Form } from "./Form/Form.component";
 
 // Export: Header
 export { default as Header } from "./Header/Header.component";
+
+// Export Indicator
+export { default as Indicator } from "./Indicator/Indicator.component";
 
 // Export: Input
 export { default as Input } from "./Input/Input.component";
