@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./TriageAndStream.elements";
 
 // Import: Components
-import { Grid, Text, Form, Display } from "../../../../components";
+import { Grid, Text, Form } from "../../../../components";
 
 // SubPage: TriageAndStream
 export default function TriageAndStream() {
