@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Page
-import EDOverview from "./Training.component";
+import Training from "./Training.component";
 
 // Test: Checks that EDOverview renders
 it("checkTrainingRender", () => {
