@@ -5,43 +5,32 @@ import React from "react";
 import { Container, InputField, Label } from "./Input.elements";
 
 // Component: Input
-export default function Input({
-  center,
-  htmlFor,
-  labelText,
-  left,
-  onChange,
-  onClick,
-  margin,
-  placeholder,
-  type,
-  value,
-  width,
-}) {
+export const Input = React.forwardRef((props, ref) => {
   return (
     <Container
-      onClick={onClick}
-      center={center}
-      left={left}
-      margin={margin}
+      onClick={props.onClick}
+      center={props.center}
+      left={props.left}
+      margin={props.margin}
       data-testid={"input"}
     >
-      {labelText && (
-        <Label htmlfor={htmlFor} left={left}>
-          {labelText}
+      {props.labelText && (
+        <Label htmlfor={props.htmlFor} left={props.left}>
+          {props.labelText}
         </Label>
       )}
 
       <InputField
-        id={htmlFor}
-        left={left}
-        name={htmlFor}
-        onChange={onChange}
-        type={type ? type : "text"}
-        placeholder={placeholder}
-        value={value}
-        width={width}
+        id={props.htmlFor}
+        left={props.left}
+        name={props.htmlFor}
+        onChange={props.onChange}
+        type={props.type ? props.type : "text"}
+        placeholder={props.placeholder}
+        ref={ref}
+        value={props.value}
+        width={props.width}
       />
     </Container>
   );
-}
+});

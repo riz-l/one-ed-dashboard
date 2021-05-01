@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 
@@ -17,9 +17,6 @@ import { PatientItem } from "../index";
 
 // Component: PatientList
 export default function PatientList() {
-  // State: patientListData
-  const [patientListData, setPatientListData] = useState([]);
-
   // Redux: Fetches token and patients from the global state
   const token = useSelector((state) => state.userDetails.token);
   const patients = useSelector((state) => state.patientList.patients);
@@ -32,7 +29,7 @@ export default function PatientList() {
     if (token !== "" && token.length > 0) {
       dispatch(getPatientList());
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   // Maps patientListData through PatientItem
   const patientListRender = patients.map(
@@ -62,7 +59,13 @@ export default function PatientList() {
                 </tr>
               </thead>
               <tbody>
-                {status === "loading" ? <p>Loading...</p> : patientListRender}
+                {status === "loading" ? (
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
+                ) : (
+                  patientListRender
+                )}
               </tbody>
             </Table>
           </TableWrapper>

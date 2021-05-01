@@ -96,35 +96,24 @@ function FormDropdown({
 }
 
 // Compound Component: FormInput
-function FormInput({
-  center,
-  htmlFor,
-  labelText,
-  left,
-  margin,
-  onChange,
-  onClick,
-  placeholder,
-  type,
-  value,
-  width,
-}) {
+const FormInput = React.forwardRef((props, ref) => {
   return (
     <Input
-      center={center}
-      htmlFor={htmlFor}
-      labelText={labelText}
-      left={left}
-      margin={margin}
-      onChange={onChange}
-      onClick={onClick}
-      placeholder={placeholder}
-      type={type}
-      value={value}
-      width={width}
+      center={props.center}
+      htmlFor={props.htmlFor}
+      labelText={props.labelText}
+      left={props.left}
+      margin={props.margin}
+      onChange={props.onChange}
+      onClick={props.onClick}
+      placeholder={props.placeholder}
+      ref={ref}
+      type={props.type}
+      value={props.value}
+      width={props.width}
     />
   );
-}
+});
 
 // Compound Component: FormRadio
 function FormRadio({ checked, name, onChange, text, value }) {

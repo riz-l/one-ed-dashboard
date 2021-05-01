@@ -51,7 +51,7 @@ export default function Login(props) {
     } else {
       props.setIsLoggedIn(false);
     }
-  }, [token]);
+  }, [token, props]);
 
   return (
     <>
@@ -62,21 +62,21 @@ export default function Login(props) {
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>
 
-          <form onSubmit={submitTestForm}>
-            <input
-              type="text"
-              placeholder="test username"
-              ref={usernameInputRef}
+          <Form onSubmit={submitTestForm}>
+            <Form.Input
+              labelText="Username"
               onChange={addUsernameToRedux}
+              type="text"
+              ref={usernameInputRef}
             />
-            <input
-              type="password"
-              placeholder="test password"
-              ref={passwordInputRef}
+            <Form.Input
+              labelText="Password"
               onChange={addPasswordToRedux}
+              type="password"
+              ref={passwordInputRef}
             />
             <button type="submit">Submit</button>
-          </form>
+          </Form>
         </Wrapper>
       </Container>
     </>
