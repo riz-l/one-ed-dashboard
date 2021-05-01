@@ -23,6 +23,7 @@ export default function PatientList() {
   // Redux: Fetches token and patients from the global state
   const token = useSelector((state) => state.userDetails.token);
   const patients = useSelector((state) => state.patientList.patients);
+  const status = useSelector((state) => state.patientList.status);
   const dispatch = useDispatch();
 
   // Effect: Checks that a user token exists
@@ -60,7 +61,9 @@ export default function PatientList() {
                   <th>Period</th>
                 </tr>
               </thead>
-              <tbody>{patientListRender}</tbody>
+              <tbody>
+                {status === "loading" ? <p>Loading...</p> : patientListRender}
+              </tbody>
             </Table>
           </TableWrapper>
         </Wrapper>
