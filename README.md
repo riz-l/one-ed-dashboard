@@ -67,3 +67,11 @@ $ npm install
 - `react-autosuggest`
 
   - Used to create auto suggest search inputs
+
+- `@reduxjs/toolkit`
+
+  - Used for state management
+
+- `react-redux`
+
+  - Used for state management

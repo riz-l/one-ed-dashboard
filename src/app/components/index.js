@@ -29,7 +29,7 @@ export { default as Header } from "./Header/Header.component";
 export { default as Indicator } from "./Indicator/Indicator.component";
 
 // Export: Input
-export { default as Input } from "./Input/Input.component";
+export { Input } from "./Input/Input.component";
 
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";

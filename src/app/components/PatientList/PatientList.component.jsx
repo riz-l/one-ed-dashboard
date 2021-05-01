@@ -1,6 +1,7 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPatientList } from "../../../redux/slices/patientListSlice";
 
 // Import: Elements
 import {
@@ -15,54 +16,23 @@ import {
 import { PatientItem } from "../index";
 
 // Component: PatientList
-export default function PatientList({ db }) {
-  // State: localToken, patientData
-  const [localToken, setLocalToken] = useState("");
-  const [patientData, setPatientData] = useState([]);
+export default function PatientList() {
+  // Redux: Fetches token and patients from the global state
+  const token = useSelector((state) => state.userDetails.token);
+  const patients = useSelector((state) => state.patientList.patients);
+  const status = useSelector((state) => state.patientList.status);
+  const dispatch = useDispatch();
 
-  // Effect: Fetches authToken from the IndexedDB, and sets localToken === authToken
+  // Effect: Checks that a user token exists
+  // ... if the token exists, fetch the Patient list data
   useEffect(() => {
-    const fetchDbToken = async () => {
-      const dbAuthToken = await db.formData.get("authToken");
-      setLocalToken(dbAuthToken.value);
-    };
-
-    fetchDbToken();
-  }, [db, db.formData]);
-
-  // Effect: Logs value of localToken on change
-  // Effect: Upon change to localToken, fetches patientData from
-  // ... Lorenzo api/GetPatientList
-  useEffect(() => {
-    var config = {
-      method: "get",
-      url: `https://oneedfhirtest.azurewebsites.net/GetPatientList`,
-      headers: {
-        accept: "application/json",
-        "Authorization-Token": localToken,
-      },
-    };
-
-    if (localToken.length > 10) {
-      axios(config)
-        .then(function (response) {
-          setPatientData(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    } else {
-      return null;
+    if (token !== "" && token.length > 0) {
+      dispatch(getPatientList());
     }
-  }, [localToken]);
+  }, [token, dispatch]);
 
-  // Effect: Logs patientData on change to value
-  useEffect(() => {
-    console.log("PATIENT DATA: ", patientData);
-  }, [patientData]);
-
-  // Maps patientData through PatientItem
-  const patientListRender = patientData.map(
+  // Maps patientListData through PatientItem
+  const patientListRender = patients.map(
     ({ patientID, ...otherPatientProps }) => (
       <PatientItem key={patientID} {...otherPatientProps} />
     )
@@ -88,11 +58,17 @@ export default function PatientList({ db }) {
                   <th>Period</th>
                 </tr>
               </thead>
-              <tbody>{patientListRender}</tbody>
+              <tbody>
+                {status === "loading" ? (
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
+                ) : (
+                  patientListRender
+                )}
+              </tbody>
             </Table>
           </TableWrapper>
-
-          {/* {patientListRender} */}
         </Wrapper>
       </Container>
     </>

@@ -41,12 +41,6 @@ export default function Dashboard({ db }) {
           </Main>
         </Layout>
       </Container>
-
-      {/* <Container>
-        <Wrapper>
-          <h1>Dashboard</h1>
-        </Wrapper>
-      </Container> */}
     </>
   );
 }
