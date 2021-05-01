@@ -18,13 +18,15 @@ import { PatientItem } from "../index";
 // Component: PatientList
 export default function PatientList() {
   // State: patientListData
-  // const [patientListData, setPatientListData] = useState([]);
+  const [patientListData, setPatientListData] = useState([]);
 
-  // Redux
+  // Redux: Fetches token and patients from the global state
   const token = useSelector((state) => state.userDetails.token);
+  const patients = useSelector((state) => state.patientList.patients);
   const dispatch = useDispatch();
 
-  // Effect
+  // Effect: Checks that a user token exists
+  // ... if the token exists, fetch the Patient list data
   useEffect(() => {
     if (token !== "" && token.length > 0) {
       dispatch(getPatientList());
@@ -32,11 +34,11 @@ export default function PatientList() {
   }, [token]);
 
   // Maps patientListData through PatientItem
-  // const patientListRender = patientListData.map(
-  //   ({ patientID, ...otherPatientProps }) => (
-  //     <PatientItem key={patientID} {...otherPatientProps} />
-  //   )
-  // );
+  const patientListRender = patients.map(
+    ({ patientID, ...otherPatientProps }) => (
+      <PatientItem key={patientID} {...otherPatientProps} />
+    )
+  );
 
   return (
     <>
@@ -58,7 +60,7 @@ export default function PatientList() {
                   <th>Period</th>
                 </tr>
               </thead>
-              {/* <tbody>{patientListRender}</tbody> */}
+              <tbody>{patientListRender}</tbody>
             </Table>
           </TableWrapper>
         </Wrapper>
