@@ -10,7 +10,7 @@ import {
 } from "./Training.elements";
 
 // Import: Components
-import { Form, Grid, ReportSection } from "../../components";
+import { Form, Grid, Indicator, ReportSection } from "../../components";
 
 // Page: EDOverview
 export default function Training() {
@@ -65,6 +65,15 @@ export default function Training() {
                         <Form.Anchor href="https://www.bing.com">
                           Link to Bing
                         </Form.Anchor>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Indicator
+                          title="NEWS"
+                          message="Give patient drugs and admit to Ward."
+                          // give component a prop of red, amber or green to determine box colour.
+                          green
+                        />
                       </Grid.Item>
                     </Grid.Column>
 
