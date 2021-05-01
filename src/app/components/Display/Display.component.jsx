@@ -18,7 +18,7 @@ export default function Display({
   ...props
 }) {
   return (
-    <Container data-testid={"input"}>
+    <Container data-testid={"display"}>
       {labelText && (
         <Label htmlfor={htmlFor} left={left}>
           {labelText}
