@@ -1,13 +1,32 @@
 // Import: Packages
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-// Thunk: getPatientList
+// AsyncThunk: getPatientList
 export const getPatientList = createAsyncThunk(
   "patientList/getPatientList",
-  async () => {
-    return fetch(
-      `https://jsonplaceholder.typicode.com/posts`
-    ).then((response) => response.json());
+  async (arg, { getState }) => {
+    const state = getState();
+    const token = state.userDetails.token;
+
+    try {
+      const apiGetPatients = process.env.REACT_APP_PATIENT_LIST;
+
+      var config = {
+        method: "get",
+        url: `${apiGetPatients}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
@@ -24,8 +43,12 @@ export const patientListSlice = createSlice({
       state.status = "loading";
     },
     [getPatientList.fulfilled]: (state, { payload }) => {
-      state.patients = payload;
-      state.status = "success";
+      if (payload) {
+        state.patients = payload;
+        state.status = "success";
+      } else {
+        state.status = "failed";
+      }
     },
     [getPatientList.rejected]: (state, action) => {
       state.status = "failed";

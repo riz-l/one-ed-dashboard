@@ -57,9 +57,13 @@ export const userDetailsSlice = createSlice({
       state.status = "loading";
     },
     [getUserDetails.fulfilled]: (state, { payload }) => {
-      state.details = payload;
-      state.token = payload.ControlActEvent.Subject.Value[0].SecurityToken;
-      state.status = "success";
+      if (payload) {
+        state.details = payload;
+        state.token = payload.ControlActEvent.Subject.Value[0].SecurityToken;
+        state.status = "success";
+      } else {
+        state.status = "failed";
+      }
     },
     [getUserDetails.rejected]: (state, action) => {
       state.status = "failed";

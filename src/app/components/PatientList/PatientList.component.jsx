@@ -1,9 +1,7 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getPatientList } from "../../../redux/slices/patientListSlice";
-// import { getUserDetails } from "../../../redux/slices/userDetailsSlice";
-import axios from "axios";
+import { getPatientList } from "../../../redux/slices/patientListSlice";
 
 // Import: Elements
 import {
@@ -18,68 +16,27 @@ import {
 import { PatientItem } from "../index";
 
 // Component: PatientList
-export default function PatientList({ db }) {
-  // Redux state management
-  // const { patients } = useSelector((state) => state.patientList);
+export default function PatientList() {
+  // State: patientListData
+  // const [patientListData, setPatientListData] = useState([]);
+
+  // Redux
+  const token = useSelector((state) => state.userDetails.token);
   const dispatch = useDispatch();
-  // const reduxUserDetails = useSelector((state) => state.userDetails);
-  // const reduxToken = useSelector((state) => state.userDetails.token);
-  // console.log("userDetails: ", reduxUserDetails);
-  // console.log("userDetails/token: ", reduxToken);
 
-  // State: localToken, patientData
-  const [localToken, setLocalToken] = useState("");
-  const [patientData, setPatientData] = useState([]);
+  // Effect
+  useEffect(() => {
+    if (token !== "" && token.length > 0) {
+      dispatch(getPatientList());
+    }
+  }, [token]);
 
-  // Effect: Fetches authToken from the IndexedDB, and sets localToken === authToken
-  // useEffect(() => {
-  //   const fetchDbToken = async () => {
-  //     const dbAuthToken = await db.formData.get("authToken");
-  //     setLocalToken(dbAuthToken.value);
-  //   };
-
-  //   fetchDbToken();
-  // }, [db, db.formData]);
-
-  // Effect: Logs value of localToken on change
-  // Effect: Upon change to localToken, fetches patientData from
-  // ... Lorenzo api/GetPatientList
-  // useEffect(() => {
-  //   var config = {
-  //     method: "get",
-  //     url: `https://oneedfhirtest.azurewebsites.net/GetPatientList`,
-  //     headers: {
-  //       accept: "application/json",
-  //       "Authorization-Token": localToken,
-  //     },
-  //   };
-
-  //   if (localToken.length > 10) {
-  //     // dispatch(getPatientList());
-  //     // dispatch(getUserDetails());
-  //     // axios(config)
-  //     //   .then(function (response) {
-  //     //     setPatientData(response.data);
-  //     //   })
-  //     //   .catch(function (error) {
-  //     //     console.log(error);
-  //     //   });
-  //   } else {
-  //     return null;
-  //   }
-  // }, [localToken, dispatch]);
-
-  // Effect: Logs patientData on change to value
-  // useEffect(() => {
-  //   console.log("PATIENT DATA: ", patientData);
-  // }, [patientData]);
-
-  // Maps patientData through PatientItem
-  const patientListRender = patientData.map(
-    ({ patientID, ...otherPatientProps }) => (
-      <PatientItem key={patientID} {...otherPatientProps} />
-    )
-  );
+  // Maps patientListData through PatientItem
+  // const patientListRender = patientListData.map(
+  //   ({ patientID, ...otherPatientProps }) => (
+  //     <PatientItem key={patientID} {...otherPatientProps} />
+  //   )
+  // );
 
   return (
     <>

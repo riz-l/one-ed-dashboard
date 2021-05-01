@@ -16,7 +16,7 @@ import { Container, Wrapper } from "./Login.elements";
 import { Form } from "../../components";
 
 // Page: Login
-export default function Login({ db, ...props }) {
+export default function Login(props) {
   const token = useSelector((state) => state.userDetails.token);
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
@@ -43,60 +43,15 @@ export default function Login({ db, ...props }) {
     }
   };
 
-  // // Effect: If auth token retrieval is successful, redirect to Dashboard
+  // // Effect: If token retrieval is successful, redirect to Dashboard
   useEffect(() => {
-    // Checks if the auth token is retrieved on login attempt
+    // Checks if token is retrieved on login attempt
     if (token !== "" && token.length > 0) {
       props.setIsLoggedIn(true);
     } else {
       props.setIsLoggedIn(false);
     }
   }, [token]);
-
-  // Fetch Lorenzo authentication token
-  // const fetchLorenzoToken = (e) => {
-  //   async function getClaimSetToken() {
-  //     const apiUrl = process.env.REACT_APP_URL;
-  //     const apiService = process.env.REACT_APP_SERVICE;
-  //     const apiVersion = process.env.REACT_APP_API_VERSION;
-
-  //     var config = {
-  //       method: "get",
-  //       url: `${apiUrl}/${apiService}/${apiVersion}/claimSet?UserName=${loginForm.username}&Password=${loginForm.password}`,
-  //       headers: {
-  //         accept: "application/json",
-  //       },
-  //     };
-
-  //     // Sets the values in LoginDetails
-  //     const setStoreDetails = (id) => (value) => {
-  //       // Update store
-  //       db.formData.put({ id, value });
-  //     };
-
-  //     axios(config)
-  //       .then(function (response) {
-  //         // Update state
-  //         setClaimSetData({
-  //           apiData: response.data,
-  //           authToken:
-  //             response.data.ControlActEvent.Subject.Value[0].SecurityToken,
-  //         });
-
-  //         // Update LoginDetails
-  //         setStoreDetails("apiData")(response.data);
-  //         setStoreDetails("authToken")(
-  //           response.data.ControlActEvent.Subject.Value[0].SecurityToken
-  //         );
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   }
-
-  //   getClaimSetToken();
-  //   e.preventDefault();
-  // };
 
   return (
     <>
