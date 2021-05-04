@@ -14,13 +14,12 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   align-items: center;
   background-color: ${({ red, amber, green }) =>
-    red ? "red" : amber ? "amber" : green ? "green" : "gray"};
-  border-radius: 1rem;
+    red ? "#ee482a" : amber ? "#f3af4a" : green ? "#74e660" : "gray"};
+  border-radius: 8px;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 5rem;
-  padding: 0.5rem;
-  width: 17rem;
+  padding: 0.8rem;
 `;

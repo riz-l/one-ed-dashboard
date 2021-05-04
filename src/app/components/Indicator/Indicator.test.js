@@ -5,8 +5,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Import: Component
 import Indicator from "./Indicator.component";
 
-// Test: Checks that Checkbox renders
-it("checkCheckboxRender", () => {
+// Test: Checks that Indicator renders
+it("checkIndicatorRender", () => {
   const { queryByTestId } = render(
     <Router>
       <Indicator />

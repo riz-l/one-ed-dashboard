@@ -12,7 +12,7 @@ import {
 // Import: Components
 import { Form, Grid, Indicator, ReportSection } from "../../components";
 
-// Page: EDOverview
+// Page: Training
 export default function Training() {
   return (
     <>
@@ -20,9 +20,7 @@ export default function Training() {
         <Wrapper>
           <Header>
             <h2>Training</h2>
-            <span>
-              The user guide and training videos can be accessed here.
-            </span>
+            <span>User guide and training videos</span>
           </Header>
 
           <ContentWrapper>

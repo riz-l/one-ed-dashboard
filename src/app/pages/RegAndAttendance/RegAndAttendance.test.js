@@ -12,6 +12,6 @@ it("checkRegAndAttendanceRender", () => {
       <RegAndAttendance />
     </Router>
   );
-  const page = queryByTestId("regandattendance");
+  const page = queryByTestId("regAndAttendance");
   expect(page).toBeTruthy();
 });

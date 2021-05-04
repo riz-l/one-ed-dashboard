@@ -1,4 +1,4 @@
-// Import: Dependencies
+// Import: Packages
 import React from "react";
 
 // Import: Elements

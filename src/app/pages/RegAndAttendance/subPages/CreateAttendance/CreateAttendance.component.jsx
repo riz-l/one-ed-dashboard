@@ -7,7 +7,7 @@ import { Container, Wrapper } from "./CreateAttendance.elements";
 // Import: Components
 import { Form, Grid } from "../../../../components";
 
-// SubPage: Create Attendance
+// SubPage: CreateAttendance
 export default function CreateAttendance() {
   return (
     <>
@@ -92,8 +92,7 @@ export default function CreateAttendance() {
                   </Form.Text>
                 </Grid.Item>
 
-                {/* Need to add some alert popups. 
-                      See OED37 for an image of how the alerts look in Lorenzo. */}
+                {/* Need to add some alert popups. See OED37 for an image of how the alerts look in Lorenzo. */}
               </Grid.Column>
             </Grid>
           </Form>

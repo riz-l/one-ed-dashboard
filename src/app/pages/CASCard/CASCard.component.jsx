@@ -15,9 +15,7 @@ export default function CASCard() {
         <Wrapper>
           <Header>
             <h2>CAS Card</h2>
-            <span>
-              The Casualty Card shows a summary of the patient's condition.
-            </span>
+            <span>Summary of Patient's condition</span>
           </Header>
 
           <PatientDemographics />

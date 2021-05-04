@@ -7,11 +7,11 @@ import { Container, Wrapper } from "./DecisionToAdmit.elements";
 // Import: Components
 import { Form, Grid } from "../../../../components";
 
-// SubPage: NEWS2
+// SubPage: DecisionToAdmit
 export default function DecisionToAdmit() {
   return (
     <>
-      <Container data-testid={"decisiontoadmit"}>
+      <Container data-testid={"decisionToAdmit"}>
         <Wrapper>
           <Form>
             <Form.Text as="h2" heading>
@@ -37,9 +37,11 @@ export default function DecisionToAdmit() {
                 <Grid.Item>
                   <Form.Dropdown labelText="Bed Category" />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.AutoSuggest labelText="Specialty" />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.TextArea
                     labelText="Additional Information"

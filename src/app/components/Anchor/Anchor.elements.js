@@ -4,8 +4,8 @@ import styled, { css } from "styled-components/macro";
 // Element: StyledText
 export const StyledText = styled.a`
   color: ${(props) => props.color ?? "#008ba3"};
-  margin: ${(props) => props.margin ?? 0};
-  padding: ${(props) => props.padding ?? 0};
+  margin: ${(props) => props.margin ?? "0 0 0.8rem 0"};
+  padding: ${(props) => props.padding ?? "0"};
   ${({ heading, subheading, text }) => {
     switch (true) {
       case heading:

@@ -7,7 +7,7 @@ import { Container, Wrapper } from "./Referral.elements";
 // Import: Components
 import { Form, Grid } from "../../../../components";
 
-// SubPage: NEWS2
+// SubPage: Referral
 export default function Referral() {
   return (
     <>

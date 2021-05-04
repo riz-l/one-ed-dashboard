@@ -1,9 +1,8 @@
 // Import: Packages
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Import: Elements
-import { Container, Wrapper } from "./Unauthorized.elements";
+import { Container, ReturnButton, Wrapper } from "./Unauthorized.elements";
 
 // Import: Components
 import { Text } from "../../components";
@@ -18,7 +17,8 @@ export default function Unauthorized() {
           <Text as="p" text>
             Please login before attempting to access this page.
           </Text>
-          <Link to="/">Return to Home </Link>
+
+          <ReturnButton to="/">Return to Home</ReturnButton>
         </Wrapper>
       </Container>
     </>

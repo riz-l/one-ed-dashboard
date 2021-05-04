@@ -19,10 +19,9 @@ import {
   PrimaryNavigation,
   ReportSection,
 } from "../../components";
-
 import { DecisionToAdmit, Referral } from "./subPages";
 
-// Page: Triage
+// Page: AdmitOrReferral
 export default function AdmitOrReferral() {
   // State: isDecisionToAdmit, isReferral
   const [isDecisionToAdmit, setIsDecisionToAdmit] = useState(true);
@@ -42,14 +41,11 @@ export default function AdmitOrReferral() {
 
   return (
     <>
-      <Container data-testid={"admitorreferral"}>
+      <Container data-testid={"admitOrReferral"}>
         <Wrapper>
           <Header>
             <h2>Decision to Admit or Referral</h2>
-            <span>
-              Use the tabs to switch between Decision to Admit or make a
-              Referral.
-            </span>
+            <span>Switch between Decision to Admit or make a Referral</span>
           </Header>
 
           <PatientDemographics />

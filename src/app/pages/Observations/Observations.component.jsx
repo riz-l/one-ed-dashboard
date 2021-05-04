@@ -20,7 +20,7 @@ export default function Observations() {
         <Wrapper>
           <Header>
             <h2>Observations</h2>
-            <span>Record observations for the selected patient</span>
+            <span>Record Patient observations</span>
           </Header>
 
           <PatientDemographics />

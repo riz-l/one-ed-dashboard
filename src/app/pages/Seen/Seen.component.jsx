@@ -15,9 +15,7 @@ export default function Seen() {
         <Wrapper>
           <Header>
             <h2>Seen</h2>
-            <span>
-              The Seen page records when a clinican has seen a patient.
-            </span>
+            <span>Clinican details of seeing Patient</span>
           </Header>
 
           <PatientDemographics />

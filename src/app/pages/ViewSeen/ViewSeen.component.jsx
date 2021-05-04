@@ -20,7 +20,7 @@ export default function ViewSeen() {
         <Wrapper>
           <Header>
             <h2>View Seen</h2>
-            <span>Displays the seen history for a patient</span>
+            <span>Seen history for a Patient</span>
           </Header>
 
           <PatientDemographics />

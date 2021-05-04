@@ -20,7 +20,7 @@ export default function ClinicalNotes() {
         <Wrapper>
           <Header>
             <h2>Clinical Notes</h2>
-            <span>Select a clinical note template to begin. </span>
+            <span>Select a clinical note template to begin</span>
           </Header>
 
           <PatientDemographics />

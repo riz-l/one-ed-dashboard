@@ -5,8 +5,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Import: SubPage
 import Referral from "./Referral.component";
 
-// Test: Checks that NEWS2 renders
-it("checkNEWS2Render", () => {
+// Test: Checks that Referral renders
+it("checkReferralRender", () => {
   const { queryByTestId } = render(
     <Router>
       <Referral />

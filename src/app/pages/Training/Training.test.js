@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Import: Page
 import Training from "./Training.component";
 
-// Test: Checks that EDOverview renders
+// Test: Checks that Training renders
 it("checkTrainingRender", () => {
   const { queryByTestId } = render(
     <Router>

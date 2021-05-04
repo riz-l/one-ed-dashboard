@@ -9,9 +9,8 @@ import {
   Wrapper,
 } from "./RegAndAttendance.elements";
 
-// Import: Components & SubPages
+// Import: Components, SubPages
 import { PrimaryNavigation, ReportSection } from "../../components";
-
 import { Registration, CreateAttendance } from "./subPages";
 
 // Page: RegAndAttendnace
@@ -34,15 +33,13 @@ export default function RegAndAttendance() {
 
   return (
     <>
-      <Container data-testid={"regandattendance"}>
+      <Container data-testid={"regAndAttendance"}>
         <Wrapper>
           <Header>
             <h2>Registration and Create Attendance</h2>
-            <span>
-              Use the tabs to either register a patient or create their
-              attendance in ED.
-            </span>
+            <span>Patient registration and attendance</span>
           </Header>
+
           <ContentWrapper>
             <ReportSection
               primaryNavigation={

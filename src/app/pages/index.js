@@ -19,11 +19,11 @@ export { default as Home } from "./Home/Home.component";
 // Export: Login
 export { default as Login } from "./Login/Login.component";
 
-// Export: Overview
-export { default as Overview } from "./Overview/Overview.component";
-
 // Export: Observations
 export { default as Observations } from "./Observations/Observations.component";
+
+// Export: Overview
+export { default as Overview } from "./Overview/Overview.component";
 
 // Export: RegAndAttendnace
 export { default as RegAndAttendance } from "./RegAndAttendance/RegAndAttendance.component";

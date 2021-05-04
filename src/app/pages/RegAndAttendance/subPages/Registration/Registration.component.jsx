@@ -67,6 +67,7 @@ export default function Registration() {
                 <Grid.Item>
                   <Form.Checkbox text="Estimated Date of Birth" />
                 </Grid.Item>
+
                 {/* Estimated date of birth may need to be a month and year dropdown. It should only be editable if the checkbox for it has been ticked.  */}
                 <Grid.Item>
                   <Form.Input type="date" labelText="Date of Birth" />

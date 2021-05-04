@@ -32,23 +32,24 @@ export const Wrapper = styled.div`
   & h1 {
     color: #4d5e80;
   }
+`;
 
-  & a {
-    background-color: #f7f8fa;
-    border: 1px solid #edeff2;
-    border-radius: 8px;
-    color: #6b7a99;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    margin-top: 1rem;
-    padding: 0.4rem 1rem;
+// Element: ReturnButton
+export const ReturnButton = styled(Link)`
+  background-color: #f7f8fa;
+  border: 1px solid #edeff2;
+  border-radius: 8px;
+  color: #6b7a99;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.4rem 1rem;
+  transition: all 100ms linear;
+
+  &:hover {
+    background-color: #eef0f4;
+    color: #4d5e80;
     transition: all 100ms linear;
-
-    &:hover {
-      background-color: #eef0f4;
-      color: #4d5e80;
-      transition: all 100ms linear;
-    }
   }
 `;

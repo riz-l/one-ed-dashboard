@@ -5,13 +5,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Import: SubPage
 import DecisionToAdmit from "./DecisionToAdmit.component";
 
-// Test: Checks that NEWS2 renders
+// Test: Checks that DecisionToAdmit renders
 it("checkDecisionToAdmitRender", () => {
   const { queryByTestId } = render(
     <Router>
       <DecisionToAdmit />
     </Router>
   );
-  const page = queryByTestId("decisiontoadmit");
+  const page = queryByTestId("decisionToAdmit");
   expect(page).toBeTruthy();
 });
