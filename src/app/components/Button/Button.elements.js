@@ -2,7 +2,12 @@
 import styled from "styled-components";
 
 // Element: Container
-export const Container = styled.div``;
+export const Container = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.8rem;
+`;
 
 // Element: StyledButton
 export const StyledButton = styled.button`
