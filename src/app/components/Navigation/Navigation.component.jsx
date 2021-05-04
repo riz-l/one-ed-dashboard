@@ -102,7 +102,7 @@ export default function Navigation({
               </OptionLink>
 
               <OptionLink
-                to="/one-ed/ward/regandattendance"
+                to="/one-ed/ward/registration-and-create-attendance"
                 onClick={
                   window.innerWidth <= 1077
                     ? () =>
@@ -114,7 +114,7 @@ export default function Navigation({
               >
                 <OptionItem>
                   <WardRegAndAttendanceIcon />
-                  <span>Reg & Attendance</span>
+                  <span>Reg &amp; Attendance</span>
                 </OptionItem>
               </OptionLink>
             </OptionsContainer>
@@ -249,7 +249,7 @@ export default function Navigation({
             <OptionsContainer>
               <OptionHeading>Admit or Referral</OptionHeading>
               <OptionLink
-                to="/one-ed/admitorreferral"
+                to="/one-ed/admit-or-referral"
                 onClick={
                   window.innerWidth <= 1077
                     ? () =>

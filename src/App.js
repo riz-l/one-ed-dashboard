@@ -122,7 +122,7 @@ export default function App() {
           </Route>
 
           {/* Ward - Registation and Create Attendance */}
-          <Route exact path="/one-ed/ward/regandattendance">
+          <Route exact path="/one-ed/ward/registration-and-create-attendance">
             <RegAndAttendance />
           </Route>
 
@@ -162,7 +162,7 @@ export default function App() {
           </Route>
 
           {/* Assessments - Admit or Referral */}
-          <Route exact path="/one-ed/admitorreferral">
+          <Route exact path="/one-ed/admit-or-referral">
             <AdmitOrReferral />
           </Route>
 
