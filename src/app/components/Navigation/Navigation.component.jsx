@@ -225,7 +225,10 @@ export default function Navigation({
                   <span>View Seen</span>
                 </OptionItem>
               </OptionLink>
+            </OptionsContainer>
 
+            <OptionsContainer>
+              <OptionHeading>Admit or Referral</OptionHeading>
               <OptionLink
                 to="/one-ed/admitorreferral"
                 onClick={
@@ -237,8 +240,6 @@ export default function Navigation({
                     : null
                 }
               >
-                <OptionHeading>Admit or Referral</OptionHeading>
-
                 <OptionItem>
                   <AdmitOrReferralIcon />
                   <span>Admit or Referral</span>
