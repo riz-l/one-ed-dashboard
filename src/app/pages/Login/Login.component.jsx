@@ -75,7 +75,7 @@ export default function Login(props) {
               type="password"
               ref={passwordInputRef}
             />
-            <button type="submit">Submit</button>
+            <Form.Button type="submit" text="Login" />
           </Form>
         </Wrapper>
       </Container>

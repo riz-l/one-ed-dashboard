@@ -9,7 +9,7 @@ export default function Button({ onClick, text, type }) {
   return (
     <>
       <Container data-testid={"button"}>
-        <StyledButton type={type ? type : "button"} onClick={onClick}>
+        <StyledButton type={type ? type : "button"} onClick={onClick} center>
           {text ? text : "Button Text"}
         </StyledButton>
       </Container>
