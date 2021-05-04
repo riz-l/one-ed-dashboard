@@ -3,18 +3,19 @@ import React, { useState, useEffect } from "react";
 
 // Import: Assets
 import { ReactComponent as AdmitOrReferralIcon } from "../../../assets/img/icon/admitOrReferralIcon.svg";
-import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
-import { ReactComponent as WardEDIcon } from "../../../assets/img/icon/ward-ed.svg";
-import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
-import { ReactComponent as PatientCasIcon } from "../../../assets/img/icon/patient-cas.svg";
-import { ReactComponent as AssessmentsTriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
+import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/icon/assessments-clinical.svg";
 import { ReactComponent as AssessmentsObservationsIcon } from "../../../assets/img/icon/assessments-observations.svg";
 import { ReactComponent as AssessmentsSeenIcon } from "../../../assets/img/icon/assessments-seen.svg";
-import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/icon/assessments-clinical.svg";
+import { ReactComponent as AssessmentsTriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 import { ReactComponent as AssessmentsViewIcon } from "../../../assets/img/icon/assessments-view.svg";
+import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
+import { ReactComponent as PatientCasIcon } from "../../../assets/img/icon/patient-cas.svg";
 import { ReactComponent as SettingsSettingsIcon } from "../../../assets/img/icon/settings-settings.svg";
 import { ReactComponent as SettingsLogoutIcon } from "../../../assets/img/icon/settings-logout.svg";
 import { ReactComponent as TrainingIcon } from "../../../assets/img/icon/training.svg";
+import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
+import { ReactComponent as WardEDIcon } from "../../../assets/img/icon/ward-ed.svg";
+import { ReactComponent as WardRegAndAttendanceIcon } from "../../../assets/img/icon/ward-RegAndAttendance.svg";
 
 // Import: Elements
 import {
@@ -65,6 +66,7 @@ export default function Navigation({
             {/* Ward */}
             <OptionsContainer>
               <OptionHeading>Ward</OptionHeading>
+
               <OptionLink
                 to="/one-ed/ward/dashboard"
                 onClick={
@@ -96,6 +98,23 @@ export default function Navigation({
                 <OptionItem>
                   <WardEDIcon />
                   <span>ED Overview</span>
+                </OptionItem>
+              </OptionLink>
+
+              <OptionLink
+                to="/one-ed/ward/regandattendance"
+                onClick={
+                  window.innerWidth <= 1077
+                    ? () =>
+                        setIsNavigationOpen(
+                          (isNavigationOpen) => !isNavigationOpen
+                        )
+                    : null
+                }
+              >
+                <OptionItem>
+                  <WardRegAndAttendanceIcon />
+                  <span>Reg & Attendance</span>
                 </OptionItem>
               </OptionLink>
             </OptionsContainer>
