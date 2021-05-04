@@ -25,6 +25,9 @@ export { default as Overview } from "./Overview/Overview.component";
 // Export: Observations
 export { default as Observations } from "./Observations/Observations.component";
 
+// Export: RegAndAttendnace
+export { default as RegAndAttendance } from "./RegAndAttendance/RegAndAttendance.component";
+
 // Export: Seen
 export { default as Seen } from "./Seen/Seen.component";
 
