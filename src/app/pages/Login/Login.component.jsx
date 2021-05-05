@@ -7,7 +7,6 @@ import {
   getUserDetails,
 } from "../../../redux/slices/userDetailsSlice";
 import { useDispatch, useSelector } from "react-redux";
-// import axios from "axios";
 
 // Import: Elements
 import { Container, Wrapper } from "./Login.elements";

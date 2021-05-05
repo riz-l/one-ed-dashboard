@@ -2,6 +2,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
+import {
+  selectPatient,
+  getSelectedPatient,
+} from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Elements
 import {
@@ -21,6 +25,7 @@ export default function PatientList() {
   const token = useSelector((state) => state.userDetails.token);
   const patients = useSelector((state) => state.patientList.patients);
   const status = useSelector((state) => state.patientList.status);
+  const selectedPatient = useSelector((state) => state.selectedPatient.patient);
   const dispatch = useDispatch();
 
   // Effect: Checks that a user token exists
@@ -31,10 +36,22 @@ export default function PatientList() {
     }
   }, [token, dispatch]);
 
+  // Effect: Checks that there is a selectedPatient
+  // ... if there is a selectedPatient, fetch selectPatient's data
+  useEffect(() => {
+    if (selectedPatient !== "") {
+      dispatch(getSelectedPatient());
+    }
+  }, [selectedPatient, dispatch]);
+
   // Maps patientListData through PatientItem
   const patientListRender = patients.map(
     ({ patientID, ...otherPatientProps }) => (
-      <PatientItem key={patientID} {...otherPatientProps} />
+      <PatientItem
+        key={patientID}
+        onClick={() => dispatch(selectPatient(patientID))}
+        {...otherPatientProps}
+      />
     )
   );
 
