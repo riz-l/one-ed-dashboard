@@ -1,5 +1,6 @@
 // Import: Packages
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
 
 // Import: Assets
@@ -25,6 +26,11 @@ import { Button, Text } from "../index";
 
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
+  // Redux: Fetches user details from the global state
+  const details = useSelector((state) => state.userDetails.details);
+
+  console.log("DETAILS: ", details);
+
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -64,8 +70,18 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             </UserIcon>
 
             <UserDetails>
-              <span>Jane Doe</span>
-              <span>Clinician</span>
+              <span>
+                {
+                  details.ControlActEvent.Subject.Value[0].UserRoleProfile[0]
+                    .UserID.identifierName
+                }
+              </span>
+              <span style={{ textTransform: "capitalize" }}>
+                {
+                  details.ControlActEvent.Subject.Value[0].UserRoleProfile[0]
+                    .UserRole.code
+                }
+              </span>
             </UserDetails>
           </UserContainer>
         </Wrapper>
