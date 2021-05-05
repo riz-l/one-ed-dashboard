@@ -28,6 +28,6 @@ export const Label = styled.label`
           margin-right: 1rem;
         `
       : css`
-          margin-bottom: 8px;
+          margin-bottom: 2px;
         `}
 `;

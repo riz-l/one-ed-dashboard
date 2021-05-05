@@ -5,10 +5,17 @@ import React from "react";
 import { Container, Gender, Name } from "./PatientItem.elements";
 
 // Component: PatientItem
-export default function PatientItem({ diagnosis, dob, gender, name, period }) {
+export default function PatientItem({
+  diagnosis,
+  dob,
+  gender,
+  name,
+  onClick,
+  period,
+}) {
   return (
     <>
-      <Container data-testid={"patientItem"}>
+      <Container onClick={onClick} data-testid={"patientItem"}>
         <Name>{name}</Name>
         <td>{dob}</td>
         <Gender>{gender}</Gender>

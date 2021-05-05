@@ -29,8 +29,6 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
   // Redux: Fetches user details from the global state
   const details = useSelector((state) => state.userDetails.details);
 
-  console.log("DETAILS: ", details);
-
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -1,5 +1,6 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
 import {
@@ -15,8 +16,46 @@ import {
   Wrapper,
 } from "./PatientSummary.elements";
 
+// Import: Components
+import { Display } from "../index";
+
 // Component: PatientSummary
 export default function PatientSummary() {
+  // Redux: Fetches selectedPatient and PatientData from the global state
+  const selectedPatient = useSelector((state) => state.selectedPatient.patient);
+  const patientData = useSelector((state) => state.selectedPatient.patientData);
+  const status = useSelector((state) => state.selectedPatient.status);
+
+  if (status === null) {
+    return (
+      <Container data-testid={"patientSummary"}>
+        <Header>
+          <h2>Summary</h2>
+          <span>Detailed Patient information</span>
+        </Header>
+
+        <DetailsContainer>
+          <Display>Please select a Patient</Display>
+        </DetailsContainer>
+      </Container>
+    );
+  }
+
+  if (status === "loading") {
+    return (
+      <Container data-testid={"patientSummary"}>
+        <Header>
+          <h2>Summary</h2>
+          <span>Detailed Patient information</span>
+        </Header>
+
+        <DetailsContainer>
+          <Display>Loading...</Display>
+        </DetailsContainer>
+      </Container>
+    );
+  }
+
   return (
     <>
       <Container data-testid={"patientSummary"}>
@@ -29,70 +68,103 @@ export default function PatientSummary() {
           <SummaryContainer>
             <Summary>
               <SummaryLayout>
-                <DetailsContainer>
-                  <DetailsItem>
-                    <DetailsHeading>Name</DetailsHeading>
-                    <DetailsEntry>Johnathan Smith Doe Black</DetailsEntry>
-                  </DetailsItem>
+                {selectedPatient &&
+                selectedPatient.length > 0 &&
+                patientData &&
+                patientData.length > 0 ? (
+                  <>
+                    <DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Name">
+                          {patientData[0].name && patientData[0].name}
+                        </Display>
+                      </DetailsItem>
 
-                  <DetailsItem>
-                    <DetailsHeading>Complaint</DetailsHeading>
-                    <DetailsEntry>A00 - Cardiac arrest</DetailsEntry>
-                  </DetailsItem>
+                      <DetailsItem>
+                        <Display labelText="Complaint">
+                          {patientData[0].diagnosis && patientData[0].diagnosis}
+                        </Display>
+                      </DetailsItem>
 
-                  <DetailsItem>
-                    <DetailsHeading>Gender</DetailsHeading>
-                    <DetailsEntry>Male</DetailsEntry>
-                  </DetailsItem>
-                </DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Gender">
+                          {patientData[0].gender && patientData[0].gender}
+                        </Display>
+                      </DetailsItem>
+                    </DetailsContainer>
 
-                <DetailsContainer>
-                  <DetailsItem>
-                    <DetailsHeading>NEWS Score</DetailsHeading>
-                    <DetailsEntry>2</DetailsEntry>
-                  </DetailsItem>
+                    <DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Date of Birth">
+                          {patientData[0].dob && patientData[0].dob}
+                        </Display>
+                      </DetailsItem>
 
-                  <DetailsItem>
-                    <DetailsHeading>Date of Birth</DetailsHeading>
-                    <DetailsEntry>03/02/1992</DetailsEntry>
-                  </DetailsItem>
+                      <DetailsItem>
+                        <Display labelText="Encounter ID">
+                          {patientData[0].encounterID &&
+                            patientData[0].encounterID}
+                        </Display>
+                      </DetailsItem>
 
-                  <DetailsItem>
-                    <DetailsHeading>Age (Years)</DetailsHeading>
-                    <DetailsEntry>28</DetailsEntry>
-                  </DetailsItem>
-                </DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Patient ID">
+                          {patientData[0].patientID && patientData[0].patientID}
+                        </Display>
+                      </DetailsItem>
+                    </DetailsContainer>
 
-                <DetailsContainer>
-                  <DetailsItem>
-                    <DetailsHeading>Address</DetailsHeading>
-                    <DetailsEntry>38 Pinnerton Street</DetailsEntry>
-                    <DetailsEntry>Kinnegad</DetailsEntry>
-                    <DetailsEntry>Co. Westmeath</DetailsEntry>
-                    <DetailsEntry>N91 PX33</DetailsEntry>
-                  </DetailsItem>
+                    <DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Address">
+                          {patientData[0].add1 && patientData[0].add1}
+                        </Display>
+                        <Display>
+                          {patientData[0].add2 && patientData[0].add2}
+                        </Display>
+                        <Display>
+                          {patientData[0].add3 && patientData[0].add3}
+                        </Display>
+                        <Display>
+                          {patientData[0].postcode && patientData[0].postcode}
+                        </Display>
+                      </DetailsItem>
+                    </DetailsContainer>
 
-                  <DetailsItem>
-                    <DetailsHeading>Country</DetailsHeading>
-                    <DetailsEntry>Irish Republic</DetailsEntry>
-                  </DetailsItem>
-                </DetailsContainer>
+                    <DetailsContainer>
+                      <DetailsItem>
+                        <DetailsHeading>Duration</DetailsHeading>
+                        <DetailsEntry
+                          style={{
+                            borderBottom: "2px solid rgba(255,0,0,0.6)",
+                          }}
+                        >
+                          {patientData[0].period && patientData[0].period}
+                        </DetailsEntry>
+                      </DetailsItem>
 
-                <DetailsContainer>
-                  <DetailsItem>
-                    <DetailsHeading>Duration</DetailsHeading>
-                    <DetailsEntry
-                      style={{ borderBottom: "2px solid rgba(255,0,0,0.6)" }}
-                    >
-                      154 minutes
-                    </DetailsEntry>
-                  </DetailsItem>
+                      <DetailsItem>
+                        <Display labelText="Contact 1">
+                          {patientData[0].telecom1 && patientData[0].telecom1}
+                        </Display>
+                      </DetailsItem>
 
-                  <DetailsItem>
-                    <DetailsHeading>Phone No.</DetailsHeading>
-                    <DetailsEntry>+44 7857375613</DetailsEntry>
-                  </DetailsItem>
-                </DetailsContainer>
+                      <DetailsItem>
+                        <Display labelText="Contact 2">
+                          {patientData[0].telecom2 && patientData[0].telecom2}
+                        </Display>
+                      </DetailsItem>
+
+                      <DetailsItem>
+                        <Display labelText="Contact 3">
+                          {patientData[0].telecom3 && patientData[0].telecom3}
+                        </Display>
+                      </DetailsItem>
+                    </DetailsContainer>
+                  </>
+                ) : (
+                  <p>Select a Patient...</p>
+                )}
               </SummaryLayout>
             </Summary>
           </SummaryContainer>
