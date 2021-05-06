@@ -49,6 +49,7 @@ export default function PatientList() {
     ({ patientID, ...otherPatientProps }) => (
       <PatientItem
         key={patientID}
+        patientID={patientID}
         onClick={() => dispatch(selectPatient(patientID))}
         {...otherPatientProps}
       />

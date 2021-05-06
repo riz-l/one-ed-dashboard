@@ -3,12 +3,25 @@ import styled from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.tr`
+  background-color: ${({ patient, patientID }) =>
+    patient === patientID && "#6a7ca0"};
   cursor: pointer;
   transition: all 100ms linear;
 
+  &:nth-of-type(odd) {
+    & td {
+      color: ${({ patient, patientID }) => patient === patientID && "#ffffff"};
+    }
+  }
+
   &:nth-of-type(even) {
-    background-color: #e6e9ef;
+    background-color: ${({ patient, patientID }) =>
+      patient === patientID ? "#6a7ca0" : "#e6e9ef"};
     transition: all 100ms linear;
+
+    & td {
+      color: ${({ patient, patientID }) => patient === patientID && "#ffffff"};
+    }
 
     &:hover {
       & td {
