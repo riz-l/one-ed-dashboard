@@ -14,8 +14,8 @@ import {
 // Import: Components
 import {
   PatientList,
-  PatientStream,
-  PatientSuggestions,
+  // PatientStream,
+  // PatientSuggestions,
   PatientSummary,
 } from "../../components";
 

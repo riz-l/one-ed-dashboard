@@ -103,32 +103,68 @@ export default function Details() {
               <Grid.Column>
                 <Grid.Item>
                   {patientData[0].telecom1 ? (
-                    <Form.Display htmlFor="contactOne" labelText="Contact 1">
-                      {patientData[0].telecom1}
+                    <Form.Display
+                      htmlFor="contactOne"
+                      labelText={
+                        patientData[0].telecom1.use
+                          ? patientData[0].telecom1.system +
+                            ": " +
+                            patientData[0].telecom1.use
+                          : patientData[0].telecom1.system + ":"
+                      }
+                    >
+                      {patientData[0].telecom1.value.split("mailto:").pop()}
                     </Form.Display>
                   ) : null}
                 </Grid.Item>
 
                 <Grid.Item>
                   {patientData[0].telecom2 ? (
-                    <Form.Display htmlFor="contactTwo" labelText="Contact 2">
-                      {patientData[0].telecom2}
+                    <Form.Display
+                      htmlFor="contactTwo"
+                      labelText={
+                        patientData[0].telecom2.use
+                          ? patientData[0].telecom2.system +
+                            ": " +
+                            patientData[0].telecom2.use
+                          : patientData[0].telecom2.system + ":"
+                      }
+                    >
+                      {patientData[0].telecom2.value.split("mailto:").pop()}
                     </Form.Display>
                   ) : null}
                 </Grid.Item>
 
                 <Grid.Item>
                   {patientData[0].telecom3 ? (
-                    <Form.Display htmlFor="contactThree" labelText="Contact 3">
-                      {patientData[0].telecom3}
+                    <Form.Display
+                      htmlFor="contactThree"
+                      labelText={
+                        patientData[0].telecom3.use
+                          ? patientData[0].telecom3.system +
+                            ": " +
+                            patientData[0].telecom3.use
+                          : patientData[0].telecom3.system + ":"
+                      }
+                    >
+                      {patientData[0].telecom3.value.split("mailto:").pop()}
                     </Form.Display>
                   ) : null}
                 </Grid.Item>
 
                 <Grid.Item>
                   {patientData[0].telecom4 ? (
-                    <Form.Display htmlFor="contactFour" labelText="Contact 4">
-                      {patientData[0].telecom4}
+                    <Form.Display
+                      htmlFor="contactFour"
+                      labelText={
+                        patientData[0].telecom4.use
+                          ? patientData[0].telecom4.system +
+                            ": " +
+                            patientData[0].telecom4.use
+                          : patientData[0].telecom4.system + ":"
+                      }
+                    >
+                      {patientData[0].telecom4.value.split("mailto:").pop()}
                     </Form.Display>
                   ) : null}
                 </Grid.Item>

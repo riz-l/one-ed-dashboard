@@ -70,8 +70,7 @@ export default function PatientSummary() {
               <SummaryLayout>
                 {selectedPatient &&
                 selectedPatient.length > 0 &&
-                patientData &&
-                patientData.length > 0 ? (
+                patientData ? (
                   <>
                     <DetailsContainer>
                       <DetailsItem>
@@ -145,19 +144,22 @@ export default function PatientSummary() {
 
                       <DetailsItem>
                         <Display labelText="Contact 1">
-                          {patientData[0].telecom1 && patientData[0].telecom1}
+                          {patientData[0].telecom1 &&
+                            patientData[0].telecom1.value}
                         </Display>
                       </DetailsItem>
 
                       <DetailsItem>
                         <Display labelText="Contact 2">
-                          {patientData[0].telecom2 && patientData[0].telecom2}
+                          {patientData[0].telecom2 &&
+                            patientData[0].telecom2.value}
                         </Display>
                       </DetailsItem>
 
                       <DetailsItem>
                         <Display labelText="Contact 3">
-                          {patientData[0].telecom3 && patientData[0].telecom3}
+                          {patientData[0].telecom3 &&
+                            patientData[0].telecom3.value}
                         </Display>
                       </DetailsItem>
                     </DetailsContainer>

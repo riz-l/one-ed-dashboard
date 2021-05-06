@@ -30,4 +30,5 @@ export const Label = styled.label`
       : css`
           margin-bottom: 2px;
         `}
+  text-transform: capitalize;
 `;
