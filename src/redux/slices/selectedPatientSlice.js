@@ -1,5 +1,6 @@
 // Import: Packages
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // AsyncThunk: getSelectedPatient
 export const getSelectedPatient = createAsyncThunk(
@@ -17,6 +18,34 @@ export const getSelectedPatient = createAsyncThunk(
     }
   }
 );
+// AsyncThunk: getPatientDemographics
+export const getPatientDemographics = createAsyncThunk(
+  "patientList/getPatientDemographics",
+  async (arg, { getState }) => {
+    const state = getState();
+    const patient = state.selectedPatient.patient;
+    const token = state.userDetails.token;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetPatient/${patient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 // Slice: selectedPatientSlice
 export const selectedPatientSlice = createSlice({
@@ -24,7 +53,9 @@ export const selectedPatientSlice = createSlice({
   initialState: {
     patient: "",
     patientData: [],
-    status: null,
+    dataStatus: null,
+    patientDemographics: {},
+    demographicsStatus: null,
   },
   reducers: {
     selectPatient: (state, { payload }) => {
@@ -36,18 +67,32 @@ export const selectedPatientSlice = createSlice({
   },
   extraReducers: {
     [getSelectedPatient.pending]: (state, action) => {
-      state.status = "loading";
+      state.dataStatus = "loading";
     },
     [getSelectedPatient.fulfilled]: (state, { payload }) => {
       if (payload) {
         state.patientData = payload;
-        state.status = "success";
+        state.dataStatus = "success";
       } else {
-        state.status = "failed";
+        state.dataStatus = "failed";
       }
     },
     [getSelectedPatient.rejected]: (state, action) => {
-      state.status = "failed";
+      state.dataStatus = "failed";
+    },
+    [getPatientDemographics.pending]: (state, action) => {
+      state.demographicsStatus = "loading";
+    },
+    [getPatientDemographics.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.patientDemographics = payload;
+        state.demographicsStatus = "success";
+      } else {
+        state.demographicsStatus = "failed";
+      }
+    },
+    [getPatientDemographics.rejected]: (state, action) => {
+      state.demographicsStatus = "failed";
     },
   },
 });

@@ -9,7 +9,7 @@ export const getUserDetails = createAsyncThunk(
     const state = getState();
 
     try {
-      const apiUrl = process.env.REACT_APP_URL;
+      const apiUrl = process.env.REACT_APP_CLAIMSET_URL;
       const apiService = process.env.REACT_APP_SERVICE;
       const apiVersion = process.env.REACT_APP_API_VERSION;
       const username = state.userDetails.loginDetails.username;

@@ -10,11 +10,11 @@ export const getPatientList = createAsyncThunk(
     const token = state.userDetails.token;
 
     try {
-      const apiGetPatients = process.env.REACT_APP_PATIENT_LIST;
+      const apiUrl = process.env.REACT_APP_API_URL;
 
       var config = {
         method: "get",
-        url: `${apiGetPatients}`,
+        url: `${apiUrl}/GetPatientList`,
         headers: {
           accept: "application/json",
           "Authorization-Token": token,

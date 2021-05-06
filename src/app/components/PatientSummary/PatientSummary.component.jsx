@@ -24,7 +24,7 @@ export default function PatientSummary() {
   // Redux: Fetches selectedPatient and PatientData from the global state
   const selectedPatient = useSelector((state) => state.selectedPatient.patient);
   const patientData = useSelector((state) => state.selectedPatient.patientData);
-  const status = useSelector((state) => state.selectedPatient.status);
+  const status = useSelector((state) => state.selectedPatient.dataStatus);
 
   if (status === null) {
     return (
