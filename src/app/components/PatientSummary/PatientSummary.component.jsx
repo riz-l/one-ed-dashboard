@@ -21,7 +21,7 @@ import { Display } from "../index";
 
 // Component: PatientSummary
 export default function PatientSummary() {
-  // Redux: Fetches selectedPatient and PatientData from the global state
+  // Redux: Fetches selectedPatient and patientData from the global state
   const selectedPatient = useSelector((state) => state.selectedPatient.patient);
   const patientData = useSelector((state) => state.selectedPatient.patientData);
   const status = useSelector((state) => state.selectedPatient.dataStatus);

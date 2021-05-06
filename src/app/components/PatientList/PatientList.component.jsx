@@ -21,7 +21,7 @@ import { PatientItem } from "../index";
 
 // Component: PatientList
 export default function PatientList() {
-  // Redux: Fetches token and patients from the global state
+  // Redux: Fetches token, patients, selectedPatient from the global state
   const token = useSelector((state) => state.userDetails.token);
   const patients = useSelector((state) => state.patientList.patients);
   const status = useSelector((state) => state.patientList.status);

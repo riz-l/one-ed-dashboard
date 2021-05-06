@@ -10,7 +10,7 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: Details
 export default function Details() {
-  // Redux: Fetches patientData and patientDemographics from the global state
+  // Redux: Fetches patient, patientData, patientDemographics from the global state
   const patient = useSelector((state) => state.selectedPatient.patient);
   const patientData = useSelector((state) => state.selectedPatient.patientData);
   const patientDemographics = useSelector(

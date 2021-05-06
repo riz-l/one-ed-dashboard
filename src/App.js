@@ -31,7 +31,7 @@ import {
 
 // Component: App
 export default function App() {
-  // Redux
+  // Redux: declares dispatch
   const dispatch = useDispatch();
 
   // State: isLoggedIn, isNavigationOpen
