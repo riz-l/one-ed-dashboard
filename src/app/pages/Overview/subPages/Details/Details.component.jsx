@@ -107,9 +107,7 @@ export default function Details() {
                       htmlFor="contactOne"
                       labelText={
                         patientData[0].telecom1.use
-                          ? patientData[0].telecom1.system +
-                            ": " +
-                            patientData[0].telecom1.use
+                          ? patientData[0].telecom1.use + ":"
                           : patientData[0].telecom1.system + ":"
                       }
                     >
@@ -124,9 +122,7 @@ export default function Details() {
                       htmlFor="contactTwo"
                       labelText={
                         patientData[0].telecom2.use
-                          ? patientData[0].telecom2.system +
-                            ": " +
-                            patientData[0].telecom2.use
+                          ? patientData[0].telecom2.use + ":"
                           : patientData[0].telecom2.system + ":"
                       }
                     >
@@ -141,9 +137,7 @@ export default function Details() {
                       htmlFor="contactThree"
                       labelText={
                         patientData[0].telecom3.use
-                          ? patientData[0].telecom3.system +
-                            ": " +
-                            patientData[0].telecom3.use
+                          ? patientData[0].telecom3.use + ":"
                           : patientData[0].telecom3.system + ":"
                       }
                     >
@@ -158,9 +152,7 @@ export default function Details() {
                       htmlFor="contactFour"
                       labelText={
                         patientData[0].telecom4.use
-                          ? patientData[0].telecom4.system +
-                            ": " +
-                            patientData[0].telecom4.use
+                          ? patientData[0].telecom4.use + ":"
                           : patientData[0].telecom4.system + ":"
                       }
                     >
