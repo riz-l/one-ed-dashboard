@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientDemographics } from "../../../redux/slices/selectedPatientSlice";
-import Dexie from "dexie";
 
 // Import: Assets
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
@@ -26,7 +25,6 @@ import {
 
 // Import: Components, SubPages
 import {
-  PatientDemographics,
   PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
@@ -45,7 +43,7 @@ import {
 
 // Page: Overview
 export default function Overview() {
-  // Redux: Fetches token and patients from the global state
+  // Redux: Fetches patient from the global state
   const patient = useSelector((state) => state.selectedPatient.patient);
   const dispatch = useDispatch();
 
@@ -85,7 +83,7 @@ export default function Overview() {
     };
   }, []);
 
-  // Effect
+  // Effect: Fetches patient demographics using the set patientID
   useEffect(() => {
     if (patient !== "") {
       dispatch(getPatientDemographics());
@@ -232,9 +230,6 @@ export default function Overview() {
     setIsSymptoms(true);
   }
 
-  // Dexie: database = ODetails
-  const detailsDb = new Dexie("ODetails");
-
   return (
     <>
       <Container data-testid={"overview"}>
@@ -243,8 +238,6 @@ export default function Overview() {
             <h2>Overview</h2>
             <span>Patient details and history</span>
           </Header>
-
-          <PatientDemographics />
 
           <ContentWrapper>
             <ReportSection
@@ -411,7 +404,7 @@ export default function Overview() {
               }
               content={
                 isDetails ? (
-                  <Details db={detailsDb} />
+                  <Details />
                 ) : isAlerts ? (
                   <Alerts />
                 ) : isAllergies ? (
