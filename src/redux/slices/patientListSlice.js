@@ -37,7 +37,11 @@ export const patientListSlice = createSlice({
     patients: [],
     status: null,
   },
-  reducers: {},
+  reducers: {
+    clearPatientList: (state, { payload }) => {
+      state.patients = [];
+    },
+  },
   extraReducers: {
     [getPatientList.pending]: (state, action) => {
       state.status = "loading";
@@ -55,6 +59,9 @@ export const patientListSlice = createSlice({
     },
   },
 });
+
+// Actions: clearPatientList
+export const { clearPatientList } = patientListSlice.actions;
 
 // Reducer: patientListSlice.reducer
 export default patientListSlice.reducer;

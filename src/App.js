@@ -1,11 +1,12 @@
 // Import: Packages
-import React, {
-  useState,
-  // useEffect,
-} from "react";
+import React, { useState } from "react";
 import Dexie from "dexie";
 import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components/macro";
+import { clearPatientList } from "./redux/slices/patientListSlice";
+import { clearPatient } from "./redux/slices/selectedPatientSlice";
+import { clearUser } from "./redux/slices/userDetailsSlice";
+import { useDispatch } from "react-redux";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
@@ -30,6 +31,9 @@ import {
 
 // Component: App
 export default function App() {
+  // Redux
+  const dispatch = useDispatch();
+
   // State: isLoggedIn, isNavigationOpen
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNavigationOpen, setIsNavigationOpen] = useState(true);
@@ -48,6 +52,9 @@ export default function App() {
   // Sets isLoggedIn === false
   const handleLogout = (e) => {
     e.preventDefault();
+    dispatch(clearPatient());
+    dispatch(clearPatientList());
+    dispatch(clearUser());
     setIsLoggedIn(false);
     pleaseDelete();
   };

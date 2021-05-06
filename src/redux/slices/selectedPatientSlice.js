@@ -63,6 +63,8 @@ export const selectedPatientSlice = createSlice({
     },
     clearPatient: (state, { payload }) => {
       state.patient = "";
+      state.patientData = [];
+      state.patientDemographics = {};
     },
   },
   extraReducers: {

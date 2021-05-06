@@ -51,6 +51,12 @@ export const userDetailsSlice = createSlice({
     addPassword: (state, { payload }) => {
       state.loginDetails.password = payload;
     },
+    clearUser: (state, { payload }) => {
+      state.loginDetails.username = "";
+      state.loginDetails.password = "";
+      state.details = [];
+      state.token = "";
+    },
   },
   extraReducers: {
     [getUserDetails.pending]: (state, action) => {
@@ -71,8 +77,8 @@ export const userDetailsSlice = createSlice({
   },
 });
 
-// Actions: addUsername, addPassword
-export const { addUsername, addPassword } = userDetailsSlice.actions;
+// Actions: addUsername, addPassword, clearUser
+export const { addUsername, addPassword, clearUser } = userDetailsSlice.actions;
 
 // Reducer: userDetailsSlice.reducer
 export default userDetailsSlice.reducer;
