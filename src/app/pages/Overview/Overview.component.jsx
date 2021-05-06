@@ -1,6 +1,7 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
-import Dexie from "dexie";
+import { useDispatch, useSelector } from "react-redux";
+import { getPatientDemographics } from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Assets
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
@@ -24,7 +25,6 @@ import {
 
 // Import: Components, SubPages
 import {
-  PatientDemographics,
   PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
@@ -43,15 +43,19 @@ import {
 
 // Page: Overview
 export default function Overview() {
+  // Redux: Fetches patient from the global state
+  const patient = useSelector((state) => state.selectedPatient.patient);
+  const dispatch = useDispatch();
+
   // State: windowDimensions
   const [windowDimensions, setWindowDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
 
-  // State: isDetails, isHistory
+  // State: isDetails, isHealthHistory
   const [isDetails, setIsDetails] = useState(true);
-  const [isHistory, setIsHistory] = useState(false);
+  const [isHealthHistory, setisHealthHistory] = useState(false);
 
   // State: History SubPages
   const [isAlerts, setIsAlerts] = useState(true);
@@ -79,6 +83,13 @@ export default function Overview() {
     };
   }, []);
 
+  // Effect: Fetches patient demographics using the set patientID
+  useEffect(() => {
+    if (patient !== "") {
+      dispatch(getPatientDemographics());
+    }
+  }, [patient, dispatch]);
+
   // onClick: Renders Details SubPage
   function renderDetails() {
     setIsAlerts(false);
@@ -87,14 +98,14 @@ export default function Overview() {
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
-    setIsHistory(false);
+    setisHealthHistory(false);
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsDetails(true);
   }
 
   // onClick: Renders History SubPage
-  function renderHistory() {
+  function renderHealthHistory() {
     setIsAllergies(false);
     setIsComplaint(false);
     setIsComplications(false);
@@ -104,7 +115,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsAlerts(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Alerts SubPage
@@ -118,7 +129,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsAlerts(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Allergies SubPage
@@ -132,7 +143,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsAllergies(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Complications SubPage
@@ -146,7 +157,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsComplications(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Diagnosis SubPage
@@ -160,7 +171,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsDiagnosis(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Findings SubPage
@@ -174,7 +185,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsFindings(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Complaint SubPage
@@ -188,7 +199,7 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsComplaint(true);
-    setIsHistory(true);
+    setisHealthHistory(true);
   }
 
   // onClick: Renders Procedures SubPage
@@ -201,7 +212,7 @@ export default function Overview() {
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsSymptoms(false);
-    setIsHistory(true);
+    setisHealthHistory(true);
     setIsProcedures(true);
   }
 
@@ -215,12 +226,9 @@ export default function Overview() {
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
-    setIsHistory(true);
+    setisHealthHistory(true);
     setIsSymptoms(true);
   }
-
-  // Dexie: database = ODetails
-  const detailsDb = new Dexie("ODetails");
 
   return (
     <>
@@ -230,8 +238,6 @@ export default function Overview() {
             <h2>Overview</h2>
             <span>Patient details and history</span>
           </Header>
-
-          <PatientDemographics />
 
           <ContentWrapper>
             <ReportSection
@@ -245,10 +251,12 @@ export default function Overview() {
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
-                    isActive={isHistory ? true : false}
-                    onClick={renderHistory}
+                    isActive={isHealthHistory ? true : false}
+                    onClick={renderHealthHistory}
                   >
-                    <PrimaryNavigation.Text>History</PrimaryNavigation.Text>
+                    <PrimaryNavigation.Text>
+                      Health History
+                    </PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }
@@ -267,7 +275,7 @@ export default function Overview() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
-                  ) : isHistory ? (
+                  ) : isHealthHistory ? (
                     <>
                       {windowDimensions.width <= 1470 ? (
                         <SecondaryNavigation.Item>
@@ -396,7 +404,7 @@ export default function Overview() {
               }
               content={
                 isDetails ? (
-                  <Details db={detailsDb} />
+                  <Details />
                 ) : isAlerts ? (
                   <Alerts />
                 ) : isAllergies ? (
