@@ -66,6 +66,8 @@ export const userDetailsSlice = createSlice({
       if (payload) {
         state.details = payload;
         state.token = payload.ControlActEvent.Subject.Value[0].SecurityToken;
+        state.loginDetails.username = "";
+        state.loginDetails.password = "";
         state.status = "success";
       } else {
         state.status = "failed";

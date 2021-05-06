@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
 
 // Import: Assets
+import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
 import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
 import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.svg";
 
@@ -49,7 +50,8 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           <LogoContainer>
             <LogoLink to="/one-ed/ward/dashboard">
               <Logo>
-                <span>OneED</span>
+                <LogoSvg />
+                {/* <span>OneED</span> */}
               </Logo>
             </LogoLink>
 

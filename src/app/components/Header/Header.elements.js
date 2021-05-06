@@ -49,7 +49,13 @@ export const Logo = styled.div`
   height: 100%;
   max-height: 80px;
   justify-content: center;
-  padding: 2rem;
+  padding: 0 2rem;
+
+  & svg {
+    height: 40px;
+    margin-bottom: 0.8rem;
+    width: auto;
+  }
 
   & span {
     color: #4d5e80;

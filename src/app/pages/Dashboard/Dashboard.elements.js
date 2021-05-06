@@ -48,7 +48,7 @@ export const Main = styled.div`
 export const Top = styled.div`
   align-items: center;
   display: flex;
-  flex: 0.5;
+  flex: 1;
   height: 100%;
   justify-content: center;
   width: 100%;

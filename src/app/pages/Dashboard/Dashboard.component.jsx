@@ -35,8 +35,8 @@ export default function Dashboard({ db }) {
             </Top>
 
             <Bottom>
-              <PatientStream />
-              <PatientSuggestions />
+              {/* <PatientStream />
+              <PatientSuggestions /> */}
             </Bottom>
           </Main>
         </Layout>
