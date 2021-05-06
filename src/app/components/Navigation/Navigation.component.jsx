@@ -1,5 +1,6 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 // Import: Assets
 import { ReactComponent as AdmitOrReferralIcon } from "../../../assets/img/icon/admitOrReferralIcon.svg";
@@ -36,6 +37,9 @@ export default function Navigation({
   setIsNavigationOpen,
   handleLogout,
 }) {
+  // Redux: Extracts patient from the global state
+  const patient = useSelector((state) => state.selectedPatient.patient);
+
   // State: windowDimensions
   const [windowDimensions, setWindowDimensions] = useState({
     height: window.innerHeight,
@@ -119,154 +123,160 @@ export default function Navigation({
               </OptionLink>
             </OptionsContainer>
 
-            {/* Patient */}
-            <OptionsContainer>
-              <OptionHeading>Patient</OptionHeading>
-              <OptionLink
-                to="/one-ed/patient/overview"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <PatientOverviewIcon />
-                  <span>Overview</span>
-                </OptionItem>
-              </OptionLink>
+            {patient && patient.length > 0 && (
+              <>
+                {/* Patient */}
+                <OptionsContainer>
+                  <OptionHeading>Patient</OptionHeading>
+                  <OptionLink
+                    to="/one-ed/patient/overview"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <PatientOverviewIcon />
+                      <span>Overview</span>
+                    </OptionItem>
+                  </OptionLink>
 
-              <OptionLink
-                to="/one-ed/patient/cas-card"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <PatientCasIcon />
-                  <span>CAS Card</span>
-                </OptionItem>
-              </OptionLink>
-            </OptionsContainer>
+                  <OptionLink
+                    to="/one-ed/patient/cas-card"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <PatientCasIcon />
+                      <span>CAS Card</span>
+                    </OptionItem>
+                  </OptionLink>
+                </OptionsContainer>
 
-            {/* Assessments */}
-            <OptionsContainer>
-              <OptionHeading>Assessments</OptionHeading>
-              <OptionLink
-                to="/one-ed/assessments/triage"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AssessmentsTriageIcon />
-                  <span>Triage</span>
-                </OptionItem>
-              </OptionLink>
+                {/* Assessments */}
+                <OptionsContainer>
+                  <OptionHeading>Assessments</OptionHeading>
+                  <OptionLink
+                    to="/one-ed/assessments/triage"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AssessmentsTriageIcon />
+                      <span>Triage</span>
+                    </OptionItem>
+                  </OptionLink>
 
-              <OptionLink
-                to="/one-ed/assessments/observations"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AssessmentsObservationsIcon />
-                  <span>Observations</span>
-                </OptionItem>
-              </OptionLink>
+                  <OptionLink
+                    to="/one-ed/assessments/observations"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AssessmentsObservationsIcon />
+                      <span>Observations</span>
+                    </OptionItem>
+                  </OptionLink>
 
-              <OptionLink
-                to="/one-ed/assessments/seen"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AssessmentsSeenIcon />
-                  <span>Seen</span>
-                </OptionItem>
-              </OptionLink>
+                  <OptionLink
+                    to="/one-ed/assessments/seen"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AssessmentsSeenIcon />
+                      <span>Seen</span>
+                    </OptionItem>
+                  </OptionLink>
 
-              <OptionLink
-                to="/one-ed/assessments/clinical-notes"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AssessmentsClinicalIcon />
-                  <span>Clinical Notes</span>
-                </OptionItem>
-              </OptionLink>
+                  <OptionLink
+                    to="/one-ed/assessments/clinical-notes"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AssessmentsClinicalIcon />
+                      <span>Clinical Notes</span>
+                    </OptionItem>
+                  </OptionLink>
 
-              <OptionLink
-                to="/one-ed/assessments/view-seen"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AssessmentsViewIcon />
-                  <span>View Seen</span>
-                </OptionItem>
-              </OptionLink>
-            </OptionsContainer>
+                  <OptionLink
+                    to="/one-ed/assessments/view-seen"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AssessmentsViewIcon />
+                      <span>View Seen</span>
+                    </OptionItem>
+                  </OptionLink>
+                </OptionsContainer>
 
-            <OptionsContainer>
-              <OptionHeading>Admit or Referral</OptionHeading>
-              <OptionLink
-                to="/one-ed/admit-or-referral"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <AdmitOrReferralIcon />
-                  <span>Admit or Referral</span>
-                </OptionItem>
-              </OptionLink>
-            </OptionsContainer>
+                {/* Admit or Referral */}
+                <OptionsContainer>
+                  <OptionHeading>Admit or Referral</OptionHeading>
+                  <OptionLink
+                    to="/one-ed/admit-or-referral"
+                    onClick={
+                      window.innerWidth <= 1077
+                        ? () =>
+                            setIsNavigationOpen(
+                              (isNavigationOpen) => !isNavigationOpen
+                            )
+                        : null
+                    }
+                  >
+                    <OptionItem>
+                      <AdmitOrReferralIcon />
+                      <span>Admit or Referral</span>
+                    </OptionItem>
+                  </OptionLink>
+                </OptionsContainer>
+              </>
+            )}
           </Options>
 
+          {/* User */}
           <Settings>
             <OptionHeading>User</OptionHeading>
 
