@@ -11,10 +11,34 @@ import { Form, Grid, Text } from "../../../../components";
 // SubPage: Details
 export default function Details() {
   // Redux: Fetches patientData and patientDemographics from the global state
+  const patient = useSelector((state) => state.selectedPatient.patient);
   const patientData = useSelector((state) => state.selectedPatient.patientData);
   const patientDemographics = useSelector(
     (state) => state.selectedPatient.patientDemographics
   );
+
+  // If patient === "" give 'select patient' prompt
+  if (patient === "") {
+    return (
+      <>
+        <Container data-testid={"details"}>
+          <Wrapper>
+            <Text heading as="h2">
+              Details
+            </Text>
+
+            <Form>
+              <Grid>
+                <Grid.Item>
+                  <Form.Display>Please select a Patient...</Form.Display>
+                </Grid.Item>
+              </Grid>
+            </Form>
+          </Wrapper>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
