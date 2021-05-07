@@ -13,14 +13,12 @@ export const Container = styled.div`
   scrollbar-width: thin; */
   width: 100%;
   max-width: 100%;
-
   /* margin-bottom: 0.8rem; */
 `;
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
   /* height: 100%; */
-
   margin-right: 0.4rem;
   margin-top: auto;
   width: auto;
