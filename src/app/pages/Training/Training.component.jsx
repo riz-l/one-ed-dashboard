@@ -1,16 +1,20 @@
 // Import: Packages
 import React from "react";
 
+// Import: Assets
+import { ReactComponent as ButtonIcon } from "../../../assets/img/icon/ward-dashboard.svg";
+
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./Training.elements";
+import { Container, ContentWrapper, Wrapper } from "./Training.elements";
 
 // Import: Components
-import { Form, Grid, Indicator, ReportSection } from "../../components";
+import {
+  Form,
+  Grid,
+  Indicator,
+  PageTitle,
+  ReportSection,
+} from "../../components";
 
 // Page: Training
 export default function Training() {
@@ -18,10 +22,10 @@ export default function Training() {
     <>
       <Container data-testid={"training"}>
         <Wrapper>
-          <Header>
-            <h2>Training</h2>
-            <span>User guide and training videos</span>
-          </Header>
+          <PageTitle
+            heading="Training"
+            subheading="User guide and training videos"
+          />
 
           <ContentWrapper>
             <ReportSection
@@ -34,7 +38,10 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Button text="Component: Button" />
+                        <Form.Button
+                          icon={<ButtonIcon />}
+                          text="Component: Button"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>

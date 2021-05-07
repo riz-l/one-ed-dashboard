@@ -8,6 +8,7 @@ export const Container = styled.div`
 
 // Element: StyledButton
 export const StyledButton = styled.button`
+  align-items: center;
   appearance: none;
   -webkit-appearance: none;
   background-color: #f7f8fa;
@@ -15,14 +16,30 @@ export const StyledButton = styled.button`
   border-radius: 8px;
   color: #6b7a99;
   cursor: pointer;
+  display: flex;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  justify-content: center;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
+
+  & svg {
+    fill: #c3cad9;
+    height: 20px;
+    max-height: 20px;
+    margin-right: 0.4rem;
+    transition: all 100ms linear;
+    width: auto;
+  }
 
   &:hover {
     background-color: #eef0f4;
     color: #4d5e80;
     transition: all 100ms linear;
+
+    & svg {
+      fill: #6b7a99;
+      transition: all 100ms linear;
+    }
   }
 `;
