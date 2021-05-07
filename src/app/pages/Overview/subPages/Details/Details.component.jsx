@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Details.elements";
 
 // Import: Components
-import { Form, Grid, Text } from "../../../../components";
+import { Display, Form, Grid, Text } from "../../../../components";
 
 // SubPage: Details
 export default function Details() {
@@ -27,13 +27,11 @@ export default function Details() {
               Details
             </Text>
 
-            <Form>
-              <Grid>
-                <Grid.Item>
-                  <Form.Display>Please select a Patient...</Form.Display>
-                </Grid.Item>
-              </Grid>
-            </Form>
+            <Grid>
+              <Grid.Item>
+                <Display>Please select a Patient...</Display>
+              </Grid.Item>
+            </Grid>
           </Wrapper>
         </Container>
       </>

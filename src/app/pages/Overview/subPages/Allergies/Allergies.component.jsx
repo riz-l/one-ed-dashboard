@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Allergies.elements";
 
 // Import: Components
-import { ReportEntry, Text } from "../../../../components";
+import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Allergies
 export default function Allergies() {
@@ -16,24 +16,47 @@ export default function Allergies() {
   );
 
   // Maps patientAllergies through Allergies
-  const allergiesRender = patientAllergies.map(
-    ({
-      id,
-      allergyName,
-      clinicalStatus,
-      manifestationDisplay,
-      ...otherPatientProps
-    }) => (
-      <ReportEntry
-        key={id}
-        allergies
-        details={manifestationDisplay}
-        status={clinicalStatus}
-        type={allergyName}
-        // {...otherPatientProps}
-      />
-    )
-  );
+  const allergiesRender =
+    patientAllergies && patientAllergies.length > 0
+      ? patientAllergies.map(
+          ({
+            id,
+            allergyName,
+            clinicalStatus,
+            manifestationDisplay,
+            ...otherPatientProps
+          }) => (
+            <ReportEntry
+              key={id}
+              allergies
+              details={manifestationDisplay}
+              status={clinicalStatus}
+              type={allergyName}
+              // {...otherPatientProps}
+            />
+          )
+        )
+      : null;
+
+  if (!patientAllergies || patientAllergies.length < 0) {
+    return (
+      <>
+        <Container data-testid={"allergies"}>
+          <Wrapper>
+            <Text as="h2" heading>
+              Allergies
+            </Text>
+
+            <Grid>
+              <Grid.Item>
+                <Display>This Patient has no historic allergies</Display>
+              </Grid.Item>
+            </Grid>
+          </Wrapper>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
@@ -43,7 +66,11 @@ export default function Allergies() {
             Allergies
           </Text>
 
-          {allergiesRender}
+          {patientAllergies && patientAllergies.length > 0 ? (
+            allergiesRender
+          ) : (
+            <Text as="p">The Patient has no historic allergies</Text>
+          )}
         </Wrapper>
       </Container>
     </>

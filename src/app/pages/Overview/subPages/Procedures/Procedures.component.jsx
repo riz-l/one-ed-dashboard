@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Procedures.elements";
 
 // Import: Components
-import { ReportEntry, Text } from "../../../../components";
+import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Procedures
 export default function Procedures() {
@@ -16,18 +16,41 @@ export default function Procedures() {
   );
 
   // Maps patientConditions where category === "Procedures"
-  const proceduresRender = patientConditions
-    .filter((item) => item.category === "Procedures")
-    .map(({ id, problemName, status, note, ...otherPatientProps }) => (
-      <ReportEntry
-        key={id}
-        procedures
-        details={note !== "undefined" ? note : "No further detail"}
-        status={status}
-        type={problemName}
-        {...otherPatientProps}
-      />
-    ));
+  const proceduresRender =
+    patientConditions && patientConditions.length > 0
+      ? patientConditions
+          .filter((item) => item.category === "Procedures")
+          .map(({ id, problemName, status, note, ...otherPatientProps }) => (
+            <ReportEntry
+              key={id}
+              procedures
+              details={note !== "undefined" ? note : "No further detail"}
+              status={status}
+              type={problemName}
+              {...otherPatientProps}
+            />
+          ))
+      : null;
+
+  if (!patientConditions || patientConditions.length < 0) {
+    return (
+      <>
+        <Container data-testid={"procedures"}>
+          <Wrapper>
+            <Text as="h2" heading>
+              Procedures
+            </Text>
+
+            <Grid>
+              <Grid.Item>
+                <Display>This Patient has no historic procedures</Display>
+              </Grid.Item>
+            </Grid>
+          </Wrapper>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
@@ -37,7 +60,11 @@ export default function Procedures() {
             Procedures
           </Text>
 
-          {proceduresRender}
+          {patientConditions && patientConditions.length > 0 ? (
+            proceduresRender
+          ) : (
+            <Text as="p">The Patient has no historic procedures</Text>
+          )}
         </Wrapper>
       </Container>
     </>

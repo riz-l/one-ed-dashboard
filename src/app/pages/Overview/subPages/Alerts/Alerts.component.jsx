@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Alerts.elements";
 
 // Import: Components
-import { ReportEntry, Text } from "../../../../components";
+import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Alerts
 export default function Alerts() {
@@ -16,17 +16,40 @@ export default function Alerts() {
   );
 
   // Maps patientAlerts through Alerts
-  const alertsRender = patientAlerts.map(
-    ({ id, alertName, alertFreeText, ...otherPatientProps }) => (
-      <ReportEntry
-        key={id}
-        alerts
-        type={alertName}
-        details={alertFreeText}
-        {...otherPatientProps}
-      />
-    )
-  );
+  const alertsRender =
+    patientAlerts && patientAlerts.length > 0
+      ? patientAlerts.map(
+          ({ id, alertName, alertFreeText, ...otherPatientProps }) => (
+            <ReportEntry
+              key={id}
+              alerts
+              type={alertName}
+              details={alertFreeText}
+              {...otherPatientProps}
+            />
+          )
+        )
+      : null;
+
+  if (!patientAlerts || patientAlerts.length < 0) {
+    return (
+      <>
+        <Container data-testid={"alerts"}>
+          <Wrapper>
+            <Text as="h2" heading>
+              Alerts
+            </Text>
+
+            <Grid>
+              <Grid.Item>
+                <Display>This Patient has no historic alerts</Display>
+              </Grid.Item>
+            </Grid>
+          </Wrapper>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
@@ -36,7 +59,11 @@ export default function Alerts() {
             Alerts
           </Text>
 
-          {alertsRender}
+          {patientAlerts && patientAlerts.length > 0 ? (
+            alertsRender
+          ) : (
+            <Text as="p">The Patient has no historic alerts</Text>
+          )}
         </Wrapper>
       </Container>
     </>
