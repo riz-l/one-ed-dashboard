@@ -37,6 +37,9 @@ export { Input } from "./Input/Input.component";
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";
 
+// Export: PageTitle
+export { default as PageTitle } from "./PageTitle/PageTitle.component";
+
 // Export: PatientDemographics
 export { default as PatientDemographics } from "./PatientDemographics/PatientDemographics.component";
 

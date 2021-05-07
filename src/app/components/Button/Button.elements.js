@@ -3,10 +3,7 @@ import styled from "styled-components";
 
 // Element: Container
 export const Container = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.8rem;
+  margin: ${({ margin }) => margin && margin};
 `;
 
 // Element: StyledButton

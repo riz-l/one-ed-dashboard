@@ -95,7 +95,11 @@ export default function Details() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Display htmlFor="addressLineOne" labelText="Address">
+                  <Form.Display
+                    htmlFor="addressLineOne"
+                    labelText="Address"
+                    margin="0 0 0 0"
+                  >
                     {patientData[0].add1 && patientData[0].add1}
                   </Form.Display>
                   <Form.Display htmlFor="addressLineTwo">
