@@ -10,7 +10,7 @@ import {
 // Import: Elements
 import {
   Container,
-  Header,
+  ListHeader,
   Table,
   TableWrapper,
   Wrapper,
@@ -18,6 +18,7 @@ import {
 
 // Import: Components
 import { Attendance, PatientItem } from "../index";
+import PageTitle from "../PageTitle/PageTitle.component";
 
 // Component: PatientList
 export default function PatientList() {
@@ -63,11 +64,10 @@ export default function PatientList() {
   return (
     <>
       <Container data-testid={"patientList"}>
-        <Header>
-          <h2>Patient List</h2>
+        <ListHeader>
+          <PageTitle heading="Patient List" subheading="Browse ED Patients" />
           <Attendance />
-          <span>Browse ED Patients</span>
-        </Header>
+        </ListHeader>
 
         <Wrapper>
           <TableWrapper>
@@ -75,7 +75,7 @@ export default function PatientList() {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>DOB</th>
+                  <th>Age</th>
                   <th>Gender</th>
                   <th>Diagnosis</th>
                   <th>Period</th>

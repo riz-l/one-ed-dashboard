@@ -10,6 +10,9 @@ export const Container = styled.div`
   height: auto;
   justify-content: center;
   padding: 1rem 2rem 0 2rem;
+  position: sticky;
+  -webkit-position: sticky;
+  top: 0;
   width: 100%;
 
   & h2 {

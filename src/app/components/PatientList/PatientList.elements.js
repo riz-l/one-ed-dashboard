@@ -13,37 +13,27 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-// Element: Header
-export const Header = styled.div`
-  align-items: flex-start;
-  background-color: #f7f8fa;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem 2rem;
-  position: sticky;
-  -webkit-position: sticky;
-  top: 0;
-  width: 100%;
-
-  & h2 {
-    color: #4d5e80;
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
-
-  & span {
-    color: #6b7a99;
-    font-size: 0.8rem;
-  }
-`;
-
 // Element: Wrapper
 export const Wrapper = styled.div`
   background-color: #f7f8fa;
   height: 100%;
   padding: 0 2rem;
   width: 100%;
+`;
+
+// Element: ListHeader
+export const ListHeader = styled.div`
+  align-items: center;
+  background-color: #f7f8fa;
+  display: flex;
+  height: auto;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+  position: sticky;
+  -webkit-position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 3;
 `;
 
 // Element: TableWrapper
@@ -57,6 +47,7 @@ export const Table = styled.table`
   font-size: 0.8rem;
   height: 100%;
   margin-bottom: 1rem;
+  position: relative;
   table-layout: fixed;
   width: 100%;
 
@@ -68,6 +59,8 @@ export const Table = styled.table`
   & thead tr {
     background-color: #4d5e80;
     color: #ffffff;
+    position: sticky;
+    top: 0;
     text-align: left;
 
     & th:first-child {
