@@ -105,23 +105,25 @@ export default function Registration() {
                   <Form.TextArea labelText="Additional Details" rows="5" />
                 </Grid.Item>
               </Grid.Column>
+
               <Grid.Column>
-                {/* Not selectable in lorenzo */}
+                {/* Not selectable in Lorenzo */}
                 <Grid.Item>
                   <Form.Checkbox text="Next of Kin Details Unavailable" />
                 </Grid.Item>
 
-                {/* Not selectable in lorenzo */}
+                {/* Not selectable in Lorenzo */}
                 <Grid.Item>
                   <Form.Checkbox text="Education Information Unavailable" />
                 </Grid.Item>
 
-                {/* Not selectable in lorenzo */}
+                {/* Not selectable in Lorenzo */}
                 <Grid.Item>
                   <Form.Checkbox text="Send PatientAide Invitation" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
+
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -167,21 +169,22 @@ export default function Registration() {
                   </Form.Display>
                 </Grid.Item>
               </Grid.Column>
+
               <Grid.Column>
                 <Grid.Item>
                   <Form.Dropdown labelText="Primary Contact" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Telephone (home)" />
+                  <Form.Input type="number" labelText="Telephone (Home)" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Telephone (mobile)" />
+                  <Form.Input type="number" labelText="Telephone (Mobile)" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Telephone (work)" />
+                  <Form.Input type="number" labelText="Telephone (Work)" />
                 </Grid.Item>
 
                 <Grid.Item>

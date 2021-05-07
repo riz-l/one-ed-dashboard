@@ -13,7 +13,7 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-//Element: Form Wrapper
+// Element: FormWrapper
 export const FormWrapper = styled.div`
   max-height: 100%;
   overflow-y: scroll;

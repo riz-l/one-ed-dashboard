@@ -30,6 +30,7 @@ export default function CreateAttendance() {
                   <Form.Input type="time" labelText="Arrival Time" />
                 </Grid.Item>
               </Grid.Column>
+
               <Grid.Column>
                 <Grid.Item>
                   <Form.AutoSuggest labelText="Presenting Complaint" />
@@ -76,6 +77,7 @@ export default function CreateAttendance() {
                 <Grid.Item>
                   <Form.Input type="Date" labelText="Incident Date" />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.Input type="Time" labelText="Incident Date" />
                 </Grid.Item>
@@ -96,6 +98,7 @@ export default function CreateAttendance() {
                   <Form.Dropdown labelText="Mode of Arrival" />
                 </Grid.Item>
               </Grid.Column>
+
               <Grid.Column>
                 {/* Ambulance job number can only be completed if the mode of Arrival involves an ambulance.  */}
                 <Grid.Item>
@@ -129,6 +132,7 @@ export default function CreateAttendance() {
                 </Grid.Item>
               </Grid.Column>
             </Grid>
+
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -164,6 +168,7 @@ export default function CreateAttendance() {
             <Form.Text as="h2" heading>
               Referral
             </Form.Text>
+
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -234,6 +239,7 @@ export default function CreateAttendance() {
                 <Grid.Item>
                   <Form.AutoSuggest labelText="Specialty" />
                 </Grid.Item>
+
                 <Grid.Item>
                   <Form.AutoSuggest labelText="Treatment Function" />
                 </Grid.Item>

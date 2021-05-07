@@ -10,9 +10,9 @@ import ReactModal from "react-modal";
 import { Container, FormWrapper, Header } from "./Attendance.elements";
 import "./Attendance.styles.css";
 
-// Import: Components & sub pages
+// Import: Components, SubPages
 import { Button, PrimaryNavigation, ReportSection } from "../index";
-import { Registration, CreateAttendance } from "./subPages";
+import { CreateAttendance, Registration } from "./subPages";
 
 // Component: Attendance
 export default function Attendance() {
@@ -66,6 +66,7 @@ export default function Attendance() {
               <h3>Create Attendance & Registration</h3>
               <Button text="Close" onClick={closeModal} />
             </Header>
+
             <ReportSection
               primaryNavigation={
                 <PrimaryNavigation>
