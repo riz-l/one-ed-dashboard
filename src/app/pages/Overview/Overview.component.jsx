@@ -21,15 +21,11 @@ import { ReactComponent as ProceduresIcon } from "../../../assets/img/icon/proce
 import { ReactComponent as SymptomsIcon } from "../../../assets/img/icon/symptoms.svg";
 
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./Overview.elements";
+import { Container, ContentWrapper, Wrapper } from "./Overview.elements";
 
 // Import: Components, SubPages
 import {
+  PageTitle,
   PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
@@ -242,10 +238,10 @@ export default function Overview() {
     <>
       <Container data-testid={"overview"}>
         <Wrapper>
-          <Header>
-            <h2>Overview</h2>
-            <span>Patient details and history</span>
-          </Header>
+          <PageTitle
+            heading="Overview"
+            subheading="Patient details and history"
+          />
 
           <ContentWrapper>
             <ReportSection
