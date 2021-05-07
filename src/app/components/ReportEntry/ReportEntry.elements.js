@@ -2,7 +2,11 @@
 import styled from "styled-components/macro";
 
 // Element: Container
-export const Container = styled.div``;
+export const Container = styled.div`
+  &:last-of-type {
+    padding-bottom: 1rem;
+  }
+`;
 
 // Element: Arrow
 export const Arrow = styled.div`
@@ -218,6 +222,10 @@ export const Detail = styled.div`
 
   & p {
     color: #4d5e80;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
 `;
 
@@ -240,4 +248,10 @@ export const Status = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+
+  & p {
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
 `;

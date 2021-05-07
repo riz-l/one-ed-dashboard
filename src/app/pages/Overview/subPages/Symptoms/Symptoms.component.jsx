@@ -1,5 +1,6 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./Symptoms.elements";
@@ -9,6 +10,25 @@ import { ReportEntry, Text } from "../../../../components";
 
 // SubPage: Symptoms
 export default function Symptoms() {
+  // Redux: Extracts patientConditions from the global state
+  const patientConditions = useSelector(
+    (state) => state.selectedPatient.patientConditions
+  );
+
+  // Maps patientConditions where category === "Symptoms"
+  const symptomsRender = patientConditions
+    .filter((item) => item.category === "Symptoms")
+    .map(({ id, problemName, status, note, ...otherPatientProps }) => (
+      <ReportEntry
+        key={id}
+        symptoms
+        details={note !== "undefined" ? note : "No further detail"}
+        status={status}
+        type={problemName}
+        {...otherPatientProps}
+      />
+    ));
+
   return (
     <>
       <Container data-testid={"symptoms"}>
@@ -17,12 +37,7 @@ export default function Symptoms() {
             Symptoms
           </Text>
 
-          <ReportEntry
-            symptoms
-            type="Impairment"
-            details="Communication difficulties"
-            status="Active"
-          />
+          {symptomsRender}
         </Wrapper>
       </Container>
     </>

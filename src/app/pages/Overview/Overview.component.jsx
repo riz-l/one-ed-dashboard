@@ -1,7 +1,12 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPatientDemographics } from "../../../redux/slices/selectedPatientSlice";
+import {
+  getPatientDemographics,
+  getPatientAllergies,
+  getPatientAlerts,
+  getPatientConditions,
+} from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Assets
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
@@ -87,6 +92,9 @@ export default function Overview() {
   useEffect(() => {
     if (patient !== "") {
       dispatch(getPatientDemographics());
+      dispatch(getPatientAllergies());
+      dispatch(getPatientAlerts());
+      dispatch(getPatientConditions());
     }
   }, [patient, dispatch]);
 

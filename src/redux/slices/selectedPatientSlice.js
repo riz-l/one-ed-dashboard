@@ -18,6 +18,7 @@ export const getSelectedPatient = createAsyncThunk(
     }
   }
 );
+
 // AsyncThunk: getPatientDemographics
 export const getPatientDemographics = createAsyncThunk(
   "patientList/getPatientDemographics",
@@ -47,6 +48,93 @@ export const getPatientDemographics = createAsyncThunk(
   }
 );
 
+// AsyncThunk: getPatientAllergies
+export const getPatientAllergies = createAsyncThunk(
+  "patientList/getPatientAllergies",
+  async (arg, { getState }) => {
+    const state = getState();
+    const patient = state.selectedPatient.patient;
+    const token = state.userDetails.token;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetAllergies/${patient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+// AsyncThunk: getPatientAlerts
+export const getPatientAlerts = createAsyncThunk(
+  "patientList/getPatientAlerts",
+  async (arg, { getState }) => {
+    const state = getState();
+    const patient = state.selectedPatient.patient;
+    const token = state.userDetails.token;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetAlerts/${patient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+// AsyncThunk: getPatientConditions
+export const getPatientConditions = createAsyncThunk(
+  "patientList/getPatientConditions",
+  async (arg, { getState }) => {
+    const state = getState();
+    const patient = state.selectedPatient.patient;
+    const token = state.userDetails.token;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetCondition/${patient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 // Slice: selectedPatientSlice
 export const selectedPatientSlice = createSlice({
   name: "selectedPatient",
@@ -56,6 +144,12 @@ export const selectedPatientSlice = createSlice({
     dataStatus: null,
     patientDemographics: {},
     demographicsStatus: null,
+    patientAllergies: [],
+    allergiesStatus: null,
+    patientAlerts: [],
+    alertsStatus: null,
+    patientConditions: [],
+    conditionsStatus: null,
   },
   reducers: {
     selectPatient: (state, { payload }) => {
@@ -95,6 +189,48 @@ export const selectedPatientSlice = createSlice({
     },
     [getPatientDemographics.rejected]: (state, action) => {
       state.demographicsStatus = "failed";
+    },
+    [getPatientAllergies.pending]: (state, action) => {
+      state.allergiesStatus = "loading";
+    },
+    [getPatientAllergies.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.patientAllergies = payload;
+        state.allergiesStatus = "success";
+      } else {
+        state.allergiesStatus = "failed";
+      }
+    },
+    [getPatientAllergies.rejected]: (state, action) => {
+      state.allergiesStatus = "failed";
+    },
+    [getPatientAlerts.pending]: (state, action) => {
+      state.alertsStatus = "loading";
+    },
+    [getPatientAlerts.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.patientAlerts = payload;
+        state.alertsStatus = "success";
+      } else {
+        state.alertsStatus = "failed";
+      }
+    },
+    [getPatientAlerts.rejected]: (state, action) => {
+      state.alertsStatus = "failed";
+    },
+    [getPatientConditions.pending]: (state, action) => {
+      state.conditionsStatus = "loading";
+    },
+    [getPatientConditions.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.patientConditions = payload;
+        state.conditionsStatus = "success";
+      } else {
+        state.conditionsStatus = "failed";
+      }
+    },
+    [getPatientConditions.rejected]: (state, action) => {
+      state.conditionsStatus = "failed";
     },
   },
 });

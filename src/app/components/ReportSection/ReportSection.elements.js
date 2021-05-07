@@ -10,7 +10,6 @@ export const Container = styled.div`
     "secondary-navigation"
     "content";
   grid-template-columns: 100%;
-  /* grid-template-rows: 60px 60px auto; */
   grid-template-rows: ${({ primaryNavigation, secondaryNavigation }) =>
     primaryNavigation && secondaryNavigation
       ? "60px 60px auto"
@@ -21,9 +20,6 @@ export const Container = styled.div`
       : !primaryNavigation && !secondaryNavigation
       ? "0 0 auto"
       : null};
-  /* height: 100%;
-  max-height: 100%;
-  min-height: 100%; */
   height: auto;
   width: 100%;
   max-width: 100%;
@@ -92,6 +88,12 @@ export const ContentWrapper = styled.div`
   border-top-right-radius: 8px;
   border: 1px solid #edeff2;
   height: 100%;
+  max-height: calc(100vh - 80px - 74px - 60px - 108px);
+  min-height: calc(100vh - 80px - 74px - 60px - 108px);
+  margin-bottom: 1rem;
+  overflow-y: auto;
   padding: 1rem;
+  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-width: thin;
   width: 100%;
 `;
