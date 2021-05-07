@@ -79,15 +79,15 @@ export default function Details() {
                     {patientData[0].gender && patientData[0].gender}
                   </Form.Display>
                 </Grid.Item>
+              </Grid.Column>
 
+              <Grid.Column>
                 <Grid.Item>
                   <Form.Display htmlFor="patientID" labelText="Patient ID">
                     {patientData[0].patientID && patientData[0].patientID}
                   </Form.Display>
                 </Grid.Item>
-              </Grid.Column>
 
-              <Grid.Column>
                 <Grid.Item>
                   <Form.Display htmlFor="period" labelText="Period">
                     {patientData[0].period && patientData[0].period}
