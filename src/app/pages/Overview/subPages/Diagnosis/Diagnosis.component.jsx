@@ -60,10 +60,12 @@ export default function Diagnosis() {
             Diagnosis
           </Text>
 
-          {patientConditions && patientConditions.length > 0 ? (
+          {patientConditions &&
+          patientConditions.length > 0 &&
+          patientConditions.includes({ category: "Diagnosis" }) ? (
             diagnosisRender
           ) : (
-            <Text as="p">The Patient has no historic allergies</Text>
+            <Text as="p">The Patient has no historic diagnoses</Text>
           )}
         </Wrapper>
       </Container>

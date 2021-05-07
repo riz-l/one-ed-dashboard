@@ -60,7 +60,9 @@ export default function Procedures() {
             Procedures
           </Text>
 
-          {patientConditions && patientConditions.length > 0 ? (
+          {patientConditions &&
+          patientConditions.length > 0 &&
+          patientConditions.includes({ category: "Procedures" }) ? (
             proceduresRender
           ) : (
             <Text as="p">The Patient has no historic procedures</Text>

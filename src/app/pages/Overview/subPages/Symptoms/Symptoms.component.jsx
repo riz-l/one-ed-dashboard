@@ -60,7 +60,9 @@ export default function Symptoms() {
             Symptoms
           </Text>
 
-          {patientConditions && patientConditions.length > 0 ? (
+          {patientConditions &&
+          patientConditions.length > 0 &&
+          patientConditions.includes({ category: "Symptoms" }) ? (
             symptomsRender
           ) : (
             <Text as="p">The Patient has no historic symptoms</Text>

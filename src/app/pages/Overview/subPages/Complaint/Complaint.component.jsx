@@ -60,7 +60,9 @@ export default function Complaint() {
             Complaint
           </Text>
 
-          {patientConditions && patientConditions.length > 0 ? (
+          {patientConditions &&
+          patientConditions.length > 0 &&
+          patientConditions.includes({ category: "Complaint" }) ? (
             complaintRender
           ) : (
             <Text as="p">The Patient has no historic complaints</Text>
