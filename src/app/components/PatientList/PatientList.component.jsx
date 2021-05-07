@@ -17,7 +17,7 @@ import {
 } from "./PatientList.elements";
 
 // Import: Components
-import { PatientItem } from "../index";
+import { Attendance, PatientItem } from "../index";
 
 // Component: PatientList
 export default function PatientList() {
@@ -61,6 +61,7 @@ export default function PatientList() {
       <Container data-testid={"patientList"}>
         <Header>
           <h2>Patient List</h2>
+          <Attendance />
           <span>Browse ED Patients</span>
         </Header>
 
