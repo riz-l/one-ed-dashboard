@@ -62,6 +62,12 @@ export default function Details() {
                 </Grid.Item>
 
                 <Grid.Item>
+                  <Form.Display htmlFor="age" labelText="Age">
+                    {patientData[0].age && patientData[0].age}
+                  </Form.Display>
+                </Grid.Item>
+
+                <Grid.Item>
                   <Form.Display htmlFor="ethnicity" labelText="Ethnicity">
                     {patientDemographics.ethnicity &&
                       patientDemographics.ethnicity}
@@ -82,6 +88,12 @@ export default function Details() {
               </Grid.Column>
 
               <Grid.Column>
+                <Grid.Item>
+                  <Form.Display htmlFor="period" labelText="Period">
+                    {patientData[0].period && patientData[0].period}
+                  </Form.Display>
+                </Grid.Item>
+
                 <Grid.Item>
                   <Form.Display htmlFor="addressLineOne" labelText="Address">
                     {patientData[0].add1 && patientData[0].add1}
