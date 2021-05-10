@@ -30,7 +30,10 @@ export default function Training() {
                   <Grid>
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.AutoSuggest labelText="Component: AutoSuggest" />
+                        <Form.AutoSuggest
+                          labelText="Component: AutoSuggest"
+                          left="true"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
@@ -38,11 +41,26 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Checkbox text="Component: Checkbox" />
+                        <Form.Checkbox
+                          text="Component: Checkbox"
+                          under={false}
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Radio text="Component: Radio" />
+                        <Form.Radio
+                          // text="Component: Radio"
+                          name="test1"
+                          href="test2"
+                          value="test3"
+                        />
+                        <Form.Radio
+                          text="Radio2"
+                          name="test1"
+                          href="test2"
+                          value="test3"
+                          checked
+                        />
                       </Grid.Item>
 
                       <Grid.Item>

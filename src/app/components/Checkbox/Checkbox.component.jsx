@@ -14,6 +14,11 @@ import {
   VisualBox,
 } from "./Checkbox.elements";
 
+// Notes on Props & attributes
+// checked = if this prop is given (or set to false) then the  checkbox starts off as ticked.
+// onChange = defines what happens when the checkbox is checked or unchecked.
+// under = if present or set to true this sets the flex-direction to column which puts the label above the checkbox rather than to the side.
+
 // Component: Checkbox
 export default function Checkbox({
   checked,
