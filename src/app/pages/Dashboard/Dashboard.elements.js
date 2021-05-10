@@ -30,6 +30,7 @@ export const List = styled.div`
   flex: 2;
   height: 100%;
   justify-content: center;
+  max-width: 100%;
   width: 100%;
 `;
 

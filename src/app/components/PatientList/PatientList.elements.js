@@ -26,6 +26,7 @@ export const ListHeader = styled.div`
   align-items: center;
   background-color: #f7f8fa;
   display: flex;
+  flex-direction: column;
   height: auto;
   justify-content: flex-start;
   padding-bottom: 1rem;
@@ -34,6 +35,16 @@ export const ListHeader = styled.div`
   top: 0;
   width: 100%;
   z-index: 3;
+`;
+
+// Element: Item
+export const Item = styled.div`
+  align-items: center;
+  background-color: #f7f8fa;
+  display: flex;
+  height: auto;
+  justify-content: flex-start;
+  width: 100%;
 `;
 
 // Element: TableWrapper
@@ -53,7 +64,7 @@ export const Table = styled.table`
 
   & thead {
     position: sticky;
-    top: 90px;
+    top: 140px;
   }
 
   & thead tr {

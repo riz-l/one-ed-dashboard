@@ -10,6 +10,7 @@ import {
 // Import: Elements
 import {
   Container,
+  Item,
   ListHeader,
   Table,
   TableWrapper,
@@ -17,7 +18,7 @@ import {
 } from "./PatientList.elements";
 
 // Import: Components
-import { Attendance, PatientItem } from "../index";
+import { Attendance, PatientItem, PrimaryNavigation } from "../index";
 import PageTitle from "../PageTitle/PageTitle.component";
 
 // Component: PatientList
@@ -67,8 +68,20 @@ export default function PatientList() {
     <>
       <Container data-testid={"patientList"}>
         <ListHeader>
-          <PageTitle heading="Patient List" subheading="Browse ED Patients" />
-          <Attendance />
+          <PrimaryNavigation margin="0 0 -1rem 0" padding="1rem 0 0 2rem">
+            <PrimaryNavigation.Item>
+              <PrimaryNavigation.Text>Patient List</PrimaryNavigation.Text>
+            </PrimaryNavigation.Item>
+
+            <PrimaryNavigation.Item>
+              <PrimaryNavigation.Text>Incoming Patients</PrimaryNavigation.Text>
+            </PrimaryNavigation.Item>
+          </PrimaryNavigation>
+
+          <Item>
+            <PageTitle heading="Patient List" subheading="Browse ED Patients" />
+            <Attendance />
+          </Item>
         </ListHeader>
 
         <Wrapper>

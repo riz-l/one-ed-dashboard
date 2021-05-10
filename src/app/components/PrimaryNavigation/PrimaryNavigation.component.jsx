@@ -39,10 +39,16 @@ function Text({ ...props }) {
 }
 
 // Component: PrimaryNavigation
-export default function PrimaryNavigation(props) {
+export default function PrimaryNavigation({ margin, padding, ...props }) {
   return (
     <PrimaryNavigationGroupContext.Provider value={props}>
-      <Container data-testid={"primaryNavigation"}>{props.children}</Container>
+      <Container
+        margin={margin}
+        padding={padding}
+        data-testid={"primaryNavigation"}
+      >
+        {props.children}
+      </Container>
     </PrimaryNavigationGroupContext.Provider>
   );
 }
