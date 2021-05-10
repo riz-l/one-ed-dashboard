@@ -285,11 +285,7 @@ export default function Overview() {
                       <SecondaryNavigation.Item
                         isActive={isDetails ? true : false}
                       >
-                        <SecondaryNavigation.Icon
-                          isRed={
-                            patientData && patientDemographics ? true : false
-                          }
-                        >
+                        <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -473,16 +469,7 @@ export default function Overview() {
                   ) : (
                     <>
                       <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon
-                          isRed={
-                            patientData &&
-                            patientData.length > 0 &&
-                            patientDemographics &&
-                            patientDemographics.length > 0
-                              ? true
-                              : false
-                          }
-                        >
+                        <SecondaryNavigation.Icon>
                           <DetailsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>

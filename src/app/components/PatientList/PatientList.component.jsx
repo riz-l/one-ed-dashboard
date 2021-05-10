@@ -33,11 +33,13 @@ export default function PatientList() {
   // ... if the token exists, fetch the Patient list data
   useEffect(() => {
     if (token !== "" && token.length > 0) {
-      dispatch(getPatientList()).then(
+      const interval = dispatch(getPatientList()).then(
         setInterval(() => {
           dispatch(getPatientList());
         }, 30000)
       );
+
+      return () => clearInterval(interval);
     }
   }, [token, dispatch]);
 
