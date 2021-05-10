@@ -45,9 +45,11 @@ export const Indicator = styled.div`
   border-radius: 80%;
   content: "";
   height: 10px;
+  opacity: ${({ isRed }) => (isRed ? "1" : "0")};
   position: absolute;
   right: -4px;
   top: 2px;
+  visibility: ${({ isRed }) => (isRed ? "1" : "0")};
   width: 10px;
 `;
 

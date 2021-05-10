@@ -121,7 +121,13 @@ export default function ReportEntry({
             </Heading>
 
             <Detail>
-              <p>{details ? details : "Details"}</p>
+              <p>
+                {details && details.length > 25
+                  ? details.substring(0, 25) + "..."
+                  : details && details.length < 25
+                  ? details
+                  : "Details"}
+              </p>
             </Detail>
           </Left>
 
