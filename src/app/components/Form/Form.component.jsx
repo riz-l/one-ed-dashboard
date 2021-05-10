@@ -55,8 +55,16 @@ function FormAutoSuggest({ labelText }) {
 }
 
 // Compound Component: FormButton
-function FormButton({ onClick, text, type }) {
-  return <Button onClick={onClick} text={text} type={type} />;
+function FormButton({ icon, onClick, margin, text, type }) {
+  return (
+    <Button
+      icon={icon}
+      margin={margin}
+      onClick={onClick}
+      text={text}
+      type={type}
+    />
+  );
 }
 
 // Compound Component: FormCheckbox

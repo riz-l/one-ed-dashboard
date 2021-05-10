@@ -115,7 +115,7 @@ export default function PatientSummary() {
 
                     <DetailsContainer>
                       <DetailsItem>
-                        <Display labelText="Address">
+                        <Display labelText="Address" margin="0 0 0 0">
                           {patientData[0].add1 && patientData[0].add1}
                         </Display>
                         <Display>

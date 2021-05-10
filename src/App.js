@@ -20,7 +20,6 @@ import {
   Login,
   Observations,
   Overview,
-  RegAndAttendance,
   Seen,
   Settings,
   Training,
@@ -126,11 +125,6 @@ export default function App() {
           {/* Ward - ED Overview */}
           <Route exact path="/one-ed/ward/ed-overview">
             <EDOverview />
-          </Route>
-
-          {/* Ward - Registation and Create Attendance */}
-          <Route exact path="/one-ed/ward/registration-and-create-attendance">
-            <RegAndAttendance />
           </Route>
 
           {/* Patient - Overview */}

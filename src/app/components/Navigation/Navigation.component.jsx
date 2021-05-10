@@ -16,7 +16,6 @@ import { ReactComponent as SettingsLogoutIcon } from "../../../assets/img/icon/s
 import { ReactComponent as TrainingIcon } from "../../../assets/img/icon/training.svg";
 import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
 import { ReactComponent as WardEDIcon } from "../../../assets/img/icon/ward-ed.svg";
-import { ReactComponent as WardRegAndAttendanceIcon } from "../../../assets/img/icon/ward-RegAndAttendance.svg";
 
 // Import: Elements
 import {
@@ -102,23 +101,6 @@ export default function Navigation({
                 <OptionItem>
                   <WardEDIcon />
                   <span>ED Overview</span>
-                </OptionItem>
-              </OptionLink>
-
-              <OptionLink
-                to="/one-ed/ward/registration-and-create-attendance"
-                onClick={
-                  window.innerWidth <= 1077
-                    ? () =>
-                        setIsNavigationOpen(
-                          (isNavigationOpen) => !isNavigationOpen
-                        )
-                    : null
-                }
-              >
-                <OptionItem>
-                  <WardRegAndAttendanceIcon />
-                  <span>Reg &amp; Attendance</span>
                 </OptionItem>
               </OptionLink>
             </OptionsContainer>

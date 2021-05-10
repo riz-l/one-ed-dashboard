@@ -8,7 +8,7 @@ import { Container, Gender, Name } from "./PatientItem.elements";
 // Component: PatientItem
 export default function PatientItem({
   diagnosis,
-  dob,
+  age,
   gender,
   name,
   onClick,
@@ -27,7 +27,7 @@ export default function PatientItem({
         patientID={patientID}
       >
         <Name>{name}</Name>
-        <td>{dob}</td>
+        <td>{age}</td>
         <Gender>{gender}</Gender>
         <td>{diagnosis}</td>
         <td>{period}</td>

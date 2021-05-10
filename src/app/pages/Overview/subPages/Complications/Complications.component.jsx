@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Complications.elements";
 
 // Import: Components
-import { ReportEntry, Text } from "../../../../components";
+import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Complications
 export default function Complications() {
@@ -16,18 +16,41 @@ export default function Complications() {
   );
 
   // Maps patientConditions where category === "Complications"
-  const complicationsRender = patientConditions
-    .filter((item) => item.category === "Complications")
-    .map(({ id, problemName, status, note, ...otherPatientProps }) => (
-      <ReportEntry
-        key={id}
-        complications
-        details={note !== "undefined" ? note : "No further detail"}
-        status={status}
-        type={problemName}
-        {...otherPatientProps}
-      />
-    ));
+  const complicationsRender =
+    patientConditions && patientConditions.length > 0
+      ? patientConditions
+          .filter((item) => item.category === "Complications")
+          .map(({ id, problemName, status, note, ...otherPatientProps }) => (
+            <ReportEntry
+              key={id}
+              complications
+              details={note !== "undefined" ? note : "No further detail"}
+              status={status}
+              type={problemName}
+              {...otherPatientProps}
+            />
+          ))
+      : null;
+
+  if (!patientConditions || patientConditions.length < 0) {
+    return (
+      <>
+        <Container data-testid={"complications"}>
+          <Wrapper>
+            <Text as="h2" heading>
+              Complications
+            </Text>
+
+            <Grid>
+              <Grid.Item>
+                <Display>This Patient has no historic complications</Display>
+              </Grid.Item>
+            </Grid>
+          </Wrapper>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
@@ -37,7 +60,13 @@ export default function Complications() {
             Complications
           </Text>
 
-          {complicationsRender}
+          {patientConditions &&
+          patientConditions.length > 0 &&
+          patientConditions.includes({ category: "Complications" }) ? (
+            complicationsRender
+          ) : (
+            <Text as="p">The Patient has no historic complications</Text>
+          )}
         </Wrapper>
       </Container>
     </>

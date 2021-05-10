@@ -15,16 +15,29 @@ export const Container = styled.div`
       : css`
           flex-direction: column;
         `}
-  margin-bottom: 1rem;
+  margin-bottom: ${({ labelText }) => (labelText ? "1rem" : "0")};
   margin: ${({ margin }) => margin && margin};
 `;
 
 // Element: Label
 export const Label = styled.label`
   color: #6b7a99;
-  ${({ left }) =>
+  /* ${({ left }) =>
     left
       ? css`
+          margin-right: 1rem;
+        `
+      : css`
+          margin-bottom: 2px;
+        `} */
+  ${({ labelText, left }) =>
+    labelText && left
+      ? css`
+          margin-right: 1rem;
+        `
+      : !labelText && left
+      ? css`
+          margin-bottom: 0;
           margin-right: 1rem;
         `
       : css`

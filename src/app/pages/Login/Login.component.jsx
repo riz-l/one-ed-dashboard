@@ -68,13 +68,15 @@ export default function Login(props) {
               type="text"
               ref={usernameInputRef}
             />
+
             <Form.Input
               labelText="Password"
               onChange={addPasswordToRedux}
               type="password"
               ref={passwordInputRef}
             />
-            <Form.Button type="submit" text="Login" />
+
+            <Form.Button type="submit" text="Login" margin="2rem 0 0 0" />
           </Form>
         </Wrapper>
       </Container>

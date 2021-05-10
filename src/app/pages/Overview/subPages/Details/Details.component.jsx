@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Container, Wrapper } from "./Details.elements";
 
 // Import: Components
-import { Form, Grid, Text } from "../../../../components";
+import { Display, Form, Grid, Text } from "../../../../components";
 
 // SubPage: Details
 export default function Details() {
@@ -27,13 +27,11 @@ export default function Details() {
               Details
             </Text>
 
-            <Form>
-              <Grid>
-                <Grid.Item>
-                  <Form.Display>Please select a Patient...</Form.Display>
-                </Grid.Item>
-              </Grid>
-            </Form>
+            <Grid>
+              <Grid.Item>
+                <Display>Please select a Patient...</Display>
+              </Grid.Item>
+            </Grid>
           </Wrapper>
         </Container>
       </>
@@ -64,6 +62,12 @@ export default function Details() {
                 </Grid.Item>
 
                 <Grid.Item>
+                  <Form.Display htmlFor="age" labelText="Age">
+                    {patientData[0].age && patientData[0].age}
+                  </Form.Display>
+                </Grid.Item>
+
+                <Grid.Item>
                   <Form.Display htmlFor="ethnicity" labelText="Ethnicity">
                     {patientDemographics.ethnicity &&
                       patientDemographics.ethnicity}
@@ -75,17 +79,27 @@ export default function Details() {
                     {patientData[0].gender && patientData[0].gender}
                   </Form.Display>
                 </Grid.Item>
+              </Grid.Column>
 
+              <Grid.Column>
                 <Grid.Item>
                   <Form.Display htmlFor="patientID" labelText="Patient ID">
                     {patientData[0].patientID && patientData[0].patientID}
                   </Form.Display>
                 </Grid.Item>
-              </Grid.Column>
 
-              <Grid.Column>
                 <Grid.Item>
-                  <Form.Display htmlFor="addressLineOne" labelText="Address">
+                  <Form.Display htmlFor="period" labelText="Period">
+                    {patientData[0].period && patientData[0].period}
+                  </Form.Display>
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.Display
+                    htmlFor="addressLineOne"
+                    labelText="Address"
+                    margin="0 0 0 0"
+                  >
                     {patientData[0].add1 && patientData[0].add1}
                   </Form.Display>
                   <Form.Display htmlFor="addressLineTwo">
