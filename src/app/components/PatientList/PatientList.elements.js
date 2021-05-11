@@ -73,27 +73,20 @@ export const Table = styled.table`
     position: sticky;
     top: 0;
     text-align: left;
-
-    & th:first-child {
-      border-bottom-left-radius: 8px;
-      border-top-left-radius: 8px;
-    }
-
-    & th:last-child {
-      border-bottom-right-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-
-    & th {
-      background-color: #4d5e80;
-      color: #ffffff;
-      width: 100%;
-    }
   }
 
-  & th,
-  td {
+  & td {
     color: #4d5e80;
     padding: 12px 15px;
   }
+`;
+
+// Element: THeading
+export const THeading = styled.th`
+  background-color: ${({ isPatientList }) =>
+    isPatientList ? "#4d5e80" : "#008ba3"};
+  color: #ffffff;
+  padding: 12px 15px;
+  transition: all 100ms linear;
+  width: 100%;
 `;

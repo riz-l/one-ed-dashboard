@@ -14,6 +14,7 @@ import {
   ListHeader,
   Table,
   TableWrapper,
+  THeading,
   Wrapper,
 } from "./PatientList.elements";
 
@@ -127,11 +128,11 @@ export default function PatientList() {
             <Table>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Diagnosis</th>
-                  <th>Period</th>
+                  <THeading isPatientList={isPatientList}>Name</THeading>
+                  <THeading isPatientList={isPatientList}>Age</THeading>
+                  <THeading isPatientList={isPatientList}>Gender</THeading>
+                  <THeading isPatientList={isPatientList}>Diagnosis</THeading>
+                  <THeading isPatientList={isPatientList}>Period</THeading>
                 </tr>
               </thead>
               <tbody>
