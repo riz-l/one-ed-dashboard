@@ -19,6 +19,7 @@ export const Layout = styled.div`
   display: flex;
   height: 100%;
   max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   justify-content: center;
   width: 100%;
 `;
@@ -30,6 +31,7 @@ export const List = styled.div`
   flex: 2;
   height: 100%;
   justify-content: center;
+  max-width: 100%;
   width: 100%;
 `;
 

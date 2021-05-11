@@ -7,12 +7,15 @@ export const Container = styled.div`
   display: flex;
   height: 100%;
   justify-content: flex-start;
+  margin: ${({ margin }) => margin && margin};
   overflow-x: auto;
   overflow-y: hidden;
+  padding: ${({ padding }) => padding && padding};
   scrollbar-color: #c3cad9 #edeff2;
   scrollbar-width: thin;
   width: 100%;
   max-width: 100%;
+  z-index: 4;
 `;
 
 // Element: ItemContainer

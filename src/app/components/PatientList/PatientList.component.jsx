@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
@@ -10,36 +10,45 @@ import {
 // Import: Elements
 import {
   Container,
+  Item,
   ListHeader,
   Table,
   TableWrapper,
+  THeading,
   Wrapper,
 } from "./PatientList.elements";
 
 // Import: Components
-import { Attendance, PatientItem } from "../index";
+import { Attendance, PatientItem, PrimaryNavigation } from "../index";
 import PageTitle from "../PageTitle/PageTitle.component";
 
 // Component: PatientList
 export default function PatientList() {
-  // Redux: Fetches token, patients, selectedPatient from the global state
+  // Redux: Fetches token, patientList, selectedPatient from the global state
   const token = useSelector((state) => state.userDetails.token);
-  const patients = useSelector((state) => state.patientList.patients);
+  const patientList = useSelector((state) => state.patientList.patients);
+  // const incomingPatients = useSelector(
+  //   (state) => state.incomingPatients.incoming
+  // );
   const status = useSelector((state) => state.patientList.status);
   const selectedPatient = useSelector((state) => state.selectedPatient.patient);
   const dispatch = useDispatch();
+
+  // State: isPatientList, isIncomingPatients
+  const [isPatientList, setIsPatientList] = useState(true);
+  const [isIncomingPatients, setIsIncomingPatients] = useState(false);
 
   // Effect: Checks that a user token exists
   // ... if the token exists, fetch the Patient list data
   useEffect(() => {
     if (token !== "" && token.length > 0) {
-      const interval = dispatch(getPatientList()).then(
+      const patientListInterval = dispatch(getPatientList()).then(
         setInterval(() => {
           dispatch(getPatientList());
         }, 30000)
       );
 
-      return () => clearInterval(interval);
+      return () => clearInterval(patientListInterval);
     }
   }, [token, dispatch]);
 
@@ -51,8 +60,20 @@ export default function PatientList() {
     }
   }, [selectedPatient, dispatch]);
 
+  // onClick: Renders patientList
+  function renderPatientList() {
+    setIsIncomingPatients(false);
+    setIsPatientList(true);
+  }
+
+  // onClick: Renders incomingPatients
+  function renderIncomingPatients() {
+    setIsPatientList(false);
+    setIsIncomingPatients(true);
+  }
+
   // Maps patientListData through PatientItem
-  const patientListRender = patients.map(
+  const subPatientListRender = patientList.map(
     ({ patientID, ...otherPatientProps }) => (
       <PatientItem
         key={patientID}
@@ -63,12 +84,43 @@ export default function PatientList() {
     )
   );
 
+  // Maps incomingPatients through PatientItem
+  const incomingPatientListRender = (
+    <>
+      <tr>
+        <td>PLACEHOLDER</td>
+        <td>PLACEHOLDER</td>
+        <td>PLACEHOLDER</td>
+        <td>PLACEHOLDER</td>
+        <td>PLACEHOLDER</td>
+      </tr>
+    </>
+  );
+
   return (
     <>
       <Container data-testid={"patientList"}>
         <ListHeader>
-          <PageTitle heading="Patient List" subheading="Browse ED Patients" />
-          <Attendance />
+          <PrimaryNavigation margin="0 0 -1rem 0" padding="1rem 0 0 2rem">
+            <PrimaryNavigation.Item
+              isActive={isPatientList ? true : false}
+              onClick={renderPatientList}
+            >
+              <PrimaryNavigation.Text>Patient List</PrimaryNavigation.Text>
+            </PrimaryNavigation.Item>
+
+            <PrimaryNavigation.Item
+              isActive={isIncomingPatients ? true : false}
+              onClick={renderIncomingPatients}
+            >
+              <PrimaryNavigation.Text>Incoming Patients</PrimaryNavigation.Text>
+            </PrimaryNavigation.Item>
+          </PrimaryNavigation>
+
+          <Item>
+            <PageTitle heading="Patient List" subheading="Browse ED Patients" />
+            <Attendance />
+          </Item>
         </ListHeader>
 
         <Wrapper>
@@ -76,11 +128,11 @@ export default function PatientList() {
             <Table>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Diagnosis</th>
-                  <th>Period</th>
+                  <THeading isPatientList={isPatientList}>Name</THeading>
+                  <THeading isPatientList={isPatientList}>Age</THeading>
+                  <THeading isPatientList={isPatientList}>Gender</THeading>
+                  <THeading isPatientList={isPatientList}>Diagnosis</THeading>
+                  <THeading isPatientList={isPatientList}>Period</THeading>
                 </tr>
               </thead>
               <tbody>
@@ -88,9 +140,11 @@ export default function PatientList() {
                   <tr>
                     <td>Loading...</td>
                   </tr>
-                ) : (
-                  patientListRender
-                )}
+                ) : isPatientList ? (
+                  subPatientListRender
+                ) : isIncomingPatients ? (
+                  incomingPatientListRender
+                ) : null}
               </tbody>
             </Table>
           </TableWrapper>

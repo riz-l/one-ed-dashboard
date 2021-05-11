@@ -20,13 +20,13 @@ import {
 } from "../../components";
 
 // Page: Dashboard
-export default function Dashboard({ db }) {
+export default function Dashboard() {
   return (
     <>
       <Container data-testid={"dashboard"}>
         <Layout>
           <List>
-            <PatientList db={db} />
+            <PatientList />
           </List>
 
           <Main>

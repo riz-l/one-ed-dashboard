@@ -47,10 +47,6 @@ export default function Overview() {
   // Redux: Fetches patient, patientData, patientDemographics, patientAlerts
   // ... patientAllergies, patientConditions from the global state
   const patient = useSelector((state) => state.selectedPatient.patient);
-  const patientData = useSelector((state) => state.selectedPatient.patientData);
-  const patientDemographics = useSelector(
-    (state) => state.selectedPatient.patientDemographics
-  );
   const patientAlerts = useSelector(
     (state) => state.selectedPatient.patientAlerts
   );
