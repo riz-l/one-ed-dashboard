@@ -1,8 +1,10 @@
 // Import: Packages
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
+  clearPatient,
   selectPatient,
   getSelectedPatient,
 } from "../../../redux/slices/selectedPatientSlice";
@@ -19,13 +21,18 @@ import {
 } from "./PatientList.elements";
 
 // Import: Components
-import { Attendance, PatientItem, PrimaryNavigation } from "../index";
-import PageTitle from "../PageTitle/PageTitle.component";
+import {
+  Attendance,
+  PageTitle,
+  PatientItem,
+  PrimaryNavigation,
+} from "../index";
+import Button from "../Button/Button.component";
 
 // Component: PatientList
 export default function PatientList() {
-  // Redux: Fetches token, patientList, selectedPatient from the global state
-  const token = useSelector((state) => state.userDetails.token);
+  // Redux: Fetches isSummaryOpen, patientList, selectedPatient from the global state
+  const isSummaryOpen = useSelector((state) => state.dashboard.isSummaryOpen);
   const patientList = useSelector((state) => state.patientList.patients);
   // const incomingPatients = useSelector(
   //   (state) => state.incomingPatients.incoming
@@ -38,19 +45,17 @@ export default function PatientList() {
   const [isPatientList, setIsPatientList] = useState(true);
   const [isIncomingPatients, setIsIncomingPatients] = useState(false);
 
-  // Effect: Checks that a user token exists
-  // ... if the token exists, fetch the Patient list data
+  // Effect: Fetches patient list data on component render
+  // ... sets a 30s timer after the initial render
   useEffect(() => {
-    if (token !== "" && token.length > 0) {
-      const patientListInterval = dispatch(getPatientList()).then(
-        setInterval(() => {
-          dispatch(getPatientList());
-        }, 30000)
-      );
+    const patientListInterval = dispatch(getPatientList()).then(
+      setInterval(() => {
+        dispatch(getPatientList());
+      }, 30000)
+    );
 
-      return () => clearInterval(patientListInterval);
-    }
-  }, [token, dispatch]);
+    return () => clearInterval(patientListInterval);
+  }, [dispatch]);
 
   // Effect: Checks that there is a selectedPatient
   // ... if there is a selectedPatient, fetch selectPatient's data
@@ -101,7 +106,33 @@ export default function PatientList() {
     <>
       <Container data-testid={"patientList"}>
         <ListHeader>
-          <PrimaryNavigation margin="0 0 -1rem 0" padding="1rem 0 0 2rem">
+          <Item>
+            <PageTitle heading="Patient List" subheading="Browse ED Patients" />
+
+            {selectedPatient !== "" ? (
+              <>
+                <Button
+                  margin="0 0.8rem -1.4rem 0"
+                  onClick={() => dispatch(clearPatient())}
+                  text="Clear Patient"
+                />
+
+                <Button
+                  margin="0 0 -1.4rem 0"
+                  onClick={() =>
+                    isSummaryOpen
+                      ? dispatch(setIsSummaryOpen(false))
+                      : dispatch(setIsSummaryOpen(true))
+                  }
+                  text="Toggle Summary"
+                />
+              </>
+            ) : null}
+
+            <Attendance />
+          </Item>
+
+          <PrimaryNavigation margin="0 0 0 0" padding="1rem 0 0 2rem">
             <PrimaryNavigation.Item
               isActive={isPatientList ? true : false}
               onClick={renderPatientList}
@@ -116,11 +147,6 @@ export default function PatientList() {
               <PrimaryNavigation.Text>Incoming Patients</PrimaryNavigation.Text>
             </PrimaryNavigation.Item>
           </PrimaryNavigation>
-
-          <Item>
-            <PageTitle heading="Patient List" subheading="Browse ED Patients" />
-            <Attendance />
-          </Item>
         </ListHeader>
 
         <Wrapper>

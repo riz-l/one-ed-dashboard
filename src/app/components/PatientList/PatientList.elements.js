@@ -64,7 +64,7 @@ export const Table = styled.table`
 
   & thead {
     position: sticky;
-    top: 140px;
+    top: 156px;
   }
 
   & thead tr {

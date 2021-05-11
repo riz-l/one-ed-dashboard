@@ -159,6 +159,9 @@ export const selectedPatientSlice = createSlice({
       state.patient = "";
       state.patientData = [];
       state.patientDemographics = {};
+      state.patientAllergies = [];
+      state.patientAlerts = [];
+      state.patientConditions = [];
     },
   },
   extraReducers: {

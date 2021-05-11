@@ -48,7 +48,7 @@ export default function Attendance() {
   return (
     <>
       <Container data-testid={"attendance"}>
-        <Button onClick={openModal} text="Attendance"></Button>
+        <Button onClick={openModal} text="Attendance" />
 
         <ReactModal
           isOpen={isModalOpen}

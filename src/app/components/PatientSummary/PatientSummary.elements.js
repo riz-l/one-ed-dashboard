@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 100%;
   max-height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
-  width: 100%;
+  width: 600px;
   max-width: 600px;
   min-width: 600px;
 `;

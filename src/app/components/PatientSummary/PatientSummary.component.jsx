@@ -70,7 +70,8 @@ export default function PatientSummary() {
               <SummaryLayout>
                 {selectedPatient &&
                 selectedPatient.length > 0 &&
-                patientData ? (
+                patientData &&
+                patientData.length > 0 ? (
                   <>
                     <DetailsContainer>
                       <DetailsItem>
