@@ -1,26 +1,18 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
-import {
-  Bottom,
-  Container,
-  Layout,
-  List,
-  Main,
-  Top,
-} from "./Dashboard.elements";
+import { Container, Layout, List, Summary } from "./Dashboard.elements";
 
 // Import: Components
-import {
-  PatientList,
-  // PatientStream,
-  // PatientSuggestions,
-  PatientSummary,
-} from "../../components";
+import { PatientList } from "../../components";
 
 // Page: Dashboard
 export default function Dashboard() {
+  // Redux: Extracts patient from the global state
+  const patient = useSelector((state) => state.selectedPatient.patient);
+
   return (
     <>
       <Container data-testid={"dashboard"}>
@@ -29,16 +21,9 @@ export default function Dashboard() {
             <PatientList />
           </List>
 
-          <Main>
-            <Top>
-              <PatientSummary />
-            </Top>
-
-            <Bottom>
-              {/* <PatientStream />
-              <PatientSuggestions /> */}
-            </Bottom>
-          </Main>
+          <Summary patient={patient}>
+            <h1>Testing testing 1 2 3</h1>
+          </Summary>
         </Layout>
       </Container>
     </>

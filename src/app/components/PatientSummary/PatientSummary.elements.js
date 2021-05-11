@@ -5,7 +5,11 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   background-color: #f7f8fa;
   height: 100%;
+  max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   width: 100%;
+  max-width: 600px;
+  min-width: 600px;
 `;
 
 // Element: Header
