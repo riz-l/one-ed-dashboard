@@ -113,7 +113,8 @@ export default function PatientList() {
     ({
       PD_Firstname,
       PD_Surname,
-      PD_Age,
+      PD_Age_Yrs,
+      PD_Age_Mths,
       PD_Gender,
       PD_Reported_Condition,
       PD_Arrived_Time,
@@ -127,7 +128,11 @@ export default function PatientList() {
         colOne={
           PD_Firstname || PD_Surname ? `${PD_Firstname} ${PD_Surname}` : "N/A"
         }
-        colTwo={PD_Age ? PD_Age : "N/A"}
+        colTwo={
+          PD_Age_Yrs || PD_Age_Mths
+            ? `${PD_Age_Yrs} years ${PD_Age_Mths} months`
+            : "N/A"
+        }
         colThree={PD_Gender ? PD_Gender : "N/A"}
         colFour={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
         colFive={
