@@ -24,12 +24,12 @@ import {
 // Import: Components
 import {
   Attendance,
+  Button,
   PageTitle,
   PatientItem,
   PrimaryNavigation,
+  ReportModal,
 } from "../index";
-import Button from "../Button/Button.component";
-import Anchor from "../Anchor/Anchor.component";
 
 // Component: PatientList
 export default function PatientList() {
@@ -131,11 +131,14 @@ export default function PatientList() {
         colThree={PD_Gender ? PD_Gender : "N/A"}
         colFour={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
         colFive={
-          <Anchor
-            href={`https://onerespintlorenzonode.azurewebsites.net/?ePRID=${Master_ePR_ID}`}
-          >
-            Report
-          </Anchor>
+          // <Anchor
+          //   href={`https://onerespintlorenzonode.azurewebsites.net/?ePRID=${Master_ePR_ID}`}
+          //   fontSize="0.8rem"
+          // >
+          //   Report
+          // </Anchor>
+          // <Button text="Report" fontSize="0.8rem" padding="0.2rem 0.8rem" />
+          <ReportModal patientID={Master_ePR_ID} />
         }
         incomingPatients
         {...otherPatientProps}

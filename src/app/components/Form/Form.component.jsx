@@ -35,9 +35,21 @@ const FormGroupContext = createContext();
 // };
 
 // Compound Component: Anchor
-function FormAnchor({ href, heading, subheading, text, ...props }) {
+function FormAnchor({
+  color,
+  colorOnHover,
+  fontSize,
+  href,
+  heading,
+  subheading,
+  text,
+  ...props
+}) {
   return (
     <Anchor
+      color={color}
+      colorOnHover={colorOnHover}
+      fontSize={fontSize}
       href={href}
       heading={heading}
       subheading={subheading}
@@ -55,11 +67,23 @@ function FormAutoSuggest({ labelText }) {
 }
 
 // Compound Component: FormButton
-function FormButton({ icon, onClick, margin, text, type }) {
+function FormButton({
+  borderColor,
+  fontSize,
+  icon,
+  onClick,
+  margin,
+  padding,
+  text,
+  type,
+}) {
   return (
     <Button
+      borderColor={borderColor}
+      fontSize={fontSize}
       icon={icon}
       margin={margin}
+      padding={padding}
       onClick={onClick}
       text={text}
       type={type}
