@@ -68,7 +68,7 @@ export const Table = styled.table`
   }
 
   & thead tr {
-    background-color: #4d5e80;
+    /* background-color: #4d5e80; */
     color: #ffffff;
     position: sticky;
     top: 0;

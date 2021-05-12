@@ -22,6 +22,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
+  white-space: nowrap;
 
   & svg {
     fill: #c3cad9;
