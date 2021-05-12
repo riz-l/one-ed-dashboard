@@ -29,6 +29,7 @@ import {
   PrimaryNavigation,
 } from "../index";
 import Button from "../Button/Button.component";
+import Anchor from "../Anchor/Anchor.component";
 
 // Component: PatientList
 export default function PatientList() {
@@ -96,11 +97,11 @@ export default function PatientList() {
         key={patientID}
         patientID={patientID}
         onClick={() => dispatch(selectPatient(patientID))}
-        colOne={name}
-        colTwo={age}
-        colThree={gender}
-        colFour={diagnosis}
-        colFive={period}
+        colOne={name ? name : "N/A"}
+        colTwo={age ? age : "N/A"}
+        colThree={gender ? gender : "N/A"}
+        colFour={diagnosis ? diagnosis : "N/A"}
+        colFive={period ? period : "N/A"}
         patientList
         {...otherPatientProps}
       />
@@ -129,7 +130,13 @@ export default function PatientList() {
         colTwo={PD_Age ? PD_Age : "N/A"}
         colThree={PD_Gender ? PD_Gender : "N/A"}
         colFour={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
-        colFive={PD_Arrived_Time ? PD_Arrived_Time : "N/A"}
+        colFive={
+          <Anchor
+            href={`https://onerespintlorenzonode.azurewebsites.net/?ePRID=${Master_ePR_ID}`}
+          >
+            Report
+          </Anchor>
+        }
         incomingPatients
         {...otherPatientProps}
       />
@@ -192,7 +199,13 @@ export default function PatientList() {
                   <THeading isPatientList={isPatientList}>Age</THeading>
                   <THeading isPatientList={isPatientList}>Gender</THeading>
                   <THeading isPatientList={isPatientList}>Diagnosis</THeading>
-                  <THeading isPatientList={isPatientList}>Period</THeading>
+                  {isPatientList ? (
+                    <THeading isPatientList={isPatientList}>Period</THeading>
+                  ) : isIncomingPatients ? (
+                    <THeading isPatientList={isPatientList}>Report</THeading>
+                  ) : (
+                    <THeading isPatientList={isPatientList}>Period</THeading>
+                  )}
                 </tr>
               </thead>
               <tbody>
