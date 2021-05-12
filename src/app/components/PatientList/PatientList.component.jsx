@@ -130,21 +130,14 @@ export default function PatientList() {
         }
         colTwo={
           PD_Age_Yrs || PD_Age_Mths
-            ? `${PD_Age_Yrs} years ${PD_Age_Mths} months`
+            ? `${PD_Age_Yrs && PD_Age_Yrs + " years"} ${
+                PD_Age_Mths && PD_Age_Mths + " months"
+              }`
             : "N/A"
         }
         colThree={PD_Gender ? PD_Gender : "N/A"}
         colFour={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
-        colFive={
-          // <Anchor
-          //   href={`https://onerespintlorenzonode.azurewebsites.net/?ePRID=${Master_ePR_ID}`}
-          //   fontSize="0.8rem"
-          // >
-          //   Report
-          // </Anchor>
-          // <Button text="Report" fontSize="0.8rem" padding="0.2rem 0.8rem" />
-          <ReportModal patientID={Master_ePR_ID} />
-        }
+        colFive={<ReportModal patientID={Master_ePR_ID} />}
         incomingPatients
         {...otherPatientProps}
       />
