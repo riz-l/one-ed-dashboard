@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Window = styled.div`
   height: 100%;
   max-height: 100%;
-  padding: 2rem 0;
+  padding: 2rem 0 4rem 0;
   width: 100%;
 `;
 
@@ -20,5 +20,6 @@ export const Frame = styled.iframe`
   border: none;
   border-radius: 8px;
   height: 100%;
+  padding-bottom: 4rem;
   width: 100%;
 `;

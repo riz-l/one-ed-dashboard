@@ -7,7 +7,7 @@ import { Container, Frame, Window } from "./ReportModal.elements";
 import "./ReportModal.styles.css";
 
 // Import: Components
-import { Button } from "../index";
+import { Button, PageTitle } from "../index";
 
 // Component: ReportModal
 export default function ReportModal({ patientID }) {
@@ -45,7 +45,12 @@ export default function ReportModal({ patientID }) {
         closeTimeoutMS={100}
         ariaHideApp={false}
       >
-        <h2>Report Modal</h2>
+        <PageTitle
+          backgroundColor="#ffffff"
+          padding="1rem 0 2rem 0"
+          heading="Integration Report"
+          subheading="OneResponse Patient details"
+        />
         <Button onClick={closeModal} text="Close" />
 
         <Window>
