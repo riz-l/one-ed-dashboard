@@ -266,7 +266,7 @@ export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
   };
 
   const inputProps = {
-    placeholder: placeholder,
+    placeholder: placeholder ? placeholder : "Start typing...",
     value,
     onChange: onChange,
   };

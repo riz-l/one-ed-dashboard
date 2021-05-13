@@ -62,8 +62,15 @@ function FormAnchor({
 }
 
 // Compound Component: FormAutoSuggest
-function FormAutoSuggest({ labelText }) {
-  return <AutoSuggest labelText={labelText} />;
+function FormAutoSuggest({ htmlFor, labelText, left, placeholder }) {
+  return (
+    <AutoSuggest
+      labelText={labelText}
+      htmlFor={htmlFor}
+      left={left}
+      placeholder={placeholder}
+    />
+  );
 }
 
 // Compound Component: FormButton
@@ -203,7 +210,6 @@ function FormText({ bold, heading, subheading, text, ...props }) {
 function FormTextArea({
   cols,
   htmlFor,
-  id,
   labelText,
   onChange,
   placeholder,
@@ -214,7 +220,6 @@ function FormTextArea({
     <TextArea
       cols={cols}
       htmlFor={htmlFor}
-      id={id}
       labelText={labelText}
       onChange={onChange}
       placeholder={placeholder}
