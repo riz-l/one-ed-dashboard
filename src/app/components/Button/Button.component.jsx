@@ -4,11 +4,6 @@ import React from "react";
 // Import: Elements
 import { Container, StyledButton } from "./Button.elements";
 
-// Notes on Props & attributes
-// onClick = Defines what happens when the button is clicked.
-// text = the text within the button
-// type = defaults to "button" but can also be "submit" and "reset".
-
 // Component: Button
 export default function Button({ icon, onClick, margin, text, type }) {
   return (

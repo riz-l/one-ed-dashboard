@@ -38,7 +38,7 @@ export default function Registration() {
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Title" />
+                  <Form.Dropdown htmlFor="title" labelText="Title" />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -54,7 +54,7 @@ export default function Registration() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Gender" />
+                  <Form.Dropdown htmlFor="gender" labelText="Gender" />
                 </Grid.Item>
               </Grid.Column>
 
@@ -69,32 +69,50 @@ export default function Registration() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox text="Estimated Date of Birth" />
+                  <Form.Checkbox
+                    htmlFor="estimatedDateOfBirth"
+                    text="Estimated Date of Birth"
+                  />
                 </Grid.Item>
 
                 {/* Estimated date of birth may need to be a month and year dropdown. It should only be editable if the checkbox for it has been ticked.  */}
                 <Grid.Item>
-                  <Form.Dropdown labelText="Date of Birth" />
+                  <Form.Dropdown
+                    htmlFor="dateOfBirth"
+                    labelText="Date of Birth"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Current GP" />
+                  <Form.AutoSuggest
+                    htmlFor="currentGP"
+                    labelText="Current GP"
+                  />
                 </Grid.Item>
 
                 {/*Should default to the users healthcare organisation  */}
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Registered Health Organisation" />
+                  <Form.AutoSuggest
+                    htmlFor="registeredHealthOrganisation"
+                    labelText="Registered Health Organisation"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Confidentiality Status" />
+                  <Form.Dropdown
+                    htmlFor="confidentialityStatus"
+                    labelText="Confidentiality Status"
+                  />
                 </Grid.Item>
 
                 {/* Confidentiality Reason is mandatory if Confidentiality Status is set to Local Secure. */}
                 <Grid.Item>
-                  <Form.Dropdown labelText="Confidentiality Reason" />
+                  <Form.Dropdown
+                    htmlFor="confidentialityReason"
+                    labelText="Confidentiality Reason"
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
@@ -109,17 +127,26 @@ export default function Registration() {
               <Grid.Column>
                 {/* Not selectable in Lorenzo */}
                 <Grid.Item>
-                  <Form.Checkbox text="Next of Kin Details Unavailable" />
+                  <Form.Checkbox
+                    htmlFor="nextOfKinDetailsUnavailable"
+                    text="Next of Kin Details Unavailable"
+                  />
                 </Grid.Item>
 
                 {/* Not selectable in Lorenzo */}
                 <Grid.Item>
-                  <Form.Checkbox text="Education Information Unavailable" />
+                  <Form.Checkbox
+                    htmlFor="educationInformationUnavailable"
+                    text="Education Information Unavailable"
+                  />
                 </Grid.Item>
 
                 {/* Not selectable in Lorenzo */}
                 <Grid.Item>
-                  <Form.Checkbox text="Send PatientAide Invitation" />
+                  <Form.Checkbox
+                    htmlFor="sendPatientAideInviation"
+                    text="Send PatientAide Invitation"
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
@@ -127,11 +154,17 @@ export default function Registration() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Checkbox text="Overseas Address" />
+                  <Form.Checkbox
+                    htmlFor="overseasAddress"
+                    text="Overseas Address"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Address Type" />
+                  <Form.Dropdown
+                    htmlFor="addressType"
+                    labelText="Address Type"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -172,7 +205,10 @@ export default function Registration() {
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Primary Contact" />
+                  <Form.Dropdown
+                    htmlFor="primaryContact"
+                    labelText="Primary Contact"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>

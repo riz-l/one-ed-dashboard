@@ -33,27 +33,39 @@ export default function CreateAttendance() {
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Presenting Complaint" />
+                  <Form.AutoSuggest
+                    htmlFor="presentingComplaint"
+                    labelText="Presenting Complaint"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Attendance Type" />
-                </Grid.Item>
-              </Grid.Column>
-
-              <Grid.Column>
-                <Grid.Item>
-                  <Form.AutoSuggest labelText="Responsible Care Provider" />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Dropdown labelText="Attendance Source" />
+                  <Form.Dropdown
+                    htmlFor="attendanceType"
+                    labelText="Attendance Type"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Assigned to" />
+                  <Form.AutoSuggest
+                    htmlFor="responsibleCareProvider"
+                    labelText="Responsible Care Provider"
+                  />
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="attendanceSource"
+                    labelText="Attendance Source"
+                  />
+                </Grid.Item>
+              </Grid.Column>
+
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Dropdown htmlFor="assignedTo" labelText="Assigned to" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
@@ -64,13 +76,16 @@ export default function CreateAttendance() {
                   <Form.Text as="h3" subheading>
                     Incident
                   </Form.Text>
-                  <Form.Checkbox name="Incident" text="Time elapsed" />
-                  <Form.Checkbox name="Incident" text="Date and Time" />
+                  <Form.Checkbox htmlFor="timeElapsed" text="Time elapsed" />
+                  <Form.Checkbox htmlFor="dateAndTime" text="Date and Time" />
                 </Grid.Item>
 
                 {/* Conditionally appears if Time Elapsed was selected */}
                 <Grid.Item>
-                  <Form.Dropdown labelText="Time Elapsed" />
+                  <Form.Dropdown
+                    htmlFor="timeElapsed"
+                    labelText="Time Elapsed"
+                  />
                 </Grid.Item>
 
                 {/* Conditionally display the date and time fields if "Date and Time" was selected. */}
@@ -85,17 +100,26 @@ export default function CreateAttendance() {
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Patient Group" />
+                  <Form.Dropdown
+                    htmlFor="patientGroup"
+                    labelText="Patient Group"
+                  />
                 </Grid.Item>
                 {/* In Lorenzo if the "Assault" option is chosen from patient Group  */}
                 {/* then "Record incident on finish" checkbox appears. */}
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Place of Incident" />
+                  <Form.Dropdown
+                    htmlFor="placeOfIncident"
+                    labelText="Place of Incident"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Mode of Arrival" />
+                  <Form.Dropdown
+                    htmlFor="modeOfArrival"
+                    labelText="Mode of Arrival"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
@@ -106,7 +130,10 @@ export default function CreateAttendance() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Ambulance Trust" />
+                  <Form.Dropdown
+                    htmlFor="ambulanceTrust"
+                    labelText="Ambulance Trust"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -124,11 +151,14 @@ export default function CreateAttendance() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Relationship" />
+                  <Form.Dropdown
+                    htmlFor="relationship"
+                    labelText="Relationship"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Area" />
+                  <Form.AutoSuggest htmlFor="area" labelText="Area" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
@@ -172,11 +202,17 @@ export default function CreateAttendance() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Associate Referral" />
+                  <Form.Dropdown
+                    htmlFor="associateReferral"
+                    labelText="Associate Referral"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Admin Category" />
+                  <Form.Dropdown
+                    htmlFor="adminCategory"
+                    labelText="Admin Category"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -184,7 +220,10 @@ export default function CreateAttendance() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Select Existing Referral" />
+                  <Form.AutoSuggest
+                    htmlFor="selectExistingReferral"
+                    labelText="Select Existing Referral"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
@@ -237,11 +276,14 @@ export default function CreateAttendance() {
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Specialty" />
+                  <Form.AutoSuggest htmlFor="specialty" labelText="Specialty" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Treatment Function" />
+                  <Form.AutoSuggest
+                    htmlFor="treatmentFunction"
+                    labelText="Treatment Function"
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>

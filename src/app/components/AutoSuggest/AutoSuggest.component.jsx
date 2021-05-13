@@ -247,12 +247,6 @@ const getSuggestionValue = (suggestion) => suggestion.name;
 
 const renderSuggestion = (suggestion) => <Dropdown>{suggestion.name}</Dropdown>;
 
-// Notes on Props & attributes
-// htmlFor = this links the label of the autosuggest box with the box itself.
-// labeltext = the text shown to the user to identify what the autosuggest box is.
-// left = the elements file needs updating but this will move the label text to the side of the box rather than above it.
-// placeholder = need help with this.
-
 // Component: AutoSuggest
 export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
   // State: value, suggestions

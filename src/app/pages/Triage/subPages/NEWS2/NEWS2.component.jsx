@@ -69,17 +69,20 @@ export default function NEWS2() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox text="Supplemental Oxygen" />
+                  <Form.Checkbox
+                    htmlFor="supplementalOxygen"
+                    text="Supplemental Oxygen"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Adult AVPU" />
+                  <Form.Dropdown htmlFor="adultAVPU" labelText="Adult AVPU" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox text="Adult PERLA" />
+                  <Form.Checkbox htmlFor="adultPERLA" text="Adult PERLA" />
                 </Grid.Item>
 
                 <Grid.Item>

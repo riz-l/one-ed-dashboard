@@ -8,13 +8,7 @@ import { ReactComponent as ButtonIcon } from "../../../assets/img/icon/ward-dash
 import { Container, ContentWrapper, Wrapper } from "./Training.elements";
 
 // Import: Components
-import {
-  Form,
-  Grid,
-  Indicator,
-  PageTitle,
-  ReportSection,
-} from "../../components";
+import { Form, Grid, PageTitle, ReportSection } from "../../components";
 
 // Page: Training
 export default function Training() {
@@ -35,6 +29,7 @@ export default function Training() {
                     <Grid.Column>
                       <Grid.Item>
                         <Form.AutoSuggest
+                          htmlFor="componentAutoSuggest"
                           labelText="Component: AutoSuggest"
                           left="true"
                         />
@@ -49,29 +44,38 @@ export default function Training() {
 
                       <Grid.Item>
                         <Form.Checkbox
+                          htmlFor="componentCheckbox"
                           text="Component: Checkbox"
                           under={false}
+                          checked={false}
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Radio
                           // text="Component: Radio"
-                          name="test1"
-                          href="test2"
-                          value="test3"
+                          text="Radio1"
+                          name="RadioTest"
+                          href="radio1"
+                          value="radio1"
+                          checked={false}
                         />
                         <Form.Radio
                           text="Radio2"
-                          name="test1"
-                          href="test2"
-                          value="test3"
+                          name="RadioTest"
+                          href="radio2"
+                          value="radio2"
                           checked
                         />
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Dropdown labelText="Component: Dropdown" />
+                        <Form.Dropdown
+                          labelText="componentDropdown"
+                          left={false}
+                          htmlFor="dropdown-example"
+                          // width="150px"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
@@ -91,10 +95,10 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Indicator
+                        <Form.Text as="p">Component: Indicator</Form.Text>
+                        <Form.Indicator
                           title="NEWS"
                           message="Give patient drugs and admit to Ward."
-                          // give component a prop of red, amber or green to determine box colour.
                           green
                         />
                       </Grid.Item>
@@ -116,6 +120,10 @@ export default function Training() {
                         <Form.Input
                           type="email"
                           labelText="Component: Input (email)"
+                          left={false}
+                          center={false}
+                          // margin="20px"
+                          placeholder="lalala@music.com"
                         />
                       </Grid.Item>
 
@@ -143,7 +151,10 @@ export default function Training() {
 
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.TextArea labelText="Component: TextArea" />
+                        <Form.TextArea
+                          labelText="Component: TextArea"
+                          placeholder="la la la"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>

@@ -15,7 +15,11 @@ export default function Dropdown({
   width,
 }) {
   // Dropdown placeholder options
-  const placeholderOptions = ["Please declare options..."];
+  const placeholderOptions = [
+    "Please declare options...",
+    "option 1",
+    "option2",
+  ];
 
   return (
     <Container data-testid={"dropdown"} left={left}>

@@ -29,17 +29,23 @@ export default function DecisionToAdmit() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Requested By" />
+                  <Form.Dropdown
+                    htmlFor="requestedBy"
+                    labelText="Requested By"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Bed Category" />
+                  <Form.Dropdown
+                    htmlFor="bedCategory"
+                    labelText="Bed Category"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Specialty" />
+                  <Form.AutoSuggest htmlFor="specialty" labelText="Specialty" />
                 </Grid.Item>
 
                 <Grid.Item>

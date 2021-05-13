@@ -22,7 +22,7 @@ export default function CEDObs() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="Pain Score"
+                    htmlFor="painScore"
                     labelText="Pain Score"
                     type="text"
                   />
@@ -72,8 +72,8 @@ export default function CEDObs() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="Supplemental 02"
-                    labelText="Supplemental 02"
+                    htmlFor="supplementalO2"
+                    labelText="Supplemental O2"
                     type="text"
                   />
                 </Grid.Item>
@@ -118,7 +118,7 @@ export default function CEDObs() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="Capillary Refill"
+                    htmlFor="capillaryRefill"
                     labelText="Capillary Refill"
                     type="text"
                   />
@@ -126,7 +126,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="POPS Other"
+                    htmlFor="pOPSOther"
                     labelText="POPS Other"
                     type="text"
                   />
@@ -134,7 +134,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="POPS Gut Feeling"
+                    htmlFor="pOPSGutFeeling"
                     labelText="POPS Gut Feeling"
                     type="text"
                   />
@@ -142,14 +142,14 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="POPS Breathing"
+                    htmlFor="pOPSBreathing"
                     labelText="POPS Breathing"
                     type="text"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown htmlFor="AVPU" labelText="AVPU" type="text" />
+                  <Form.Dropdown htmlFor="aVPU" labelText="AVPU" type="text" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
