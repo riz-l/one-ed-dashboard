@@ -1,6 +1,17 @@
 // Import: Packages
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  putTriageForm,
+  addPatientID,
+  addDateTime,
+  addTriageCategory,
+  addTriageDiagnosis,
+  addTriageDiagnosisCode,
+  addPractitioner,
+  clearTriageForm,
+} from "../../../../../redux/slices/triageSlice";
+import moment from "moment";
 
 // Import: Elements
 import { Container, Wrapper } from "./TriageAndStream.elements";
@@ -14,13 +25,34 @@ export default function TriageAndStream() {
   const user = useSelector(
     (state) =>
       state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
+        .UserRoleProfile[0].UserID.extension
   );
+  const location = useSelector(
+    (state) => state.selectedPatient.patientData[0].location
+  );
+  const startDate = useSelector(
+    (state) => state.selectedPatient.patientData[0].StartDate
+  );
+  const patient = useSelector((state) => state.selectedPatient.patient);
+  const dispatch = useDispatch();
 
   // Current Date, Time
   const date = new Date();
   const formattedDate = date.toISOString().substr(0, 10);
-  console.log("FORMATTED DATE: ", formattedDate);
+  const time = date.getHours() + ":" + date.getMinutes();
+  const m = moment().toISOString();
+  console.log("M: ", m);
+
+  // Effect:
+  useEffect(() => {
+    dispatch(addPatientID(patient));
+    dispatch(addDateTime(m));
+    dispatch(addTriageCategory());
+    dispatch(addTriageDiagnosis());
+    dispatch(addTriageDiagnosisCode());
+    dispatch(addPractitioner(user));
+    dispatch(putTriageForm());
+  }, [dispatch]);
 
   return (
     <>
@@ -34,17 +66,11 @@ export default function TriageAndStream() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Display htmlFor="test" labelText="Test">
-                    Test
-                  </Form.Display>
-                </Grid.Item>
-
-                <Grid.Item>
                   <Form.Display
                     htmlFor="Arrival Date/Time"
                     labelText="Arrival Date/Time"
                   >
-                    (Encounter date)
+                    {startDate}
                   </Form.Display>
                 </Grid.Item>
 
@@ -61,20 +87,17 @@ export default function TriageAndStream() {
                   <Form.Input
                     htmlFor="Triage Time"
                     labelText="Triage Time"
-                    type="text"
-                    placeholder="Current time"
+                    type="time"
+                    value={time}
                   />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Input
-                    htmlFor="Location"
-                    labelText="Location"
-                    type="text"
-                    placeholder="Encounter location"
-                  />
+                  <Form.Display htmlFor="Location" labelText="Location">
+                    {location}
+                  </Form.Display>
                 </Grid.Item>
 
                 <Grid.Item>

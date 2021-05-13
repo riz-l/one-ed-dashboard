@@ -1,12 +1,12 @@
 // Import: Packages
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addUsername,
   addPassword,
   getUserDetails,
 } from "../../../redux/slices/userDetailsSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./Login.elements";
