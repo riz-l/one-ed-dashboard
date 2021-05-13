@@ -19,6 +19,7 @@ export const Layout = styled.div`
   display: flex;
   height: 100%;
   max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   justify-content: center;
   width: 100%;
 `;
@@ -27,39 +28,32 @@ export const Layout = styled.div`
 export const List = styled.div`
   align-items: center;
   display: flex;
-  flex: 2;
+  flex: 1fr;
   height: 100%;
+  max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   justify-content: center;
+  max-width: 100%;
   width: 100%;
 `;
 
-// Element: Main
-export const Main = styled.div`
+// Element: Summary
+export const Summary = styled.div`
   align-items: center;
   display: flex;
-  flex: 1.25;
-  flex-direction: column;
+  /* flex: 600px; */
+  flex: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   height: 100%;
+  max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   justify-content: center;
-  width: 100%;
-`;
-
-// Element: Top
-export const Top = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-`;
-
-// Element: Bottom
-export const Bottom = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
+  opacity: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "1")};
+  transition: all 100ms linear;
+  visibility: ${({ isSummaryOpen }) => (!isSummaryOpen ? "hidden" : "visible")};
+  width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
+  max-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
+  min-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
+  /* width: 100%; */
+  /* max-width: 600px; */
+  /* min-width: 600px; */
 `;

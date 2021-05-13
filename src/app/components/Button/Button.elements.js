@@ -12,16 +12,19 @@ export const StyledButton = styled.button`
   appearance: none;
   -webkit-appearance: none;
   background-color: #f7f8fa;
-  border: 1px solid #edeff2;
+  border: ${({ borderColor }) =>
+    borderColor ? `1px solid ${borderColor}` : "1px solid #edeff2"};
   border-radius: 8px;
   color: #6b7a99;
   cursor: pointer;
   display: flex;
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
   justify-content: center;
-  padding: 0.4rem 1rem;
+  padding: ${({ padding }) => (padding ? padding : "0.4rem 1rem")};
   transition: all 100ms linear;
+  white-space: nowrap;
 
   & svg {
     fill: #c3cad9;

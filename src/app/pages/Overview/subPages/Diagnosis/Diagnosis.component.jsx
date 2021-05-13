@@ -62,7 +62,7 @@ export default function Diagnosis() {
 
           {patientConditions &&
           patientConditions.length > 0 &&
-          patientConditions.includes({ category: "Diagnosis" }) ? (
+          patientConditions.find(({ category }) => category === "Diagnosis") ? (
             diagnosisRender
           ) : (
             <Text as="p">The Patient has no historic diagnoses</Text>

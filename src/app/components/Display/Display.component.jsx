@@ -29,6 +29,7 @@ export default function Display({
     <Container
       data-testid={"display"}
       labelText={labelText}
+      left={left}
       margin={props.margin}
     >
       {labelText && (

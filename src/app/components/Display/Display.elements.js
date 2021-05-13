@@ -22,18 +22,10 @@ export const Container = styled.div`
 // Element: Label
 export const Label = styled.label`
   color: #6b7a99;
-  /* ${({ left }) =>
-    left
-      ? css`
-          margin-right: 1rem;
-        `
-      : css`
-          margin-bottom: 2px;
-        `} */
   ${({ labelText, left }) =>
     labelText && left
       ? css`
-          margin-right: 1rem;
+          margin-right: 0.8;
         `
       : !labelText && left
       ? css`

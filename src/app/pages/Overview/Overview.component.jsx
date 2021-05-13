@@ -44,8 +44,18 @@ import {
 
 // Page: Overview
 export default function Overview() {
-  // Redux: Fetches patient from the global state
+  // Redux: Fetches patient, patientData, patientDemographics, patientAlerts
+  // ... patientAllergies, patientConditions from the global state
   const patient = useSelector((state) => state.selectedPatient.patient);
+  const patientAlerts = useSelector(
+    (state) => state.selectedPatient.patientAlerts
+  );
+  const patientAllergies = useSelector(
+    (state) => state.selectedPatient.patientAllergies
+  );
+  const patientConditions = useSelector(
+    (state) => state.selectedPatient.patientConditions
+  );
   const dispatch = useDispatch();
 
   // State: windowDimensions
@@ -296,7 +306,13 @@ export default function Overview() {
                         isActive={isAlerts ? true : false}
                         onClick={renderAlerts}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientAlerts && patientAlerts.length > 0
+                              ? true
+                              : false
+                          }
+                        >
                           <AlertsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -308,7 +324,13 @@ export default function Overview() {
                         isActive={isAllergies ? true : false}
                         onClick={renderAllergies}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientAllergies && patientAllergies.length > 0
+                              ? true
+                              : false
+                          }
+                        >
                           <AllergiesIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -320,7 +342,17 @@ export default function Overview() {
                         isActive={isComplications ? true : false}
                         onClick={renderComplications}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientConditions &&
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Complications"
+                            )
+                              ? true
+                              : false
+                          }
+                        >
                           <ComplicationsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -332,7 +364,17 @@ export default function Overview() {
                         isActive={isDiagnosis ? true : false}
                         onClick={renderDiagnosis}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientConditions &&
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Diagnosis"
+                            )
+                              ? true
+                              : false
+                          }
+                        >
                           <DiagnosisIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -346,7 +388,17 @@ export default function Overview() {
                             isActive={isFindings ? true : false}
                             onClick={renderFindings}
                           >
-                            <SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Icon
+                              isRed={
+                                patientConditions &&
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Findings"
+                                )
+                                  ? true
+                                  : false
+                              }
+                            >
                               <FindingsIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>
@@ -358,7 +410,17 @@ export default function Overview() {
                             isActive={isComplaint ? true : false}
                             onClick={renderComplaint}
                           >
-                            <SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Icon
+                              isRed={
+                                patientConditions &&
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Complaints"
+                                )
+                                  ? true
+                                  : false
+                              }
+                            >
                               <ComplaintIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>
@@ -370,7 +432,17 @@ export default function Overview() {
                             isActive={isProcedures ? true : false}
                             onClick={renderProcedures}
                           >
-                            <SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Icon
+                              isRed={
+                                patientConditions &&
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Procedures"
+                                )
+                                  ? true
+                                  : false
+                              }
+                            >
                               <ProceduresIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>
@@ -382,7 +454,17 @@ export default function Overview() {
                             isActive={isSymptoms ? true : false}
                             onClick={renderSymptoms}
                           >
-                            <SecondaryNavigation.Icon>
+                            <SecondaryNavigation.Icon
+                              isRed={
+                                patientConditions &&
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Symptoms"
+                                )
+                                  ? true
+                                  : false
+                              }
+                            >
                               <SymptomsIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>

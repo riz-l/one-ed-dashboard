@@ -62,7 +62,9 @@ export default function Procedures() {
 
           {patientConditions &&
           patientConditions.length > 0 &&
-          patientConditions.includes({ category: "Procedures" }) ? (
+          patientConditions.find(
+            ({ category }) => category === "Procedures"
+          ) ? (
             proceduresRender
           ) : (
             <Text as="p">The Patient has no historic procedures</Text>

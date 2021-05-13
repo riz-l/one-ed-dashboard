@@ -70,6 +70,9 @@ export { default as Radio } from "./Radio/Radio.component";
 // Export: ReportEntry
 export { default as ReportEntry } from "./ReportEntry/ReportEntry.component";
 
+// Export: ReportModal
+export { default as ReportModal } from "./ReportModal/ReportModal.component";
+
 // Export: ReportSection
 export { default as ReportSection } from "./ReportSection/ReportSection.component";
 

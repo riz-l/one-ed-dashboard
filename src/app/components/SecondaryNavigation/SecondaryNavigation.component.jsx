@@ -37,11 +37,11 @@ function Item({ isActive, ...props }) {
 }
 
 // Compound Component: Icon
-function Icon({ ...props }) {
+function Icon({ isRed, ...props }) {
   return (
     <IconContainer>
       {props.children}
-      <Indicator />
+      <Indicator isRed={isRed} />
     </IconContainer>
   );
 }
