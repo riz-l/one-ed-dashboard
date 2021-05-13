@@ -62,7 +62,9 @@ export default function Complications() {
 
           {patientConditions &&
           patientConditions.length > 0 &&
-          patientConditions.includes({ category: "Complications" }) ? (
+          patientConditions.find(
+            ({ category }) => category === "Complications"
+          ) ? (
             complicationsRender
           ) : (
             <Text as="p">The Patient has no historic complications</Text>

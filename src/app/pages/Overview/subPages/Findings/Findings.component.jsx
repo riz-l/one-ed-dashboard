@@ -62,7 +62,7 @@ export default function Findings() {
 
           {patientConditions &&
           patientConditions.length > 0 &&
-          patientConditions.includes({ category: "Findings" }) ? (
+          patientConditions.find(({ category }) => category === "Findings") ? (
             findingsRender
           ) : (
             <Text as="p">The Patient has no historic findings</Text>

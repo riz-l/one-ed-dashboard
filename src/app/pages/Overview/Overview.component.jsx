@@ -345,8 +345,10 @@ export default function Overview() {
                         <SecondaryNavigation.Icon
                           isRed={
                             patientConditions &&
-                            patientConditions.category === "Complications" &&
-                            patientConditions.length > 0
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Complications"
+                            )
                               ? true
                               : false
                           }
@@ -365,8 +367,10 @@ export default function Overview() {
                         <SecondaryNavigation.Icon
                           isRed={
                             patientConditions &&
-                            patientConditions.category === "Diagnosis" &&
-                            patientConditions.length > 0
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Diagnosis"
+                            )
                               ? true
                               : false
                           }
@@ -387,8 +391,10 @@ export default function Overview() {
                             <SecondaryNavigation.Icon
                               isRed={
                                 patientConditions &&
-                                patientConditions.category === "Findings" &&
-                                patientConditions.length > 0
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Findings"
+                                )
                                   ? true
                                   : false
                               }
@@ -407,8 +413,10 @@ export default function Overview() {
                             <SecondaryNavigation.Icon
                               isRed={
                                 patientConditions &&
-                                patientConditions.category === "Complaint" &&
-                                patientConditions.length > 0
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Complaints"
+                                )
                                   ? true
                                   : false
                               }
@@ -427,8 +435,10 @@ export default function Overview() {
                             <SecondaryNavigation.Icon
                               isRed={
                                 patientConditions &&
-                                patientConditions.category === "Procedures" &&
-                                patientConditions.length > 0
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Procedures"
+                                )
                                   ? true
                                   : false
                               }
@@ -447,8 +457,10 @@ export default function Overview() {
                             <SecondaryNavigation.Icon
                               isRed={
                                 patientConditions &&
-                                patientConditions.category === "Symptoms" &&
-                                patientConditions.length > 0
+                                patientConditions.length > 0 &&
+                                patientConditions.find(
+                                  ({ category }) => category === "Symptoms"
+                                )
                                   ? true
                                   : false
                               }
