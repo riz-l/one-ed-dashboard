@@ -30,7 +30,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Pulse Rate"
+                    htmlFor="pulseRate"
                     labelText="Pulse Rate"
                     type="text"
                   />
@@ -38,7 +38,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="BP Systolic First"
+                    htmlFor="bPSystolicFirst"
                     labelText="BP Systolic First"
                     type="text"
                   />
@@ -46,7 +46,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="BP Systolic Second"
+                    htmlFor="bPSystolicSecond"
                     labelText="BP Systolic Second"
                     type="text"
                   />
@@ -54,7 +54,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Rest Rate"
+                    htmlFor="restRate"
                     labelText="Rest Rate"
                     type="text"
                   />
@@ -62,7 +62,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Oxygen SATS"
+                    htmlFor="oxygenSATS"
                     labelText="Oxygen SATS"
                     type="text"
                   />
@@ -79,12 +79,12 @@ export default function CEDObs() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input htmlFor="Temp" labelText="Temp" type="text" />
+                  <Form.Input htmlFor="temp" labelText="Temp" type="text" />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Weight (kg)"
+                    htmlFor="weightKG"
                     labelText="Weight (kg)"
                     type="text"
                   />
@@ -92,7 +92,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Height (cm)"
+                    htmlFor="heightCM"
                     labelText="Height (cm)"
                     type="text"
                   />
@@ -100,7 +100,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Blood sugar (mmol/l)"
+                    htmlFor="bloodSugarMMOLL"
                     labelText="Blood sugar (mmol/l)"
                     type="text"
                   />
@@ -108,7 +108,7 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="PEFR (l/min)"
+                    htmlFor="pEFRLMin)"
                     labelText="PEFR (l/min)"
                     type="text"
                   />

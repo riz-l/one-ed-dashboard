@@ -22,49 +22,59 @@ export default function NEWS2() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="heartRate"
                     labelText="Heart Rate (beats/min)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="respiratoryRate"
                     labelText="Respiratory Rate (breaths/min)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="systolicBloodPressure"
                     labelText="Systolic Blood Pressue (mmHg)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="diastolicBloodPressure"
                     labelText="Diastolic Blood Pressue (mmHg)"
+                    type="number"
                   />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Temperature (°C)" />
-                </Grid.Item>
-
-                <Grid.Item>
                   <Form.Input
+                    htmlFor="temperature"
+                    labelText="Temperature (°C)"
                     type="number"
-                    labelText="Blood Glucose Level (mmol/L)"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
+                    htmlFor="bloodGlucoseLevel"
+                    labelText="Blood Glucose Level (mmol/L)"
                     type="number"
+                  />
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.Input
+                    htmlFor="oxygenationSaturation"
                     labelText="Oxygenation Saturation (%)"
+                    type="number"
                   />
                 </Grid.Item>
 

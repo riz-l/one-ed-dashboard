@@ -54,18 +54,18 @@ export default function Training() {
                       <Grid.Item>
                         <Form.Radio
                           // text="Component: Radio"
-                          text="Radio1"
-                          name="RadioTest"
-                          href="radio1"
-                          value="radio1"
                           checked={false}
+                          href="radio1"
+                          name="RadioTest"
+                          text="Radio1"
+                          value="radio1"
                         />
                         <Form.Radio
-                          text="Radio2"
-                          name="RadioTest"
+                          checked={true}
                           href="radio2"
+                          name="RadioTest"
+                          text="Radio2"
                           value="radio2"
-                          checked
                         />
                       </Grid.Item>
 
@@ -106,45 +106,53 @@ export default function Training() {
 
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.Input labelText="Component: Input (text)" />
-                      </Grid.Item>
-
-                      <Grid.Item>
                         <Form.Input
-                          type="number"
-                          labelText="Component: Input (number)"
+                          htmlFor="componentInputText"
+                          labelText="Component: Input (text)"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="email"
+                          htmlFor="componentInputNumber"
+                          labelText="Component: Input (number)"
+                          type="number"
+                        />
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Input
+                          center={false}
+                          htmlFor="componentInputEmail"
                           labelText="Component: Input (email)"
                           left={false}
-                          center={false}
                           // margin="20px"
                           placeholder="lalala@music.com"
+                          type="email"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="date"
+                          htmlFor="componentInputDate"
                           labelText="Component: Input (date)"
+                          type="date"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="time"
+                          htmlFor="componentInputTime"
                           labelText="Component: Input (time)"
+                          type="time"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="tel"
+                          htmlFor="componentInputTel"
                           labelText="Component: Input (tel)"
+                          type="tel"
                         />
                       </Grid.Item>
                     </Grid.Column>
@@ -152,6 +160,7 @@ export default function Training() {
                     <Grid.Column>
                       <Grid.Item>
                         <Form.TextArea
+                          htmlFor="componentTextArea"
                           labelText="Component: TextArea"
                           placeholder="la la la"
                         />

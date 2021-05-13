@@ -22,12 +22,20 @@ export default function CreateAttendance() {
               <Grid.Column>
                 {/* Arrival Date needs to default to the current date */}
                 <Grid.Item>
-                  <Form.Input type="date" labelText="Arrival Date" />
+                  <Form.Input
+                    htmlFor="arrivalDate"
+                    labelText="Arrival Date"
+                    type="date"
+                  />
                 </Grid.Item>
 
                 {/* Arrival Time needs to default to the current time. */}
                 <Grid.Item>
-                  <Form.Input type="time" labelText="Arrival Time" />
+                  <Form.Input
+                    htmlFor="arrivalTime"
+                    labelText="Arrival Time"
+                    type="time"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
@@ -90,11 +98,19 @@ export default function CreateAttendance() {
 
                 {/* Conditionally display the date and time fields if "Date and Time" was selected. */}
                 <Grid.Item>
-                  <Form.Input type="Date" labelText="Incident Date" />
+                  <Form.Input
+                    htmlFor="incidentDate"
+                    labelText="Incident Date"
+                    type="Date"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="Time" labelText="Incident Date" />
+                  <Form.Input
+                    htmlFor="incidentDate"
+                    labelText="Incident Date"
+                    type="Time"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
@@ -126,7 +142,11 @@ export default function CreateAttendance() {
               <Grid.Column>
                 {/* Ambulance job number can only be completed if the mode of Arrival involves an ambulance.  */}
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Ambulance Job Number" />
+                  <Form.Input
+                    htmlFor="ambulanceJobNumber"
+                    labelText="Ambulance Job Number"
+                    type="number"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -137,17 +157,29 @@ export default function CreateAttendance() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="Date" labelText="Ambulance Handover Date" />
+                  <Form.Input
+                    htmlFor="ambulanceHandoverDate"
+                    labelText="Ambulance Handover Date"
+                    type="Date"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="Time" labelText="Ambulance Handover Time" />
+                  <Form.Input
+                    htmlFor="ambulanceHandoverTime"
+                    labelText="Ambulance Handover Time"
+                    type="Time"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Input type="text" labelText="Accompanied By" />
+                  <Form.Input
+                    htmlFor="ambulanceHandoverTime"
+                    labelText="Accompanied By"
+                    type="text"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -166,7 +198,11 @@ export default function CreateAttendance() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.TextArea labelText="Comments" rows="5" />
+                  <Form.TextArea
+                    htmlFor="comments"
+                    labelText="Comments"
+                    rows="5"
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>

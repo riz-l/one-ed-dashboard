@@ -85,8 +85,13 @@ The .env file contains values for the following.
 - REACT_APP_SERVICE
 - REACT_APP_API_VERSION
 - REACT_APP_API_URL
+- REACT_APP_INCOMING_PATIENTS
+- REACT_APP_INTEGRATION_REPORT
 
 Changes to the .env file do not get plled with git pull origin master because the .env file is listed in the .gitignore file.
+To be safe copy the values into a notepad and then into the .env file to remove any formatting.
+
+The latest copy of the .env file can be found at:
 
 ## Form Components and their props
 

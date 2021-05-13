@@ -41,7 +41,11 @@ export default function NeuroObs() {
                 {/* GCS Total needs to be a calculated value adding up the scored for Eyes, Verbal and Motor. */}
 
                 <Grid.Item>
-                  <Form.Input type="number" labelText="GCS Total" />
+                  <Form.Input
+                    htmlFor="gCSTotal"
+                    labelText="GCS Total"
+                    type="number"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
@@ -53,8 +57,8 @@ export default function NeuroObs() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Radio text="Equal" />
-                  <Form.Radio text="Unequal" />
+                  <Form.Radio htmlFor="equal" name="pupils" text="Equal" />
+                  <Form.Radio htmlFor="unequal" name="pupils" text="Unequal" />
                 </Grid.Item>
 
                 <Grid.Item>
