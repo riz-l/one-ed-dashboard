@@ -3,8 +3,8 @@ import styled from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.tr`
-  background-color: ${({ patient, patientID }) =>
-    patient === patientID && "#6a7ca0"};
+  background-color: ${({ patient, patientID, patientList }) =>
+    patientList && patient === patientID && "#6a7ca0"};
   cursor: pointer;
   transition: all 100ms linear;
 
@@ -15,8 +15,19 @@ export const Container = styled.tr`
   }
 
   &:nth-of-type(even) {
-    background-color: ${({ patient, patientID }) =>
-      patient === patientID ? "#6a7ca0" : "#e6e9ef"};
+    background-color: ${({
+      patient,
+      patientID,
+      patientList,
+      incomingPatients,
+    }) =>
+      patientList && patient === patientID
+        ? "#6a7ca0"
+        : incomingPatients
+        ? "#deedf2"
+        : patientList
+        ? "#e6e9ef"
+        : null};
     transition: all 100ms linear;
 
     & td {
@@ -29,7 +40,8 @@ export const Container = styled.tr`
         transition: all 100ms linear;
       }
 
-      background-color: #6a7ca0;
+      background-color: ${({ patientList, incomingPatients }) =>
+        patientList ? "#6a7ca0" : incomingPatients ? "#509FB9" : null};
       transition: all 100ms linear;
     }
   }
@@ -40,7 +52,8 @@ export const Container = styled.tr`
       transition: all 100ms linear;
     }
 
-    background-color: #6a7ca0;
+    background-color: ${({ patientList, incomingPatients }) =>
+      patientList ? "#6a7ca0" : incomingPatients ? "#509FB9" : null};
     transition: all 100ms linear;
   }
 `;

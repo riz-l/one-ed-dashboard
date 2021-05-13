@@ -7,13 +7,15 @@ import { Container, Gender, Name } from "./PatientItem.elements";
 
 // Component: PatientItem
 export default function PatientItem({
-  diagnosis,
-  age,
-  gender,
-  name,
   onClick,
   patientID,
-  period,
+  colOne,
+  colTwo,
+  colThree,
+  colFour,
+  colFive,
+  patientList,
+  incomingPatients,
 }) {
   // Redux: Extract patient from global state
   const patient = useSelector((state) => state.selectedPatient.patient);
@@ -25,12 +27,14 @@ export default function PatientItem({
         data-testid={"patientItem"}
         patient={patient}
         patientID={patientID}
+        patientList={patientList}
+        incomingPatients={incomingPatients}
       >
-        <Name>{name}</Name>
-        <td>{age}</td>
-        <Gender>{gender}</Gender>
-        <td>{diagnosis}</td>
-        <td>{period}</td>
+        <Name>{colOne}</Name>
+        <td>{colTwo}</td>
+        <Gender>{colThree}</Gender>
+        <td>{colFour}</td>
+        <td>{colFive}</td>
       </Container>
     </>
   );
