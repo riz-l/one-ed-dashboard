@@ -22,64 +22,77 @@ export default function NEWS2() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="heartRate"
                     labelText="Heart Rate (beats/min)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="respiratoryRate"
                     labelText="Respiratory Rate (breaths/min)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="systolicBloodPressure"
                     labelText="Systolic Blood Pressue (mmHg)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="diastolicBloodPressure"
                     labelText="Diastolic Blood Pressue (mmHg)"
+                    type="number"
                   />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Input type="number" labelText="Temperature (°C)" />
+                  <Form.Input
+                    htmlFor="temperature"
+                    labelText="Temperature (°C)"
+                    type="number"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="bloodGlucoseLevel"
                     labelText="Blood Glucose Level (mmol/L)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
-                    type="number"
+                    htmlFor="oxygenationSaturation"
                     labelText="Oxygenation Saturation (%)"
+                    type="number"
                   />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox text="Supplemental Oxygen" />
+                  <Form.Checkbox
+                    htmlFor="supplementalOxygen"
+                    text="Supplemental Oxygen"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Adult AVPU" />
+                  <Form.Dropdown htmlFor="adultAVPU" labelText="Adult AVPU" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox text="Adult PERLA" />
+                  <Form.Checkbox htmlFor="adultPERLA" text="Adult PERLA" />
                 </Grid.Item>
 
                 <Grid.Item>

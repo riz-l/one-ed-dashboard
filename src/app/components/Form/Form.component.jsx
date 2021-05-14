@@ -15,6 +15,7 @@ import {
   Checkbox,
   Display,
   Dropdown,
+  Indicator,
   Input,
   Radio,
   Text,
@@ -151,6 +152,19 @@ function FormDropdown({
   );
 }
 
+// Compound Component: Indicator
+function FormIndicator({ amber, green, message, red, title }) {
+  return (
+    <Indicator
+      amber={amber}
+      green={green}
+      message={message}
+      red={red}
+      title={title}
+    />
+  );
+}
+
 // Compound Component: FormInput
 const FormInput = React.forwardRef((props, ref) => {
   return (
@@ -242,6 +256,7 @@ Form.Button = FormButton;
 Form.Checkbox = FormCheckbox;
 Form.Display = FormDisplay;
 Form.Dropdown = FormDropdown;
+Form.Indicator = FormIndicator;
 Form.Input = FormInput;
 Form.Radio = FormRadio;
 Form.Text = FormText;

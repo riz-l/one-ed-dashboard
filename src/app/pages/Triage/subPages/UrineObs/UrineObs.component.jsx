@@ -21,37 +21,33 @@ export default function UrineObs() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Checkbox text="NAD" />
+                  <Form.Checkbox htmlFor="nAD" text="NAD" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Leu" />
+                  <Form.Dropdown htmlFor="pro" labelText="Pro" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Pro" />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Dropdown labelText="Bld" />
+                  <Form.Dropdown htmlFor="bld" labelText="Bld" />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Glu" />
+                  <Form.Dropdown htmlFor="glu" labelText="Glu" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Leu" />
+                  <Form.Dropdown htmlFor="leu" labelText="Leu" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Nit" />
+                  <Form.Dropdown htmlFor="nit" labelText="Nit" />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Ket" />
+                  <Form.Dropdown htmlFor="ket" labelText="Ket" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
