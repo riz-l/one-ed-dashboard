@@ -8,8 +8,6 @@ export const Container = styled.div`
   flex-direction: column;
   height: auto;
   justify-content: flex-start;
-  ${"" /* margin-bottom: -1.4rem; */}
-  /* position: relative; */
   width: 100%;
 `;
 
@@ -18,13 +16,8 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: #f7f8fa;
   display: flex;
-  ${"" /* flex-direction: column; */}
   height: auto;
   justify-content: center;
-  ${"" /* padding: 0rem 2rem; */}
-  /* position: sticky;
-  -webkit-position: sticky;
-  top: 0; */
   width: 100%;
 `;
 
@@ -46,8 +39,7 @@ export const ClickableHeader = styled.div`
   max-height: 8rem;
   min-height: 8rem;
   justify-content: flex-start;
-  ${"" /* padding: 1rem 0rem 1rem 2rem; */}
-  padding:1rem;
+  padding: 1rem;
   transition: all 100ms linear;
   width: 100%;
 
@@ -64,7 +56,6 @@ export const ClickableHeader = styled.div`
 
 // Element: SVGContainer
 export const SVGContainer = styled.div`
-  ${"" /* background-color: red; */}
   height: 100%;
   max-width: auto;
   padding: 0 1rem;
@@ -92,7 +83,6 @@ export const ClickableContent = styled.div`
 // Element: CLickableText
 export const ClickableText = styled.div`
   align-items: flex-start;
-  ${"" /* background-color: red; */}
   display: flex;
   flex: 2;
   flex-direction: column;
@@ -110,7 +100,6 @@ export const ClickableText = styled.div`
 // Element: ClickableButtonContainter
 export const ClickableButtonContainer = styled.div`
   align-items: center;
-  ${"" /* background-color: green; */}
   display: flex;
   flex: 3;
   height: 100%;
