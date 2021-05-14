@@ -134,7 +134,7 @@ export default function PatientDemographics() {
 
             <Heading>
               <HeadingImage>
-                <UserIcon></UserIcon>
+                <UserIcon />
               </HeadingImage>
 
               <HeadingContent>

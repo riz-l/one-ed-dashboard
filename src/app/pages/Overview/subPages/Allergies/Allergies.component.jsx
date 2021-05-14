@@ -24,6 +24,8 @@ export default function Allergies() {
             allergyName,
             clinicalStatus,
             manifestationDisplay,
+            reactionDisplay,
+            verificationStatus,
             ...otherPatientProps
           }) => (
             <ReportEntry
@@ -32,7 +34,34 @@ export default function Allergies() {
               details={manifestationDisplay}
               status={clinicalStatus}
               type={allergyName}
-              // {...otherPatientProps}
+              openedModal={
+                <>
+                  <Grid>
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display
+                          labelText="Reaction Display"
+                          htmlFor="reactionDisplay"
+                        >
+                          {reactionDisplay}
+                        </Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display
+                          labelText="Verification Status"
+                          htmlFor="verificationStatus"
+                        >
+                          {verificationStatus}
+                        </Display>
+                      </Grid.Item>
+                    </Grid.Column>
+                  </Grid>
+                </>
+              }
+              //  {...otherPatientProps}
             />
           )
         )

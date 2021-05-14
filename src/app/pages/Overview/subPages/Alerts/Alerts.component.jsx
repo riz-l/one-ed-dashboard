@@ -19,12 +19,46 @@ export default function Alerts() {
   const alertsRender =
     patientAlerts && patientAlerts.length > 0
       ? patientAlerts.map(
-          ({ id, alertName, alertFreeText, ...otherPatientProps }) => (
+          ({
+            id,
+            alertCode,
+            alertName,
+            alertFreeText,
+            status,
+            ...otherPatientProps
+          }) => (
             <ReportEntry
               key={id}
               alerts
               type={alertName}
               details={alertFreeText}
+              openedModal={
+                <>
+                  <Grid>
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display>{alertName}</Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display>{status}</Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display>{alertCode}</Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display>{alertFreeText}</Display>
+                      </Grid.Item>
+                    </Grid.Column>
+                  </Grid>
+                </>
+              }
               {...otherPatientProps}
             />
           )
