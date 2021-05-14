@@ -19,8 +19,8 @@ export const putTriageForm = createAsyncThunk(
         method: "put",
         url: `${apiUrl}/${encounterID}`,
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json+fhir",
+          Accept: "application/json+fhir",
+          "Content-Type": "application/json",
           "Authorization-Token": token,
         },
         data: triageForm,

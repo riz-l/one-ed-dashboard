@@ -37,14 +37,14 @@ export default function TriageAndStream() {
   const triageData = useSelector((state) => state.triage.triageForm);
   const dispatch = useDispatch();
 
-  console.log(triageData);
-
   // Current Date, Time
   const date = new Date();
   const formattedDate = date.toISOString().substr(0, 10);
+  // console.log("formattedDate: ", formattedDate);
   const time = date.toLocaleTimeString();
-  const finalDate = moment("2021-05-10").format("YYYY-MM-DD");
   // const finalDate = moment(formattedDate).format("YYYY-MM-DD");
+  const finalDate = moment("2021-05-10").format("YYYY-MM-DD");
+  // console.log("finalDate: ", finalDate);
   const putDateTime = finalDate.concat("T", time, "Z");
 
   // Effect:
