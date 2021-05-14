@@ -21,9 +21,17 @@ export default function Allergies() {
       ? patientAllergies.map(
           ({
             id,
+            allergyCode,
             allergyName,
+            assertedDate,
+            category,
             clinicalStatus,
             manifestationDisplay,
+            recordedByID,
+            reactionCode,
+            reactionDisplay,
+            verificationStatus,
+            type,
             ...otherPatientProps
           }) => (
             <ReportEntry
@@ -32,6 +40,73 @@ export default function Allergies() {
               details={manifestationDisplay}
               status={clinicalStatus}
               type={allergyName}
+              openedModal={
+                <>
+                  <Grid>
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display
+                          labelText="Verification Status"
+                          htmlFor="verificationStatus"
+                        >
+                          {verificationStatus}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display labelText="Type" htmlFor="type">
+                          {type}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display labelText="Category" htmlFor="category">
+                          {category}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display labelText="Allergy Code" htmlFor="allergyCode">
+                          {allergyCode}
+                        </Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
+                        <Display
+                          labelText="Asserted Date"
+                          htmlFor="assertedDate"
+                        >
+                          {assertedDate}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display
+                          labelText="Recorded By ID"
+                          htmlFor="recordedById"
+                        >
+                          {recordedByID}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display
+                          labelText="Reaction Code"
+                          htmlFor="reactionCode"
+                        >
+                          {reactionCode}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display>{reactionDisplay}</Display>
+                      </Grid.Item>
+                    </Grid.Column>
+                  </Grid>
+                </>
+              }
               // {...otherPatientProps}
             />
           )
