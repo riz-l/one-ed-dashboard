@@ -79,7 +79,7 @@ export default function CreateAttendance() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="Time" labelText="Incident Date" />
+                  <Form.Input type="Time" labelText="Incident Time" />
                 </Grid.Item>
               </Grid.Column>
 

@@ -75,3 +75,9 @@ $ npm install
 - `react-redux`
 
   - Used for state management
+
+### ToDo Tree
+
+ToDo Tree is an extension in VS Code.
+Once installed the tree icon appears on the VS Code side bar.
+When writing comments in your code start the comment with the key words "TODO" or "FIXME" the ToDo tree extension picks out these commenst and pust them in a list allowing developers to quickly jump to parts of the code marked up as needing to be worked on.
