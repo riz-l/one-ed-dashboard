@@ -42,7 +42,7 @@ export default function NeuroObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="gCSTotal"
+                    htmlFor="gcsTotal"
                     labelText="GCS Total"
                     type="number"
                   />

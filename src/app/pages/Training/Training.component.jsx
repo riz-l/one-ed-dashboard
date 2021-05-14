@@ -73,7 +73,7 @@ export default function Training() {
                         <Form.Dropdown
                           labelText="componentDropdown"
                           left={false}
-                          htmlFor="dropdown-example"
+                          htmlFor="dropdownExample"
                           // width="150px"
                         />
                       </Grid.Item>

@@ -108,8 +108,8 @@ export default function CreateAttendance() {
                 <Grid.Item>
                   <Form.Input
                     htmlFor="incidentTime"
-                    type="Time"
                     labelText="Incident Time"
+                    type="Time"
                   />
                 </Grid.Item>
               </Grid.Column>
@@ -176,7 +176,7 @@ export default function CreateAttendance() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="ambulanceHandoverTime"
+                    htmlFor="accompaniedBy"
                     labelText="Accompanied By"
                     type="text"
                   />

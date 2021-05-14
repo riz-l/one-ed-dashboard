@@ -104,7 +104,7 @@ The latest copy of the .env file can be found at:
 A description of what the form components do and the props used in each component.
 
 Most of the form components have a label and an input field. In html the label element is linked to the input element by the "for" attribute of the label matching the "id" attribute of the input element. In React "for" is a keyword so is replaced by "htmlFor". The value for htmlFor must be in camelCase, and they all need to be unique. If you have something that has multiple items like addresses, you'd do htmlFor="addressOne", htmlFor="addressTwo" etc. Avaoid duplicates in the same form.
-Note for "htmlFor" numbers, spaces, symbols and hyphens should not be used.
+Note for "htmlFor" numbers, spaces, symbols and hyphens should not be used. If the value starts with a accornym such as NHS Number the htmlFor would be "nhsNumber" where the accronym is kept in lower case.
 
 ### Anchor
 
