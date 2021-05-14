@@ -50,6 +50,7 @@ export default function ReportEntry({
   type,
   details,
   status,
+  openedModal,
 }) {
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -201,6 +202,8 @@ export default function ReportEntry({
             ? "Symptoms"
             : "Default Entry"}
         </Text>
+
+        {openedModal}
 
         <Button text="Close" onClick={closeModal} />
       </ReactModal>
