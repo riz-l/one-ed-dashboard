@@ -22,14 +22,14 @@ export default function TriageAndStream() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Arrival Date/Time"
+                    htmlFor="arrivalDateTime"
                     labelText="Arrival Date/Time"
                     type="text"
                   />
                 </Grid.Item>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage Date"
+                    htmlFor="triageDate"
                     labelText="Triage Date"
                     type="text"
                   />
@@ -37,14 +37,14 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage Time"
+                    htmlFor="triageTime"
                     labelText="Triage Time"
                     type="text"
                   />
                 </Grid.Item>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage System"
+                    htmlFor="triageSystem"
                     labelText="Triage System"
                     type="text"
                   />
@@ -54,21 +54,21 @@ export default function TriageAndStream() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Location"
+                    htmlFor="location"
                     labelText="Location"
                     type="text"
                   />
                 </Grid.Item>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Chief Complaint"
+                    htmlFor="chiefComplaint"
                     labelText="Chief Complaint"
                     type="text"
                   />
                 </Grid.Item>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage Category"
+                    htmlFor="triageCategory"
                     labelText="Triage Category"
                     type="text"
                   />
@@ -77,7 +77,7 @@ export default function TriageAndStream() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage By"
+                    htmlFor="triageBy"
                     labelText="Triage By"
                     type="text"
                   />
