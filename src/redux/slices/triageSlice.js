@@ -19,13 +19,11 @@ export const putTriageForm = createAsyncThunk(
         method: "put",
         url: `${apiUrl}/${encounterID}`,
         headers: {
-          accept: "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json+fhir",
           "Authorization-Token": token,
         },
-        data: {
-          triageForm,
-        },
+        data: triageForm,
       };
 
       const response = await axios(config);

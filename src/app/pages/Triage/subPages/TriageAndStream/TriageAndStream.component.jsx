@@ -9,7 +9,7 @@ import {
   addTriageDiagnosis,
   addTriageDiagnosisCode,
   addPractitioner,
-  clearTriageForm,
+  // clearTriageForm,
 } from "../../../../../redux/slices/triageSlice";
 import moment from "moment";
 
@@ -34,22 +34,26 @@ export default function TriageAndStream() {
     (state) => state.selectedPatient.patientData[0].StartDate
   );
   const patient = useSelector((state) => state.selectedPatient.patient);
+  const triageData = useSelector((state) => state.triage.triageForm);
   const dispatch = useDispatch();
+
+  console.log(triageData);
 
   // Current Date, Time
   const date = new Date();
   const formattedDate = date.toISOString().substr(0, 10);
-  const time = date.getHours() + ":" + date.getMinutes();
-  const m = moment().toISOString();
-  console.log("M: ", m);
+  const time = date.toLocaleTimeString();
+  const finalDate = moment("2021-05-10").format("YYYY-MM-DD");
+  // const finalDate = moment(formattedDate).format("YYYY-MM-DD");
+  const putDateTime = finalDate.concat("T", time, "Z");
 
   // Effect:
   useEffect(() => {
     dispatch(addPatientID(patient));
-    dispatch(addDateTime(m));
-    dispatch(addTriageCategory());
-    dispatch(addTriageDiagnosis());
-    dispatch(addTriageDiagnosisCode());
+    dispatch(addDateTime(putDateTime));
+    dispatch(addTriageCategory("Very urgent"));
+    dispatch(addTriageDiagnosis("Dizziness - light-headed"));
+    dispatch(addTriageDiagnosisCode("386705008"));
     dispatch(addPractitioner(user));
     dispatch(putTriageForm());
   }, [dispatch]);
