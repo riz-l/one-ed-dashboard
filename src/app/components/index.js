@@ -34,6 +34,9 @@ export { default as Indicator } from "./Indicator/Indicator.component";
 // Export: Input
 export { Input } from "./Input/Input.component";
 
+// Export: MoveLocation
+export { default as MoveLocation } from "./MoveLocation/MoveLocation.component";
+
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";
 

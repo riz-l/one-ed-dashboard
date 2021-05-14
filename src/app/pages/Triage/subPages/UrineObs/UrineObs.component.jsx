@@ -21,7 +21,7 @@ export default function UrineObs() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Checkbox htmlFor="nAD" text="NAD" />
+                  <Form.Checkbox htmlFor="nad" text="NAD" />
                 </Grid.Item>
 
                 <Grid.Item>

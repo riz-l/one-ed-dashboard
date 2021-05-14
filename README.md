@@ -76,6 +76,12 @@ $ npm install
 
   - Used for state management
 
+### ToDo Tree
+
+ToDo Tree is an extension in VS Code.
+Once installed the tree icon appears on the VS Code side bar.
+When writing comments in your code start the comment with the key words "TODO" or "FIXME" the ToDo tree extension picks out these commenst and pust them in a list allowing developers to quickly jump to parts of the code marked up as needing to be worked on.
+
 ## The .env file
 
 For OneED to work it requires a .env file.
@@ -98,7 +104,7 @@ The latest copy of the .env file can be found at:
 A description of what the form components do and the props used in each component.
 
 Most of the form components have a label and an input field. In html the label element is linked to the input element by the "for" attribute of the label matching the "id" attribute of the input element. In React "for" is a keyword so is replaced by "htmlFor". The value for htmlFor must be in camelCase, and they all need to be unique. If you have something that has multiple items like addresses, you'd do htmlFor="addressOne", htmlFor="addressTwo" etc. Avaoid duplicates in the same form.
-Note for "htmlFor" numbers, spaces, symbols and hyphens should not be used.
+Note for "htmlFor" numbers, spaces, symbols and hyphens should not be used. If the value starts with a accornym such as NHS Number the htmlFor would be "nhsNumber" where the accronym is kept in lower case.
 
 ### Anchor
 

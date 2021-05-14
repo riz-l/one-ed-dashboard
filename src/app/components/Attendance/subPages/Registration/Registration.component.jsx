@@ -23,7 +23,7 @@ export default function Registration() {
                 {/* In Lorenzo this field is locked. I'm not sure where the value comes from */}
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="nHSNumber"
+                    htmlFor="nhsNumber"
                     labelText="NHS Number"
                     type="number"
                   />
