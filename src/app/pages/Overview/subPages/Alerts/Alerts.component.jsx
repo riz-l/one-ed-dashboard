@@ -37,23 +37,17 @@ export default function Alerts() {
                   <Grid>
                     <Grid.Column>
                       <Grid.Item>
-                        <Display>{alertName}</Display>
-                      </Grid.Item>
-
-                      <Grid.Item>
-                        <Display>{status}</Display>
+                        <Display labelText="Status" htmlFor="status">
+                          {status}
+                        </Display>
                       </Grid.Item>
                     </Grid.Column>
 
                     <Grid.Column>
                       <Grid.Item>
-                        <Display>{alertCode}</Display>
-                      </Grid.Item>
-                    </Grid.Column>
-
-                    <Grid.Column>
-                      <Grid.Item>
-                        <Display>{alertFreeText}</Display>
+                        <Display labelText="Alert Code" htmlFor="alertCode">
+                          {alertCode}
+                        </Display>
                       </Grid.Item>
                     </Grid.Column>
                   </Grid>
