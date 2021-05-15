@@ -44,7 +44,8 @@ export default function TriageAndStream() {
   const time = date.toLocaleTimeString();
   // const finalDate = moment(formattedDate).format("YYYY-MM-DD");
   const finalDate = moment("2021-05-10").format("YYYY-MM-DD");
-  // console.log("finalDate: ", finalDate);
+  // ISSUE: if finalDate === current date, response === 400
+  // ... if finalDate !== current date && < current date, response === 200
   const putDateTime = finalDate.concat("T", time, "Z");
 
   // Effect:
