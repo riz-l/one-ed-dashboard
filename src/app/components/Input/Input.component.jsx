@@ -21,6 +21,7 @@ export const Input = React.forwardRef((props, ref) => {
       )}
 
       <InputField
+        defaultValue={props.defaultValue}
         id={props.htmlFor}
         left={props.left}
         name={props.htmlFor}

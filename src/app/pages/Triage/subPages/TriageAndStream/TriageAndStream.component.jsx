@@ -40,11 +40,13 @@ export default function TriageAndStream() {
   );
   const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
   const patient = useSelector((state) => state.selectedPatient.patient);
+  const apiResponse = useSelector((state) => state.triage.apiResponse);
   const dispatch = useDispatch();
 
   // Ref:
   const triageDateRef = useRef();
   const triageTimeRef = useRef();
+  const triageCategoryRef = useRef();
 
   // Current Date, Time
   const date = new Date();
@@ -66,8 +68,24 @@ export default function TriageAndStream() {
     dispatch(addTriageDiagnosis("Dizziness - light-headed"));
     dispatch(addTriageDiagnosisCode("386705008"));
     dispatch(addPractitioner(userExtension));
-    dispatch(putTriageForm());
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
+
+  // Submit data to API
+  const submitTriageAndStreamForm = async (event) => {
+    event.preventDefault();
+    const triageDate = triageDateRef.current.value;
+    const triageTime = triageTimeRef.current.value;
+    if (triageDate === "" || triageTime === "") return;
+
+    try {
+      dispatch(putTriageForm());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Dropdown Options
+  const dropdownOptions = ["Very urgent"];
 
   return (
     <>
@@ -77,7 +95,7 @@ export default function TriageAndStream() {
             Triage
           </Text>
 
-          <Form>
+          <Form onSubmit={submitTriageAndStreamForm}>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -96,7 +114,7 @@ export default function TriageAndStream() {
                     readonly
                     ref={triageDateRef}
                     type="date"
-                    value={finalDate}
+                    defaultValue={finalDate}
                   />
                 </Grid.Item>
 
@@ -107,7 +125,7 @@ export default function TriageAndStream() {
                     readonly
                     ref={triageTimeRef}
                     type="time"
-                    value={time}
+                    defaultValue={time}
                   />
                 </Grid.Item>
               </Grid.Column>
@@ -131,6 +149,8 @@ export default function TriageAndStream() {
                   <Form.Dropdown
                     htmlFor="Triage Category"
                     labelText="Triage Category"
+                    options={dropdownOptions}
+                    ref={triageCategoryRef}
                   />
                 </Grid.Item>
               </Grid.Column>
@@ -143,6 +163,32 @@ export default function TriageAndStream() {
                 </Grid.Item>
               </Grid.Column>
             </Grid>
+
+            <Form.Button
+              text="Submit Form"
+              type="submit"
+              onClick={submitTriageAndStreamForm}
+            />
+
+            {apiResponse === "HTTP Response Code: 200" ||
+            (apiResponse && apiResponse.response) ? (
+              <Form.Display
+                htmlFor="submissionResponse"
+                style={
+                  apiResponse === "HTTP Response Code: 200"
+                    ? { color: "#008ba3" }
+                    : apiResponse && apiResponse.response
+                    ? { color: "tomato" }
+                    : null
+                }
+              >
+                {apiResponse === "HTTP Response Code: 200"
+                  ? "Submission Successful"
+                  : apiResponse && apiResponse.response
+                  ? "Submission Failed"
+                  : null}
+              </Form.Display>
+            ) : null}
           </Form>
         </Wrapper>
       </Container>

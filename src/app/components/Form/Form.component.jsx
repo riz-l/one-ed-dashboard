@@ -163,6 +163,7 @@ const FormInput = React.forwardRef((props, ref) => {
   return (
     <Input
       center={props.center}
+      defaultValue={props.defaultValue}
       htmlFor={props.htmlFor}
       labelText={props.labelText}
       left={props.left}
