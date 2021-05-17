@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   putTriageForm,
@@ -21,11 +21,16 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: TriageAndStream
 export default function TriageAndStream() {
-  // Redux: Extracts currently logged in user from global state
-  const user = useSelector(
+  // Redux:
+  const userExtension = useSelector(
     (state) =>
       state.userDetails.details.ControlActEvent.Subject.Value[0]
         .UserRoleProfile[0].UserID.extension
+  );
+  const userName = useSelector(
+    (state) =>
+      state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName
   );
   const location = useSelector(
     (state) => state.selectedPatient.patientData[0].location
@@ -33,23 +38,25 @@ export default function TriageAndStream() {
   const startDate = useSelector(
     (state) => state.selectedPatient.patientData[0].StartDate
   );
+  const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
   const patient = useSelector((state) => state.selectedPatient.patient);
-  // const triageData = useSelector((state) => state.triage.triageForm);
   const dispatch = useDispatch();
+
+  // Ref:
+  const triageDateRef = useRef();
+  const triageTimeRef = useRef();
 
   // Current Date, Time
   const date = new Date();
   const formattedDate = date.toISOString().substr(0, 10);
-  const time = date.toLocaleTimeString();
-  const finalDate = moment(formattedDate).format("YYYY-MM-DD");
-  // const finalDate = moment("2021-05-10").format("YYYY-MM-DD");
+  const time = date.toLocaleTimeString(); // Triage Time
+  const finalDate = moment(formattedDate).format("YYYY-MM-DD"); // Triage Date
   const putDateTime = finalDate.concat("T", time, "Z");
   const newDateTime = new Date(putDateTime);
   newDateTime.setHours(newDateTime.getHours() - 2);
   const newTime = newDateTime.toLocaleTimeString();
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
-  console.log("putEditedNewDateTime: ", putEditedNewDateTime);
 
   // Effect:
   useEffect(() => {
@@ -58,9 +65,9 @@ export default function TriageAndStream() {
     dispatch(addTriageCategory("Very urgent"));
     dispatch(addTriageDiagnosis("Dizziness - light-headed"));
     dispatch(addTriageDiagnosisCode("386705008"));
-    dispatch(addPractitioner(user));
+    dispatch(addPractitioner(userExtension));
     dispatch(putTriageForm());
-  }, [dispatch]);
+  }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
   return (
     <>
@@ -78,7 +85,7 @@ export default function TriageAndStream() {
                     htmlFor="Arrival Date/Time"
                     labelText="Arrival Date/Time"
                   >
-                    {startDate}
+                    {formattedStartDate}
                   </Form.Display>
                 </Grid.Item>
 
@@ -86,8 +93,10 @@ export default function TriageAndStream() {
                   <Form.Input
                     htmlFor="Triage Date"
                     labelText="Triage Date"
+                    readonly
+                    ref={triageDateRef}
                     type="date"
-                    value={formattedDate}
+                    value={finalDate}
                   />
                 </Grid.Item>
 
@@ -95,6 +104,8 @@ export default function TriageAndStream() {
                   <Form.Input
                     htmlFor="Triage Time"
                     labelText="Triage Time"
+                    readonly
+                    ref={triageTimeRef}
                     type="time"
                     value={time}
                   />
@@ -127,7 +138,7 @@ export default function TriageAndStream() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Display htmlFor="Triage By" labelText="Triage By">
-                    {user}
+                    {userName}
                   </Form.Display>
                 </Grid.Item>
               </Grid.Column>

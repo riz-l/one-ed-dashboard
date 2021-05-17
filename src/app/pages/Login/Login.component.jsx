@@ -16,10 +16,13 @@ import { Form } from "../../components";
 
 // Page: Login
 export default function Login(props) {
+  // Redux:
   const token = useSelector((state) => state.userDetails.token);
+  const dispatch = useDispatch();
+
+  // Ref:
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
-  const dispatch = useDispatch();
 
   const addUsernameToRedux = () => {
     dispatch(addUsername(usernameInputRef.current.value));
