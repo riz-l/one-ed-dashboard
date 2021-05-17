@@ -17,7 +17,7 @@ export { default as Checkbox } from "./Checkbox/Checkbox.component";
 export { default as Display } from "./Display/Display.component";
 
 // Export: Dropdown
-export { default as Dropdown } from "./Dropdown/Dropdown.component";
+export { Dropdown } from "./Dropdown/Dropdown.component";
 
 // Export: Form
 export { default as Form } from "./Form/Form.component";

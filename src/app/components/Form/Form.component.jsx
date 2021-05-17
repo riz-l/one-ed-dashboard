@@ -62,12 +62,13 @@ function FormAnchor({
 }
 
 // Compound Component: FormAutoSuggest
-function FormAutoSuggest({ htmlFor, labelText, left, placeholder }) {
+function FormAutoSuggest({ htmlFor, labelText, left, options, placeholder }) {
   return (
     <AutoSuggest
       labelText={labelText}
       htmlFor={htmlFor}
       left={left}
+      options={options}
       placeholder={placeholder}
     />
   );
@@ -136,27 +137,20 @@ function FormDisplay({
 }
 
 // Compound Component: FormDropdown
-function FormDropdown({
-  htmlFor,
-  labelText,
-  onChange,
-  options,
-  left,
-  value,
-  width,
-}) {
+const FormDropdown = React.forwardRef((props, ref) => {
   return (
     <Dropdown
-      htmlFor={htmlFor}
-      labelText={labelText}
-      onChange={onChange}
-      options={options}
-      left={left}
-      value={value}
-      width={width}
+      htmlFor={props.htmlFor}
+      labelText={props.labelText}
+      onChange={props.onChange}
+      options={props.options}
+      left={props.left}
+      ref={ref}
+      value={props.value}
+      width={props.width}
     />
   );
-}
+});
 
 // Compound Component: FormInput
 const FormInput = React.forwardRef((props, ref) => {

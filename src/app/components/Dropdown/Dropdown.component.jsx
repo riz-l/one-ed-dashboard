@@ -5,34 +5,27 @@ import React from "react";
 import { Container, Label, Select, Option } from "./Dropdown.elements";
 
 // Component: Dropdown
-export default function Dropdown({
-  htmlFor,
-  labelText,
-  onChange,
-  options,
-  left,
-  value,
-  width,
-}) {
+export const Dropdown = React.forwardRef((props, ref) => {
   // Dropdown placeholder options
   const placeholderOptions = ["Please declare options..."];
 
   return (
-    <Container data-testid={"dropdown"} left={left}>
-      <Label htmlFor={htmlFor} left={left}>
-        {labelText}
+    <Container data-testid={"dropdown"} left={props.left}>
+      <Label htmlFor={props.htmlFor} left={props.left}>
+        {props.labelText}
       </Label>
 
       <Select
-        name={htmlFor}
-        id={htmlFor}
-        onChange={onChange}
-        value={value}
-        width={width}
+        name={props.htmlFor}
+        id={props.htmlFor}
+        onChange={props.onChange}
+        ref={ref}
+        value={props.value}
+        width={props.width}
       >
         <Option value="null">Select...</Option>
-        {options
-          ? options.map((option, index) => (
+        {props.options
+          ? props.options.map((option, index) => (
               <Option key={index} value={option}>
                 {option}
               </Option>
@@ -42,12 +35,7 @@ export default function Dropdown({
                 {placeholderOption}
               </Option>
             ))}
-        {/* {options.map((option, index) => (
-          <Option key={index} value={option}>
-            {option}
-          </Option>
-        ))} */}
       </Select>
     </Container>
   );
-}
+});

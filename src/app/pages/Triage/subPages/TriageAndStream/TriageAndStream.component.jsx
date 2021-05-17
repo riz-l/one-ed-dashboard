@@ -46,6 +46,7 @@ export default function TriageAndStream() {
   // Ref:
   const triageDateRef = useRef();
   const triageTimeRef = useRef();
+  const triageDiagnosisRef = useRef();
   const triageCategoryRef = useRef();
 
   // Current Date, Time
@@ -64,7 +65,7 @@ export default function TriageAndStream() {
   useEffect(() => {
     dispatch(addPatientID(patient));
     dispatch(addDateTime(putEditedNewDateTime));
-    dispatch(addTriageCategory("Very urgent"));
+    // dispatch(addTriageCategory("Very urgent"));
     dispatch(addTriageDiagnosis("Dizziness - light-headed"));
     dispatch(addTriageDiagnosisCode("386705008"));
     dispatch(addPractitioner(userExtension));
@@ -84,8 +85,21 @@ export default function TriageAndStream() {
     }
   };
 
-  // Dropdown Options
+  // Dropdown options
   const dropdownOptions = ["Very urgent"];
+
+  // Autosuggest options
+  const autoSuggestOptions = [
+    {
+      name: "Dizziness - light-headed",
+      code: "386705008",
+    },
+  ];
+
+  // Add values to Redux
+  const addTriageCategoryToRedux = () => {
+    dispatch(addTriageCategory(triageCategoryRef.current.value));
+  };
 
   return (
     <>
@@ -139,9 +153,11 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.AutoSuggest
-                    htmlFor="Chief Complaint"
-                    labelText="Chief Complaint"
-                    placeholder="Chief Complaint..."
+                    htmlFor="triageDiagnosis"
+                    labelText="Triage Diagnosis"
+                    options={autoSuggestOptions}
+                    placeholder="Triage diagnosis..."
+                    ref={triageDiagnosisRef}
                   />
                 </Grid.Item>
 
@@ -149,6 +165,7 @@ export default function TriageAndStream() {
                   <Form.Dropdown
                     htmlFor="Triage Category"
                     labelText="Triage Category"
+                    onChange={addTriageCategoryToRedux}
                     options={dropdownOptions}
                     ref={triageCategoryRef}
                   />

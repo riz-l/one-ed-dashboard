@@ -5,253 +5,49 @@ import Autosuggest from "react-autosuggest";
 // Import: Elements
 import { Container, Dropdown, Label } from "./AutoSuggest.elements";
 
-const languages = [
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-];
-
-const getSuggestions = (value) => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    : languages.filter(
-        (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
-
-const getSuggestionValue = (suggestion) => suggestion.name;
-
-const renderSuggestion = (suggestion) => <Dropdown>{suggestion.name}</Dropdown>;
-
 // Component: AutoSuggest
-export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
+export default function AutoSuggest({
+  htmlFor,
+  labelText,
+  left,
+  options,
+  placeholder,
+}) {
   // State: value, suggestions
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  // AutoSuggest placeholder options
+  const languages = [
+    {
+      name: "C",
+    },
+    {
+      name: "C#",
+    },
+  ];
+
+  const getSuggestions = (value) => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0
+      ? []
+      : options
+      ? options.filter(
+          (option) =>
+            option.name.toLowerCase().slice(0, inputLength) === inputValue
+        )
+      : languages.filter(
+          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+        );
+  };
+
+  const getSuggestionValue = (suggestion) => suggestion.name;
+
+  const renderSuggestion = (suggestion) => (
+    <Dropdown>{suggestion.name}</Dropdown>
+  );
 
   const onChange = (event, { newValue }) => {
     setValue(newValue);
