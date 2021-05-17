@@ -1,8 +1,7 @@
 // Import: Packages
-import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTriageDiagnosis } from "../../../redux/slices/triageSlice";
+import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
+import { useDispatch } from "react-redux";
 
 // Import: Elements
 import { Container, Dropdown, Label } from "./AutoSuggest.elements";
@@ -46,14 +45,15 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
   const getSuggestionValue = (suggestion) => suggestion.name;
 
   const renderSuggestion = (suggestion) => (
-    <Dropdown onClick={() => dispatch(addTriageDiagnosis(suggestion.name))}>
-      {suggestion.name}
+    <Dropdown ref={ref} value={suggestion.name}>
+      <span onClick={() => dispatch(props.onChange(suggestion.name))}>
+        {suggestion.name}
+      </span>
     </Dropdown>
   );
 
   const onChange = (event, { newValue }) => {
     setValue(newValue);
-    props.onChange();
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -68,7 +68,6 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
     placeholder: props.placeholder ? props.placeholder : "Start typing...",
     value,
     onChange: onChange,
-    ref: ref,
   };
 
   return (

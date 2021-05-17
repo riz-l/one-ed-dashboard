@@ -94,15 +94,15 @@ export default function TriageAndStream() {
       name: "Dizziness - light-headed",
       code: "386705008",
     },
+    {
+      name: "Fractured skull - heavy trauma",
+      code: "386705008",
+    },
   ];
 
   // Add values to Redux
   const addTriageCategoryToRedux = () => {
     dispatch(addTriageCategory(triageCategoryRef.current.value));
-  };
-
-  const addTriageDiagnosisToRedux = () => {
-    dispatch(addTriageDiagnosis(triageDiagnosisRef.current.value));
   };
 
   return (
@@ -159,7 +159,7 @@ export default function TriageAndStream() {
                   <Form.AutoSuggest
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
-                    onChange={addTriageDiagnosisToRedux}
+                    onChange={addTriageDiagnosis}
                     options={autoSuggestOptions}
                     ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."
