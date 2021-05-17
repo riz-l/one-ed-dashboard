@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
 import { useDispatch } from "react-redux";
 
@@ -12,7 +12,9 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
 
   // State: value, suggestions
   const [value, setValue] = useState("");
+  console.log("value: ", value);
   const [suggestions, setSuggestions] = useState([]);
+  console.log("suggestions: ", suggestions);
 
   // AutoSuggest placeholder options
   const placeholderOptions = [
@@ -45,7 +47,7 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
   const getSuggestionValue = (suggestion) => suggestion.name;
 
   const renderSuggestion = (suggestion) => (
-    <Dropdown ref={ref} value={suggestion.name}>
+    <Dropdown ref={ref}>
       <span onClick={() => dispatch(props.onChange(suggestion.name))}>
         {suggestion.name}
       </span>
@@ -69,6 +71,13 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
     value,
     onChange: onChange,
   };
+
+  // Effect: if value === "", set Redux state to === ""
+  useEffect(() => {
+    if (value === "") {
+      dispatch(props.onChange(""));
+    }
+  }, [value, dispatch, props.onChange]);
 
   return (
     <>
