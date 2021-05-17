@@ -82,6 +82,24 @@ export default function TriageAndStream() {
                     type="text"
                   />
                 </Grid.Item>
+
+                {/* TODO Waiting for the Allergy API to be ready so the 2 fields below can be linked to it. */}
+                {/* 
+                <Grid.Item>
+                  <Form.Dropdown
+                    htmlFor="checkAllergies"
+                    labelText="Check Allergies"
+                  />
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.TextArea
+                    cols="13"
+                    htmlFor="checkAllergiesComments"
+                    labeltext="Comments"
+                    rows="5"
+                  />
+                </Grid.Item> */}
               </Grid.Column>
             </Grid>
           </Form>

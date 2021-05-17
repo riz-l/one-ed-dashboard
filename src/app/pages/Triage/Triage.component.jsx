@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 // Import: Assets
-// import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
+
 import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
 import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
