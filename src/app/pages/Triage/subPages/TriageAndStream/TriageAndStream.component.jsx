@@ -66,7 +66,7 @@ export default function TriageAndStream() {
     dispatch(addPatientID(patient));
     dispatch(addDateTime(putEditedNewDateTime));
     // dispatch(addTriageCategory("Very urgent"));
-    dispatch(addTriageDiagnosis("Dizziness - light-headed"));
+    // dispatch(addTriageDiagnosis("Dizziness - light-headed"));
     dispatch(addTriageDiagnosisCode("386705008"));
     dispatch(addPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
@@ -99,6 +99,10 @@ export default function TriageAndStream() {
   // Add values to Redux
   const addTriageCategoryToRedux = () => {
     dispatch(addTriageCategory(triageCategoryRef.current.value));
+  };
+
+  const addTriageDiagnosisToRedux = () => {
+    dispatch(addTriageDiagnosis(triageDiagnosisRef.current.value));
   };
 
   return (
@@ -155,9 +159,10 @@ export default function TriageAndStream() {
                   <Form.AutoSuggest
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
+                    onChange={addTriageDiagnosisToRedux}
                     options={autoSuggestOptions}
-                    placeholder="Triage diagnosis..."
                     ref={triageDiagnosisRef}
+                    placeholder="Triage diagnosis..."
                   />
                 </Grid.Item>
 

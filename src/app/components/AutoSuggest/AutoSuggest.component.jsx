@@ -1,24 +1,22 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTriageDiagnosis } from "../../../redux/slices/triageSlice";
 import Autosuggest from "react-autosuggest";
 
 // Import: Elements
 import { Container, Dropdown, Label } from "./AutoSuggest.elements";
 
 // Component: AutoSuggest
-export default function AutoSuggest({
-  htmlFor,
-  labelText,
-  left,
-  options,
-  placeholder,
-}) {
+export const AutoSuggest = React.forwardRef((props, ref) => {
+  const dispatch = useDispatch();
+
   // State: value, suggestions
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   // AutoSuggest placeholder options
-  const languages = [
+  const placeholderOptions = [
     {
       name: "C",
     },
@@ -33,24 +31,29 @@ export default function AutoSuggest({
 
     return inputLength === 0
       ? []
-      : options
-      ? options.filter(
+      : props.options
+      ? props.options.filter(
           (option) =>
             option.name.toLowerCase().slice(0, inputLength) === inputValue
         )
-      : languages.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : placeholderOptions.filter(
+          (placeholderOption) =>
+            placeholderOption.name.toLowerCase().slice(0, inputLength) ===
+            inputValue
         );
   };
 
   const getSuggestionValue = (suggestion) => suggestion.name;
 
   const renderSuggestion = (suggestion) => (
-    <Dropdown>{suggestion.name}</Dropdown>
+    <Dropdown onClick={() => dispatch(addTriageDiagnosis(suggestion.name))}>
+      {suggestion.name}
+    </Dropdown>
   );
 
   const onChange = (event, { newValue }) => {
     setValue(newValue);
+    props.onChange();
   };
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -62,17 +65,18 @@ export default function AutoSuggest({
   };
 
   const inputProps = {
-    placeholder: placeholder ? placeholder : "Start typing...",
+    placeholder: props.placeholder ? props.placeholder : "Start typing...",
     value,
     onChange: onChange,
+    ref: ref,
   };
 
   return (
     <>
-      <Container left={left} data-testid={"autoSuggest"}>
-        {labelText && (
-          <Label htmlfor={htmlFor} left={left}>
-            {labelText}
+      <Container left={props.left} data-testid={"autoSuggest"}>
+        {props.labelText && (
+          <Label htmlfor={props.htmlFor} left={props.left}>
+            {props.labelText}
           </Label>
         )}
 
@@ -87,4 +91,4 @@ export default function AutoSuggest({
       </Container>
     </>
   );
-}
+});

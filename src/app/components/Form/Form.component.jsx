@@ -62,17 +62,19 @@ function FormAnchor({
 }
 
 // Compound Component: FormAutoSuggest
-function FormAutoSuggest({ htmlFor, labelText, left, options, placeholder }) {
+const FormAutoSuggest = React.forwardRef((props, ref) => {
   return (
     <AutoSuggest
-      labelText={labelText}
-      htmlFor={htmlFor}
-      left={left}
-      options={options}
-      placeholder={placeholder}
+      labelText={props.labelText}
+      htmlFor={props.htmlFor}
+      left={props.left}
+      options={props.options}
+      onChange={props.onChange}
+      placeholder={props.placeholder}
+      ref={ref}
     />
   );
-}
+});
 
 // Compound Component: FormButton
 function FormButton({

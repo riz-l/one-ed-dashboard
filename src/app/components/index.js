@@ -5,7 +5,7 @@ export { default as Anchor } from "./Anchor/Anchor.component";
 export { default as Attendance } from "./Attendance/Attendance.component";
 
 // Export: AutoSuggest
-export { default as AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
+export { AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
 
 // Export: Button
 export { default as Button } from "./Button/Button.component";
