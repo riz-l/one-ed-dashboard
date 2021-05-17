@@ -77,7 +77,7 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
     if (value === "") {
       dispatch(props.onChange(""));
     }
-  }, [value, dispatch, props.onChange]);
+  }, [value, dispatch, props]);
 
   return (
     <>
