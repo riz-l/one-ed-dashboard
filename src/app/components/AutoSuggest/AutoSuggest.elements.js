@@ -102,8 +102,6 @@ export const Container = styled.div`
   }
 
   & .react-autosuggest__suggestion {
-    cursor: pointer;
-    padding: 0.4rem 1rem;
     transition: all 100ms linear;
 
     &:hover {
@@ -132,4 +130,13 @@ export const Label = styled.label`
 `;
 
 // Element: Dropdown
-export const Dropdown = styled.div``;
+export const Dropdown = styled.div`
+  & span {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    width: 100%;
+  }
+`;
