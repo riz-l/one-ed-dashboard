@@ -87,7 +87,7 @@ export default function TriageAndStream() {
   };
 
   // Dropdown options
-  const dropdownOptions = ["Very urgent"];
+  const dropdownOptions = ["Very urgent", "Not urgent"];
 
   // Autosuggest options
   const autoSuggestOptions = [
@@ -97,6 +97,10 @@ export default function TriageAndStream() {
     },
     {
       name: "Fractured skull - heavy trauma",
+      code: "386705008",
+    },
+    {
+      name: "Broken collar bone",
       code: "386705008",
     },
   ];

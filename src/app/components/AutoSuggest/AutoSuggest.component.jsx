@@ -73,7 +73,7 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
 
   // Effect: if value === "", set Redux state to === ""
   useEffect(() => {
-    if (value === "") {
+    if (value === "" && props.onChange && props.onChange.length > 0) {
       dispatch(props.onChange(""));
     }
   }, [value, dispatch, props]);
