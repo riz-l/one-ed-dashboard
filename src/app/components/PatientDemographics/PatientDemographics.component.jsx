@@ -1,6 +1,5 @@
 // Import: Packages
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
@@ -25,7 +24,7 @@ import {
 
 // Import: Components
 import { Button, Text } from "../index";
-import { Display, Form, Grid } from "../../components";
+import { Display, Grid } from "../../components";
 
 export default function PatientDemographics() {
   // State: isModalOpen
