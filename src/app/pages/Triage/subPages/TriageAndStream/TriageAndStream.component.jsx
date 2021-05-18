@@ -208,6 +208,7 @@ export default function TriageAndStream() {
             <Form.Button
               text="Submit Form"
               type="submit"
+              margin="0 0 1rem 0"
               onClick={submitTriageAndStreamForm}
             />
 

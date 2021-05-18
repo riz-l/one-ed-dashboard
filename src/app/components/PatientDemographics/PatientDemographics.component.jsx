@@ -1,5 +1,6 @@
 // Import: Packages
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
@@ -24,7 +25,7 @@ import {
 
 // Import: Components
 import { Button, Text } from "../index";
-import { Display, Grid } from "../../components";
+import { Display, Form, Grid } from "../../components";
 
 export default function PatientDemographics() {
   // State: isModalOpen
@@ -102,23 +103,6 @@ export default function PatientDemographics() {
 
   // Redux: Extracts Patient Home Phone Number from the global state
   const patientData = useSelector((state) => state.selectedPatient.patientData);
-
-  // // Redux: Extracts Patient Mobile Phone Number (postcode) from the global state
-  // const patientTelecom2 = useSelector(
-  //   (state) => state.selectedPatient.patientData[0].telecom2.value
-  // );
-
-  // // Redux: Extracts Patient Address Line Four (postcode) from the global state
-  // const patientTelecom3 = useSelector(
-  //   (state) => state.selectedPatient.patientData[0].telecom3.value
-  // );
-
-  // // Redux: Extracts Patient Address Line Four (postcode) from the global state
-  // const patientTelecom4 = useSelector(
-  //   (state) => state.selectedPatient.patientData[0].telecom4.value
-  // );
-
-  // Redux: Extracts Patient Gender from the global state
 
   return (
     <Container data-testid={"patientDemographics"}>
@@ -341,6 +325,7 @@ export default function PatientDemographics() {
                       : "N/A"}
                   </Display>
                 </Grid.Column>
+
                 <Grid.Column>
                   <Grid.Item>
                     {patientData[0].telecom1 ? (
