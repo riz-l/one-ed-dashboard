@@ -31,6 +31,32 @@ export const TextContainer = styled.span`
   transition: all 100ms linear;
 `;
 
+// Element: SaveContainer
+export const SaveContainer = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  transition: all 100ms linear;
+  width: 100%;
+  max-width: 100%;
+
+  & svg {
+    fill: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+    height: 18px;
+    margin-right: 0.4rem;
+    transition: all 100ms linear;
+    width: 18px;
+  }
+
+  &:hover {
+    & svg {
+      fill: #4d5e80;
+      transition: all 100ms linear;
+    }
+  }
+`;
+
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
@@ -50,6 +76,12 @@ export const ItemWrapper = styled.div`
 
   & ${TextContainer} {
     color: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+  }
+
+  & ${SaveContainer} {
+    & svg {
+      fill: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+    }
   }
 
   &:hover {

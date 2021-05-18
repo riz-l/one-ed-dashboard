@@ -4,11 +4,15 @@ import React, {
   createContext,
 } from "react";
 
+// Import: Assets
+import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
+
 // Import: Elements
 import {
   Container,
   ItemContainer,
   ItemWrapper,
+  SaveContainer,
   TextContainer,
 } from "./PrimaryNavigation.elements";
 
@@ -30,6 +34,18 @@ function Item({ isActive, ...props }) {
     <ItemContainer onClick={props.onClick}>
       <ItemWrapper isActive={isActive}>{props.children}</ItemWrapper>
     </ItemContainer>
+  );
+}
+
+// Compound Component: Save
+function Save({ ...props }) {
+  return (
+    <>
+      <SaveContainer>
+        <SaveIcon />
+        {props.children}
+      </SaveContainer>
+    </>
   );
 }
 
@@ -55,4 +71,5 @@ export default function PrimaryNavigation({ margin, padding, ...props }) {
 
 // Export: Item, Text
 PrimaryNavigation.Item = Item;
+PrimaryNavigation.Save = Save;
 PrimaryNavigation.Text = Text;
