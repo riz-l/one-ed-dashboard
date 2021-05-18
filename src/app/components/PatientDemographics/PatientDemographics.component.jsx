@@ -2,34 +2,31 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
+import { useSelector } from "react-redux";
 
 // Import: Assets
 import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
-
-// Import: Elements
 import {
-  ClickableButton,
+  ClickableText,
   ClickableButtonContainer,
+  Wrapper,
+  Heading,
+  HeadingImage,
+  ClickableButton,
+  ModalTopWrapper,
+  ModalButtonWrapper,
+  HeadingContent,
+  FormWrapper,
+  Container,
   ClickableContent,
   ClickableHeader,
-  ClickableText,
-  Container,
-  FormWrapper,
-  Heading,
-  HeadingContent,
-  HeadingImage,
-  ModalButtonWrapper,
-  ModalTopWrapper,
   SVGContainer,
-  Wrapper,
 } from "./PatientDemographics.elements";
-import "./PatientDemographics.styles.css";
 
 // Import: Components
 import { Button, Text } from "../index";
 import { Display, Form, Grid } from "../../components";
 
-// Component: PatientDemographics
 export default function PatientDemographics() {
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,24 +102,7 @@ export default function PatientDemographics() {
   );
 
   // Redux: Extracts Patient Home Phone Number from the global state
-  const patientTelecom1 = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom1
-  );
-
-  // Redux: Extracts Patient Mobile Phone Number from the global state
-  const patientTelecom2 = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom2
-  );
-
-  // Redux: Extracts Patient Other Phone Number from the global state
-  const patientTelecom3 = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom3
-  );
-
-  // Redux: Extracts Patient Email from the global state
-  const patientTelecom4 = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom4
-  );
+  const patientData = useSelector((state) => state.selectedPatient.patientData);
 
   return (
     <Container data-testid={"patientDemographics"}>
@@ -347,56 +327,65 @@ export default function PatientDemographics() {
                 </Grid.Column>
 
                 <Grid.Column>
-                  {patientTelecom1 ? (
-                    <Form.Display
-                      htmlFor="contactOne"
-                      labelText={
-                        patientTelecom1.use
-                          ? patientTelecom1.use + ":"
-                          : patientTelecom1.system + ":"
-                      }
-                    >
-                      {patientTelecom1.value.split("mailto:").pop()}
-                    </Form.Display>
-                  ) : null}
+                  <Grid.Item>
+                    {patientData[0].telecom1 ? (
+                      <Display
+                        htmlFor="contactOne"
+                        labelText={
+                          patientData[0].telecom1.use
+                            ? patientData[0].telecom1.use + ":"
+                            : patientData[0].telecom1.system + ":"
+                        }
+                      >
+                        {patientData[0].telecom1.value.split("mailto:").pop()}
+                      </Display>
+                    ) : null}
+                  </Grid.Item>
 
-                  {patientTelecom2 ? (
-                    <Form.Display
-                      htmlFor="contactTwo"
-                      labelText={
-                        patientTelecom2.use
-                          ? patientTelecom2.use + ":"
-                          : patientTelecom2.system + ":"
-                      }
-                    >
-                      {patientTelecom2.value.split("mailto:").pop()}
-                    </Form.Display>
-                  ) : null}
+                  <Grid.Item>
+                    {patientData[0].telecom2 ? (
+                      <Display
+                        htmlFor="contactOne"
+                        labelText={
+                          patientData[0].telecom2.use
+                            ? patientData[0].telecom2.use + ":"
+                            : patientData[0].telecom2.system + ":"
+                        }
+                      >
+                        {patientData[0].telecom2.value.split("mailto:").pop()}
+                      </Display>
+                    ) : null}
+                  </Grid.Item>
 
-                  {patientTelecom3 ? (
-                    <Form.Display
-                      htmlFor="contactThree"
-                      labelText={
-                        patientTelecom3.use
-                          ? patientTelecom3.use + ":"
-                          : patientTelecom3.system + ":"
-                      }
-                    >
-                      {patientTelecom3.value.split("mailto:").pop()}
-                    </Form.Display>
-                  ) : null}
-                  {patientTelecom4 ? (
-                    <Form.Display
-                      htmlFor="contactFour"
-                      labelText={
-                        patientTelecom4.use
-                          ? patientTelecom4.use + ":"
-                          : patientTelecom4.system + ":"
-                      }
-                    >
-                      {patientTelecom4.value.split("mailto:").pop()}
-                    </Form.Display>
-                  ) : null}
+                  <Grid.Item>
+                    {patientData[0].telecom3 ? (
+                      <Display
+                        htmlFor="contactOne"
+                        labelText={
+                          patientData[0].telecom3.use
+                            ? patientData[0].telecom3.use + ":"
+                            : patientData[0].telecom3.system + ":"
+                        }
+                      >
+                        {patientData[0].telecom3.value.split("mailto:").pop()}
+                      </Display>
+                    ) : null}
+                  </Grid.Item>
+
+                  <Grid.Item>
+                    {patientData[0].telecom4 ? (
+                      <Display
+                        htmlFor="contactOne"
+                        labelText={
+                          patientData[0].telecom4.use
+                            ? patientData[0].telecom4.use + ":"
+                            : patientData[0].telecom4.system + ":"
+                        }
+                      >
+                        {patientData[0].telecom4.value.split("mailto:").pop()}
+                      </Display>
+                    ) : null}
+                  </Grid.Item>
                 </Grid.Column>
               </Grid>
             </HeadingContent>
