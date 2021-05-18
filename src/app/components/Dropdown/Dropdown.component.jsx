@@ -7,7 +7,11 @@ import { Container, Label, Select, Option } from "./Dropdown.elements";
 // Component: Dropdown
 export const Dropdown = React.forwardRef((props, ref) => {
   // Dropdown placeholder options
-  const placeholderOptions = ["Please declare options..."];
+  const placeholderOptions = [
+    "Please declare options...",
+    "option 1",
+    "option2",
+  ];
 
   return (
     <Container data-testid={"dropdown"} left={props.left}>

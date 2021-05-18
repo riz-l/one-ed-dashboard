@@ -8,13 +8,7 @@ import { ReactComponent as ButtonIcon } from "../../../assets/img/icon/ward-dash
 import { Container, ContentWrapper, Wrapper } from "./Training.elements";
 
 // Import: Components
-import {
-  Form,
-  Grid,
-  Indicator,
-  PageTitle,
-  ReportSection,
-} from "../../components";
+import { Form, Grid, PageTitle, ReportSection } from "../../components";
 
 // Page: Training
 export default function Training() {
@@ -34,7 +28,11 @@ export default function Training() {
                   <Grid>
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.AutoSuggest labelText="Component: AutoSuggest" />
+                        <Form.AutoSuggest
+                          htmlFor="componentAutoSuggest"
+                          labelText="Component: AutoSuggest"
+                          left="true"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
@@ -45,15 +43,39 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Checkbox text="Component: Checkbox" />
+                        <Form.Checkbox
+                          htmlFor="componentCheckbox"
+                          text="Component: Checkbox"
+                          under={false}
+                          checked={false}
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Radio text="Component: Radio" />
+                        <Form.Radio
+                          // text="Component: Radio"
+                          checked={false}
+                          href="radio1"
+                          name="RadioTest"
+                          text="Radio1"
+                          value="radio1"
+                        />
+                        <Form.Radio
+                          checked={true}
+                          href="radio2"
+                          name="RadioTest"
+                          text="Radio2"
+                          value="radio2"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Form.Dropdown labelText="Component: Dropdown" />
+                        <Form.Dropdown
+                          labelText="componentDropdown"
+                          left={false}
+                          htmlFor="dropdownExample"
+                          // width="150px"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
@@ -73,10 +95,10 @@ export default function Training() {
                       </Grid.Item>
 
                       <Grid.Item>
-                        <Indicator
+                        <Form.Text as="p">Component: Indicator</Form.Text>
+                        <Form.Indicator
                           title="NEWS"
                           message="Give patient drugs and admit to Ward."
-                          // give component a prop of red, amber or green to determine box colour.
                           green
                         />
                       </Grid.Item>
@@ -84,48 +106,64 @@ export default function Training() {
 
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.Input labelText="Component: Input (text)" />
+                        <Form.Input
+                          htmlFor="componentInputText"
+                          labelText="Component: Input (text)"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="number"
+                          htmlFor="componentInputNumber"
                           labelText="Component: Input (number)"
+                          type="number"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="email"
+                          center={false}
+                          htmlFor="componentInputEmail"
                           labelText="Component: Input (email)"
+                          left={false}
+                          // margin="20px"
+                          placeholder="lalala@music.com"
+                          type="email"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="date"
+                          htmlFor="componentInputDate"
                           labelText="Component: Input (date)"
+                          type="date"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="time"
+                          htmlFor="componentInputTime"
                           labelText="Component: Input (time)"
+                          type="time"
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Input
-                          type="tel"
+                          htmlFor="componentInputTel"
                           labelText="Component: Input (tel)"
+                          type="tel"
                         />
                       </Grid.Item>
                     </Grid.Column>
 
                     <Grid.Column>
                       <Grid.Item>
-                        <Form.TextArea labelText="Component: TextArea" />
+                        <Form.TextArea
+                          htmlFor="componentTextArea"
+                          labelText="Component: TextArea"
+                          placeholder="la la la"
+                        />
                       </Grid.Item>
 
                       <Grid.Item>

@@ -21,31 +21,46 @@ export default function DecisionToAdmit() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Input type="date" labelText="Decision to Admit Date" />
+                  <Form.Input
+                    htmlFor="decisionToAdmitDate"
+                    labelText="Decision to Admit Date"
+                    type="date"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Input type="time" labelText="Decision to Admit Time" />
+                  <Form.Input
+                    htmlFor="decisionToAdmitTime"
+                    labelText="Decision to Admit Time"
+                    type="time"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Requested By" />
+                  <Form.Dropdown
+                    htmlFor="requestedBy"
+                    labelText="Requested By"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Bed Category" />
+                  <Form.Dropdown
+                    htmlFor="bedCategory"
+                    labelText="Bed Category"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Specialty" />
+                  <Form.AutoSuggest htmlFor="specialty" labelText="Specialty" />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.TextArea
-                    labelText="Additional Information"
                     cols="20"
+                    htmlFor="additionalInformation"
+                    labelText="Additional Information"
                     rows="5"
                   />
                 </Grid.Item>

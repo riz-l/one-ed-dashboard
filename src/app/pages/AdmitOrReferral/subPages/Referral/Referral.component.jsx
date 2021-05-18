@@ -21,29 +21,47 @@ export default function Referral() {
             <Grid>
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Associate Referral" />
+                  <Form.Dropdown
+                    htmlFor="associateReferral"
+                    labelText="Associate Referral"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Admin Category" />
+                  <Form.Dropdown
+                    htmlFor="adminCategory"
+                    labelText="Admin Category"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Service Type Requested" />
+                  <Form.Dropdown
+                    htmlFor="serviceTypeRequested"
+                    labelText="Service Type Requested"
+                  />
                 </Grid.Item>
               </Grid.Column>
 
               <Grid.Column>
                 <Grid.Item>
-                  <Form.Dropdown labelText="Referral Priority" />
+                  <Form.Dropdown
+                    htmlFor="referralPriority"
+                    labelText="Referral Priority"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown labelText="Referred to Type" />
+                  <Form.Dropdown
+                    htmlFor="referredToType"
+                    labelText="Referred to Type"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.AutoSuggest labelText="Care Provider" />
+                  <Form.AutoSuggest
+                    htmlFor="careProvider"
+                    labelText="Care Provider"
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>

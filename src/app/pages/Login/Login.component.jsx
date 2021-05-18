@@ -66,6 +66,7 @@ export default function Login(props) {
 
           <Form onSubmit={submitTestForm}>
             <Form.Input
+              htmlFor="username"
               labelText="Username"
               onChange={addUsernameToRedux}
               type="text"
@@ -73,6 +74,7 @@ export default function Login(props) {
             />
 
             <Form.Input
+              htmlFor="password"
               labelText="Password"
               onChange={addPasswordToRedux}
               type="password"

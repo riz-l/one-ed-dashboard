@@ -119,7 +119,7 @@ export default function TriageAndStream() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Arrival Date/Time"
+                    htmlFor="arrivalDateTime"
                     labelText="Arrival Date/Time"
                   >
                     {formattedStartDate}
@@ -128,7 +128,7 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage Date"
+                    htmlFor="triageDate"
                     labelText="Triage Date"
                     readonly
                     ref={triageDateRef}
@@ -139,7 +139,7 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="Triage Time"
+                    htmlFor="triageTime"
                     labelText="Triage Time"
                     readonly
                     ref={triageTimeRef}

@@ -20,16 +20,62 @@ export default function Symptoms() {
     patientConditions && patientConditions.length > 0
       ? patientConditions
           .filter((item) => item.category === "Symptoms")
-          .map(({ id, problemName, status, note, ...otherPatientProps }) => (
-            <ReportEntry
-              key={id}
-              symptoms
-              details={note !== "undefined" ? note : "No further detail"}
-              status={status}
-              type={problemName}
-              {...otherPatientProps}
-            />
-          ))
+          .map(
+            ({
+              id,
+              category,
+              note,
+              onsetDateTime,
+              problemCode,
+              problemName,
+              status,
+              verificationStatus,
+              ...otherPatientProps
+            }) => (
+              <ReportEntry
+                key={id}
+                symptoms
+                details={note !== "undefined" ? note : "No further detail"}
+                status={status}
+                type={problemName}
+                openedModal={
+                  <>
+                    <Grid>
+                      <Grid.Column>
+                        <Grid.Item>
+                          <Display
+                            labelText="Onset Date Time"
+                            htmlFor="onsetDateTime"
+                          >
+                            {onsetDateTime}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display
+                            labelText="Problem Code"
+                            htmlFor="problemCode"
+                          >
+                            {problemCode}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display
+                            labelText="Verification Status"
+                            htmlFor="verificationStatus"
+                          >
+                            {verificationStatus}
+                          </Display>
+                        </Grid.Item>
+                      </Grid.Column>
+                    </Grid>
+                  </>
+                }
+                {...otherPatientProps}
+              />
+            )
+          )
       : null;
 
   if (!patientConditions || patientConditions.length < 0) {
