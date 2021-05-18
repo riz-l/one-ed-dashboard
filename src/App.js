@@ -25,7 +25,6 @@ import {
   Training,
   Triage,
   Unauthorized,
-  ViewSeen,
 } from "./app/pages";
 
 // Component: App
@@ -155,11 +154,6 @@ export default function App() {
           {/* Assessments - Clinical Notes */}
           <Route exact path="/one-ed/assessments/clinical-notes">
             <ClinicalNotes />
-          </Route>
-
-          {/* Assessments - View Seen */}
-          <Route exact path="/one-ed/assessments/view-seen">
-            <ViewSeen />
           </Route>
 
           {/* Assessments - Admit or Referral */}

@@ -8,7 +8,6 @@ import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/i
 import { ReactComponent as AssessmentsObservationsIcon } from "../../../assets/img/icon/assessments-observations.svg";
 import { ReactComponent as AssessmentsSeenIcon } from "../../../assets/img/icon/assessments-seen.svg";
 import { ReactComponent as AssessmentsTriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
-import { ReactComponent as AssessmentsViewIcon } from "../../../assets/img/icon/assessments-view.svg";
 import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
 import { ReactComponent as PatientCasIcon } from "../../../assets/img/icon/patient-cas.svg";
 import { ReactComponent as SettingsSettingsIcon } from "../../../assets/img/icon/settings-settings.svg";
@@ -213,23 +212,6 @@ export default function Navigation({
                     <OptionItem>
                       <AssessmentsClinicalIcon />
                       <span>Clinical Notes</span>
-                    </OptionItem>
-                  </OptionLink>
-
-                  <OptionLink
-                    to="/one-ed/assessments/view-seen"
-                    onClick={
-                      window.innerWidth <= 1077
-                        ? () =>
-                            setIsNavigationOpen(
-                              (isNavigationOpen) => !isNavigationOpen
-                            )
-                        : null
-                    }
-                  >
-                    <OptionItem>
-                      <AssessmentsViewIcon />
-                      <span>View Seen</span>
                     </OptionItem>
                   </OptionLink>
                 </OptionsContainer>
