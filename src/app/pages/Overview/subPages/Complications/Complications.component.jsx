@@ -12,7 +12,7 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 export default function Complications() {
   // Redux: Extracts patientConditions from the global state
   const patientConditions = useSelector(
-    (state) => state.selectedPatient.patientConditions[2]
+    (state) => state.selectedPatient.patientConditions
   );
 
   // Maps patientConditions where category === "Complications"
@@ -39,7 +39,7 @@ export default function Complications() {
                 status={status}
                 type={problemName}
                 {...otherPatientProps}
-                openModal={
+                openedModal={
                   <>
                     <Grid>
                       <Grid.Column>
