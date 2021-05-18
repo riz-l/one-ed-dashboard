@@ -57,6 +57,7 @@ export default function TriageAndStream() {
   const putDateTime = finalDate.concat("T", time, "Z");
   const newDateTime = new Date(putDateTime);
   newDateTime.setHours(newDateTime.getHours() - 2);
+  newDateTime.setSeconds(newDateTime.getSeconds() - 10);
   const newTime = newDateTime.toLocaleTimeString();
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
