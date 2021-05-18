@@ -22,7 +22,6 @@ export const StyledButton = styled.button`
   /* font-size: 1rem; */
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
   justify-content: center;
-  margin-bottom: 1rem;
   padding: ${({ padding }) => (padding ? padding : "0.4rem 1rem")};
   transition: all 100ms linear;
   white-space: nowrap;
