@@ -25,7 +25,7 @@ export const Label = styled.label`
   ${({ labelText, left }) =>
     labelText && left
       ? css`
-          margin-right: 0.8;
+          margin-right: 0.4rem;
         `
       : !labelText && left
       ? css`
