@@ -84,7 +84,7 @@ export const ClickableContent = styled.div`
 export const ClickableText = styled.div`
   align-items: flex-start;
   display: flex;
-  flex: 3;
+  flex: 2;
   flex-direction: column;
   height: 100%;
   justify-content: center;
