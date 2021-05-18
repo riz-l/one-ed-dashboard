@@ -17,6 +17,11 @@ export const Container = styled.div`
         `}
   margin-bottom: 1rem;
 
+  & input {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+  }
+
   & .react-autosuggest__container {
     position: relative;
   }
@@ -131,12 +136,15 @@ export const Label = styled.label`
 
 // Element: Dropdown
 export const Dropdown = styled.div`
+  width: auto;
+
   & span {
     align-items: center;
-    display: flex;
-    justify-content: flex-start;
     cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    justify-content: flex-start;
     padding: 0.4rem 1rem;
-    width: 100%;
+    width: auto;
   }
 `;
