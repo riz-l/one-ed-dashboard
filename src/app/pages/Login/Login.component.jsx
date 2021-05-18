@@ -1,12 +1,12 @@
 // Import: Packages
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addUsername,
   addPassword,
   getUserDetails,
 } from "../../../redux/slices/userDetailsSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./Login.elements";
@@ -16,10 +16,13 @@ import { Form } from "../../components";
 
 // Page: Login
 export default function Login(props) {
+  // Redux:
   const token = useSelector((state) => state.userDetails.token);
+  const dispatch = useDispatch();
+
+  // Ref:
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
-  const dispatch = useDispatch();
 
   const addUsernameToRedux = () => {
     dispatch(addUsername(usernameInputRef.current.value));

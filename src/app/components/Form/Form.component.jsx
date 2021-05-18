@@ -63,9 +63,19 @@ function FormAnchor({
 }
 
 // Compound Component: FormAutoSuggest
-function FormAutoSuggest({ labelText }) {
-  return <AutoSuggest labelText={labelText} />;
-}
+const FormAutoSuggest = React.forwardRef((props, ref) => {
+  return (
+    <AutoSuggest
+      labelText={props.labelText}
+      htmlFor={props.htmlFor}
+      left={props.left}
+      options={props.options}
+      onChange={props.onChange}
+      placeholder={props.placeholder}
+      ref={ref}
+    />
+  );
+});
 
 // Compound Component: FormButton
 function FormButton({
@@ -130,27 +140,20 @@ function FormDisplay({
 }
 
 // Compound Component: FormDropdown
-function FormDropdown({
-  htmlFor,
-  labelText,
-  onChange,
-  options,
-  left,
-  value,
-  width,
-}) {
+const FormDropdown = React.forwardRef((props, ref) => {
   return (
     <Dropdown
-      htmlFor={htmlFor}
-      labelText={labelText}
-      onChange={onChange}
-      options={options}
-      left={left}
-      value={value}
-      width={width}
+      htmlFor={props.htmlFor}
+      labelText={props.labelText}
+      onChange={props.onChange}
+      options={props.options}
+      left={props.left}
+      ref={ref}
+      value={props.value}
+      width={props.width}
     />
   );
-}
+});
 
 // Compound Component: Indicator
 function FormIndicator({ amber, green, message, red, title }) {
@@ -170,6 +173,7 @@ const FormInput = React.forwardRef((props, ref) => {
   return (
     <Input
       center={props.center}
+      defaultValue={props.defaultValue}
       htmlFor={props.htmlFor}
       labelText={props.labelText}
       left={props.left}
@@ -217,7 +221,6 @@ function FormText({ bold, heading, subheading, text, ...props }) {
 function FormTextArea({
   cols,
   htmlFor,
-  id,
   labelText,
   onChange,
   placeholder,
@@ -228,7 +231,6 @@ function FormTextArea({
     <TextArea
       cols={cols}
       htmlFor={htmlFor}
-      id={id}
       labelText={labelText}
       onChange={onChange}
       placeholder={placeholder}
