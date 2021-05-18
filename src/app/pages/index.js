@@ -39,6 +39,3 @@ export { default as Triage } from "./Triage/Triage.component";
 
 // Export: Unauthorized
 export { default as Unauthorized } from "./Unauthorized/Unauthorized.component";
-
-// Export: ViewSeen
-export { default as ViewSeen } from "./ViewSeen/ViewSeen.component";
