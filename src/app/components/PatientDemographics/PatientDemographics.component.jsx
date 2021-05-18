@@ -5,6 +5,8 @@ import ReactModal from "react-modal";
 // Import: Assets
 import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
 
+import { Overview } from "../../pages/index";
+
 // Import: Elements
 import {
   ClickableButton,
@@ -25,8 +27,8 @@ import {
 import "./PatientDemographics.styles.css";
 
 // Import: Components
-import { Button, Text } from "../index";
-import { Display, Grid } from "../../components";
+import { Button } from "../index";
+import { Display, Grid, PageTitle } from "../../components";
 
 // Component: PatientDemographics
 export default function PatientDemographics() {
@@ -123,9 +125,11 @@ export default function PatientDemographics() {
         >
           <FormWrapper>
             <ModalTopWrapper>
-              <Text heading as="h3">
-                Patient Demographics
-              </Text>
+              <PageTitle
+                heading="Patient Demographics"
+                backgroundColor="none"
+                padding="0 0 2rem 0"
+              ></PageTitle>
 
               <ModalButtonWrapper>
                 <Button text="Close" onClick={closeModal} />
@@ -221,6 +225,7 @@ export default function PatientDemographics() {
                 </Grid>
               </HeadingContent>
             </Heading>
+            <Overview />
           </FormWrapper>
         </ReactModal>
       </Container>

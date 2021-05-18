@@ -415,7 +415,8 @@ export default function Overview() {
                                 patientConditions &&
                                 patientConditions.length > 0 &&
                                 patientConditions.find(
-                                  ({ category }) => category === "Complaints"
+                                  ({ category }) =>
+                                    category === "Presenting complaints"
                                 )
                                   ? true
                                   : false
@@ -424,7 +425,7 @@ export default function Overview() {
                               <ComplaintIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>
-                              Complaint
+                              Presenting Complaints
                             </SecondaryNavigation.Text>
                           </SecondaryNavigation.Item>
 
