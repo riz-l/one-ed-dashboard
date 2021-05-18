@@ -9,7 +9,6 @@ import { Container, Wrapper } from "./SeenSubPage.elements";
 import { Grid, Form, MoveLocation } from "../../../../components";
 
 // SubPage: SeenSubPage
-
 export default function SeenSubPage() {
   // Redux: Fetches CareProvider and location from the global state
   const user = useSelector(
