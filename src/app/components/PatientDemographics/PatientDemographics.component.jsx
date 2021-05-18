@@ -27,7 +27,7 @@ import "./PatientDemographics.styles.css";
 
 // Import: Components
 import { Button, Text } from "../index";
-import { Display, Grid } from "../../components";
+import { Display, Form, Grid } from "../../components";
 
 // Component: PatientDemographics
 export default function PatientDemographics() {
@@ -105,18 +105,23 @@ export default function PatientDemographics() {
   );
 
   // Redux: Extracts Patient Home Phone Number from the global state
-  const patientHomeNo = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom1.value
+  const patientTelecom1 = useSelector(
+    (state) => state.selectedPatient.patientData[0].telecom1
   );
 
-  // Redux: Extracts Patient Mobile Phone Number (postcode) from the global state
-  const patientMobileNo = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom2.value
+  // Redux: Extracts Patient Mobile Phone Number from the global state
+  const patientTelecom2 = useSelector(
+    (state) => state.selectedPatient.patientData[0].telecom2
   );
 
-  // Redux: Extracts Patient Address Line Four (postcode) from the global state
-  const patientEmail = useSelector(
-    (state) => state.selectedPatient.patientData[0].telecom3.value
+  // Redux: Extracts Patient Other Phone Number from the global state
+  const patientTelecom3 = useSelector(
+    (state) => state.selectedPatient.patientData[0].telecom3
+  );
+
+  // Redux: Extracts Patient Email from the global state
+  const patientTelecom4 = useSelector(
+    (state) => state.selectedPatient.patientData[0].telecom4
   );
 
   return (
@@ -129,7 +134,13 @@ export default function PatientDemographics() {
 
           <ClickableContent>
             <ClickableText>
-              <h2>{patientName}</h2>
+              <h2>
+                {patientName === "undefined"
+                  ? "N/A"
+                  : patientName
+                  ? patientName
+                  : "N/A"}
+              </h2>
 
               <Grid>
                 <Grid.Item>
@@ -140,17 +151,25 @@ export default function PatientDemographics() {
                     labelText="Gender:"
                     type="text"
                   >
-                    {patientGender}
+                    {patientGender === "undefined"
+                      ? "N/A"
+                      : patientGender
+                      ? patientGender
+                      : "N/A"}
                   </Display>
 
                   <Display
                     left
                     margin="0 0 0 0"
                     htmlFor="modalAge"
-                    labelText="Age:"
+                    labelText="Age: "
                     type="text"
                   >
-                    {patientAge}
+                    {patientAge === "undefined"
+                      ? "N/A"
+                      : patientAge
+                      ? patientAge
+                      : "N/A"}
                   </Display>
                 </Grid.Item>
 
@@ -159,20 +178,28 @@ export default function PatientDemographics() {
                     left
                     margin="0 0 0 0"
                     htmlFor="modalNhsNo"
-                    labelText="NHS No:"
+                    labelText="NHS No: "
                     type="text"
                   >
-                    {patientNHSNo}
+                    {patientNHSNo === "undefined"
+                      ? "N/A"
+                      : patientNHSNo
+                      ? patientNHSNo
+                      : "N/A"}
                   </Display>
 
                   <Display
                     left
                     margin="0 0 0 0"
                     htmlFor="modalPresentingComplaint"
-                    labelText="Presenting Complaint:"
+                    labelText="Presenting Complaint: "
                     type="text"
                   >
-                    {patientPresentingComplaint}
+                    {patientPresentingComplaint === "undefined"
+                      ? "N/A"
+                      : patientPresentingComplaint
+                      ? patientPresentingComplaint
+                      : "N/A"}
                   </Display>
                 </Grid.Item>
               </Grid>
@@ -213,16 +240,26 @@ export default function PatientDemographics() {
             </HeadingImage>
 
             <HeadingContent>
-              <h2>{patientName}</h2>
+              <h2>
+                {patientName === "undefined"
+                  ? "N/A"
+                  : patientName
+                  ? patientName
+                  : "N/A"}
+              </h2>
 
               <Grid>
                 <Grid.Column>
                   <Display htmlFor="gender" margin="0" type="text" left>
-                    {patientGender}
+                    {patientGender === "undefined"
+                      ? "N/A"
+                      : patientGender
+                      ? patientGender
+                      : "N/A"}
                   </Display>
 
                   <Display htmlFor="age" type="text" left padding="0 0 1rem 0">
-                    {patientAge}
+                    {patientAge ? patientAge : "N/A"}
                   </Display>
 
                   <Display
@@ -230,11 +267,19 @@ export default function PatientDemographics() {
                     labelText="Date of Birth"
                     type="text"
                   >
-                    {patientDob}
+                    {patientDob === "undefined"
+                      ? "N/A"
+                      : patientDob
+                      ? patientDob
+                      : "N/A"}
                   </Display>
 
                   <Display htmlFor="nhsNo" labelText="NHS No." type="text">
-                    {patientNHSNo}
+                    {patientNHSNo === "undefined"
+                      ? "N/A"
+                      : patientNHSNo
+                      ? patientNHSNo
+                      : "N/A"}
                   </Display>
 
                   <Display
@@ -242,7 +287,11 @@ export default function PatientDemographics() {
                     labelText="Ethnicity"
                     type="text"
                   >
-                    {patientEthnicity}
+                    {patientEthnicity === "undefined"
+                      ? "N/A"
+                      : patientEthnicity
+                      ? patientEthnicity
+                      : "N/A"}
                   </Display>
                 </Grid.Column>
 
@@ -252,7 +301,11 @@ export default function PatientDemographics() {
                     labelText="Patient ID"
                     type="text"
                   >
-                    {patientID}
+                    {patientID === "undefined"
+                      ? "N/A"
+                      : patientID
+                      ? patientID
+                      : "N/A"}
                   </Display>
 
                   <Display
@@ -261,34 +314,89 @@ export default function PatientDemographics() {
                     labelText="Address"
                     type="text"
                   >
-                    {patientAddressOne}
+                    {patientAddressOne === "undefined"
+                      ? "N/A"
+                      : patientAddressOne
+                      ? patientAddressOne
+                      : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressTwo" type="text">
-                    {patientAddressTwo}
+                    {patientAddressTwo === "undefined"
+                      ? "N/A"
+                      : patientAddressTwo
+                      ? patientAddressTwo
+                      : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressThree" type="text">
-                    {patientAddressThree}
+                    {patientAddressThree === "undefined"
+                      ? "N/A"
+                      : patientAddressThree
+                      ? patientAddressThree
+                      : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressFour" type="text">
-                    {patientAddressFour}
+                    {patientAddressFour === "undefined"
+                      ? "N/A"
+                      : patientAddressFour
+                      ? patientAddressFour
+                      : "N/A"}
                   </Display>
                 </Grid.Column>
 
                 <Grid.Column>
-                  <Display htmlFor="home" labelText="Home" type="text">
-                    {patientHomeNo}
-                  </Display>
+                  {patientTelecom1 ? (
+                    <Form.Display
+                      htmlFor="contactOne"
+                      labelText={
+                        patientTelecom1.use
+                          ? patientTelecom1.use + ":"
+                          : patientTelecom1.system + ":"
+                      }
+                    >
+                      {patientTelecom1.value.split("mailto:").pop()}
+                    </Form.Display>
+                  ) : null}
 
-                  <Display htmlFor="phoneOne" labelText="Phone" type="text">
-                    {patientMobileNo}
-                  </Display>
+                  {patientTelecom2 ? (
+                    <Form.Display
+                      htmlFor="contactTwo"
+                      labelText={
+                        patientTelecom2.use
+                          ? patientTelecom2.use + ":"
+                          : patientTelecom2.system + ":"
+                      }
+                    >
+                      {patientTelecom2.value.split("mailto:").pop()}
+                    </Form.Display>
+                  ) : null}
 
-                  <Display htmlFor="email" labelText="Email" type="text">
-                    {patientEmail}
-                  </Display>
+                  {patientTelecom3 ? (
+                    <Form.Display
+                      htmlFor="contactThree"
+                      labelText={
+                        patientTelecom3.use
+                          ? patientTelecom3.use + ":"
+                          : patientTelecom3.system + ":"
+                      }
+                    >
+                      {patientTelecom3.value.split("mailto:").pop()}
+                    </Form.Display>
+                  ) : null}
+                  {patientTelecom4 ? (
+                    <Form.Display
+                      htmlFor="contactFour"
+                      labelText={
+                        patientTelecom4.use
+                          ? patientTelecom4.use + ":"
+                          : patientTelecom4.system + ":"
+                      }
+                    >
+                      {patientTelecom4.value.split("mailto:").pop()}
+                    </Form.Display>
+                  ) : null}
                 </Grid.Column>
               </Grid>
             </HeadingContent>
