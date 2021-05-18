@@ -1,31 +1,41 @@
 // Import: Packages
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+
+// Import: Assets
+import { ReactComponent as SeenSubPageIcon } from "../../../assets/img/icon/assessments-seen.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Seen.elements";
 
-// Import: Components
+// Import: Components & SubPages
 import {
-  Form,
-  Grid,
-  MoveLocation,
   PageTitle,
   PatientDemographics,
+  PrimaryNavigation,
+  ReportSection,
+  SecondaryNavigation,
 } from "../../components";
+import { SeenSubPage } from "./SubPages/index";
 
 // Page: Seen
 export default function Seen() {
-  // Redux: Fetches CareProvider and location from the global state
-  const user = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
+  // State: isSeen
+  const [isSeen, setIsSeen] = useState(true);
 
-  const area = useSelector(
-    (state) => state.selectedPatient.patientData[0].location
-  );
+  // State: Seen SubPage
+  const [isSeenSubPage, setIsSeenSubPage] = useState(true);
+
+  // onClick: Renders Seen Page
+  function renderSeen() {
+    setIsSeen(true);
+    setIsSeenSubPage(true);
+  }
+
+  // onClick: Renders SeenSubPage
+  function renderSeenSubPage() {
+    setIsSeen(true);
+    setIsSeenSubPage(true);
+  }
 
   return (
     <>
@@ -39,68 +49,38 @@ export default function Seen() {
           <PatientDemographics />
 
           <ContentWrapper>
-            <Grid>
-              <Grid.Column>
-                <Grid.Item>
-                  <Form.Display
-                    htmlFor="seenBy"
-                    labelText="Seen By"
-                    left={false}
-                    subheading
+            <ReportSection
+              primaryNavigation={
+                <PrimaryNavigation>
+                  <PrimaryNavigation.Item
+                    isActive={isSeen ? true : false}
+                    onClick={renderSeen}
                   >
-                    <p>{user}</p>
-                  </Form.Display>
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Input
-                    htmlFor="seenDate"
-                    labelText="Seen Date"
-                    type="Date"
-                  />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Input
-                    htmlFor="seenTime"
-                    labelText="Seen Time"
-                    type="Time"
-                  />
-                </Grid.Item>
-              </Grid.Column>
-
-              <Grid.Column>
-                <Grid.Item>
-                  <Form.Dropdown
-                    htmlFor="seniorReview"
-                    labelText="Senior Review"
-                  />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Dropdown htmlFor="reason" labelText="Reason" />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Display htmlFor="area" labelText="Area">
-                    {/* TODO should be something like ED Waiting room, see if there is a more approprite piece of date to use here. */}
-                    {area}
-                  </Form.Display>
-                </Grid.Item>
-
-                <Grid.Item>
-                  <MoveLocation />
-                </Grid.Item>
-              </Grid.Column>
-            </Grid>
-
-            <Grid>
-              <Grid.Column>
-                <Grid.Item>
-                  <Form.TextArea htmlFor="comments" labelText="Comments" />
-                </Grid.Item>
-              </Grid.Column>
-            </Grid>
+                    <PrimaryNavigation.Text>Seen</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+                </PrimaryNavigation>
+              }
+              secondaryNavigation={
+                <SecondaryNavigation>
+                  {isSeen ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isSeenSubPage ? true : false}
+                        onClick={renderSeenSubPage}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <SeenSubPageIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          Seen
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
+                  ) : null}
+                </SecondaryNavigation>
+              }
+              content={isSeenSubPage ? <SeenSubPage /> : null}
+            />
           </ContentWrapper>
         </Wrapper>
       </Container>

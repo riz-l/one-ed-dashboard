@@ -2,16 +2,16 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Import: Page
-import ViewSeen from "./ViewSeen.component";
+// Import: SubPage
+import SeenSubPage from "./SeenSubPage.component";
 
-// Test: Checks that ViewSeen renders
-it("checkViewSeenRender", () => {
+// Test: Checks that SeenSubPage renders
+it("checkSeenSubPageRender", () => {
   const { queryByTestId } = render(
     <Router>
-      <ViewSeen />
+      <SeenSubPage />
     </Router>
   );
-  const page = queryByTestId("viewSeen");
+  const page = queryByTestId("seenSubPage");
   expect(page).toBeTruthy();
 });

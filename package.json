@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "dexie": "^3.0.3",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-autosuggest": "^10.1.0",
     "react-detect-offline": "^2.4.3",

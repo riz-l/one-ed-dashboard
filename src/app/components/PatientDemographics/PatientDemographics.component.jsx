@@ -1,7 +1,6 @@
 // Import: Packages
 import React, { useState } from "react";
 import ReactModal from "react-modal";
-import { useSelector } from "react-redux";
 
 // Import: Assets
 import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";

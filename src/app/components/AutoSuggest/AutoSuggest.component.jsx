@@ -1,282 +1,89 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Autosuggest from "react-autosuggest";
+import { useDispatch } from "react-redux";
 
 // Import: Elements
 import { Container, Dropdown, Label } from "./AutoSuggest.elements";
 
-const languages = [
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-  {
-    name: "C",
-    year: 1972,
-  },
-  {
-    name: "C#",
-    year: 2012,
-  },
-  {
-    name: "C++",
-    year: 2014,
-  },
-  {
-    name: "HTML",
-    year: 2018,
-  },
-  {
-    name: "Javascript",
-    year: 2018,
-  },
-  {
-    name: "Java",
-    year: 2018,
-  },
-  {
-    name: "XAML",
-    year: 2018,
-  },
-];
-
-const getSuggestions = (value) => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    : languages.filter(
-        (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
-
-const getSuggestionValue = (suggestion) => suggestion.name;
-
-const renderSuggestion = (suggestion) => <Dropdown>{suggestion.name}</Dropdown>;
-
 // Component: AutoSuggest
-export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
+export const AutoSuggest = React.forwardRef((props, ref) => {
+  const dispatch = useDispatch();
+
   // State: value, suggestions
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
+  // AutoSuggest placeholder options
+  const placeholderOptions = [
+    {
+      name: "C",
+    },
+    {
+      name: "C#",
+    },
+  ];
+
+  // Filters options || placeholderOptions by current value && value.length
+  const getSuggestions = (value) => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0
+      ? []
+      : props.options
+      ? props.options.filter(
+          (option) =>
+            option.name.toLowerCase().slice(0, inputLength) === inputValue
+        )
+      : placeholderOptions.filter(
+          (placeholderOption) =>
+            placeholderOption.name.toLowerCase().slice(0, inputLength) ===
+            inputValue
+        );
+  };
+
+  // Gets individual suggestion by suggestion.name
+  const getSuggestionValue = (suggestion) => suggestion.name;
+
+  // Renders each suggestion
+  const renderSuggestion = (suggestion) => (
+    <Dropdown ref={ref}>
+      <span onClick={() => dispatch(props.onChange(suggestion.name))}>
+        {suggestion.name}
+      </span>
+    </Dropdown>
+  );
+
+  // Autosuggest props
   const onChange = (event, { newValue }) => {
     setValue(newValue);
   };
-
   const onSuggestionsFetchRequested = ({ value }) => {
     setSuggestions(getSuggestions(value));
   };
-
   const onSuggestionsClearRequested = () => {
     setSuggestions([]);
   };
-
   const inputProps = {
-    placeholder: placeholder,
+    placeholder: props.placeholder ? props.placeholder : "Start typing...",
     value,
     onChange: onChange,
   };
 
+  // Effect: if value === "", set Redux state to === ""
+  useEffect(() => {
+    if (value === "" && props.onChange && props.onChange.length > 0) {
+      dispatch(props.onChange(""));
+    }
+  }, [value, dispatch, props]);
+
   return (
     <>
-      <Container left={left} data-testid={"autoSuggest"}>
-        {labelText && (
-          <Label htmlfor={htmlFor} left={left}>
-            {labelText}
+      <Container left={props.left} data-testid={"autoSuggest"}>
+        {props.labelText && (
+          <Label htmlfor={props.htmlFor} left={props.left}>
+            {props.labelText}
           </Label>
         )}
 
@@ -291,4 +98,4 @@ export default function AutoSuggest({ htmlFor, labelText, left, placeholder }) {
       </Container>
     </>
   );
-}
+});

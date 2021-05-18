@@ -17,6 +17,11 @@ export const Container = styled.div`
         `}
   margin-bottom: 1rem;
 
+  & input {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+  }
+
   & .react-autosuggest__container {
     position: relative;
   }
@@ -102,8 +107,6 @@ export const Container = styled.div`
   }
 
   & .react-autosuggest__suggestion {
-    cursor: pointer;
-    padding: 0.4rem 1rem;
     transition: all 100ms linear;
 
     &:hover {
@@ -132,4 +135,16 @@ export const Label = styled.label`
 `;
 
 // Element: Dropdown
-export const Dropdown = styled.div``;
+export const Dropdown = styled.div`
+  width: auto;
+
+  & span {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    justify-content: flex-start;
+    padding: 0.4rem 1rem;
+    width: auto;
+  }
+`;

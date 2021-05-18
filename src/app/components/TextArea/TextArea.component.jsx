@@ -8,7 +8,6 @@ import { Container, Label, StyledTextArea } from "./TextArea.elements";
 export default function TextArea({
   cols,
   htmlFor,
-  id,
   labelText,
   onChange,
   placeholder,
@@ -21,7 +20,7 @@ export default function TextArea({
         {labelText && <Label htmlFor={htmlFor}>{labelText}</Label>}
 
         <StyledTextArea
-          id={id}
+          id={htmlFor}
           name={htmlFor}
           onChange={onChange}
           value={value}
