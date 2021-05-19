@@ -148,7 +148,7 @@ export default function PatientDemographics() {
               padding="0 0 2rem 0"
               heading="Patient Demographics"
               backgroundColor="none"
-            ></PageTitle>
+            />
 
             <ModalButtonWrapper>
               <Button text="Close" onClick={closeModal} />
