@@ -6,20 +6,20 @@ import { useSelector } from "react-redux";
 // Import: Assets
 import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
 import {
-  ClickableText,
-  ClickableButtonContainer,
-  Wrapper,
-  Heading,
-  HeadingImage,
   ClickableButton,
-  ModalTopWrapper,
-  ModalButtonWrapper,
-  HeadingContent,
-  FormWrapper,
-  Container,
+  ClickableButtonContainer,
   ClickableContent,
   ClickableHeader,
+  ClickableText,
+  Container,
+  FormWrapper,
+  Heading,
+  HeadingContent,
+  HeadingImage,
+  ModalButtonWrapper,
+  ModalTopWrapper,
   SVGContainer,
+  Wrapper,
 } from "./PatientDemographics.elements";
 
 // Import: Components
@@ -40,67 +40,7 @@ export default function PatientDemographics() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
-  // Redux: Extracts Patient Name from the global state
-  const patientName = useSelector(
-    (state) => state.selectedPatient.patientData[0].name
-  );
-
-  // Redux: Extracts Patient Gender from the global state
-  const patientGender = useSelector(
-    (state) => state.selectedPatient.patientData[0].gender
-  );
-
-  // Redux: Extracts Patient Age from the global state
-  const patientAge = useSelector(
-    (state) => state.selectedPatient.patientData[0].age
-  );
-
-  // Redux: Extracts Patient NHSNo from the global state
-  const patientNHSNo = useSelector(
-    (state) => state.selectedPatient.patientData[0].NHSNo
-  );
-
-  // Redux: Extracts Patient Presenting Complaint from the global state
-  const patientPresentingComplaint = useSelector(
-    (state) => state.selectedPatient.patientData[0].diagnosis
-  );
-
-  // Redux: Extracts Patient D.O.B. from the global state
-  const patientDob = useSelector(
-    (state) => state.selectedPatient.patientData[0].dob
-  );
-
-  // Redux: Extracts Patient Ethnicity from the global state
-  const patientEthnicity = useSelector(
-    (state) => state.selectedPatient.patientData[0].ethnicity
-  );
-
-  // Redux: Extracts Patient ID from the global state
-  const patientID = useSelector(
-    (state) => state.selectedPatient.patientData[0].patientID
-  );
-
-  // Redux: Extracts Patient Address Line One from the global state
-  const patientAddressOne = useSelector(
-    (state) => state.selectedPatient.patientData[0].add1
-  );
-
-  // Redux: Extracts Patient Address Line Two from the global state
-  const patientAddressTwo = useSelector(
-    (state) => state.selectedPatient.patientData[0].add2
-  );
-
-  // Redux: Extracts Patient Address Line Three from the global state
-  const patientAddressThree = useSelector(
-    (state) => state.selectedPatient.patientData[0].add3
-  );
-
-  // Redux: Extracts Patient Address Line Four (postcode) from the global state
-  const patientAddressFour = useSelector(
-    (state) => state.selectedPatient.patientData[0].postcode
-  );
-
-  // Redux: Extracts Patient Home Phone Number from the global state
+  // Redux: Extracts Patient Data from the global state
   const patientData = useSelector((state) => state.selectedPatient.patientData);
 
   return (
@@ -114,10 +54,10 @@ export default function PatientDemographics() {
           <ClickableContent>
             <ClickableText>
               <h2>
-                {patientName === "undefined"
+                {patientData[0].name === "undefined"
                   ? "N/A"
-                  : patientName
-                  ? patientName
+                  : patientData[0].name
+                  ? patientData[0].name
                   : "N/A"}
               </h2>
 
@@ -130,10 +70,10 @@ export default function PatientDemographics() {
                     labelText="Gender:"
                     type="text"
                   >
-                    {patientGender === "undefined"
+                    {patientData[0].gender === "undefined"
                       ? "N/A"
-                      : patientGender
-                      ? patientGender
+                      : patientData[0].gender
+                      ? patientData[0].gender
                       : "N/A"}
                   </Display>
 
@@ -144,10 +84,10 @@ export default function PatientDemographics() {
                     labelText="Age: "
                     type="text"
                   >
-                    {patientAge === "undefined"
+                    {patientData[0].age === "undefined"
                       ? "N/A"
-                      : patientAge
-                      ? patientAge
+                      : patientData[0].age
+                      ? patientData[0].age
                       : "N/A"}
                   </Display>
                 </Grid.Item>
@@ -160,10 +100,10 @@ export default function PatientDemographics() {
                     labelText="NHS No: "
                     type="text"
                   >
-                    {patientNHSNo === "undefined"
+                    {patientData[0].NHSNo === "undefined"
                       ? "N/A"
-                      : patientNHSNo
-                      ? patientNHSNo
+                      : patientData[0].NHSNo
+                      ? patientData[0].NHSNo
                       : "N/A"}
                   </Display>
 
@@ -174,10 +114,10 @@ export default function PatientDemographics() {
                     labelText="Presenting Complaint: "
                     type="text"
                   >
-                    {patientPresentingComplaint === "undefined"
+                    {patientData[0].diagnosis === "undefined"
                       ? "N/A"
-                      : patientPresentingComplaint
-                      ? patientPresentingComplaint
+                      : patientData[0].diagnosis
+                      ? patientData[0].diagnosis
                       : "N/A"}
                   </Display>
                 </Grid.Item>
@@ -220,25 +160,29 @@ export default function PatientDemographics() {
 
             <HeadingContent>
               <h2>
-                {patientName === "undefined"
+                {patientData[0].name === "undefined"
                   ? "N/A"
-                  : patientName
-                  ? patientName
+                  : patientData[0].name
+                  ? patientData[0].name
                   : "N/A"}
               </h2>
 
               <Grid>
                 <Grid.Column>
                   <Display htmlFor="gender" margin="0" type="text" left>
-                    {patientGender === "undefined"
+                    {patientData[0].gender === "undefined"
                       ? "N/A"
-                      : patientGender
-                      ? patientGender
+                      : patientData[0].gender
+                      ? patientData[0].gender
                       : "N/A"}
                   </Display>
 
                   <Display htmlFor="age" type="text" left padding="0 0 1rem 0">
-                    {patientAge ? patientAge : "N/A"}
+                    {patientData[0].age === "undefined"
+                      ? "N/A"
+                      : patientData[0].age
+                      ? patientData[0].age
+                      : "N/A"}
                   </Display>
 
                   <Display
@@ -246,18 +190,18 @@ export default function PatientDemographics() {
                     labelText="Date of Birth"
                     type="text"
                   >
-                    {patientDob === "undefined"
+                    {patientData[0].dob === "undefined"
                       ? "N/A"
-                      : patientDob
-                      ? patientDob
+                      : patientData[0].dob
+                      ? patientData[0].dob
                       : "N/A"}
                   </Display>
 
                   <Display htmlFor="nhsNo" labelText="NHS No." type="text">
-                    {patientNHSNo === "undefined"
+                    {patientData[0].NHSNo === "undefined"
                       ? "N/A"
-                      : patientNHSNo
-                      ? patientNHSNo
+                      : patientData[0].NHSNo
+                      ? patientData[0].NHSNo
                       : "N/A"}
                   </Display>
 
@@ -266,10 +210,10 @@ export default function PatientDemographics() {
                     labelText="Ethnicity"
                     type="text"
                   >
-                    {patientEthnicity === "undefined"
+                    {patientData[0].ethnicity === "undefined"
                       ? "N/A"
-                      : patientEthnicity
-                      ? patientEthnicity
+                      : patientData[0].ethnicity
+                      ? patientData[0].ethnicity
                       : "N/A"}
                   </Display>
                 </Grid.Column>
@@ -280,10 +224,10 @@ export default function PatientDemographics() {
                     labelText="Patient ID"
                     type="text"
                   >
-                    {patientID === "undefined"
+                    {patientData[0].patientID === "undefined"
                       ? "N/A"
-                      : patientID
-                      ? patientID
+                      : patientData[0].patientID
+                      ? patientData[0].patientID
                       : "N/A"}
                   </Display>
 
@@ -293,34 +237,34 @@ export default function PatientDemographics() {
                     labelText="Address"
                     type="text"
                   >
-                    {patientAddressOne === "undefined"
+                    {patientData[0].add1 === "undefined"
                       ? "N/A"
-                      : patientAddressOne
-                      ? patientAddressOne
+                      : patientData[0].add1
+                      ? patientData[0].add1
                       : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressTwo" type="text">
-                    {patientAddressTwo === "undefined"
+                    {patientData[0].add2 === "undefined"
                       ? "N/A"
-                      : patientAddressTwo
-                      ? patientAddressTwo
+                      : patientData[0].add2
+                      ? patientData[0].add2
                       : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressThree" type="text">
-                    {patientAddressThree === "undefined"
+                    {patientData[0].add3 === "undefined"
                       ? "N/A"
-                      : patientAddressThree
-                      ? patientAddressThree
+                      : patientData[0].add3
+                      ? patientData[0].add3
                       : "N/A"}
                   </Display>
 
                   <Display htmlFor="addressFour" type="text">
-                    {patientAddressFour === "undefined"
+                    {patientData[0].add4 === "undefined"
                       ? "N/A"
-                      : patientAddressFour
-                      ? patientAddressFour
+                      : patientData[0].add4
+                      ? patientData[0].add4
                       : "N/A"}
                   </Display>
                 </Grid.Column>
