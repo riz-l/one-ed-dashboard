@@ -24,7 +24,22 @@ export default function Notes() {
                   <Form.TextArea
                     htmlFor="enterObservationNote"
                     labelText="Enter observation note..."
+                    rows="5"
                   />
+                </Grid.Item>
+              </Grid.Column>
+
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.Display labelText="User">USERNAME</Form.Display>
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.Display labelText="Date/Time">DATE/TIME</Form.Display>
+                </Grid.Item>
+
+                <Grid.Item>
+                  <Form.Button type="submit" text="Submit Note" />
                 </Grid.Item>
               </Grid.Column>
             </Grid>
