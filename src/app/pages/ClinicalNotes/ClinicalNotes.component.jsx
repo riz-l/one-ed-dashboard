@@ -8,6 +8,7 @@ import { ReactComponent as IceIcon } from "../../../assets/img/icon/ice.svg";
 import { ReactComponent as NotesIcon } from "../../../assets/img/icon/notes.svg";
 import { ReactComponent as ObsIcon } from "../../../assets/img/icon/obs.svg";
 import { ReactComponent as PacsIcon } from "../../../assets/img/icon/pacs.svg";
+import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./ClinicalNotes.elements";
@@ -20,14 +21,15 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { Chart, GPConnect, Ice, Notes, Obs, Pacs } from "./subPages";
+import { Chart, GPConnect, Ice, Notes, Obs, Pacs, Save } from "./subPages";
 
 // Page: ClinicalNotes
 export default function ClinicalNotes() {
-  // State: isNotes, isObsHistory, isIntegration
+  // State: isNotes, isObsHistory, isIntegration, isSave
   const [isNotes, setIsNotes] = useState(true);
   const [isObsHistory, setIsObsHistory] = useState(false);
   const [isIntegration, setIsIntegration] = useState(false);
+  const [isSave, setIsSave] = useState(false);
 
   // State: Obs History SubPages
   const [isObs, setIsObs] = useState(false);
@@ -47,6 +49,7 @@ export default function ClinicalNotes() {
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsSave(false);
     setIsNotes(true);
   }
 
@@ -59,6 +62,7 @@ export default function ClinicalNotes() {
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsSave(false);
     setIsObsHistory(true);
     setIsObs(true);
   }
@@ -72,6 +76,7 @@ export default function ClinicalNotes() {
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsSave(false);
     setIsChart(true);
     setIsObsHistory(true);
   }
@@ -85,6 +90,7 @@ export default function ClinicalNotes() {
     setIsGpConnect(false);
     setIsChart(false);
     setIsObsHistory(false);
+    setIsSave(false);
     setIsIce(true);
     setIsIntegration(true);
   }
@@ -98,6 +104,7 @@ export default function ClinicalNotes() {
     setIsChart(false);
     setIsObsHistory(false);
     setIsIce(false);
+    setIsSave(false);
     setIsPacs(true);
     setIsIntegration(true);
   }
@@ -111,8 +118,23 @@ export default function ClinicalNotes() {
     setIsChart(false);
     setIsObsHistory(false);
     setIsIce(false);
+    setIsSave(false);
     setIsGpConnect(true);
     setIsIntegration(true);
+  }
+
+  // onClick: Renders Save SubPage
+  function renderSave() {
+    setIsChart(false);
+    setIsNotes(false);
+    setIsObs(false);
+    setIsPacs(false);
+    setIsChart(false);
+    setIsObsHistory(false);
+    setIsIce(false);
+    setIsGpConnect(false);
+    setIsIntegration(false);
+    setIsSave(true);
   }
 
   return (
@@ -149,6 +171,15 @@ export default function ClinicalNotes() {
                     onClick={renderIce}
                   >
                     <PrimaryNavigation.Text>Integration</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isSave ? true : false}
+                    onClick={renderSave}
+                  >
+                    <PrimaryNavigation.Save>
+                      <PrimaryNavigation.Text>Save</PrimaryNavigation.Text>
+                    </PrimaryNavigation.Save>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }
@@ -227,6 +258,16 @@ export default function ClinicalNotes() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
+                  ) : isSave ? (
+                    <SecondaryNavigation.Item
+                      isActive={isSave ? true : false}
+                      onClick={renderSave}
+                    >
+                      <SecondaryNavigation.Icon>
+                        <SaveIcon />
+                      </SecondaryNavigation.Icon>
+                      <SecondaryNavigation.Text>Save</SecondaryNavigation.Text>
+                    </SecondaryNavigation.Item>
                   ) : null}
                 </SecondaryNavigation>
               }
@@ -243,6 +284,8 @@ export default function ClinicalNotes() {
                   <Pacs />
                 ) : isGpConnect ? (
                   <GPConnect />
+                ) : isSave ? (
+                  <Save />
                 ) : null
               }
             />

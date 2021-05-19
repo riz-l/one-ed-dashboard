@@ -25,7 +25,7 @@ export default function TextArea({
           onChange={onChange}
           value={value}
           rows={rows ? rows : "12"}
-          cols={cols ? cols : "50"}
+          cols={cols && cols}
           placeholder={placeholder}
         ></StyledTextArea>
       </Container>

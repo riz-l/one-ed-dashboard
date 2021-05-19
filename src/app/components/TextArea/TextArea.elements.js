@@ -8,6 +8,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
 `;
 
 // Element: Label
@@ -31,11 +34,14 @@ export const StyledTextArea = styled.textarea`
   -moz-user-select: auto;
   -ms-user-select: auto;
   user-select: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
 
-  @media screen and (max-width: 848px) {
+  /* @media screen and (max-width: 848px) {
     width: 180px;
     max-width: 180px;
-  }
+  } */
 
   &:hover {
     box-shadow: 0 0 5px #7cf0f4;

@@ -15,3 +15,6 @@ export { default as Obs } from "./Obs/Obs.component.jsx";
 
 // Export: Pacs
 export { default as Pacs } from "./Pacs/Pacs.component.jsx";
+
+// Export: Save
+export { default as Save } from "./Save/Save.component.jsx";
