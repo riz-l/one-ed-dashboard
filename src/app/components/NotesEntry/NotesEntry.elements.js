@@ -90,20 +90,6 @@ export const Detail = styled.div`
   }
 `;
 
-// Element: Right
-export const Right = styled.div`
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 2rem;
-  padding: 1rem;
-
-  & p {
-    color: #4d5e80;
-  }
-`;
-
 // Element: Status
 export const Status = styled.div`
   align-items: center;
@@ -111,6 +97,8 @@ export const Status = styled.div`
   justify-content: center;
 
   & p {
+    color: #4d5e80;
+
     &:first-letter {
       text-transform: capitalize;
     }

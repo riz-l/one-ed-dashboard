@@ -12,16 +12,15 @@ import {
   Heading,
   Icon,
   Left,
-  Right,
   Status,
   Wrapper,
 } from "./NotesEntry.elements";
 
 // Import: Components
-import { Button, Text } from "../index";
+import { Display } from "../index";
 
 // Component: ReportEntry
-export default function ReportEntry({ type, details, status }) {
+export default function ReportEntry({ dateTime, note, user }) {
   return (
     <Container data-testid={"reportEntry"}>
       <Wrapper>
@@ -31,25 +30,18 @@ export default function ReportEntry({ type, details, status }) {
               <Icon>
                 <NotesIcon />
               </Icon>
-              <h3>{type ? type : "Type"}</h3>
+              <h3>{dateTime ? dateTime : "Date/Time"}</h3>
             </Heading>
+            <Status>
+              <Display labelText="User :" left>
+                {user ? user : "User"}
+              </Display>
+            </Status>
 
             <Detail>
-              <p>
-                {details && details.length > 25
-                  ? details.substring(0, 25) + "..."
-                  : details && details.length < 25
-                  ? details
-                  : "Details"}
-              </p>
+              <p>{note ? note : "Notes"}</p>
             </Detail>
           </Left>
-
-          <Right>
-            <Status>
-              <p>{status ? status : "Status"}</p>
-            </Status>
-          </Right>
         </EntryContainer>
       </Wrapper>
     </Container>
