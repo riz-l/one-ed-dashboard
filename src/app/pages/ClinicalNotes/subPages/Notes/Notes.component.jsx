@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./Notes.elements";
 
 // Import: Components
-import { Text } from "../../../../components";
+import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
@@ -16,6 +16,19 @@ export default function Notes() {
           <Text as="h2" heading>
             Notes
           </Text>
+
+          <Form>
+            <Grid>
+              <Grid.Column>
+                <Grid.Item>
+                  <Form.TextArea
+                    htmlFor="enterObservationNote"
+                    labelText="Enter observation note..."
+                  />
+                </Grid.Item>
+              </Grid.Column>
+            </Grid>
+          </Form>
         </Wrapper>
       </Container>
     </>

@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./Obs.elements";
 
 // Import: Components
-import { Text } from "../../../../components";
+import { NotesEntry, Text } from "../../../../components";
 
 // SubPage: Obs
 export default function Obs() {
@@ -16,6 +16,18 @@ export default function Obs() {
           <Text as="h2" heading>
             Obs
           </Text>
+
+          <NotesEntry
+            type="TEST TYPE"
+            details="TEST DETAILS"
+            status="TEST STATUS"
+          />
+
+          <NotesEntry
+            type="TEST TYPE"
+            details="TEST DETAILS"
+            status="TEST STATUS"
+          />
         </Wrapper>
       </Container>
     </>

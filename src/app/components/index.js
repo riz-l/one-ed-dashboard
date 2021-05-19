@@ -40,6 +40,9 @@ export { default as MoveLocation } from "./MoveLocation/MoveLocation.component";
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";
 
+// Export: NotesEntry
+export { default as NotesEntry } from "./NotesEntry/NotesEntry.component";
+
 // Export: PageTitle
 export { default as PageTitle } from "./PageTitle/PageTitle.component";
 
