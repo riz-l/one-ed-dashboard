@@ -23,8 +23,9 @@ import {
 } from "./PatientDemographics.elements";
 
 // Import: Components
-import { Button, Text } from "../index";
-import { Display, Grid } from "../../components";
+import { Button } from "../index";
+import { Display, Grid, PageTitle } from "../../components";
+import { Overview } from "../../pages/index";
 
 export default function PatientDemographics() {
   // State: isModalOpen
@@ -68,7 +69,6 @@ export default function PatientDemographics() {
                     margin="0 0 0 0"
                     htmlFor="modalGender"
                     labelText="Gender:"
-                    type="text"
                   >
                     {patientData[0].gender === "undefined"
                       ? "N/A"
@@ -144,9 +144,11 @@ export default function PatientDemographics() {
       >
         <FormWrapper>
           <ModalTopWrapper>
-            <Text heading as="h3">
-              Patient Demographics
-            </Text>
+            <PageTitle
+              padding="0 0 2rem 0"
+              heading="Patient Demographics"
+              backgroundColor="none"
+            ></PageTitle>
 
             <ModalButtonWrapper>
               <Button text="Close" onClick={closeModal} />
@@ -333,6 +335,7 @@ export default function PatientDemographics() {
               </Grid>
             </HeadingContent>
           </Heading>
+          <Overview />
         </FormWrapper>
       </ReactModal>
     </Container>
