@@ -3,13 +3,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 // Import: Elements
-import { Container, Wrapper } from "./Complaint.elements";
+import { Container, Wrapper } from "./PresentingComplaints.elements";
 
 // Import: Components
 import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Complaint
-export default function Complaint() {
+export default function PresentingComplaints() {
   // Redux: Extracts patientConditions from the global state
   const patientConditions = useSelector(
     (state) => state.selectedPatient.patientConditions

@@ -4,8 +4,8 @@ export { default as Alerts } from "./Alerts/Alerts.component";
 // Export: Allergies
 export { default as Allergies } from "./Allergies/Allergies.component";
 
-// Export: Complaint
-export { default as Complaint } from "./Complaint/Complaint.component";
+// Export: Presenting Complaints
+export { default as PresentingComplaints } from "./PresentingComplaints/PresentingComplaints.component";
 
 // Export: Complications
 export { default as Complications } from "./Complications/Complications.component";
