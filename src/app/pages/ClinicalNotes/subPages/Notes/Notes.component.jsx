@@ -1,5 +1,7 @@
 // Import: Packages
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPreviousNotes } from "../../../../../redux/slices/clinicalNotesSlice";
 
 // Import: Elements
 import { Container, Wrapper } from "./Notes.elements";
@@ -9,6 +11,13 @@ import { Form, NotesEntry, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
+  const dispatch = useDispatch();
+
+  // Effect:
+  useEffect(() => {
+    dispatch(getPreviousNotes());
+  }, []);
+
   return (
     <>
       <Container data-testid={"notes"}>

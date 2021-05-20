@@ -12,12 +12,11 @@ export const putTriageForm = createAsyncThunk(
     const triageForm = state.triage.triageForm;
 
     try {
-      const apiUrl = `https://oneedfhirtest.azurewebsites.net/SetTriageAndStream`;
-      // const apiUrl = process.env.REACT_APP_API_URL;
+      const apiUrl = process.env.REACT_APP_API_URL;
 
       var config = {
         method: "put",
-        url: `${apiUrl}/${encounterID}`,
+        url: `${apiUrl}/SetTriageAndStream/${encounterID}`,
         headers: {
           Accept: "application/json+fhir",
           "Content-Type": "application/json",
