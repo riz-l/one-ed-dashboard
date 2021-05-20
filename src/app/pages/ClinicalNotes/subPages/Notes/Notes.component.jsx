@@ -77,7 +77,12 @@ export default function Notes() {
             Previous Notes
           </Text>
 
-          {previousNotesRender}
+          {questionnaireResponseDetail &&
+          questionnaireResponseDetail.length > 0 ? (
+            previousNotesRender
+          ) : (
+            <Text as="p">The Patient has no historic notes</Text>
+          )}
         </Wrapper>
       </Container>
     </>

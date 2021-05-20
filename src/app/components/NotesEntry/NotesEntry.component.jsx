@@ -38,7 +38,6 @@ export default function ReportEntry({ dateTime, note, user }) {
                     )
                   : "Date/Time"}
               </h3>
-              {/* <h3>{dateTime ? dateTime : "Date/Time"}</h3> */}
             </Heading>
             <Status>
               <Display labelText="User :" left>
