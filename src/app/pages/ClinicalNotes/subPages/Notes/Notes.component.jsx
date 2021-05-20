@@ -34,7 +34,11 @@ export default function Notes() {
 
   // Effect: Filters questionnaire responses
   useEffect(() => {
-    dispatch(setFilteredQuestionnaireResponse());
+    if (questionnaireResponse && questionnaireResponse.length > 0) {
+      dispatch(setFilteredQuestionnaireResponse());
+    } else {
+      return;
+    }
   }, [dispatch, questionnaireResponse]);
 
   // Effect: Fetches questionnaire response detail from API
