@@ -1,7 +1,10 @@
 // Import: Packages
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPreviousNotes } from "../../../../../redux/slices/clinicalNotesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getPreviousNotes,
+  setPreviousNotesFiltered,
+} from "../../../../../redux/slices/clinicalNotesSlice";
 
 // Import: Elements
 import { Container, Wrapper } from "./Notes.elements";
@@ -11,12 +14,21 @@ import { Form, NotesEntry, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
+  // Redux: previousNotes
+  const previousNotes = useSelector(
+    (state) => state.clinicalNotes.notes.previousNotes
+  );
   const dispatch = useDispatch();
 
-  // Effect:
+  // Effect: Fetches previous notes from API
   useEffect(() => {
     dispatch(getPreviousNotes());
-  }, []);
+  }, [dispatch]);
+
+  // Effect: Filters previous notes
+  useEffect(() => {
+    dispatch(setPreviousNotesFiltered());
+  }, [dispatch, previousNotes]);
 
   return (
     <>

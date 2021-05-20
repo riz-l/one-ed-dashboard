@@ -17,7 +17,8 @@ export const getPreviousNotes = createAsyncThunk(
         method: "get",
         url: `${apiUrl}/GetQuestionnaireResponse/${patientID}`,
         headers: {
-          accept: "application/json",
+          accept: "application/json+fhir",
+          "Content-Type": "application/json",
           "Authorization-Token": token,
         },
       };
@@ -38,8 +39,16 @@ export const clinicalNotesSlice = createSlice({
     notes: {
       newNote: "",
       previousNotes: [],
+      previousNotesFiltered: [],
       apiResponse: {},
       status: null,
+    },
+  },
+  reducers: {
+    setPreviousNotesFiltered: (state) => {
+      state.notes.previousNotesFiltered = state.notes.previousNotes.find(
+        ({ questionnaireVersion }) => questionnaireVersion === "F0000878-2.0"
+      );
     },
   },
   extraReducers: {
@@ -61,7 +70,7 @@ export const clinicalNotesSlice = createSlice({
 });
 
 // Actions:
-export const {} = clinicalNotesSlice.actions;
+export const { setPreviousNotesFiltered } = clinicalNotesSlice.actions;
 
 // Reducer: clinicalNotesSlice.reducer
 export default clinicalNotesSlice.reducer;
