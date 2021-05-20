@@ -1,5 +1,6 @@
 // Import: Packages
 import React from "react";
+import moment from "moment";
 
 // Import: Assets
 import { ReactComponent as NotesIcon } from "../../../assets/img/icon/notes.svg";
@@ -30,11 +31,18 @@ export default function ReportEntry({ dateTime, note, user }) {
               <Icon>
                 <NotesIcon />
               </Icon>
-              <h3>{dateTime ? dateTime : "Date/Time"}</h3>
+              <h3>
+                {dateTime
+                  ? moment(dateTime).format(
+                      "[Date:] MMMM Do YYYY, [Time:] HH:mm:ss"
+                    )
+                  : "Date/Time"}
+              </h3>
+              {/* <h3>{dateTime ? dateTime : "Date/Time"}</h3> */}
             </Heading>
             <Status>
               <Display labelText="User :" left>
-                {user ? user : "User"}
+                {user === "undefined" ? "N/A" : user ? user : "User"}
               </Display>
             </Status>
 

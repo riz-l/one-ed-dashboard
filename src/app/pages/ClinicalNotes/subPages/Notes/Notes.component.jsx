@@ -2,8 +2,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getPreviousNotes,
-  setPreviousNotesFiltered,
+  getQuestionnaireResponse,
+  setFilteredQuestionnaireResponse,
+  getQuestionnaireResponseDetail,
 } from "../../../../../redux/slices/clinicalNotesSlice";
 
 // Import: Elements
@@ -14,21 +15,47 @@ import { Form, NotesEntry, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
-  // Redux: previousNotes
-  const previousNotes = useSelector(
-    (state) => state.clinicalNotes.notes.previousNotes
+  // Redux: questionnaireResponse
+  const questionnaireResponse = useSelector(
+    (state) => state.clinicalNotes.notes.questionnaireResponse
+  );
+  const questionnaireResponseDetail = useSelector(
+    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
+  );
+  const filteredQuestionnaireResponse = useSelector(
+    (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
   );
   const dispatch = useDispatch();
 
-  // Effect: Fetches previous notes from API
+  // Effect: Fetches questionnaire response from API
   useEffect(() => {
-    dispatch(getPreviousNotes());
+    dispatch(getQuestionnaireResponse());
   }, [dispatch]);
 
-  // Effect: Filters previous notes
+  // Effect: Filters questionnaire responses
   useEffect(() => {
-    dispatch(setPreviousNotesFiltered());
-  }, [dispatch, previousNotes]);
+    dispatch(setFilteredQuestionnaireResponse());
+  }, [dispatch, questionnaireResponse]);
+
+  // Effect: Fetches questionnaire response detail from API
+  useEffect(() => {
+    dispatch(getQuestionnaireResponseDetail());
+  }, [dispatch, filteredQuestionnaireResponse]);
+
+  // Maps questionnaireResponseDetail through Notes
+  const previousNotesRender =
+    questionnaireResponseDetail && questionnaireResponseDetail.length > 0
+      ? questionnaireResponseDetail.map(function (item, index) {
+          return (
+            <NotesEntry
+              key={index}
+              dateTime={item.dateTime}
+              note={item.note}
+              user={item.PractionerName}
+            />
+          );
+        })
+      : null;
 
   return (
     <>
@@ -50,29 +77,7 @@ export default function Notes() {
             Previous Notes
           </Text>
 
-          <NotesEntry
-            dateTime="19th May 2021, 16:39"
-            note="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac elit a mi porttitor imperdiet. In tincidunt, ex et malesuada sodales, sem diam viverra lacus, id tincidunt turpis sapien non diam. Donec feugiat pulvinar dui et ultricies. Maecenas non leo ligula. Aliquam vitae magna non orci bibendum ultricies. Curabitur vestibulum bibendum ligula et luctus. Pellentesque ac fermentum tortor, et mollis nisi. Aenean ullamcorper nisl at nisl vestibulum semper. Phasellus viverra ac odio in viverra. Aenean iaculis efficitur lectus in pellentesque. Nam pharetra feugiat ultricies. Donec ac iaculis lectus, eget tristique massa. Nullam congue nunc elit, nec gravida turpis vestibulum et. Vivamus finibus ipsum vitae nibh interdum venenatis. Proin sed fringilla enim, sit amet condimentum mauris."
-            user="LAYTON Josh"
-          />
-
-          <NotesEntry
-            dateTime="19th May 2021, 16:39"
-            note="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac elit a mi porttitor imperdiet. In tincidunt, ex et malesuada sodales, sem diam viverra lacus, id tincidunt turpis sapien non diam. Donec feugiat pulvinar dui et ultricies. Maecenas non leo ligula. Aliquam vitae magna non orci bibendum ultricies. Curabitur vestibulum bibendum ligula et luctus. Pellentesque ac fermentum tortor, et mollis nisi. Aenean ullamcorper nisl at nisl vestibulum semper. Phasellus viverra ac odio in viverra. Aenean iaculis efficitur lectus in pellentesque. Nam pharetra feugiat ultricies. Donec ac iaculis lectus, eget tristique massa. Nullam congue nunc elit, nec gravida turpis vestibulum et. Vivamus finibus ipsum vitae nibh interdum venenatis. Proin sed fringilla enim, sit amet condimentum mauris."
-            user="LAYTON Josh"
-          />
-
-          <NotesEntry
-            dateTime="19th May 2021, 16:39"
-            note="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac elit a mi porttitor imperdiet. In tincidunt, ex et malesuada sodales, sem diam viverra lacus, id tincidunt turpis sapien non diam. Donec feugiat pulvinar dui et ultricies. Maecenas non leo ligula. Aliquam vitae magna non orci bibendum ultricies. Curabitur vestibulum bibendum ligula et luctus. Pellentesque ac fermentum tortor, et mollis nisi. Aenean ullamcorper nisl at nisl vestibulum semper. Phasellus viverra ac odio in viverra. Aenean iaculis efficitur lectus in pellentesque. Nam pharetra feugiat ultricies. Donec ac iaculis lectus, eget tristique massa. Nullam congue nunc elit, nec gravida turpis vestibulum et. Vivamus finibus ipsum vitae nibh interdum venenatis. Proin sed fringilla enim, sit amet condimentum mauris."
-            user="LAYTON Josh"
-          />
-
-          <NotesEntry
-            dateTime="19th May 2021, 16:39"
-            note="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac elit a mi porttitor imperdiet. In tincidunt, ex et malesuada sodales, sem diam viverra lacus, id tincidunt turpis sapien non diam. Donec feugiat pulvinar dui et ultricies. Maecenas non leo ligula. Aliquam vitae magna non orci bibendum ultricies. Curabitur vestibulum bibendum ligula et luctus. Pellentesque ac fermentum tortor, et mollis nisi. Aenean ullamcorper nisl at nisl vestibulum semper. Phasellus viverra ac odio in viverra. Aenean iaculis efficitur lectus in pellentesque. Nam pharetra feugiat ultricies. Donec ac iaculis lectus, eget tristique massa. Nullam congue nunc elit, nec gravida turpis vestibulum et. Vivamus finibus ipsum vitae nibh interdum venenatis. Proin sed fringilla enim, sit amet condimentum mauris."
-            user="LAYTON Josh"
-          />
+          {previousNotesRender}
         </Wrapper>
       </Container>
     </>
