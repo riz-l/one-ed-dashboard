@@ -58,12 +58,7 @@ export const Container = styled.tr`
   }
 `;
 
-// Element: Name
-export const Name = styled.td`
-  text-transform: capitalize;
-`;
-
-// Element: Gender
-export const Gender = styled.td`
+// Element: Capitalize
+export const Capitalize = styled.td`
   text-transform: capitalize;
 `;

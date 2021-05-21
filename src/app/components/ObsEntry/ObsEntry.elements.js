@@ -25,36 +25,7 @@ export const Arrow = styled.div`
 // Element: ArrowContainer
 export const ArrowContainer = styled.div`
   align-items: center;
-  background-color: ${({
-    alerts,
-    allergies,
-    complaint,
-    complications,
-    diagnosis,
-    findings,
-    procedures,
-    symptoms,
-    themeColor,
-  }) =>
-    alerts
-      ? "#ff6347"
-      : allergies
-      ? "#ffaf85"
-      : complaint
-      ? "#5398be"
-      : complications
-      ? "#9bc53d"
-      : diagnosis
-      ? "#ba2c73"
-      : findings
-      ? "#1b998b"
-      : procedures
-      ? "#585481"
-      : symptoms
-      ? "#2978a0"
-      : themeColor
-      ? themeColor
-      : "#3a3a40"};
+  background-color: #6b7a99;
   display: flex;
   height: 100%;
   justify-content: center;
@@ -80,36 +51,7 @@ export const ArrowContainer = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  border: ${({
-    alerts,
-    allergies,
-    complaint,
-    complications,
-    diagnosis,
-    findings,
-    procedures,
-    symptoms,
-    themeColor,
-  }) =>
-    alerts
-      ? "1px solid #ff6347"
-      : allergies
-      ? "1px solid #ffaf85"
-      : complaint
-      ? "1px solid #5398be"
-      : complications
-      ? "1px solid #9bc53d"
-      : diagnosis
-      ? "1px solid #ba2c73"
-      : findings
-      ? "1px solid #1b998b"
-      : procedures
-      ? "1px solid #585481"
-      : symptoms
-      ? "1px solid #2978a0"
-      : themeColor
-      ? `1px solid ${themeColor}`
-      : "1px solid #3a3a40"};
+  border: 1px solid #edeff2;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
   cursor: pointer;
@@ -158,43 +100,14 @@ export const Heading = styled.div`
   margin-bottom: 0.4rem;
 
   & h3 {
-    color: #4d5e80;
+    color: #6b7a99;
   }
 `;
 
 // Element: Icon
 export const Icon = styled.div`
   align-items: center;
-  background-color: ${({
-    alerts,
-    allergies,
-    complaint,
-    complications,
-    diagnosis,
-    findings,
-    procedures,
-    symptoms,
-    themeColor,
-  }) =>
-    alerts
-      ? "#ff6347"
-      : allergies
-      ? "#ffaf85"
-      : complaint
-      ? "#5398be"
-      : complications
-      ? "#9bc53d"
-      : diagnosis
-      ? "#ba2c73"
-      : findings
-      ? "#1b998b"
-      : procedures
-      ? "#585481"
-      : symptoms
-      ? "#2978a0"
-      : themeColor
-      ? themeColor
-      : "#3a3a40"};
+  background-color: #6b7a99;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -254,4 +167,22 @@ export const Status = styled.div`
       text-transform: capitalize;
     }
   }
+`;
+
+// Element: DataContainer
+export const DataContainer = styled.div`
+  height: 90%;
+  max-height: 90%;
+  padding: 0 0 2rem 0;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+`;
+
+// Element: Header
+export const Header = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;

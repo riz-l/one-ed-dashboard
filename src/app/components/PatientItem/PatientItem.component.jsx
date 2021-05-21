@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 // Import: Elements
-import { Container, Gender, Name } from "./PatientItem.elements";
+import { Container, Capitalize } from "./PatientItem.elements";
 
 // Component: PatientItem
 export default function PatientItem({
@@ -14,6 +14,7 @@ export default function PatientItem({
   colThree,
   colFour,
   colFive,
+  colSix,
   patientList,
   incomingPatients,
 }) {
@@ -30,11 +31,12 @@ export default function PatientItem({
         patientList={patientList}
         incomingPatients={incomingPatients}
       >
-        <Name>{colOne}</Name>
-        <td>{colTwo}</td>
-        <Gender>{colThree}</Gender>
-        <td>{colFour}</td>
-        <td>{colFive}</td>
+        {colOne && <Capitalize>{colOne}</Capitalize>}
+        {colTwo && <td>{colTwo}</td>}
+        {colThree && <Capitalize>{colThree}</Capitalize>}
+        {colFour && <td>{colFour}</td>}
+        {colFive && <td>{colFive}</td>}
+        {colSix && <td>{colSix}</td>}
       </Container>
     </>
   );

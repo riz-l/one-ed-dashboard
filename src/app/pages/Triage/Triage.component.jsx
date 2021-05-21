@@ -30,7 +30,7 @@ import {
   NEWS2,
   UrineObs,
   TriageAndStream,
-  SaveSubPage,
+  Save,
 } from "./subPages";
 
 // Page: Triage
@@ -49,7 +49,6 @@ export default function Triage() {
   const [isNeuroObs, setIsNeuroObs] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
-  const [isSaveSubPage, setIsSaveSubPage] = useState(false);
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -62,7 +61,6 @@ export default function Triage() {
     setIsUrineObs(false);
     setIsPaediatricObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
   }
@@ -78,7 +76,6 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
   }
@@ -94,7 +91,6 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsNEWS(true);
     setIsNEWS2(true);
   }
@@ -110,7 +106,6 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
   }
@@ -126,7 +121,6 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsAlerts(true);
     setIsTriage(true);
   }
@@ -142,7 +136,6 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsAllergies(true);
     setIsTriage(true);
   }
@@ -158,7 +151,6 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
   }
@@ -174,7 +166,6 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsNeuroObs(true);
     setIsPaediatricObs(true);
   }
@@ -190,7 +181,6 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsPaediatricObs(true);
     setIsUrineObs(true);
   }
@@ -206,13 +196,12 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsNEWS(true);
     setIsNEWS2(true);
   }
 
-  // onClick: Renders SaveSubPage SubPage
-  function renderSaveSubPage() {
+  // onClick: Renders Save SubPage
+  function renderSave() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
@@ -223,7 +212,6 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
-    setIsSaveSubPage(true);
     setIsSave(true);
   }
 
@@ -265,7 +253,7 @@ export default function Triage() {
 
                   <PrimaryNavigation.Item
                     isActive={isSave ? true : false}
-                    onClick={renderSaveSubPage}
+                    onClick={renderSave}
                   >
                     <PrimaryNavigation.Save>
                       <PrimaryNavigation.Text>Save</PrimaryNavigation.Text>
@@ -368,8 +356,8 @@ export default function Triage() {
                   ) : isSave ? (
                     <>
                       <SecondaryNavigation.Item
-                        isActive={isSaveSubPage ? true : false}
-                        onClick={renderSaveSubPage}
+                        isActive={isSave ? true : false}
+                        onClick={renderSave}
                       >
                         <SecondaryNavigation.Icon>
                           <SaveIcon />
@@ -397,8 +385,8 @@ export default function Triage() {
                   <UrineObs />
                 ) : isNEWS2 ? (
                   <NEWS2 />
-                ) : isSaveSubPage ? (
-                  <SaveSubPage />
+                ) : isSave ? (
+                  <Save />
                 ) : null
               }
             />
