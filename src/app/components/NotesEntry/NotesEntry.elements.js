@@ -11,9 +11,8 @@ export const Container = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  border: 1px solid #4d5e80;
-  border-bottom-left-radius: 8px;
-  border-top-left-radius: 8px;
+  border: 1px solid #edeff2;
+  border-radius: 8px;
   display: flex;
   height: auto;
   justify-content: center;
@@ -48,14 +47,14 @@ export const Heading = styled.div`
   margin-bottom: 0.4rem;
 
   & h3 {
-    color: #4d5e80;
+    color: #6b7a99;
   }
 `;
 
 // Element: Icon
 export const Icon = styled.div`
   align-items: center;
-  background: #4d5e80;
+  background-color: #6b7a99;
   border-radius: 50%;
   display: flex;
   justify-content: center;
