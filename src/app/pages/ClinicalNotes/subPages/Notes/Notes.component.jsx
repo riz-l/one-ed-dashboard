@@ -3,10 +3,10 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getQuestionnaireResponse,
-  getQuestionnaireResponseDetail,
+  getNotesQuestionnaireResponseDetail,
   postNewNote,
   putNewNote,
-  setFilteredQuestionnaireResponse,
+  filterForPreviousNotes,
   addPostPractionerName,
   addPostPractionerID,
   addPostPatientName,
@@ -103,7 +103,7 @@ export default function Notes() {
   // Effect: Filters questionnaire responses
   useEffect(() => {
     if (questionnaireResponse && questionnaireResponse.length > 0) {
-      dispatch(setFilteredQuestionnaireResponse());
+      dispatch(filterForPreviousNotes());
     } else {
       return;
     }
@@ -111,7 +111,7 @@ export default function Notes() {
 
   // Effect: Fetches questionnaire response detail from API
   useEffect(() => {
-    dispatch(getQuestionnaireResponseDetail());
+    dispatch(getNotesQuestionnaireResponseDetail());
   }, [dispatch, filteredQuestionnaireResponse]);
 
   // Add noteToRedux
@@ -125,7 +125,7 @@ export default function Notes() {
     } else {
       try {
         dispatch(addPutNote(noteTextAreaRef.current.value));
-        dispatch(getQuestionnaireResponseDetail());
+        dispatch(getNotesQuestionnaireResponseDetail());
       } catch (err) {
         console.log(err);
       }

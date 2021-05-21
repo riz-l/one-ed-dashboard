@@ -217,9 +217,7 @@ export default function PatientList() {
                       <THeading isPatientList={isPatientList}>
                         Triage Category
                       </THeading>
-                      <THeading isPatientList={isPatientList}>
-                        Current Stage
-                      </THeading>
+                      <THeading isPatientList={isPatientList}>Status</THeading>
                     </>
                   ) : isIncomingPatients ? (
                     <>

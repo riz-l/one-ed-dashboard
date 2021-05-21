@@ -32,9 +32,9 @@ export const getQuestionnaireResponse = createAsyncThunk(
   }
 );
 
-// AsyncThunk: getQuestionnaireResponseDetail
-export const getQuestionnaireResponseDetail = createAsyncThunk(
-  "clinicalNotes/getQuestionnaireResponseDetail",
+// AsyncThunk: getNotesQuestionnaireResponseDetail
+export const getNotesQuestionnaireResponseDetail = createAsyncThunk(
+  "clinicalNotes/getNotesQuestionnaireResponseDetail",
   async (arg, { getState }) => {
     const state = getState();
     const token = state.userDetails.token;
@@ -47,6 +47,37 @@ export const getQuestionnaireResponseDetail = createAsyncThunk(
       var config = {
         method: "get",
         url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${formID}/F0000878-2.0`,
+        headers: {
+          accept: "application/json+fhir",
+          "Content-Type": "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+// AsyncThunk: getObsQuestionnaireResponseDetail
+export const getObsQuestionnaireResponseDetail = createAsyncThunk(
+  "clinicalNotes/getObsQuestionnaireResponseDetail",
+  async (arg, { getState }) => {
+    const state = getState();
+    const token = state.userDetails.token;
+    const patientID = state.selectedPatient.patientData[0].patientID;
+    const formID = state.clinicalNotes.notes.filteredQuestionnaireResponse.id;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${formID}/F0000948-7.0`,
         headers: {
           accept: "application/json+fhir",
           "Content-Type": "application/json",
@@ -155,10 +186,16 @@ export const clinicalNotesSlice = createSlice({
     },
   },
   reducers: {
-    setFilteredQuestionnaireResponse: (state) => {
+    filterForPreviousNotes: (state) => {
       state.notes.filteredQuestionnaireResponse =
         state.notes.questionnaireResponse.find(
           ({ questionnaireVersion }) => questionnaireVersion === "F0000878-2.0"
+        );
+    },
+    filterForPreviousObs: (state) => {
+      state.notes.filteredQuestionnaireResponse =
+        state.notes.questionnaireResponse.find(
+          ({ questionnaireVersion }) => questionnaireVersion === "F0000948-7.0"
         );
     },
     addPostPractionerName: (state, { payload }) => {
@@ -221,10 +258,10 @@ export const clinicalNotesSlice = createSlice({
     [getQuestionnaireResponse.rejected]: (state, action) => {
       state.status = "failed";
     },
-    [getQuestionnaireResponseDetail.pending]: (state, action) => {
+    [getNotesQuestionnaireResponseDetail.pending]: (state, action) => {
       state.notes.status = "loading";
     },
-    [getQuestionnaireResponseDetail.fulfilled]: (state, { payload }) => {
+    [getNotesQuestionnaireResponseDetail.fulfilled]: (state, { payload }) => {
       if (payload) {
         state.notes.questionnaireResponseDetail = payload;
         state.status = "success";
@@ -232,7 +269,21 @@ export const clinicalNotesSlice = createSlice({
         state.status = "failed";
       }
     },
-    [getQuestionnaireResponseDetail.rejected]: (state, action) => {
+    [getNotesQuestionnaireResponseDetail.rejected]: (state, action) => {
+      state.status = "failed";
+    },
+    [getObsQuestionnaireResponseDetail.pending]: (state, action) => {
+      state.notes.status = "loading";
+    },
+    [getObsQuestionnaireResponseDetail.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.notes.questionnaireResponseDetail = payload;
+        state.status = "success";
+      } else {
+        state.status = "failed";
+      }
+    },
+    [getObsQuestionnaireResponseDetail.rejected]: (state, action) => {
       state.status = "failed";
     },
     [postNewNote.pending]: (state, action) => {
@@ -268,7 +319,8 @@ export const clinicalNotesSlice = createSlice({
 
 // Actions:
 export const {
-  setFilteredQuestionnaireResponse,
+  filterForPreviousNotes,
+  filterForPreviousObs,
   addPostPractionerName,
   addPostPractionerID,
   addPostPatientName,
