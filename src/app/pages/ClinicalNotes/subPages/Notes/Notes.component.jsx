@@ -23,13 +23,17 @@ import moment from "moment";
 import { Container, Wrapper } from "./Notes.elements";
 
 // Import: Components
-import { Button, Form, NotesEntry, Text } from "../../../../components";
+import { Form, NotesEntry, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
   // Redux:
   const questionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponse
+  );
+  const newNote = useSelector((state) => state.clinicalNotes.notes.newNote);
+  const newPutNote = useSelector(
+    (state) => state.clinicalNotes.notes.newPutNote
   );
   const questionnaireResponseDetail = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponseDetail
@@ -133,6 +137,7 @@ export default function Notes() {
   // Submit data to API
   const submitNewNote = async (event) => {
     event.preventDefault();
+
     if (!filteredQuestionnaireResponse) {
       try {
         dispatch(postNewNote());
@@ -173,21 +178,24 @@ export default function Notes() {
             Notes
           </Text>
 
-          <Form>
+          <Form onSubmit={submitNewNote}>
             <Form.TextArea
               htmlFor="enterObservationNote"
               labelText="Enter observation note..."
               onChange={addNoteToRedux}
               ref={noteTextAreaRef}
+              value={
+                !filteredQuestionnaireResponse ? newNote.note : newPutNote.note
+              }
               rows="8"
             />
-          </Form>
 
-          <Button
-            text="Submit Note"
-            onClick={submitNewNote}
-            margin="0 0 2rem 0"
-          />
+            <Form.Button
+              text="Submit Note"
+              onClick={submitNewNote}
+              margin="0 0 2rem 0"
+            />
+          </Form>
 
           <Text as="h3" subheading>
             Previous Notes
