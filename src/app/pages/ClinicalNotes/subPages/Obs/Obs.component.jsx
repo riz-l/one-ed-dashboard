@@ -4,23 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterForPreviousObs,
   getQuestionnaireResponse,
-  getObsQuestionnaireResponseDetail,
 } from "../../../../../redux/slices/clinicalNotesSlice";
 
 // Import: Elements
 import { Container, Wrapper } from "./Obs.elements";
 
 // Import: Components
-import { Text } from "../../../../components";
+import { ObsEntry, Text } from "../../../../components";
 
 // SubPage: Obs
 export default function Obs() {
   // Redux:
   const questionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponse
-  );
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
   );
   const filteredQuestionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
@@ -42,19 +38,18 @@ export default function Obs() {
     }
   }, [dispatch, questionnaireResponse]);
 
-  // Effect: Fetches questionnaire response detail from API
-  useEffect(() => {
-    dispatch(getObsQuestionnaireResponseDetail());
-  }, [dispatch, filteredQuestionnaireResponse]);
-
-  // Maps questionnaireResponseDetail through Obs
+  // Maps filteredQuestionnaireResponse through Obs
   const previousObsRender =
-    questionnaireResponseDetail && questionnaireResponseDetail.length > 0
-      ? questionnaireResponseDetail.map(function (item, index) {
+    filteredQuestionnaireResponse && filteredQuestionnaireResponse.length > 0
+      ? filteredQuestionnaireResponse.map(function (item, index) {
           return (
-            <div key={index}>
-              <p>SysObsNeuroPainScore: {item.SysObsNeuroPainScore}</p>
-            </div>
+            <ObsEntry
+              key={index}
+              id={item.id}
+              dateTime={item.alertStatus[2].valueDateTime}
+              status={item.status}
+              user={item.alertStatus[1].valueString}
+            />
           );
         })
       : null;
@@ -67,11 +62,11 @@ export default function Obs() {
             Obs
           </Text>
 
-          {questionnaireResponseDetail &&
-          questionnaireResponseDetail.length > 0 ? (
+          {filteredQuestionnaireResponse &&
+          filteredQuestionnaireResponse.length > 0 ? (
             previousObsRender
           ) : (
-            <Text as="p">The Patient has no historic notes</Text>
+            <Text as="p">The Patient has no historic obs</Text>
           )}
         </Wrapper>
       </Container>

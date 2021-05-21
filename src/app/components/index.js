@@ -43,6 +43,9 @@ export { default as Navigation } from "./Navigation/Navigation.component";
 // Export: NotesEntry
 export { default as NotesEntry } from "./NotesEntry/NotesEntry.component";
 
+// Export: ObsEntry
+export { default as ObsEntry } from "./ObsEntry/ObsEntry.component";
+
 // Export: PageTitle
 export { default as PageTitle } from "./PageTitle/PageTitle.component";
 

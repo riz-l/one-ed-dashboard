@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./UrineObs.elements";
 
 // Import: Components
-import { Form, Grid } from "../../../../components";
+import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: UrineObs
 export default function UrineObs() {
@@ -13,11 +13,11 @@ export default function UrineObs() {
     <>
       <Container data-testid={"urineObs"}>
         <Wrapper>
-          <Form>
-            <Form.Text as="h2" heading>
-              Urine Obs
-            </Form.Text>
+          <Text as="h2" heading>
+            Urine Obs
+          </Text>
 
+          <Form>
             <Grid>
               <Grid.Column>
                 <Grid.Item>

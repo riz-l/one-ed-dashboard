@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./NEWS2.elements";
 
 // Import: Components
-import { Form, Grid } from "../../../../components";
+import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: NEWS2
 export default function NEWS2() {
@@ -13,11 +13,11 @@ export default function NEWS2() {
     <>
       <Container data-testid={"news2"}>
         <Wrapper>
-          <Form>
-            <Form.Text as="h2" heading>
-              NEWS Score
-            </Form.Text>
+          <Text as="h2" heading>
+            NEWS Score
+          </Text>
 
+          <Form>
             <Grid>
               <Grid.Column>
                 <Grid.Item>

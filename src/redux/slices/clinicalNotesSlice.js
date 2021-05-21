@@ -66,18 +66,17 @@ export const getNotesQuestionnaireResponseDetail = createAsyncThunk(
 // AsyncThunk: getObsQuestionnaireResponseDetail
 export const getObsQuestionnaireResponseDetail = createAsyncThunk(
   "clinicalNotes/getObsQuestionnaireResponseDetail",
-  async (arg, { getState }) => {
+  async (id, { getState }) => {
     const state = getState();
     const token = state.userDetails.token;
     const patientID = state.selectedPatient.patientData[0].patientID;
-    const formID = state.clinicalNotes.notes.filteredQuestionnaireResponse.id;
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
 
       var config = {
         method: "get",
-        url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${formID}/F0000948-7.0`,
+        url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${id}/F0000948-7.0`,
         headers: {
           accept: "application/json+fhir",
           "Content-Type": "application/json",
@@ -93,6 +92,37 @@ export const getObsQuestionnaireResponseDetail = createAsyncThunk(
     }
   }
 );
+
+// // AsyncThunk: getObsQuestionnaireResponseDetail
+// export const getObsQuestionnaireResponseDetail = createAsyncThunk(
+//   "clinicalNotes/getObsQuestionnaireResponseDetail",
+//   async (arg, { getState }) => {
+//     const state = getState();
+//     const token = state.userDetails.token;
+//     const patientID = state.selectedPatient.patientData[0].patientID;
+//     const formID = state.clinicalNotes.notes.filteredQuestionnaireResponse.id;
+
+//     try {
+//       const apiUrl = process.env.REACT_APP_API_URL;
+
+//       var config = {
+//         method: "get",
+//         url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${formID}/F0000948-7.0`,
+//         headers: {
+//           accept: "application/json+fhir",
+//           "Content-Type": "application/json",
+//           "Authorization-Token": token,
+//         },
+//       };
+
+//       const response = await axios(config);
+//       const data = await response.data;
+//       return data;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// );
 
 // AsyncThunk: postNewNote
 export const postNewNote = createAsyncThunk(
@@ -194,8 +224,8 @@ export const clinicalNotesSlice = createSlice({
     },
     filterForPreviousObs: (state) => {
       state.notes.filteredQuestionnaireResponse =
-        state.notes.questionnaireResponse.find(
-          ({ questionnaireVersion }) => questionnaireVersion === "F0000948-7.0"
+        state.notes.questionnaireResponse.filter(
+          (item) => item.questionnaireVersion === "F0000948-7.0"
         );
     },
     addPostPractionerName: (state, { payload }) => {

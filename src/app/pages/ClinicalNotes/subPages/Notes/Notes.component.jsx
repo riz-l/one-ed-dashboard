@@ -13,11 +13,9 @@ import {
   addPostEncounterID,
   addPostDateTime,
   addPostNote,
-  clearPostNote,
   addPutNote,
   addPutDateTime,
   addPutPractionerName,
-  clearPutNote,
 } from "../../../../../redux/slices/clinicalNotesSlice";
 import moment from "moment";
 
