@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 
 // Import: Elements
-import { Container, Frame, Window } from "./ReportModal.elements";
+import { Container, Frame, Header, Window } from "./ReportModal.elements";
 import "./ReportModal.styles.css";
 
 // Import: Components
@@ -45,13 +45,15 @@ export default function ReportModal({ patientID }) {
         closeTimeoutMS={100}
         ariaHideApp={false}
       >
-        <PageTitle
-          backgroundColor="#ffffff"
-          padding="1rem 0 2rem 0"
-          heading="Integration Report"
-          subheading="OneResponse Patient details"
-        />
-        <Button onClick={closeModal} text="Close" />
+        <Header>
+          <PageTitle
+            backgroundColor="#ffffff"
+            padding="1rem 0 2rem 0"
+            heading="Integration Report"
+            subheading="OneResponse Patient details"
+          />
+          <Button onClick={closeModal} text="Close" />
+        </Header>
 
         <Window>
           <Frame src={`${apiUrl}/?ePRID=${patientID}`} />
