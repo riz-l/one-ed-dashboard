@@ -89,4 +89,4 @@ export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryN
 export { default as Text } from "./Text/Text.component";
 
 // Export: TextArea
-export { default as TextArea } from "./TextArea/TextArea.component";
+export { TextArea } from "./TextArea/TextArea.component";

@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getQuestionnaireResponse,
@@ -36,6 +36,12 @@ export default function Notes() {
   const questionnaireResponseDetail = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponseDetail
   );
+  const apiPostResponse = useSelector(
+    (state) => state.clinicalNotes.notes.apiPostResponse
+  );
+  const apiPutResponse = useSelector(
+    (state) => state.clinicalNotes.notes.apiPutResponse
+  );
   const filteredQuestionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
   );
@@ -56,6 +62,9 @@ export default function Notes() {
     (state) => state.selectedPatient.patientData[0].name
   );
   const dispatch = useDispatch();
+
+  // Ref:
+  const noteTextAreaRef = useRef();
 
   // Current Date, Time
   const date = new Date();
@@ -78,16 +87,6 @@ export default function Notes() {
     dispatch(addPostPatientName(patientName));
     dispatch(addPostEncounterID(encounterID));
     dispatch(addPostDateTime(putEditedNewDateTime));
-    dispatch(
-      addPostNote(
-        "This is a test note from the OneED React.js client. Signed - Riz"
-      )
-    );
-    dispatch(
-      addPutNote(
-        "This is a test note from the OneED React.js client. Signed - Riz"
-      )
-    );
     dispatch(addPutDateTime(putEditedNewDateTime));
     dispatch(addPutPractionerName(practionerName));
   }, [
@@ -97,6 +96,8 @@ export default function Notes() {
     practionerID,
     practionerName,
     putEditedNewDateTime,
+    apiPutResponse,
+    apiPostResponse,
   ]);
 
   // Effect: Filters questionnaire responses
@@ -113,20 +114,38 @@ export default function Notes() {
     dispatch(getQuestionnaireResponseDetail());
   }, [dispatch, filteredQuestionnaireResponse]);
 
+  // Add noteToRedux
+  const addNoteToRedux = () => {
+    if (!filteredQuestionnaireResponse) {
+      try {
+        dispatch(addPostNote(noteTextAreaRef.current.value));
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        dispatch(addPutNote(noteTextAreaRef.current.value));
+        dispatch(getQuestionnaireResponseDetail());
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   // Submit data to API
   const submitNewNote = async (event) => {
     event.preventDefault();
     if (!filteredQuestionnaireResponse) {
       try {
         dispatch(postNewNote());
-        dispatch(clearPostNote());
+        dispatch(addPostNote(""));
       } catch (err) {
         console.log(err);
       }
     } else {
       try {
         dispatch(putNewNote());
-        dispatch(clearPutNote());
+        dispatch(addPutNote(""));
       } catch (err) {
         console.log(err);
       }
@@ -160,6 +179,8 @@ export default function Notes() {
             <Form.TextArea
               htmlFor="enterObservationNote"
               labelText="Enter observation note..."
+              onChange={addNoteToRedux}
+              ref={noteTextAreaRef}
               rows="8"
             />
           </Form>
@@ -167,7 +188,7 @@ export default function Notes() {
           <Button
             text="Submit Note"
             onClick={submitNewNote}
-            margin="0 0 1rem 0"
+            margin="0 0 2rem 0"
           />
 
           <Text as="h3" subheading>

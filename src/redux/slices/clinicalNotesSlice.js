@@ -133,7 +133,8 @@ export const clinicalNotesSlice = createSlice({
   name: "clinicalNotes",
   initialState: {
     notes: {
-      apiResponse: {},
+      apiPostResponse: {},
+      apiPutResponse: {},
       filteredQuestionnaireResponse: [],
       newNote: {
         PractionerName: "",
@@ -239,7 +240,7 @@ export const clinicalNotesSlice = createSlice({
     },
     [postNewNote.fulfilled]: (state, { payload }) => {
       if (payload) {
-        state.notes.apiResponse = payload;
+        state.notes.apiPostResponse = payload;
         state.status = "success";
       } else {
         state.status = "failed";
@@ -253,7 +254,7 @@ export const clinicalNotesSlice = createSlice({
     },
     [putNewNote.fulfilled]: (state, { payload }) => {
       if (payload) {
-        state.notes.apiResponse = payload;
+        state.notes.apiPutResponse = payload;
         state.status = "success";
       } else {
         state.status = "failed";
