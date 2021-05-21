@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./Ice.elements";
+import { Container, Frame, Window, Wrapper } from "./Ice.elements";
 
 // Import: Components
 import { Text } from "../../../../components";
@@ -16,6 +16,12 @@ export default function Ice() {
           <Text as="h2" heading>
             ICE
           </Text>
+
+          <Window>
+            <Frame
+              src={`https://www.newcastlelaboratories.com/wp-content/uploads/2015/10/EMIS-Web-ICE-Manual_.pdf`}
+            />
+          </Window>
         </Wrapper>
       </Container>
     </>

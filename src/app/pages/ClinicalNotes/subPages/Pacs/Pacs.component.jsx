@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./Pacs.elements";
+import { Container, Frame, Window, Wrapper } from "./Pacs.elements";
 
 // Import: Components
 import { Text } from "../../../../components";
@@ -16,6 +16,12 @@ export default function Pacs() {
           <Text as="h2" heading>
             PACS
           </Text>
+
+          <Window>
+            <Frame
+              src={`https://www.england.nhs.uk/wp-content/uploads/2016/09/pacs-framework.pdf`}
+            />
+          </Window>
         </Wrapper>
       </Container>
     </>
