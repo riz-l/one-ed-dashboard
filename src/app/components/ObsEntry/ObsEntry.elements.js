@@ -51,7 +51,7 @@ export const ArrowContainer = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  border: 1px solid #edeff2;
+  border: 1px solid #6b7a99;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
   cursor: pointer;
