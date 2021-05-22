@@ -7,6 +7,7 @@ export const putSeenForm = createAsyncThunk(
   "seen/putSeenForm",
   async (arg, { getState }) => {
     const state = getState();
+    const encounterID = state.selectedPatient.patientData[0].encounterID;
     const token = state.userDetails.token;
     const seenForm = state.seen.seenForm;
 
@@ -15,7 +16,7 @@ export const putSeenForm = createAsyncThunk(
 
       var config = {
         method: "put",
-        url: `${apiUrl}/SetSeen`,
+        url: `${apiUrl}/SetSeen/${encounterID}`,
         headers: {
           Accept: "application/json+fhir",
           "Content-Type": "application/json",
