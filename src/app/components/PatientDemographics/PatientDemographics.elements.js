@@ -9,24 +9,16 @@ export const Container = styled.div`
   height: auto;
   justify-content: flex-start;
   width: 100%;
+  max-width: 100%;
 `;
 
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  /* background-color: #f7f8fa; */
   display: flex;
   height: auto;
   justify-content: center;
   width: 100%;
-`;
-
-// Element: Form Wrapper
-export const FormWrapper = styled.div`
-  max-height: 100%;
-  overflow-y: scroll;
-  width: 100%;
-  max-width: 100%;
 `;
 
 // Element: ClickableHeader
@@ -104,6 +96,7 @@ export const ClickableText = styled.div`
     font-weight: 600;
     transition: all 100ms linear;
   }
+
   @media (max-width: 1024px) {
     flex: 3;
   }
@@ -111,6 +104,7 @@ export const ClickableText = styled.div`
   @media (max-width: 768px) {
     align-items: center;
   }
+
   @media (max-width: 768px) {
     flex: 1;
   } ;
@@ -123,9 +117,11 @@ export const ClickableButtonContainer = styled.div`
   flex: 1;
   height: 100%;
   justify-content: flex-end;
+
   @media (max-width: 1024px) {
     flex: 2;
   }
+
   @media (max-width: 768px) {
     flex: 1;
   } ;
@@ -137,7 +133,6 @@ export const ClickableButton = styled.div`
   appearance: none;
   -webkit-appearance: none;
   background-color: #4d5e80;
-  border: 1px solid #edeff2;
   border-radius: 8px;
   color: #6b7a99;
   cursor: pointer;
@@ -147,6 +142,7 @@ export const ClickableButton = styled.div`
   justify-content: center;
   padding: 0.75rem 1.35rem;
   transition: all 100ms linear;
+  white-space: nowrap;
 
   & p {
     color: white;
@@ -232,15 +228,18 @@ export const TestGridWrapper = styled.div`
 
 export const WrapperItem1 = styled.div`
   flex: 2;
+
   @media (max-width: 1100px) {
     flex: 3;
   }
+
   @media (max-width: 768px) {
     display: none;
   } ;
 `;
 export const WrapperItem2 = styled.div`
   flex: 5;
+
   @media (max-width: 1024px) {
     display: none;
   } ;
