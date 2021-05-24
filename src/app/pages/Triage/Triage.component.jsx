@@ -3,14 +3,15 @@ import React, { useState } from "react";
 
 // Import: Assets
 
-import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
 import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
+import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
+import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
+import { ReactComponent as NEWSIcon } from "../../../assets/img/icon/NEWS.svg";
+import { ReactComponent as POPSHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
+import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
-import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
-import { ReactComponent as NEWSIcon } from "../../../assets/img/icon/NEWS.svg";
-import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
@@ -28,6 +29,7 @@ import {
   CEDObs,
   NeuroObs,
   NEWS2,
+  POPSHistory,
   UrineObs,
   TriageAndStream,
   Save,
@@ -35,9 +37,10 @@ import {
 
 // Page: Triage
 export default function Triage() {
-  // State: isTriage, isPaediatricObs, isNEWS, isSave
+  // State: isTriage, isPaediatricObs, isPOPSHistory, isNEWS, isSave
   const [isTriage, setIsTriage] = useState(true);
   const [isPaediatricObs, setIsPaediatricObs] = useState(false);
+  const [isPOPSHistory, setIsPOPSHistory] = useState(false);
   const [isNEWS, setIsNEWS] = useState(false);
   const [isSave, setIsSave] = useState(false);
 
@@ -48,6 +51,7 @@ export default function Triage() {
   const [isCEDObs, setIsCEDObs] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
+  const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
 
   // onClick: Renders Triage SubPage
@@ -58,9 +62,12 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
-    setIsUrineObs(false);
     setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
   }
@@ -72,12 +79,34 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
+  }
+
+  // onClick: Renders POPSHistory SubPage
+  function renderPOPSHistory() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsPOPSHistory(true);
+    setISPOPSHistorySubPage(true);
   }
 
   // onClick: Renders NEWS SubPage
@@ -87,10 +116,13 @@ export default function Triage() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
-    setIsUrineObs(false);
     setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsUrineObs(false);
     setIsNEWS(true);
     setIsNEWS2(true);
   }
@@ -104,8 +136,11 @@ export default function Triage() {
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPaediatricObs(false);
-    setIsUrineObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
   }
@@ -119,8 +154,11 @@ export default function Triage() {
     setIsNEWS2(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(false);
-    setIsUrineObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsUrineObs(false);
     setIsAlerts(true);
     setIsTriage(true);
   }
@@ -132,10 +170,13 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
-    setIsTriageAndStream(false);
     setIsPaediatricObs(false);
-    setIsUrineObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsSave(false);
+    setIsSaveSubPage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
     setIsAllergies(true);
     setIsTriage(true);
   }
@@ -147,6 +188,10 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -162,6 +207,10 @@ export default function Triage() {
     setIsCEDObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -178,9 +227,12 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
-    setIsSave(false);
     setIsPaediatricObs(true);
     setIsUrineObs(true);
   }
@@ -192,6 +244,10 @@ export default function Triage() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -209,10 +265,13 @@ export default function Triage() {
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(true);
+    setIsSaveSubPage(true);
   }
 
   return (
@@ -242,6 +301,15 @@ export default function Triage() {
                     onClick={renderPaediatricObs}
                   >
                     <PrimaryNavigation.Text>POPS Score</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isPOPSHistory ? true : false}
+                    onClick={renderPOPSHistory}
+                  >
+                    <PrimaryNavigation.Text>
+                      POPS History
+                    </PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
@@ -339,6 +407,20 @@ export default function Triage() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
+                  ) : isPOPSHistory ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isPOPSHistorySubPage ? true : false}
+                        onClick={renderPOPSHistory}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <POPSHistoryIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          POPS History
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
                   ) : isNEWS ? (
                     <>
                       <SecondaryNavigation.Item
@@ -383,6 +465,8 @@ export default function Triage() {
                   <NeuroObs />
                 ) : isUrineObs ? (
                   <UrineObs />
+                ) : isPOPSHistory ? (
+                  <POPSHistory />
                 ) : isNEWS2 ? (
                   <NEWS2 />
                 ) : isSave ? (
