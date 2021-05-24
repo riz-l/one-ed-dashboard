@@ -1,5 +1,8 @@
 // Import: Packages
 import React, { useState } from "react";
+import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
+import { useDispatch } from "react-redux";
+import moment from "moment";
 import ReactModal from "react-modal";
 
 // Import: Icons
@@ -25,17 +28,20 @@ import {
 } from "./POPSHistoryModal.elements";
 import "./POPSHistoryModal.styles.css";
 
-// Import: Components and SubPages
-import { Button, ReportSection, SecondaryNavigation, Text } from "../index";
-
-import { CEDObs, NeuroObs, UrineObs } from "./SubPages";
+// Import: Components, SubPages
+import {
+  Button,
+  Display,
+  ReportSection,
+  SecondaryNavigation,
+  Text,
+} from "../index";
+import { CEDObs, NeuroObs, UrineObs } from "./subPages";
 
 // Component: ReportEntry
-export default function POPSHistoryModal({
-  // slideStatus,
-  // slideToggle,
-  openedModal,
-}) {
+export default function POPSHistoryModal({ id, dateTime, user, status }) {
+  const dispatch = useDispatch();
+
   // State: isCEDObs, isNeuroObs, isUrineObs
   const [isCEDObs, setIsCEDObs] = useState(true);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
@@ -68,6 +74,7 @@ export default function POPSHistoryModal({
   // onClick: Opens Modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
+    dispatch(getObsQuestionnaireResponseDetail(id));
   }
 
   // onClick: Closes Modal
@@ -77,32 +84,36 @@ export default function POPSHistoryModal({
 
   return (
     <Container data-testid={"popsHistoryModal"}>
-      <Wrapper
-        // onClick={
-        //   slideToggle ? () => slideToggle((slideStatus) => !slideStatus) : null
-        // }
-        onClick={openModal}
-      >
+      <Wrapper onClick={openModal}>
         <EntryContainer>
           <Left>
             <Heading>
               <Icon>
                 <POPSHistoryIcon />
               </Icon>
-              {/* Do I need this title? */}
-              <h3>POPS History Results set</h3>
+              <h3>
+                {dateTime
+                  ? moment(dateTime).format(
+                      "[Date:] MMMM Do YYYY, [Time:] HH:mm:ss"
+                    )
+                  : "Date/Time"}
+              </h3>
             </Heading>
 
             <Detail>
-              {/* Find a way of adding the date and time from Global state. */}
-              <p> 10:50 21-JAN-2021</p>
+              <Display labelText="User: " left>
+                {user && user.length > 25
+                  ? user.substring(0, 25) + "..."
+                  : user && user.length < 25
+                  ? user
+                  : "User"}
+              </Display>
             </Detail>
           </Left>
 
           <Right>
             <Status>
-              {/* Remove this? */}
-              <p>click to open</p>
+              <p>{status ? status : "Status"}</p>
             </Status>
           </Right>
 
@@ -135,8 +146,6 @@ export default function POPSHistoryModal({
           </Text>
           <Button text="Close" onClick={closeModal} />
         </div>
-        {/* what does openedModal do? */}
-        {openedModal}
 
         <ReportSection
           secondaryNavigation={

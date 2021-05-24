@@ -1,14 +1,20 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./NeuroObs.elements";
 
 // Import: Components
-import { Display, Grid, Text } from "../../../../components";
+import { Display, Grid, Text } from "../../..";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
+  // Redux:
+  const questionnaireResponseDetail = useSelector(
+    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
+  );
+
   return (
     <>
       <Container data-testid={"neuroObs"}>
@@ -27,19 +33,25 @@ export default function NeuroObs() {
 
               <Grid.Item>
                 <Display htmlFor="eyes" labelText="Eyes">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="verbal" labelText="Verbal">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="motor" labelText="Motor">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSMotor
+                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSMotor
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
@@ -47,7 +59,9 @@ export default function NeuroObs() {
 
               <Grid.Item>
                 <Display htmlFor="gcsTotal" labelText="GCS Total">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSTotal
+                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSTotal
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
@@ -66,14 +80,17 @@ export default function NeuroObs() {
                   name="equalOrUnequal"
                   text="Equal or Unequal"
                 >
-                  {/* TODO add redux. Need to convert the true or false for the 2 radio buttons into  */}
-                  {/* "Equal" or "Unequal" */}
+                  {questionnaireResponseDetail.SysObsNeuroPupilsEqual
+                    ? questionnaireResponseDetail.SysObsNeuroPupilsEqual
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="leftPupilSize" labelText="Left Pupil Size">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsNeuroPupilSizeLeft
+                    ? questionnaireResponseDetail.SysObsNeuroPupilSizeLeft
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
@@ -82,13 +99,17 @@ export default function NeuroObs() {
                   htmlFor="leftPupilReaction"
                   labelText="Left Pupil Reaction"
                 >
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsNeuroPupilReactivityLeft
+                    ? questionnaireResponseDetail.SysObsNeuroPupilReactivityLeft
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="rightPupilSize" labelText="Right Pupil Size">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsNeuroPupilSizeRight
+                    ? questionnaireResponseDetail.SysObsNeuroPupilSizeRight
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
@@ -97,7 +118,9 @@ export default function NeuroObs() {
                   htmlFor="rightPupilReaction"
                   labelText="Right Pupil Reaction"
                 >
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsNeuroPupilReactivityRight
+                    ? questionnaireResponseDetail.SysObsNeuroPupilReactivityRight
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
@@ -111,25 +134,33 @@ export default function NeuroObs() {
 
               <Grid.Item>
                 <Display htmlFor="leftArm" labelText="Left Arm">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.RegObsArmLimbMovementLeft
+                    ? questionnaireResponseDetail.RegObsArmLimbMovementLeft
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="leftLeg" labelText="Left Leg">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.RegObsLegLimbMovementLeft
+                    ? questionnaireResponseDetail.RegObsLegLimbMovementLeft
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="rightArm" labelText="Right Arm">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.RegObsArmLimbMovementRight
+                    ? questionnaireResponseDetail.RegObsArmLimbMovementRight
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="rightLeg" labelText="Right Leg">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.RegObsLegLimbMovementRight
+                    ? questionnaireResponseDetail.RegObsLegLimbMovementRight
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
