@@ -49,6 +49,9 @@ export { default as ObsEntry } from "./ObsEntry/ObsEntry.component";
 // Export: PageTitle
 export { default as PageTitle } from "./PageTitle/PageTitle.component";
 
+// Export: PatientDetails
+export { default as PatientDetails } from "./PatientDetails/PatientDetails.component";
+
 // Export: PatientDemographics
 export { default as PatientDemographics } from "./PatientDemographics/PatientDemographics.component";
 
