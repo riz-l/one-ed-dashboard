@@ -218,27 +218,20 @@ function FormText({ bold, heading, subheading, text, ...props }) {
 }
 
 // Compound Component: FormTextArea
-function FormTextArea({
-  cols,
-  htmlFor,
-  labelText,
-  onChange,
-  placeholder,
-  rows,
-  value,
-}) {
+const FormTextArea = React.forwardRef((props, ref) => {
   return (
     <TextArea
-      cols={cols}
-      htmlFor={htmlFor}
-      labelText={labelText}
-      onChange={onChange}
-      placeholder={placeholder}
-      rows={rows}
-      value={value}
+      cols={props.cols}
+      htmlFor={props.htmlFor}
+      labelText={props.labelText}
+      onChange={props.onChange}
+      placeholder={props.placeholder}
+      ref={ref}
+      rows={props.rows}
+      value={props.value}
     />
   );
-}
+});
 
 // Component: Form
 export default function Form(props) {

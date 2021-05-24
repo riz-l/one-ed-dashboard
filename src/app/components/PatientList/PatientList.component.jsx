@@ -85,12 +85,13 @@ export default function PatientList() {
   // Maps patientListData through PatientItem
   const subPatientListRender = patientList.map(
     ({
-      patientID,
-      name,
       age,
-      gender,
+      currentStage,
       diagnosis,
+      name,
+      patientID,
       period,
+      Triagecategory,
       ...otherPatientProps
     }) => (
       <PatientItem
@@ -98,10 +99,17 @@ export default function PatientList() {
         patientID={patientID}
         onClick={() => dispatch(selectPatient(patientID))}
         colOne={name ? name : "N/A"}
-        colTwo={age ? age : "N/A"}
-        colThree={gender ? gender : "N/A"}
-        colFour={diagnosis ? diagnosis : "N/A"}
-        colFive={period ? period : "N/A"}
+        colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
+        colThree={diagnosis ? diagnosis : "N/A"}
+        colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
+        colFive={
+          Triagecategory === "undefined"
+            ? "N/A"
+            : Triagecategory
+            ? Triagecategory
+            : "N/A"
+        }
+        colSix={currentStage ? currentStage : "N/A"}
         patientList
         {...otherPatientProps}
       />
@@ -115,6 +123,7 @@ export default function PatientList() {
       PD_Surname,
       PD_Age_Yrs,
       PD_Age_Mths,
+      PD_Ethnicity,
       PD_Gender,
       PD_Reported_Condition,
       PD_Arrived_Time,
@@ -136,8 +145,9 @@ export default function PatientList() {
             : "N/A"
         }
         colThree={PD_Gender ? PD_Gender : "N/A"}
-        colFour={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
-        colFive={<ReportModal patientID={Master_ePR_ID} />}
+        colFour={PD_Ethnicity ? PD_Ethnicity : "N/A"}
+        colFive={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
+        colSix={<ReportModal patientID={Master_ePR_ID} />}
         incomingPatients
         {...otherPatientProps}
       />
@@ -196,17 +206,33 @@ export default function PatientList() {
             <Table>
               <thead>
                 <tr>
-                  <THeading isPatientList={isPatientList}>Name</THeading>
-                  <THeading isPatientList={isPatientList}>Age</THeading>
-                  <THeading isPatientList={isPatientList}>Gender</THeading>
-                  <THeading isPatientList={isPatientList}>Diagnosis</THeading>
                   {isPatientList ? (
-                    <THeading isPatientList={isPatientList}>Period</THeading>
+                    <>
+                      <THeading isPatientList={isPatientList}>Name</THeading>
+                      <THeading isPatientList={isPatientList}>Age</THeading>
+                      <THeading isPatientList={isPatientList}>
+                        Diagnosis
+                      </THeading>
+                      <THeading isPatientList={isPatientList}>Period</THeading>
+                      <THeading isPatientList={isPatientList}>
+                        Triage Category
+                      </THeading>
+                      <THeading isPatientList={isPatientList}>Status</THeading>
+                    </>
                   ) : isIncomingPatients ? (
-                    <THeading isPatientList={isPatientList}>Report</THeading>
-                  ) : (
-                    <THeading isPatientList={isPatientList}>Period</THeading>
-                  )}
+                    <>
+                      <THeading isPatientList={isPatientList}>Name</THeading>
+                      <THeading isPatientList={isPatientList}>Age</THeading>
+                      <THeading isPatientList={isPatientList}>Gender</THeading>
+                      <THeading isPatientList={isPatientList}>
+                        Ethnicity
+                      </THeading>
+                      <THeading isPatientList={isPatientList}>
+                        Diagnosis
+                      </THeading>
+                      <THeading isPatientList={isPatientList}>Report</THeading>
+                    </>
+                  ) : null}
                 </tr>
               </thead>
               <tbody>

@@ -2,16 +2,16 @@
 import React from "react";
 
 // Import: Elements
-import { Container, Wrapper } from "./SaveSubPage.elements";
+import { Container, Wrapper } from "./Save.elements";
 
 // Import: Components
 import { Text } from "../../../../components";
 
-// SubPage: SaveSubPage
-export default function SaveSubPage() {
+// SubPage: Save
+export default function Save() {
   return (
     <>
-      <Container data-testid={"saveSubPage"}>
+      <Container data-testid={"save"}>
         <Wrapper>
           <Text as="h2" heading>
             Save

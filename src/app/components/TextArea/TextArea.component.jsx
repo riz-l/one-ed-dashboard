@@ -5,30 +5,25 @@ import React from "react";
 import { Container, Label, StyledTextArea } from "./TextArea.elements";
 
 // Component: TextArea
-export default function TextArea({
-  cols,
-  htmlFor,
-  labelText,
-  onChange,
-  placeholder,
-  rows,
-  value,
-}) {
+export const TextArea = React.forwardRef((props, ref) => {
   return (
     <>
       <Container data-testid={"textArea"}>
-        {labelText && <Label htmlFor={htmlFor}>{labelText}</Label>}
+        {props.labelText && (
+          <Label htmlFor={props.htmlFor}>{props.labelText}</Label>
+        )}
 
         <StyledTextArea
-          id={htmlFor}
-          name={htmlFor}
-          onChange={onChange}
-          value={value}
-          rows={rows ? rows : "12"}
-          cols={cols ? cols : "50"}
-          placeholder={placeholder}
+          cols={props.cols && props.cols}
+          id={props.htmlFor}
+          name={props.htmlFor}
+          onChange={props.onChange}
+          placeholder={props.placeholder}
+          ref={ref}
+          rows={props.rows ? props.rows : "12"}
+          value={props.value}
         ></StyledTextArea>
       </Container>
     </>
   );
-}
+});

@@ -32,7 +32,7 @@ import {
   POPSHistory,
   UrineObs,
   TriageAndStream,
-  SaveSubPage,
+  Save,
 } from "./subPages";
 
 // Page: Triage
@@ -53,7 +53,6 @@ export default function Triage() {
   const [isUrineObs, setIsUrineObs] = useState(false);
   const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
-  const [isSaveSubPage, setIsSaveSubPage] = useState(false);
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -87,6 +86,7 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
+    setIsSave(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
   }
@@ -195,6 +195,7 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
+    setIsSave(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
   }
@@ -213,6 +214,7 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
+    setIsSave(false);
     setIsNeuroObs(true);
     setIsPaediatricObs(true);
   }
@@ -249,12 +251,13 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
+    setIsSave(false);
     setIsNEWS(true);
     setIsNEWS2(true);
   }
 
-  // onClick: Renders SaveSubPage SubPage
-  function renderSaveSubPage() {
+  // onClick: Renders Save SubPage
+  function renderSave() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
@@ -318,7 +321,7 @@ export default function Triage() {
 
                   <PrimaryNavigation.Item
                     isActive={isSave ? true : false}
-                    onClick={renderSaveSubPage}
+                    onClick={renderSave}
                   >
                     <PrimaryNavigation.Save>
                       <PrimaryNavigation.Text>Save</PrimaryNavigation.Text>
@@ -435,8 +438,8 @@ export default function Triage() {
                   ) : isSave ? (
                     <>
                       <SecondaryNavigation.Item
-                        isActive={isSaveSubPage ? true : false}
-                        onClick={renderSaveSubPage}
+                        isActive={isSave ? true : false}
+                        onClick={renderSave}
                       >
                         <SecondaryNavigation.Icon>
                           <SaveIcon />
@@ -466,8 +469,8 @@ export default function Triage() {
                   <POPSHistory />
                 ) : isNEWS2 ? (
                   <NEWS2 />
-                ) : isSaveSubPage ? (
-                  <SaveSubPage />
+                ) : isSave ? (
+                  <Save />
                 ) : null
               }
             />

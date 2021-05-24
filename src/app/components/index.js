@@ -40,6 +40,12 @@ export { default as MoveLocation } from "./MoveLocation/MoveLocation.component";
 // Export: Navigation
 export { default as Navigation } from "./Navigation/Navigation.component";
 
+// Export: NotesEntry
+export { default as NotesEntry } from "./NotesEntry/NotesEntry.component";
+
+// Export: ObsEntry
+export { default as ObsEntry } from "./ObsEntry/ObsEntry.component";
+
 // Export: PageTitle
 export { default as PageTitle } from "./PageTitle/PageTitle.component";
 
@@ -89,4 +95,4 @@ export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryN
 export { default as Text } from "./Text/Text.component";
 
 // Export: TextArea
-export { default as TextArea } from "./TextArea/TextArea.component";
+export { TextArea } from "./TextArea/TextArea.component";

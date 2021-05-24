@@ -1,6 +1,7 @@
 // Import: Packages
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.header`
@@ -119,6 +120,10 @@ export const UserIcon = styled.div`
   justify-content: center;
   margin-right: 0.8rem;
 
+  @media ${deviceMaxWidth.tabletL} {
+    margin-right: 0;
+  }
+
   & svg {
     fill: #c3cad9;
   }
@@ -133,7 +138,7 @@ export const UserDetails = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (max-width: 474px) {
+  @media ${deviceMaxWidth.tabletL} {
     display: none;
     opacity: 0;
     visibility: hidden;
