@@ -25,7 +25,7 @@ export const Arrow = styled.div`
 // Element: ArrowContainer
 export const ArrowContainer = styled.div`
   align-items: center;
-  background: ${({
+  background-color: ${({
     alerts,
     allergies,
     complaint,
@@ -165,7 +165,7 @@ export const Heading = styled.div`
 // Element: Icon
 export const Icon = styled.div`
   align-items: center;
-  background: ${({
+  background-color: ${({
     alerts,
     allergies,
     complaint,

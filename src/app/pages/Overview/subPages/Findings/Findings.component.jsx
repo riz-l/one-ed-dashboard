@@ -20,16 +20,70 @@ export default function Findings() {
     patientConditions && patientConditions.length > 0
       ? patientConditions
           .filter((item) => item.category === "Findings")
-          .map(({ id, problemName, status, note, ...otherPatientProps }) => (
-            <ReportEntry
-              key={id}
-              findings
-              details={note !== "undefined" ? note : "No further detail"}
-              status={status}
-              type={problemName}
-              {...otherPatientProps}
-            />
-          ))
+          .map(
+            ({
+              category,
+              id,
+              problemName,
+              status,
+              note,
+              verificationStatus,
+              problemCode,
+              onsetDateTime,
+              ...otherPatientProps
+            }) => (
+              <ReportEntry
+                key={id}
+                findings
+                details={note !== "undefined" ? note : "No further detail"}
+                status={status}
+                type={problemName}
+                {...otherPatientProps}
+                openedModal={
+                  <>
+                    <Grid>
+                      <Grid.Column>
+                        <Grid.Item>
+                          <Display htmlFor="category" labelText="Category">
+                            {category}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display
+                            hrmlFor="problemCode"
+                            labelText="Problem code"
+                          >
+                            {problemCode}
+                          </Display>
+                        </Grid.Item>
+                      </Grid.Column>
+
+                      <Grid.Column>
+                        <Grid.Item>
+                          <Display
+                            htmlFor="verificationStatus"
+                            labelText="Verification Status"
+                          >
+                            {verificationStatus}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display
+                            htmlFor="onsetDateTime"
+                            labelText="Onset Date Time"
+                          >
+                            {onsetDateTime}
+                          </Display>
+                        </Grid.Item>
+                      </Grid.Column>
+                    </Grid>
+                  </>
+                }
+              />
+            )
+          )
       : null;
 
   if (!patientConditions || patientConditions.length < 0) {

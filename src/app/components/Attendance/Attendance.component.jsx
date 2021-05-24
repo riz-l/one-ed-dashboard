@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 
 // Import: Assets
-// Consider adding this svg to the button to open the modal. Required additional styling and props on the button.
+// TODO Consider adding this svg to the button to open the modal. Required additional styling and props on the button.
 // import { ReactComponent as AttendanceIcon } from "../../../assets/img/icon/ward-RegAndAttendance.svg";
 
 // Import: Elements

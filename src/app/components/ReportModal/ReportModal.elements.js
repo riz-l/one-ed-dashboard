@@ -7,6 +7,14 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+// Element: Header
+export const Header = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 // Element: Window
 export const Window = styled.div`
   height: 100%;

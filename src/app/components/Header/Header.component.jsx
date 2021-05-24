@@ -11,10 +11,16 @@ import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.
 // Import: Elements
 import {
   Container,
+  FormWrapper,
+  Heading,
+  HeadingImage,
+  HeadingContent,
   Logo,
   LogoContainer,
   LogoLink,
   MenuContainer,
+  ModalTopWrapper,
+  ModalButtonWrapper,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -23,12 +29,16 @@ import {
 import "./Header.styles.css";
 
 // Import: Components
-import { Button, Text } from "../index";
+import { Button, Display, Grid, Text } from "../index";
 
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
   // Redux: Fetches user details from the global state
-  const details = useSelector((state) => state.userDetails.details);
+  const userRoleProfile = useSelector(
+    (state) =>
+      state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0]
+  );
 
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,22 +80,15 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             </UserIcon>
 
             <UserDetails>
-              <span>
-                {
-                  details.ControlActEvent.Subject.Value[0].UserRoleProfile[0]
-                    .UserID.identifierName
-                }
-              </span>
+              <span>{userRoleProfile.UserID.identifierName}</span>
               <span style={{ textTransform: "capitalize" }}>
-                {
-                  details.ControlActEvent.Subject.Value[0].UserRoleProfile[0]
-                    .UserRole.code
-                }
+                {userRoleProfile.UserRole.code}
               </span>
             </UserDetails>
           </UserContainer>
         </Wrapper>
 
+        {/* User Information Modal contents */}
         <ReactModal
           isOpen={isModalOpen}
           contentLabel="User Information"
@@ -95,11 +98,54 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           closeTimeoutMS={100}
           ariaHideApp={false}
         >
-          <Text heading as="h3">
-            User Information
-          </Text>
+          <FormWrapper>
+            <ModalTopWrapper>
+              <Text heading as="h3">
+                User Information
+              </Text>
 
-          <Button text="Close" onClick={closeModal} />
+              <ModalButtonWrapper>
+                <Button text="Close" onClick={closeModal} />
+              </ModalButtonWrapper>
+            </ModalTopWrapper>
+
+            <Heading>
+              <HeadingImage>
+                <UserSvg />
+              </HeadingImage>
+
+              <HeadingContent>
+                <h2>User Information</h2>
+
+                <Grid>
+                  <Grid.Column>
+                    {/* TODO will need to be converted into something more useful. */}
+                    <Display htmlFor="extension" labelText="Extension">
+                      {userRoleProfile.UserID.extension}
+                    </Display>
+
+                    <Display htmlFor="name" labelText="Name">
+                      {userRoleProfile.UserID.identifierName}
+                    </Display>
+                  </Grid.Column>
+
+                  <Grid.Column>
+                    <Display
+                      htmlFor="userRole"
+                      labelText="User Role"
+                      style={{ textTransform: "capitalize" }}
+                    >
+                      {userRoleProfile.UserRole.code}
+                    </Display>
+
+                    <Display htmlFor="userOrg" labelText="User Organisation">
+                      {userRoleProfile.UserOrg.code}
+                    </Display>
+                  </Grid.Column>
+                </Grid>
+              </HeadingContent>
+            </Heading>
+          </FormWrapper>
         </ReactModal>
       </Container>
     </>

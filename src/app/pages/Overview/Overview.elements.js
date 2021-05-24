@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
-  background-color: #f7f8fa;
+  /* background-color: #f7f8fa; */
   grid-area: content;
   height: 100%;
   max-height: calc(100vh - 80px);

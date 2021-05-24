@@ -1,6 +1,7 @@
 // Import: Packages
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.header`
@@ -119,6 +120,10 @@ export const UserIcon = styled.div`
   justify-content: center;
   margin-right: 0.8rem;
 
+  @media ${deviceMaxWidth.tabletL} {
+    margin-right: 0;
+  }
+
   & svg {
     fill: #c3cad9;
   }
@@ -133,7 +138,7 @@ export const UserDetails = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (max-width: 474px) {
+  @media ${deviceMaxWidth.tabletL} {
     display: none;
     opacity: 0;
     visibility: hidden;
@@ -159,3 +164,52 @@ export const UserDetails = styled.div`
     }
   }
 `;
+
+// Styling for the open Modal:
+
+// Element: Heading
+export const Heading = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
+// Element: Heading Image
+export const HeadingImage = styled.div`
+  height: 100%;
+  width: 100%;
+  flex: 1;
+
+  & svg {
+    height: 15rem;
+    width: 15rem;
+  }
+`;
+
+// Element: Heading Content
+export const HeadingContent = styled.div`
+  height: 100%;
+  maximum-height: 100%;
+  flex: 4;
+
+  & h2 {
+    color: #4d5e80;
+    font-size: 2.2rem;
+  }
+`;
+
+// Element: Form Wrapper
+export const FormWrapper = styled.div`
+  max-height: 100%;
+  overflow-y: scroll;
+`;
+
+// Element: Modal Top Wrapper
+export const ModalTopWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+// Element: Modal Button Wrapper
+export const ModalButtonWrapper = styled.div``;

@@ -33,7 +33,7 @@ import {
 import {
   Alerts,
   Allergies,
-  Complaint,
+  PresentingComplaints,
   Complications,
   Details,
   Diagnosis,
@@ -74,7 +74,7 @@ export default function Overview() {
   const [isComplications, setIsComplications] = useState(false);
   const [isDiagnosis, setIsDiagnosis] = useState(false);
   const [isFindings, setIsFindings] = useState(false);
-  const [isComplaint, setIsComplaint] = useState(false);
+  const [isPresentingComplaints, setIsPresentingComplaints] = useState(false);
   const [isProcedures, setIsProcedures] = useState(false);
   const [isSymptoms, setIsSymptoms] = useState(false);
 
@@ -108,7 +108,7 @@ export default function Overview() {
   function renderDetails() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
@@ -121,7 +121,7 @@ export default function Overview() {
   // onClick: Renders History SubPage
   function renderHealthHistory() {
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -135,7 +135,7 @@ export default function Overview() {
   // onClick: Renders Alerts SubPage
   function renderAlerts() {
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -149,7 +149,7 @@ export default function Overview() {
   // onClick: Renders Allergies SubPage
   function renderAllergies() {
     setIsAlerts(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -164,7 +164,7 @@ export default function Overview() {
   function renderComplications() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
@@ -178,7 +178,7 @@ export default function Overview() {
   function renderDiagnosis() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsFindings(false);
@@ -192,7 +192,7 @@ export default function Overview() {
   function renderFindings() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -212,7 +212,7 @@ export default function Overview() {
     setIsFindings(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsComplaint(true);
+    setIsPresentingComplaints(true);
     setisHealthHistory(true);
   }
 
@@ -220,7 +220,7 @@ export default function Overview() {
   function renderProcedures() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -234,7 +234,7 @@ export default function Overview() {
   function renderSymptoms() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsComplaint(false);
+    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDetails(false);
     setIsDiagnosis(false);
@@ -251,6 +251,7 @@ export default function Overview() {
           <PageTitle
             heading="Overview"
             subheading="Patient details and history"
+            backgroundColor="transparent"
           />
 
           <ContentWrapper>
@@ -407,7 +408,7 @@ export default function Overview() {
                           </SecondaryNavigation.Item>
 
                           <SecondaryNavigation.Item
-                            isActive={isComplaint ? true : false}
+                            isActive={isPresentingComplaints ? true : false}
                             onClick={renderComplaint}
                           >
                             <SecondaryNavigation.Icon
@@ -415,7 +416,8 @@ export default function Overview() {
                                 patientConditions &&
                                 patientConditions.length > 0 &&
                                 patientConditions.find(
-                                  ({ category }) => category === "Complaints"
+                                  ({ category }) =>
+                                    category === "Presenting complaints"
                                 )
                                   ? true
                                   : false
@@ -424,7 +426,7 @@ export default function Overview() {
                               <ComplaintIcon />
                             </SecondaryNavigation.Icon>
                             <SecondaryNavigation.Text>
-                              Complaint
+                              Presenting Complaints
                             </SecondaryNavigation.Text>
                           </SecondaryNavigation.Item>
 
@@ -501,8 +503,8 @@ export default function Overview() {
                   <Diagnosis />
                 ) : isFindings ? (
                   <Findings />
-                ) : isComplaint ? (
-                  <Complaint />
+                ) : isPresentingComplaints ? (
+                  <PresentingComplaints />
                 ) : isProcedures ? (
                   <Procedures />
                 ) : isSymptoms ? (

@@ -34,7 +34,7 @@ export default function App() {
 
   // State: isLoggedIn, isNavigationOpen
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isNavigationOpen, setIsNavigationOpen] = useState(true);
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   // Sets isLoggedIn === true
   const handleLogin = (e) => {

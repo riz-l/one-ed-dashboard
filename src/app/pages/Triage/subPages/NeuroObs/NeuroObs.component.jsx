@@ -5,7 +5,7 @@ import React from "react";
 import { Container, Wrapper } from "./NeuroObs.elements";
 
 // Import: Components
-import { Form, Grid } from "../../../../components";
+import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
@@ -13,11 +13,11 @@ export default function NeuroObs() {
     <>
       <Container data-testid={"neuroObs"}>
         <Wrapper>
-          <Form>
-            <Form.Text as="h2" heading>
-              Neuro Obs
-            </Form.Text>
+          <Text as="h2" heading>
+            Neuro Obs
+          </Text>
 
+          <Form>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
