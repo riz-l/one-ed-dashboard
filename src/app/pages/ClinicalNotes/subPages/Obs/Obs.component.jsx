@@ -21,7 +21,6 @@ export default function Obs() {
   const filteredQuestionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
   );
-
   const dispatch = useDispatch();
 
   // Effect: Fetches questionnaire response from API
