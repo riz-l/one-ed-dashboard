@@ -169,7 +169,7 @@ export default function PatientList() {
                   text="Clear Patient"
                 />
 
-                <Button
+                {/* <Button
                   margin="0 0 -1.4rem 0"
                   onClick={() =>
                     isSummaryOpen
@@ -177,7 +177,7 @@ export default function PatientList() {
                       : dispatch(setIsSummaryOpen(true))
                   }
                   text="Toggle Summary"
-                />
+                /> */}
               </>
             ) : null}
 

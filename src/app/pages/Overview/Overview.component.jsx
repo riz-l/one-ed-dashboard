@@ -13,7 +13,6 @@ import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.sv
 import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as ComplaintIcon } from "../../../assets/img/icon/presenting-complaint.svg";
 import { ReactComponent as ComplicationsIcon } from "../../../assets/img/icon/complications.svg";
-import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
 import { ReactComponent as DiagnosisIcon } from "../../../assets/img/icon/assessments-seen.svg";
 import { ReactComponent as FindingsIcon } from "../../../assets/img/icon/findings.svg";
 import { ReactComponent as MoreIcon } from "../../../assets/img/icon/more.svg";
@@ -27,7 +26,6 @@ import { PatientDetails } from "../../components/index";
 // Import: Components, SubPages
 import {
   PageTitle,
-  PrimaryNavigation,
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
@@ -66,9 +64,6 @@ export default function Overview() {
     width: window.innerWidth,
   });
 
-  // State: isHealthHistory
-  const [isHealthHistory, setisHealthHistory] = useState(true);
-
   // State: History SubPages
   const [isAlerts, setIsAlerts] = useState(true);
   const [isAllergies, setIsAllergies] = useState(false);
@@ -105,19 +100,6 @@ export default function Overview() {
     }
   }, [patient, dispatch]);
 
-  // onClick: Renders History SubPage
-  function renderHealthHistory() {
-    setIsAllergies(false);
-    setIsPresentingComplaints(false);
-    setIsComplications(false);
-    setIsDiagnosis(false);
-    setIsFindings(false);
-    setIsProcedures(false);
-    setIsSymptoms(false);
-    setIsAlerts(true);
-    setisHealthHistory(true);
-  }
-
   // onClick: Renders Alerts SubPage
   function renderAlerts() {
     setIsAllergies(false);
@@ -128,7 +110,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsAlerts(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Allergies SubPage
@@ -141,7 +122,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsAllergies(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Complications SubPage
@@ -154,7 +134,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsComplications(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Diagnosis SubPage
@@ -167,7 +146,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsDiagnosis(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Findings SubPage
@@ -180,7 +158,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsFindings(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Complaint SubPage
@@ -193,7 +170,6 @@ export default function Overview() {
     setIsProcedures(false);
     setIsSymptoms(false);
     setIsPresentingComplaints(true);
-    setisHealthHistory(true);
   }
 
   // onClick: Renders Procedures SubPage
@@ -205,7 +181,6 @@ export default function Overview() {
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsSymptoms(false);
-    setisHealthHistory(true);
     setIsProcedures(true);
   }
 
@@ -218,7 +193,6 @@ export default function Overview() {
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
-    setisHealthHistory(true);
     setIsSymptoms(true);
   }
 
@@ -230,218 +204,187 @@ export default function Overview() {
           heading="Overview"
           subheading="Patient details and history"
         />
+
         <PatientDetails />
+
         <Wrapper>
           <ContentWrapper>
             <ReportSection
-              primaryNavigation={
-                <PrimaryNavigation>
-                  <PrimaryNavigation.Item
-                    isActive={isHealthHistory ? true : false}
-                    onClick={renderHealthHistory}
-                  >
-                    <PrimaryNavigation.Text>
-                      Health History
-                    </PrimaryNavigation.Text>
-                  </PrimaryNavigation.Item>
-                </PrimaryNavigation>
-              }
               secondaryNavigation={
                 <SecondaryNavigation>
-                  {isHealthHistory ? (
+                  {windowDimensions.width <= 1470 ? (
+                    <SecondaryNavigation.Item>
+                      <SecondaryNavigation.Icon>
+                        <MoreIcon />
+                      </SecondaryNavigation.Icon>
+                      <SecondaryNavigation.Text>More</SecondaryNavigation.Text>
+                    </SecondaryNavigation.Item>
+                  ) : null}
+
+                  <SecondaryNavigation.Item
+                    isActive={isAlerts ? true : false}
+                    onClick={renderAlerts}
+                  >
+                    <SecondaryNavigation.Icon
+                      isRed={
+                        patientAlerts && patientAlerts.length > 0 ? true : false
+                      }
+                    >
+                      <AlertsIcon />
+                    </SecondaryNavigation.Icon>
+                    <SecondaryNavigation.Text>Alerts</SecondaryNavigation.Text>
+                  </SecondaryNavigation.Item>
+
+                  <SecondaryNavigation.Item
+                    isActive={isAllergies ? true : false}
+                    onClick={renderAllergies}
+                  >
+                    <SecondaryNavigation.Icon
+                      isRed={
+                        patientAllergies && patientAllergies.length > 0
+                          ? true
+                          : false
+                      }
+                    >
+                      <AllergiesIcon />
+                    </SecondaryNavigation.Icon>
+                    <SecondaryNavigation.Text>
+                      Allergies
+                    </SecondaryNavigation.Text>
+                  </SecondaryNavigation.Item>
+
+                  <SecondaryNavigation.Item
+                    isActive={isComplications ? true : false}
+                    onClick={renderComplications}
+                  >
+                    <SecondaryNavigation.Icon
+                      isRed={
+                        patientConditions &&
+                        patientConditions.length > 0 &&
+                        patientConditions.find(
+                          ({ category }) => category === "Complications"
+                        )
+                          ? true
+                          : false
+                      }
+                    >
+                      <ComplicationsIcon />
+                    </SecondaryNavigation.Icon>
+                    <SecondaryNavigation.Text>
+                      Complications
+                    </SecondaryNavigation.Text>
+                  </SecondaryNavigation.Item>
+
+                  <SecondaryNavigation.Item
+                    isActive={isDiagnosis ? true : false}
+                    onClick={renderDiagnosis}
+                  >
+                    <SecondaryNavigation.Icon
+                      isRed={
+                        patientConditions &&
+                        patientConditions.length > 0 &&
+                        patientConditions.find(
+                          ({ category }) => category === "Diagnosis"
+                        )
+                          ? true
+                          : false
+                      }
+                    >
+                      <DiagnosisIcon />
+                    </SecondaryNavigation.Icon>
+                    <SecondaryNavigation.Text>
+                      Diagnosis
+                    </SecondaryNavigation.Text>
+                  </SecondaryNavigation.Item>
+
+                  {windowDimensions.width <= 1470 ? null : (
                     <>
-                      {windowDimensions.width <= 1470 ? (
-                        <SecondaryNavigation.Item>
-                          <SecondaryNavigation.Icon>
-                            <MoreIcon />
-                          </SecondaryNavigation.Icon>
-                          <SecondaryNavigation.Text>
-                            More
-                          </SecondaryNavigation.Text>
-                        </SecondaryNavigation.Item>
-                      ) : null}
-
                       <SecondaryNavigation.Item
-                        isActive={isAlerts ? true : false}
-                        onClick={renderAlerts}
-                      >
-                        <SecondaryNavigation.Icon
-                          isRed={
-                            patientAlerts && patientAlerts.length > 0
-                              ? true
-                              : false
-                          }
-                        >
-                          <AlertsIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Alerts
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
-
-                      <SecondaryNavigation.Item
-                        isActive={isAllergies ? true : false}
-                        onClick={renderAllergies}
-                      >
-                        <SecondaryNavigation.Icon
-                          isRed={
-                            patientAllergies && patientAllergies.length > 0
-                              ? true
-                              : false
-                          }
-                        >
-                          <AllergiesIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Allergies
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
-
-                      <SecondaryNavigation.Item
-                        isActive={isComplications ? true : false}
-                        onClick={renderComplications}
+                        isActive={isFindings ? true : false}
+                        onClick={renderFindings}
                       >
                         <SecondaryNavigation.Icon
                           isRed={
                             patientConditions &&
                             patientConditions.length > 0 &&
                             patientConditions.find(
-                              ({ category }) => category === "Complications"
+                              ({ category }) => category === "Findings"
                             )
                               ? true
                               : false
                           }
                         >
-                          <ComplicationsIcon />
+                          <FindingsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          Complications
+                          Findings
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item
-                        isActive={isDiagnosis ? true : false}
-                        onClick={renderDiagnosis}
+                        isActive={isPresentingComplaints ? true : false}
+                        onClick={renderComplaint}
                       >
                         <SecondaryNavigation.Icon
                           isRed={
                             patientConditions &&
                             patientConditions.length > 0 &&
                             patientConditions.find(
-                              ({ category }) => category === "Diagnosis"
+                              ({ category }) =>
+                                category === "Presenting complaints"
                             )
                               ? true
                               : false
                           }
                         >
-                          <DiagnosisIcon />
+                          <ComplaintIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          Diagnosis
+                          Presenting Complaints
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
-                      {windowDimensions.width <= 1470 ? null : (
-                        <>
-                          <SecondaryNavigation.Item
-                            isActive={isFindings ? true : false}
-                            onClick={renderFindings}
-                          >
-                            <SecondaryNavigation.Icon
-                              isRed={
-                                patientConditions &&
-                                patientConditions.length > 0 &&
-                                patientConditions.find(
-                                  ({ category }) => category === "Findings"
-                                )
-                                  ? true
-                                  : false
-                              }
-                            >
-                              <FindingsIcon />
-                            </SecondaryNavigation.Icon>
-                            <SecondaryNavigation.Text>
-                              Findings
-                            </SecondaryNavigation.Text>
-                          </SecondaryNavigation.Item>
-
-                          <SecondaryNavigation.Item
-                            isActive={isPresentingComplaints ? true : false}
-                            onClick={renderComplaint}
-                          >
-                            <SecondaryNavigation.Icon
-                              isRed={
-                                patientConditions &&
-                                patientConditions.length > 0 &&
-                                patientConditions.find(
-                                  ({ category }) =>
-                                    category === "Presenting complaints"
-                                )
-                                  ? true
-                                  : false
-                              }
-                            >
-                              <ComplaintIcon />
-                            </SecondaryNavigation.Icon>
-                            <SecondaryNavigation.Text>
-                              Presenting Complaints
-                            </SecondaryNavigation.Text>
-                          </SecondaryNavigation.Item>
-
-                          <SecondaryNavigation.Item
-                            isActive={isProcedures ? true : false}
-                            onClick={renderProcedures}
-                          >
-                            <SecondaryNavigation.Icon
-                              isRed={
-                                patientConditions &&
-                                patientConditions.length > 0 &&
-                                patientConditions.find(
-                                  ({ category }) => category === "Procedures"
-                                )
-                                  ? true
-                                  : false
-                              }
-                            >
-                              <ProceduresIcon />
-                            </SecondaryNavigation.Icon>
-                            <SecondaryNavigation.Text>
-                              Procedures
-                            </SecondaryNavigation.Text>
-                          </SecondaryNavigation.Item>
-
-                          <SecondaryNavigation.Item
-                            isActive={isSymptoms ? true : false}
-                            onClick={renderSymptoms}
-                          >
-                            <SecondaryNavigation.Icon
-                              isRed={
-                                patientConditions &&
-                                patientConditions.length > 0 &&
-                                patientConditions.find(
-                                  ({ category }) => category === "Symptoms"
-                                )
-                                  ? true
-                                  : false
-                              }
-                            >
-                              <SymptomsIcon />
-                            </SecondaryNavigation.Icon>
-                            <SecondaryNavigation.Text>
-                              Symptoms
-                            </SecondaryNavigation.Text>
-                          </SecondaryNavigation.Item>
-                        </>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <SecondaryNavigation.Item>
-                        <SecondaryNavigation.Icon>
-                          <DetailsIcon />
+                      <SecondaryNavigation.Item
+                        isActive={isProcedures ? true : false}
+                        onClick={renderProcedures}
+                      >
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientConditions &&
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Procedures"
+                            )
+                              ? true
+                              : false
+                          }
+                        >
+                          <ProceduresIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          Details
+                          Procedures
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+
+                      <SecondaryNavigation.Item
+                        isActive={isSymptoms ? true : false}
+                        onClick={renderSymptoms}
+                      >
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientConditions &&
+                            patientConditions.length > 0 &&
+                            patientConditions.find(
+                              ({ category }) => category === "Symptoms"
+                            )
+                              ? true
+                              : false
+                          }
+                        >
+                          <SymptomsIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          Symptoms
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>

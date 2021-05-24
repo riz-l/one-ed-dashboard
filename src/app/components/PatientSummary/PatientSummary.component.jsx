@@ -1,38 +1,40 @@
 // Import: Packages
 import React from "react";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
+
+// Import: Assets
+import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/icon/assessments-clinical.svg";
+import { ReactComponent as AssessmentsObservationsIcon } from "../../../assets/img/icon/assessments-observations.svg";
+import { ReactComponent as AssessmentsSeenIcon } from "../../../assets/img/icon/assessments-seen.svg";
+import { ReactComponent as AssessmentsTriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
 
 // Import: Elements
 import {
   Container,
   DetailsContainer,
-  DetailsEntry,
-  DetailsHeading,
-  DetailsItem,
   Header,
-  Summary,
-  SummaryContainer,
-  SummaryLayout,
+  IconContainer,
+  Suggestion,
+  Suggestions,
+  SuggestionsContainer,
   Wrapper,
 } from "./PatientSummary.elements";
 
 // Import: Components
-import { Display } from "../index";
+import { Button, Display, PageTitle, PatientDemographics } from "../index";
 
 // Component: PatientSummary
 export default function PatientSummary() {
   // Redux: Fetches selectedPatient and patientData from the global state
-  const selectedPatient = useSelector((state) => state.selectedPatient.patient);
-  const patientData = useSelector((state) => state.selectedPatient.patientData);
   const status = useSelector((state) => state.selectedPatient.dataStatus);
+  const dispatch = useDispatch();
 
   if (status === null) {
     return (
       <Container data-testid={"patientSummary"}>
-        <Header>
-          <h2>Summary</h2>
-          <span>Detailed Patient information</span>
-        </Header>
+        <PageTitle heading="Summary" subheading="Details Patient information" />
 
         <DetailsContainer>
           <Display>Please select a Patient</Display>
@@ -44,10 +46,7 @@ export default function PatientSummary() {
   if (status === "loading") {
     return (
       <Container data-testid={"patientSummary"}>
-        <Header>
-          <h2>Summary</h2>
-          <span>Detailed Patient information</span>
-        </Header>
+        <PageTitle heading="Summary" subheading="Details Patient information" />
 
         <DetailsContainer>
           <Display>Loading...</Display>
@@ -60,117 +59,68 @@ export default function PatientSummary() {
     <>
       <Container data-testid={"patientSummary"}>
         <Header>
-          <h2>Summary</h2>
-          <span>Detailed Patient information</span>
+          <PageTitle
+            heading="Summary"
+            subheading="Details Patient information"
+          />
+
+          <Button
+            onClick={() => dispatch(setIsSummaryOpen(false))}
+            margin="0 2rem -1.4rem 0"
+            text="Close Summary"
+          />
         </Header>
 
         <Wrapper>
-          <SummaryContainer>
-            <Summary>
-              <SummaryLayout>
-                {selectedPatient &&
-                selectedPatient.length > 0 &&
-                patientData &&
-                patientData.length > 0 ? (
-                  <>
-                    <DetailsContainer>
-                      <DetailsItem>
-                        <Display labelText="Name">
-                          {patientData[0].name && patientData[0].name}
-                        </Display>
-                      </DetailsItem>
+          <PatientDemographics summary />
 
-                      <DetailsItem>
-                        <Display labelText="Complaint">
-                          {patientData[0].diagnosis && patientData[0].diagnosis}
-                        </Display>
-                      </DetailsItem>
+          <SuggestionsContainer>
+            <PageTitle
+              heading="Suggestions"
+              subheading="Proposed sections to complete"
+            />
+            <Suggestions>
+              <Link to="/one-ed/assessments/triage">
+                <Suggestion>
+                  <IconContainer>
+                    <AssessmentsTriageIcon />
+                  </IconContainer>
 
-                      <DetailsItem>
-                        <Display labelText="Gender">
-                          {patientData[0].gender && patientData[0].gender}
-                        </Display>
-                      </DetailsItem>
-                    </DetailsContainer>
+                  <span>Triage</span>
+                </Suggestion>
+              </Link>
 
-                    <DetailsContainer>
-                      <DetailsItem>
-                        <Display labelText="Date of Birth">
-                          {patientData[0].dob && patientData[0].dob}
-                        </Display>
-                      </DetailsItem>
+              <Link to="/one-ed/assessments/observations">
+                <Suggestion>
+                  <IconContainer>
+                    <AssessmentsObservationsIcon />
+                  </IconContainer>
 
-                      <DetailsItem>
-                        <Display labelText="Encounter ID">
-                          {patientData[0].encounterID &&
-                            patientData[0].encounterID}
-                        </Display>
-                      </DetailsItem>
+                  <span>Observations</span>
+                </Suggestion>
+              </Link>
 
-                      <DetailsItem>
-                        <Display labelText="Patient ID">
-                          {patientData[0].patientID && patientData[0].patientID}
-                        </Display>
-                      </DetailsItem>
-                    </DetailsContainer>
+              <Link to="/one-ed/assessments/seen">
+                <Suggestion>
+                  <IconContainer>
+                    <AssessmentsSeenIcon />
+                  </IconContainer>
 
-                    <DetailsContainer>
-                      <DetailsItem>
-                        <Display labelText="Address" margin="0 0 0 0">
-                          {patientData[0].add1 && patientData[0].add1}
-                        </Display>
-                        <Display>
-                          {patientData[0].add2 && patientData[0].add2}
-                        </Display>
-                        <Display>
-                          {patientData[0].add3 && patientData[0].add3}
-                        </Display>
-                        <Display>
-                          {patientData[0].postcode && patientData[0].postcode}
-                        </Display>
-                      </DetailsItem>
-                    </DetailsContainer>
+                  <span>Seen</span>
+                </Suggestion>
+              </Link>
 
-                    <DetailsContainer>
-                      <DetailsItem>
-                        <DetailsHeading>Duration</DetailsHeading>
-                        <DetailsEntry
-                          style={{
-                            borderBottom: "2px solid rgba(255,0,0,0.6)",
-                          }}
-                        >
-                          {patientData[0].period && patientData[0].period}
-                        </DetailsEntry>
-                      </DetailsItem>
+              <Link to="/one-ed/assessments/clinical-notes">
+                <Suggestion>
+                  <IconContainer>
+                    <AssessmentsClinicalIcon />
+                  </IconContainer>
 
-                      <DetailsItem>
-                        <Display labelText="Contact 1">
-                          {patientData[0].telecom1 &&
-                            patientData[0].telecom1.value}
-                        </Display>
-                      </DetailsItem>
-
-                      <DetailsItem>
-                        <Display labelText="Contact 2">
-                          {patientData[0].telecom2 &&
-                            patientData[0].telecom2.value}
-                        </Display>
-                      </DetailsItem>
-
-                      <DetailsItem>
-                        <Display labelText="Contact 3">
-                          {patientData[0].telecom3 &&
-                            patientData[0].telecom3.value}
-                        </Display>
-                      </DetailsItem>
-                    </DetailsContainer>
-                  </>
-                ) : (
-                  <p>Select a Patient...</p>
-                )}
-              </SummaryLayout>
-            </Summary>
-          </SummaryContainer>
+                  <span>Clinical Notes</span>
+                </Suggestion>
+              </Link>
+            </Suggestions>
+          </SuggestionsContainer>
         </Wrapper>
       </Container>
     </>
