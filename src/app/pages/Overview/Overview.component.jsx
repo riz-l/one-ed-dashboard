@@ -22,6 +22,7 @@ import { ReactComponent as SymptomsIcon } from "../../../assets/img/icon/symptom
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Overview.elements";
+import { PatientDetails } from "../../components/index";
 
 // Import: Components, SubPages
 import {
@@ -30,12 +31,12 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
+
 import {
   Alerts,
   Allergies,
   PresentingComplaints,
   Complications,
-  Details,
   Diagnosis,
   Findings,
   Procedures,
@@ -44,7 +45,7 @@ import {
 
 // Page: Overview
 export default function Overview() {
-  // Redux: Fetches patient, patientData, patientDemographics, patientAlerts
+  // Redux: Fetches patient, patientData, patientDemographics, patientAlerts,
   // ... patientAllergies, patientConditions from the global state
   const patient = useSelector((state) => state.selectedPatient.patient);
   const patientAlerts = useSelector(
@@ -56,6 +57,7 @@ export default function Overview() {
   const patientConditions = useSelector(
     (state) => state.selectedPatient.patientConditions
   );
+  // Redux: Extracts Patient Data from the global state
   const dispatch = useDispatch();
 
   // State: windowDimensions
@@ -64,9 +66,8 @@ export default function Overview() {
     width: window.innerWidth,
   });
 
-  // State: isDetails, isHealthHistory
-  const [isDetails, setIsDetails] = useState(true);
-  const [isHealthHistory, setisHealthHistory] = useState(false);
+  // State: isHealthHistory
+  const [isHealthHistory, setisHealthHistory] = useState(true);
 
   // State: History SubPages
   const [isAlerts, setIsAlerts] = useState(true);
@@ -104,26 +105,11 @@ export default function Overview() {
     }
   }, [patient, dispatch]);
 
-  // onClick: Renders Details SubPage
-  function renderDetails() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsPresentingComplaints(false);
-    setIsComplications(false);
-    setIsDiagnosis(false);
-    setIsFindings(false);
-    setisHealthHistory(false);
-    setIsProcedures(false);
-    setIsSymptoms(false);
-    setIsDetails(true);
-  }
-
   // onClick: Renders History SubPage
   function renderHealthHistory() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -137,7 +123,6 @@ export default function Overview() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -151,7 +136,6 @@ export default function Overview() {
     setIsAlerts(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -165,7 +149,6 @@ export default function Overview() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsPresentingComplaints(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -180,7 +163,6 @@ export default function Overview() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsFindings(false);
     setIsProcedures(false);
     setIsSymptoms(false);
@@ -194,7 +176,6 @@ export default function Overview() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsProcedures(false);
     setIsSymptoms(false);
@@ -207,7 +188,6 @@ export default function Overview() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -222,7 +202,6 @@ export default function Overview() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsSymptoms(false);
@@ -236,7 +215,6 @@ export default function Overview() {
     setIsAllergies(false);
     setIsPresentingComplaints(false);
     setIsComplications(false);
-    setIsDetails(false);
     setIsDiagnosis(false);
     setIsFindings(false);
     setIsProcedures(false);
@@ -247,24 +225,17 @@ export default function Overview() {
   return (
     <>
       <Container data-testid={"overview"}>
+        <PageTitle
+          backgroundColor="transparent"
+          heading="Overview"
+          subheading="Patient details and history"
+        />
+        <PatientDetails />
         <Wrapper>
-          <PageTitle
-            heading="Overview"
-            subheading="Patient details and history"
-            backgroundColor="transparent"
-          />
-
           <ContentWrapper>
             <ReportSection
               primaryNavigation={
                 <PrimaryNavigation>
-                  <PrimaryNavigation.Item
-                    isActive={isDetails ? true : false}
-                    onClick={renderDetails}
-                  >
-                    <PrimaryNavigation.Text>Details</PrimaryNavigation.Text>
-                  </PrimaryNavigation.Item>
-
                   <PrimaryNavigation.Item
                     isActive={isHealthHistory ? true : false}
                     onClick={renderHealthHistory}
@@ -277,20 +248,7 @@ export default function Overview() {
               }
               secondaryNavigation={
                 <SecondaryNavigation>
-                  {isDetails ? (
-                    <>
-                      <SecondaryNavigation.Item
-                        isActive={isDetails ? true : false}
-                      >
-                        <SecondaryNavigation.Icon>
-                          <DetailsIcon />
-                        </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>
-                          Details
-                        </SecondaryNavigation.Text>
-                      </SecondaryNavigation.Item>
-                    </>
-                  ) : isHealthHistory ? (
+                  {isHealthHistory ? (
                     <>
                       {windowDimensions.width <= 1470 ? (
                         <SecondaryNavigation.Item>
@@ -491,9 +449,7 @@ export default function Overview() {
                 </SecondaryNavigation>
               }
               content={
-                isDetails ? (
-                  <Details />
-                ) : isAlerts ? (
+                isAlerts ? (
                   <Alerts />
                 ) : isAllergies ? (
                   <Allergies />

@@ -25,6 +25,8 @@ export const Wrapper = styled.div`
 export const FormWrapper = styled.div`
   max-height: 100%;
   overflow-y: scroll;
+  width: 100%;
+  max-width: 100%;
 `;
 
 // Element: ClickableHeader
@@ -58,7 +60,7 @@ export const ClickableHeader = styled.div`
 export const SVGContainer = styled.div`
   height: 100%;
   max-width: auto;
-  padding: 0 1rem;
+  padding: 0rem 1rem;
   width: auto;
 
   & svg {
@@ -68,6 +70,10 @@ export const SVGContainer = styled.div`
     transition: all 100ms linear;
     width: auto;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  } ;
 `;
 
 // Element: ClickableContent
@@ -84,10 +90,13 @@ export const ClickableContent = styled.div`
 export const ClickableText = styled.div`
   align-items: flex-start;
   display: flex;
-  flex: 3;
+  flex: 5;
   flex-direction: column;
   height: 100%;
+  max-height: 100%;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
 
   & h2 {
     color: #6b7a99;
@@ -95,15 +104,31 @@ export const ClickableText = styled.div`
     font-weight: 600;
     transition: all 100ms linear;
   }
+  @media (max-width: 1024px) {
+    flex: 3;
+  }
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    flex: 1;
+  } ;
 `;
 
 // Element: ClickableButtonContainter
 export const ClickableButtonContainer = styled.div`
   align-items: center;
   display: flex;
-  flex: 3;
+  flex: 1;
   height: 100%;
   justify-content: flex-end;
+  @media (max-width: 1024px) {
+    flex: 2;
+  }
+  @media (max-width: 768px) {
+    flex: 1;
+  } ;
 `;
 
 // Element: ClickableButton
@@ -118,14 +143,14 @@ export const ClickableButton = styled.div`
   cursor: pointer;
   display: flex;
   font-family: "Poppins", sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   justify-content: center;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 0.75rem 1.35rem;
   transition: all 100ms linear;
 
   & p {
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   &:hover {
@@ -138,6 +163,16 @@ export const ClickableButton = styled.div`
       transition: all 100ms linear;
     }
   }
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    text-align: center;
+  }
+  @media (max-width: 675px) {
+    font-size: 0.8rem;
+    padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+  } ;
 `;
 
 // Element: Heading
@@ -186,3 +221,33 @@ export const ModalTopWrapper = styled.div`
 
 // Element: Modal Button Wrapper
 export const ModalButtonWrapper = styled.div``;
+
+// Element: TestGridWrapper
+export const TestGridWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const WrapperItem1 = styled.div`
+  flex: 2;
+  @media (max-width: 1100px) {
+    flex: 3;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  } ;
+`;
+export const WrapperItem2 = styled.div`
+  flex: 5;
+  @media (max-width: 1024px) {
+    display: none;
+  } ;
+`;
+
+export const OverFlowWrapper = styled.div`
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+`;
