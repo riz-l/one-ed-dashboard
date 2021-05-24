@@ -66,7 +66,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
@@ -82,7 +81,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -101,7 +99,6 @@ export default function Triage() {
     setIsNEWS2(false);
     setIsPaediatricObs(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -121,7 +118,6 @@ export default function Triage() {
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsUrineObs(false);
     setIsNEWS(true);
     setIsNEWS2(true);
@@ -139,7 +135,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
@@ -157,7 +152,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsUrineObs(false);
     setIsAlerts(true);
     setIsTriage(true);
@@ -174,7 +168,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsAllergies(true);
@@ -191,7 +184,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -210,7 +202,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -230,7 +221,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsPaediatricObs(true);
@@ -247,7 +237,6 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsSaveSubPage(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -271,7 +260,6 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
     setIsSave(true);
-    setIsSaveSubPage(true);
   }
 
   return (
