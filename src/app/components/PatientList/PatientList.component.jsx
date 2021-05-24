@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIncomingPatients } from "../../../redux/slices/incomingPatientsSlice";
-import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
+// import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
   clearPatient,
@@ -34,7 +34,7 @@ import {
 // Component: PatientList
 export default function PatientList() {
   // Redux: Fetches isSummaryOpen, patientList, selectedPatient from the global state
-  const isSummaryOpen = useSelector((state) => state.dashboard.isSummaryOpen);
+  // const isSummaryOpen = useSelector((state) => state.dashboard.isSummaryOpen);
   const patientList = useSelector((state) => state.patientList.patients);
   const incomingPatients = useSelector(
     (state) => state.incomingPatients.incoming
@@ -169,7 +169,7 @@ export default function PatientList() {
                   text="Clear Patient"
                 />
 
-                <Button
+                {/* <Button
                   margin="0 0 -1.4rem 0"
                   onClick={() =>
                     isSummaryOpen
@@ -177,7 +177,7 @@ export default function PatientList() {
                       : dispatch(setIsSummaryOpen(true))
                   }
                   text="Toggle Summary"
-                />
+                /> */}
               </>
             ) : null}
 

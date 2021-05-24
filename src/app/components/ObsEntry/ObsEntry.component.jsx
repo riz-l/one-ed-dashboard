@@ -34,7 +34,7 @@ import { Button, Display, Grid, PageTitle } from "../index";
 // Component: ObsEntry
 export default function ObsEntry({ id, dateTime, user, status }) {
   // Redux:
-  const questionnaireResponseDetails = useSelector(
+  const questionnaireResponseDetail = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponseDetail
   );
   const dispatch = useDispatch();
@@ -126,278 +126,278 @@ export default function ObsEntry({ id, dateTime, user, status }) {
           <Grid>
             <Grid.Column>
               <Display labelText="Neuro Pain Score: ">
-                {questionnaireResponseDetails.SysObsNeuroPainScore
-                  ? questionnaireResponseDetails.SysObsNeuroPainScore
+                {questionnaireResponseDetail.SysObsNeuroPainScore
+                  ? questionnaireResponseDetail.SysObsNeuroPainScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro Patient Pain Score: ">
-                {questionnaireResponseDetails.SysObsNeuroPatientrackPainScore
-                  ? questionnaireResponseDetails.SysObsNeuroPatientrackPainScore
+                {questionnaireResponseDetail.SysObsNeuroPatientrackPainScore
+                  ? questionnaireResponseDetail.SysObsNeuroPatientrackPainScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Observations POPS Score: ">
-                {questionnaireResponseDetails.RTGCEDObservationsPOPSScore
-                  ? questionnaireResponseDetails.RTGCEDObservationsPOPSScore
+                {questionnaireResponseDetail.RTGCEDObservationsPOPSScore
+                  ? questionnaireResponseDetail.RTGCEDObservationsPOPSScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Cardiovascular Pulse Rate Value: ">
-                {questionnaireResponseDetails.SysObsCardiovascPulseRateValueRTG
-                  ? questionnaireResponseDetails.SysObsCardiovascPulseRateValueRTG
+                {questionnaireResponseDetail.SysObsCardiovascPulseRateValueRTG
+                  ? questionnaireResponseDetail.SysObsCardiovascPulseRateValueRTG
                   : "N/A"}
               </Display>
 
               <Display labelText="Cardiovascular BP Systolic Value: ">
-                {questionnaireResponseDetails.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
-                  ? questionnaireResponseDetails.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                {questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                  ? questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                   : "N/A"}
               </Display>
 
               <Display labelText="Cardiovascular BP Diastolic Value: ">
-                {questionnaireResponseDetails.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
-                  ? questionnaireResponseDetails.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                {questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                  ? questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                   : "N/A"}
               </Display>
 
               <Display labelText="Respiratory Rate: ">
-                {questionnaireResponseDetails.RTG_RespiratoryRate
-                  ? questionnaireResponseDetails.RTG_RespiratoryRate
+                {questionnaireResponseDetail.RTG_RespiratoryRate
+                  ? questionnaireResponseDetail.RTG_RespiratoryRate
                   : "N/A"}
               </Display>
 
               <Display labelText="Respiratory Target SATS9498 Value: ">
-                {questionnaireResponseDetails.SysObsRespiratoryTargetSATS9498ValueRTG
-                  ? questionnaireResponseDetails.SysObsRespiratoryTargetSATS9498ValueRTG
+                {questionnaireResponseDetail.SysObsRespiratoryTargetSATS9498ValueRTG
+                  ? questionnaireResponseDetail.SysObsRespiratoryTargetSATS9498ValueRTG
                   : "N/A"}
               </Display>
 
               <Display labelText="Respiratory Supplemental Oxygen Type Options: ">
-                {questionnaireResponseDetails.SysObsRespiratorySupplementalOxygenTypeOptions
-                  ? questionnaireResponseDetails.SysObsRespiratorySupplementalOxygenTypeOptions
+                {questionnaireResponseDetail.SysObsRespiratorySupplementalOxygenTypeOptions
+                  ? questionnaireResponseDetail.SysObsRespiratorySupplementalOxygenTypeOptions
                   : "N/A"}
               </Display>
 
               <Display labelText="Body Temperature Value: ">
-                {questionnaireResponseDetails.RegObsBodyTemperatureValueRTG
-                  ? questionnaireResponseDetails.RegObsBodyTemperatureValueRTG
+                {questionnaireResponseDetail.RegObsBodyTemperatureValueRTG
+                  ? questionnaireResponseDetail.RegObsBodyTemperatureValueRTG
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous CED Obs (Any Age Other): ">
-                {questionnaireResponseDetails.IntervenCEDObsAnyAgeOtherScore
-                  ? questionnaireResponseDetails.IntervenCEDObsAnyAgeOtherScore
+                {questionnaireResponseDetail.IntervenCEDObsAnyAgeOtherScore
+                  ? questionnaireResponseDetail.IntervenCEDObsAnyAgeOtherScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous CED Obs (Any Age Gut Feeling): ">
-                {questionnaireResponseDetails.IntervenCEDObsAnyAgeGutFeelingScore
-                  ? questionnaireResponseDetails.IntervenCEDObsAnyAgeGutFeelingScore
+                {questionnaireResponseDetail.IntervenCEDObsAnyAgeGutFeelingScore
+                  ? questionnaireResponseDetail.IntervenCEDObsAnyAgeGutFeelingScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous CED Obs (Breathing): ">
-                {questionnaireResponseDetails.IntervenCEDObsAnyAgeBreathingScore
-                  ? questionnaireResponseDetails.IntervenCEDObsAnyAgeBreathingScore
+                {questionnaireResponseDetail.IntervenCEDObsAnyAgeBreathingScore
+                  ? questionnaireResponseDetail.IntervenCEDObsAnyAgeBreathingScore
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro AVPU Score Value #1: ">
-                {questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_1
-                  ? questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_1
+                {questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_1
+                  ? questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_1
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro AVPU Score Value #2: ">
-                {questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_2
-                  ? questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_2
+                {questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_2
+                  ? questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_2
                   : "N/A"}
               </Display>
             </Grid.Column>
 
             <Grid.Column>
               <Display labelText="Neuro AVPU Score Value #3: ">
-                {questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_3
-                  ? questionnaireResponseDetails.SysObsNeuroAVPUScoreValue_3
+                {questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_3
+                  ? questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_3
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro AVPU Score Value: ">
-                {questionnaireResponseDetails.SysObsNeuroAVPUScoreValue
-                  ? questionnaireResponseDetails.SysObsNeuroAVPUScoreValue
+                {questionnaireResponseDetail.SysObsNeuroAVPUScoreValue
+                  ? questionnaireResponseDetail.SysObsNeuroAVPUScoreValue
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro ED Obs AVPU: ">
-                {questionnaireResponseDetails.SysObsNeuroEDObsAVPU
-                  ? questionnaireResponseDetails.SysObsNeuroEDObsAVPU
+                {questionnaireResponseDetail.SysObsNeuroEDObsAVPU
+                  ? questionnaireResponseDetail.SysObsNeuroEDObsAVPU
                   : "N/A"}
               </Display>
 
               <Display labelText="Body Height Value - Body Height Comp: ">
-                {questionnaireResponseDetails.RegObsBodyHeightValue_RegObsBodyHeightComp
-                  ? questionnaireResponseDetails.RegObsBodyHeightValue_RegObsBodyHeightComp
+                {questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
+                  ? questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
                   : "N/A"}
               </Display>
 
               <Display labelText="Body Weight Value - Body Weight Comp: ">
-                {questionnaireResponseDetails.RegObsBodyWeightValue_RegObsBodyWeightComp
-                  ? questionnaireResponseDetails.RegObsBodyWeightValue_RegObsBodyWeightComp
+                {questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
+                  ? questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
                   : "N/A"}
               </Display>
 
               <Display labelText="RTG Child Obs Comments: ">
-                {questionnaireResponseDetails.RTGChildObsComments
+                {questionnaireResponseDetail.RTGChildObsComments
                   ? capitalizeFirstLetter(
-                      questionnaireResponseDetails.RTGChildObsComments
+                      questionnaireResponseDetail.RTGChildObsComments
                     )
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Chem Blood Glucose Random: ">
-                {questionnaireResponseDetails.IntervenPathTestChemBloodGlucoseRandom
-                  ? questionnaireResponseDetails.IntervenPathTestChemBloodGlucoseRandom
+                {questionnaireResponseDetail.IntervenPathTestChemBloodGlucoseRandom
+                  ? questionnaireResponseDetail.IntervenPathTestChemBloodGlucoseRandom
                   : "N/A"}
               </Display>
 
               <Display labelText="Respiratory ED Obs PEFR L/min: ">
-                {questionnaireResponseDetails.SysObsRespiratoryEDObsPEFRLMin
-                  ? questionnaireResponseDetails.SysObsRespiratoryEDObsPEFRLMin
+                {questionnaireResponseDetail.SysObsRespiratoryEDObsPEFRLMin
+                  ? questionnaireResponseDetail.SysObsRespiratoryEDObsPEFRLMin
                   : "N/A"}
               </Display>
 
               <Display labelText="Cardiovascular CED Obs Capillary Refill: ">
-                {questionnaireResponseDetails.SysObsCardiovascCEDObsCapillaryRefill
-                  ? questionnaireResponseDetails.SysObsCardiovascCEDObsCapillaryRefill
+                {questionnaireResponseDetail.SysObsCardiovascCEDObsCapillaryRefill
+                  ? questionnaireResponseDetail.SysObsCardiovascCEDObsCapillaryRefill
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro ED Obs GCS Eyes: ">
-                {questionnaireResponseDetails.SysObsNeuroEDObsGCSEyes
-                  ? questionnaireResponseDetails.SysObsNeuroEDObsGCSEyes
+                {questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                  ? questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro ED Obs GCS Verbal: ">
-                {questionnaireResponseDetails.SysObsNeuroEDObsGCSVerbal
-                  ? questionnaireResponseDetails.SysObsNeuroEDObsGCSVerbal
+                {questionnaireResponseDetail.SysObsNeuroEDObsGCSVerbal
+                  ? questionnaireResponseDetail.SysObsNeuroEDObsGCSVerbal
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro ED Obs GCS Motor: ">
-                {questionnaireResponseDetails.SysObsNeuroEDObsGCSMotor
-                  ? questionnaireResponseDetails.SysObsNeuroEDObsGCSMotor
+                {questionnaireResponseDetail.SysObsNeuroEDObsGCSMotor
+                  ? questionnaireResponseDetail.SysObsNeuroEDObsGCSMotor
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro ED Obs GCS Total: ">
-                {questionnaireResponseDetails.SysObsNeuroEDObsGCSTotal
-                  ? questionnaireResponseDetails.SysObsNeuroEDObsGCSTotal
+                {questionnaireResponseDetail.SysObsNeuroEDObsGCSTotal
+                  ? questionnaireResponseDetail.SysObsNeuroEDObsGCSTotal
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro Pupils Equal: ">
-                {questionnaireResponseDetails.SysObsNeuroPupilsEqual
-                  ? questionnaireResponseDetails.SysObsNeuroPupilsEqual
+                {questionnaireResponseDetail.SysObsNeuroPupilsEqual
+                  ? questionnaireResponseDetail.SysObsNeuroPupilsEqual
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro Pupil Size Left: ">
-                {questionnaireResponseDetails.SysObsNeuroPupilSizeLeft
-                  ? questionnaireResponseDetails.SysObsNeuroPupilSizeLeft
+                {questionnaireResponseDetail.SysObsNeuroPupilSizeLeft
+                  ? questionnaireResponseDetail.SysObsNeuroPupilSizeLeft
                   : "N/A"}
               </Display>
             </Grid.Column>
 
             <Grid.Column>
               <Display labelText="Neuro Pupil Size Right: ">
-                {questionnaireResponseDetails.SysObsNeuroPupilSizeRight
-                  ? questionnaireResponseDetails.SysObsNeuroPupilSizeRight
+                {questionnaireResponseDetail.SysObsNeuroPupilSizeRight
+                  ? questionnaireResponseDetail.SysObsNeuroPupilSizeRight
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro Pupil Reactivity Left: ">
-                {questionnaireResponseDetails.SysObsNeuroPupilReactivityLeft
-                  ? questionnaireResponseDetails.SysObsNeuroPupilReactivityLeft
+                {questionnaireResponseDetail.SysObsNeuroPupilReactivityLeft
+                  ? questionnaireResponseDetail.SysObsNeuroPupilReactivityLeft
                   : "N/A"}
               </Display>
 
               <Display labelText="Neuro Pupil Reactivity Right: ">
-                {questionnaireResponseDetails.SysObsNeuroPupilReactivityRight
-                  ? questionnaireResponseDetails.SysObsNeuroPupilReactivityRight
+                {questionnaireResponseDetail.SysObsNeuroPupilReactivityRight
+                  ? questionnaireResponseDetail.SysObsNeuroPupilReactivityRight
                   : "N/A"}
               </Display>
 
               <Display labelText="Arm Limb Movement Left: ">
-                {questionnaireResponseDetails.RegObsArmLimbMovementLeft
-                  ? questionnaireResponseDetails.RegObsArmLimbMovementLeft
+                {questionnaireResponseDetail.RegObsArmLimbMovementLeft
+                  ? questionnaireResponseDetail.RegObsArmLimbMovementLeft
                   : "N/A"}
               </Display>
 
               <Display labelText="Arm Limb Movement Right: ">
-                {questionnaireResponseDetails.RegObsArmLimbMovementRight
-                  ? questionnaireResponseDetails.RegObsArmLimbMovementRight
+                {questionnaireResponseDetail.RegObsArmLimbMovementRight
+                  ? questionnaireResponseDetail.RegObsArmLimbMovementRight
                   : "N/A"}
               </Display>
 
               <Display labelText="Leg Limb Movement Left: ">
-                {questionnaireResponseDetails.RegObsLegLimbMovementLeft
-                  ? questionnaireResponseDetails.RegObsLegLimbMovementLeft
+                {questionnaireResponseDetail.RegObsLegLimbMovementLeft
+                  ? questionnaireResponseDetail.RegObsLegLimbMovementLeft
                   : "N/A"}
               </Display>
 
               <Display labelText="Leg Limb Movement Right: ">
-                {questionnaireResponseDetails.RegObsLegLimbMovementRight
-                  ? questionnaireResponseDetails.RegObsLegLimbMovementRight
+                {questionnaireResponseDetail.RegObsLegLimbMovementRight
+                  ? questionnaireResponseDetail.RegObsLegLimbMovementRight
                   : "N/A"}
               </Display>
 
               <Display labelText="Admin NAD: ">
-                {questionnaireResponseDetails.AdminNAD
-                  ? questionnaireResponseDetails.AdminNAD
+                {questionnaireResponseDetail.AdminNAD
+                  ? questionnaireResponseDetail.AdminNAD
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis Protein Level: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisProteinLevel
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisProteinLevel
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisProteinLevel
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisProteinLevel
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis Blood Level: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisBloodLevel
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisBloodLevel
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisBloodLevel
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisBloodLevel
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis Glucose Level: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisGlucoseLevel
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisGlucoseLevel
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisGlucoseLevel
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisGlucoseLevel
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis WC Numbered: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisWCNumbered
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisWCNumbered
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisWCNumbered
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisWCNumbered
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis Nitrites: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisNitrites
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisNitrites
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisNitrites
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisNitrites
                   : "N/A"}
               </Display>
 
               <Display labelText="Intervenous Urine Analysis Ketone Level: ">
-                {questionnaireResponseDetails.IntervenPathTestUrinalysisKetoneLevel
-                  ? questionnaireResponseDetails.IntervenPathTestUrinalysisKetoneLevel
+                {questionnaireResponseDetail.IntervenPathTestUrinalysisKetoneLevel
+                  ? questionnaireResponseDetail.IntervenPathTestUrinalysisKetoneLevel
                   : "N/A"}
               </Display>
 
               <Display labelText="POPS Score #1: ">
-                {questionnaireResponseDetails.RTGCEDObservationsPOPSScore_1
-                  ? questionnaireResponseDetails.RTGCEDObservationsPOPSScore_1
+                {questionnaireResponseDetail.RTGCEDObservationsPOPSScore_1
+                  ? questionnaireResponseDetail.RTGCEDObservationsPOPSScore_1
                   : "N/A"}
               </Display>
             </Grid.Column>
