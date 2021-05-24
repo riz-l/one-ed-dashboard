@@ -62,7 +62,7 @@ export const SecondaryNavigation = styled.div`
 // Element: Content
 export const Content = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  /* background-color: #f7f8fa; */
   display: flex;
   grid-area: content;
   height: auto;
