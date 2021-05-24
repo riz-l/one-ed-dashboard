@@ -61,6 +61,9 @@ export { default as PatientSuggestions } from "./PatientSuggestions/PatientSugge
 // Export: PatientSummary
 export { default as PatientSummary } from "./PatientSummary/PatientSummary.component";
 
+// Export: POPSHistoryModal
+export { default as POPSHistoryModal } from "./POPSHistoryModal/POPSHistoryModal.component";
+
 // Export: PrimaryNavigation
 export { default as PrimaryNavigation } from "./PrimaryNavigation/PrimaryNavigation.component";
 
