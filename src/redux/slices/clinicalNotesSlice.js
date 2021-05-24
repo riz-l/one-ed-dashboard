@@ -93,6 +93,37 @@ export const getObsQuestionnaireResponseDetail = createAsyncThunk(
   }
 );
 
+// AsyncThunk: getPopsQuestionnaireResponseDetail
+export const getPopsQuestionnaireResponseDetail = createAsyncThunk(
+  "clinicalNotes/getPopsQuestionnaireResponseDetail",
+  async (arg, { getState }) => {
+    const state = getState();
+    const token = state.userDetails.token;
+    const patientID = state.selectedPatient.patientData[0].patientID;
+    const formID = state.clinicalNotes.notes.filteredQuestionnaireResponse.id;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetQuestionnaireResponseDetail/${patientID}/${formID}/F0000948-7.0`,
+        headers: {
+          accept: "application/json+fhir",
+          "Content-Type": "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 // AsyncThunk: postNewNote
 export const postNewNote = createAsyncThunk(
   "clinicalNotes/postNewNote",
@@ -283,6 +314,20 @@ export const clinicalNotesSlice = createSlice({
       }
     },
     [getObsQuestionnaireResponseDetail.rejected]: (state, action) => {
+      state.status = "failed";
+    },
+    [getPopsQuestionnaireResponseDetail.pending]: (state, action) => {
+      state.notes.status = "loading";
+    },
+    [getPopsQuestionnaireResponseDetail.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.notes.questionnaireResponseDetail = payload;
+        state.status = "success";
+      } else {
+        state.status = "failed";
+      }
+    },
+    [getPopsQuestionnaireResponseDetail.rejected]: (state, action) => {
       state.status = "failed";
     },
     [postNewNote.pending]: (state, action) => {
