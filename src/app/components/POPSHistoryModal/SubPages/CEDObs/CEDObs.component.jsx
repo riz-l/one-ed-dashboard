@@ -1,14 +1,20 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./CEDObs.elements";
 
 // Import: Components
-import { Display, Grid, Text } from "../../../../components";
+import { Display, Grid, Text } from "../../..";
 
 // SubPage: CEDObs
 export default function CEDObs() {
+  // Redux:
+  const questionnaireResponseDetail = useSelector(
+    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
+  );
+
   return (
     <>
       <Container data-testid={"cedObs"}>
@@ -21,13 +27,17 @@ export default function CEDObs() {
             <Grid.Column>
               <Grid.Item>
                 <Display htmlFor="painScore" labelText="Pain Score">
-                  {/* TODO add redux value */}
+                  {questionnaireResponseDetail.SysObsNeuroPainScore
+                    ? questionnaireResponseDetail.SysObsNeuroPainScore
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="pulseRate" labelText="Pulse Rate">
-                  {/* TODO add redux value */}
+                  {questionnaireResponseDetail.SysObsCardiovascPulseRateValueRTG
+                    ? questionnaireResponseDetail.SysObsCardiovascPulseRateValueRTG
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
@@ -36,7 +46,9 @@ export default function CEDObs() {
                   htmlFor="bpSystolicFirst"
                   labelText="BP Systolic First"
                 >
-                  {/* TODO add redux value */}
+                  {questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                    ? questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
@@ -45,19 +57,25 @@ export default function CEDObs() {
                   htmlFor="bpSystolicSecond"
                   labelText="BP Systolic Second"
                 >
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                    ? questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="restRate" labelText="Rest Rate">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.RTG_RespiratoryRate
+                    ? questionnaireResponseDetail.RTG_RespiratoryRate
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="oxygenSATS" labelText="Oxygen SATS">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsRespiratoryTargetSATS9498ValueRTG
+                    ? questionnaireResponseDetail.SysObsRespiratoryTargetSATS9498ValueRTG
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
@@ -65,37 +83,49 @@ export default function CEDObs() {
             <Grid.Column>
               <Grid.Item>
                 <Display htmlFor="supplementalO2" labelText="Supplemental O2">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.SysObsRespiratorySupplementalOxygenTypeOptions
+                    ? questionnaireResponseDetail.SysObsRespiratorySupplementalOxygenTypeOptions
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="temp" labelText="Temp">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.RegObsBodyTemperatureValueRTG
+                    ? questionnaireResponseDetail.RegObsBodyTemperatureValueRTG
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="weightKG" labelText="Weight (kg)">
-                  {/* TODO add redux here */}
+                  {questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
+                    ? questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="heightCM" labelText="Height (cm)">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
+                    ? questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="bloodSugar" labelText="Blood sugar (mmol/l)">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.IntervenPathTestChemBloodGlucoseRandom
+                    ? questionnaireResponseDetail.IntervenPathTestChemBloodGlucoseRandom
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="pefr" labelText="PEFR (l/min)">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsRespiratoryEDObsPEFRLMin
+                    ? questionnaireResponseDetail.SysObsRespiratoryEDObsPEFRLMin
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
@@ -103,37 +133,58 @@ export default function CEDObs() {
             <Grid.Column>
               <Grid.Item>
                 <Display htmlFor="capillaryRefill" labelText="Capillary Refill">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.SysObsCardiovascCEDObsCapillaryRefill
+                    ? questionnaireResponseDetail.SysObsCardiovascCEDObsCapillaryRefill
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="popsOther" labelText="POPS Other">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.IntervenCEDObsAnyAgeOtherScore
+                    ? questionnaireResponseDetail.IntervenCEDObsAnyAgeOtherScore
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="popsGutFeeling" labelText="POPS Gut Feeling">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.IntervenCEDObsAnyAgeGutFeelingScore
+                    ? questionnaireResponseDetail.IntervenCEDObsAnyAgeGutFeelingScore
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="popsBreathing" labelText="POPS Breathing">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.IntervenCEDObsAnyAgeBreathingScore
+                    ? questionnaireResponseDetail.IntervenCEDObsAnyAgeBreathingScore
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="avpu" labelText="AVPU">
-                  {/* TODO add redux */}
+                <Display
+                  htmlFor="avpu"
+                  labelText={
+                    questionnaireResponseDetail.SysObsNeuroAVPUScoreValue
+                      ? `AVPU: ${questionnaireResponseDetail.SysObsNeuroAVPUScoreValue}`
+                      : `AVPU: N/A`
+                  }
+                >
+                  {questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_1 ||
+                  questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_2 ||
+                  questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_3
+                    ? `Score A: ${questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_1}, Score B: ${questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_2}, Score C: ${questionnaireResponseDetail.SysObsNeuroAVPUScoreValue_3}`
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="popsScore" labelText="POPS Score">
-                  {/*TODO add redux  */}
+                  {questionnaireResponseDetail.RTGCEDObservationsPOPSScore
+                    ? questionnaireResponseDetail.RTGCEDObservationsPOPSScore
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>

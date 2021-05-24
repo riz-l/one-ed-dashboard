@@ -1,14 +1,20 @@
 // Import: Packages
 import React from "react";
+import { useSelector } from "react-redux";
 
 // Import: Elements
 import { Container, Wrapper } from "./UrineObs.elements";
 
 // Import: Components
-import { Display, Grid, Text } from "../../../../components";
+import { Display, Grid, Text } from "../../..";
 
 // SubPage: UrineObs
 export default function UrineObs() {
+  // Redux:
+  const questionnaireResponseDetail = useSelector(
+    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
+  );
+
   return (
     <>
       <Container data-testid={"urineObs"}>
@@ -21,45 +27,61 @@ export default function UrineObs() {
             <Grid.Column>
               <Grid.Item>
                 <Display htmlFor="nad" labelText="NAD">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.AdminNAD
+                    ? questionnaireResponseDetail.AdminNAD
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="pro" labelText="Pro">
-                  {/* TODO add redux */}
+                <Display htmlFor="protein" labelText="Protein">
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisProteinLevel
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisProteinLevel
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="bld" labelText="Bld">
-                  {/* TODO add redux */}
+                <Display htmlFor="blood" labelText="Blood">
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisBloodLevel
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisBloodLevel
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
 
             <Grid.Column>
               <Grid.Item>
-                <Display htmlFor="glu" labelText="Glu">
-                  {/* TODO add redux */}
+                <Display htmlFor="glucose" labelText="Glucose">
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisGlucoseLevel
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisGlucoseLevel
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
                 <Display htmlFor="leu" labelText="Leu">
-                  {/* TODO add redux */}
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisWCNumbered
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisWCNumbered
+                    : "N/A"}
+                </Display>
+              </Grid.Item>
+            </Grid.Column>
+
+            <Grid.Column>
+              <Grid.Item>
+                <Display htmlFor="nitrites" labelText="Nitrites">
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisNitrites
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisNitrites
+                    : "N/A"}
                 </Display>
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="nit" labelText="Nit">
-                  {/* TODO add redux */}
-                </Display>
-              </Grid.Item>
-
-              <Grid.Item>
-                <Display htmlFor="ket" labelText="Ket">
-                  {/* TODO add redux */}
+                <Display htmlFor="ketone" labelText="Ketone">
+                  {questionnaireResponseDetail.IntervenPathTestUrinalysisKetoneLevel
+                    ? questionnaireResponseDetail.IntervenPathTestUrinalysisKetoneLevel
+                    : "N/A"}
                 </Display>
               </Grid.Item>
             </Grid.Column>
