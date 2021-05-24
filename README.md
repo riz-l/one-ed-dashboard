@@ -82,6 +82,10 @@ ToDo Tree is an extension in VS Code.
 Once installed the tree icon appears on the VS Code side bar.
 When writing comments in your code start the comment with the key words "TODO" or "FIXME" the ToDo tree extension picks out these commenst and pust them in a list allowing developers to quickly jump to parts of the code marked up as needing to be worked on.
 
+### Link to the React to FHIR guide
+
+https://teams.microsoft.com/l/file/0BA35FFD-2ECC-4EC8-A1CA-9C0738346F20?tenantId=93f33571-550f-43cf-b09f-cd331338d086&fileType=docx&objectUrl=https%3A%2F%2Fdxcportal.sharepoint.com%2Fsites%2FOneED404%2FShared%20Documents%2FGeneral%2FAPI%2FOneED%20React%20to%20FHIR%20Guide.docx&baseUrl=https%3A%2F%2Fdxcportal.sharepoint.com%2Fsites%2FOneED404&serviceName=teams&threadId=19:b77fbeb00c734a948660af9bd857c24a@thread.skype&groupId=0e02a59b-4ab4-4502-b8e9-bf1313516494
+
 ## The .env file
 
 For OneED to work it requires a .env file.
@@ -94,10 +98,12 @@ The .env file contains values for the following.
 - REACT_APP_INCOMING_PATIENTS
 - REACT_APP_INTEGRATION_REPORT
 
-Changes to the .env file do not get plled with git pull origin master because the .env file is listed in the .gitignore file.
+Changes to the .env file do not get pulled with git pull origin master because the .env file is listed in the .gitignore file.
 To be safe copy the values into a notepad and then into the .env file to remove any formatting.
 
 The latest copy of the .env file can be found at:
+
+<!-- TODO add a  -->
 
 ## Form Components and their props
 
@@ -132,8 +138,12 @@ QUESTION: Another property will ened adding to received the data. Add a section 
 
 A button, its effect is defined by the onClick prop.
 
+- borderColor = Used to specify a border colour.
+- fontSize = Determines the font size.
 - icon = Used to add an SVG icon. e.g. icon ={<SVGNAME/>}.
 - onClick = Defines what happens when the button is clicked.
+- margin = Determines the margin.
+- padding = Determines the padding.
 - text = The text within the button.
 - type = Defaults to "button" but can also be "submit" and "reset". Submit ties the button to the forms data so all the form data will get submitted. This would probably be a save button. It also helps accessability by telling visually impared users that this is a submit button.
 
