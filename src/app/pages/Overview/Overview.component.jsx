@@ -251,6 +251,7 @@ export default function Overview() {
           <PageTitle
             heading="Overview"
             subheading="Patient details and history"
+            backgroundColor="transparent"
           />
 
           <ContentWrapper>

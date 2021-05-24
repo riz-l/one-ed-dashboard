@@ -17,7 +17,7 @@ export default function NeuroObs() {
             Neuro Obs
           </Text>
 
-          <Grid.Column>
+          <Grid>
             <Grid.Column>
               <Grid.Item>
                 <Text as="h3" subheading>
@@ -133,7 +133,7 @@ export default function NeuroObs() {
                 </Display>
               </Grid.Item>
             </Grid.Column>
-          </Grid.Column>
+          </Grid>
         </Wrapper>
       </Container>
     </>

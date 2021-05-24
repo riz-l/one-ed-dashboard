@@ -14,7 +14,7 @@ export const Container = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  /* background-color: #f7f8fa; */
   display: flex;
   height: auto;
   justify-content: center;
@@ -142,16 +142,21 @@ export const ClickableButton = styled.div`
 
 // Element: Heading
 export const Heading = styled.div`
+  /* background-color: #f7f8fa; */
+  background-color: #ffffff;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
+  padding: 2rem;
   width: 100%;
 `;
 
 // Element: Heading Image
 export const HeadingImage = styled.div`
+  background-color: #ffffff;
+  flex: 1;
   height: 100%;
   width: 100%;
-  flex: 1;
 
   & svg {
     height: 15rem;
@@ -161,8 +166,9 @@ export const HeadingImage = styled.div`
 
 // Element: Heading Content
 export const HeadingContent = styled.div`
+  background-color: #ffffff;
   height: 100%;
-  maximum-height: 100%;
+  max-height: 100%;
   flex: 4;
 
   & h2 {
