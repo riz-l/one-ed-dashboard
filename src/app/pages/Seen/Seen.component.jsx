@@ -15,26 +15,36 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { SeenSubPage } from "./SubPages/index";
+import { SeenSubPage } from "./subPages/index";
 
 // Page: Seen
 export default function Seen() {
   // State: isSeen
   const [isSeen, setIsSeen] = useState(true);
+  const [isSave, setIsSave] = useState(false);
 
   // State: Seen SubPage
   const [isSeenSubPage, setIsSeenSubPage] = useState(true);
 
   // onClick: Renders Seen Page
   function renderSeen() {
+    setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
   }
 
   // onClick: Renders SeenSubPage
   function renderSeenSubPage() {
+    setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
+  }
+
+  // onClick: Renders Save
+  function renderSave() {
+    setIsSeen(false);
+    setIsSeenSubPage(false);
+    setIsSave(true);
   }
 
   return (
@@ -57,6 +67,15 @@ export default function Seen() {
                     onClick={renderSeen}
                   >
                     <PrimaryNavigation.Text>Seen</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isSave ? true : false}
+                    onClick={renderSave}
+                  >
+                    <PrimaryNavigation.Save>
+                      <PrimaryNavigation.Text>Save</PrimaryNavigation.Text>
+                    </PrimaryNavigation.Save>
                   </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }

@@ -288,7 +288,9 @@ export default function Triage() {
                     isActive={isPaediatricObs ? true : false}
                     onClick={renderPaediatricObs}
                   >
-                    <PrimaryNavigation.Text>POPS Score</PrimaryNavigation.Text>
+                    <PrimaryNavigation.Text>
+                      POPS Assessment
+                    </PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
