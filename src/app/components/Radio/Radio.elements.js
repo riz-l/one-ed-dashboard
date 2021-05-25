@@ -7,10 +7,17 @@ export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.8rem;
+  margin: ${({ margin }) => margin && margin};
 `;
 
 // Element: Label
-export const Label = styled.label``;
+export const Label = styled.label`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+`;
 
 // Element: Text
 export const Text = styled.span`

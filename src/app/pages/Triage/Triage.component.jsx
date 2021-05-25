@@ -8,6 +8,10 @@ import {
   addPopsAssessmentPatientName,
   addPopsAssessmentEncounterID,
   addPopsAssessmentDateTime,
+  addPopsAssessmentSysObsNeuroPatientrackPainScore,
+  addPopsAssessmentRTGCEDObservationsPOPSScore,
+  addPopsAssessmentSysObsNeuroEDObsAVPU,
+  addPopsAssessmentRTGChildObsComments,
 } from "../../../redux/slices/triageSlice";
 import moment from "moment";
 
@@ -136,6 +140,13 @@ export default function Triage() {
     dispatch(addPopsAssessmentPatientName(patientName));
     dispatch(addPopsAssessmentEncounterID(encounterID));
     dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
+    // TODO: REQUIRES IMMEDIATE ATTENTION
+    dispatch(addPopsAssessmentSysObsNeuroPatientrackPainScore("3"));
+    dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore("6"));
+    dispatch(addPopsAssessmentSysObsNeuroEDObsAVPU("Alert"));
+    dispatch(
+      addPopsAssessmentRTGChildObsComments("This is a test comment - JLayton")
+    );
   }
 
   // onClick: Renders POPSHistory SubPage

@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addPopsAssessmentSysObsNeuroEDObsGCSEyes,
@@ -28,23 +28,6 @@ export default function NeuroObs() {
   // Redux:
   const popsAssessment = useSelector((state) => state.triage.popsAssessment);
   const dispatch = useDispatch();
-
-  // Effect:
-  useEffect(() => {
-    // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSEyes());
-    // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSVerbal());
-    // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSMotor());
-    // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSTotal());
-    // dispatch(addPopsAssessmentSysObsNeuroPupilsEqual());
-    dispatch(addPopsAssessmentSysObsNeuroPupilSizeLeft());
-    dispatch(addPopsAssessmentSysObsNeuroPupilReactivityLeft());
-    dispatch(addPopsAssessmentSysObsNeuroPupilSizeRight());
-    dispatch(addPopsAssessmentSysObsNeuroPupilReactivityRight());
-    dispatch(addPopsAssessmentRegObsArmLimbMovementLeft());
-    dispatch(addPopsAssessmentRegObsLegLimbMovementLeft());
-    dispatch(addPopsAssessmentRegObsArmLimbMovementRight());
-    dispatch(addPopsAssessmentRegObsLegLimbMovementRight());
-  }, []);
 
   // Ref:
   const eyesRef = useRef();
@@ -76,6 +59,52 @@ export default function NeuroObs() {
   const addGcsTotalToRedux = () => {
     dispatch(
       addPopsAssessmentSysObsNeuroEDObsGCSTotal(gcsTotalRef.current.value)
+    );
+  };
+  const leftPupilSizeToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilSizeLeft(leftPupilSizeRef.current.value)
+    );
+  };
+  const leftPupilReactionToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilReactivityLeft(
+        leftPupilReactionRef.current.value
+      )
+    );
+  };
+  const rightPupilSizeToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilSizeRight(
+        rightPupilSizeRef.current.value
+      )
+    );
+  };
+  const rightPupilReactionToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilReactivityRight(
+        rightPupilReactionRef.current.value
+      )
+    );
+  };
+  const leftArmToRedux = () => {
+    dispatch(
+      addPopsAssessmentRegObsArmLimbMovementLeft(leftArmRef.current.value)
+    );
+  };
+  const leftLegToRedux = () => {
+    dispatch(
+      addPopsAssessmentRegObsLegLimbMovementLeft(leftLegRef.current.value)
+    );
+  };
+  const rightArmToRedux = () => {
+    dispatch(
+      addPopsAssessmentRegObsArmLimbMovementRight(rightArmRef.current.value)
+    );
+  };
+  const rightLegToRedux = () => {
+    dispatch(
+      addPopsAssessmentRegObsLegLimbMovementRight(rightLegRef.current.value)
     );
   };
 
@@ -151,16 +180,17 @@ export default function NeuroObs() {
                   </Form.Text>
                 </Grid.Item>
 
-                <Grid.Item>
+                <Grid.Item horizontal>
                   <Form.Radio
                     checked={popsAssessment.SysObsNeuroPupilsEqual === "Equal"}
                     htmlFor="equal"
+                    margin="0 1rem 0.8rem 0"
                     name="pupils"
                     onChange={() =>
                       dispatch(addPopsAssessmentSysObsNeuroPupilsEqual("Equal"))
                     }
-                    text="Equal"
                     ref={equalOrUnequalRef}
+                    text="Equal"
                     value="Equal"
                   />
                   <Form.Radio
@@ -174,8 +204,8 @@ export default function NeuroObs() {
                         addPopsAssessmentSysObsNeuroPupilsEqual("Unequal")
                       )
                     }
-                    text="Unequal"
                     ref={equalOrUnequalRef}
+                    text="Unequal"
                     value="Unequal"
                   />
                 </Grid.Item>
@@ -184,6 +214,10 @@ export default function NeuroObs() {
                   <Form.Dropdown
                     htmlFor="leftPupilSize"
                     labelText="Left Pupil Size"
+                    onChange={leftPupilSizeToRedux}
+                    options={["1", "2", "3", "4", "5", "6"]}
+                    ref={leftPupilSizeRef}
+                    value={popsAssessment.SysObsNeuroPupilSizeLeft}
                   />
                 </Grid.Item>
 
@@ -191,6 +225,10 @@ export default function NeuroObs() {
                   <Form.Dropdown
                     htmlFor="leftPupilReaction"
                     labelText="Left Pupil Reaction"
+                    onChange={leftPupilReactionToRedux}
+                    options={["Fixed and Dilated"]}
+                    ref={leftPupilReactionRef}
+                    value={popsAssessment.SysObsNeuroPupilReactivityLeft}
                   />
                 </Grid.Item>
 
@@ -198,6 +236,10 @@ export default function NeuroObs() {
                   <Form.Dropdown
                     htmlFor="rightPupilSize"
                     labelText="Right Pupil Size"
+                    onChange={rightPupilSizeToRedux}
+                    options={["1", "2", "3", "4", "5", "6"]}
+                    ref={rightPupilSizeRef}
+                    value={popsAssessment.SysObsNeuroPupilSizeRight}
                   />
                 </Grid.Item>
 
@@ -205,6 +247,10 @@ export default function NeuroObs() {
                   <Form.Dropdown
                     htmlFor="rightPupilReaction"
                     labelText="Right Pupil Reaction"
+                    onChange={rightPupilReactionToRedux}
+                    options={["Fixed and Dilated"]}
+                    ref={rightPupilReactionRef}
+                    value={popsAssessment.SysObsNeuroPupilReactivityRight}
                   />
                 </Grid.Item>
               </Grid.Column>
@@ -217,19 +263,47 @@ export default function NeuroObs() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown htmlFor="leftArm" labelText="Left Arm" />
+                  <Form.Dropdown
+                    htmlFor="leftArm"
+                    labelText="Left Arm"
+                    onChange={leftArmToRedux}
+                    options={["Severe Weakness", "Spastic Flexion"]}
+                    ref={leftArmRef}
+                    value={popsAssessment.RegObsArmLimbMovementLeft}
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown htmlFor="leftLeg" labelText="Left Leg" />
+                  <Form.Dropdown
+                    htmlFor="leftLeg"
+                    labelText="Left Leg"
+                    onChange={leftLegToRedux}
+                    options={["Normal Power"]}
+                    ref={leftLegRef}
+                    value={popsAssessment.RegObsLegLimbMovementLeft}
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown htmlFor="rightArm" labelText="Right Arm" />
+                  <Form.Dropdown
+                    htmlFor="rightArm"
+                    labelText="Right Arm"
+                    onChange={rightArmToRedux}
+                    options={["Severe Weakness", "Spastic Flexion"]}
+                    ref={rightArmRef}
+                    value={popsAssessment.RegObsArmLimbMovementRight}
+                  />
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Dropdown htmlFor="rightLeg" labelText="Right Leg" />
+                  <Form.Dropdown
+                    htmlFor="rightLeg"
+                    labelText="Right Leg"
+                    onChange={rightLegToRedux}
+                    options={["Normal Power"]}
+                    ref={rightLegRef}
+                    value={popsAssessment.RegObsLegLimbMovementRight}
+                  />
                 </Grid.Item>
               </Grid.Column>
             </Grid>

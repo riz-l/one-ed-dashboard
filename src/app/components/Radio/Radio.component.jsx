@@ -11,7 +11,7 @@ import { Container, Input, Label, Text, VisualBox } from "./Radio.elements";
 export const Radio = React.forwardRef((props, ref) => {
   return (
     <>
-      <Container data-testid={"radio"}>
+      <Container data-testid={"radio"} margin={props.margin}>
         <Label htmlFor={props.value}>
           <Text>{props.text}</Text>
 
