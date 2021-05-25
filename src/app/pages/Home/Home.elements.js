@@ -15,6 +15,11 @@ export const Container = styled.div`
   max-width: 100%;
   min-width: 100%;
 `;
+// Element Logo
+export const Logo = styled.div`
+  width: 200px;
+  margin-bottom: 2rem;
+`;
 
 // Element: Wrapper
 export const Wrapper = styled.div`
@@ -24,8 +29,7 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  height: auto;
-  justify-content: center;
+  justify-content: space-between;
   padding: 2rem;
 
   & h1 {
@@ -40,13 +44,35 @@ export const Wrapper = styled.div`
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1rem;
     transition: all 100ms linear;
 
     &:hover {
       background-color: #eef0f4;
       color: #4d5e80;
       transition: all 100ms linear;
+    }
+  }
+`;
+
+// Element: CompanyLogo
+export const CompanyLogo = styled.div`
+  align-items: center;
+  color: #4d5e80;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+
+  & img {
+    padding: 1rem;
+    width: 160px;
+  }
+  & div {
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 360px) {
+      flex-direction: column;
     }
   }
 `;

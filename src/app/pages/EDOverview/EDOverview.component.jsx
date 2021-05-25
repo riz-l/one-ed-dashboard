@@ -1,13 +1,11 @@
 // Import: Packages
 import React from "react";
 
+// Import: Components & SubPages
+import { PageTitle } from "../../components";
+
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./EDOverview.elements";
+import { Container, ContentWrapper, Wrapper } from "./EDOverview.elements";
 
 // Page: EDOverview
 export default function EDOverview() {
@@ -15,10 +13,10 @@ export default function EDOverview() {
     <>
       <Container data-testid={"edOverview"}>
         <Wrapper>
-          <Header>
-            <h2>ED Overview</h2>
-            <span>Summary of the ED Department</span>
-          </Header>
+          <PageTitle
+            heading="ED Overview"
+            subheading="Summary of the ED Department"
+          />
           <ContentWrapper></ContentWrapper>
         </Wrapper>
       </Container>

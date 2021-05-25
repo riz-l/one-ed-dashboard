@@ -8,8 +8,12 @@ import {
   getUserDetails,
 } from "../../../redux/slices/userDetailsSlice";
 
+// Import: Assets
+import dedalusLogo from "../../../assets/img/logo/Dedalus Logo.png";
+import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
+
 // Import: Elements
-import { Container, Wrapper } from "./Login.elements";
+import { Container, CompanyLogo, Logo, Wrapper } from "./Login.elements";
 
 // Import: Components
 import { Form } from "../../components";
@@ -59,7 +63,11 @@ export default function Login(props) {
     <>
       <Container data-testid={"login"}>
         <Wrapper>
-          <h1>Login</h1>
+          <Logo>
+            <LogoSvg />
+          </Logo>
+
+          {/* TODO This link goes to unautorised page. Remove when no longer requried for development. */}
           <p>
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>
@@ -84,6 +92,14 @@ export default function Login(props) {
             <Form.Button type="submit" text="Login" margin="2rem 0 0 0" />
           </Form>
         </Wrapper>
+
+        <CompanyLogo>
+          <img id="dedalusLogo" src={dedalusLogo} alt="Dedalus Logo" />
+          <div>
+            <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
+            <p>Dedalus Group</p>
+          </div>
+        </CompanyLogo>
       </Container>
     </>
   );

@@ -2,15 +2,10 @@
 import React from "react";
 
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./Observations.elements";
+import { Container, ContentWrapper, Wrapper } from "./Observations.elements";
 
 // Import: Components
-import { PatientDemographics } from "../../components";
+import { PageTitle, PatientDemographics } from "../../components";
 
 // Page: Observations
 export default function Observations() {
@@ -18,10 +13,10 @@ export default function Observations() {
     <>
       <Container data-testid={"observations"}>
         <Wrapper>
-          <Header>
-            <h2>Observations</h2>
-            <span>Record Patient observations</span>
-          </Header>
+          <PageTitle
+            heading="Observations"
+            subheading="Record Patient Observations"
+          />
 
           <PatientDemographics />
 

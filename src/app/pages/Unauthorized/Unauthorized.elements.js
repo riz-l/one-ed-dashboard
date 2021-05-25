@@ -17,6 +17,12 @@ export const Container = styled.div`
   min-width: 100%;
 `;
 
+// Element Logo
+export const Logo = styled.div`
+  width: 200px;
+  margin-bottom: 1rem;
+`;
+
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
@@ -51,5 +57,27 @@ export const ReturnButton = styled(Link)`
     background-color: #eef0f4;
     color: #4d5e80;
     transition: all 100ms linear;
+  }
+`;
+
+// Element: CompanyLogo
+export const CompanyLogo = styled.div`
+  align-items: center;
+  color: #4d5e80;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+
+  & img {
+    padding: 1rem;
+    width: 160px;
+  }
+  & div {
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 360px) {
+      flex-direction: column;
+    }
   }
 `;
