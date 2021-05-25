@@ -44,7 +44,7 @@ export default function CEDObs() {
     dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue_3("2"));
     dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue("0"));
     dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore_1("6"));
-  }, []);
+  }, [dispatch]);
 
   // Ref:
   const painScoreRef = useRef();
@@ -63,11 +63,12 @@ export default function CEDObs() {
   const popsOtherRef = useRef();
   const popsGutFeelingRef = useRef();
   const popsBreathingRef = useRef();
-  const avpuScoreARef = useRef();
-  const avpuScoreBRef = useRef();
-  const avpuScoreCRef = useRef();
-  const avpuRef = useRef();
-  const popsScoreRef = useRef();
+  // TODO: REQUIRE IMMEDIATE ATTENTION
+  // const avpuScoreARef = useRef();
+  // const avpuScoreBRef = useRef();
+  // const avpuScoreCRef = useRef();
+  // const avpuRef = useRef();
+  // const popsScoreRef = useRef();
 
   // Add values to Redux
   const addPainScoreToRedux = () => {

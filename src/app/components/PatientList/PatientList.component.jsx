@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIncomingPatients } from "../../../redux/slices/incomingPatientsSlice";
-// import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
-  clearPatient,
   selectPatient,
   getSelectedPatient,
 } from "../../../redux/slices/selectedPatientSlice";
@@ -23,8 +21,7 @@ import {
 
 // Import: Components
 import {
-  Attendance,
-  Button,
+  // Attendance,
   PageTitle,
   PatientItem,
   PrimaryNavigation,
