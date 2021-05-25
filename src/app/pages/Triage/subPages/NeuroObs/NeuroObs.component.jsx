@@ -35,7 +35,7 @@ export default function NeuroObs() {
     // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSVerbal());
     // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSMotor());
     // dispatch(addPopsAssessmentSysObsNeuroEDObsGCSTotal());
-    dispatch(addPopsAssessmentSysObsNeuroPupilsEqual());
+    // dispatch(addPopsAssessmentSysObsNeuroPupilsEqual());
     dispatch(addPopsAssessmentSysObsNeuroPupilSizeLeft());
     dispatch(addPopsAssessmentSysObsNeuroPupilReactivityLeft());
     dispatch(addPopsAssessmentSysObsNeuroPupilSizeRight());
@@ -152,8 +152,32 @@ export default function NeuroObs() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Radio htmlFor="equal" name="pupils" text="Equal" />
-                  <Form.Radio htmlFor="unequal" name="pupils" text="Unequal" />
+                  <Form.Radio
+                    checked={popsAssessment.SysObsNeuroPupilsEqual === "Equal"}
+                    htmlFor="equal"
+                    name="pupils"
+                    onChange={() =>
+                      dispatch(addPopsAssessmentSysObsNeuroPupilsEqual("Equal"))
+                    }
+                    text="Equal"
+                    ref={equalOrUnequalRef}
+                    value="Equal"
+                  />
+                  <Form.Radio
+                    checked={
+                      popsAssessment.SysObsNeuroPupilsEqual === "Unequal"
+                    }
+                    htmlFor="unequal"
+                    name="pupils"
+                    onChange={() =>
+                      dispatch(
+                        addPopsAssessmentSysObsNeuroPupilsEqual("Unequal")
+                      )
+                    }
+                    text="Unequal"
+                    ref={equalOrUnequalRef}
+                    value="Unequal"
+                  />
                 </Grid.Item>
 
                 <Grid.Item>

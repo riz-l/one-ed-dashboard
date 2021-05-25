@@ -8,26 +8,27 @@ import { ReactComponent as TickIcon } from "../../../assets/img/icon/tick.svg";
 import { Container, Input, Label, Text, VisualBox } from "./Radio.elements";
 
 // Component: Radio
-export default function Radio({ checked, name, onChange, text, value }) {
+export const Radio = React.forwardRef((props, ref) => {
   return (
     <>
       <Container data-testid={"radio"}>
-        <Label htmlFor={value}>
-          <Text>{text}</Text>
+        <Label htmlFor={props.value}>
+          <Text>{props.text}</Text>
 
-          <VisualBox checked={checked} onChange={onChange}>
+          <VisualBox checked={props.checked} onChange={props.onChange}>
             <TickIcon />
 
             <Input
               type="radio"
-              value={value}
-              name={name}
-              checked={checked}
-              onChange={onChange}
+              value={props.value}
+              name={props.name}
+              checked={props.checked}
+              onChange={props.onChange}
+              ref={ref}
             />
           </VisualBox>
         </Label>
       </Container>
     </>
   );
-}
+});

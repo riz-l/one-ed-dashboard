@@ -80,7 +80,7 @@ export { default as PrimaryNavigation } from "./PrimaryNavigation/PrimaryNavigat
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.component";
 
 // Export: Radio
-export { default as Radio } from "./Radio/Radio.component";
+export { Radio } from "./Radio/Radio.component";
 
 // Export: ReportEntry
 export { default as ReportEntry } from "./ReportEntry/ReportEntry.component";
