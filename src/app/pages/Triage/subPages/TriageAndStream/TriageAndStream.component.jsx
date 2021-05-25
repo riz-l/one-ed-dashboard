@@ -3,12 +3,12 @@ import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   putTriageForm,
-  addPatientID,
-  addDateTime,
-  addTriageCategory,
-  addTriageDiagnosis,
-  addTriageDiagnosisCode,
-  addPractitioner,
+  addTriageFormPatientID,
+  addTriageFormDateTime,
+  addTriageFormTriageCategory,
+  addTriageFormTriageDiagnosis,
+  addTriageFormTriageDiagnosisCode,
+  addTriageFormPractitioner,
   // clearTriageForm,
 } from "../../../../../redux/slices/triageSlice";
 import moment from "moment";
@@ -64,12 +64,12 @@ export default function TriageAndStream() {
 
   // Effect:
   useEffect(() => {
-    dispatch(addPatientID(patient));
-    dispatch(addDateTime(putEditedNewDateTime));
-    // dispatch(addTriageCategory("Very urgent"));
-    // dispatch(addTriageDiagnosis("Dizziness - light-headed"));
-    dispatch(addTriageDiagnosisCode("386705008"));
-    dispatch(addPractitioner(userExtension));
+    dispatch(addTriageFormPatientID(patient));
+    dispatch(addTriageFormDateTime(putEditedNewDateTime));
+    // dispatch(addTriageFormTriageCategory("Very urgent"));
+    // dispatch(addTriageFormTriageDiagnosis("Dizziness - light-headed"));
+    dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+    dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
   // Submit data to API
@@ -105,7 +105,7 @@ export default function TriageAndStream() {
 
   // Add values to Redux
   const addTriageCategoryToRedux = () => {
-    dispatch(addTriageCategory(triageCategoryRef.current.value));
+    dispatch(addTriageFormTriageCategory(triageCategoryRef.current.value));
   };
 
   return (
@@ -162,7 +162,7 @@ export default function TriageAndStream() {
                   <Form.AutoSuggest
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
-                    onChange={addTriageDiagnosis}
+                    onChange={addTriageFormTriageDiagnosis}
                     options={autoSuggestOptions}
                     ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."

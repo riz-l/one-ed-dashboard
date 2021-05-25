@@ -1,8 +1,17 @@
 // Import: Packages
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addPopsAssessmentPatientID,
+  addPopsAssessmentPractionerName,
+  addPopsAssessmentPractionerID,
+  addPopsAssessmentPatientName,
+  addPopsAssessmentEncounterID,
+  addPopsAssessmentDateTime,
+} from "../../../redux/slices/triageSlice";
+import moment from "moment";
 
 // Import: Assets
-
 import { ReactComponent as AllergiesIcon } from "../../../assets/img/icon/allergies.svg";
 import { ReactComponent as AlertsIcon } from "../../../assets/img/icon/alerts.svg";
 import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
@@ -37,6 +46,26 @@ import {
 
 // Page: Triage
 export default function Triage() {
+  // Redux:
+  const userExtension = useSelector(
+    (state) =>
+      state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension
+  );
+  const userName = useSelector(
+    (state) =>
+      state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName
+  );
+  const patientID = useSelector((state) => state.selectedPatient.patient);
+  const patientName = useSelector(
+    (state) => state.selectedPatient.patientData[0].name
+  );
+  const encounterID = useSelector(
+    (state) => state.selectedPatient.patientData[0].encounterID
+  );
+  const dispatch = useDispatch();
+
   // State: isTriage, isPaediatricObs, isPOPSHistory, isNEWS, isSave
   const [isTriage, setIsTriage] = useState(true);
   const [isPaediatricObs, setIsPaediatricObs] = useState(false);
@@ -53,6 +82,19 @@ export default function Triage() {
   const [isUrineObs, setIsUrineObs] = useState(false);
   const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
+
+  // Current Date, Time
+  const date = new Date();
+  const formattedDate = date.toISOString().substr(0, 10);
+  const time = date.toLocaleTimeString(); // Triage Time
+  const finalDate = moment(formattedDate).format("YYYY-MM-DD"); // Triage Date
+  const putDateTime = finalDate.concat("T", time, "Z");
+  const newDateTime = new Date(putDateTime);
+  newDateTime.setHours(newDateTime.getHours() - 2);
+  newDateTime.setSeconds(newDateTime.getSeconds() - 10);
+  const newTime = newDateTime.toLocaleTimeString();
+  const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
+  const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -87,6 +129,13 @@ export default function Triage() {
     setIsSave(false);
     setIsCEDObs(true);
     setIsPaediatricObs(true);
+
+    dispatch(addPopsAssessmentPatientID(patientID));
+    dispatch(addPopsAssessmentPractionerName(userName));
+    dispatch(addPopsAssessmentPractionerID(userExtension));
+    dispatch(addPopsAssessmentPatientName(patientName));
+    dispatch(addPopsAssessmentEncounterID(encounterID));
+    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
   }
 
   // onClick: Renders POPSHistory SubPage
