@@ -6,7 +6,7 @@ import { ReactComponent as ChartIcon } from "../../../assets/img/icon/chart.svg"
 import { ReactComponent as GpConnectIcon } from "../../../assets/img/icon/gp-connect.svg";
 import { ReactComponent as IceIcon } from "../../../assets/img/icon/ice.svg";
 import { ReactComponent as NotesIcon } from "../../../assets/img/icon/notes.svg";
-import { ReactComponent as ObsIcon } from "../../../assets/img/icon/obs.svg";
+import { ReactComponent as PopsHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
 import { ReactComponent as PacsIcon } from "../../../assets/img/icon/pacs.svg";
 import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
@@ -21,18 +21,26 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { Chart, GPConnect, Ice, Notes, Obs, Pacs, Save } from "./subPages";
+import {
+  Chart,
+  GPConnect,
+  Ice,
+  Notes,
+  Pacs,
+  POPSHistory,
+  Save,
+} from "./subPages";
 
 // Page: ClinicalNotes
 export default function ClinicalNotes() {
-  // State: isNotes, isObsHistory, isIntegration, isSave
+  // State: isNotes, isPopsHistory, isIntegration, isSave
   const [isNotes, setIsNotes] = useState(true);
-  const [isObsHistory, setIsObsHistory] = useState(false);
+  const [isPopsHistory, setIsPopsHistory] = useState(false);
   const [isIntegration, setIsIntegration] = useState(false);
   const [isSave, setIsSave] = useState(false);
 
-  // State: Obs History SubPages
-  const [isObs, setIsObs] = useState(false);
+  // State: POPS History SubPages
+  const [isPopsHistorySubPage, setIsPopsHistorySubPage] = useState(false);
   const [isChart, setIsChart] = useState(false);
 
   // State: Integration SubPages
@@ -42,8 +50,8 @@ export default function ClinicalNotes() {
 
   // onClick: Renders Notes SubPage
   function renderNotes() {
-    setIsObsHistory(false);
-    setIsObs(false);
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
     setIsChart(false);
     setIsIntegration(false);
     setIsIce(false);
@@ -63,8 +71,8 @@ export default function ClinicalNotes() {
     setIsPacs(false);
     setIsGpConnect(false);
     setIsSave(false);
-    setIsObsHistory(true);
-    setIsObs(true);
+    setIsPopsHistory(true);
+    setIsPopsHistorySubPage(true);
   }
 
   // onClick: Renders Chart SubPage
@@ -72,24 +80,24 @@ export default function ClinicalNotes() {
     setIsChart(false);
     setIsIntegration(false);
     setIsNotes(false);
-    setIsObs(false);
+    setIsPopsHistorySubPage(false);
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
     setIsSave(false);
     setIsChart(true);
-    setIsObsHistory(true);
+    setIsPopsHistory(true);
   }
 
   // onClick: Renders ICE SubPage
   function renderIce() {
     setIsChart(false);
     setIsNotes(false);
-    setIsObs(false);
+    setIsPopsHistorySubPage(false);
     setIsPacs(false);
     setIsGpConnect(false);
     setIsChart(false);
-    setIsObsHistory(false);
+    setIsPopsHistory(false);
     setIsSave(false);
     setIsIce(true);
     setIsIntegration(true);
@@ -99,10 +107,10 @@ export default function ClinicalNotes() {
   function renderPacs() {
     setIsChart(false);
     setIsNotes(false);
-    setIsObs(false);
+    setIsPopsHistorySubPage(false);
     setIsGpConnect(false);
     setIsChart(false);
-    setIsObsHistory(false);
+    setIsPopsHistory(false);
     setIsIce(false);
     setIsSave(false);
     setIsPacs(true);
@@ -113,10 +121,10 @@ export default function ClinicalNotes() {
   function renderGpConnect() {
     setIsChart(false);
     setIsNotes(false);
-    setIsObs(false);
+    setIsPopsHistorySubPage(false);
     setIsPacs(false);
     setIsChart(false);
-    setIsObsHistory(false);
+    setIsPopsHistory(false);
     setIsIce(false);
     setIsSave(false);
     setIsGpConnect(true);
@@ -127,10 +135,10 @@ export default function ClinicalNotes() {
   function renderSave() {
     setIsChart(false);
     setIsNotes(false);
-    setIsObs(false);
+    setIsPopsHistorySubPage(false);
     setIsPacs(false);
     setIsChart(false);
-    setIsObsHistory(false);
+    setIsPopsHistory(false);
     setIsIce(false);
     setIsGpConnect(false);
     setIsIntegration(false);
@@ -160,10 +168,12 @@ export default function ClinicalNotes() {
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
-                    isActive={isObsHistory ? true : false}
+                    isActive={isPopsHistory ? true : false}
                     onClick={renderObs}
                   >
-                    <PrimaryNavigation.Text>Obs History</PrimaryNavigation.Text>
+                    <PrimaryNavigation.Text>
+                      POPS History
+                    </PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
@@ -198,16 +208,18 @@ export default function ClinicalNotes() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
-                  ) : isObsHistory ? (
+                  ) : isPopsHistory ? (
                     <>
                       <SecondaryNavigation.Item
-                        isActive={isObs ? true : false}
+                        isActive={isPopsHistorySubPage ? true : false}
                         onClick={renderObs}
                       >
                         <SecondaryNavigation.Icon>
-                          <ObsIcon />
+                          <PopsHistoryIcon />
                         </SecondaryNavigation.Icon>
-                        <SecondaryNavigation.Text>Obs</SecondaryNavigation.Text>
+                        <SecondaryNavigation.Text>
+                          POPS History
+                        </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
                       <SecondaryNavigation.Item
@@ -274,8 +286,8 @@ export default function ClinicalNotes() {
               content={
                 isNotes ? (
                   <Notes />
-                ) : isObs ? (
-                  <Obs />
+                ) : isPopsHistorySubPage ? (
+                  <POPSHistory />
                 ) : isChart ? (
                   <Chart />
                 ) : isIce ? (

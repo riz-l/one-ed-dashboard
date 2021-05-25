@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // Import: Assets
 import { ReactComponent as SeenSubPageIcon } from "../../../assets/img/icon/assessments-seen.svg";
+import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Seen.elements";
@@ -15,7 +16,7 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { SeenSubPage } from "./subPages/index";
+import { Save, SeenSubPage } from "./subPages/index";
 
 // Page: Seen
 export default function Seen() {
@@ -95,10 +96,26 @@ export default function Seen() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
+                  ) : isSave ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isSave ? true : false}
+                        onClick={renderSave}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <SaveIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          Save
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
                   ) : null}
                 </SecondaryNavigation>
               }
-              content={isSeenSubPage ? <SeenSubPage /> : null}
+              content={
+                isSeenSubPage ? <SeenSubPage /> : isSave ? <Save /> : null
+              }
             />
           </ContentWrapper>
         </Wrapper>

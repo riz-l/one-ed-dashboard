@@ -7,13 +7,13 @@ import {
 } from "../../../../../redux/slices/clinicalNotesSlice";
 
 // Import: Elements
-import { Container, Wrapper } from "./Obs.elements";
+import { Container, Wrapper } from "./POPSHistory.elements";
 
 // Import: Components
-import { ObsEntry, Text } from "../../../../components";
+import { POPSHistoryModal, Text } from "../../../../components";
 
-// SubPage: Obs
-export default function Obs() {
+// SubPage: POPSHistory
+export default function POPSHistory() {
   // Redux:
   const questionnaireResponse = useSelector(
     (state) => state.clinicalNotes.notes.questionnaireResponse
@@ -42,7 +42,7 @@ export default function Obs() {
     filteredQuestionnaireResponse && filteredQuestionnaireResponse.length > 0
       ? filteredQuestionnaireResponse.map(function (item, index) {
           return (
-            <ObsEntry
+            <POPSHistoryModal
               key={index}
               id={item.id}
               dateTime={item.alertStatus[2].valueDateTime}
@@ -55,17 +55,17 @@ export default function Obs() {
 
   return (
     <>
-      <Container data-testid={"obs"}>
+      <Container data-testid={"popsHistory"}>
         <Wrapper>
           <Text as="h2" heading>
-            Obs
+            POPS History
           </Text>
 
           {filteredQuestionnaireResponse &&
           filteredQuestionnaireResponse.length > 0 ? (
             previousObsRender
           ) : (
-            <Text as="p">The Patient has no historic obs</Text>
+            <Text as="p">The Patient has no POPS history</Text>
           )}
         </Wrapper>
       </Container>
