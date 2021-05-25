@@ -2,6 +2,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
+
 // Import: Elements
 import { Container, Wrapper } from "./Allergies.elements";
 
@@ -43,7 +46,13 @@ export default function Allergies() {
                           labelText="Reaction Display"
                           htmlFor="reactionDisplay"
                         >
-                          {reactionDisplay}
+                          {reactionDisplay && reactionDisplay.length > 0
+                            ? reactionDisplay === "undefined"
+                              ? "N/A"
+                              : reactionDisplay
+                              ? capitalizeFirstLetter(reactionDisplay)
+                              : "N/A"
+                            : "N/A"}
                         </Display>
                       </Grid.Item>
                     </Grid.Column>
@@ -54,7 +63,13 @@ export default function Allergies() {
                           labelText="Verification Status"
                           htmlFor="verificationStatus"
                         >
-                          {verificationStatus}
+                          {verificationStatus && verificationStatus.length > 0
+                            ? verificationStatus === "undefined"
+                              ? "N/A"
+                              : verificationStatus
+                              ? capitalizeFirstLetter(verificationStatus)
+                              : "N/A"
+                            : "N/A"}
                         </Display>
                       </Grid.Item>
                     </Grid.Column>

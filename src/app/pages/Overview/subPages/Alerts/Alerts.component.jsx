@@ -2,6 +2,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
+
 // Import: Elements
 import { Container, Wrapper } from "./Alerts.elements";
 
@@ -38,7 +41,13 @@ export default function Alerts() {
                     <Grid.Column>
                       <Grid.Item>
                         <Display labelText="Status" htmlFor="status">
-                          {status}
+                          {status && status.length > 0
+                            ? status === "undefined"
+                              ? "N/A"
+                              : status
+                              ? capitalizeFirstLetter(status)
+                              : "N/A"
+                            : "N/A"}
                         </Display>
                       </Grid.Item>
                     </Grid.Column>
@@ -46,7 +55,13 @@ export default function Alerts() {
                     <Grid.Column>
                       <Grid.Item>
                         <Display labelText="Alert Code" htmlFor="alertCode">
-                          {alertCode}
+                          {alertCode && alertCode.length > 0
+                            ? alertCode === "undefined"
+                              ? "N/A"
+                              : alertCode
+                              ? capitalizeFirstLetter(alertCode)
+                              : "N/A"
+                            : "N/A"}
                         </Display>
                       </Grid.Item>
                     </Grid.Column>

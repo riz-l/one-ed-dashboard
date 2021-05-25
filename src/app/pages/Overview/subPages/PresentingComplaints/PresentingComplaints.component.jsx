@@ -2,6 +2,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
+
 // Import: Elements
 import { Container, Wrapper } from "./PresentingComplaints.elements";
 
@@ -45,7 +48,13 @@ export default function PresentingComplaints() {
                       <Grid.Column>
                         <Grid.Item>
                           <Display htmlFor="category" labelText="Category">
-                            {category}
+                            {category && category.length > 0
+                              ? category === "undefined"
+                                ? "N/A"
+                                : category
+                                ? capitalizeFirstLetter(category)
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
 
@@ -54,7 +63,13 @@ export default function PresentingComplaints() {
                             hrmlFor="problemCode"
                             labelText="Problem code"
                           >
-                            {problemCode}
+                            {problemCode && problemCode.length > 0
+                              ? problemCode === "undefined"
+                                ? "N/A"
+                                : problemCode
+                                ? problemCode
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
                       </Grid.Column>
@@ -65,16 +80,30 @@ export default function PresentingComplaints() {
                             htmlFor="verificationStatus"
                             labelText="Verification Status"
                           >
-                            {verificationStatus}
+                            {verificationStatus && verificationStatus.length > 0
+                              ? verificationStatus === "undefined"
+                                ? "N/A"
+                                : verificationStatus
+                                ? capitalizeFirstLetter(verificationStatus)
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
+                      </Grid.Column>
 
+                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             htmlFor="onsetDateTime"
                             labelText="Onset Date Time"
                           >
-                            {onsetDateTime}
+                            {onsetDateTime && onsetDateTime.length > 0
+                              ? onsetDateTime === "undefined"
+                                ? "N/A"
+                                : onsetDateTime
+                                ? onsetDateTime
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
                       </Grid.Column>

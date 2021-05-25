@@ -2,6 +2,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
+
 // Import: Elements
 import { Container, Wrapper } from "./Diagnosis.elements";
 
@@ -45,7 +48,13 @@ export default function Diagnosis() {
                       <Grid.Column>
                         <Grid.Item>
                           <Display labelText="Note" htmlFor="note">
-                            {note}
+                            {note && note.length > 0
+                              ? note === "undefined"
+                                ? "N/A"
+                                : note
+                                ? capitalizeFirstLetter(note)
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
 
@@ -54,7 +63,13 @@ export default function Diagnosis() {
                             labelText="Verification Status"
                             htmlFor="verificationStatus"
                           >
-                            {verificationStatus}
+                            {verificationStatus && verificationStatus.length > 0
+                              ? verificationStatus === "undefined"
+                                ? "N/A"
+                                : verificationStatus
+                                ? capitalizeFirstLetter(verificationStatus)
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
                       </Grid.Column>
@@ -62,7 +77,13 @@ export default function Diagnosis() {
                       <Grid.Column>
                         <Grid.Item>
                           <Display labelText="Category" htmlFor="category">
-                            {category}
+                            {category && category.length > 0
+                              ? category === "undefined"
+                                ? "N/A"
+                                : category
+                                ? capitalizeFirstLetter(category)
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
 
@@ -71,16 +92,30 @@ export default function Diagnosis() {
                             labelText="problemCode"
                             htmlFor="problemCode"
                           >
-                            {problemCode}
+                            {problemCode && problemCode.length > 0
+                              ? problemCode === "undefined"
+                                ? "N/A"
+                                : problemCode
+                                ? problemCode
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
+                      </Grid.Column>
 
+                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             labelText="Onset Date Time"
                             htmlFor="onsetDateTime"
                           >
-                            {onsetDateTime}
+                            {onsetDateTime && onsetDateTime.length > 0
+                              ? onsetDateTime === "undefined"
+                                ? "N/A"
+                                : onsetDateTime
+                                ? onsetDateTime
+                                : "N/A"
+                              : "N/A"}
                           </Display>
                         </Grid.Item>
                       </Grid.Column>
