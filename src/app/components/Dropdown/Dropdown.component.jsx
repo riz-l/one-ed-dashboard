@@ -1,5 +1,6 @@
 // Import: Dependencies
 import React from "react";
+import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Elements
 import { Container, Label, Select, Option } from "./Dropdown.elements";
@@ -31,7 +32,7 @@ export const Dropdown = React.forwardRef((props, ref) => {
         {props.options
           ? props.options.map((option, index) => (
               <Option key={index} value={option}>
-                {option}
+                {capitalizeFirstLetter(option)}
               </Option>
             ))
           : placeholderOptions.map((placeholderOption, index) => (

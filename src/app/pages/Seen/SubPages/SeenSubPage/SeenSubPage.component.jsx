@@ -34,6 +34,10 @@ export default function SeenSubPage() {
         .UserRoleProfile[0].UserID.extension
   );
   const seenComments = useSelector((state) => state.seen.seenForm.SeenComments);
+  const seniorReviewReq = useSelector(
+    (state) => state.seen.seenForm.SeniorReviewReq
+  );
+  const apiResponse = useSelector((state) => state.seen.apiResponse);
   const dispatch = useDispatch();
 
   // Ref:
@@ -57,10 +61,16 @@ export default function SeenSubPage() {
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
   // Senior Review options
-  const seniorReviewOptions = ["This is a test - senior review req"];
+  const seniorReviewOptions = ["true", "false"];
 
   // Reason options
-  const reasonOptions = ["This is a test - senior review reason"];
+  const reasonOptions = [
+    "Abdominal pain in pts 70+",
+    "Atraumatic chest pain in pt's 30+",
+    "Fever in children under 1 yr",
+    "Return with same condition <72hr after discharge",
+    "Requested by Junior Doctor",
+  ];
 
   // Add values to Redux
   const addSeniorReviewToRedux = () => {
@@ -138,15 +148,17 @@ export default function SeenSubPage() {
                   />
                 </Grid.Item>
 
-                <Grid.Item>
-                  <Form.Dropdown
-                    htmlFor="reason"
-                    labelText="Reason"
-                    ref={seenReasonRef}
-                    onChange={addReasonToRedux}
-                    options={reasonOptions}
-                  />
-                </Grid.Item>
+                {seniorReviewReq === "true" && (
+                  <Grid.Item>
+                    <Form.Dropdown
+                      htmlFor="reason"
+                      labelText="Reason"
+                      ref={seenReasonRef}
+                      onChange={addReasonToRedux}
+                      options={reasonOptions}
+                    />
+                  </Grid.Item>
+                )}
 
                 <Grid.Item>
                   <Form.Display htmlFor="area" labelText="Area">
@@ -182,6 +194,26 @@ export default function SeenSubPage() {
                     text="Submit Seen"
                   />
                 </Grid.Item>
+
+                {apiResponse === "HTTP Response Code: 200" ||
+                (apiResponse && apiResponse.response) ? (
+                  <Form.Display
+                    htmlFor="submissionResponse"
+                    style={
+                      apiResponse === "HTTP Response Code: 200"
+                        ? { color: "#008ba3" }
+                        : apiResponse && apiResponse.response
+                        ? { color: "tomato" }
+                        : null
+                    }
+                  >
+                    {apiResponse === "HTTP Response Code: 200"
+                      ? "Submission Successful"
+                      : apiResponse && apiResponse.response
+                      ? "Submission Failed"
+                      : null}
+                  </Form.Display>
+                ) : null}
               </Grid.Column>
             </Grid>
           </Form>

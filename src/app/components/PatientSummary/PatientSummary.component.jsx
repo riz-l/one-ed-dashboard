@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
+import { clearPatient } from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Assets
 import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/icon/assessments-clinical.svg";
@@ -55,6 +56,11 @@ export default function PatientSummary() {
     );
   }
 
+  function closeAndClear() {
+    dispatch(clearPatient());
+    dispatch(setIsSummaryOpen(false));
+  }
+
   return (
     <>
       <Container data-testid={"patientSummary"}>
@@ -65,7 +71,7 @@ export default function PatientSummary() {
           />
 
           <Button
-            onClick={() => dispatch(setIsSummaryOpen(false))}
+            onClick={closeAndClear}
             margin="0 2rem -1.4rem 0"
             text="Close Summary"
           />

@@ -161,15 +161,15 @@ export default function PatientList() {
           <Item>
             <PageTitle heading="Patient List" subheading="Browse ED Patients" />
 
-            {selectedPatient !== "" ? (
+            {/* {selectedPatient !== "" ? (
               <>
                 <Button
                   margin="0 0.8rem -1.4rem 0"
                   onClick={() => dispatch(clearPatient())}
                   text="Clear Patient"
-                />
+                /> */}
 
-                {/* <Button
+            {/* <Button
                   margin="0 0 -1.4rem 0"
                   onClick={() =>
                     isSummaryOpen
@@ -178,10 +178,10 @@ export default function PatientList() {
                   }
                   text="Toggle Summary"
                 /> */}
-              </>
-            ) : null}
+            {/* </>
+            ) : null} */}
 
-            <Attendance />
+            {/* <Attendance /> */}
           </Item>
 
           <PrimaryNavigation margin="0 0 0 0" padding="1rem 0 0 2rem">

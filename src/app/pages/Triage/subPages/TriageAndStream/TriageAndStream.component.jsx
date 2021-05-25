@@ -87,20 +87,18 @@ export default function TriageAndStream() {
   };
 
   // Dropdown options
-  const dropdownOptions = ["Very urgent", "Not urgent"];
+  const dropdownOptions = [
+    "Immediate",
+    "Very urgent",
+    "Urgent",
+    "Standard",
+    "Non-urgent",
+  ];
 
   // Autosuggest options
   const autoSuggestOptions = [
     {
       name: "Dizziness - light-headed",
-      code: "386705008",
-    },
-    {
-      name: "Fractured skull - heavy trauma",
-      code: "386705008",
-    },
-    {
-      name: "Broken collar bone",
       code: "386705008",
     },
   ];
