@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addPopsAssessmentPatientID,
@@ -13,6 +13,10 @@ import {
   addPopsAssessmentSysObsNeuroEDObsAVPU,
   addPopsAssessmentRTGChildObsComments,
 } from "../../../redux/slices/triageSlice";
+import {
+  getPatientAllergies,
+  getPatientAlerts,
+} from "../../../redux/slices/selectedPatientSlice";
 import moment from "moment";
 
 // Import: Assets
@@ -65,6 +69,12 @@ export default function Triage() {
   const patientName = useSelector(
     (state) => state.selectedPatient.patientData[0].name
   );
+  const patientAlerts = useSelector(
+    (state) => state.selectedPatient.patientAlerts
+  );
+  const patientAllergies = useSelector(
+    (state) => state.selectedPatient.patientAllergies
+  );
   const encounterID = useSelector(
     (state) => state.selectedPatient.patientData[0].encounterID
   );
@@ -99,6 +109,12 @@ export default function Triage() {
   const newTime = newDateTime.toLocaleTimeString();
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
+
+  // Effect: Fetches Alerts and Allergies
+  useEffect(() => {
+    dispatch(getPatientAllergies());
+    dispatch(getPatientAlerts());
+  }, [dispatch]);
 
   // onClick: Renders Triage SubPage
   function renderTriage() {
@@ -399,7 +415,13 @@ export default function Triage() {
                         isActive={isAlerts ? true : false}
                         onClick={renderAlerts}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientAlerts && patientAlerts.length > 0
+                              ? true
+                              : false
+                          }
+                        >
                           <AlertsIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
@@ -411,7 +433,13 @@ export default function Triage() {
                         isActive={isAllergies ? true : false}
                         onClick={renderAllergies}
                       >
-                        <SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Icon
+                          isRed={
+                            patientAllergies && patientAllergies.length > 0
+                              ? true
+                              : false
+                          }
+                        >
                           <AllergiesIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
