@@ -38,7 +38,8 @@ export default function TriageAndStream() {
   const startDate = useSelector(
     (state) => state.selectedPatient.patientData[0].StartDate
   );
-  const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
+  const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
+  // const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
   const patient = useSelector((state) => state.selectedPatient.patient);
   const apiResponse = useSelector((state) => state.triage.apiResponse);
   const dispatch = useDispatch();
