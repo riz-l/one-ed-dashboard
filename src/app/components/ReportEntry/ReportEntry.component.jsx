@@ -31,7 +31,7 @@ import {
 import "./ReportEntry.styles.css";
 
 // Import: Components
-import { Button, PageTitle, Text } from "../index";
+import { Button, PageTitle } from "../index";
 
 // Component: ReportEntry
 export default function ReportEntry({
