@@ -109,7 +109,7 @@ export default function UrineObs() {
                     htmlFor="protein"
                     labelText="Protein"
                     onChange={addProteinToRedux}
-                    options={["Negative"]}
+                    options={["Negative", "Trace", "+", "++", "+++", "++++"]}
                     ref={proteinRef}
                     value={
                       popsAssessment.IntervenPathTestUrinalysisProteinLevel
@@ -122,7 +122,17 @@ export default function UrineObs() {
                     htmlFor="blood"
                     labelText="Blood"
                     onChange={addBloodToRedux}
-                    options={["Negative"]}
+                    options={[
+                      "Negative",
+                      "Trace",
+                      "+",
+                      "++",
+                      "+++",
+                      "++++",
+                      "Haemolysed trace",
+                      "Non-haemolysed trace",
+                      "Non-haemolysed moderate",
+                    ]}
                     ref={bloodRef}
                     value={popsAssessment.IntervenPathTestUrinalysisBloodLevel}
                   />
@@ -135,7 +145,7 @@ export default function UrineObs() {
                     htmlFor="glucose"
                     labelText="Glucose"
                     onChange={addGlucoseToRedux}
-                    options={["Negative"]}
+                    options={["Negative", "Trace", "+", "++", "+++", "++++"]}
                     ref={glucoseRef}
                     value={
                       popsAssessment.IntervenPathTestUrinalysisGlucoseLevel
@@ -148,7 +158,7 @@ export default function UrineObs() {
                     htmlFor="leu"
                     labelText="Leu"
                     onChange={addLeuToRedux}
-                    options={["Negative"]}
+                    options={["Negative", "Trace", "1+", "2+", "3+", "4+"]}
                     ref={leuRef}
                     value={popsAssessment.IntervenPathTestUrinalysisWCNumbered}
                   />
@@ -159,7 +169,7 @@ export default function UrineObs() {
                     htmlFor="nitrites"
                     labelText="Nitrites"
                     onChange={addNitritesToRedux}
-                    options={["Negative"]}
+                    options={["Negative", "Positive"]}
                     ref={nitritesRef}
                     value={popsAssessment.IntervenPathTestUrinalysisNitrites}
                   />
@@ -170,7 +180,7 @@ export default function UrineObs() {
                     htmlFor="ketone"
                     labelText="Ketone"
                     onChange={addKetoneToRedux}
-                    options={["Negative"]}
+                    options={["Negative", "Trace", "+", "++", "+++", "++++"]}
                     ref={ketoneRef}
                     value={popsAssessment.IntervenPathTestUrinalysisKetoneLevel}
                   />

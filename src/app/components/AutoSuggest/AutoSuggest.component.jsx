@@ -51,7 +51,12 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
   // Renders each suggestion
   const renderSuggestion = (suggestion) => (
     <Dropdown ref={ref}>
-      <span onClick={() => dispatch(props.onChange(suggestion.name))}>
+      <span
+        onClick={() => {
+          dispatch(props.onChange(suggestion.name));
+          dispatch(props.codeOnChange(suggestion.code));
+        }}
+      >
         {suggestion.name}
       </span>
     </Dropdown>

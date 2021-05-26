@@ -52,6 +52,7 @@ export default function TriageAndStream() {
   const triageDateRef = useRef();
   const triageTimeRef = useRef();
   const triageDiagnosisRef = useRef();
+  const triageDiagnosisCodeRef = useRef();
   const triageCategoryRef = useRef();
 
   // Current Date, Time
@@ -73,7 +74,7 @@ export default function TriageAndStream() {
     dispatch(addTriageFormDateTime(putEditedNewDateTime));
     // dispatch(addTriageFormTriageCategory("Very urgent"));
     // dispatch(addTriageFormTriageDiagnosis("Dizziness - light-headed"));
-    dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+    // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
     dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
@@ -94,7 +95,7 @@ export default function TriageAndStream() {
       dispatch(clearTriageForm());
       dispatch(addTriageFormPatientID(patient));
       dispatch(addTriageFormDateTime(putEditedNewDateTime));
-      dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+      // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
       dispatch(addTriageFormPractitioner(userExtension));
     } catch (err) {
       console.log(err);
@@ -104,7 +105,7 @@ export default function TriageAndStream() {
   // Dropdown options
   const dropdownOptions = [
     "Immediate",
-    "Very urgent",
+    "Very Urgent",
     "Urgent",
     "Standard",
     "Non-urgent",
@@ -120,13 +121,41 @@ export default function TriageAndStream() {
       name: "Dizziness - light-headed",
       code: "386705008",
     },
+    {
+      name: "Swelling of lower leg",
+      code: "449615005",
+    },
+    {
+      name: "Shoulder pain",
+      code: "45326000",
+    },
+    {
+      name: "Gas poisoning",
+      code: "57335002",
+    },
+    {
+      name: "Red eye",
+      code: "75705005",
+    },
+    {
+      name: "Medication requested",
+      code: "182888003",
+    },
+    {
+      name: "Injury of head",
+      code: "82271004",
+    },
+    {
+      name: "Ocular pain",
+      code: "41652007",
+    },
+    {
+      name: "General weakness",
+      code: "13791008",
+    },
   ];
 
   // Add values to Redux
-  // const addTriageDiagnosisToRedux = () => {
-  //   dispatch(addTriageFormTriageCategory(triageDiagnosisRef.current.value));
-  //   dispatch(addTriageFormTriageDiagnosisCode());
-  // };
   const addTriageCategoryToRedux = () => {
     dispatch(addTriageFormTriageCategory(triageCategoryRef.current.value));
   };
@@ -186,6 +215,7 @@ export default function TriageAndStream() {
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
                     onChange={addTriageFormTriageDiagnosis}
+                    codeOnChange={addTriageFormTriageDiagnosisCode}
                     options={autoSuggestOptions}
                     ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."

@@ -130,7 +130,12 @@ export default function NeuroObs() {
                     htmlFor="eyes"
                     labelText="Eyes"
                     onChange={addEyesToRedux}
-                    options={["Spontaneously"]}
+                    options={[
+                      "Spontaneously",
+                      "To Speech",
+                      "To Stimulus",
+                      "None",
+                    ]}
                     ref={eyesRef}
                     value={popsAssessment.SysObsNeuroEDObsGCSEyes}
                   />
@@ -141,7 +146,13 @@ export default function NeuroObs() {
                     htmlFor="verbal"
                     labelText="Verbal"
                     onChange={addVerbalToRedux}
-                    options={["Orientated"]}
+                    options={[
+                      "Orientated",
+                      "Confused",
+                      "Inappropriate Words",
+                      "None",
+                      "Incomprehensible Sounds",
+                    ]}
                     ref={verbalRef}
                     value={popsAssessment.SysObsNeuroEDObsGCSVerbal}
                   />
@@ -152,7 +163,14 @@ export default function NeuroObs() {
                     htmlFor="motor"
                     labelText="Motor"
                     onChange={addMotorToRedux}
-                    options={["Obeys commands"]}
+                    options={[
+                      "Obeys commands",
+                      "Localises stimulus",
+                      "Flexion Withdrawal",
+                      "Flexion abnormal",
+                      "No response",
+                      "Extension",
+                    ]}
                     ref={motorRef}
                     value={popsAssessment.SysObsNeuroEDObsGCSMotor}
                   />
@@ -222,7 +240,7 @@ export default function NeuroObs() {
                     htmlFor="leftPupilSize"
                     labelText="Left Pupil Size"
                     onChange={leftPupilSizeToRedux}
-                    options={["1", "2", "3", "4", "5", "6"]}
+                    options={["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
                     ref={leftPupilSizeRef}
                     value={popsAssessment.SysObsNeuroPupilSizeLeft}
                   />
@@ -233,7 +251,13 @@ export default function NeuroObs() {
                     htmlFor="leftPupilReaction"
                     labelText="Left Pupil Reaction"
                     onChange={leftPupilReactionToRedux}
-                    options={["Fixed and Dilated"]}
+                    options={[
+                      "Reactive",
+                      "Sluggish",
+                      "Non-Reactive",
+                      "Fixed and Dilated",
+                      "Closed",
+                    ]}
                     ref={leftPupilReactionRef}
                     value={popsAssessment.SysObsNeuroPupilReactivityLeft}
                   />
@@ -244,7 +268,7 @@ export default function NeuroObs() {
                     htmlFor="rightPupilSize"
                     labelText="Right Pupil Size"
                     onChange={rightPupilSizeToRedux}
-                    options={["1", "2", "3", "4", "5", "6"]}
+                    options={["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
                     ref={rightPupilSizeRef}
                     value={popsAssessment.SysObsNeuroPupilSizeRight}
                   />
@@ -255,7 +279,13 @@ export default function NeuroObs() {
                     htmlFor="rightPupilReaction"
                     labelText="Right Pupil Reaction"
                     onChange={rightPupilReactionToRedux}
-                    options={["Fixed and Dilated"]}
+                    options={[
+                      "Reactive",
+                      "Sluggish",
+                      "Non-Reactive",
+                      "Fixed and Dilated",
+                      "Closed",
+                    ]}
                     ref={rightPupilReactionRef}
                     value={popsAssessment.SysObsNeuroPupilReactivityRight}
                   />
@@ -274,7 +304,14 @@ export default function NeuroObs() {
                     htmlFor="leftArm"
                     labelText="Left Arm"
                     onChange={leftArmToRedux}
-                    options={["Severe Weakness", "Spastic Flexion"]}
+                    options={[
+                      "Normal Power",
+                      "Mild Weakness",
+                      "Severe Weakness",
+                      "Spastic Flexion",
+                      "Extension",
+                      "No Response",
+                    ]}
                     ref={leftArmRef}
                     value={popsAssessment.RegObsArmLimbMovementLeft}
                   />
@@ -285,7 +322,14 @@ export default function NeuroObs() {
                     htmlFor="leftLeg"
                     labelText="Left Leg"
                     onChange={leftLegToRedux}
-                    options={["Normal Power"]}
+                    options={[
+                      "Normal Power",
+                      "Mild Weakness",
+                      "Severe Weakness",
+                      "Spastic Flexion",
+                      "Extension",
+                      "No Response",
+                    ]}
                     ref={leftLegRef}
                     value={popsAssessment.RegObsLegLimbMovementLeft}
                   />
@@ -296,7 +340,14 @@ export default function NeuroObs() {
                     htmlFor="rightArm"
                     labelText="Right Arm"
                     onChange={rightArmToRedux}
-                    options={["Severe Weakness", "Spastic Flexion"]}
+                    options={[
+                      "Normal Power",
+                      "Mild Weakness",
+                      "Severe Weakness",
+                      "Spastic Flexion",
+                      "Extension",
+                      "No Response",
+                    ]}
                     ref={rightArmRef}
                     value={popsAssessment.RegObsArmLimbMovementRight}
                   />
@@ -307,7 +358,14 @@ export default function NeuroObs() {
                     htmlFor="rightLeg"
                     labelText="Right Leg"
                     onChange={rightLegToRedux}
-                    options={["Normal Power"]}
+                    options={[
+                      "Normal Power",
+                      "Mild Weakness",
+                      "Severe Weakness",
+                      "Spastic Flexion",
+                      "Extension",
+                      "No Response",
+                    ]}
                     ref={rightLegRef}
                     value={popsAssessment.RegObsLegLimbMovementRight}
                   />

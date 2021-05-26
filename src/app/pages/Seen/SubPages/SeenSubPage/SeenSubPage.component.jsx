@@ -68,7 +68,7 @@ export default function SeenSubPage() {
   // Reason options
   const reasonOptions = [
     "Abdominal pain in pts 70+",
-    "Atraumatic chest pain in pt's 30+",
+    "Atraumatic chest pain in pts 30+",
     "Fever in children under 1 yr",
     "Return with same condition <72hr after discharge",
     "Requested by Junior Doctor",

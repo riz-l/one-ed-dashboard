@@ -71,6 +71,7 @@ const FormAutoSuggest = React.forwardRef((props, ref) => {
       left={props.left}
       options={props.options}
       onChange={props.onChange}
+      codeOnChange={props.codeOnChange}
       placeholder={props.placeholder}
       ref={ref}
     />

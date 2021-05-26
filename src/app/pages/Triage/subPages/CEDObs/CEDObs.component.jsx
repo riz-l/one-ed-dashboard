@@ -188,7 +188,19 @@ export default function CEDObs() {
                     htmlFor="painScore"
                     labelText="Pain Score"
                     onChange={addPainScoreToRedux}
-                    options={["8"]}
+                    options={[
+                      "0",
+                      "1",
+                      "2",
+                      "3",
+                      "4",
+                      "5",
+                      "6",
+                      "7",
+                      "8",
+                      "9",
+                      "10",
+                    ]}
                     ref={painScoreRef}
                     value={popsAssessment.SysObsNeuroPainScore}
                   />
@@ -267,7 +279,14 @@ export default function CEDObs() {
                     htmlFor="supplementalO2"
                     labelText="Supplemental O2"
                     onChange={addSupplementalO2ToRedux}
-                    options={["Room Air 21%"]}
+                    options={[
+                      "Room Air 21%",
+                      "Venturi",
+                      "Non rebreathe 85%",
+                      "Nasal = 20 + (4 x litres o2)",
+                      "neb-air 21%",
+                      "neb-6L 46%",
+                    ]}
                     ref={supplementalO2Ref}
                     value={
                       popsAssessment.SysObsRespiratorySupplementalOxygenTypeOptions
@@ -348,7 +367,7 @@ export default function CEDObs() {
                     htmlFor="capillaryRefill"
                     labelText="Capillary Refill"
                     onChange={addCapillaryRefillToRedux}
-                    options={["3"]}
+                    options={["<2", "3", "4", "5", ">5"]}
                     ref={capillaryRefillRef}
                     value={popsAssessment.SysObsCardiovascCEDObsCapillaryRefill}
                   />
@@ -359,7 +378,13 @@ export default function CEDObs() {
                     htmlFor="popsOther"
                     labelText="POPS Other"
                     onChange={addPopsOtherToRedux}
-                    options={["Oncology Patient"]}
+                    options={[
+                      "Oncology Patient",
+                      "Patient on long term steroids or diabetic",
+                      "Congenital Heart disease",
+                      "Ex-prem or any syndromic condition",
+                      "None",
+                    ]}
                     ref={popsOtherRef}
                     value={popsAssessment.IntervenCEDObsAnyAgeOtherScore}
                   />
@@ -370,7 +395,11 @@ export default function CEDObs() {
                     htmlFor="popsGutFeeling"
                     labelText="POPS Gut Feeling"
                     onChange={addPopsGutFeelingToRedux}
-                    options={["Child looks unwell"]}
+                    options={[
+                      "Child looks unwell",
+                      "Well",
+                      "Low level of concern",
+                    ]}
                     ref={popsGutFeelingRef}
                     value={popsAssessment.IntervenCEDObsAnyAgeGutFeelingScore}
                   />
@@ -381,22 +410,30 @@ export default function CEDObs() {
                     htmlFor="popsBreathing"
                     labelText="POPS Breathing"
                     onChange={addPopsBreathingToRedux}
-                    options={["Stridor or grunt"]}
+                    options={[
+                      "Stridor or grunt",
+                      "Wheeze",
+                      "No distress",
+                      "Severe recession",
+                      "Mild or moderate recession",
+                    ]}
                     ref={popsBreathingRef}
                     value={popsAssessment.IntervenCEDObsAnyAgeBreathingScore}
                   />
                 </Grid.Item>
 
-                <Grid.Item>
+                {/* TODO: TEMPORARILY DISABLED FOR DEMO */}
+                {/* <Grid.Item>
                   <Form.Dropdown htmlFor="avpu" labelText="AVPU" />
-                </Grid.Item>
+                </Grid.Item> */}
               </Grid.Column>
             </Grid>
           </Form>
 
-          <Text heading as="h2">
+          {/* TODO: TEMPORARILY DISABLED FOR DEMO */}
+          {/* <Text heading as="h2">
             POPS Score
-          </Text>
+          </Text> */}
         </Wrapper>
       </Container>
     </>
