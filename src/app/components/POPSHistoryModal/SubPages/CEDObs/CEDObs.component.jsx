@@ -182,8 +182,8 @@ export default function CEDObs() {
 
               <Grid.Item>
                 <Display htmlFor="popsScore" labelText="POPS Score">
-                  {questionnaireResponseDetail.RTGCEDObservationsPOPSScore
-                    ? questionnaireResponseDetail.RTGCEDObservationsPOPSScore
+                  {questionnaireResponseDetail.RTGCEDObservationsPOPSScore_1
+                    ? questionnaireResponseDetail.RTGCEDObservationsPOPSScore_1
                     : "N/A"}
                 </Display>
               </Grid.Item>

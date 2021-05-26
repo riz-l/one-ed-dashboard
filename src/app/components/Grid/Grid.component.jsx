@@ -27,7 +27,11 @@ function Column({ ...props }) {
 
 // Compound Component: Item
 function Item({ ...props }) {
-  return <ItemContainer>{props.children}</ItemContainer>;
+  return (
+    <ItemContainer horizontal={props.horizontal} margin={props.margin}>
+      {props.children}
+    </ItemContainer>
+  );
 }
 
 // Component: Grid

@@ -3,9 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  postPopsAssessment,
-  clearPopsAssessment,
-} from "../../../../../redux/slices/triageSlice";
+  putSeenForm,
+  clearSeenForm,
+} from "../../../../../redux/slices/seenSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -26,20 +26,17 @@ import { Form, Grid, Text } from "../../../../components";
 // SubPage: Save
 export default function Save() {
   // Redux:
-  const apiResponse = useSelector(
-    (state) => state.triage.popsAssessmentApiResponse
-  );
-  const status = useSelector((state) => state.triage.status);
+  const apiResponse = useSelector((state) => state.seen.apiResponse);
+  const status = useSelector((state) => state.seen.status);
   const dispatch = useDispatch();
 
-  // Submit POPS Assessment to API
-  const submitPopsAssessmentForm = async (event) => {
+  // Submit data to API
+  const submitSeenForm = async (event) => {
     event.preventDefault();
 
     try {
-      dispatch(postPopsAssessment());
-      dispatch(clearPopsAssessment());
-      console.log("POPS ASSESSMENT SENT");
+      dispatch(putSeenForm());
+      dispatch(clearSeenForm());
     } catch (err) {
       console.log(err);
     }
@@ -53,14 +50,14 @@ export default function Save() {
             Save
           </Text>
 
-          <Form onSubmit={submitPopsAssessmentForm}>
+          <Form onSubmit={submitSeenForm}>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
                   <Form.Button
                     type="submit"
                     text="Submit POPS Assessment"
-                    onClick={submitPopsAssessmentForm}
+                    onClick={submitSeenForm}
                   />
                 </Grid.Item>
 
@@ -102,14 +99,16 @@ export default function Save() {
                     </Grid.Item>
 
                     <Grid.Item>
-                      <Link to="/one-ed/assessments/seen">
+                      <Link to="/one-ed/assessments/clinical-notes">
                         <Suggestion>
                           <IconContainer>
                             <WorkflowIcon />
                           </IconContainer>
 
                           <span>Continue workflow</span>
-                          <span style={{ fontWeight: "500" }}>Next: Seen</span>
+                          <span style={{ fontWeight: "500" }}>
+                            Next: Clinical Notes
+                          </span>
                         </Suggestion>
                       </Link>
                     </Grid.Item>

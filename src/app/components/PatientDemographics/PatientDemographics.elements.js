@@ -216,7 +216,9 @@ export const ModalTopWrapper = styled.div`
 `;
 
 // Element: Modal Button Wrapper
-export const ModalButtonWrapper = styled.div``;
+export const ModalButtonWrapper = styled.div`
+  margin-right: 2rem;
+`;
 
 // Element: TestGridWrapper
 export const TestGridWrapper = styled.div`

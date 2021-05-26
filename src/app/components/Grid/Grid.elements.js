@@ -30,8 +30,10 @@ export const ColumnContainer = styled.div`
 export const ItemContainer = styled.div`
   align-items: flex-start;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: ${({ horizontal }) => (horizontal ? "row" : "column")};
   height: auto;
   justify-content: center;
   margin-bottom: 0.8rem;
+  margin: ${({ margin }) => margin && margin};
 `;

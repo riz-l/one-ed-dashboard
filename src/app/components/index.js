@@ -11,7 +11,7 @@ export { AutoSuggest } from "./AutoSuggest/AutoSuggest.component";
 export { default as Button } from "./Button/Button.component";
 
 // Export: Checkbox
-export { default as Checkbox } from "./Checkbox/Checkbox.component";
+export { Checkbox } from "./Checkbox/Checkbox.component";
 
 // Export: Display
 export { default as Display } from "./Display/Display.component";
@@ -80,7 +80,7 @@ export { default as PrimaryNavigation } from "./PrimaryNavigation/PrimaryNavigat
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute.component";
 
 // Export: Radio
-export { default as Radio } from "./Radio/Radio.component";
+export { Radio } from "./Radio/Radio.component";
 
 // Export: ReportEntry
 export { default as ReportEntry } from "./ReportEntry/ReportEntry.component";

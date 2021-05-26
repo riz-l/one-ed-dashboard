@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
-  putSeenForm,
   addDateTime,
   addSeenComments,
   addSeniorReviewReq,
@@ -34,6 +33,10 @@ export default function SeenSubPage() {
         .UserRoleProfile[0].UserID.extension
   );
   const seenComments = useSelector((state) => state.seen.seenForm.SeenComments);
+  const seenForm = useSelector((state) => state.seen.seenForm);
+  const seniorReviewReq = useSelector(
+    (state) => state.seen.seenForm.SeniorReviewReq
+  );
   const dispatch = useDispatch();
 
   // Ref:
@@ -57,10 +60,16 @@ export default function SeenSubPage() {
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
   // Senior Review options
-  const seniorReviewOptions = ["This is a test - senior review req"];
+  const seniorReviewOptions = ["true", "false"];
 
   // Reason options
-  const reasonOptions = ["This is a test - senior review reason"];
+  const reasonOptions = [
+    "Abdominal pain in pts 70+",
+    "Atraumatic chest pain in pt's 30+",
+    "Fever in children under 1 yr",
+    "Return with same condition <72hr after discharge",
+    "Requested by Junior Doctor",
+  ];
 
   // Add values to Redux
   const addSeniorReviewToRedux = () => {
@@ -82,22 +91,11 @@ export default function SeenSubPage() {
     dispatch(addPractitioner(userExtension));
   }, [dispatch, putEditedNewDateTime, userExtension]);
 
-  // Submit data to API
-  const submitSeenForm = async (event) => {
-    event.preventDefault();
-
-    try {
-      dispatch(putSeenForm());
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <>
       <Container data-testid={"seenSubPage"}>
         <Wrapper>
-          <Form onSubmit={submitSeenForm}>
+          <Form>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -132,21 +130,25 @@ export default function SeenSubPage() {
                   <Form.Dropdown
                     htmlFor="seniorReview"
                     labelText="Senior Review"
-                    ref={seenSeniorReviewRef}
                     onChange={addSeniorReviewToRedux}
                     options={seniorReviewOptions}
+                    ref={seenSeniorReviewRef}
+                    value={seenForm.SeniorReviewReq}
                   />
                 </Grid.Item>
 
-                <Grid.Item>
-                  <Form.Dropdown
-                    htmlFor="reason"
-                    labelText="Reason"
-                    ref={seenReasonRef}
-                    onChange={addReasonToRedux}
-                    options={reasonOptions}
-                  />
-                </Grid.Item>
+                {seniorReviewReq === "true" && (
+                  <Grid.Item>
+                    <Form.Dropdown
+                      htmlFor="reason"
+                      labelText="Reason"
+                      onChange={addReasonToRedux}
+                      options={reasonOptions}
+                      ref={seenReasonRef}
+                      value={seenForm.SeniorReviewReason}
+                    />
+                  </Grid.Item>
+                )}
 
                 <Grid.Item>
                   <Form.Display htmlFor="area" labelText="Area">
@@ -172,14 +174,6 @@ export default function SeenSubPage() {
                     ref={seenCommentsRef}
                     rows="4"
                     value={seenComments}
-                  />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Button
-                    type="submit"
-                    onClick={submitSeenForm}
-                    text="Submit Seen"
                   />
                 </Grid.Item>
               </Grid.Column>

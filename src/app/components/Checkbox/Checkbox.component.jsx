@@ -15,34 +15,28 @@ import {
 } from "./Checkbox.elements";
 
 // Component: Checkbox
-export default function Checkbox({
-  checked,
-  onChange,
-  under,
-  text,
-  htmlFor,
-  value,
-}) {
+export const Checkbox = React.forwardRef((props, ref) => {
   return (
     <Container data-testid={"checkbox"}>
-      <Label htmlFor={htmlFor}>
-        <Wrapper under={under}>
+      <Label htmlFor={props.htmlFor}>
+        <Wrapper under={props.under}>
           <InputCheckbox
             type="checkbox"
-            checked={checked}
-            onChange={onChange}
-            name={htmlFor}
-            id={htmlFor}
-            value={value}
+            checked={props.checked}
+            onChange={props.onChange}
+            name={props.htmlFor}
+            id={props.htmlFor}
+            ref={ref}
+            value={props.value}
           />
 
-          <VisualBox checked={checked}>
+          <VisualBox checked={props.checked}>
             <TickIcon />
           </VisualBox>
 
-          <Text under={under}>{text}</Text>
+          <Text under={props.under}>{props.text}</Text>
         </Wrapper>
       </Label>
     </Container>
   );
-}
+});

@@ -3,15 +3,15 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
-import Obs from "./Obs.component";
+import POPSHistory from "./POPSHistory.component";
 
-// Test: Checks that Obs renders
-it("checkObsRender", () => {
+// Test: Checks that POPSHistory renders
+it("checkPOPSHistoryRender", () => {
   const { queryByTestId } = render(
     <Router>
-      <Obs />
+      <POPSHistory />
     </Router>
   );
-  const page = queryByTestId("obs");
+  const page = queryByTestId("popsHistory");
   expect(page).toBeTruthy();
 });

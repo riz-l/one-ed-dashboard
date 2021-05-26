@@ -103,18 +103,19 @@ function FormButton({
 }
 
 // Compound Component: FormCheckbox
-function FormCheckbox({ checked, onChange, under, text, htmlFor, value }) {
+export const FormCheckbox = React.forwardRef((props, ref) => {
   return (
     <Checkbox
-      checked={checked}
-      onChange={onChange}
-      under={under}
-      text={text}
-      htmlFor={htmlFor}
-      value={value}
+      checked={props.checked}
+      onChange={props.onChange}
+      under={props.under}
+      ref={ref}
+      text={props.text}
+      htmlFor={props.htmlFor}
+      value={props.value}
     />
   );
-}
+});
 
 // Compound Component: FormDisplay
 function FormDisplay({
@@ -190,17 +191,19 @@ const FormInput = React.forwardRef((props, ref) => {
 });
 
 // Compound Component: FormRadio
-function FormRadio({ checked, name, onChange, text, value }) {
+const FormRadio = React.forwardRef((props, ref) => {
   return (
     <Radio
-      checked={checked}
-      name={name}
-      onChange={onChange}
-      text={text}
-      value={value}
+      checked={props.checked}
+      margin={props.margin}
+      name={props.name}
+      onChange={props.onChange}
+      ref={ref}
+      text={props.text}
+      value={props.value}
     />
   );
-}
+});
 
 // Compound Component: FormText
 function FormText({ bold, heading, subheading, text, ...props }) {

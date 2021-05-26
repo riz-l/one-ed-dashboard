@@ -6,7 +6,7 @@ import styled from "styled-components/macro";
 import { clearPatientList } from "./redux/slices/patientListSlice";
 import { clearPatient } from "./redux/slices/selectedPatientSlice";
 import { clearUser } from "./redux/slices/userDetailsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
@@ -29,7 +29,11 @@ import {
 
 // Component: App
 export default function App() {
-  // Redux: declares dispatch
+  // Redux:
+  const userDetails = useSelector((state) => state.userDetails.details);
+  const selectedPatient = useSelector(
+    (state) => state.selectedPatient.patientData
+  );
   const dispatch = useDispatch();
 
   // State: isLoggedIn, isNavigationOpen
@@ -90,6 +94,10 @@ export default function App() {
       <Route exact path="/unauthorized" component={Unauthorized} />
 
       <Container isNavigationOpen={isNavigationOpen}>
+        {isLoggedIn && !selectedPatient && (
+          <Redirect to="/one-ed/ward/dashboard" />
+        )}
+        {!userDetails && <Redirect to="/unauthorized" />}
         {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
         {!isLoggedIn && <Redirect to="/" />}
         {isLoggedIn && (

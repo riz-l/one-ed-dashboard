@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // Import: Assets
 import { ReactComponent as SeenSubPageIcon } from "../../../assets/img/icon/assessments-seen.svg";
+import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Seen.elements";
@@ -15,26 +16,36 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { SeenSubPage } from "./SubPages/index";
+import { Save, SeenSubPage } from "./subPages/index";
 
 // Page: Seen
 export default function Seen() {
   // State: isSeen
   const [isSeen, setIsSeen] = useState(true);
+  const [isSave, setIsSave] = useState(false);
 
   // State: Seen SubPage
   const [isSeenSubPage, setIsSeenSubPage] = useState(true);
 
   // onClick: Renders Seen Page
   function renderSeen() {
+    setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
   }
 
   // onClick: Renders SeenSubPage
   function renderSeenSubPage() {
+    setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
+  }
+
+  // onClick: Renders Save
+  function renderSave() {
+    setIsSeen(false);
+    setIsSeenSubPage(false);
+    setIsSave(true);
   }
 
   return (
@@ -58,6 +69,15 @@ export default function Seen() {
                   >
                     <PrimaryNavigation.Text>Seen</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isSave ? true : false}
+                    onClick={renderSave}
+                  >
+                    <PrimaryNavigation.Save>
+                      <PrimaryNavigation.Text>Save</PrimaryNavigation.Text>
+                    </PrimaryNavigation.Save>
+                  </PrimaryNavigation.Item>
                 </PrimaryNavigation>
               }
               secondaryNavigation={
@@ -76,10 +96,26 @@ export default function Seen() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
+                  ) : isSave ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isSave ? true : false}
+                        onClick={renderSave}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <SaveIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          Save
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
                   ) : null}
                 </SecondaryNavigation>
               }
-              content={isSeenSubPage ? <SeenSubPage /> : null}
+              content={
+                isSeenSubPage ? <SeenSubPage /> : isSave ? <Save /> : null
+              }
             />
           </ContentWrapper>
         </Wrapper>

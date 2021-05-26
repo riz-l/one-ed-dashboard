@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIncomingPatients } from "../../../redux/slices/incomingPatientsSlice";
-// import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
-  clearPatient,
   selectPatient,
   getSelectedPatient,
 } from "../../../redux/slices/selectedPatientSlice";
@@ -23,8 +21,7 @@ import {
 
 // Import: Components
 import {
-  Attendance,
-  Button,
+  // Attendance,
   PageTitle,
   PatientItem,
   PrimaryNavigation,
@@ -160,28 +157,7 @@ export default function PatientList() {
         <ListHeader>
           <Item>
             <PageTitle heading="Patient List" subheading="Browse ED Patients" />
-
-            {selectedPatient !== "" ? (
-              <>
-                <Button
-                  margin="0 0.8rem -1.4rem 0"
-                  onClick={() => dispatch(clearPatient())}
-                  text="Clear Patient"
-                />
-
-                {/* <Button
-                  margin="0 0 -1.4rem 0"
-                  onClick={() =>
-                    isSummaryOpen
-                      ? dispatch(setIsSummaryOpen(false))
-                      : dispatch(setIsSummaryOpen(true))
-                  }
-                  text="Toggle Summary"
-                /> */}
-              </>
-            ) : null}
-
-            <Attendance />
+            {/* <Attendance /> */}
           </Item>
 
           <PrimaryNavigation margin="0 0 0 0" padding="1rem 0 0 2rem">

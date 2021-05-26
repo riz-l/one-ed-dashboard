@@ -41,8 +41,8 @@ export default function NeuroObs() {
 
               <Grid.Item>
                 <Display htmlFor="verbal" labelText="Verbal">
-                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
-                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSEyes
+                  {questionnaireResponseDetail.SysObsNeuroEDObsGCSVerbal
+                    ? questionnaireResponseDetail.SysObsNeuroEDObsGCSVerbal
                     : "N/A"}
                 </Display>
               </Grid.Item>

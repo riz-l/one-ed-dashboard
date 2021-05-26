@@ -3,13 +3,14 @@ import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   putTriageForm,
-  addPatientID,
-  addDateTime,
-  addTriageCategory,
-  addTriageDiagnosis,
-  addTriageDiagnosisCode,
-  addPractitioner,
-  // clearTriageForm,
+  addTriageFormPatientID,
+  addTriageFormDateTime,
+  addTriageFormTriageCategory,
+  addTriageFormTriageDiagnosis,
+  addTriageFormTriageDiagnosisCode,
+  addTriageFormPractitioner,
+  clearTriageForm,
+  clearTriageFormApiResponse,
 } from "../../../../../redux/slices/triageSlice";
 import moment from "moment";
 
@@ -38,9 +39,13 @@ export default function TriageAndStream() {
   const startDate = useSelector(
     (state) => state.selectedPatient.patientData[0].StartDate
   );
-  const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
+  const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
+  // const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
   const patient = useSelector((state) => state.selectedPatient.patient);
-  const apiResponse = useSelector((state) => state.triage.apiResponse);
+  const apiResponse = useSelector(
+    (state) => state.triage.triageFormApiResponse
+  );
+  const triageForm = useSelector((state) => state.triage.triageForm);
   const dispatch = useDispatch();
 
   // Ref:
@@ -64,13 +69,18 @@ export default function TriageAndStream() {
 
   // Effect:
   useEffect(() => {
-    dispatch(addPatientID(patient));
-    dispatch(addDateTime(putEditedNewDateTime));
-    // dispatch(addTriageCategory("Very urgent"));
-    // dispatch(addTriageDiagnosis("Dizziness - light-headed"));
-    dispatch(addTriageDiagnosisCode("386705008"));
-    dispatch(addPractitioner(userExtension));
+    dispatch(addTriageFormPatientID(patient));
+    dispatch(addTriageFormDateTime(putEditedNewDateTime));
+    // dispatch(addTriageFormTriageCategory("Very urgent"));
+    // dispatch(addTriageFormTriageDiagnosis("Dizziness - light-headed"));
+    dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+    dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
+
+  // Effect:
+  useEffect(() => {
+    dispatch(clearTriageFormApiResponse());
+  }, [dispatch]);
 
   // Submit data to API
   const submitTriageAndStreamForm = async (event) => {
@@ -81,13 +91,24 @@ export default function TriageAndStream() {
 
     try {
       dispatch(putTriageForm());
+      dispatch(clearTriageForm());
+      dispatch(addTriageFormPatientID(patient));
+      dispatch(addTriageFormDateTime(putEditedNewDateTime));
+      dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+      dispatch(addTriageFormPractitioner(userExtension));
     } catch (err) {
       console.log(err);
     }
   };
 
   // Dropdown options
-  const dropdownOptions = ["Very urgent"];
+  const dropdownOptions = [
+    "Immediate",
+    "Very urgent",
+    "Urgent",
+    "Standard",
+    "Non-urgent",
+  ];
 
   // Autosuggest options
   const autoSuggestOptions = [
@@ -95,15 +116,11 @@ export default function TriageAndStream() {
       name: "Dizziness - light-headed",
       code: "386705008",
     },
-    {
-      name: "Fractured skull - heavy trauma",
-      code: "386705008",
-    },
   ];
 
   // Add values to Redux
   const addTriageCategoryToRedux = () => {
-    dispatch(addTriageCategory(triageCategoryRef.current.value));
+    dispatch(addTriageFormTriageCategory(triageCategoryRef.current.value));
   };
 
   return (
@@ -160,7 +177,7 @@ export default function TriageAndStream() {
                   <Form.AutoSuggest
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
-                    onChange={addTriageDiagnosis}
+                    onChange={addTriageFormTriageDiagnosis}
                     options={autoSuggestOptions}
                     ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."
@@ -174,6 +191,7 @@ export default function TriageAndStream() {
                     onChange={addTriageCategoryToRedux}
                     options={dropdownOptions}
                     ref={triageCategoryRef}
+                    value={triageForm.TriageCategory}
                   />
                 </Grid.Item>
               </Grid.Column>
