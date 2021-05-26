@@ -27,7 +27,7 @@ import {
 
 // Import: Components
 import { Button } from "../index";
-import { Display, Grid, PageTitle } from "../../components";
+import { Display, Grid } from "../../components";
 import { Overview } from "../../pages/index";
 
 export default function PatientDemographics({ summary }) {
