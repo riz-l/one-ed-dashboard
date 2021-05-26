@@ -199,8 +199,9 @@ export default function CEDObs() {
                     htmlFor="pulseRate"
                     labelText="Pulse Rate"
                     onChange={addPulseRateToRedux}
+                    placeholder="Type a number..."
                     ref={pulseRateRef}
-                    type="text"
+                    type="number"
                     value={popsAssessment.SysObsCardiovascPulseRateValueRTG}
                   />
                 </Grid.Item>
@@ -210,8 +211,9 @@ export default function CEDObs() {
                     htmlFor="bpSystolicFirst"
                     labelText="BP Systolic First"
                     onChange={addSystolicFirstToRedux}
+                    placeholder="Type a number..."
                     ref={bpSystolicFirstRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     }
@@ -223,8 +225,9 @@ export default function CEDObs() {
                     htmlFor="bpSystolicSecond"
                     labelText="BP Systolic Second"
                     onChange={addSystolicSecondToRedux}
+                    placeholder="Type a number..."
                     ref={bpSystolicSecondRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     }
@@ -236,8 +239,9 @@ export default function CEDObs() {
                     htmlFor="restRate"
                     labelText="Rest Rate"
                     onChange={addRestRateToRedux}
+                    placeholder="Type a number..."
                     ref={restRateRef}
-                    type="text"
+                    type="number"
                     value={popsAssessment.RTG_RespiratoryRate}
                   />
                 </Grid.Item>
@@ -247,8 +251,9 @@ export default function CEDObs() {
                     htmlFor="oxygenSATS"
                     labelText="Oxygen SATS"
                     onChange={addOxygenSatsToRedux}
+                    placeholder="Type a number..."
                     ref={oxygenSatsRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.SysObsRespiratoryTargetSATS9498ValueRTG
                     }
@@ -275,8 +280,9 @@ export default function CEDObs() {
                     htmlFor="temp"
                     labelText="Temp"
                     onChange={addTempToRedux}
+                    placeholder="Type a number..."
                     ref={tempRef}
-                    type="text"
+                    type="number"
                     value={popsAssessment.RegObsBodyTemperatureValueRTG}
                   />
                 </Grid.Item>
@@ -286,8 +292,9 @@ export default function CEDObs() {
                     htmlFor="weightKg"
                     labelText="Weight (kg)"
                     onChange={addWeightToRedux}
+                    placeholder="Type a number..."
                     ref={weightRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.RegObsBodyWeightValue_RegObsBodyWeightComp
                     }
@@ -299,8 +306,9 @@ export default function CEDObs() {
                     htmlFor="heightCm"
                     labelText="Height (cm)"
                     onChange={addHeightToRedux}
+                    placeholder="Type a number..."
                     ref={heightRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.RegObsBodyHeightValue_RegObsBodyHeightComp
                     }
@@ -312,8 +320,9 @@ export default function CEDObs() {
                     htmlFor="bloodSugar"
                     labelText="Blood sugar (mmol/l)"
                     onChange={addBloodSugarToRedux}
+                    placeholder="Type a number..."
                     ref={bloodSugarRef}
-                    type="text"
+                    type="number"
                     value={
                       popsAssessment.IntervenPathTestChemBloodGlucoseRandom
                     }
@@ -325,8 +334,9 @@ export default function CEDObs() {
                     htmlFor="pefr"
                     labelText="PEFR (l/min)"
                     onChange={addPefrToRedux}
+                    placeholder="Type a number..."
                     ref={pefrRef}
-                    type="text"
+                    type="number"
                     value={popsAssessment.SysObsRespiratoryEDObsPEFRLMin}
                   />
                 </Grid.Item>

@@ -34,7 +34,9 @@ export default function UrineObs() {
 
   // Add values to Redux
   const addNadToRedux = () => {
-    dispatch(addPopsAssessmentAdminNAD(nadRef.current.checked));
+    dispatch(
+      addPopsAssessmentAdminNAD(nadRef.current.checked === true ? "NAD" : null)
+    );
   };
   const addProteinToRedux = () => {
     dispatch(
@@ -107,7 +109,7 @@ export default function UrineObs() {
                     htmlFor="protein"
                     labelText="Protein"
                     onChange={addProteinToRedux}
-                    options={["Trace"]}
+                    options={["Negative"]}
                     ref={proteinRef}
                     value={
                       popsAssessment.IntervenPathTestUrinalysisProteinLevel
@@ -120,7 +122,7 @@ export default function UrineObs() {
                     htmlFor="blood"
                     labelText="Blood"
                     onChange={addBloodToRedux}
-                    options={["Trace"]}
+                    options={["Negative"]}
                     ref={bloodRef}
                     value={popsAssessment.IntervenPathTestUrinalysisBloodLevel}
                   />
@@ -146,7 +148,7 @@ export default function UrineObs() {
                     htmlFor="leu"
                     labelText="Leu"
                     onChange={addLeuToRedux}
-                    options={["Trace"]}
+                    options={["Negative"]}
                     ref={leuRef}
                     value={popsAssessment.IntervenPathTestUrinalysisWCNumbered}
                   />
@@ -168,7 +170,7 @@ export default function UrineObs() {
                     htmlFor="ketone"
                     labelText="Ketone"
                     onChange={addKetoneToRedux}
-                    options={["++"]}
+                    options={["Negative"]}
                     ref={ketoneRef}
                     value={popsAssessment.IntervenPathTestUrinalysisKetoneLevel}
                   />
