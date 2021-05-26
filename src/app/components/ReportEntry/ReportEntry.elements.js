@@ -8,6 +8,14 @@ export const Container = styled.div`
   }
 `;
 
+// Element: Header
+export const Header = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 // Element: Arrow
 export const Arrow = styled.div`
   align-items: center;

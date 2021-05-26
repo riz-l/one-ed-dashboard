@@ -20,14 +20,7 @@ export default function Observations() {
 
           <PatientDemographics />
 
-          <ContentWrapper>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              tempora veniam tenetur molestiae corporis laudantium aliquam
-              distinctio eos? Cum omnis officiis tempora ipsa esse. Minima unde
-              velit voluptatum doloribus natus.
-            </p>
-          </ContentWrapper>
+          <ContentWrapper></ContentWrapper>
         </Wrapper>
       </Container>
     </>

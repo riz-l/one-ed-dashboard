@@ -21,6 +21,7 @@ import {
   Container,
   EntryContainer,
   Detail,
+  Header,
   Heading,
   Icon,
   Left,
@@ -31,7 +32,7 @@ import {
 import "./ReportEntry.styles.css";
 
 // Import: Components
-import { Button, PageTitle } from "../index";
+import { Button, PageTitle, ReportSection } from "../index";
 
 // Component: ReportEntry
 export default function ReportEntry({
@@ -42,8 +43,6 @@ export default function ReportEntry({
   diagnosis,
   findings,
   procedures,
-  // slideStatus,
-  // slideToggle,
   symptoms,
   themeColor,
   icon,
@@ -68,9 +67,6 @@ export default function ReportEntry({
   return (
     <Container data-testid={"reportEntry"}>
       <Wrapper
-        // onClick={
-        //   slideToggle ? () => slideToggle((slideStatus) => !slideStatus) : null
-        // }
         onClick={openModal}
         alerts={alerts}
         allergies={allergies}
@@ -183,52 +179,55 @@ export default function ReportEntry({
         closeTimeoutMS={100}
         ariaHideApp={false}
       >
-        <PageTitle
-          backgroundColor="none"
-          heading={
-            alerts
-              ? "Alerts"
-              : allergies
-              ? "Allergies"
-              : complaint
-              ? "Complaint"
-              : complications
-              ? "Complications"
-              : diagnosis
-              ? "Diagnosis"
-              : findings
-              ? "Findings"
-              : procedures
-              ? "Procedures"
-              : symptoms
-              ? "Symptoms"
-              : "Default Entry"
-          }
-          padding="0 0 2rem 0"
-          subheading={
-            alerts
-              ? "Health History of Alerts"
-              : allergies
-              ? "Health History of Allergies"
-              : complaint
-              ? "Health History of Complaint"
-              : complications
-              ? "Health History of Complications"
-              : diagnosis
-              ? "Health History of Diagnosis"
-              : findings
-              ? "Health History of Findings"
-              : procedures
-              ? "Health History of Procedures"
-              : symptoms
-              ? "Health History of Symptoms"
-              : "Default Entry"
-          }
-        />
+        <Header>
+          <PageTitle
+            backgroundColor="none"
+            heading={
+              alerts
+                ? "Alerts"
+                : allergies
+                ? "Allergies"
+                : complaint
+                ? "Complaint"
+                : complications
+                ? "Complications"
+                : diagnosis
+                ? "Diagnosis"
+                : findings
+                ? "Findings"
+                : procedures
+                ? "Procedures"
+                : symptoms
+                ? "Symptoms"
+                : "Default Entry"
+            }
+            padding="0 0 2rem 0"
+            subheading={
+              alerts
+                ? "Health History of Alerts"
+                : allergies
+                ? "Health History of Allergies"
+                : complaint
+                ? "Health History of Complaint"
+                : complications
+                ? "Health History of Complications"
+                : diagnosis
+                ? "Health History of Diagnosis"
+                : findings
+                ? "Health History of Findings"
+                : procedures
+                ? "Health History of Procedures"
+                : symptoms
+                ? "Health History of Symptoms"
+                : "Default Entry"
+            }
+          />
 
-        {openedModal}
+          <Button text="Close" onClick={closeModal} />
+        </Header>
 
-        <Button text="Close" onClick={closeModal} />
+        <ReportSection content={openedModal} />
+        {/* {openedModal} */}
       </ReactModal>
     </Container>
   );
