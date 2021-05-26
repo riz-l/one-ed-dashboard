@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 // Import: Assets
+import { ReactComponent as AmbulanceIcon } from "../../../assets/img/icon/ambulance.svg";
 import { ReactComponent as ChartIcon } from "../../../assets/img/icon/chart.svg";
 import { ReactComponent as GpConnectIcon } from "../../../assets/img/icon/gp-connect.svg";
 import { ReactComponent as IceIcon } from "../../../assets/img/icon/ice.svg";
@@ -22,6 +23,7 @@ import {
   SecondaryNavigation,
 } from "../../components";
 import {
+  Ambulance,
   Chart,
   GPConnect,
   Ice,
@@ -47,6 +49,7 @@ export default function ClinicalNotes() {
   const [isIce, setIsIce] = useState(false);
   const [isPacs, setIsPacs] = useState(false);
   const [isGpConnect, setIsGpConnect] = useState(false);
+  const [isAmbulance, setIsAmbulance] = useState(false);
 
   // onClick: Renders Notes SubPage
   function renderNotes() {
@@ -57,19 +60,20 @@ export default function ClinicalNotes() {
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsAmbulance(false);
     setIsSave(false);
     setIsNotes(true);
   }
 
   // onClick: Renders Obs SubPage
   function renderObs() {
-    setIsChart(false);
-    setIsIntegration(false);
     setIsNotes(false);
     setIsChart(false);
+    setIsIntegration(false);
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsAmbulance(false);
     setIsSave(false);
     setIsPopsHistory(true);
     setIsPopsHistorySubPage(true);
@@ -77,71 +81,85 @@ export default function ClinicalNotes() {
 
   // onClick: Renders Chart SubPage
   function renderChart() {
-    setIsChart(false);
-    setIsIntegration(false);
     setIsNotes(false);
     setIsPopsHistorySubPage(false);
+    setIsIntegration(false);
     setIsIce(false);
     setIsPacs(false);
     setIsGpConnect(false);
+    setIsAmbulance(false);
     setIsSave(false);
-    setIsChart(true);
     setIsPopsHistory(true);
+    setIsChart(true);
   }
 
   // onClick: Renders ICE SubPage
   function renderIce() {
-    setIsChart(false);
     setIsNotes(false);
+    setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
+    setIsChart(false);
     setIsPacs(false);
     setIsGpConnect(false);
-    setIsChart(false);
-    setIsPopsHistory(false);
+    setIsAmbulance(false);
     setIsSave(false);
-    setIsIce(true);
     setIsIntegration(true);
+    setIsIce(true);
   }
 
   // onClick: Renders PACS SubPage
   function renderPacs() {
-    setIsChart(false);
     setIsNotes(false);
-    setIsPopsHistorySubPage(false);
-    setIsGpConnect(false);
-    setIsChart(false);
     setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
     setIsIce(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
     setIsSave(false);
-    setIsPacs(true);
     setIsIntegration(true);
+    setIsPacs(true);
   }
 
   // onClick: Renders GP Connect SubPage
   function renderGpConnect() {
-    setIsChart(false);
     setIsNotes(false);
-    setIsPopsHistorySubPage(false);
-    setIsPacs(false);
-    setIsChart(false);
     setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
     setIsIce(false);
+    setIsPacs(false);
+    setIsAmbulance(false);
     setIsSave(false);
-    setIsGpConnect(true);
     setIsIntegration(true);
+    setIsGpConnect(true);
+  }
+
+  // onClick: Renders Ambulance SubPage
+  function renderAmbulance() {
+    setIsNotes(false);
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsSave(false);
+    setIsIntegration(true);
+    setIsAmbulance(true);
   }
 
   // onClick: Renders Save SubPage
   function renderSave() {
-    setIsChart(false);
     setIsNotes(false);
-    setIsPopsHistorySubPage(false);
-    setIsPacs(false);
-    setIsChart(false);
     setIsPopsHistory(false);
-    setIsIce(false);
-    setIsGpConnect(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
     setIsIntegration(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
     setIsSave(true);
   }
 
@@ -269,6 +287,18 @@ export default function ClinicalNotes() {
                           GP Connect
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
+
+                      <SecondaryNavigation.Item
+                        isActive={isAmbulance ? true : false}
+                        onClick={renderAmbulance}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <AmbulanceIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          Ambulance Integration
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
                     </>
                   ) : isSave ? (
                     <SecondaryNavigation.Item
@@ -296,6 +326,8 @@ export default function ClinicalNotes() {
                   <Pacs />
                 ) : isGpConnect ? (
                   <GPConnect />
+                ) : isAmbulance ? (
+                  <Ambulance />
                 ) : isSave ? (
                   <Save />
                 ) : null
