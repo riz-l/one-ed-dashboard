@@ -17,6 +17,7 @@ import { Text } from "../index";
 
 // Component: Display
 export default function Display({
+  fontSize,
   heading,
   htmlFor,
   labelText,
@@ -33,12 +34,18 @@ export default function Display({
       margin={props.margin}
     >
       {labelText && (
-        <Label htmlfor={htmlFor} labelText={labelText} left={left}>
+        <Label
+          fontSize={fontSize}
+          htmlfor={htmlFor}
+          labelText={labelText}
+          left={left}
+        >
           {labelText}
         </Label>
       )}
 
       <Text
+        fontSize={fontSize}
         id={htmlFor}
         bold
         heading={heading}

@@ -120,6 +120,7 @@ export const FormCheckbox = React.forwardRef((props, ref) => {
 
 // Compound Component: FormDisplay
 function FormDisplay({
+  fontSize,
   heading,
   htmlFor,
   labelText,
@@ -130,6 +131,7 @@ function FormDisplay({
 }) {
   return (
     <Display
+      fontSize={fontSize}
       heading={heading}
       htmlFor={htmlFor}
       labelText={labelText}
@@ -208,10 +210,11 @@ const FormRadio = React.forwardRef((props, ref) => {
 });
 
 // Compound Component: FormText
-function FormText({ bold, heading, subheading, text, ...props }) {
+function FormText({ bold, fontSize, heading, subheading, text, ...props }) {
   return (
     <Text
       bold={bold}
+      fontSize={fontSize}
       heading={heading}
       subheading={subheading}
       text={text}
