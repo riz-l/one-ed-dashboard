@@ -133,6 +133,7 @@ export default function SeenSubPage() {
                     onChange={addSeniorReviewToRedux}
                     options={seniorReviewOptions}
                     ref={seenSeniorReviewRef}
+                    defaultValue="false"
                     value={seenForm.SeniorReviewReq}
                   />
                 </Grid.Item>

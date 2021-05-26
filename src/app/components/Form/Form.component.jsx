@@ -150,6 +150,7 @@ const FormDropdown = React.forwardRef((props, ref) => {
       options={props.options}
       left={props.left}
       ref={ref}
+      defaultValue={props.defaultValue}
       value={props.value}
       width={props.width}
     />

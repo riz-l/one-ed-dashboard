@@ -25,6 +25,7 @@ export const Dropdown = React.forwardRef((props, ref) => {
         id={props.htmlFor}
         onChange={props.onChange}
         ref={ref}
+        defaultValue={props.defaultValue}
         value={props.value}
         width={props.width}
       >

@@ -42,7 +42,7 @@ export const seenSlice = createSlice({
       //   patientID: "",
       dateTime: "",
       SeenComments: "",
-      SeniorReviewReq: "",
+      SeniorReviewReq: "false",
       SeniorReviewReason: "",
       practitioner: "",
     },
@@ -73,7 +73,7 @@ export const seenSlice = createSlice({
         //  patientID: "",
         dateTime: "",
         addSeenComments: "",
-        addSeniorReviewReq: "",
+        addSeniorReviewReq: "false",
         addSeniorReviewReason: "",
         practitioner: "",
       };
