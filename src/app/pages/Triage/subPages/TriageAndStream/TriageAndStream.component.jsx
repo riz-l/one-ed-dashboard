@@ -52,7 +52,6 @@ export default function TriageAndStream() {
   const triageDateRef = useRef();
   const triageTimeRef = useRef();
   const triageDiagnosisRef = useRef();
-  const triageDiagnosisCodeRef = useRef();
   const triageCategoryRef = useRef();
 
   // Current Date, Time
