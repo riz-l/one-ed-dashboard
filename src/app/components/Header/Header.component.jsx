@@ -29,7 +29,7 @@ import {
 import "./Header.styles.css";
 
 // Import: Components
-import { Button, Display, Grid, Text } from "../index";
+import { Button, Display, Grid, PageTitle, ReportSection } from "../index";
 
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
@@ -100,51 +100,67 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
         >
           <FormWrapper>
             <ModalTopWrapper>
-              <Text heading as="h3">
-                User Information
-              </Text>
+              <PageTitle
+                heading="User Information"
+                subheading="User details and role information"
+                padding="0 0 2rem 0"
+                backgroundColor="transparent"
+              />
 
               <ModalButtonWrapper>
-                <Button text="Close" onClick={closeModal} />
+                <Button
+                  text="Close"
+                  onClick={closeModal}
+                  margin="0 2rem 0.8rem 0"
+                />
               </ModalButtonWrapper>
             </ModalTopWrapper>
 
-            <Heading>
-              <HeadingImage>
-                <UserSvg />
-              </HeadingImage>
+            <ReportSection
+              content={
+                <>
+                  <Heading>
+                    <HeadingImage>
+                      <UserSvg />
+                    </HeadingImage>
 
-              <HeadingContent>
-                <h2>User Information</h2>
+                    <HeadingContent>
+                      <h2>User Information</h2>
 
-                <Grid>
-                  <Grid.Column>
-                    {/* TODO will need to be converted into something more useful. */}
-                    <Display htmlFor="extension" labelText="Extension">
-                      {userRoleProfile.UserID.extension}
-                    </Display>
+                      <Grid>
+                        <Grid.Column>
+                          {/* TODO will need to be converted into something more useful. */}
+                          <Display htmlFor="extension" labelText="Extension">
+                            {userRoleProfile.UserID.extension}
+                          </Display>
 
-                    <Display htmlFor="name" labelText="Name">
-                      {userRoleProfile.UserID.identifierName}
-                    </Display>
-                  </Grid.Column>
+                          <Display htmlFor="name" labelText="Name">
+                            {userRoleProfile.UserID.identifierName}
+                          </Display>
+                        </Grid.Column>
 
-                  <Grid.Column>
-                    <Display
-                      htmlFor="userRole"
-                      labelText="User Role"
-                      style={{ textTransform: "capitalize" }}
-                    >
-                      {userRoleProfile.UserRole.code}
-                    </Display>
+                        <Grid.Column>
+                          <Display
+                            htmlFor="userRole"
+                            labelText="User Role"
+                            style={{ textTransform: "capitalize" }}
+                          >
+                            {userRoleProfile.UserRole.code}
+                          </Display>
 
-                    <Display htmlFor="userOrg" labelText="User Organisation">
-                      {userRoleProfile.UserOrg.code}
-                    </Display>
-                  </Grid.Column>
-                </Grid>
-              </HeadingContent>
-            </Heading>
+                          <Display
+                            htmlFor="userOrg"
+                            labelText="User Organisation"
+                          >
+                            {userRoleProfile.UserOrg.code}
+                          </Display>
+                        </Grid.Column>
+                      </Grid>
+                    </HeadingContent>
+                  </Heading>
+                </>
+              }
+            />
           </FormWrapper>
         </ReactModal>
       </Container>

@@ -31,7 +31,6 @@ export default function Training() {
                         <Form.AutoSuggest
                           htmlFor="componentAutoSuggest"
                           labelText="Component: AutoSuggest"
-                          left="true"
                         />
                       </Grid.Item>
 
@@ -127,7 +126,7 @@ export default function Training() {
                           labelText="Component: Input (email)"
                           left={false}
                           // margin="20px"
-                          placeholder="lalala@music.com"
+                          placeholder="placeholder@placeholder.com"
                           type="email"
                         />
                       </Grid.Item>
@@ -162,7 +161,7 @@ export default function Training() {
                         <Form.TextArea
                           htmlFor="componentTextArea"
                           labelText="Component: TextArea"
-                          placeholder="la la la"
+                          placeholder="Text goes here..."
                         />
                       </Grid.Item>
 
