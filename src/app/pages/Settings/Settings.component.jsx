@@ -2,38 +2,28 @@
 import React from "react";
 
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./Settings.elements";
+import { Container, ContentWrapper, Wrapper } from "./Settings.elements";
 
 // Import: Components
-import { PatientDemographics } from "../../components";
-
+import { PageTitle } from "../../components";
 // Page: Settings
 export default function Settings() {
   return (
     <>
       <Container data-testid={"settings"}>
         <Wrapper>
-          <Header>
-            <h2>Settings</h2>
-            <span>
-              The Seen page records when a clinican has seen a patient.
-            </span>
-          </Header>
-
-          <PatientDemographics />
+          <PageTitle
+            heading="Settings"
+            subheading="Customise and Configure OneED"
+          />
 
           <ContentWrapper>
-            <p>
+            {/* <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
               tempora veniam tenetur molestiae corporis laudantium aliquam
               distinctio eos? Cum omnis officiis tempora ipsa esse. Minima unde
               velit voluptatum doloribus natus.
-            </p>
+            </p> */}
           </ContentWrapper>
         </Wrapper>
       </Container>

@@ -10,7 +10,7 @@ import ReactModal from "react-modal";
 import { Container, FormWrapper, Header } from "./Attendance.elements";
 import "./Attendance.styles.css";
 
-// Import: Components, SubPages
+// Import: Components, subPages
 import { Button, PrimaryNavigation, ReportSection } from "../index";
 import { CreateAttendance, Registration } from "./subPages";
 

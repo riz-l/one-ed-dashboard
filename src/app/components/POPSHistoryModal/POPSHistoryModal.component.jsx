@@ -28,7 +28,7 @@ import {
 } from "./POPSHistoryModal.elements";
 import "./POPSHistoryModal.styles.css";
 
-// Import: Components, SubPages
+// Import: Components, subPages
 import {
   Button,
   Display,

@@ -6,15 +6,11 @@ import React, { useState } from "react";
 // import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
 
 // Import: Elements
-import {
-  Container,
-  ContentWrapper,
-  Header,
-  Wrapper,
-} from "./AdmitOrReferral.elements";
+import { Container, ContentWrapper, Wrapper } from "./AdmitOrReferral.elements";
 
 // Import: Components, SubPages
 import {
+  PageTitle,
   PatientDemographics,
   PrimaryNavigation,
   ReportSection,
@@ -43,11 +39,10 @@ export default function AdmitOrReferral() {
     <>
       <Container data-testid={"admitOrReferral"}>
         <Wrapper>
-          <Header>
-            <h2>Decision to Admit or Referral</h2>
-            <span>Switch between Decision to Admit or make a Referral</span>
-          </Header>
-
+          <PageTitle
+            heading="Decision to Admit or Referral"
+            subheading="Switch between Decision to Admit or make a Referral"
+          />
           <PatientDemographics />
 
           <ContentWrapper>

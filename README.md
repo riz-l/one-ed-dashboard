@@ -1,5 +1,7 @@
 # OneED - Dashboard
 
+Link to a markup guide for a ReadMe file https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md
+
 ## Get started
 
 - To start using this app, open your chosen Text Editor, navigate to your specified folder directory, open a new Terminal and run:
@@ -103,7 +105,49 @@ To be safe copy the values into a notepad and then into the .env file to remove 
 
 The latest copy of the .env file can be found at:
 
-<!-- TODO add a  -->
+<!-- TODO Describe where the latest .env file can be found. -->
+
+## Standard layout of components
+
+Please ensure that the following section titles and orders are used for all components to keep things neat and consistent.
+
+- Import: Packages<br>
+  Order= Import React comes first followed by how the packages are called (e.g. Redux comes first)
+
+- Import: Assets <br>
+  Order= Import the images and icons. Alphabetically.
+
+- Utils
+
+- Import: Elements <br>
+  Order = List alphabetically.
+
+- Import: Components, Pages & subPages <br>
+  Order = first import the components then import the pages and sub pages.
+  List alphabetically.
+
+- Component: _or_ Page: _or_ subPage: <br>
+  Follow by the name of the component, page or subpage.
+
+- Redux (selector then dispatch)<br>
+
+- State: <br>
+  Follow the the name of the states being defined. List alphabetically.
+
+- Use effects <br>
+
+- References.<br>
+
+- OnClick<br>
+  Follow by the name of the onClick event. Since OnClick events take up several lines each OnClick event should have its own comment title. List alphabetically.
+
+## Reference
+
+TODO: Explain how Reference works.
+
+## UseEffect
+
+TODO: Explain how UseEffect works.
 
 ## Form Components and their props
 

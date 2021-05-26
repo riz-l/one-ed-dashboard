@@ -31,10 +31,11 @@ import { ReactComponent as TriageIcon } from "../../../assets/img/icon/assessmen
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
 
 // Import: Elements
-import { Container, ContentWrapper, Header, Wrapper } from "./Triage.elements";
+import { Container, ContentWrapper, Wrapper } from "./Triage.elements";
 
 // Import: Components, SubPages
 import {
+  PageTitle,
   PatientDemographics,
   PrimaryNavigation,
   ReportSection,
@@ -342,10 +343,7 @@ export default function Triage() {
     <>
       <Container data-testid={"triage"}>
         <Wrapper>
-          <Header>
-            <h2>Triage</h2>
-            <span>View Triage and POPS score</span>
-          </Header>
+          <PageTitle heading="Triage" subheading="View Triage and POPS Score" />
 
           <PatientDemographics />
 
