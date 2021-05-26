@@ -40,6 +40,32 @@ export default function Alerts() {
                   <Grid>
                     <Grid.Column>
                       <Grid.Item>
+                        <Display labelText="Alert" htmlFor="alertName">
+                          {alertName && alertName.length > 0
+                            ? alertName === "undefined"
+                              ? "N/A"
+                              : alertName
+                              ? capitalizeFirstLetter(alertName)
+                              : "N/A"
+                            : "N/A"}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display labelText="Details" htmlFor="alertDetails">
+                          {alertFreeText && alertFreeText.length > 0
+                            ? alertFreeText === "undefined"
+                              ? "N/A"
+                              : alertFreeText
+                              ? capitalizeFirstLetter(alertFreeText)
+                              : "N/A"
+                            : "N/A"}
+                        </Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
                         <Display labelText="Status" htmlFor="status">
                           {status && status.length > 0
                             ? status === "undefined"

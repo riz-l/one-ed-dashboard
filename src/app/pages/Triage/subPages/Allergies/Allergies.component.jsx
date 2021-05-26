@@ -42,6 +42,36 @@ export default function Allergies() {
                   <Grid>
                     <Grid.Column>
                       <Grid.Item>
+                        <Display labelText="Allergy" htmlFor="allergyName">
+                          {allergyName && allergyName.length > 0
+                            ? allergyName === "undefined"
+                              ? "N/A"
+                              : allergyName
+                              ? capitalizeFirstLetter(allergyName)
+                              : "N/A"
+                            : "N/A"}
+                        </Display>
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Display
+                          labelText="Manifestation Display"
+                          htmlFor="manifestationDisplay"
+                        >
+                          {manifestationDisplay &&
+                          manifestationDisplay.length > 0
+                            ? manifestationDisplay === "undefined"
+                              ? "N/A"
+                              : manifestationDisplay
+                              ? capitalizeFirstLetter(manifestationDisplay)
+                              : "N/A"
+                            : "N/A"}
+                        </Display>
+                      </Grid.Item>
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <Grid.Item>
                         <Display
                           labelText="Reaction Display"
                           htmlFor="reactionDisplay"

@@ -46,6 +46,32 @@ export default function Symptoms() {
                     <Grid>
                       <Grid.Column>
                         <Grid.Item>
+                          <Display labelText="Problem" htmlFor="problemName">
+                            {problemName && problemName.length > 0
+                              ? problemName === "undefined"
+                                ? "N/A"
+                                : problemName
+                                ? problemName
+                                : "N/A"
+                              : "N/A"}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display labelText="Note" htmlFor="note">
+                            {note && note.length > 0
+                              ? note === "undefined"
+                                ? "N/A"
+                                : note
+                                ? note
+                                : "N/A"
+                              : "N/A"}
+                          </Display>
+                        </Grid.Item>
+                      </Grid.Column>
+
+                      <Grid.Column>
+                        <Grid.Item>
                           <Display
                             labelText="Onset Date Time"
                             htmlFor="onsetDateTime"
@@ -59,9 +85,7 @@ export default function Symptoms() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
-                      </Grid.Column>
 
-                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             labelText="Problem Code"

@@ -47,6 +47,32 @@ export default function PresentingComplaints() {
                     <Grid>
                       <Grid.Column>
                         <Grid.Item>
+                          <Display htmlFor="problemName" labelText="Problem">
+                            {problemName && problemName.length > 0
+                              ? problemName === "undefined"
+                                ? "N/A"
+                                : problemName
+                                ? capitalizeFirstLetter(problemName)
+                                : "N/A"
+                              : "N/A"}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
+                          <Display htmlFor="note" labelText="Note">
+                            {note && note.length > 0
+                              ? note === "undefined"
+                                ? "N/A"
+                                : note
+                                ? capitalizeFirstLetter(note)
+                                : "N/A"
+                              : "N/A"}
+                          </Display>
+                        </Grid.Item>
+                      </Grid.Column>
+
+                      <Grid.Column>
+                        <Grid.Item>
                           <Display htmlFor="category" labelText="Category">
                             {category && category.length > 0
                               ? category === "undefined"
@@ -89,9 +115,7 @@ export default function PresentingComplaints() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
-                      </Grid.Column>
 
-                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             htmlFor="onsetDateTime"

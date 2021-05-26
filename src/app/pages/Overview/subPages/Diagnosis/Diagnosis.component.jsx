@@ -47,6 +47,18 @@ export default function Diagnosis() {
                     <Grid>
                       <Grid.Column>
                         <Grid.Item>
+                          <Display labelText="Problem" htmlFor="problemName">
+                            {problemName && problemName.length > 0
+                              ? problemName === "undefined"
+                                ? "N/A"
+                                : problemName
+                                ? capitalizeFirstLetter(problemName)
+                                : "N/A"
+                              : "N/A"}
+                          </Display>
+                        </Grid.Item>
+
+                        <Grid.Item>
                           <Display labelText="Note" htmlFor="note">
                             {note && note.length > 0
                               ? note === "undefined"
@@ -57,7 +69,9 @@ export default function Diagnosis() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
+                      </Grid.Column>
 
+                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             labelText="Verification Status"
@@ -72,9 +86,7 @@ export default function Diagnosis() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
-                      </Grid.Column>
 
-                      <Grid.Column>
                         <Grid.Item>
                           <Display labelText="Category" htmlFor="category">
                             {category && category.length > 0
@@ -86,7 +98,9 @@ export default function Diagnosis() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
+                      </Grid.Column>
 
+                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             labelText="problemCode"
@@ -101,9 +115,7 @@ export default function Diagnosis() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
-                      </Grid.Column>
 
-                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             labelText="Onset Date Time"
