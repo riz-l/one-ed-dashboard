@@ -1,6 +1,14 @@
+// Import: Packges
 import React from "react";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
+
+// Import: Assets
+import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
+
+// Import: Elements
 import {
   AlignData,
   AlignData1,
@@ -11,9 +19,10 @@ import {
   HeadingImage,
 } from "./PatientDetails.elements";
 
+// Import: Components
 import { Display, Grid } from "../../components";
-import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
 
+// Component: PatientDetails
 export default function PatientDetails() {
   // Redux: Extracts Patient Data from the global state
   const patientData = useSelector((state) => state.selectedPatient.patientData);
@@ -30,7 +39,7 @@ export default function PatientDetails() {
             {patientData[0].name === "undefined"
               ? "N/A"
               : patientData[0].name
-              ? patientData[0].name
+              ? capitalizeFirstLetter(patientData[0].name)
               : "N/A"}
           </h2>
           <AlignData>
@@ -108,7 +117,7 @@ export default function PatientDetails() {
                 {patientData[0].add1 === "undefined"
                   ? "N/A"
                   : patientData[0].add1
-                  ? patientData[0].add1
+                  ? capitalizeFirstLetter(patientData[0].add1)
                   : "N/A"}
               </Display>
 
@@ -116,7 +125,7 @@ export default function PatientDetails() {
                 {patientData[0].add2 === "undefined"
                   ? "N/A"
                   : patientData[0].add2
-                  ? patientData[0].add2
+                  ? capitalizeFirstLetter(patientData[0].add2)
                   : "N/A"}
               </Display>
 
@@ -124,7 +133,7 @@ export default function PatientDetails() {
                 {patientData[0].add3 === "undefined"
                   ? "N/A"
                   : patientData[0].add3
-                  ? patientData[0].add3
+                  ? capitalizeFirstLetter(patientData[0].add3)
                   : "N/A"}
               </Display>
 
@@ -132,7 +141,7 @@ export default function PatientDetails() {
                 {patientData[0].add4 === "undefined"
                   ? "N/A"
                   : patientData[0].add4
-                  ? patientData[0].add4
+                  ? capitalizeFirstLetter(patientData[0].add4)
                   : "N/A"}
               </Display>
             </Grid.Column>

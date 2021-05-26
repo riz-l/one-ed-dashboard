@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
+
 // Import: Assets
 import { ReactComponent as UserIcon } from "../../../assets/img/icon/user.svg";
 import {
@@ -59,7 +62,7 @@ export default function PatientDemographics({ summary }) {
                   ? patientData[0].name === "undefined"
                     ? "N/A"
                     : patientData[0].name
-                    ? patientData[0].name
+                    ? capitalizeFirstLetter(patientData[0].name)
                     : "N/A"
                   : "N/A"}
               </h2>
