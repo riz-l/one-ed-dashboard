@@ -16,7 +16,7 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { Save, SeenSubPage } from "./subPages/index";
+import { Save, SeenSubPage } from "./subPages";
 
 // Page: Seen
 export default function Seen() {

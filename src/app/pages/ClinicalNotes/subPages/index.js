@@ -1,3 +1,6 @@
+// Export: Ambulance
+export { default as Ambulance } from "./Ambulance/Ambulance.component";
+
 // Export: Chart
 export { default as Chart } from "./Chart/Chart.component.jsx";
 
