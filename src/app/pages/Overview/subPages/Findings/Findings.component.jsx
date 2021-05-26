@@ -89,7 +89,9 @@ export default function Findings() {
                               : "N/A"}
                           </Display>
                         </Grid.Item>
+                      </Grid.Column>
 
+                      <Grid.Column>
                         <Grid.Item>
                           <Display
                             htmlFor="onsetDateTime"
