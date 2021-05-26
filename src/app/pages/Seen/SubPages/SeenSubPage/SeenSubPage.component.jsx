@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
-  putSeenForm,
   addDateTime,
   addSeenComments,
   addSeniorReviewReq,
@@ -34,10 +33,10 @@ export default function SeenSubPage() {
         .UserRoleProfile[0].UserID.extension
   );
   const seenComments = useSelector((state) => state.seen.seenForm.SeenComments);
+  const seenForm = useSelector((state) => state.seen.seenForm);
   const seniorReviewReq = useSelector(
     (state) => state.seen.seenForm.SeniorReviewReq
   );
-  const apiResponse = useSelector((state) => state.seen.apiResponse);
   const dispatch = useDispatch();
 
   // Ref:
@@ -92,22 +91,11 @@ export default function SeenSubPage() {
     dispatch(addPractitioner(userExtension));
   }, [dispatch, putEditedNewDateTime, userExtension]);
 
-  // Submit data to API
-  const submitSeenForm = async (event) => {
-    event.preventDefault();
-
-    try {
-      dispatch(putSeenForm());
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <>
       <Container data-testid={"seenSubPage"}>
         <Wrapper>
-          <Form onSubmit={submitSeenForm}>
+          <Form>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
@@ -142,9 +130,10 @@ export default function SeenSubPage() {
                   <Form.Dropdown
                     htmlFor="seniorReview"
                     labelText="Senior Review"
-                    ref={seenSeniorReviewRef}
                     onChange={addSeniorReviewToRedux}
                     options={seniorReviewOptions}
+                    ref={seenSeniorReviewRef}
+                    value={seenForm.SeniorReviewReq}
                   />
                 </Grid.Item>
 
@@ -153,9 +142,10 @@ export default function SeenSubPage() {
                     <Form.Dropdown
                       htmlFor="reason"
                       labelText="Reason"
-                      ref={seenReasonRef}
                       onChange={addReasonToRedux}
                       options={reasonOptions}
+                      ref={seenReasonRef}
+                      value={seenForm.SeniorReviewReason}
                     />
                   </Grid.Item>
                 )}
@@ -186,34 +176,6 @@ export default function SeenSubPage() {
                     value={seenComments}
                   />
                 </Grid.Item>
-
-                <Grid.Item>
-                  <Form.Button
-                    type="submit"
-                    onClick={submitSeenForm}
-                    text="Submit Seen"
-                  />
-                </Grid.Item>
-
-                {apiResponse === "HTTP Response Code: 200" ||
-                (apiResponse && apiResponse.response) ? (
-                  <Form.Display
-                    htmlFor="submissionResponse"
-                    style={
-                      apiResponse === "HTTP Response Code: 200"
-                        ? { color: "#008ba3" }
-                        : apiResponse && apiResponse.response
-                        ? { color: "tomato" }
-                        : null
-                    }
-                  >
-                    {apiResponse === "HTTP Response Code: 200"
-                      ? "Submission Successful"
-                      : apiResponse && apiResponse.response
-                      ? "Submission Failed"
-                      : null}
-                  </Form.Display>
-                ) : null}
               </Grid.Column>
             </Grid>
           </Form>

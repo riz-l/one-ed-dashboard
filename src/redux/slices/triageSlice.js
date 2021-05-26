@@ -133,7 +133,8 @@ export const triageSlice = createSlice({
       IntervenPathTestUrinalysisKetoneLevel: "",
       RTGCEDObservationsPOPSScore_1: "",
     },
-    apiResponse: {},
+    triageFormApiResponse: {},
+    popsAssessmentApiResponse: {},
     status: null,
   },
   reducers: {
@@ -164,6 +165,9 @@ export const triageSlice = createSlice({
         TriageDiagnosisCode: "",
         practitioner: "",
       };
+    },
+    clearTriageFormApiResponse: (state, { payload }) => {
+      state.triageFormApiResponse = {};
     },
     addPopsAssessmentPatientID: (state, { payload }) => {
       state.popsAssessment.PatientID = payload;
@@ -368,6 +372,66 @@ export const triageSlice = createSlice({
     addPopsAssessmentRTGCEDObservationsPOPSScore_1: (state, { payload }) => {
       state.popsAssessment.RTGCEDObservationsPOPSScore_1 = payload;
     },
+    clearPopsAssessment: (state, { payload }) => {
+      state.popsAssessment = {
+        PatientID: "",
+        PractionerName: "",
+        PractionerID: "",
+        PatientName: "",
+        EncounterID: "",
+        DateTime: "",
+        SysObsNeuroPainScore: "",
+        SysObsNeuroPatientrackPainScore: "",
+        RTGCEDObservationsPOPSScore: "",
+        SysObsCardiovascPulseRateValueRTG: "",
+        SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG:
+          "",
+        SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG:
+          "",
+        RTG_RespiratoryRate: "",
+        SysObsRespiratoryTargetSATS9498ValueRTG: "",
+        SysObsRespiratorySupplementalOxygenTypeOptions: "",
+        RegObsBodyTemperatureValueRTG: "",
+        IntervenCEDObsAnyAgeOtherScore: "",
+        IntervenCEDObsAnyAgeGutFeelingScore: "",
+        IntervenCEDObsAnyAgeBreathingScore: "",
+        SysObsNeuroAVPUScoreValue_1: "",
+        SysObsNeuroAVPUScoreValue_2: "",
+        SysObsNeuroAVPUScoreValue_3: "",
+        SysObsNeuroAVPUScoreValue: "",
+        SysObsNeuroEDObsAVPU: "",
+        RegObsBodyHeightValue_RegObsBodyHeightComp: "",
+        RegObsBodyWeightValue_RegObsBodyWeightComp: "",
+        RTGChildObsComments: "",
+        IntervenPathTestChemBloodGlucoseRandom: "",
+        SysObsRespiratoryEDObsPEFRLMin: "",
+        SysObsCardiovascCEDObsCapillaryRefill: "",
+        SysObsNeuroEDObsGCSEyes: "",
+        SysObsNeuroEDObsGCSVerbal: "",
+        SysObsNeuroEDObsGCSMotor: "",
+        SysObsNeuroEDObsGCSTotal: "",
+        SysObsNeuroPupilsEqual: "",
+        SysObsNeuroPupilSizeLeft: "",
+        SysObsNeuroPupilSizeRight: "",
+        SysObsNeuroPupilReactivityLeft: "",
+        SysObsNeuroPupilReactivityRight: "",
+        RegObsArmLimbMovementLeft: "",
+        RegObsArmLimbMovementRight: "",
+        RegObsLegLimbMovementLeft: "",
+        RegObsLegLimbMovementRight: "",
+        AdminNAD: false,
+        IntervenPathTestUrinalysisProteinLevel: "",
+        IntervenPathTestUrinalysisBloodLevel: "",
+        IntervenPathTestUrinalysisGlucoseLevel: "",
+        IntervenPathTestUrinalysisWCNumbered: "",
+        IntervenPathTestUrinalysisNitrites: "",
+        IntervenPathTestUrinalysisKetoneLevel: "",
+        RTGCEDObservationsPOPSScore_1: "",
+      };
+    },
+    clearPopsAssessmentApiResponse: (state, { payload }) => {
+      state.triageFormApiResponse = {};
+    },
   },
   extraReducers: {
     [putTriageForm.pending]: (state, action) => {
@@ -375,7 +439,7 @@ export const triageSlice = createSlice({
     },
     [putTriageForm.fulfilled]: (state, { payload }) => {
       if (payload) {
-        state.apiResponse = payload;
+        state.triageFormApiResponse = payload;
         state.status = "success";
       } else {
         state.status = "failed";
@@ -389,7 +453,7 @@ export const triageSlice = createSlice({
     },
     [postPopsAssessment.fulfilled]: (state, { payload }) => {
       if (payload) {
-        state.apiResponse = payload;
+        state.popsAssessmentApiResponse = payload;
         state.status = "success";
       } else {
         state.status = "failed";
@@ -411,6 +475,7 @@ export const {
   addTriageFormTriageDiagnosisCode,
   addTriageFormPractitioner,
   clearTriageForm,
+  clearTriageFormApiResponse,
   addPopsAssessmentPatientID,
   addPopsAssessmentPractionerName,
   addPopsAssessmentPractionerID,
@@ -462,6 +527,8 @@ export const {
   addPopsAssessmentIntervenPathTestUrinalysisNitrites,
   addPopsAssessmentIntervenPathTestUrinalysisKetoneLevel,
   addPopsAssessmentRTGCEDObservationsPOPSScore_1,
+  clearPopsAssessment,
+  clearPopsAssessmentApiResponse,
 } = triageSlice.actions;
 
 // Reducer: triageSlice.reducer

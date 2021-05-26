@@ -9,7 +9,8 @@ import {
   addTriageFormTriageDiagnosis,
   addTriageFormTriageDiagnosisCode,
   addTriageFormPractitioner,
-  // clearTriageForm,
+  clearTriageForm,
+  clearTriageFormApiResponse,
 } from "../../../../../redux/slices/triageSlice";
 import moment from "moment";
 
@@ -41,7 +42,10 @@ export default function TriageAndStream() {
   const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
   // const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
   const patient = useSelector((state) => state.selectedPatient.patient);
-  const apiResponse = useSelector((state) => state.triage.apiResponse);
+  const apiResponse = useSelector(
+    (state) => state.triage.triageFormApiResponse
+  );
+  const triageForm = useSelector((state) => state.triage.triageForm);
   const dispatch = useDispatch();
 
   // Ref:
@@ -73,6 +77,11 @@ export default function TriageAndStream() {
     dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
+  // Effect:
+  useEffect(() => {
+    dispatch(clearTriageFormApiResponse());
+  }, [dispatch]);
+
   // Submit data to API
   const submitTriageAndStreamForm = async (event) => {
     event.preventDefault();
@@ -82,6 +91,11 @@ export default function TriageAndStream() {
 
     try {
       dispatch(putTriageForm());
+      dispatch(clearTriageForm());
+      dispatch(addTriageFormPatientID(patient));
+      dispatch(addTriageFormDateTime(putEditedNewDateTime));
+      dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+      dispatch(addTriageFormPractitioner(userExtension));
     } catch (err) {
       console.log(err);
     }
@@ -177,6 +191,7 @@ export default function TriageAndStream() {
                     onChange={addTriageCategoryToRedux}
                     options={dropdownOptions}
                     ref={triageCategoryRef}
+                    value={triageForm.TriageCategory}
                   />
                 </Grid.Item>
               </Grid.Column>
