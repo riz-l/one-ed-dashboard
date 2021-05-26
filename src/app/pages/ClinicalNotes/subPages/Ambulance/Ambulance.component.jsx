@@ -14,7 +14,7 @@ export default function Ambulance() {
       <Container data-testid={"ambulance"}>
         <Wrapper>
           <Text as="h2" heading>
-            Ambulance
+            Ambulance Integration
           </Text>
 
           <Window>
