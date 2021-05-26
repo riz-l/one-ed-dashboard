@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
-  /* background-color: #f7f8fa; */
   grid-area: content;
   height: 100%;
   max-height: calc(100vh - 80px);
@@ -20,7 +19,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
-  /* padding: 2rem; */
   width: 100%;
 `;
 

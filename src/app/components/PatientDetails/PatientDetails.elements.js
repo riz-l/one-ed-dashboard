@@ -86,6 +86,7 @@ export const ModalTopWrapper = styled.div`
 // Element: Modal Button Wrapper
 export const ModalButtonWrapper = styled.div``;
 
+// Element: Align Data
 export const AlignData = styled.div`
   align-items: top;
   display: flex;
@@ -96,12 +97,15 @@ export const AlignData = styled.div`
   width: 100%;
 `;
 
+// Element: Align Data 1
 export const AlignData1 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-right: 0.3rem;
 `;
+
+// Element:Align Data 2
 export const AlignData2 = styled.div`
   display: flex;
   flex-direction: column;

@@ -228,6 +228,7 @@ export const TestGridWrapper = styled.div`
   width: 100%;
 `;
 
+// Element: Wrapper Item1
 export const WrapperItem1 = styled.div`
   flex: 2;
 
@@ -239,6 +240,8 @@ export const WrapperItem1 = styled.div`
     display: none;
   } ;
 `;
+
+// Element: Wrapper Item2
 export const WrapperItem2 = styled.div`
   flex: 5;
 
@@ -247,6 +250,7 @@ export const WrapperItem2 = styled.div`
   } ;
 `;
 
+// Element: OverFlowWrapper
 export const OverFlowWrapper = styled.div`
   height: 100%;
   max-height: 100%;
