@@ -31,7 +31,7 @@ import {
 import "./ReportEntry.styles.css";
 
 // Import: Components
-import { Button, Text } from "../index";
+import { Button, PageTitle, Text } from "../index";
 
 // Component: ReportEntry
 export default function ReportEntry({
@@ -183,25 +183,48 @@ export default function ReportEntry({
         closeTimeoutMS={100}
         ariaHideApp={false}
       >
-        <Text heading as="h3">
-          {alerts
-            ? "Alerts"
-            : allergies
-            ? "Allergies"
-            : complaint
-            ? "Complaint"
-            : complications
-            ? "Complications"
-            : diagnosis
-            ? "Diagnosis"
-            : findings
-            ? "Findings"
-            : procedures
-            ? "Procedures"
-            : symptoms
-            ? "Symptoms"
-            : "Default Entry"}
-        </Text>
+        <PageTitle
+          backgroundColor="none"
+          heading={
+            alerts
+              ? "Alerts"
+              : allergies
+              ? "Allergies"
+              : complaint
+              ? "Complaint"
+              : complications
+              ? "Complications"
+              : diagnosis
+              ? "Diagnosis"
+              : findings
+              ? "Findings"
+              : procedures
+              ? "Procedures"
+              : symptoms
+              ? "Symptoms"
+              : "Default Entry"
+          }
+          padding="0 0 2rem 0"
+          subheading={
+            alerts
+              ? "Health History of Alerts"
+              : allergies
+              ? "Health History of Allergies"
+              : complaint
+              ? "Health History of Complaint"
+              : complications
+              ? "Health History of Complications"
+              : diagnosis
+              ? "Health History of Diagnosis"
+              : findings
+              ? "Health History of Findings"
+              : procedures
+              ? "Health History of Procedures"
+              : symptoms
+              ? "Health History of Symptoms"
+              : "Default Entry"
+          }
+        />
 
         {openedModal}
 
