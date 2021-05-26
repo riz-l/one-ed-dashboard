@@ -180,34 +180,41 @@ export default function NeuroObs() {
                   </Form.Text>
                 </Grid.Item>
 
-                <Grid.Item horizontal>
-                  <Form.Radio
-                    checked={popsAssessment.SysObsNeuroPupilsEqual === "Equal"}
-                    htmlFor="equal"
-                    margin="0 1rem 0.8rem 0"
-                    name="pupils"
-                    onChange={() =>
-                      dispatch(addPopsAssessmentSysObsNeuroPupilsEqual("Equal"))
-                    }
-                    ref={equalOrUnequalRef}
-                    text="Equal"
-                    value="Equal"
-                  />
-                  <Form.Radio
-                    checked={
-                      popsAssessment.SysObsNeuroPupilsEqual === "Unequal"
-                    }
-                    htmlFor="unequal"
-                    name="pupils"
-                    onChange={() =>
-                      dispatch(
-                        addPopsAssessmentSysObsNeuroPupilsEqual("Unequal")
-                      )
-                    }
-                    ref={equalOrUnequalRef}
-                    text="Unequal"
-                    value="Unequal"
-                  />
+                <Grid.Item>
+                  <Form.Display labelText="Pupils Equal or Unequal" />
+                  <Grid.Item horizontal>
+                    <Form.Radio
+                      checked={
+                        popsAssessment.SysObsNeuroPupilsEqual === "Equal"
+                      }
+                      htmlFor="equal"
+                      margin="0 1rem 0.8rem 0"
+                      name="pupils"
+                      onChange={() =>
+                        dispatch(
+                          addPopsAssessmentSysObsNeuroPupilsEqual("Equal")
+                        )
+                      }
+                      ref={equalOrUnequalRef}
+                      text="Equal"
+                      value="Equal"
+                    />
+                    <Form.Radio
+                      checked={
+                        popsAssessment.SysObsNeuroPupilsEqual === "Unequal"
+                      }
+                      htmlFor="unequal"
+                      name="pupils"
+                      onChange={() =>
+                        dispatch(
+                          addPopsAssessmentSysObsNeuroPupilsEqual("Unequal")
+                        )
+                      }
+                      ref={equalOrUnequalRef}
+                      text="Unequal"
+                      value="Unequal"
+                    />
+                  </Grid.Item>
                 </Grid.Item>
 
                 <Grid.Item>

@@ -78,7 +78,7 @@ export default function NeuroObs() {
                 <Display
                   htmlFor="equalOrUnequal"
                   name="equalOrUnequal"
-                  text="Equal or Unequal"
+                  labelText="Pupils: Equal or Unequal"
                 >
                   {questionnaireResponseDetail.SysObsNeuroPupilsEqual
                     ? questionnaireResponseDetail.SysObsNeuroPupilsEqual
