@@ -211,7 +211,7 @@ export const HeadingContent = styled.div`
 // Element: Modal Top Wrapper
 export const ModalTopWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
 `;
 

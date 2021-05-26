@@ -176,12 +176,6 @@ export default function PatientDemographics({ summary }) {
       >
         <OverFlowWrapper>
           <ModalTopWrapper>
-            <PageTitle
-              padding="0 0 2rem 0"
-              heading="Patient Demographics"
-              backgroundColor="transparent"
-            />
-
             <ModalButtonWrapper>
               <Button text="Close" onClick={closeModal} />
             </ModalButtonWrapper>
