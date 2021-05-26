@@ -56,7 +56,7 @@ export default function Save() {
                 <Grid.Item>
                   <Form.Button
                     type="submit"
-                    text="Submit POPS Assessment"
+                    text="Submit Seen"
                     onClick={submitSeenForm}
                   />
                 </Grid.Item>

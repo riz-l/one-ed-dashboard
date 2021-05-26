@@ -343,7 +343,10 @@ export default function Triage() {
     <>
       <Container data-testid={"triage"}>
         <Wrapper>
-          <PageTitle heading="Triage" subheading="View Triage and POPS Score" />
+          <PageTitle
+            heading="Triage"
+            subheading="Complete Triage, POPS and NEWS"
+          />
 
           <PatientDemographics />
 
