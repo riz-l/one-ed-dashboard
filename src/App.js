@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import Dexie from "dexie";
 import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components/macro";
-import { clearPatientList } from "./redux/slices/patientListSlice";
-import { clearPatient } from "./redux/slices/selectedPatientSlice";
-import { clearUser } from "./redux/slices/userDetailsSlice";
+import { clearClinicalNotesSlice } from "./redux/slices/clinicalNotesSlice";
+import { clearIncomingPatientsSlice } from "./redux/slices/incomingPatientsSlice";
+import { clearPatientListSlice } from "./redux/slices/patientListSlice";
+import { clearSeenSlice } from "./redux/slices/seenSlice";
+import { clearSelectedPatientSlice } from "./redux/slices/selectedPatientSlice";
+import { clearTriageSlice } from "./redux/slices/triageSlice";
+import { clearUserDetailsSlice } from "./redux/slices/userDetailsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // Import: Components, Pages
@@ -54,9 +58,17 @@ export default function App() {
   // Sets isLoggedIn === false
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(clearPatient());
-    dispatch(clearPatientList());
-    dispatch(clearUser());
+    dispatch(clearClinicalNotesSlice());
+    dispatch(clearIncomingPatientsSlice());
+    dispatch(clearPatientListSlice());
+    dispatch(clearSeenSlice());
+    dispatch(clearSelectedPatientSlice());
+    dispatch(clearTriageSlice());
+    dispatch(clearUserDetailsSlice());
+
+    // dispatch(clearPatient());
+    // dispatch(clearPatientList());
+    // dispatch(clearUser());
     setIsLoggedIn(false);
     pleaseDelete();
   };

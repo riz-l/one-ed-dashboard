@@ -113,12 +113,20 @@ export default function TriageAndStream() {
   // Autosuggest options
   const autoSuggestOptions = [
     {
+      name: "Breathlessness",
+      code: "267036007",
+    },
+    {
       name: "Dizziness - light-headed",
       code: "386705008",
     },
   ];
 
   // Add values to Redux
+  // const addTriageDiagnosisToRedux = () => {
+  //   dispatch(addTriageFormTriageCategory(triageDiagnosisRef.current.value));
+  //   dispatch(addTriageFormTriageDiagnosisCode());
+  // };
   const addTriageCategoryToRedux = () => {
     dispatch(addTriageFormTriageCategory(triageCategoryRef.current.value));
   };
@@ -224,7 +232,7 @@ export default function TriageAndStream() {
             </Grid>
 
             <Form.Button
-              text="Submit Form"
+              text="Save Form"
               type="submit"
               margin="0 0 1rem 0"
               onClick={submitTriageAndStreamForm}

@@ -1,11 +1,13 @@
 // Import: Packages
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   putSeenForm,
   clearSeenForm,
+  clearApiResponse,
 } from "../../../../../redux/slices/seenSlice";
+import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -29,6 +31,11 @@ export default function Save() {
   const apiResponse = useSelector((state) => state.seen.apiResponse);
   const status = useSelector((state) => state.seen.status);
   const dispatch = useDispatch();
+
+  // Effect:
+  useEffect(() => {
+    dispatch(clearApiResponse());
+  }, [dispatch]);
 
   // Submit data to API
   const submitSeenForm = async (event) => {
@@ -56,7 +63,7 @@ export default function Save() {
                 <Grid.Item>
                   <Form.Button
                     type="submit"
-                    text="Submit Seen"
+                    text="Save Seen"
                     onClick={submitSeenForm}
                   />
                 </Grid.Item>
@@ -87,7 +94,10 @@ export default function Save() {
                 <Grid.Item horizontal>
                   <Suggestions>
                     <Grid.Item>
-                      <Link to="/one-ed/ward/dashboard">
+                      <Link
+                        to="/one-ed/ward/dashboard"
+                        onClick={() => dispatch(clearPatient())}
+                      >
                         <Suggestion>
                           <IconContainer>
                             <DashboardIcon />

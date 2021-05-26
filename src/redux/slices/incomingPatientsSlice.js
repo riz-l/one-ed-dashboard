@@ -32,7 +32,11 @@ export const incomingPatientsSlice = createSlice({
   },
   reducers: {
     clearIncomingPatients: (state, { payload }) => {
-      state.patients = [];
+      state.incoming = [];
+    },
+    clearIncomingPatientsSlice: (state, { payload }) => {
+      state.incoming = [];
+      state.status = null;
     },
   },
   extraReducers: {
@@ -54,7 +58,8 @@ export const incomingPatientsSlice = createSlice({
 });
 
 // Actions: clearIncomingPatients
-export const { clearIncomingPatients } = incomingPatientsSlice.actions;
+export const { clearIncomingPatients, clearIncomingPatientsSlice } =
+  incomingPatientsSlice.actions;
 
 // Reducer: incomingPatientsSlice.reducer
 export default incomingPatientsSlice.reducer;

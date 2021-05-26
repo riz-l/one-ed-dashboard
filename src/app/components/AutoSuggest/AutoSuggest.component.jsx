@@ -18,9 +18,11 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
   const placeholderOptions = [
     {
       name: "C",
+      code: "000001",
     },
     {
       name: "C#",
+      code: "000002",
     },
   ];
 

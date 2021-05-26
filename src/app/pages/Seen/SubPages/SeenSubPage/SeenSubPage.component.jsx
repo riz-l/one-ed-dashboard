@@ -24,6 +24,9 @@ export default function SeenSubPage() {
       state.userDetails.details.ControlActEvent.Subject.Value[0]
         .UserRoleProfile[0].UserID.identifierName
   );
+  const triageCategory = useSelector(
+    (state) => state.selectedPatient.patientData[0].Triagecategory
+  );
   const area = useSelector(
     (state) => state.selectedPatient.patientData[0].location
   );
@@ -100,10 +103,22 @@ export default function SeenSubPage() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Display htmlFor="seenBy" labelText="Seen By" subheading>
-                    <p>{user}</p>
+                    <p>{user ? user : "N/A"}</p>
                   </Form.Display>
                 </Grid.Item>
 
+                <Grid.Item>
+                  <Form.Display
+                    htmlFor="triageCategory"
+                    labelText="Triage Category"
+                    subheading
+                  >
+                    <p>{triageCategory ? triageCategory : "N/A"}</p>
+                  </Form.Display>
+                </Grid.Item>
+              </Grid.Column>
+
+              <Grid.Column>
                 <Grid.Item>
                   <Form.Input
                     htmlFor="seenDate"

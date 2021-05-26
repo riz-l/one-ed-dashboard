@@ -1,11 +1,13 @@
 // Import: Packages
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postPopsAssessment,
   clearPopsAssessment,
+  clearPopsAssessmentApiResponse,
 } from "../../../../../redux/slices/triageSlice";
+import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -32,6 +34,11 @@ export default function Save() {
   const status = useSelector((state) => state.triage.status);
   const dispatch = useDispatch();
 
+  // Effect:
+  useEffect(() => {
+    dispatch(clearPopsAssessmentApiResponse());
+  }, [dispatch]);
+
   // Submit POPS Assessment to API
   const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
@@ -39,7 +46,6 @@ export default function Save() {
     try {
       dispatch(postPopsAssessment());
       dispatch(clearPopsAssessment());
-      console.log("POPS ASSESSMENT SENT");
     } catch (err) {
       console.log(err);
     }
@@ -59,7 +65,7 @@ export default function Save() {
                 <Grid.Item>
                   <Form.Button
                     type="submit"
-                    text="Submit POPS Assessment"
+                    text="Save POPS Assessment"
                     onClick={submitPopsAssessmentForm}
                   />
                 </Grid.Item>
@@ -90,7 +96,10 @@ export default function Save() {
                 <Grid.Item horizontal>
                   <Suggestions>
                     <Grid.Item>
-                      <Link to="/one-ed/ward/dashboard">
+                      <Link
+                        to="/one-ed/ward/dashboard"
+                        onClick={() => dispatch(clearPatient())}
+                      >
                         <Suggestion>
                           <IconContainer>
                             <DashboardIcon />

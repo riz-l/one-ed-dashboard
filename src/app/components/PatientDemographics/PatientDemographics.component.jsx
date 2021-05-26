@@ -31,6 +31,9 @@ import { Display, Grid, PageTitle } from "../../components";
 import { Overview } from "../../pages/index";
 
 export default function PatientDemographics({ summary }) {
+  // Redux: Extracts Patient Data from the global state
+  const patientData = useSelector((state) => state.selectedPatient.patientData);
+
   // State: isModalOpen
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,9 +46,6 @@ export default function PatientDemographics({ summary }) {
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // Redux: Extracts Patient Data from the global state
-  const patientData = useSelector((state) => state.selectedPatient.patientData);
 
   return (
     <Container data-testid={"patientDemographics"}>

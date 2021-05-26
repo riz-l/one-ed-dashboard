@@ -241,6 +241,23 @@ export const clinicalNotesSlice = createSlice({
         note: "",
       };
     },
+    clearClinicalNotesSlice: (state, { payload }) => {
+      state.notes.apiPostResponse = {};
+      state.notes.apiPuttResponse = {};
+      state.notes.filteredQuestionnaireResponse = [];
+      state.notes.newNote.PractionerName = "";
+      state.notes.newNote.PractionerID = "";
+      state.notes.newNote.PatientName = "";
+      state.notes.newNote.EncounterID = "";
+      state.notes.newNote.DateTime = "";
+      state.notes.newNote.note = "";
+      state.notes.newPutNote.dateTime = "";
+      state.notes.newPutNote.note = "";
+      state.notes.newPutNote.PractionerName = "";
+      state.notes.questionnaireResponse = [];
+      state.notes.questionnaireResponseDetail = [];
+      state.notes.status = null;
+    },
   },
   extraReducers: {
     [getQuestionnaireResponse.pending]: (state, action) => {
@@ -331,6 +348,7 @@ export const {
   addPutDateTime,
   addPutPractionerName,
   clearPutNote,
+  clearClinicalNotesSlice,
 } = clinicalNotesSlice.actions;
 
 // Reducer: clinicalNotesSlice.reducer

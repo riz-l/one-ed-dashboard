@@ -1,6 +1,8 @@
 // Import: Packages
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -19,6 +21,9 @@ import { Grid, Text } from "../../../../components";
 
 // SubPage: Save
 export default function Save() {
+  // Redux:
+  const dispatch = useDispatch();
+
   return (
     <>
       <Container data-testid={"save"}>
@@ -32,7 +37,10 @@ export default function Save() {
               <Grid.Item horizontal>
                 <Suggestions>
                   <Grid.Item>
-                    <Link to="/one-ed/ward/dashboard">
+                    <Link
+                      to="/one-ed/ward/dashboard"
+                      onClick={() => dispatch(clearPatient())}
+                    >
                       <Suggestion>
                         <IconContainer>
                           <DashboardIcon />
