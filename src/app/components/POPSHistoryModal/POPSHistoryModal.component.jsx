@@ -144,6 +144,21 @@ export default function POPSHistoryModal({ id, dateTime, user, status }) {
           <Text heading as="h3">
             POPS History
           </Text>
+
+          <Display labelText="Date/Time:" left>
+            {dateTime
+              ? moment(dateTime).format("MMMM Do YYYY, HH:mm:ss")
+              : "Date/Time"}
+          </Display>
+
+          <Display labelText="User:" left>
+            {user && user.length > 25
+              ? user.substring(0, 25) + "..."
+              : user && user.length < 25
+              ? user
+              : "User"}
+          </Display>
+
           <Button text="Close" onClick={closeModal} />
         </div>
 
