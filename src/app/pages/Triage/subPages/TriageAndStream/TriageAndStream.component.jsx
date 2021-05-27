@@ -154,7 +154,7 @@ export default function TriageAndStream() {
     },
     {
       name: "Fever",
-      code: "'386661006",
+      code: "386661006",
     },
   ];
 
