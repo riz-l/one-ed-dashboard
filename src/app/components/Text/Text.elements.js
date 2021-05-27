@@ -40,4 +40,5 @@ export const StyledText = styled.span`
         `;
     }
   }}
+  font-size: ${({ fontSize }) => fontSize && fontSize};
 `;

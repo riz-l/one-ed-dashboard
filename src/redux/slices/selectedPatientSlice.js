@@ -163,6 +163,19 @@ export const selectedPatientSlice = createSlice({
       state.patientAlerts = [];
       state.patientConditions = [];
     },
+    clearSelectedPatientSlice: (state, { payload }) => {
+      state.patient = "";
+      state.patientData = [];
+      state.dataStatus = null;
+      state.patientDemographics = {};
+      state.demographicsStatus = null;
+      state.patientAllergies = [];
+      state.allergiesStatus = null;
+      state.patientAlerts = [];
+      state.alertsStatus = null;
+      state.patientConditions = [];
+      state.conditionsStatus = null;
+    },
   },
   extraReducers: {
     [getSelectedPatient.pending]: (state, action) => {
@@ -239,7 +252,8 @@ export const selectedPatientSlice = createSlice({
 });
 
 // Actions: selectPatient, clearPatient
-export const { selectPatient, clearPatient } = selectedPatientSlice.actions;
+export const { selectPatient, clearPatient, clearSelectedPatientSlice } =
+  selectedPatientSlice.actions;
 
 // Reducer: selectedPatientSlice.reducer
 export default selectedPatientSlice.reducer;

@@ -2,6 +2,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
+import { clearClinicalNotesSlice } from "../../../redux/slices/clinicalNotesSlice";
+import { clearSeenSlice } from "../../../redux/slices/seenSlice";
+import { clearTriageSlice } from "../../../redux/slices/triageSlice";
 
 // Import: Elements
 import { Container, Layout, List, Summary } from "./Dashboard.elements";
@@ -27,6 +30,12 @@ export default function Dashboard() {
       dispatch(setIsSummaryOpen(false));
     }
   }, [patient, dispatch]);
+
+  useEffect(() => {
+    dispatch(clearClinicalNotesSlice());
+    dispatch(clearSeenSlice());
+    dispatch(clearTriageSlice());
+  }, [dispatch]);
 
   return (
     <>

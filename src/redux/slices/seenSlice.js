@@ -69,13 +69,29 @@ export const seenSlice = createSlice({
       state.seenForm.practitioner = payload;
     },
     clearSeenForm: (state, { payload }) => {
-      state.seenForm = {
-        //  patientID: "",
-        dateTime: "",
-        addSeenComments: "",
-        addSeniorReviewReq: "false",
-        addSeniorReviewReason: "",
-        practitioner: "",
+      //  patientID: "",
+      state.seenForm.dateTime = "";
+      state.seenForm.addSeenComments = "";
+      state.seenForm.addSeniorReviewReq = "false";
+      state.seenForm.addSeniorReviewReason = "";
+      state.seenForm.practitioner = "";
+    },
+    clearApiResponse: (state, { payload }) => {
+      state.apiResponse = {};
+      state.status = null;
+    },
+    clearSeenSlice: (state, { payload }) => {
+      state = {
+        seenForm: {
+          //   patientID: "",
+          dateTime: "",
+          SeenComments: "",
+          SeniorReviewReq: "false",
+          SeniorReviewReason: "",
+          practitioner: "",
+        },
+        apiResponse: {},
+        status: null,
       };
     },
   },
@@ -106,6 +122,8 @@ export const {
   addSeniorReviewReason,
   addPractitioner,
   clearSeenForm,
+  clearApiResponse,
+  clearSeenSlice,
 } = seenSlice.actions;
 
 // Reducer: seenSlice.reducer

@@ -22,7 +22,14 @@ const GridGroupContext = createContext();
 
 // Compound Component: Column
 function Column({ ...props }) {
-  return <ColumnContainer>{props.children}</ColumnContainer>;
+  return (
+    <ColumnContainer
+      alignItems={props.alignItems}
+      justifyContent={props.justifyContent}
+    >
+      {props.children}
+    </ColumnContainer>
+  );
 }
 
 // Compound Component: Item

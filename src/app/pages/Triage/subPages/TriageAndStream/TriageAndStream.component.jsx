@@ -73,7 +73,7 @@ export default function TriageAndStream() {
     dispatch(addTriageFormDateTime(putEditedNewDateTime));
     // dispatch(addTriageFormTriageCategory("Very urgent"));
     // dispatch(addTriageFormTriageDiagnosis("Dizziness - light-headed"));
-    dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+    // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
     dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
@@ -94,7 +94,7 @@ export default function TriageAndStream() {
       dispatch(clearTriageForm());
       dispatch(addTriageFormPatientID(patient));
       dispatch(addTriageFormDateTime(putEditedNewDateTime));
-      dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+      // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
       dispatch(addTriageFormPractitioner(userExtension));
     } catch (err) {
       console.log(err);
@@ -104,7 +104,7 @@ export default function TriageAndStream() {
   // Dropdown options
   const dropdownOptions = [
     "Immediate",
-    "Very urgent",
+    "Very Urgent",
     "Urgent",
     "Standard",
     "Non-urgent",
@@ -113,8 +113,44 @@ export default function TriageAndStream() {
   // Autosuggest options
   const autoSuggestOptions = [
     {
+      name: "Breathlessness",
+      code: "267036007",
+    },
+    {
       name: "Dizziness - light-headed",
       code: "386705008",
+    },
+    {
+      name: "Swelling of lower leg",
+      code: "449615005",
+    },
+    {
+      name: "Shoulder pain",
+      code: "45326000",
+    },
+    {
+      name: "Gas poisoning",
+      code: "57335002",
+    },
+    {
+      name: "Red eye",
+      code: "75705005",
+    },
+    {
+      name: "Medication requested",
+      code: "182888003",
+    },
+    {
+      name: "Injury of head",
+      code: "82271004",
+    },
+    {
+      name: "Ocular pain",
+      code: "41652007",
+    },
+    {
+      name: "General weakness",
+      code: "13791008",
     },
   ];
 
@@ -178,6 +214,7 @@ export default function TriageAndStream() {
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
                     onChange={addTriageFormTriageDiagnosis}
+                    codeOnChange={addTriageFormTriageDiagnosisCode}
                     options={autoSuggestOptions}
                     ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."
@@ -224,7 +261,7 @@ export default function TriageAndStream() {
             </Grid>
 
             <Form.Button
-              text="Submit Form"
+              text="Save Form"
               type="submit"
               margin="0 0 1rem 0"
               onClick={submitTriageAndStreamForm}

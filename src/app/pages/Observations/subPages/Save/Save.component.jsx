@@ -3,15 +3,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  putSeenForm,
-  clearSeenForm,
-  clearApiResponse,
-} from "../../../../../redux/slices/seenSlice";
+  postPopsAssessment,
+  clearPopsAssessment,
+  clearPopsAssessmentApiResponse,
+} from "../../../../../redux/slices/triageSlice";
 import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
-import { ReactComponent as WorkflowIcon } from "../../../../../assets/img/icon/workflow.svg";
 
 // Import: Elements
 import {
@@ -28,22 +27,24 @@ import { Form, Grid, Text } from "../../../../components";
 // SubPage: Save
 export default function Save() {
   // Redux:
-  const apiResponse = useSelector((state) => state.seen.apiResponse);
-  const status = useSelector((state) => state.seen.status);
+  const apiResponse = useSelector(
+    (state) => state.triage.popsAssessmentApiResponse
+  );
+  const status = useSelector((state) => state.triage.status);
   const dispatch = useDispatch();
 
   // Effect:
   useEffect(() => {
-    dispatch(clearApiResponse());
+    dispatch(clearPopsAssessmentApiResponse());
   }, [dispatch]);
 
-  // Submit data to API
-  const submitSeenForm = async (event) => {
+  // Submit POPS Assessment to API
+  const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
 
     try {
-      dispatch(putSeenForm());
-      dispatch(clearSeenForm());
+      dispatch(postPopsAssessment());
+      dispatch(clearPopsAssessment());
     } catch (err) {
       console.log(err);
     }
@@ -57,14 +58,14 @@ export default function Save() {
             Save
           </Text>
 
-          <Form onSubmit={submitSeenForm}>
+          <Form onSubmit={submitPopsAssessmentForm}>
             <Grid>
               <Grid.Column>
                 <Grid.Item>
                   <Form.Button
                     type="submit"
-                    text="Save Seen"
-                    onClick={submitSeenForm}
+                    text="Save POPS Assessment"
+                    onClick={submitPopsAssessmentForm}
                   />
                 </Grid.Item>
 
@@ -104,21 +105,6 @@ export default function Save() {
                           </IconContainer>
 
                           <span>Return to Dashboard</span>
-                        </Suggestion>
-                      </Link>
-                    </Grid.Item>
-
-                    <Grid.Item>
-                      <Link to="/one-ed/assessments/clinical-notes">
-                        <Suggestion>
-                          <IconContainer>
-                            <WorkflowIcon />
-                          </IconContainer>
-
-                          <span>Continue workflow</span>
-                          <span style={{ fontWeight: "500" }}>
-                            Next: Clinical Notes
-                          </span>
                         </Suggestion>
                       </Link>
                     </Grid.Item>
