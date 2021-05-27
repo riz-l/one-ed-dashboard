@@ -152,6 +152,10 @@ export default function TriageAndStream() {
       name: "General weakness",
       code: "13791008",
     },
+    {
+      name: "Fever",
+      code: "'386661006",
+    },
   ];
 
   // Add values to Redux
