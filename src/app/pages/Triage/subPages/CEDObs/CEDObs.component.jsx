@@ -51,7 +51,7 @@ export default function CEDObs() {
   const pulseRateRef = useRef();
   const bpSystolicFirstRef = useRef();
   const bpSystolicSecondRef = useRef();
-  const restRateRef = useRef();
+  const respRateRef = useRef();
   const oxygenSatsRef = useRef();
   const supplementalO2Ref = useRef();
   const tempRef = useRef();
@@ -95,8 +95,8 @@ export default function CEDObs() {
       )
     );
   };
-  const addRestRateToRedux = () => {
-    dispatch(addPopsAssessmentRTG_RespiratoryRate(restRateRef.current.value));
+  const addRespRateToRedux = () => {
+    dispatch(addPopsAssessmentRTG_RespiratoryRate(respRateRef.current.value));
   };
   const addOxygenSatsToRedux = () => {
     dispatch(
@@ -248,11 +248,11 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="restRate"
-                    labelText="Rest Rate"
-                    onChange={addRestRateToRedux}
+                    htmlFor="respRate"
+                    labelText="Resp Rate"
+                    onChange={addRespRateToRedux}
                     placeholder="Type a number..."
-                    ref={restRateRef}
+                    ref={respRateRef}
                     type="number"
                     value={popsAssessment.RTG_RespiratoryRate}
                   />

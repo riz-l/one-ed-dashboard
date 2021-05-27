@@ -64,7 +64,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="restRate" labelText="Rest Rate">
+                <Display htmlFor="respRate" labelText="Resp Rate">
                   {questionnaireResponseDetail.RTG_RespiratoryRate
                     ? questionnaireResponseDetail.RTG_RespiratoryRate
                     : "N/A"}
