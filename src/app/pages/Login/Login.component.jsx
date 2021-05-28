@@ -9,7 +9,7 @@ import {
 } from "../../../redux/slices/userDetailsSlice";
 
 // Import: Assets
-import dedalusLogo from "../../../assets/img/logo/Dedalus Logo.png";
+import DedalusLogo from "../../../assets/img/logo/dedalusLogo.png";
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
 
 // Import: Elements
@@ -94,7 +94,7 @@ export default function Login(props) {
         </Wrapper>
 
         <CompanyLogo>
-          <img id="dedalusLogo" src={dedalusLogo} alt="Dedalus Logo" />
+          <img id="dedalusLogo" src={DedalusLogo} alt="Dedalus Logo" />
           <div>
             <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
             <p>Dedalus Group</p>

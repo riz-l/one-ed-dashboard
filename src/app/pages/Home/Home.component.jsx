@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Import: Assets
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
-import dedalusLogo from "../../../assets/img/logo/Dedalus Logo.png";
+import DedalusLogo from "../../../assets/img/logo/dedalusLogo.png";
 
 // Import: Elements
 import { Container, CompanyLogo, Logo, Wrapper } from "./Home.elements";
@@ -24,7 +24,7 @@ export default function Home() {
         </Wrapper>
 
         <CompanyLogo>
-          <img id="dedalusLogo" src={dedalusLogo} alt="Dedalus Logo" />
+          <img id="dedalusLogo" src={DedalusLogo} alt="Dedalus Logo" />
           <div>
             <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
             <p>Dedalus Group</p>
