@@ -20,7 +20,7 @@ export default function CreateAttendance() {
 
             <Grid>
               <Grid.Column>
-                {/* Arrival Date needs to default to the current date */}
+                {/* TODO: Arrival Date needs to default to the current date */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="arrivalDate"
@@ -29,7 +29,7 @@ export default function CreateAttendance() {
                   />
                 </Grid.Item>
 
-                {/* Arrival Time needs to default to the current time. */}
+                {/* TODO: Arrival Time needs to default to the current time */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="arrivalTime"
@@ -84,11 +84,12 @@ export default function CreateAttendance() {
                   <Form.Text as="h3" subheading>
                     Incident
                   </Form.Text>
+
                   <Form.Checkbox htmlFor="timeElapsed" text="Time elapsed" />
                   <Form.Checkbox htmlFor="dateAndTime" text="Date and Time" />
                 </Grid.Item>
 
-                {/* Conditionally appears if Time Elapsed was selected */}
+                {/* TODO: Conditionally renders if 'Time Elapsed' is selected */}
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="timeElapsed"
@@ -96,7 +97,7 @@ export default function CreateAttendance() {
                   />
                 </Grid.Item>
 
-                {/* Conditionally display the date and time fields if "Date and Time" was selected. */}
+                {/* TODO: Conditionallly renders 'Incident Date' if 'Date and Time' is selected */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="incidentDate"
@@ -105,6 +106,7 @@ export default function CreateAttendance() {
                   />
                 </Grid.Item>
 
+                {/* TODO: Conditionallly renders 'Incident Time' if 'Date and Time' is selected */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="incidentTime"
@@ -121,8 +123,9 @@ export default function CreateAttendance() {
                     labelText="Patient Group"
                   />
                 </Grid.Item>
-                {/* In Lorenzo if the "Assault" option is chosen from patient Group  */}
-                {/* then "Record incident on finish" checkbox appears. */}
+
+                {/* TODO: In Lorenzo if the 'Assault' option is selected from 'Patient Group'  */}
+                {/* ... the 'Record incident on finish' checkbox renders */}
 
                 <Grid.Item>
                   <Form.Dropdown
@@ -140,7 +143,7 @@ export default function CreateAttendance() {
               </Grid.Column>
 
               <Grid.Column>
-                {/* Ambulance job number can only be completed if the mode of Arrival involves an ambulance.  */}
+                {/* TODO: 'Ambulance Job Number' can only be completed if the 'Mode of Arrival' involves an ambulance.  */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="ambulanceJobNumber"
@@ -266,7 +269,7 @@ export default function CreateAttendance() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Referred to Health Organisation"
+                    htmlFor="referredToHealthOrganisation"
                     labelText="Referred to Health Organisation"
                   >
                     Test Hospital (example)
@@ -275,7 +278,7 @@ export default function CreateAttendance() {
 
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Referred to Type"
+                    htmlFor="referredToType"
                     labelText="Referred to Type"
                   >
                     Care Provider (example)
@@ -284,7 +287,7 @@ export default function CreateAttendance() {
 
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Referred to Name"
+                    htmlFor="referredToName"
                     labelText="Referred to Name"
                   >
                     Jo Bloggs (example)
@@ -293,7 +296,7 @@ export default function CreateAttendance() {
 
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Referral Type"
+                    htmlFor="referralType"
                     labelText="Referral Type"
                   >
                     Emergency (example)
@@ -302,7 +305,7 @@ export default function CreateAttendance() {
 
                 <Grid.Item>
                   <Form.Display
-                    htmlFor="Referral Source"
+                    htmlFor="referralSource"
                     labelText="Referral Source"
                   >
                     Self Referral (example)

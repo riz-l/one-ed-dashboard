@@ -80,38 +80,40 @@ export default function PatientList() {
   }
 
   // Maps patientListData through PatientItem
-  const subPatientListRender = patientList.map(
-    ({
-      age,
-      currentStage,
-      diagnosis,
-      name,
-      patientID,
-      period,
-      Triagecategory,
-      ...otherPatientProps
-    }) => (
-      <PatientItem
-        key={patientID}
-        patientID={patientID}
-        onClick={() => dispatch(selectPatient(patientID))}
-        colOne={name ? name : "N/A"}
-        colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
-        colThree={diagnosis ? diagnosis : "N/A"}
-        colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
-        colFive={
-          Triagecategory === "undefined"
-            ? "N/A"
-            : Triagecategory
-            ? Triagecategory
-            : "N/A"
-        }
-        colSix={currentStage ? currentStage : "N/A"}
-        patientList
-        {...otherPatientProps}
-      />
-    )
-  );
+  const subPatientListRender =
+    patientList &&
+    patientList.map(
+      ({
+        age,
+        currentStage,
+        diagnosis,
+        name,
+        patientID,
+        period,
+        Triagecategory,
+        ...otherPatientProps
+      }) => (
+        <PatientItem
+          key={patientID}
+          patientID={patientID}
+          onClick={() => dispatch(selectPatient(patientID))}
+          colOne={name ? name : "N/A"}
+          colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
+          colThree={diagnosis ? diagnosis : "N/A"}
+          colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
+          colFive={
+            Triagecategory === "undefined"
+              ? "N/A"
+              : Triagecategory
+              ? Triagecategory
+              : "N/A"
+          }
+          colSix={currentStage ? currentStage : "N/A"}
+          patientList
+          {...otherPatientProps}
+        />
+      )
+    );
 
   // Maps incomingPatients through PatientItem
   const incomingPatientListRender = incomingPatients.map(

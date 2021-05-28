@@ -7,9 +7,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
-  margin-bottom: -1.4rem;
   justify-content: flex-start;
-  /* position: relative; */
+  margin-bottom: -1.4rem;
   width: 100%;
 `;
 
@@ -43,8 +42,8 @@ export const Header = styled.div`
 
   & h3 {
     color: #6b7a99;
+    font-family: "PoppinsMedium", sans-serif;
     font-size: 1.4rem;
-    font-weight: 500;
     transition: all 100ms linear;
   }
 

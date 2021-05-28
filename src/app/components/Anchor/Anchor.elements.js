@@ -1,4 +1,4 @@
-// Import: Dependencies
+// Import: Packages
 import styled, { css } from "styled-components/macro";
 
 // Element: StyledText
@@ -11,8 +11,8 @@ export const StyledText = styled.a`
       case heading:
         return css`
           color: ${({ color }) => (color ? color : "#008ba3")};
+          font-family: "PoppinsBold", sans-serif;
           font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.5em")};
-          font-weight: 700;
           transition: all 100ms linear;
 
           &:hover {
@@ -24,8 +24,8 @@ export const StyledText = styled.a`
       case subheading:
         return css`
           color: ${({ color }) => (color ? color : "#008ba3")};
+          font-family: "PoppinsSemiBold", sans-serif;
           font-size: ${({ fontSize }) => (fontSize ? fontSize : "18px")};
-          font-weight: 600;
           transition: all 100ms linear;
 
           &:hover {
@@ -37,8 +37,8 @@ export const StyledText = styled.a`
       case text:
         return css`
           color: ${({ color }) => (color ? color : "#008ba3")};
+          font-family: "PoppinsRegular", sans-serif;
           font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
-          font-weight: 400;
           transition: all 100ms linear;
 
           &:hover {
@@ -50,8 +50,8 @@ export const StyledText = styled.a`
       default:
         return css`
           color: ${({ color }) => (color ? color : "#008ba3")};
+          font-family: "PoppinsRegular", sans-serif;
           font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
-          font-weight: 400;
           transition: all 100ms linear;
 
           &:hover {

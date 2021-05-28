@@ -1,8 +1,8 @@
 // Import: Packages
 import React, { useState } from "react";
-import Dexie from "dexie";
-import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components/macro";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { clearClinicalNotesSlice } from "./redux/slices/clinicalNotesSlice";
 import { clearIncomingPatientsSlice } from "./redux/slices/incomingPatientsSlice";
 import { clearPatientListSlice } from "./redux/slices/patientListSlice";
@@ -10,7 +10,6 @@ import { clearSeenSlice } from "./redux/slices/seenSlice";
 import { clearSelectedPatientSlice } from "./redux/slices/selectedPatientSlice";
 import { clearTriageSlice } from "./redux/slices/triageSlice";
 import { clearUserDetailsSlice } from "./redux/slices/userDetailsSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
@@ -34,10 +33,10 @@ import {
 // Component: App
 export default function App() {
   // Redux:
-  const userDetails = useSelector((state) => state.userDetails.details);
   const selectedPatient = useSelector(
     (state) => state.selectedPatient.patientData
   );
+  const userDetails = useSelector((state) => state.userDetails.details);
   const dispatch = useDispatch();
 
   // State: isLoggedIn, isNavigationOpen
@@ -50,12 +49,8 @@ export default function App() {
     setIsLoggedIn(true);
   };
 
-  // Delete IndexedDB LoginDetails database
-  function pleaseDelete() {
-    indexedDB.deleteDatabase("LoginDetails");
-  }
-
   // Sets isLoggedIn === false
+  // ... also clears down all global state
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(clearClinicalNotesSlice());
@@ -65,21 +60,8 @@ export default function App() {
     dispatch(clearSelectedPatientSlice());
     dispatch(clearTriageSlice());
     dispatch(clearUserDetailsSlice());
-
-    // dispatch(clearPatient());
-    // dispatch(clearPatientList());
-    // dispatch(clearUser());
     setIsLoggedIn(false);
-    pleaseDelete();
   };
-
-  // Dexie: database = LoginDetails
-  const loginDb = new Dexie("LoginDetails");
-
-  // Effect: Creates the loginDb on each render
-  // useEffect(() => {
-  //     return () => loginDb.open();
-  // }, [loginDb]);
 
   return (
     <>
@@ -89,21 +71,20 @@ export default function App() {
       {/* Login */}
       <Route
         exact
-        path="/login"
         handleLogin={handleLogin}
+        path="/login"
         render={(props) => (
           <Login
-            db={loginDb}
-            {...props}
+            handleLogin={handleLogin}
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
-            handleLogin={handleLogin}
+            {...props}
           />
         )}
       />
 
       {/* 403: Unauthorized */}
-      <Route exact path="/unauthorized" component={Unauthorized} />
+      <Route component={Unauthorized} exact path="/unauthorized" />
 
       <Container isNavigationOpen={isNavigationOpen}>
         {isLoggedIn && !selectedPatient && (
@@ -119,9 +100,9 @@ export default function App() {
               setIsNavigationOpen={setIsNavigationOpen}
             />
             <Navigation
+              handleLogout={handleLogout}
               isNavigationOpen={isNavigationOpen}
               setIsNavigationOpen={setIsNavigationOpen}
-              handleLogout={handleLogout}
             />
           </>
         )}
@@ -129,16 +110,15 @@ export default function App() {
         <Switch>
           {/* OneED */}
           <ProtectedRoute
-            exact
-            path="/one-ed/ward/dashboard"
-            isLoggedIn={isLoggedIn}
             component={Dashboard}
-            db={loginDb}
+            exact
+            isLoggedIn={isLoggedIn}
+            path="/one-ed/ward/dashboard"
           />
 
           {/* Ward - Dashboard */}
           <Route exact path="/one-ed/ward/dashboard">
-            <Dashboard db={loginDb} />
+            <Dashboard />
           </Route>
 
           {/* Ward - ED Overview */}
@@ -215,5 +195,6 @@ const Container = styled.div`
     grid-template-columns: ${({ isNavigationOpen }) =>
       isNavigationOpen ? "1fr 0" : "0 1fr"};
     overflow-x: hidden;
+    transition: all 100ms linear;
   }
 `;
