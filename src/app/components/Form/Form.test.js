@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Form from "./Form.component";
 
 // Test: Checks that Form renders
-it("checkFormRender", () => {
+it("Does the Form component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Form />

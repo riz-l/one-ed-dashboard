@@ -16,6 +16,6 @@ it("Does the Registration SubPage render?", () => {
       </Router>
     </Provider>
   );
-  const page = queryByTestId("registration");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("registration");
+  expect(subPage).toBeTruthy();
 });

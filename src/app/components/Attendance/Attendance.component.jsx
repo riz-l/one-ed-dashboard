@@ -12,7 +12,7 @@ import { CreateAttendance, Registration } from "./subPages";
 
 // Component: Attendance
 export default function Attendance() {
-  // State:
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateAttendance, setIsCreateAttendance] = useState(true);
   const [isRegistration, setIsRegistration] = useState(false);

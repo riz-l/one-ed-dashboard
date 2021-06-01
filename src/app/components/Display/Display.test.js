@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Display from "./Display.component";
 
 // Test: Checks that Display renders
-it("checkDisplayRender", () => {
+it("Does the Display component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Display />

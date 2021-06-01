@@ -16,6 +16,6 @@ it("Does the CreateAttendance SubPage render?", () => {
       </Router>
     </Provider>
   );
-  const page = queryByTestId("createAttendance");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("createAttendance");
+  expect(subPage).toBeTruthy();
 });

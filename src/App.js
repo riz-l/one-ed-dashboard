@@ -32,14 +32,14 @@ import {
 
 // Component: App
 export default function App() {
-  // Redux:
+  // Redux: useSelector, dispatch
   const selectedPatient = useSelector(
     (state) => state.selectedPatient.patientData
   );
   const userDetails = useSelector((state) => state.userDetails.details);
   const dispatch = useDispatch();
 
-  // State: isLoggedIn, isNavigationOpen
+  // State: Local state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
@@ -64,7 +64,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <div data-testid={"app"}>
       {/* Home */}
       <Route exact path="/" component={Home} />
 
@@ -172,7 +172,7 @@ export default function App() {
           </Route>
         </Switch>
       </Container>
-    </>
+    </div>
   );
 }
 

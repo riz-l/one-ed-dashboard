@@ -25,6 +25,7 @@ export const Label = styled.label``;
 // Element: InputCheckbox
 export const InputCheckbox = styled.input`
   -webkit-appearance: none;
+  appearance: none;
   display: none;
   opacity: 0;
   visibility: hidden;

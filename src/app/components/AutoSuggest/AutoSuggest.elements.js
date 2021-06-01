@@ -18,7 +18,7 @@ export const Container = styled.div`
   margin-bottom: 1rem;
 
   & input {
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
   }
 
@@ -42,19 +42,19 @@ export const Container = styled.div`
     width: ${({ width }) => (width ? width : "auto")};
 
     ::-webkit-input-placeholder {
-      font-family: "Poppins", sans-serif;
+      font-family: "PoppinsRegular", sans-serif;
     }
 
     ::-moz-placeholder {
-      font-family: "Poppins", sans-serif;
+      font-family: "PoppinsRegular", sans-serif;
     }
 
     :-ms-input-placeholder {
-      font-family: "Poppins", sans-serif;
+      font-family: "PoppinsRegular", sans-serif;
     }
 
     :-moz-placeholder {
-      font-family: "Poppins", sans-serif;
+      font-family: "PoppinsRegular", sans-serif;
     }
 
     @media screen and (max-width: 848px) {
@@ -89,9 +89,8 @@ export const Container = styled.div`
     border-radius: 8px;
     color: #6b7a99;
     display: block;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
     font-size: 0.8rem;
-    font-weight: 400;
     max-height: 100px;
     overflow-y: auto;
     position: absolute;

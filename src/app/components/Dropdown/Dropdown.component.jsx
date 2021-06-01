@@ -1,9 +1,11 @@
 // Import: Dependencies
 import React from "react";
+
+// Import: Utils
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Elements
-import { Container, Label, Select, Option } from "./Dropdown.elements";
+import { Container, Label, Option, Select } from "./Dropdown.elements";
 
 // Component: Dropdown
 export const Dropdown = React.forwardRef((props, ref) => {
@@ -21,11 +23,11 @@ export const Dropdown = React.forwardRef((props, ref) => {
       </Label>
 
       <Select
-        name={props.htmlFor}
+        defaultValue={props.defaultValue}
         id={props.htmlFor}
+        name={props.htmlFor}
         onChange={props.onChange}
         ref={ref}
-        defaultValue={props.defaultValue}
         value={props.value}
         width={props.width}
       >

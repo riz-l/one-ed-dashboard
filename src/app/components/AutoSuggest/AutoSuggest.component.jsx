@@ -8,9 +8,10 @@ import { Container, Dropdown, Label } from "./AutoSuggest.elements";
 
 // Component: AutoSuggest
 export const AutoSuggest = React.forwardRef((props, ref) => {
+  // Redux: dispatch
   const dispatch = useDispatch();
 
-  // State: value, suggestions
+  // State: Local state
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -48,13 +49,14 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
   // Gets individual suggestion by suggestion.name
   const getSuggestionValue = (suggestion) => suggestion.name;
 
-  // Renders each suggestion
+  // Renders each suggestion and dispatches onChange
+  // ... and codeOnChange props onClick
   const renderSuggestion = (suggestion) => (
     <Dropdown ref={ref}>
       <span
         onClick={() => {
-          dispatch(props.onChange(suggestion.name));
-          dispatch(props.codeOnChange(suggestion.code));
+          props.onChange && dispatch(props.onChange(suggestion.name));
+          props.codeOnChange && dispatch(props.codeOnChange(suggestion.code));
         }}
       >
         {suggestion.name}
@@ -80,15 +82,16 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
 
   // Effect: if value === "", set Redux state to === ""
   useEffect(() => {
-    if (value === "" && props.onChange && props.onChange.length > 0) {
-      dispatch(props.onChange(""));
+    if (value === "") {
+      props.onChange && dispatch(props.onChange(""));
+      props.codeOnChange && dispatch(props.codeOnChange(""));
       setValue("");
     }
   }, [value, dispatch, props]);
 
   return (
     <>
-      <Container left={props.left} data-testid={"autoSuggest"}>
+      <Container data-testid={"autoSuggest"} left={props.left}>
         {props.labelText && (
           <Label htmlfor={props.htmlFor} left={props.left}>
             {props.labelText}
@@ -96,12 +99,12 @@ export const AutoSuggest = React.forwardRef((props, ref) => {
         )}
 
         <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={onSuggestionsClearRequested}
           getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
           inputProps={inputProps}
+          onSuggestionsClearRequested={onSuggestionsClearRequested}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          renderSuggestion={renderSuggestion}
+          suggestions={suggestions}
         />
       </Container>
     </>
