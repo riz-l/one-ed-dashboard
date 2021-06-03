@@ -52,6 +52,7 @@ export const StyledText = styled.a`
           color: ${({ color }) => (color ? color : "#008ba3")};
           font-family: "PoppinsRegular", sans-serif;
           font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
+          font-weight: 400;
           transition: all 100ms linear;
 
           &:hover {

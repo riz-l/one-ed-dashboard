@@ -5,17 +5,17 @@ import store from "../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Component
-import Navigation from "./Navigation.component";
+import PatientDetails from "./PatientDetails.component";
 
-// Test: Checks that Navigation renders
-it("Does the Navigation component render?", () => {
+// Test: Checks that PatientDetails renders
+it("Does the PatientDetails component render?", () => {
   const { queryByTestId } = render(
     <Provider store={store}>
       <Router>
-        <Navigation />
+        <PatientDetails />
       </Router>
     </Provider>
   );
-  const component = queryByTestId("navigation");
+  const component = queryByTestId("patientDetails");
   expect(component).toBeTruthy();
 });

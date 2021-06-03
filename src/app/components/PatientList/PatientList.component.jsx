@@ -1,11 +1,11 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIncomingPatients } from "../../../redux/slices/incomingPatientsSlice";
 import { getPatientList } from "../../../redux/slices/patientListSlice";
 import {
-  selectPatient,
   getSelectedPatient,
+  selectPatient,
 } from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Elements
@@ -30,19 +30,32 @@ import {
 
 // Component: PatientList
 export default function PatientList() {
-  // Redux: Fetches isSummaryOpen, patientList, selectedPatient from the global state
-  // const isSummaryOpen = useSelector((state) => state.dashboard.isSummaryOpen);
-  const patientList = useSelector((state) => state.patientList.patients);
-  const incomingPatients = useSelector(
-    (state) => state.incomingPatients.incoming
-  );
-  const status = useSelector((state) => state.patientList.status);
-  const selectedPatient = useSelector((state) => state.selectedPatient.patient);
+  // Redux: useSelector, useDispatch
+  const patientList = useSelector((state) => {
+    if (state.patientList.patients) {
+      return state.patientList.patients;
+    }
+  });
+  const incomingPatients = useSelector((state) => {
+    if (state.incomingPatients.incoming) {
+      return state.incomingPatients.incoming;
+    }
+  });
+  const status = useSelector((state) => {
+    if (state.patientList.status) {
+      return state.patientList.status;
+    }
+  });
+  const selectedPatient = useSelector((state) => {
+    if (state.selectedPatient.patient) {
+      return state.selectedPatient.patient;
+    }
+  });
   const dispatch = useDispatch();
 
-  // State: isPatientList, isIncomingPatients
-  const [isPatientList, setIsPatientList] = useState(true);
+  // State: Local state
   const [isIncomingPatients, setIsIncomingPatients] = useState(false);
+  const [isPatientList, setIsPatientList] = useState(true);
 
   // Effect: Fetches patient list data on component render
   // ... sets a 30s timer after the initial render
@@ -52,28 +65,24 @@ export default function PatientList() {
     //     dispatch(getPatientList());
     //   }, 30000)
     // );
-
     dispatch(getPatientList());
     dispatch(getIncomingPatients());
-
     // return () => clearInterval(patientListInterval);
   }, [dispatch]);
 
   // Effect: Checks that there is a selectedPatient
-  // ... if there is a selectedPatient, fetch selectPatient's data
+  // ... if there is a selectedPatient, fetch selectedPatient's data
   useEffect(() => {
     if (selectedPatient !== "") {
       dispatch(getSelectedPatient());
     }
   }, [selectedPatient, dispatch]);
 
-  // onClick: Renders patientList
+  // onClick: Functions for rendering different Patient lists
   function renderPatientList() {
     setIsIncomingPatients(false);
     setIsPatientList(true);
   }
-
-  // onClick: Renders incomingPatients
   function renderIncomingPatients() {
     setIsPatientList(false);
     setIsIncomingPatients(true);
@@ -94,9 +103,6 @@ export default function PatientList() {
         ...otherPatientProps
       }) => (
         <PatientItem
-          key={patientID}
-          patientID={patientID}
-          onClick={() => dispatch(selectPatient(patientID))}
           colOne={name ? name : "N/A"}
           colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
           colThree={diagnosis ? diagnosis : "N/A"}
@@ -109,6 +115,10 @@ export default function PatientList() {
               : "N/A"
           }
           colSix={currentStage ? currentStage : "N/A"}
+          key={patientID}
+          onClick={() => dispatch(selectPatient(patientID))}
+          patient={selectedPatient}
+          patientID={patientID}
           patientList
           {...otherPatientProps}
         />
@@ -118,21 +128,19 @@ export default function PatientList() {
   // Maps incomingPatients through PatientItem
   const incomingPatientListRender = incomingPatients.map(
     ({
-      PD_Firstname,
-      PD_Surname,
-      PD_Age_Yrs,
+      Master_ePR_ID,
       PD_Age_Mths,
+      PD_Age_Yrs,
+      PD_Arrived_Time,
       PD_Ethnicity,
+      PD_Firstname,
       PD_Gender,
       PD_Reported_Condition,
-      PD_Arrived_Time,
-      Master_ePR_ID,
+      PD_Surname,
       ...otherPatientProps
     }) => (
       <PatientItem
         key={Master_ePR_ID}
-        patientID={Master_ePR_ID}
-        // onClick={() => dispatch(selectPatient(patientID))}
         colOne={
           PD_Firstname || PD_Surname ? `${PD_Firstname} ${PD_Surname}` : "N/A"
         }
@@ -148,6 +156,7 @@ export default function PatientList() {
         colFive={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
         colSix={<ReportModal patientID={Master_ePR_ID} />}
         incomingPatients
+        patientID={Master_ePR_ID}
         {...otherPatientProps}
       />
     )

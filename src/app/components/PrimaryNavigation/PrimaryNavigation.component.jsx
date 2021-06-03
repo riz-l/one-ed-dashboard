@@ -59,9 +59,9 @@ export default function PrimaryNavigation({ margin, padding, ...props }) {
   return (
     <PrimaryNavigationGroupContext.Provider value={props}>
       <Container
+        data-testid={"primaryNavigation"}
         margin={margin}
         padding={padding}
-        data-testid={"primaryNavigation"}
       >
         {props.children}
       </Container>
@@ -69,7 +69,7 @@ export default function PrimaryNavigation({ margin, padding, ...props }) {
   );
 }
 
-// Export: Item, Text
+// Export: Shorthands for PrimaryNavigation components
 PrimaryNavigation.Item = Item;
 PrimaryNavigation.Save = Save;
 PrimaryNavigation.Text = Text;

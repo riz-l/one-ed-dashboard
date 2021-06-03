@@ -40,5 +40,7 @@ export const StyledText = styled.span`
         `;
     }
   }}
-  font-size: ${({ fontSize }) => fontSize && fontSize};
+  font-size: ${({ fontSize }) =>
+    fontSize &&
+    fontSize}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;

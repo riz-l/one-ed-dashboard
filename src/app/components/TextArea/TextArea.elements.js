@@ -21,12 +21,13 @@ export const Label = styled.label`
 
 // Element: StyledTextArea
 export const StyledTextArea = styled.textarea`
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   border: 2px solid #edeff2;
   border-radius: 8px;
   color: #4d5e80;
-  font-family: "Poppins", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
+  font-weight: 400;
   padding: 1rem;
   transition: all 100ms linear;
   -webkit-user-select: auto;
@@ -37,11 +38,6 @@ export const StyledTextArea = styled.textarea`
   width: 100%;
   max-width: 100%;
   min-width: 100%;
-
-  /* @media screen and (max-width: 848px) {
-    width: 180px;
-    max-width: 180px;
-  } */
 
   &:hover {
     box-shadow: 0 0 5px #7cf0f4;

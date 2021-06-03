@@ -3,24 +3,24 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 
 // Import: Icons
-import { MdKeyboardArrowRight as ArrowIcon } from "react-icons/md";
 import { GoAlert as AlertsIcon } from "react-icons/go";
 import { GiMedicines as AllergiesIcon } from "react-icons/gi";
+import { MdKeyboardArrowRight as ArrowIcon } from "react-icons/md";
 import { FaUserInjured as ComplaintIcon } from "react-icons/fa";
 import { FaBandAid as ComplicationsIcon } from "react-icons/fa";
+import { BiPlusMedical as DefaultIcon } from "react-icons/bi";
 import { RiStethoscopeFill as DiagnosisIcon } from "react-icons/ri";
 import { FaSearch as FindingsIcon } from "react-icons/fa";
 import { FaUserNurse as ProceduresIcon } from "react-icons/fa";
 import { FaBed as SymptomsIcon } from "react-icons/fa";
-import { BiPlusMedical as DefaultIcon } from "react-icons/bi";
 
 // Import: Elements
 import {
   Arrow,
   ArrowContainer,
   Container,
-  EntryContainer,
   Detail,
+  EntryContainer,
   Header,
   Heading,
   Icon,
@@ -40,26 +40,24 @@ export default function ReportEntry({
   allergies,
   complaint,
   complications,
+  details,
   diagnosis,
   findings,
+  icon,
+  openedModal,
   procedures,
   symptoms,
   themeColor,
-  icon,
   type,
-  details,
   status,
-  openedModal,
 }) {
-  // State: isModalOpen
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
@@ -67,13 +65,13 @@ export default function ReportEntry({
   return (
     <Container data-testid={"reportEntry"}>
       <Wrapper
-        onClick={openModal}
         alerts={alerts}
         allergies={allergies}
         complaint={complaint}
         complications={complications}
         diagnosis={diagnosis}
         findings={findings}
+        onClick={openModal}
         procedures={procedures}
         symptoms={symptoms}
         themeColor={themeColor}
@@ -142,8 +140,8 @@ export default function ReportEntry({
             diagnosis={diagnosis}
             findings={findings}
             procedures={procedures}
-            symptoms={symptoms}
             style={{ background: `${themeColor}` }}
+            symptoms={symptoms}
           >
             <Arrow>
               <ArrowIcon />
@@ -153,7 +151,9 @@ export default function ReportEntry({
       </Wrapper>
 
       <ReactModal
-        isOpen={isModalOpen}
+        ariaHideApp={false}
+        className="Modal"
+        closeTimeoutMS={100}
         contentLabel={
           alerts
             ? "Alerts"
@@ -173,11 +173,9 @@ export default function ReportEntry({
             ? "Symptoms"
             : "Default Entry"
         }
+        isOpen={isModalOpen}
         onRequestClose={closeModal}
-        className="Modal"
         overlayClassName="Overlay"
-        closeTimeoutMS={100}
-        ariaHideApp={false}
       >
         <Header>
           <PageTitle
@@ -223,11 +221,10 @@ export default function ReportEntry({
             }
           />
 
-          <Button text="Close" onClick={closeModal} />
+          <Button onClick={closeModal} text="Close" />
         </Header>
 
         <ReportSection content={openedModal} />
-        {/* {openedModal} */}
       </ReactModal>
     </Container>
   );

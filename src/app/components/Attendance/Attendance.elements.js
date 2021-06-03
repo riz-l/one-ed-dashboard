@@ -44,6 +44,7 @@ export const Header = styled.div`
     color: #6b7a99;
     font-family: "PoppinsMedium", sans-serif;
     font-size: 1.4rem;
+    font-weight: 500;
     transition: all 100ms linear;
   }
 

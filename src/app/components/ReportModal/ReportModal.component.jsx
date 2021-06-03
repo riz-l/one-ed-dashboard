@@ -11,45 +11,44 @@ import { Button, PageTitle } from "../index";
 
 // Component: ReportModal
 export default function ReportModal({ patientID }) {
+  // Accessing .env variables
   const apiUrl = process.env.REACT_APP_INTEGRATION_REPORT;
 
-  // State: isModalOpen
+  // State: Local State
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
   return (
     <>
-      <Container>
+      <Container data-testid={"reportModal"}>
         <Button
-          onClick={openModal}
-          text="Report"
           fontSize="0.8rem"
+          onClick={openModal}
           padding="0.2rem 0.8rem"
+          text="Report"
         />
       </Container>
 
       <ReactModal
+        ariaHideApp={false}
+        className="Modal"
+        closeTimeoutMS={100}
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        className="Modal"
         overlayClassName="Overlay"
-        closeTimeoutMS={100}
-        ariaHideApp={false}
       >
         <Header>
           <PageTitle
             backgroundColor="#ffffff"
-            padding="1rem 0 2rem 0"
             heading="Integration Report"
+            padding="1rem 0 2rem 0"
             subheading="OneResponse Patient details"
           />
           <Button onClick={closeModal} text="Close" />

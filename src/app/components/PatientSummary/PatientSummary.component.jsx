@@ -28,10 +28,15 @@ import { Button, Display, PageTitle, PatientDemographics } from "../index";
 
 // Component: PatientSummary
 export default function PatientSummary() {
-  // Redux: Fetches selectedPatient and patientData from the global state
-  const status = useSelector((state) => state.selectedPatient.dataStatus);
+  // Redux: useSelector, useDispatch
+  const status = useSelector((state) => {
+    if (state.selectedPatient.dataStatus) {
+      return state.selectedPatient.dataStatus;
+    }
+  });
   const dispatch = useDispatch();
 
+  // Temporary renders for when status === null || "loading"
   if (status === null) {
     return (
       <Container data-testid={"patientSummary"}>

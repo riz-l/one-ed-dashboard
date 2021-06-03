@@ -7,18 +7,12 @@ export const Container = styled.div`
   display: flex;
   height: 100%;
   justify-content: flex-start;
-  /* overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-color: #c3cad9 #edeff2;
-  scrollbar-width: thin; */
   width: 100%;
   max-width: 100%;
-  /* margin-bottom: 0.8rem; */
 `;
 
 // Element: ItemContainer
 export const ItemContainer = styled.div`
-  /* height: 100%; */
   margin-right: 0.4rem;
   margin-top: auto;
   width: auto;
@@ -56,6 +50,7 @@ export const Indicator = styled.div`
 // Element: TextContainer
 export const TextContainer = styled.span`
   color: #6b7a99;
+  font-family: "PoppinsMedium", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
   transition: all 100ms linear;
@@ -65,7 +60,6 @@ export const TextContainer = styled.span`
 export const ItemWrapper = styled.div`
   align-items: center;
   background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#f7f8fa")};
-  /* border-radius: 8px; */
   border: 1px solid #edeff2;
   border-bottom: none;
   border-top-left-radius: 8px;

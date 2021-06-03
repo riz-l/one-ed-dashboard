@@ -20,6 +20,7 @@ export const Container = styled.div`
   & input {
     font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
+    font-weight: 400;
   }
 
   & .react-autosuggest__container {
@@ -43,18 +44,22 @@ export const Container = styled.div`
 
     ::-webkit-input-placeholder {
       font-family: "PoppinsRegular", sans-serif;
+      font-weight: 400;
     }
 
     ::-moz-placeholder {
       font-family: "PoppinsRegular", sans-serif;
+      font-weight: 400;
     }
 
     :-ms-input-placeholder {
       font-family: "PoppinsRegular", sans-serif;
+      font-weight: 400;
     }
 
     :-moz-placeholder {
       font-family: "PoppinsRegular", sans-serif;
+      font-weight: 400;
     }
 
     @media screen and (max-width: 848px) {
@@ -91,6 +96,7 @@ export const Container = styled.div`
     display: block;
     font-family: "PoppinsRegular", sans-serif;
     font-size: 0.8rem;
+    font-weight: 400;
     max-height: 100px;
     overflow-y: auto;
     position: absolute;

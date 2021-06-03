@@ -34,6 +34,7 @@ export const Select = styled.select`
   cursor: pointer;
   font-family: "PoppinsRegular", sans-serif;
   font-size: 1rem;
+  font-weight: 400;
   padding: 0.25rem 0.8rem;
   transition: all 100ms linear;
   width: ${({ width }) => width ?? width};
@@ -63,5 +64,6 @@ export const Option = styled.option`
   cursor: pointer;
   font-family: "PoppinsRegular", sans-serif !important;
   font-size: 1rem;
+  font-weight: 400;
   padding: 0.4rem 1rem;
 `;

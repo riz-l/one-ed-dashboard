@@ -22,7 +22,7 @@ export const TextArea = React.forwardRef((props, ref) => {
           ref={ref}
           rows={props.rows ? props.rows : "12"}
           value={props.value}
-        ></StyledTextArea>
+        />
       </Container>
     </>
   );

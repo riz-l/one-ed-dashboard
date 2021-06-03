@@ -10,10 +10,12 @@ import { Display, Grid, Text } from "../../..";
 
 // SubPage: CEDObs
 export default function CEDObs() {
-  // Redux:
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
-  );
+  // Redux: useSelector
+  const questionnaireResponseDetail = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponseDetail) {
+      return state.clinicalNotes.notes.questionnaireResponseDetail;
+    }
+  });
 
   return (
     <>
@@ -98,7 +100,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="weightKG" labelText="Weight (kg)">
+                <Display htmlFor="weightKg" labelText="Weight (kg)">
                   {questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
                     ? questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
                     : "N/A"}
@@ -106,7 +108,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="heightCM" labelText="Height (cm)">
+                <Display htmlFor="heightCm" labelText="Height (cm)">
                   {questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
                     ? questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
                     : "N/A"}

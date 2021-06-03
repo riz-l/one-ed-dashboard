@@ -19,12 +19,12 @@ export const Radio = React.forwardRef((props, ref) => {
             <TickIcon />
 
             <Input
-              type="radio"
-              value={props.value}
-              name={props.name}
               checked={props.checked}
               onChange={props.onChange}
+              name={props.name}
               ref={ref}
+              type="radio"
+              value={props.value}
             />
           </VisualBox>
         </Label>

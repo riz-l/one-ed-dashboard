@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Registration from "./Registration.component";
 
 // Test: Checks that Registration renders
-it("Does the Registration SubPage render?", () => {
+it("Does the Registration subPage render?", () => {
   const { queryByTestId } = render(
     <Provider store={store}>
       <Router>

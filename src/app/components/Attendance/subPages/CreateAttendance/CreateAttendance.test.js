@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import CreateAttendance from "./CreateAttendance.component";
 
 // Test: Checks that CreateAttendance renders
-it("Does the CreateAttendance SubPage render?", () => {
+it("Does the CreateAttendance subPage render?", () => {
   const { queryByTestId } = render(
     <Provider store={store}>
       <Router>

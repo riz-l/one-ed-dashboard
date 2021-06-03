@@ -5,7 +5,7 @@ import React, {
 } from "react";
 
 // Import: Elements
-import { Container, ColumnContainer, ItemContainer } from "./Grid.elements";
+import { ColumnContainer, Container, ItemContainer } from "./Grid.elements";
 
 // Context: GridGroupContext
 const GridGroupContext = createContext();
@@ -16,7 +16,6 @@ const GridGroupContext = createContext();
 //       `Grid compound components cannot be rendered outside of the Grid component`
 //     );
 //   }
-
 //   return context;
 // };
 
@@ -50,6 +49,6 @@ export default function Grid(props) {
   );
 }
 
-// Export: Column, Item
+// Export: Shorthands for Grid components
 Grid.Column = Column;
 Grid.Item = Item;

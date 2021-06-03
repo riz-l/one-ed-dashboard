@@ -8,7 +8,7 @@ import { Container, Dropdown, Label } from "./AutoSuggest.elements";
 
 // Component: AutoSuggest
 export const AutoSuggest = React.forwardRef((props, ref) => {
-  // Redux: dispatch
+  // Redux: useDispatch
   const dispatch = useDispatch();
 
   // State: Local state

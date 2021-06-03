@@ -20,6 +20,7 @@ export const StyledButton = styled.button`
   display: flex;
   font-family: "PoppinsRegular", sans-serif;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
+  font-weight: 400;
   justify-content: center;
   padding: ${({ padding }) => (padding ? padding : "0.4rem 1rem")};
   transition: all 100ms linear;
