@@ -48,6 +48,8 @@ export const Heading = styled.div`
 
   & h3 {
     color: #6b7a99;
+    font-family: "PoppinsBold", sans-serif;
+    font-weight: 700;
   }
 `;
 

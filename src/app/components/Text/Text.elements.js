@@ -11,30 +11,35 @@ export const StyledText = styled.span`
       case heading:
         return css`
           color: #6b7a99;
+          font-family: "PoppinsBold", sans-serif;
           font-size: 1.5em;
           font-weight: 700;
         `;
       case subheading:
         return css`
           color: #6b7a99;
+          font-family: "PoppinsSemiBold", sans-serif;
           font-size: 18px;
           font-weight: 600;
         `;
       case text:
         return css`
           color: #6b7a99;
+          font-family: "PoppinsRegular", sans-serif;
           font-size: 1rem;
           font-weight: 400;
         `;
       case bold:
         return css`
           color: #6b7a99;
+          font-family: "PoppinsSemiBold", sans-serif;
           font-size: 1rem;
           font-weight: 600;
         `;
       default:
         return css`
           color: #6b7a99;
+          font-family: "PoppinsRegular", sans-serif;
           font-size: 1rem;
           font-weight: 400;
         `;
