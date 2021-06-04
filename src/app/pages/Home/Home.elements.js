@@ -15,6 +15,7 @@ export const Container = styled.div`
   max-width: 100%;
   min-width: 100%;
 `;
+
 // Element Logo
 export const Logo = styled.div`
   width: 200px;

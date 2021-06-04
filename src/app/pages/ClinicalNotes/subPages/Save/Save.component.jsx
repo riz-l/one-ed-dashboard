@@ -21,7 +21,7 @@ import { Grid, Text } from "../../../../components";
 
 // SubPage: Save
 export default function Save() {
-  // Redux:
+  // Redux: useDispatch
   const dispatch = useDispatch();
 
   return (
@@ -38,8 +38,8 @@ export default function Save() {
                 <Suggestions>
                   <Grid.Item>
                     <Link
-                      to="/one-ed/ward/dashboard"
                       onClick={() => dispatch(clearPatient())}
+                      to="/one-ed/ward/dashboard"
                     >
                       <Suggestion>
                         <IconContainer>

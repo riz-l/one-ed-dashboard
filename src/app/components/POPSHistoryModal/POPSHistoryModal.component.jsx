@@ -1,7 +1,7 @@
 // Import: Packages
 import React, { useState } from "react";
-import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
 import { useDispatch } from "react-redux";
+import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
 import moment from "moment";
 import ReactModal from "react-modal";
 

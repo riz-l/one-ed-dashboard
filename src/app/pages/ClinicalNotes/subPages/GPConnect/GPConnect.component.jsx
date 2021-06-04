@@ -11,7 +11,7 @@ import { Text } from "../../../../components";
 export default function GPConnect() {
   return (
     <>
-      <Container data-testid={"gPConnect"}>
+      <Container data-testid={"gpConnect"}>
         <Wrapper>
           <Text as="h2" heading>
             GP Connect

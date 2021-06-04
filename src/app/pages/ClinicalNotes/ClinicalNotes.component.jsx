@@ -7,14 +7,14 @@ import { ReactComponent as ChartIcon } from "../../../assets/img/icon/chart.svg"
 import { ReactComponent as GpConnectIcon } from "../../../assets/img/icon/gp-connect.svg";
 import { ReactComponent as IceIcon } from "../../../assets/img/icon/ice.svg";
 import { ReactComponent as NotesIcon } from "../../../assets/img/icon/notes.svg";
-import { ReactComponent as PopsHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
 import { ReactComponent as PacsIcon } from "../../../assets/img/icon/pacs.svg";
+import { ReactComponent as PopsHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
 import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./ClinicalNotes.elements";
 
-// Import: Components, SubPages
+// Import: Components, subPages
 import {
   PageTitle,
   PatientDemographics,
@@ -35,107 +35,19 @@ import {
 
 // Page: ClinicalNotes
 export default function ClinicalNotes() {
-  // State: isNotes, isPopsHistory, isIntegration, isSave
-  const [isNotes, setIsNotes] = useState(true);
-  const [isPopsHistory, setIsPopsHistory] = useState(false);
+  // State: Local state
+  const [isAmbulance, setIsAmbulance] = useState(false);
+  const [isChart, setIsChart] = useState(false);
+  const [isGpConnect, setIsGpConnect] = useState(false);
+  const [isIce, setIsIce] = useState(false);
   const [isIntegration, setIsIntegration] = useState(false);
+  const [isNotes, setIsNotes] = useState(true);
+  const [isPacs, setIsPacs] = useState(false);
+  const [isPopsHistory, setIsPopsHistory] = useState(false);
+  const [isPopsHistorySubPage, setIsPopsHistorySubPage] = useState(false);
   const [isSave, setIsSave] = useState(false);
 
-  // State: POPS History SubPages
-  const [isPopsHistorySubPage, setIsPopsHistorySubPage] = useState(false);
-  const [isChart, setIsChart] = useState(false);
-
-  // State: Integration SubPages
-  const [isIce, setIsIce] = useState(false);
-  const [isPacs, setIsPacs] = useState(false);
-  const [isGpConnect, setIsGpConnect] = useState(false);
-  const [isAmbulance, setIsAmbulance] = useState(false);
-
-  // onClick: Renders Notes SubPage
-  function renderNotes() {
-    setIsPopsHistory(false);
-    setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsNotes(true);
-  }
-
-  // onClick: Renders Obs SubPage
-  function renderObs() {
-    setIsNotes(false);
-    setIsChart(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsPopsHistory(true);
-    setIsPopsHistorySubPage(true);
-  }
-
-  // onClick: Renders Chart SubPage
-  function renderChart() {
-    setIsNotes(false);
-    setIsPopsHistorySubPage(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsPopsHistory(true);
-    setIsChart(true);
-  }
-
-  // onClick: Renders ICE SubPage
-  function renderIce() {
-    setIsNotes(false);
-    setIsPopsHistory(false);
-    setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsIntegration(true);
-    setIsIce(true);
-  }
-
-  // onClick: Renders PACS SubPage
-  function renderPacs() {
-    setIsNotes(false);
-    setIsPopsHistory(false);
-    setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIce(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsIntegration(true);
-    setIsPacs(true);
-  }
-
-  // onClick: Renders GP Connect SubPage
-  function renderGpConnect() {
-    setIsNotes(false);
-    setIsPopsHistory(false);
-    setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsIntegration(true);
-    setIsGpConnect(true);
-  }
-
-  // onClick: Renders Ambulance SubPage
+  // onClick: Functions for rendering subPages
   function renderAmbulance() {
     setIsNotes(false);
     setIsPopsHistory(false);
@@ -148,8 +60,78 @@ export default function ClinicalNotes() {
     setIsIntegration(true);
     setIsAmbulance(true);
   }
-
-  // onClick: Renders Save SubPage
+  function renderChart() {
+    setIsNotes(false);
+    setIsPopsHistorySubPage(false);
+    setIsIntegration(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsPopsHistory(true);
+    setIsChart(true);
+  }
+  function renderGpConnect() {
+    setIsNotes(false);
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsIntegration(true);
+    setIsGpConnect(true);
+  }
+  function renderIce() {
+    setIsNotes(false);
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsIntegration(true);
+    setIsIce(true);
+  }
+  function renderNotes() {
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
+    setIsIntegration(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsNotes(true);
+  }
+  function renderObs() {
+    setIsNotes(false);
+    setIsChart(false);
+    setIsIntegration(false);
+    setIsIce(false);
+    setIsPacs(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsPopsHistory(true);
+    setIsPopsHistorySubPage(true);
+  }
+  function renderPacs() {
+    setIsNotes(false);
+    setIsPopsHistory(false);
+    setIsPopsHistorySubPage(false);
+    setIsChart(false);
+    setIsIce(false);
+    setIsGpConnect(false);
+    setIsAmbulance(false);
+    setIsSave(false);
+    setIsIntegration(true);
+    setIsPacs(true);
+  }
   function renderSave() {
     setIsNotes(false);
     setIsPopsHistory(false);

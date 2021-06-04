@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import DecisionToAdmit from "./DecisionToAdmit.component";
 
 // Test: Checks that DecisionToAdmit renders
-it("checkDecisionToAdmitRender", () => {
+it("Does the DecisionToAdmit subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <DecisionToAdmit />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <DecisionToAdmit />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("decisionToAdmit");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("decisionToAdmit");
+  expect(subPage).toBeTruthy();
 });

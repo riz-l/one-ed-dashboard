@@ -34,6 +34,7 @@ export default function PatientSummary() {
       return state.selectedPatient.dataStatus;
     }
   });
+
   const dispatch = useDispatch();
 
   // Temporary renders for when status === null || "loading"

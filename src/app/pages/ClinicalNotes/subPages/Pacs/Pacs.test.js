@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Pacs from "./Pacs.component";
 
 // Test: Checks that Pacs renders
-it("checkPacsRender", () => {
+it("Does the Pacs subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Pacs />
     </Router>
   );
-  const page = queryByTestId("pacs");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("pacs");
+  expect(subPage).toBeTruthy();
 });

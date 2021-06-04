@@ -1,14 +1,10 @@
 // Import: Packages
 import React, { useState } from "react";
 
-// Import: Assets
-// import { ReactComponent as DetailsIcon } from "../../../assets/img/icon/patient.svg";
-// import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
-
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./AdmitOrReferral.elements";
 
-// Import: Components, SubPages
+// Import: Components, subPages
 import {
   PageTitle,
   PatientDemographics,
@@ -19,17 +15,15 @@ import { DecisionToAdmit, Referral } from "./subPages";
 
 // Page: AdmitOrReferral
 export default function AdmitOrReferral() {
-  // State: isDecisionToAdmit, isReferral
+  // State: Local state
   const [isDecisionToAdmit, setIsDecisionToAdmit] = useState(true);
   const [isReferral, setIsReferral] = useState(false);
 
-  // onClick: Renders DecisionToAdmit
+  // onClick: Functions for rendering subPages
   function renderDecisionToAdmit() {
     setIsReferral(false);
     setIsDecisionToAdmit(true);
   }
-
-  // onClick: Renders Referral
   function renderReferral() {
     setIsDecisionToAdmit(false);
     setIsReferral(true);

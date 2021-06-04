@@ -2,20 +2,20 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getQuestionnaireResponse,
+  addPostDateTime,
+  addPostEncounterID,
+  addPostNote,
+  addPostPatientName,
+  addPostPractionerID,
+  addPostPractionerName,
+  addPutDateTime,
+  addPutNote,
+  addPutPractionerName,
+  filterForPreviousNotes,
   getNotesQuestionnaireResponseDetail,
+  getQuestionnaireResponse,
   postNewNote,
   putNewNote,
-  filterForPreviousNotes,
-  addPostPractionerName,
-  addPostPractionerID,
-  addPostPatientName,
-  addPostEncounterID,
-  addPostDateTime,
-  addPostNote,
-  addPutNote,
-  addPutDateTime,
-  addPutPractionerName,
 } from "../../../../../redux/slices/clinicalNotesSlice";
 import moment from "moment";
 
@@ -27,45 +27,67 @@ import { Form, NotesEntry, Text } from "../../../../components";
 
 // SubPage: Notes
 export default function Notes() {
-  // Redux:
-  const questionnaireResponse = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponse
-  );
-  const newNote = useSelector((state) => state.clinicalNotes.notes.newNote);
-  const newPutNote = useSelector(
-    (state) => state.clinicalNotes.notes.newPutNote
-  );
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
-  );
-  const apiPostResponse = useSelector(
-    (state) => state.clinicalNotes.notes.apiPostResponse
-  );
-  const apiPutResponse = useSelector(
-    (state) => state.clinicalNotes.notes.apiPutResponse
-  );
-  const filteredQuestionnaireResponse = useSelector(
-    (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
-  );
-  const encounterID = useSelector(
-    (state) => state.selectedPatient.patientData[0].encounterID
-  );
-  const practionerName = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
-  const practionerID = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.extension
-  );
-  const patientName = useSelector(
-    (state) => state.selectedPatient.patientData[0].name
-  );
+  // Redux: useSelector, useDispatch
+  const apiPostResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.apiPostResponse) {
+      return state.clinicalNotes.notes.apiPostResponse;
+    }
+  });
+  const apiPutResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.apiPutResponse) {
+      return state.clinicalNotes.notes.apiPutResponse;
+    }
+  });
+  const encounterID = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].encounterID;
+    }
+  });
+  const filteredQuestionnaireResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.filteredQuestionnaireResponse) {
+      return state.clinicalNotes.notes.filteredQuestionnaireResponse;
+    }
+  });
+  const newNote = useSelector((state) => {
+    if (state.clinicalNotes.notes.newNote) {
+      return state.clinicalNotes.notes.newNote;
+    }
+  });
+  const newPutNote = useSelector((state) => {
+    if (state.clinicalNotes.notes.newPutNote) {
+      return state.clinicalNotes.notes.newPutNote;
+    }
+  });
+  const patientName = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].name;
+    }
+  });
+  const practionerID = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension;
+    }
+  });
+  const practionerName = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName;
+    }
+  });
+  const questionnaireResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponse) {
+      return state.clinicalNotes.notes.questionnaireResponse;
+    }
+  });
+  const questionnaireResponseDetail = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponseDetail) {
+      return state.clinicalNotes.notes.questionnaireResponseDetail;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Ref:
+  // Ref: Used for note TextArea
   const noteTextAreaRef = useRef();
 
   // Current Date, Time
@@ -83,23 +105,23 @@ export default function Notes() {
 
   // Effect: Fetches questionnaire response from API
   useEffect(() => {
-    dispatch(getQuestionnaireResponse());
-    dispatch(addPostPractionerName(practionerName));
-    dispatch(addPostPractionerID(practionerID));
-    dispatch(addPostPatientName(patientName));
-    dispatch(addPostEncounterID(encounterID));
-    dispatch(addPostDateTime(putEditedNewDateTime));
     dispatch(addPutDateTime(putEditedNewDateTime));
     dispatch(addPutPractionerName(practionerName));
+    dispatch(addPostDateTime(putEditedNewDateTime));
+    dispatch(addPostEncounterID(encounterID));
+    dispatch(addPostPatientName(patientName));
+    dispatch(addPostPractionerID(practionerID));
+    dispatch(addPostPractionerName(practionerName));
+    dispatch(getQuestionnaireResponse());
   }, [
+    apiPostResponse,
+    apiPutResponse,
     dispatch,
     encounterID,
     patientName,
     practionerID,
     practionerName,
     putEditedNewDateTime,
-    apiPutResponse,
-    apiPostResponse,
   ]);
 
   // Effect: Filters questionnaire responses
@@ -116,7 +138,7 @@ export default function Notes() {
     dispatch(getNotesQuestionnaireResponseDetail());
   }, [dispatch, filteredQuestionnaireResponse]);
 
-  // Add noteToRedux
+  // Addss a new post/put note to Redux
   const addNoteToRedux = () => {
     if (!filteredQuestionnaireResponse) {
       try {
@@ -161,8 +183,8 @@ export default function Notes() {
       ? questionnaireResponseDetail.map(function (item, index) {
           return (
             <NotesEntry
-              key={index}
               dateTime={item.dateTime}
+              key={index}
               note={item.note}
               user={item.PractionerName}
             />
@@ -184,16 +206,16 @@ export default function Notes() {
               labelText="Enter observation note..."
               onChange={addNoteToRedux}
               ref={noteTextAreaRef}
+              rows="8"
               value={
                 !filteredQuestionnaireResponse ? newNote.note : newPutNote.note
               }
-              rows="8"
             />
 
             <Form.Button
-              text="Submit Note"
               onClick={submitNewNote}
               margin="0 0 2rem 0"
+              text="Submit Note"
             />
           </Form>
 
