@@ -138,7 +138,7 @@ export default function Notes() {
     dispatch(getNotesQuestionnaireResponseDetail());
   }, [dispatch, filteredQuestionnaireResponse]);
 
-  // Addss a new post/put note to Redux
+  // Adds a new post/put note to Redux
   const addNoteToRedux = () => {
     if (!filteredQuestionnaireResponse) {
       try {

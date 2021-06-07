@@ -1,83 +1,146 @@
 // Import: Packages
 import React, { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  addPopsAssessmentSysObsNeuroPainScore,
-  addPopsAssessmentSysObsCardiovascPulseRateValueRTG,
-  addPopsAssessmentSysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG,
-  addPopsAssessmentSysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG,
-  addPopsAssessmentRTG_RespiratoryRate,
-  addPopsAssessmentSysObsRespiratoryTargetSATS9498ValueRTG,
-  addPopsAssessmentSysObsRespiratorySupplementalOxygenTypeOptions,
-  addPopsAssessmentRegObsBodyTemperatureValueRTG,
-  addPopsAssessmentRegObsBodyHeightValue_RegObsBodyHeightComp,
-  addPopsAssessmentRegObsBodyWeightValue_RegObsBodyWeightComp,
-  addPopsAssessmentIntervenPathTestChemBloodGlucoseRandom,
-  addPopsAssessmentSysObsRespiratoryEDObsPEFRLMin,
-  addPopsAssessmentSysObsCardiovascCEDObsCapillaryRefill,
+  addPopsAssessmentIntervenCEDObsAnyAgeBreathingScore,
   addPopsAssessmentIntervenCEDObsAnyAgeOtherScore,
   addPopsAssessmentIntervenCEDObsAnyAgeGutFeelingScore,
-  addPopsAssessmentIntervenCEDObsAnyAgeBreathingScore,
+  addPopsAssessmentIntervenPathTestChemBloodGlucoseRandom,
+  addPopsAssessmentRegObsBodyHeightValue_RegObsBodyHeightComp,
+  addPopsAssessmentRegObsBodyTemperatureValueRTG,
+  addPopsAssessmentRegObsBodyWeightValue_RegObsBodyWeightComp,
+  addPopsAssessmentRTGCEDObservationsPOPSScore_1,
+  addPopsAssessmentRTG_RespiratoryRate,
+  addPopsAssessmentSysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG,
+  addPopsAssessmentSysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG,
+  addPopsAssessmentSysObsCardiovascCEDObsCapillaryRefill,
+  addPopsAssessmentSysObsCardiovascPulseRateValueRTG,
+  addPopsAssessmentSysObsNeuroAVPUScoreValue,
   addPopsAssessmentSysObsNeuroAVPUScoreValue_1,
   addPopsAssessmentSysObsNeuroAVPUScoreValue_2,
   addPopsAssessmentSysObsNeuroAVPUScoreValue_3,
-  addPopsAssessmentSysObsNeuroAVPUScoreValue,
-  addPopsAssessmentRTGCEDObservationsPOPSScore_1,
+  addPopsAssessmentSysObsNeuroPainScore,
+  addPopsAssessmentSysObsRespiratoryEDObsPEFRLMin,
+  addPopsAssessmentSysObsRespiratorySupplementalOxygenTypeOptions,
+  addPopsAssessmentSysObsRespiratoryTargetSATS9498ValueRTG,
 } from "../../../../../redux/slices/triageSlice";
 
 // Import: Elements
 import { Container, Wrapper } from "./CEDObs.elements";
 
 // Import: Components
-import { Grid, Form, Text } from "../../../../components";
+import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: CEDObs
 export default function CEDObs() {
-  // Redux:
-  const popsAssessment = useSelector((state) => state.triage.popsAssessment);
+  // Redux: useSelector, useDispatch
+  const popsAssessment = useSelector((state) => {
+    if (state.triage.popsAssessment) {
+      return state.triage.popsAssessment;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Effect
+  // Effect: Populate CEDObs form with AVPU,POPS values on render
+  // ... #TODO: Needs to be populated manually via form
   useEffect(() => {
+    dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore_1("6"));
+    dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue("0"));
     dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue_1("2"));
     dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue_2("2"));
     dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue_3("2"));
-    dispatch(addPopsAssessmentSysObsNeuroAVPUScoreValue("0"));
-    dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore_1("6"));
   }, [dispatch]);
 
-  // Ref:
-  const painScoreRef = useRef();
-  const pulseRateRef = useRef();
+  // Ref: Used for CEDObs form
+  const bloodSugarRef = useRef();
   const bpSystolicFirstRef = useRef();
   const bpSystolicSecondRef = useRef();
-  const respRateRef = useRef();
+  const capillaryRefillRef = useRef();
+  const heightRef = useRef();
   const oxygenSatsRef = useRef();
+  const painScoreRef = useRef();
+  const pefrRef = useRef();
+  const popsBreathingRef = useRef();
+  const popsGutFeelingRef = useRef();
+  const popsOtherRef = useRef();
+  const pulseRateRef = useRef();
+  const respRateRef = useRef();
   const supplementalO2Ref = useRef();
   const tempRef = useRef();
-  const heightRef = useRef();
   const weightRef = useRef();
-  const bloodSugarRef = useRef();
-  const pefrRef = useRef();
-  const capillaryRefillRef = useRef();
-  const popsOtherRef = useRef();
-  const popsGutFeelingRef = useRef();
-  const popsBreathingRef = useRef();
-  // TODO: REQUIRE IMMEDIATE ATTENTION
-  // const avpuScoreARef = useRef();
-  // const avpuScoreBRef = useRef();
-  // const avpuScoreCRef = useRef();
-  // const avpuRef = useRef();
-  // const popsScoreRef = useRef();
 
   // Add values to Redux
+  const addBloodSugarToRedux = () => {
+    dispatch(
+      addPopsAssessmentIntervenPathTestChemBloodGlucoseRandom(
+        bloodSugarRef.current.value
+      )
+    );
+  };
+  const addCapillaryRefillToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsCardiovascCEDObsCapillaryRefill(
+        capillaryRefillRef.current.value
+      )
+    );
+  };
+  const addHeightToRedux = () => {
+    dispatch(
+      addPopsAssessmentRegObsBodyHeightValue_RegObsBodyHeightComp(
+        heightRef.current.value
+      )
+    );
+  };
+  const addOxygenSatsToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsRespiratoryTargetSATS9498ValueRTG(
+        oxygenSatsRef.current.value
+      )
+    );
+  };
   const addPainScoreToRedux = () => {
     dispatch(addPopsAssessmentSysObsNeuroPainScore(painScoreRef.current.value));
+  };
+  const addPefrToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsRespiratoryEDObsPEFRLMin(pefrRef.current.value)
+    );
+  };
+  const addPopsBreathingToRedux = () => {
+    dispatch(
+      addPopsAssessmentIntervenCEDObsAnyAgeBreathingScore(
+        popsBreathingRef.current.value
+      )
+    );
+  };
+  const addPopsGutFeelingToRedux = () => {
+    dispatch(
+      addPopsAssessmentIntervenCEDObsAnyAgeGutFeelingScore(
+        popsGutFeelingRef.current.value
+      )
+    );
+  };
+  const addPopsOtherToRedux = () => {
+    dispatch(
+      addPopsAssessmentIntervenCEDObsAnyAgeOtherScore(
+        popsOtherRef.current.value
+      )
+    );
   };
   const addPulseRateToRedux = () => {
     dispatch(
       addPopsAssessmentSysObsCardiovascPulseRateValueRTG(
         pulseRateRef.current.value
+      )
+    );
+  };
+  const addRespRateToRedux = () => {
+    dispatch(addPopsAssessmentRTG_RespiratoryRate(respRateRef.current.value));
+  };
+  const addSupplementalO2ToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsRespiratorySupplementalOxygenTypeOptions(
+        supplementalO2Ref.current.value
       )
     );
   };
@@ -95,23 +158,6 @@ export default function CEDObs() {
       )
     );
   };
-  const addRespRateToRedux = () => {
-    dispatch(addPopsAssessmentRTG_RespiratoryRate(respRateRef.current.value));
-  };
-  const addOxygenSatsToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsRespiratoryTargetSATS9498ValueRTG(
-        oxygenSatsRef.current.value
-      )
-    );
-  };
-  const addSupplementalO2ToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsRespiratorySupplementalOxygenTypeOptions(
-        supplementalO2Ref.current.value
-      )
-    );
-  };
   const addTempToRedux = () => {
     dispatch(
       addPopsAssessmentRegObsBodyTemperatureValueRTG(tempRef.current.value)
@@ -121,53 +167,6 @@ export default function CEDObs() {
     dispatch(
       addPopsAssessmentRegObsBodyWeightValue_RegObsBodyWeightComp(
         weightRef.current.value
-      )
-    );
-  };
-  const addHeightToRedux = () => {
-    dispatch(
-      addPopsAssessmentRegObsBodyHeightValue_RegObsBodyHeightComp(
-        heightRef.current.value
-      )
-    );
-  };
-  const addBloodSugarToRedux = () => {
-    dispatch(
-      addPopsAssessmentIntervenPathTestChemBloodGlucoseRandom(
-        bloodSugarRef.current.value
-      )
-    );
-  };
-  const addPefrToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsRespiratoryEDObsPEFRLMin(pefrRef.current.value)
-    );
-  };
-  const addCapillaryRefillToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsCardiovascCEDObsCapillaryRefill(
-        capillaryRefillRef.current.value
-      )
-    );
-  };
-  const addPopsOtherToRedux = () => {
-    dispatch(
-      addPopsAssessmentIntervenCEDObsAnyAgeOtherScore(
-        popsOtherRef.current.value
-      )
-    );
-  };
-  const addPopsGutFeelingToRedux = () => {
-    dispatch(
-      addPopsAssessmentIntervenCEDObsAnyAgeGutFeelingScore(
-        popsGutFeelingRef.current.value
-      )
-    );
-  };
-  const addPopsBreathingToRedux = () => {
-    dispatch(
-      addPopsAssessmentIntervenCEDObsAnyAgeBreathingScore(
-        popsBreathingRef.current.value
       )
     );
   };
@@ -421,19 +420,9 @@ export default function CEDObs() {
                     value={popsAssessment.IntervenCEDObsAnyAgeBreathingScore}
                   />
                 </Grid.Item>
-
-                {/* TODO: TEMPORARILY DISABLED FOR DEMO */}
-                {/* <Grid.Item>
-                  <Form.Dropdown htmlFor="avpu" labelText="AVPU" />
-                </Grid.Item> */}
               </Grid.Column>
             </Grid>
           </Form>
-
-          {/* TODO: TEMPORARILY DISABLED FOR DEMO */}
-          {/* <Text heading as="h2">
-            POPS Score
-          </Text> */}
         </Wrapper>
       </Container>
     </>

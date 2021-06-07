@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addUsername,
   addPassword,
+  addUsername,
   getUserDetails,
 } from "../../../redux/slices/userDetailsSlice";
 
@@ -13,29 +13,30 @@ import DedalusLogo from "../../../assets/img/logo/dedalusLogo.png";
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
 
 // Import: Elements
-import { Container, CompanyLogo, Logo, Wrapper } from "./Login.elements";
+import { CompanyLogo, Container, Logo, Wrapper } from "./Login.elements";
 
 // Import: Components
 import { Form } from "../../components";
 
 // Page: Login
 export default function Login(props) {
-  // Redux:
+  // Redux: useSelector, useDispatch
   const token = useSelector((state) => state.userDetails.token);
   const dispatch = useDispatch();
 
-  // Ref:
+  // Ref: Used for login form
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
+  // Adds username, password to Redux
   const addUsernameToRedux = () => {
     dispatch(addUsername(usernameInputRef.current.value));
   };
-
   const addPasswordToRedux = () => {
     dispatch(addPassword(passwordInputRef.current.value));
   };
 
+  // Submit username, password to API
   const submitTestForm = async (event) => {
     event.preventDefault();
     const username = usernameInputRef.current.value;
@@ -49,15 +50,15 @@ export default function Login(props) {
     }
   };
 
-  // // Effect: If token retrieval is successful, redirect to Dashboard
+  // Effect: If token retrieval is successful, redirect to Dashboard
   useEffect(() => {
     // Checks if token is retrieved on login attempt
     if (token !== "" && token.length > 0) {
-      props.setIsLoggedIn(true);
+      props.setIsLoggedIn && props.setIsLoggedIn(true);
     } else {
-      props.setIsLoggedIn(false);
+      props.setIsLoggedIn && props.setIsLoggedIn(false);
     }
-  }, [token, props]);
+  }, [props, token]);
 
   return (
     <>
@@ -67,7 +68,7 @@ export default function Login(props) {
             <LogoSvg />
           </Logo>
 
-          {/* TODO This link goes to unautorised page. Remove when no longer requried for development. */}
+          {/* TODO This redirects to Unauthorized if user is not logged in. Remove when no longer requried */}
           <p>
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>
@@ -77,24 +78,25 @@ export default function Login(props) {
               htmlFor="username"
               labelText="Username"
               onChange={addUsernameToRedux}
-              type="text"
               ref={usernameInputRef}
+              type="text"
             />
 
             <Form.Input
               htmlFor="password"
               labelText="Password"
               onChange={addPasswordToRedux}
-              type="password"
               ref={passwordInputRef}
+              type="password"
             />
 
-            <Form.Button type="submit" text="Login" margin="2rem 0 0 0" />
+            <Form.Button margin="2rem 0 0 0" text="Login" type="submit" />
           </Form>
         </Wrapper>
 
         <CompanyLogo>
-          <img id="dedalusLogo" src={DedalusLogo} alt="Dedalus Logo" />
+          <img alt="Dedalus Logo" id="dedalusLogo" src={DedalusLogo} />
+
           <div>
             <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
             <p>Dedalus Group</p>

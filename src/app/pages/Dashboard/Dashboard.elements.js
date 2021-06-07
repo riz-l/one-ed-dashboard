@@ -9,7 +9,6 @@ export const Container = styled.div`
   max-height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
   width: 100%;
-  max-width: 100%;
   min-width: calc(100vh - 300px);
 `;
 
@@ -33,15 +32,14 @@ export const List = styled.div`
   max-height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
   justify-content: center;
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
 `;
 
 // Element: Summary
 export const Summary = styled.div`
   align-items: center;
   display: flex;
-  /* flex: 600px; */
   flex: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   height: 100%;
   max-height: calc(100vh - 80px);
@@ -53,7 +51,4 @@ export const Summary = styled.div`
   width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   max-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   min-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
-  /* width: 100%; */
-  /* max-width: 600px; */
-  /* min-width: 600px; */
 `;

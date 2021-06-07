@@ -18,13 +18,15 @@ export default function Home() {
           <Logo>
             <LogoSvg />
           </Logo>
+
           <div>
             <Link to="/login">Login</Link>
           </div>
         </Wrapper>
 
         <CompanyLogo>
-          <img id="dedalusLogo" src={DedalusLogo} alt="Dedalus Logo" />
+          <img alt="Dedalus Logo" id="dedalusLogo" src={DedalusLogo} />
+
           <div>
             <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
             <p>Dedalus Group</p>

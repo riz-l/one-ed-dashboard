@@ -2,12 +2,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 import {
-  postPopsAssessment,
   clearPopsAssessment,
   clearPopsAssessmentApiResponse,
+  postPopsAssessment,
 } from "../../../../../redux/slices/triageSlice";
-import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -26,14 +26,20 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: Save
 export default function Save() {
-  // Redux:
-  const apiResponse = useSelector(
-    (state) => state.triage.popsAssessmentApiResponse
-  );
-  const status = useSelector((state) => state.triage.status);
+  // Redux: useSelector, useDispatch
+  const apiResponse = useSelector((state) => {
+    if (state.triage.popsAssessmentApiResponse) {
+      return state.triage.popsAssessmentApiResponse;
+    }
+  });
+  const status = useSelector((state) => {
+    if (state.triage.status) {
+      return state.triage.status;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Effect:
+  // Effect: Clears down redux data
   useEffect(() => {
     dispatch(clearPopsAssessmentApiResponse());
   }, [dispatch]);
@@ -41,10 +47,9 @@ export default function Save() {
   // Submit POPS Assessment to API
   const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
-
     try {
-      dispatch(postPopsAssessment());
       dispatch(clearPopsAssessment());
+      dispatch(postPopsAssessment());
     } catch (err) {
       console.log(err);
     }
@@ -63,9 +68,9 @@ export default function Save() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Button
-                    type="submit"
-                    text="Save POPS Assessment"
                     onClick={submitPopsAssessmentForm}
+                    text="Save POPS Assessment"
+                    type="submit"
                   />
                 </Grid.Item>
 
@@ -96,8 +101,8 @@ export default function Save() {
                   <Suggestions>
                     <Grid.Item>
                       <Link
-                        to="/one-ed/ward/dashboard"
                         onClick={() => dispatch(clearPatient())}
+                        to="/one-ed/ward/dashboard"
                       >
                         <Suggestion>
                           <IconContainer>
