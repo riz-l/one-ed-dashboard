@@ -49,99 +49,99 @@ export default function ClinicalNotes() {
 
   // onClick: Functions for rendering subPages
   function renderAmbulance() {
+    setIsAmbulance(true);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(true);
     setIsNotes(false);
+    setIsPacs(false);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
     setIsSave(false);
-    setIsIntegration(true);
-    setIsAmbulance(true);
   }
   function renderChart() {
-    setIsNotes(false);
-    setIsPopsHistorySubPage(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
     setIsAmbulance(false);
-    setIsSave(false);
-    setIsPopsHistory(true);
     setIsChart(true);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(false);
+    setIsNotes(false);
+    setIsPacs(false);
+    setIsPopsHistory(true);
+    setIsPopsHistorySubPage(false);
+    setIsSave(false);
   }
   function renderGpConnect() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(true);
+    setIsIce(false);
+    setIsIntegration(true);
     setIsNotes(false);
+    setIsPacs(false);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsAmbulance(false);
     setIsSave(false);
-    setIsIntegration(true);
-    setIsGpConnect(true);
   }
   function renderIce() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(true);
+    setIsIntegration(true);
     setIsNotes(false);
+    setIsPacs(false);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
     setIsSave(false);
-    setIsIntegration(true);
-    setIsIce(true);
   }
   function renderNotes() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(false);
+    setIsNotes(true);
+    setIsPacs(false);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
     setIsSave(false);
-    setIsNotes(true);
-  }
-  function renderObs() {
-    setIsNotes(false);
-    setIsChart(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
-    setIsSave(false);
-    setIsPopsHistory(true);
-    setIsPopsHistorySubPage(true);
   }
   function renderPacs() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(true);
     setIsNotes(false);
+    setIsPacs(true);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIce(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
     setIsSave(false);
-    setIsIntegration(true);
-    setIsPacs(true);
+  }
+  function renderObs() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(false);
+    setIsNotes(false);
+    setIsPacs(false);
+    setIsPopsHistory(true);
+    setIsPopsHistorySubPage(true);
+    setIsSave(false);
   }
   function renderSave() {
+    setIsAmbulance(false);
+    setIsChart(false);
+    setIsGpConnect(false);
+    setIsIce(false);
+    setIsIntegration(false);
     setIsNotes(false);
+    setIsPacs(false);
     setIsPopsHistory(false);
     setIsPopsHistorySubPage(false);
-    setIsChart(false);
-    setIsIntegration(false);
-    setIsIce(false);
-    setIsPacs(false);
-    setIsGpConnect(false);
-    setIsAmbulance(false);
     setIsSave(true);
   }
 

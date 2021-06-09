@@ -47,8 +47,9 @@ export const ReturnButton = styled(Link)`
   border-radius: 8px;
   color: #6b7a99;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 1rem;
+  font-weight: 400;
   margin-top: 1rem;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
@@ -63,8 +64,8 @@ export const ReturnButton = styled(Link)`
 // Element: CompanyLogo
 export const CompanyLogo = styled.div`
   align-items: center;
-  color: #4d5e80;
   bottom: 0px;
+  color: #4d5e80;
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -73,9 +74,10 @@ export const CompanyLogo = styled.div`
     padding: 1rem;
     width: 160px;
   }
+
   & div {
     display: flex;
-    flex-direction: row;
+
     @media screen and (max-width: 360px) {
       flex-direction: column;
     }

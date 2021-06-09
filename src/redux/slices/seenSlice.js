@@ -39,10 +39,9 @@ export const seenSlice = createSlice({
   name: "seen",
   initialState: {
     seenForm: {
-      //   patientID: "",
       dateTime: "",
       SeenComments: "",
-      SeniorReviewReq: "false",
+      SeniorReviewReq: "",
       SeniorReviewReason: "",
       practitioner: "",
     },
@@ -50,9 +49,6 @@ export const seenSlice = createSlice({
     status: null,
   },
   reducers: {
-    // addPatientID: (state, { payload }) => {
-    //   state.seenForm.patientID = payload;
-    // },
     addDateTime: (state, { payload }) => {
       state.seenForm.dateTime = payload;
     },
@@ -69,11 +65,10 @@ export const seenSlice = createSlice({
       state.seenForm.practitioner = payload;
     },
     clearSeenForm: (state, { payload }) => {
-      //  patientID: "",
       state.seenForm.dateTime = "";
-      state.seenForm.addSeenComments = "";
-      state.seenForm.addSeniorReviewReq = "false";
-      state.seenForm.addSeniorReviewReason = "";
+      state.seenForm.SeenComments = "";
+      state.seenForm.SeniorReviewReq = "";
+      state.seenForm.SeniorReviewReason = "";
       state.seenForm.practitioner = "";
     },
     clearApiResponse: (state, { payload }) => {
@@ -81,18 +76,13 @@ export const seenSlice = createSlice({
       state.status = null;
     },
     clearSeenSlice: (state, { payload }) => {
-      state = {
-        seenForm: {
-          //   patientID: "",
-          dateTime: "",
-          SeenComments: "",
-          SeniorReviewReq: "false",
-          SeniorReviewReason: "",
-          practitioner: "",
-        },
-        apiResponse: {},
-        status: null,
-      };
+      state.seenForm.dateTime = "";
+      state.seenForm.SeenComments = "";
+      state.seenForm.SeniorReviewReq = "";
+      state.seenForm.SeniorReviewReason = "";
+      state.seenForm.practitioner = "";
+      state.apiResponse = {};
+      state.status = null;
     },
   },
   extraReducers: {
@@ -115,14 +105,13 @@ export const seenSlice = createSlice({
 
 // Actions:
 export const {
-  // addPatientID,
   addDateTime,
+  addPractitioner,
   addSeenComments,
   addSeniorReviewReq,
   addSeniorReviewReason,
-  addPractitioner,
-  clearSeenForm,
   clearApiResponse,
+  clearSeenForm,
   clearSeenSlice,
 } = seenSlice.actions;
 

@@ -95,82 +95,82 @@ export default function Overview() {
 
   // onClick: Functions for rendering subPages
   function renderAlerts() {
+    setIsAlerts(true);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsAlerts(true);
   }
   function renderAllergies() {
     setIsAlerts(false);
-    setIsPresentingComplaints(false);
+    setIsAllergies(true);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsAllergies(true);
   }
   function renderComplications() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
+    setIsComplications(true);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsComplications(true);
   }
   function renderDiagnosis() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
+    setIsDiagnosis(true);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsDiagnosis(true);
   }
   function renderFindings() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
+    setIsFindings(true);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsFindings(true);
   }
-  function renderComplaint() {
+  function renderPresentingComplaints() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(true);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsPresentingComplaints(true);
   }
   function renderProcedures() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
-    setIsSymptoms(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(true);
+    setIsSymptoms(false);
   }
   function renderSymptoms() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(true);
   }
@@ -302,7 +302,7 @@ export default function Overview() {
 
                       <SecondaryNavigation.Item
                         isActive={isPresentingComplaints ? true : false}
-                        onClick={renderComplaint}
+                        onClick={renderPresentingComplaints}
                       >
                         <SecondaryNavigation.Icon
                           isRed={

@@ -2,21 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addPopsAssessmentPatientID,
-  addPopsAssessmentPractionerName,
-  addPopsAssessmentPractionerID,
-  addPopsAssessmentPatientName,
-  addPopsAssessmentEncounterID,
-  addPopsAssessmentDateTime,
-  addPopsAssessmentSysObsNeuroPatientrackPainScore,
-  addPopsAssessmentRTGCEDObservationsPOPSScore,
-  addPopsAssessmentSysObsNeuroEDObsAVPU,
-  addPopsAssessmentRTGChildObsComments,
-} from "../../../redux/slices/triageSlice";
-import {
   getPatientAllergies,
   getPatientAlerts,
 } from "../../../redux/slices/selectedPatientSlice";
+import {
+  addPopsAssessmentDateTime,
+  addPopsAssessmentEncounterID,
+  addPopsAssessmentPatientID,
+  addPopsAssessmentPatientName,
+  addPopsAssessmentPractionerID,
+  addPopsAssessmentPractionerName,
+  addPopsAssessmentRTGChildObsComments,
+  addPopsAssessmentRTGCEDObservationsPOPSScore,
+  addPopsAssessmentSysObsNeuroEDObsAVPU,
+  addPopsAssessmentSysObsNeuroPatientrackPainScore,
+} from "../../../redux/slices/triageSlice";
 import moment from "moment";
 
 // Import: Assets
@@ -48,55 +48,67 @@ import {
   NeuroObs,
   NEWS2,
   POPSHistory,
-  UrineObs,
-  TriageAndStream,
   Save,
+  TriageAndStream,
+  UrineObs,
 } from "./subPages";
 
 // Page: Triage
 export default function Triage() {
-  // Redux:
-  const userExtension = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.extension
-  );
-  const userName = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
-  const patientID = useSelector((state) => state.selectedPatient.patient);
-  const patientName = useSelector(
-    (state) => state.selectedPatient.patientData[0].name
-  );
-  const patientAlerts = useSelector(
-    (state) => state.selectedPatient.patientAlerts
-  );
-  const patientAllergies = useSelector(
-    (state) => state.selectedPatient.patientAllergies
-  );
-  const encounterID = useSelector(
-    (state) => state.selectedPatient.patientData[0].encounterID
-  );
+  // Redux: useSelector, useDispatch
+  const userExtension = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension;
+    }
+  });
+  const userName = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName;
+    }
+  });
+  const patientID = useSelector((state) => {
+    if (state.selectedPatient.patient) {
+      return state.selectedPatient.patient;
+    }
+  });
+  const patientName = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].name;
+    }
+  });
+  const patientAlerts = useSelector((state) => {
+    if (state.selectedPatient.patientAlerts) {
+      return state.selectedPatient.patientAlerts;
+    }
+  });
+  const patientAllergies = useSelector((state) => {
+    if (state.selectedPatient.patientAllergies) {
+      return state.selectedPatient.patientAllergies;
+    }
+  });
+  const encounterID = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].encounterID;
+    }
+  });
   const dispatch = useDispatch();
 
-  // State: isTriage, isPaediatricObs, isPOPSHistory, isNEWS, isSave
-  const [isTriage, setIsTriage] = useState(true);
-  const [isPaediatricObs, setIsPaediatricObs] = useState(false);
-  const [isPOPSHistory, setIsPOPSHistory] = useState(false);
-  const [isNEWS, setIsNEWS] = useState(false);
-  const [isSave, setIsSave] = useState(false);
-
-  // State: Triage SubPages
-  const [isTriageAndStream, setIsTriageAndStream] = useState(true);
+  // State: Local state
   const [isAlerts, setIsAlerts] = useState(false);
   const [isAllergies, setIsAllergies] = useState(false);
   const [isCEDObs, setIsCEDObs] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
-  const [isUrineObs, setIsUrineObs] = useState(false);
-  const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
+  const [isNEWS, setIsNEWS] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
+  const [isPaediatricObs, setIsPaediatricObs] = useState(false);
+  const [isPOPSHistory, setIsPOPSHistory] = useState(false);
+  const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
+  const [isSave, setIsSave] = useState(false);
+  const [isTriage, setIsTriage] = useState(true);
+  const [isTriageAndStream, setIsTriageAndStream] = useState(true);
+  const [isUrineObs, setIsUrineObs] = useState(false);
 
   // Current Date, Time
   const date = new Date();
@@ -117,7 +129,156 @@ export default function Triage() {
     dispatch(getPatientAlerts());
   }, [dispatch]);
 
-  // onClick: Renders Triage SubPage
+  // onClick: Functions for rendering subPages
+  function renderAlerts() {
+    setIsAlerts(true);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(true);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderAllergies() {
+    setIsAlerts(false);
+    setIsAllergies(true);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(true);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderCEDObs() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(true);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(true);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderNeuroObs() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(true);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(true);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderNEWS() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(true);
+    setIsNEWS2(true);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderNEWS2() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(true);
+    setIsNEWS2(true);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderPaediatricObs() {
+    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
+    dispatch(addPopsAssessmentEncounterID(encounterID));
+    dispatch(addPopsAssessmentPatientID(patientID));
+    dispatch(addPopsAssessmentPatientName(patientName));
+    dispatch(addPopsAssessmentPractionerID(userExtension));
+    dispatch(addPopsAssessmentPractionerName(userName));
+    //#region #TODO: REQUIRES IMMEDIATE ATTENTION
+    dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore("6"));
+    dispatch(
+      addPopsAssessmentRTGChildObsComments("This is a test comment - JLayton")
+    );
+    dispatch(addPopsAssessmentSysObsNeuroEDObsAVPU("Alert"));
+    dispatch(addPopsAssessmentSysObsNeuroPatientrackPainScore("3"));
+    //#endregion /REQUIRES IMMEDIATE ATTENTION
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(true);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(true);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderPOPSHistory() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(true);
+    setISPOPSHistorySubPage(true);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
+  function renderSave() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(true);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+  }
   function renderTriage() {
     setIsAlerts(false);
     setIsAllergies(false);
@@ -129,78 +290,10 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
-  }
-
-  // onClick: Renders PaediatricObs SubPage
-  function renderPaediatricObs() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
     setIsUrineObs(false);
-    setIsSave(false);
-    setIsCEDObs(true);
-    setIsPaediatricObs(true);
-
-    dispatch(addPopsAssessmentPatientID(patientID));
-    dispatch(addPopsAssessmentPractionerName(userName));
-    dispatch(addPopsAssessmentPractionerID(userExtension));
-    dispatch(addPopsAssessmentPatientName(patientName));
-    dispatch(addPopsAssessmentEncounterID(encounterID));
-    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
-    // TODO: REQUIRES IMMEDIATE ATTENTION
-    dispatch(addPopsAssessmentSysObsNeuroPatientrackPainScore("3"));
-    dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore("6"));
-    dispatch(addPopsAssessmentSysObsNeuroEDObsAVPU("Alert"));
-    dispatch(
-      addPopsAssessmentRTGChildObsComments("This is a test comment - JLayton")
-    );
   }
-
-  // onClick: Renders POPSHistory SubPage
-  function renderPOPSHistory() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPaediatricObs(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsPOPSHistory(true);
-    setISPOPSHistorySubPage(true);
-  }
-
-  // onClick: Renders NEWS SubPage
-  function renderNEWS() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsPaediatricObs(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsSave(false);
-    setIsUrineObs(false);
-    setIsNEWS(true);
-    setIsNEWS2(true);
-  }
-
-  // onClick: Renders TriageAndStream SubPage
   function renderTriageAndStream() {
     setIsAlerts(false);
     setIsAllergies(false);
@@ -212,82 +305,10 @@ export default function Triage() {
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsUrineObs(false);
     setIsTriage(true);
     setIsTriageAndStream(true);
-  }
-
-  // onClick: Renders Alerts SubPage
-  function renderAlerts() {
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsTriageAndStream(false);
-    setIsPaediatricObs(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
     setIsUrineObs(false);
-    setIsAlerts(true);
-    setIsTriage(true);
   }
-
-  // onClick: Renders Allergies SubPage
-  function renderAllergies() {
-    setIsAlerts(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPaediatricObs(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsAllergies(true);
-    setIsTriage(true);
-  }
-
-  // onClick: Renders CEDObs SubPage
-  function renderCEDObs() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsSave(false);
-    setIsCEDObs(true);
-    setIsPaediatricObs(true);
-  }
-
-  // onClick: Renders NeuroObs SubPage
-  function renderNeuroObs() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsSave(false);
-    setIsNeuroObs(true);
-    setIsPaediatricObs(true);
-  }
-
-  // onClick: Renders UrineObs SubPage
   function renderUrineObs() {
     setIsAlerts(false);
     setIsAllergies(false);
@@ -295,48 +316,13 @@ export default function Triage() {
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
     setIsPaediatricObs(true);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
     setIsUrineObs(true);
-  }
-
-  // onClick: Renders NEWS2 SubPage
-  function renderNEWS2() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsPaediatricObs(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsSave(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsSave(false);
-    setIsNEWS(true);
-    setIsNEWS2(true);
-  }
-
-  // onClick: Renders Save SubPage
-  function renderSave() {
-    setIsAlerts(false);
-    setIsAllergies(false);
-    setIsCEDObs(false);
-    setIsNeuroObs(false);
-    setIsNEWS(false);
-    setIsNEWS2(false);
-    setIsPaediatricObs(false);
-    setIsPOPSHistory(false);
-    setISPOPSHistorySubPage(false);
-    setIsTriage(false);
-    setIsTriageAndStream(false);
-    setIsUrineObs(false);
-    setIsSave(true);
   }
 
   return (

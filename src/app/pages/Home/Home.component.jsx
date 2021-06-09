@@ -28,7 +28,7 @@ export default function Home() {
           <img alt="Dedalus Logo" id="dedalusLogo" src={DedalusLogo} />
 
           <div>
-            <p style={{ paddingRight: "0.2em" }}>&copy; 2021 </p>
+            <p style={{ paddingRight: "6px" }}>&copy; 2021</p>
             <p>Dedalus Group</p>
           </div>
         </CompanyLogo>

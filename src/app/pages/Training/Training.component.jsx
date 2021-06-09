@@ -43,16 +43,15 @@ export default function Training() {
 
                       <Grid.Item>
                         <Form.Checkbox
+                          checked={false}
                           htmlFor="componentCheckbox"
                           text="Component: Checkbox"
                           under={false}
-                          checked={false}
                         />
                       </Grid.Item>
 
                       <Grid.Item>
                         <Form.Radio
-                          // text="Component: Radio"
                           checked={false}
                           href="radio1"
                           name="RadioTest"
@@ -70,10 +69,9 @@ export default function Training() {
 
                       <Grid.Item>
                         <Form.Dropdown
+                          htmlFor="dropdownExample"
                           labelText="componentDropdown"
                           left={false}
-                          htmlFor="dropdownExample"
-                          // width="150px"
                         />
                       </Grid.Item>
 
@@ -96,9 +94,9 @@ export default function Training() {
                       <Grid.Item>
                         <Form.Text as="p">Component: Indicator</Form.Text>
                         <Form.Indicator
-                          title="NEWS"
-                          message="Give patient drugs and admit to Ward."
                           green
+                          message="Give patient drugs and admit to Ward."
+                          title="NEWS"
                         />
                       </Grid.Item>
                     </Grid.Column>
@@ -125,7 +123,6 @@ export default function Training() {
                           htmlFor="componentInputEmail"
                           labelText="Component: Input (email)"
                           left={false}
-                          // margin="20px"
                           placeholder="placeholder@placeholder.com"
                           type="email"
                         />

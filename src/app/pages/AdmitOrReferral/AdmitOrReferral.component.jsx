@@ -21,8 +21,8 @@ export default function AdmitOrReferral() {
 
   // onClick: Functions for rendering subPages
   function renderDecisionToAdmit() {
-    setIsReferral(false);
     setIsDecisionToAdmit(true);
+    setIsReferral(false);
   }
   function renderReferral() {
     setIsDecisionToAdmit(false);
