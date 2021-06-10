@@ -431,7 +431,7 @@ export const triageSlice = createSlice({
       };
     },
     clearPopsAssessmentApiResponse: (state, { payload }) => {
-      state.triageFormApiResponse = {};
+      state.popsAssessmentApiResponse = {};
       state.status = null;
     },
     clearTriageSlice: (state, { payload }) => {
