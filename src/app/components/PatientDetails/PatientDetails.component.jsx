@@ -149,7 +149,7 @@ export default function PatientDetails() {
                     (selectedPatient.patientData[0] &&
                       selectedPatient.patientData[0].add3) ||
                     (selectedPatient.patientData[0] &&
-                      selectedPatient.patientData[0].add4) ? (
+                      selectedPatient.patientData[0].postcode) ? (
                       <>
                         {selectedPatient.patientData[0] &&
                         selectedPatient.patientData[0].add1
@@ -165,8 +165,8 @@ export default function PatientDetails() {
                           ? selectedPatient.patientData[0].add3 + ", "
                           : "N/A"}
                         {selectedPatient.patientData[0] &&
-                        selectedPatient.patientData[0].add4
-                          ? selectedPatient.patientData[0].add4 + ", "
+                        selectedPatient.patientData[0].postcode
+                          ? selectedPatient.patientData[0].postcode
                           : "N/A"}
                       </>
                     ) : (

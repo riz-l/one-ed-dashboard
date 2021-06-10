@@ -59,8 +59,8 @@ export default function CEDObs() {
   // const avpuRef = useRef();
   // const popsScoreRef = useRef();
   const bloodSugarRef = useRef();
-  const bpSystolicFirstRef = useRef();
-  const bpSystolicSecondRef = useRef();
+  const bpDiastolicRef = useRef();
+  const bpSystolicRef = useRef();
   const capillaryRefillRef = useRef();
   const heightRef = useRef();
   const oxygenSatsRef = useRef();
@@ -150,17 +150,17 @@ export default function CEDObs() {
       )
     );
   };
-  const addSystolicFirstToRedux = () => {
+  const addSystolicToRedux = () => {
     dispatch(
       addPopsAssessmentSysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG(
-        bpSystolicFirstRef.current.value
+        bpSystolicRef.current.value
       )
     );
   };
-  const addSystolicSecondToRedux = () => {
+  const addDiastolicToRedux = () => {
     dispatch(
       addPopsAssessmentSysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG(
-        bpSystolicSecondRef.current.value
+        bpSystolicRef.current.value
       )
     );
   };
@@ -225,11 +225,11 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="bpSystolicFirst"
-                    labelText="BP Systolic First"
-                    onChange={addSystolicFirstToRedux}
+                    htmlFor="bpSystolic"
+                    labelText="BP Systolic "
+                    onChange={addSystolicToRedux}
                     placeholder="Type a number..."
-                    ref={bpSystolicFirstRef}
+                    ref={bpSystolicRef}
                     type="number"
                     value={
                       popsAssessment.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
@@ -239,11 +239,11 @@ export default function CEDObs() {
 
                 <Grid.Item>
                   <Form.Input
-                    htmlFor="bpSystolicSecond"
-                    labelText="BP Systolic Second"
-                    onChange={addSystolicSecondToRedux}
+                    htmlFor="bpDiastolic"
+                    labelText="BP Diastolic"
+                    onChange={addDiastolicToRedux}
                     placeholder="Type a number..."
-                    ref={bpSystolicSecondRef}
+                    ref={bpDiastolicRef}
                     type="number"
                     value={
                       popsAssessment.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG

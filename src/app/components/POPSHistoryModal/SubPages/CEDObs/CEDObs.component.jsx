@@ -44,10 +44,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display
-                  htmlFor="bpSystolicFirst"
-                  labelText="BP Systolic First"
-                >
+                <Display htmlFor="bpSystolic" labelText="BP Systolic">
                   {questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     ? questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     : "N/A"}
@@ -55,10 +52,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display
-                  htmlFor="bpSystolicSecond"
-                  labelText="BP Systolic Second"
-                >
+                <Display htmlFor="bpDiastolic" labelText="BP Diastolic">
                   {questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     ? questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     : "N/A"}
