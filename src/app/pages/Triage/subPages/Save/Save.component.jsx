@@ -34,6 +34,11 @@ export default function Save() {
       return state.triage.popsAssessmentApiResponse;
     }
   });
+  const popsPatientID = useSelector((state) => {
+    if (state.triage.popsAssessment.PatientID) {
+      return state.triage.popsAssessment.PatientID;
+    }
+  });
   const status = useSelector((state) => {
     if (state.triage.status) {
       return state.triage.status;
@@ -43,18 +48,20 @@ export default function Save() {
 
   // Effect: Clears down redux data on render
   useEffect(() => {
-    dispatch(clearPopsAssessmentApiResponse());
-  }, [dispatch]);
+    if (popsPatientID !== null) {
+      dispatch(clearPopsAssessmentApiResponse());
+    }
+  }, [dispatch, popsPatientID]);
 
   // Submit POPS Assessment to API
   const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
     try {
-      dispatch(clearPopsAssessment());
       dispatch(postPopsAssessment());
     } catch (err) {
       console.log(err);
     }
+    dispatch(clearPopsAssessment());
   };
 
   return (
