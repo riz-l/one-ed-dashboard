@@ -382,12 +382,11 @@ export const triageSlice = createSlice({
       state.popsAssessment.SysObsNeuroPatientrackPainScore = null;
       state.popsAssessment.RTGCEDObservationsPOPSScore = null;
       state.popsAssessment.SysObsCardiovascPulseRateValueRTG = null;
-      state.popsAssessment
-        .SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG;
-      null,
-        state.popsAssessment
-          .SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG;
-      null, (state.popsAssessment.RTG_RespiratoryRate = null);
+      state.popsAssessment.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG =
+        null;
+      state.popsAssessment.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG =
+        null;
+      state.popsAssessment.RTG_RespiratoryRate = null;
       state.popsAssessment.SysObsRespiratoryTargetSATS9498ValueRTG = null;
       state.popsAssessment.SysObsRespiratorySupplementalOxygenTypeOptions =
         null;
@@ -418,8 +417,8 @@ export const triageSlice = createSlice({
       state.popsAssessment.RegObsArmLimbMovementLeft = null;
       state.popsAssessment.RegObsArmLimbMovementRight = null;
       state.popsAssessment.RegObsLegLimbMovementLeft = null;
-      (state.popsAssessment.RegObsLegLimbMovementRight = null),
-        (state.popsAssessment.AdminNAD = null);
+      state.popsAssessment.RegObsLegLimbMovementRight = null;
+      state.popsAssessment.AdminNAD = null;
       state.popsAssessment.IntervenPathTestUrinalysisProteinLevel = null;
       state.popsAssessment.IntervenPathTestUrinalysisBloodLevel = null;
       state.popsAssessment.IntervenPathTestUrinalysisGlucoseLevel = null;
