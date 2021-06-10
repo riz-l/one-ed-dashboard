@@ -101,11 +101,11 @@ export default function TriageAndStream() {
     const triageTime = triageTimeRef.current.value;
     if (triageDate === "" || triageTime === "") return;
     try {
-      dispatch(clearTriageForm());
-      dispatch(putTriageForm());
       dispatch(addTriageFormPatientID(patient));
       dispatch(addTriageFormDateTime(putEditedNewDateTime));
       dispatch(addTriageFormPractitioner(userExtension));
+      dispatch(putTriageForm());
+      dispatch(clearTriageForm());
     } catch (err) {
       console.log(err);
     }
