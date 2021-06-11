@@ -44,13 +44,16 @@ import {
 import {
   Alerts,
   Allergies,
+  CDCForms,
   CEDObs,
   NeuroObs,
   NEWS2,
   POPSHistory,
   UrineObs,
+  RWWEdClinicianAssessment,
   TriageAndStream,
   Save,
+  RWWEdNurseAssessment,
 } from "./subPages";
 
 // Page: Triage
@@ -81,11 +84,12 @@ export default function Triage() {
   );
   const dispatch = useDispatch();
 
-  // State: isTriage, isPaediatricObs, isPOPSHistory, isNEWS, isSave
+  // State: isTriage, isPaediatricObs, isPOPSHistory, isNEWS, isCDCForms, isSave
   const [isTriage, setIsTriage] = useState(true);
   const [isPaediatricObs, setIsPaediatricObs] = useState(false);
   const [isPOPSHistory, setIsPOPSHistory] = useState(false);
   const [isNEWS, setIsNEWS] = useState(false);
+  const [isCDCForms, setIsCDCForms] = useState(false);
   const [isSave, setIsSave] = useState(false);
 
   // State: Triage SubPages
@@ -94,6 +98,9 @@ export default function Triage() {
   const [isAllergies, setIsAllergies] = useState(false);
   const [isCEDObs, setIsCEDObs] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
+  const [isRWWEdClinicianAssessment, setIsRWWEdClinicianAssessment] =
+    useState(false);
+  const [isRWWEdNurseAssessment, setIsRWWEdNurseAssessment] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
   const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
   const [isNEWS2, setIsNEWS2] = useState(false);
@@ -121,6 +128,7 @@ export default function Triage() {
   function renderTriage() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
@@ -128,6 +136,7 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
     setIsSave(false);
     setIsUrineObs(false);
     setIsTriage(true);
@@ -138,11 +147,13 @@ export default function Triage() {
   function renderPaediatricObs() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -170,11 +181,14 @@ export default function Triage() {
   function renderPOPSHistory() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPaediatricObs(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -187,11 +201,14 @@ export default function Triage() {
   function renderNEWS() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsSave(false);
@@ -204,6 +221,7 @@ export default function Triage() {
   function renderTriageAndStream() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
@@ -211,6 +229,8 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsUrineObs(false);
     setIsTriage(true);
@@ -220,6 +240,7 @@ export default function Triage() {
   // onClick: Renders Alerts SubPage
   function renderAlerts() {
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
@@ -228,6 +249,8 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsUrineObs(false);
     setIsAlerts(true);
@@ -237,6 +260,7 @@ export default function Triage() {
   // onClick: Renders Allergies SubPage
   function renderAllergies() {
     setIsAlerts(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
@@ -244,6 +268,8 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -251,15 +277,38 @@ export default function Triage() {
     setIsTriage(true);
   }
 
+  function renderCDCForms() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsRWWEdNurseAssessment(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsSave(false);
+    setIsCDCForms(true);
+    setIsRWWEdClinicianAssessment(true);
+  }
+
   // onClick: Renders CEDObs SubPage
   function renderCEDObs() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -273,11 +322,14 @@ export default function Triage() {
   function renderNeuroObs() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -291,12 +343,15 @@ export default function Triage() {
   function renderUrineObs() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsNEWS(false);
     setIsNEWS2(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -308,11 +363,14 @@ export default function Triage() {
   function renderNEWS2() {
     setIsAlerts(false);
     setIsAllergies(false);
+    setIsCDCForms(false);
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsSave(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
@@ -322,8 +380,8 @@ export default function Triage() {
     setIsNEWS2(true);
   }
 
-  // onClick: Renders Save SubPage
-  function renderSave() {
+  // onClick: Renders RWWEdClinicianAssessment SubPage
+  function renderRWWEdClinicianAssessment() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCEDObs(false);
@@ -333,6 +391,51 @@ export default function Triage() {
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
+    setIsRWWEdNurseAssessment(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsSave(false);
+    setIsCDCForms(true);
+    setIsRWWEdClinicianAssessment(true);
+  }
+
+  // onClick: Renders RWWEdNurseAssessment SubPage
+  function renderRWWEdNurseAssessment() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsSave(false);
+    setIsTriage(false);
+    setIsTriageAndStream(false);
+    setIsUrineObs(false);
+    setIsSave(false);
+    setIsCDCForms(true);
+    setIsRWWEdNurseAssessment(true);
+  }
+
+  // onClick: Renders Save SubPage
+  function renderSave() {
+    setIsAlerts(false);
+    setIsAllergies(false);
+    setIsCDCForms(false);
+    setIsCEDObs(false);
+    setIsNeuroObs(false);
+    setIsNEWS(false);
+    setIsNEWS2(false);
+    setIsPaediatricObs(false);
+    setIsPOPSHistory(false);
+    setISPOPSHistorySubPage(false);
+    setIsRWWEdClinicianAssessment(false);
+    setIsRWWEdNurseAssessment(false);
     setIsTriage(false);
     setIsTriageAndStream(false);
     setIsUrineObs(false);
@@ -384,6 +487,13 @@ export default function Triage() {
                     onClick={renderNEWS}
                   >
                     <PrimaryNavigation.Text>NEWS</PrimaryNavigation.Text>
+                  </PrimaryNavigation.Item>
+
+                  <PrimaryNavigation.Item
+                    isActive={isCDCForms ? true : false}
+                    onClick={renderCDCForms}
+                  >
+                    <PrimaryNavigation.Text>CDC Forms</PrimaryNavigation.Text>
                   </PrimaryNavigation.Item>
 
                   <PrimaryNavigation.Item
@@ -514,6 +624,32 @@ export default function Triage() {
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>
+                  ) : isCDCForms ? (
+                    <>
+                      <SecondaryNavigation.Item
+                        isActive={isRWWEdClinicianAssessment ? true : false}
+                        onClick={renderRWWEdClinicianAssessment}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <SaveIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          RWW Ed Clinician Assessment
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+
+                      <SecondaryNavigation.Item
+                        isActive={isRWWEdNurseAssessment ? true : false}
+                        onClick={renderRWWEdNurseAssessment}
+                      >
+                        <SecondaryNavigation.Icon>
+                          <SaveIcon />
+                        </SecondaryNavigation.Icon>
+                        <SecondaryNavigation.Text>
+                          RWW Ed Nurse Assessment
+                        </SecondaryNavigation.Text>
+                      </SecondaryNavigation.Item>
+                    </>
                   ) : isSave ? (
                     <>
                       <SecondaryNavigation.Item
@@ -548,6 +684,10 @@ export default function Triage() {
                   <POPSHistory />
                 ) : isNEWS2 ? (
                   <NEWS2 />
+                ) : isRWWEdClinicianAssessment ? (
+                  <RWWEdClinicianAssessment />
+                ) : isRWWEdNurseAssessment ? (
+                  <RWWEdNurseAssessment />
                 ) : isSave ? (
                   <Save />
                 ) : null

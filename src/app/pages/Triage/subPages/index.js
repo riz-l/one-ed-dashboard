@@ -4,6 +4,9 @@ export { default as Alerts } from "./Alerts/Alerts.component";
 // Export: Allergies
 export { default as Allergies } from "./Allergies/Allergies.component";
 
+// Exports: CDCForms
+export { default as CDCForms } from "./CDCForms/CDCForms.component";
+
 // Export: CEDObs
 export { default as CEDObs } from "./CEDObs/CEDObs.component";
 
@@ -15,6 +18,12 @@ export { default as NEWS2 } from "./NEWS2/NEWS2.component";
 
 // Export: POPSHistory
 export { default as POPSHistory } from "./POPSHistory/POPSHistory.component";
+
+// Export: RWW Ed Clinician Report
+export { default as RWWEdClinicianAssessment } from "./RWWEdClinicianAssessment/RWWEdClinicianAssessment.component";
+
+// Export: RWW Ed Nurse Report
+export { default as RWWEdNurseAssessment } from "./RWWEdNurseAssessment/RWWEdNurseAssessment.component";
 
 // Export: UrineObs
 export { default as UrineObs } from "./UrineObs/UrineObs.component";
