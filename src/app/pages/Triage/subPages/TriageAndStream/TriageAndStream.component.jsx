@@ -82,7 +82,7 @@ export default function TriageAndStream() {
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
   const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
 
-  // Effect:
+  // Effect: Populates TriageAndStream form with default values
   useEffect(() => {
     dispatch(addTriageFormDateTime(putEditedNewDateTime));
     dispatch(addTriageFormPatientID(patient));

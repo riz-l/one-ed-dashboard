@@ -70,7 +70,7 @@ export default function Triage() {
   });
   const patientID = useSelector((state) => {
     if (state.selectedPatient.patient) {
-      return state.selectedPatient.patient;
+      return state.selectedPatient.patientData[0].patientID;
     }
   });
   const patientName = useSelector((state) => {

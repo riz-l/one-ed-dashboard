@@ -105,13 +105,13 @@ export default function Notes() {
 
   // Effect: Fetches questionnaire response from API
   useEffect(() => {
-    dispatch(addPutDateTime(putEditedNewDateTime));
-    dispatch(addPutPractionerName(practionerName));
     dispatch(addPostDateTime(putEditedNewDateTime));
     dispatch(addPostEncounterID(encounterID));
     dispatch(addPostPatientName(patientName));
     dispatch(addPostPractionerID(practionerID));
     dispatch(addPostPractionerName(practionerName));
+    dispatch(addPutDateTime(putEditedNewDateTime));
+    dispatch(addPutPractionerName(practionerName));
     dispatch(getQuestionnaireResponse());
   }, [
     apiPostResponse,
@@ -159,7 +159,6 @@ export default function Notes() {
   // Submit data to API
   const submitNewNote = async (event) => {
     event.preventDefault();
-
     if (!filteredQuestionnaireResponse) {
       try {
         dispatch(postNewNote());

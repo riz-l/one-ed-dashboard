@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addPopsAssessmentDateTime,
@@ -52,7 +52,7 @@ export default function Observations() {
   });
   const patientID = useSelector((state) => {
     if (state.selectedPatient.patient) {
-      return state.selectedPatient.patient;
+      return state.selectedPatient.patientData[0].patientID;
     }
   });
   const patientName = useSelector((state) => {
@@ -89,6 +89,23 @@ export default function Observations() {
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
+  useEffect(() => {
+    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
+    dispatch(addPopsAssessmentEncounterID(encounterID));
+    dispatch(addPopsAssessmentPatientID(patientID));
+    dispatch(addPopsAssessmentPatientName(patientName));
+    dispatch(addPopsAssessmentPractionerName(userName));
+    dispatch(addPopsAssessmentPractionerID(userExtension));
+  }, [
+    dispatch,
+    putEditedNewDateTime,
+    encounterID,
+    patientID,
+    patientName,
+    userName,
+    userExtension,
+  ]);
+
   // onClick: Functions for rendering subPages
   function renderPaediatricObs() {
     setIsCEDObs(true);
@@ -98,12 +115,6 @@ export default function Observations() {
     setISPOPSHistorySubPage(false);
     setIsSave(false);
     setIsUrineObs(false);
-    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
-    dispatch(addPopsAssessmentEncounterID(encounterID));
-    dispatch(addPopsAssessmentPatientID(patientID));
-    dispatch(addPopsAssessmentPatientName(patientName));
-    dispatch(addPopsAssessmentPractionerName(userName));
-    dispatch(addPopsAssessmentPractionerID(userExtension));
     // TODO: REQUIRES IMMEDIATE ATTENTION
     dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore("6"));
     dispatch(

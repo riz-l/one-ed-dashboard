@@ -48,11 +48,11 @@ export default function Save() {
   const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
     try {
-      dispatch(clearPopsAssessment());
       dispatch(postPopsAssessment());
     } catch (err) {
       console.log(err);
     }
+    dispatch(clearPopsAssessment());
   };
 
   return (

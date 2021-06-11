@@ -15,7 +15,7 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 export default function Allergies() {
   // Redux: useSelector
   const patientAllergies = useSelector((state) => {
-    if (state.selectedPatient.patientAllergiess) {
+    if (state.selectedPatient.patientAllergies) {
       return state.selectedPatient.patientAllergies;
     }
   });
@@ -31,7 +31,7 @@ export default function Allergies() {
             manifestationDisplay,
             reactionDisplay,
             verificationStatus,
-            ...otherPatientProps
+            // ...otherPatientProps
           }) => (
             <ReportEntry
               allergies
