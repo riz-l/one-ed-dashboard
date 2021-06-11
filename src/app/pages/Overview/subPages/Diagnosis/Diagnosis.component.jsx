@@ -13,10 +13,12 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Diagnosis
 export default function Diagnosis() {
-  // Redux: Extracts patientConditions from the global state
-  const patientConditions = useSelector(
-    (state) => state.selectedPatient.patientConditions
-  );
+  // Redux: useSelector
+  const patientConditions = useSelector((state) => {
+    if (state.selectedPatient.patientConditions) {
+      return state.selectedPatient.patientConditions;
+    }
+  });
 
   // Maps patientConditions where category === "Diagnosis"
   const diagnosisRender =
@@ -25,23 +27,20 @@ export default function Diagnosis() {
           .filter((item) => item.category === "Diagnosis")
           .map(
             ({
+              category,
               id,
+              note,
+              onsetDateTime,
+              problemCode,
               problemName,
               status,
-              note,
               verificationStatus,
-              category,
-              problemCode,
-              onsetDateTime,
-
               ...otherPatientProps
             }) => (
               <ReportEntry
-                key={id}
-                diagnosis
                 details={note !== "undefined" ? note : "No further detail"}
-                status={status}
-                type={problemName}
+                diagnosis
+                key={id}
                 openedModal={
                   <>
                     <Grid>
@@ -134,6 +133,8 @@ export default function Diagnosis() {
                     </Grid>
                   </>
                 }
+                status={status}
+                type={problemName}
                 {...otherPatientProps}
               />
             )

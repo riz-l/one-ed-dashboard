@@ -26,6 +26,7 @@ export const ItemContainer = styled.div`
 
 // Element: TextContainer
 export const TextContainer = styled.span`
+  font-family: "PoppinsMedium", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   transition: all 100ms linear;
@@ -62,8 +63,6 @@ export const ItemWrapper = styled.div`
   align-items: center;
   border-bottom: ${({ isActive }) =>
     isActive ? "2px solid #008ba3" : "2px solid #f7f8fa"};
-  /* border-bottom: ${({ isActive }) =>
-    isActive ? "2px solid #008ba3" : "2px solid #e6e9ef"}; */
   cursor: pointer;
   display: flex;
   flex-direction: column;

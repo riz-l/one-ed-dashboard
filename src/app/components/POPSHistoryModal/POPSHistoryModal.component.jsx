@@ -1,15 +1,15 @@
 // Import: Packages
 import React, { useState } from "react";
-import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
 import { useDispatch } from "react-redux";
+import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
 import moment from "moment";
 import ReactModal from "react-modal";
 
 // Import: Icons
 import { MdKeyboardArrowRight as ArrowIcon } from "react-icons/md";
-import { ReactComponent as POPSHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
 import { ReactComponent as CEDIcon } from "../../../assets/img/icon/assessments-observations.svg";
 import { ReactComponent as NeuroObsIcon } from "../../../assets/img/icon/neuroObs.svg";
+import { ReactComponent as POPSHistoryIcon } from "../../../assets/img/icon/popsHistory.svg";
 import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineObs.svg";
 
 // Import: Elements
@@ -39,47 +39,40 @@ import {
 import { CEDObs, NeuroObs, UrineObs } from "./subPages";
 
 // Component: ReportEntry
-export default function POPSHistoryModal({ id, dateTime, user, status }) {
+export default function POPSHistoryModal({ dateTime, id, user, status }) {
+  // Redux: useDispatch
   const dispatch = useDispatch();
 
-  // State: isCEDObs, isNeuroObs, isUrineObs
+  // State: Local state
   const [isCEDObs, setIsCEDObs] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
   const [isUrineObs, setIsUrineObs] = useState(false);
 
-  // onClick: Renders CEDObs
+  // onClick: Functions for opening and closing the modal
+  function openModal() {
+    setIsModalOpen((isModalOpen) => !isModalOpen);
+    dispatch(getObsQuestionnaireResponseDetail(id));
+  }
+  function closeModal() {
+    setIsModalOpen((isModalOpen) => !isModalOpen);
+  }
+
+  // onClick: Functions for rendering subPages
   function renderCEDObs() {
     setIsCEDObs(true);
     setIsNeuroObs(false);
     setIsUrineObs(false);
   }
-
-  // onClick: Renders NeuroObs
   function renderNeuroObs() {
     setIsCEDObs(false);
     setIsNeuroObs(true);
     setIsUrineObs(false);
   }
-
-  // onClick: Renders UrineObs
   function renderUrineObs() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsUrineObs(true);
-  }
-
-  // State: isModalOpen
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // onClick: Opens Modal
-  function openModal() {
-    setIsModalOpen((isModalOpen) => !isModalOpen);
-    dispatch(getObsQuestionnaireResponseDetail(id));
-  }
-
-  // onClick: Closes Modal
-  function closeModal() {
-    setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
   return (
@@ -91,6 +84,7 @@ export default function POPSHistoryModal({ id, dateTime, user, status }) {
               <Icon>
                 <POPSHistoryIcon />
               </Icon>
+
               <h3>
                 {dateTime
                   ? moment(dateTime).format(
@@ -126,13 +120,13 @@ export default function POPSHistoryModal({ id, dateTime, user, status }) {
       </Wrapper>
 
       <ReactModal
-        isOpen={isModalOpen}
-        contentLabel="POPS History"
-        onRequestClose={closeModal}
-        className="Modal"
-        overlayClassName="Overlay"
-        closeTimeoutMS={100}
         ariaHideApp={false}
+        className="Modal"
+        closeTimeoutMS={100}
+        contentLabel="POPS History"
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        overlayClassName="Overlay"
       >
         <div
           style={{
@@ -159,7 +153,7 @@ export default function POPSHistoryModal({ id, dateTime, user, status }) {
               : "User"}
           </Display>
 
-          <Button text="Close" onClick={closeModal} />
+          <Button onClick={closeModal} text="Close" />
         </div>
 
         <ReportSection

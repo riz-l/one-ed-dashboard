@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   color: black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-height: 5rem;
+  justify-content: center;
   padding: 0.8rem;
 `;

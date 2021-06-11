@@ -1,14 +1,14 @@
 // Import: Packages
 import React, { useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addPopsAssessmentAdminNAD,
-  addPopsAssessmentIntervenPathTestUrinalysisProteinLevel,
   addPopsAssessmentIntervenPathTestUrinalysisBloodLevel,
   addPopsAssessmentIntervenPathTestUrinalysisGlucoseLevel,
-  addPopsAssessmentIntervenPathTestUrinalysisWCNumbered,
-  addPopsAssessmentIntervenPathTestUrinalysisNitrites,
   addPopsAssessmentIntervenPathTestUrinalysisKetoneLevel,
+  addPopsAssessmentIntervenPathTestUrinalysisNitrites,
+  addPopsAssessmentIntervenPathTestUrinalysisProteinLevel,
+  addPopsAssessmentIntervenPathTestUrinalysisWCNumbered,
 } from "../../../../../redux/slices/triageSlice";
 
 // Import: Elements
@@ -19,32 +19,24 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: UrineObs
 export default function UrineObs() {
-  // Redux:
-  const popsAssessment = useSelector((state) => state.triage.popsAssessment);
+  // Redux: useSelector, useDispatch
+  const popsAssessment = useSelector((state) => {
+    if (state.triage.popsAssessment) {
+      return state.triage.popsAssessment;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Ref:
-  const nadRef = useRef();
-  const proteinRef = useRef();
+  // Ref: Used for UrineObs form
   const bloodRef = useRef();
   const glucoseRef = useRef();
-  const leuRef = useRef();
-  const nitritesRef = useRef();
   const ketoneRef = useRef();
+  const leuRef = useRef();
+  const nadRef = useRef();
+  const nitritesRef = useRef();
+  const proteinRef = useRef();
 
   // Add values to Redux
-  const addNadToRedux = () => {
-    dispatch(
-      addPopsAssessmentAdminNAD(nadRef.current.checked === true ? "NAD" : null)
-    );
-  };
-  const addProteinToRedux = () => {
-    dispatch(
-      addPopsAssessmentIntervenPathTestUrinalysisProteinLevel(
-        proteinRef.current.value
-      )
-    );
-  };
   const addBloodToRedux = () => {
     dispatch(
       addPopsAssessmentIntervenPathTestUrinalysisBloodLevel(
@@ -59,11 +51,23 @@ export default function UrineObs() {
       )
     );
   };
+  const addKetoneToRedux = () => {
+    dispatch(
+      addPopsAssessmentIntervenPathTestUrinalysisKetoneLevel(
+        ketoneRef.current.value
+      )
+    );
+  };
   const addLeuToRedux = () => {
     dispatch(
       addPopsAssessmentIntervenPathTestUrinalysisWCNumbered(
         leuRef.current.value
       )
+    );
+  };
+  const addNadToRedux = () => {
+    dispatch(
+      addPopsAssessmentAdminNAD(nadRef.current.checked === true ? "NAD" : null)
     );
   };
   const addNitritesToRedux = () => {
@@ -73,10 +77,10 @@ export default function UrineObs() {
       )
     );
   };
-  const addKetoneToRedux = () => {
+  const addProteinToRedux = () => {
     dispatch(
-      addPopsAssessmentIntervenPathTestUrinalysisKetoneLevel(
-        ketoneRef.current.value
+      addPopsAssessmentIntervenPathTestUrinalysisProteinLevel(
+        proteinRef.current.value
       )
     );
   };

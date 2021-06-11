@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Anchor from "./Anchor.component";
 
 // Test: Checks that Anchor renders
-it("checkAnchorRender", () => {
+it("Does the Anchor component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Anchor />

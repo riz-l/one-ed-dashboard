@@ -1,8 +1,8 @@
 // Import: Packages
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { clearClinicalNotesSlice } from "../../../redux/slices/clinicalNotesSlice";
+import { setIsSummaryOpen } from "../../../redux/slices/dashboardSlice";
 import { clearSeenSlice } from "../../../redux/slices/seenSlice";
 import { clearTriageSlice } from "../../../redux/slices/triageSlice";
 
@@ -14,9 +14,17 @@ import { PatientList, PatientSummary } from "../../components";
 
 // Page: Dashboard
 export default function Dashboard() {
-  // Redux: Extracts isSummaryOpen, patient from the global state
-  const isSummaryOpen = useSelector((state) => state.dashboard.isSummaryOpen);
-  const patient = useSelector((state) => state.selectedPatient.patient);
+  // Redux: useSelector, useDispatch
+  const isSummaryOpen = useSelector((state) => {
+    if (state.dashboard.isSummaryOpen) {
+      return state.dashboard.isSummaryOpen;
+    }
+  });
+  const patient = useSelector((state) => {
+    if (state.selectedPatient) {
+      return state.selectedPatient.patient;
+    }
+  });
   const dispatch = useDispatch();
 
   // Effect: Toggles isSummaryOpen status from true to false
@@ -31,6 +39,7 @@ export default function Dashboard() {
     }
   }, [patient, dispatch]);
 
+  // Effect: Clears down redux data on Dashboard render
   useEffect(() => {
     dispatch(clearClinicalNotesSlice());
     dispatch(clearSeenSlice());

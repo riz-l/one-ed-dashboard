@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import NotesEntry from "./NotesEntry.component";
 
 // Test: Checks that NotesEntry renders
-it("checkNotesEntryRender", () => {
+it("Does the NotesEntry component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <NotesEntry />

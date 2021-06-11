@@ -9,11 +9,11 @@
   padding: 2rem;
   position: absolute;
   right: 4rem;
+  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-width: thin;
   top: 4rem;
   transition: all 100ms linear;
   z-index: 10;
-  scrollbar-color: #c3cad9 #edeff2;
-  scrollbar-width: thin;
 }
 
 .Overlay {

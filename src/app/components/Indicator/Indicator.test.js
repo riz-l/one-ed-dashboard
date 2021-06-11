@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Indicator from "./Indicator.component";
 
 // Test: Checks that Indicator renders
-it("checkIndicatorRender", () => {
+it("Does the Indicator component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Indicator />

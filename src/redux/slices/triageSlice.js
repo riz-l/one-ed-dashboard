@@ -157,14 +157,12 @@ export const triageSlice = createSlice({
       state.triageForm.practitioner = payload;
     },
     clearTriageForm: (state, { payload }) => {
-      state.triageForm = {
-        patientID: "",
-        dateTime: "",
-        TriageCategory: "",
-        TriageDiagnosis: "",
-        TriageDiagnosisCode: "",
-        practitioner: "",
-      };
+      state.triageForm.patientID = "";
+      state.triageForm.dateTime = "";
+      state.triageForm.TriageCategory = "";
+      state.triageForm.TriageDiagnosis = "";
+      state.triageForm.TriageDiagnosisCode = "";
+      state.triageForm.practitioner = "";
     },
     clearTriageFormApiResponse: (state, { payload }) => {
       state.triageFormApiResponse = {};
@@ -374,64 +372,63 @@ export const triageSlice = createSlice({
       state.popsAssessment.RTGCEDObservationsPOPSScore_1 = payload;
     },
     clearPopsAssessment: (state, { payload }) => {
-      state.popsAssessment = {
-        PatientID: null,
-        PractionerName: null,
-        PractionerID: null,
-        PatientName: null,
-        EncounterID: null,
-        DateTime: null,
-        SysObsNeuroPainScore: null,
-        SysObsNeuroPatientrackPainScore: null,
-        RTGCEDObservationsPOPSScore: null,
-        SysObsCardiovascPulseRateValueRTG: null,
-        SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG:
-          null,
-        SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG:
-          null,
-        RTG_RespiratoryRate: null,
-        SysObsRespiratoryTargetSATS9498ValueRTG: null,
-        SysObsRespiratorySupplementalOxygenTypeOptions: null,
-        RegObsBodyTemperatureValueRTG: null,
-        IntervenCEDObsAnyAgeOtherScore: null,
-        IntervenCEDObsAnyAgeGutFeelingScore: null,
-        IntervenCEDObsAnyAgeBreathingScore: null,
-        SysObsNeuroAVPUScoreValue_1: null,
-        SysObsNeuroAVPUScoreValue_2: null,
-        SysObsNeuroAVPUScoreValue_3: null,
-        SysObsNeuroAVPUScoreValue: null,
-        SysObsNeuroEDObsAVPU: null,
-        RegObsBodyHeightValue_RegObsBodyHeightComp: null,
-        RegObsBodyWeightValue_RegObsBodyWeightComp: null,
-        RTGChildObsComments: null,
-        IntervenPathTestChemBloodGlucoseRandom: null,
-        SysObsRespiratoryEDObsPEFRLMin: null,
-        SysObsCardiovascCEDObsCapillaryRefill: null,
-        SysObsNeuroEDObsGCSEyes: null,
-        SysObsNeuroEDObsGCSVerbal: null,
-        SysObsNeuroEDObsGCSMotor: null,
-        SysObsNeuroEDObsGCSTotal: null,
-        SysObsNeuroPupilsEqual: null,
-        SysObsNeuroPupilSizeLeft: null,
-        SysObsNeuroPupilSizeRight: null,
-        SysObsNeuroPupilReactivityLeft: null,
-        SysObsNeuroPupilReactivityRight: null,
-        RegObsArmLimbMovementLeft: null,
-        RegObsArmLimbMovementRight: null,
-        RegObsLegLimbMovementLeft: null,
-        RegObsLegLimbMovementRight: null,
-        AdminNAD: null,
-        IntervenPathTestUrinalysisProteinLevel: null,
-        IntervenPathTestUrinalysisBloodLevel: null,
-        IntervenPathTestUrinalysisGlucoseLevel: null,
-        IntervenPathTestUrinalysisWCNumbered: null,
-        IntervenPathTestUrinalysisNitrites: null,
-        IntervenPathTestUrinalysisKetoneLevel: null,
-        RTGCEDObservationsPOPSScore_1: null,
-      };
+      state.popsAssessment.PatientID = null;
+      state.popsAssessment.PractionerName = null;
+      state.popsAssessment.PractionerID = null;
+      state.popsAssessment.PatientName = null;
+      state.popsAssessment.EncounterID = null;
+      state.popsAssessment.DateTime = null;
+      state.popsAssessment.SysObsNeuroPainScore = null;
+      state.popsAssessment.SysObsNeuroPatientrackPainScore = null;
+      state.popsAssessment.RTGCEDObservationsPOPSScore = null;
+      state.popsAssessment.SysObsCardiovascPulseRateValueRTG = null;
+      state.popsAssessment.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG =
+        null;
+      state.popsAssessment.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG =
+        null;
+      state.popsAssessment.RTG_RespiratoryRate = null;
+      state.popsAssessment.SysObsRespiratoryTargetSATS9498ValueRTG = null;
+      state.popsAssessment.SysObsRespiratorySupplementalOxygenTypeOptions =
+        null;
+      state.popsAssessment.RegObsBodyTemperatureValueRTG = null;
+      state.popsAssessment.IntervenCEDObsAnyAgeOtherScore = null;
+      state.popsAssessment.IntervenCEDObsAnyAgeGutFeelingScore = null;
+      state.popsAssessment.IntervenCEDObsAnyAgeBreathingScore = null;
+      state.popsAssessment.SysObsNeuroAVPUScoreValue_1 = null;
+      state.popsAssessment.SysObsNeuroAVPUScoreValue_2 = null;
+      state.popsAssessment.SysObsNeuroAVPUScoreValue_3 = null;
+      state.popsAssessment.SysObsNeuroAVPUScoreValue = null;
+      state.popsAssessment.SysObsNeuroEDObsAVPU = null;
+      state.popsAssessment.RegObsBodyHeightValue_RegObsBodyHeightComp = null;
+      state.popsAssessment.RegObsBodyWeightValue_RegObsBodyWeightComp = null;
+      state.popsAssessment.RTGChildObsComments = null;
+      state.popsAssessment.IntervenPathTestChemBloodGlucoseRandom = null;
+      state.popsAssessment.SysObsRespiratoryEDObsPEFRLMin = null;
+      state.popsAssessment.SysObsCardiovascCEDObsCapillaryRefill = null;
+      state.popsAssessment.SysObsNeuroEDObsGCSEyes = null;
+      state.popsAssessment.SysObsNeuroEDObsGCSVerbal = null;
+      state.popsAssessment.SysObsNeuroEDObsGCSMotor = null;
+      state.popsAssessment.SysObsNeuroEDObsGCSTotal = null;
+      state.popsAssessment.SysObsNeuroPupilsEqual = null;
+      state.popsAssessment.SysObsNeuroPupilSizeLeft = null;
+      state.popsAssessment.SysObsNeuroPupilSizeRight = null;
+      state.popsAssessment.SysObsNeuroPupilReactivityLeft = null;
+      state.popsAssessment.SysObsNeuroPupilReactivityRight = null;
+      state.popsAssessment.RegObsArmLimbMovementLeft = null;
+      state.popsAssessment.RegObsArmLimbMovementRight = null;
+      state.popsAssessment.RegObsLegLimbMovementLeft = null;
+      state.popsAssessment.RegObsLegLimbMovementRight = null;
+      state.popsAssessment.AdminNAD = null;
+      state.popsAssessment.IntervenPathTestUrinalysisProteinLevel = null;
+      state.popsAssessment.IntervenPathTestUrinalysisBloodLevel = null;
+      state.popsAssessment.IntervenPathTestUrinalysisGlucoseLevel = null;
+      state.popsAssessment.IntervenPathTestUrinalysisWCNumbered = null;
+      state.popsAssessment.IntervenPathTestUrinalysisNitrites = null;
+      state.popsAssessment.IntervenPathTestUrinalysisKetoneLevel = null;
+      state.popsAssessment.RTGCEDObservationsPOPSScore_1 = null;
     },
     clearPopsAssessmentApiResponse: (state, { payload }) => {
-      state.triageFormApiResponse = {};
+      state.popsAssessmentApiResponse = {};
       state.status = null;
     },
     clearTriageSlice: (state, { payload }) => {

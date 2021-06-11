@@ -1,4 +1,4 @@
-// Import: Dependencies
+// Import: Packages
 import styled from "styled-components/macro";
 
 // Element: Container
@@ -122,8 +122,8 @@ export const Icon = styled.div`
 
   @media screen and (max-width: 448px) {
     display: none;
-    visibility: hidden;
     margin-right: 0;
+    visibility: hidden;
   }
 `;
 

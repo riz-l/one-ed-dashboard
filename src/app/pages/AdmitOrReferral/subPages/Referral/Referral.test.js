@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import Referral from "./Referral.component";
 
 // Test: Checks that Referral renders
-it("checkReferralRender", () => {
+it("Does the Referral subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <Referral />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Referral />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("referral");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("referral");
+  expect(subPage).toBeTruthy();
 });

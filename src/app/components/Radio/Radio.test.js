@@ -3,10 +3,10 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Components
-import Radio from "./Radio.component";
+import { Radio } from "./Radio.component";
 
 // Test: Checks that Radio renders
-it("checkRadioRender", () => {
+it("Does the Radio component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Radio />

@@ -31,7 +31,6 @@ const FormGroupContext = createContext();
 //       `Form compound components cannot be rendered outside of the Form component`
 //     );
 //   }
-
 //   return context;
 // };
 
@@ -40,8 +39,8 @@ function FormAnchor({
   color,
   colorOnHover,
   fontSize,
-  href,
   heading,
+  href,
   subheading,
   text,
   ...props
@@ -51,8 +50,8 @@ function FormAnchor({
       color={color}
       colorOnHover={colorOnHover}
       fontSize={fontSize}
-      href={href}
       heading={heading}
+      href={href}
       subheading={subheading}
       text={text}
       {...props}
@@ -66,12 +65,12 @@ function FormAnchor({
 const FormAutoSuggest = React.forwardRef((props, ref) => {
   return (
     <AutoSuggest
-      labelText={props.labelText}
-      htmlFor={props.htmlFor}
-      left={props.left}
-      options={props.options}
-      onChange={props.onChange}
       codeOnChange={props.codeOnChange}
+      htmlFor={props.htmlFor}
+      labelText={props.labelText}
+      left={props.left}
+      onChange={props.onChange}
+      options={props.options}
       placeholder={props.placeholder}
       ref={ref}
     />
@@ -83,8 +82,8 @@ function FormButton({
   borderColor,
   fontSize,
   icon,
-  onClick,
   margin,
+  onClick,
   padding,
   text,
   type,
@@ -95,8 +94,8 @@ function FormButton({
       fontSize={fontSize}
       icon={icon}
       margin={margin}
-      padding={padding}
       onClick={onClick}
+      padding={padding}
       text={text}
       type={type}
     />
@@ -108,11 +107,11 @@ export const FormCheckbox = React.forwardRef((props, ref) => {
   return (
     <Checkbox
       checked={props.checked}
+      htmlFor={props.htmlFor}
       onChange={props.onChange}
-      under={props.under}
       ref={ref}
       text={props.text}
-      htmlFor={props.htmlFor}
+      under={props.under}
       value={props.value}
     />
   );
@@ -147,13 +146,13 @@ function FormDisplay({
 const FormDropdown = React.forwardRef((props, ref) => {
   return (
     <Dropdown
+      defaultValue={props.defaultValue}
       htmlFor={props.htmlFor}
       labelText={props.labelText}
+      left={props.left}
       onChange={props.onChange}
       options={props.options}
-      left={props.left}
       ref={ref}
-      defaultValue={props.defaultValue}
       value={props.value}
       width={props.width}
     />
@@ -252,7 +251,7 @@ export default function Form(props) {
   );
 }
 
-// Export: Anchor, AutoSuggest, Button, Checkbox, Display, Dropdown, Input, Radio, Text, TextArea
+// Export: Shorthands for Form components
 Form.Anchor = FormAnchor;
 Form.AutoSuggest = FormAutoSuggest;
 Form.Button = FormButton;

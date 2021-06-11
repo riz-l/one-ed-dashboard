@@ -10,10 +10,12 @@ import { Display, Grid, Text } from "../../..";
 
 // SubPage: CEDObs
 export default function CEDObs() {
-  // Redux:
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
-  );
+  // Redux: useSelector
+  const questionnaireResponseDetail = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponseDetail) {
+      return state.clinicalNotes.notes.questionnaireResponseDetail;
+    }
+  });
 
   return (
     <>
@@ -42,10 +44,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display
-                  htmlFor="bpSystolicFirst"
-                  labelText="BP Systolic First"
-                >
+                <Display htmlFor="bpSystolic" labelText="BP Systolic">
                   {questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     ? questionnaireResponseDetail.SysObsCardiovascBPSystolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     : "N/A"}
@@ -53,10 +52,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display
-                  htmlFor="bpSystolicSecond"
-                  labelText="BP Systolic Second"
-                >
+                <Display htmlFor="bpDiastolic" labelText="BP Diastolic">
                   {questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     ? questionnaireResponseDetail.SysObsCardiovascBPDiastolicValueRTG_SysObsCardiovascBPClinicalMeasurementCompRTG
                     : "N/A"}
@@ -98,7 +94,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="weightKG" labelText="Weight (kg)">
+                <Display htmlFor="weightKg" labelText="Weight (kg)">
                   {questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
                     ? questionnaireResponseDetail.RegObsBodyWeightValue_RegObsBodyWeightComp
                     : "N/A"}
@@ -106,7 +102,7 @@ export default function CEDObs() {
               </Grid.Item>
 
               <Grid.Item>
-                <Display htmlFor="heightCM" labelText="Height (cm)">
+                <Display htmlFor="heightCm" labelText="Height (cm)">
                   {questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
                     ? questionnaireResponseDetail.RegObsBodyHeightValue_RegObsBodyHeightComp
                     : "N/A"}

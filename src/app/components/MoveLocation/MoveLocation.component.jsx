@@ -1,13 +1,11 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
-
-// Import: Assets
-// Consider adding an svg for the button.
+import ReactModal from "react-modal";
+import moment from "moment";
 
 // Import: Elements
-import { Container, FormWrapper } from "./MoveLocation.elements";
+import { Container, FormHeader, FormWrapper } from "./MoveLocation.elements";
 import "./MoveLocation.styles.css";
 
 // Import: Components
@@ -15,27 +13,36 @@ import { Button, Form, Grid, PageTitle } from "../index";
 
 // Component: MoveLocation
 export default function MoveLocation() {
-  // State: isModalOpen
+  // Redux: useSelector
+  const selectedPatient = useSelector((state) => {
+    if (state.selectedPatient) {
+      return state.selectedPatient;
+    }
+  });
+
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
-  // Redux: Fetches CareProvider and location from the global state
-  const careProvider = useSelector(
-    (state) => state.selectedPatient.patientData[0].CareProvider
-  );
-
-  const area = useSelector(
-    (state) => state.selectedPatient.patientData[0].location
-  );
+  // Current Date, Time
+  const date = new Date();
+  const formattedDate = date.toISOString().substr(0, 10);
+  const time = date.toLocaleTimeString(); // Triage Time
+  const finalDate = moment(formattedDate).format("YYYY-MM-DD"); // Triage Date
+  const putDateTime = finalDate.concat("T", time, "Z");
+  const newDateTime = new Date(putDateTime);
+  newDateTime.setHours(newDateTime.getHours() - 2);
+  newDateTime.setSeconds(newDateTime.getSeconds() - 10);
+  const newTime = newDateTime.toLocaleTimeString();
+  const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
+  const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
   return (
     <>
@@ -43,24 +50,24 @@ export default function MoveLocation() {
         <Button onClick={openModal} text="Move Location" />
 
         <ReactModal
-          isOpen={isModalOpen}
-          contentLabel="MoveLocation"
-          onRequestClose={closeModal}
-          className="Modal"
-          overlayClassName="Overlay"
-          closeTimeoutMS={100}
           ariaHideApp={false}
+          className="Modal"
+          closeTimeoutMS={100}
+          contentLabel="MoveLocation"
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          overlayClassName="Overlay"
         >
           <FormWrapper>
-            <div id="pageTitleDiv">
+            <FormHeader>
               <PageTitle
+                backgroundColor="transparent"
                 heading="Move Location"
-                backgroundColor="#ffffff"
-                subheading=""
-                padding="0 0 0 0"
+                padding="0 0 2rem 0"
+                subheading="Move Patient to a different area"
               />
-              <Button text="Close" onClick={closeModal} />
-            </div>
+              <Button onClick={closeModal} margin="0 2rem 0 0" text="Close" />
+            </FormHeader>
 
             <Grid>
               <Grid.Column>
@@ -70,8 +77,9 @@ export default function MoveLocation() {
 
                 <Grid.Item>
                   <Form.Display htmlFor="actualArea" labelText="Actual Area">
-                    {/* TODO should be something like ED Waiting room, see if there is a more approprite peice of date to use here. */}
-                    {area}
+                    {selectedPatient && selectedPatient.patientData[0]
+                      ? selectedPatient.patientData[0].location
+                      : "N/A"}
                   </Form.Display>
                 </Grid.Item>
 
@@ -80,13 +88,22 @@ export default function MoveLocation() {
                     htmlFor="careProvider"
                     labelText="Care Provider"
                   >
-                    {careProvider}
+                    {selectedPatient && selectedPatient.patientData[0]
+                      ? selectedPatient.patientData[0].CareProvider
+                      : "N/A"}
                   </Form.Display>
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Display htmlFor="arrivalTime" labelText="Arrival Time">
-                    {/* TODO need to use Global State redux here */}
+                  <Form.Display
+                    htmlFor="arrivalDateTime"
+                    labelText="Arrival Date/Time"
+                  >
+                    {selectedPatient && selectedPatient.patientData[0]
+                      ? moment(selectedPatient.patientData[0].StartDate).format(
+                          "MMMM Do YYYY, HH:mm:ss"
+                        )
+                      : "N/A"}
                   </Form.Display>
                 </Grid.Item>
               </Grid.Column>
@@ -102,14 +119,31 @@ export default function MoveLocation() {
 
                 <Grid.Item>
                   <Form.Display htmlFor="movedOn" labelText="Moved On">
-                    {/* TODO needs to show the current time  */}
+                    {moment(putEditedNewDateTime).format(
+                      "MMMM Do YYYY, HH:mm:ss"
+                    )}
                   </Form.Display>
                 </Grid.Item>
+              </Grid.Column>
 
+              <Grid.Column>
                 <Grid.Item>
-                  <Form.Text subheading={true}>Transfer Type</Form.Text>
-                  <Form.Radio name="transferType" text="Temporary" />
-                  <Form.Radio name="transferType" text="Permanent" />
+                  <Form.Text subheading>Transfer Type</Form.Text>
+                  <Grid.Item horizontal>
+                    <Form.Radio
+                      htmlFor="temporary"
+                      margin="0 1rem 0.8rem 0"
+                      name="transferType"
+                      text="Temporary"
+                      value="Temporary"
+                    />
+                    <Form.Radio
+                      htmlFor="permanent"
+                      name="transferType"
+                      text="Permanent"
+                      value="Permanent"
+                    />
+                  </Grid.Item>
                 </Grid.Item>
               </Grid.Column>
             </Grid>

@@ -35,5 +35,7 @@ export const ItemContainer = styled.div`
   height: auto;
   justify-content: center;
   margin-bottom: 0.8rem;
-  margin: ${({ margin }) => margin && margin};
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;

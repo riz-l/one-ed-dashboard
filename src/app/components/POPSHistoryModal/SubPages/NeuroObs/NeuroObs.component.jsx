@@ -10,10 +10,12 @@ import { Display, Grid, Text } from "../../..";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
-  // Redux:
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
-  );
+  // Redux: useSelector
+  const questionnaireResponseDetail = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponseDetail) {
+      return state.clinicalNotes.notes.questionnaireResponseDetail;
+    }
+  });
 
   return (
     <>
@@ -55,8 +57,7 @@ export default function NeuroObs() {
                 </Display>
               </Grid.Item>
 
-              {/* GCS Total needs to be a calculated value adding up the scored for Eyes, Verbal and Motor. */}
-
+              {/* TODO: GCS Total needs to be a calculated value adding up the scores for Eyes, Verbal and Motor */}
               <Grid.Item>
                 <Display htmlFor="gcsTotal" labelText="GCS Total">
                   {questionnaireResponseDetail.SysObsNeuroEDObsGCSTotal
@@ -73,7 +74,6 @@ export default function NeuroObs() {
                 </Text>
               </Grid.Item>
 
-              {/* Replace radio buttons with a Display component as answer will either be equal or unequal.  */}
               <Grid.Item>
                 <Display
                   htmlFor="equalOrUnequal"

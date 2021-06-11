@@ -1,7 +1,7 @@
 // Import: Packages
 import React from "react";
 
-// Import: Components & SubPages
+// Import: Components, subPages
 import { PageTitle } from "../../components";
 
 // Import: Elements
@@ -17,6 +17,7 @@ export default function EDOverview() {
             heading="ED Overview"
             subheading="Summary of the ED Department"
           />
+
           <ContentWrapper></ContentWrapper>
         </Wrapper>
       </Container>

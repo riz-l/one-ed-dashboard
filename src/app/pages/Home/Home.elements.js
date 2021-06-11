@@ -15,8 +15,10 @@ export const Container = styled.div`
   max-width: 100%;
   min-width: 100%;
 `;
+
 // Element Logo
 export const Logo = styled.div`
+  height: auto;
   width: 200px;
   margin-bottom: 2rem;
 `;
@@ -42,8 +44,9 @@ export const Wrapper = styled.div`
     border-radius: 8px;
     color: #6b7a99;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
+    font-weight: 400;
     padding: 0.5rem 1rem;
     transition: all 100ms linear;
 
@@ -58,19 +61,19 @@ export const Wrapper = styled.div`
 // Element: CompanyLogo
 export const CompanyLogo = styled.div`
   align-items: center;
-  color: #4d5e80;
   bottom: 0px;
+  color: #4d5e80;
   display: flex;
-  flex-direction: row;
   position: absolute;
 
   & img {
     padding: 1rem;
     width: 160px;
   }
+
   & div {
     display: flex;
-    flex-direction: row;
+
     @media screen and (max-width: 360px) {
       flex-direction: column;
     }

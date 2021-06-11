@@ -25,16 +25,17 @@ export const Label = styled.label`
 
 // Element: Select
 export const Select = styled.select`
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background-color: #ffffff;
   border: 2px solid #edeff2;
   border-radius: 8px;
   color: #4d5e80;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 1rem;
-  padding: 0.3rem 0.8rem;
+  font-weight: 400;
+  padding: 0.25rem 0.8rem;
   transition: all 100ms linear;
   width: ${({ width }) => width ?? width};
 
@@ -57,11 +58,11 @@ export const Select = styled.select`
 
 // Element: Option
 export const Option = styled.option`
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   color: #4d5e80;
   cursor: pointer;
-  font-family: "Poppins", sans-serif !important;
+  font-family: "PoppinsRegular", sans-serif !important;
   font-size: 1rem;
   font-weight: 400;
   padding: 0.4rem 1rem;

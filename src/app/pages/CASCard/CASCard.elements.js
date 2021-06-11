@@ -19,7 +19,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
-  /* padding: 2rem; */
   width: 100%;
 `;
 

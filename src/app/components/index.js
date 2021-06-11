@@ -43,29 +43,20 @@ export { default as Navigation } from "./Navigation/Navigation.component";
 // Export: NotesEntry
 export { default as NotesEntry } from "./NotesEntry/NotesEntry.component";
 
-// Export: ObsEntry
-export { default as ObsEntry } from "./ObsEntry/ObsEntry.component";
-
 // Export: PageTitle
 export { default as PageTitle } from "./PageTitle/PageTitle.component";
 
-// Export: PatientDetails
-export { default as PatientDetails } from "./PatientDetails/PatientDetails.component";
-
 // Export: PatientDemographics
 export { default as PatientDemographics } from "./PatientDemographics/PatientDemographics.component";
+
+// Export: PatientDetails
+export { default as PatientDetails } from "./PatientDetails/PatientDetails.component";
 
 // Export: PatientItem
 export { default as PatientItem } from "./PatientItem/PatientItem.component";
 
 // Export: PatientList
 export { default as PatientList } from "./PatientList/PatientList.component";
-
-// Export: PatientStream
-export { default as PatientStream } from "./PatientStream/PatientStream.component";
-
-// Export: PatientSuggestions
-export { default as PatientSuggestions } from "./PatientSuggestions/PatientSuggestions.component";
 
 // Export: PatientSummary
 export { default as PatientSummary } from "./PatientSummary/PatientSummary.component";

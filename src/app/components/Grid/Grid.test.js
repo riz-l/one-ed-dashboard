@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Grid from "./Grid.component";
 
 // Test: Checks that Grid renders
-it("checkGridRender", () => {
+it("Does the Grid component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Grid />

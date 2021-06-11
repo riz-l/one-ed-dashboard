@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import Diagnosis from "./Diagnosis.component";
 
-// Test: Checks that Complications renders
-it("checkDiagnosisRender", () => {
+// Test: Checks that Diagnosis renders
+it("Does the Diagnosis subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <Diagnosis />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Diagnosis />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("diagnosis");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("diagnosis");
+  expect(subPage).toBeTruthy();
 });

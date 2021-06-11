@@ -14,13 +14,17 @@ import { POPSHistoryModal, Text } from "../../../../components";
 
 // SubPage: POPSHistory
 export default function POPSHistory() {
-  // Redux:
-  const questionnaireResponse = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponse
-  );
-  const filteredQuestionnaireResponse = useSelector(
-    (state) => state.clinicalNotes.notes.filteredQuestionnaireResponse
-  );
+  // Redux: useSelector, useDispatch
+  const questionnaireResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponse) {
+      return state.clinicalNotes.notes.questionnaireResponse;
+    }
+  });
+  const filteredQuestionnaireResponse = useSelector((state) => {
+    if (state.clinicalNotes.notes.filteredQuestionnaireResponse) {
+      return state.clinicalNotes.notes.filteredQuestionnaireResponse;
+    }
+  });
   const dispatch = useDispatch();
 
   // Effect: Fetches questionnaire response from API
@@ -43,9 +47,9 @@ export default function POPSHistory() {
       ? filteredQuestionnaireResponse.map(function (item, index) {
           return (
             <POPSHistoryModal
-              key={index}
-              id={item.id}
               dateTime={item.alertStatus[2].valueDateTime}
+              id={item.id}
+              key={index}
               status={item.status}
               user={item.alertStatus[1].valueString}
             />

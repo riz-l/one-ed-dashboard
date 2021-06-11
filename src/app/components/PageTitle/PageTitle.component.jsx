@@ -15,8 +15,8 @@ export default function PageTitle({
     <>
       <Container
         backgroundColor={backgroundColor}
-        padding={padding}
         data-testid={"pageTitle"}
+        padding={padding}
       >
         <h2>{heading}</h2>
         <span>{subheading}</span>

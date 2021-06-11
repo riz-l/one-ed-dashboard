@@ -18,7 +18,8 @@ export default function Ambulance() {
           </Text>
 
           <Window>
-            {/* TODO: The ePR below is currently hard coded. The ePRID needs to a variable so that the correct Report shows up for the selected patient.  */}
+            {/* TODO: The ePR below is currently hard coded. The ePRID needs to be set to */}
+            {/* ... a variable sos the ePR is dynamic/specific to the selected Patient */}
             <Frame
               src={`https://onerespintlorenzonode.azurewebsites.net/?ePRID=63cfa7dd-22b7-4d7c-b4f6-ee77b1a23585`}
             />

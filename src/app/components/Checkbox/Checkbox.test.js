@@ -3,10 +3,10 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Component
-import Checkbox from "./Checkbox.component";
+import { Checkbox } from "./Checkbox.component";
 
 // Test: Checks that Checkbox renders
-it("checkCheckboxRender", () => {
+it("Does the Checkbox component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Checkbox />

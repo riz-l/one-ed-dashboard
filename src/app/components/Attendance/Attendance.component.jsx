@@ -2,10 +2,6 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 
-// Import: Assets
-// TODO Consider adding this svg to the button to open the modal. Required additional styling and props on the button.
-// import { ReactComponent as AttendanceIcon } from "../../../assets/img/icon/ward-RegAndAttendance.svg";
-
 // Import: Elements
 import { Container, FormWrapper, Header } from "./Attendance.elements";
 import "./Attendance.styles.css";
@@ -16,33 +12,27 @@ import { CreateAttendance, Registration } from "./subPages";
 
 // Component: Attendance
 export default function Attendance() {
-  // State: isModalOpen
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreateAttendance, setIsCreateAttendance] = useState(true);
+  const [isRegistration, setIsRegistration] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
 
-  // State: isRegistration, isCreateAttendance
-  const [isRegistration, setIsRegistration] = useState(false);
-  const [isCreateAttendance, setIsCreateAttendance] = useState(true);
-
-  // onClick: Renders Registration SubPage
-  function renderRegistration() {
-    setIsCreateAttendance(false);
-    setIsRegistration(true);
-  }
-
-  // onClick: Renders CreateAttendance SubPage
+  // onClick: Functions for rendering subPages
   function renderCreateAttendance() {
     setIsRegistration(false);
     setIsCreateAttendance(true);
+  }
+  function renderRegistration() {
+    setIsCreateAttendance(false);
+    setIsRegistration(true);
   }
 
   return (
@@ -51,19 +41,17 @@ export default function Attendance() {
         <Button onClick={openModal} text="Attendance" />
 
         <ReactModal
-          isOpen={isModalOpen}
-          contentLabel="Attendance"
-          onRequestClose={closeModal}
-          className="Modal"
-          overlayClassName="Overlay"
-          closeTimeoutMS={100}
           ariaHideApp={false}
+          className="Modal"
+          closeTimeoutMS={100}
+          contentLabel="Attendance"
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          overlayClassName="Overlay"
         >
-          {/* To remove the margin above the button I will need to modify the button component  */}
-          {/* elements file or use inline styling. */}
           <FormWrapper>
             <Header>
-              <h3>Create Attendance & Registration</h3>
+              <h3>Create Attendance and Registration</h3>
               <Button text="Close" onClick={closeModal} />
             </Header>
 
@@ -90,10 +78,10 @@ export default function Attendance() {
                 </PrimaryNavigation>
               }
               content={
-                isRegistration ? (
-                  <Registration />
-                ) : isCreateAttendance ? (
+                isCreateAttendance ? (
                   <CreateAttendance />
+                ) : isRegistration ? (
+                  <Registration />
                 ) : null
               }
             />

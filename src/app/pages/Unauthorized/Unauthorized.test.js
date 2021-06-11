@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Unauthorized from "./Unauthorized.component";
 
 // Test: Checks that Unauthorized renders
-it("checkUnauthorizedRender", () => {
+it("Does the Unauthorized page render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Unauthorized />

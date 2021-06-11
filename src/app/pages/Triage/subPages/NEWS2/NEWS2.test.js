@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import NEWS2 from "./NEWS2.component";
 
 // Test: Checks that NEWS2 renders
-it("checkNEWS2Render", () => {
+it("Does the NEWS2 subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <NEWS2 />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <NEWS2 />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("news2");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("news2");
+  expect(subPage).toBeTruthy();
 });

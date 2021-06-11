@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import Save from "./Save.component";
 
 // Test: Checks that Save renders
-it("checkSaveRender", () => {
+it("Does the Save subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <Save />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Save />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("save");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("save");
+  expect(subPage).toBeTruthy();
 });

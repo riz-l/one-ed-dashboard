@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
   addDateTime,
-  addSeenComments,
-  addSeniorReviewReq,
-  addSeniorReviewReason,
   addPractitioner,
+  addSeenComments,
+  addSeniorReviewReason,
+  addSeniorReviewReq,
 } from "../../../../../redux/slices/seenSlice";
 
 // Import: Elements
@@ -18,36 +18,52 @@ import { Grid, Form, MoveLocation } from "../../../../components";
 
 // SubPage: SeenSubPage
 export default function SeenSubPage() {
-  // Redux: Fetches from the global state
-  const user = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
-  const triageCategory = useSelector(
-    (state) => state.selectedPatient.patientData[0].Triagecategory
-  );
-  const area = useSelector(
-    (state) => state.selectedPatient.patientData[0].location
-  );
-  const userExtension = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.extension
-  );
-  const seenComments = useSelector((state) => state.seen.seenForm.SeenComments);
-  const seenForm = useSelector((state) => state.seen.seenForm);
-  const seniorReviewReq = useSelector(
-    (state) => state.seen.seenForm.SeniorReviewReq
-  );
+  // Redux: useSelector, useDispatch
+  const user = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName;
+    }
+  });
+  const triageCategory = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].Triagecategory;
+    }
+  });
+  const area = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].location;
+    }
+  });
+  const userExtension = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension;
+    }
+  });
+  const seenComments = useSelector((state) => {
+    if (state.seen.seenForm.SeenComments) {
+      return state.seen.seenForm.SeenComments;
+    }
+  });
+  const seenForm = useSelector((state) => {
+    if (state.seen.seenForm) {
+      return state.seen.seenForm;
+    }
+  });
+  const seniorReviewReq = useSelector((state) => {
+    if (state.seen.seenForm) {
+      return state.seen.seenForm.SeniorReviewReq;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Ref:
-  const seenDateRef = useRef();
-  const seenTimeRef = useRef();
-  const seenSeniorReviewRef = useRef();
-  const seenReasonRef = useRef();
+  // Ref: Used for SeenSubPage form
   const seenCommentsRef = useRef();
+  const seenDateRef = useRef();
+  const seenReasonRef = useRef();
+  const seenSeniorReviewRef = useRef();
+  const seenTimeRef = useRef();
 
   // Current Date, Time
   const date = new Date();
@@ -68,31 +84,33 @@ export default function SeenSubPage() {
   // Reason options
   const reasonOptions = [
     "Abdominal pain in pts 70+",
-    "Atraumatic chest pain in pts 30+",
+    "Atraumatic chest pain in pt's 30+",
     "Fever in children under 1 yr",
     "Return with same condition <72hr after discharge",
     "Requested by Junior Doctor",
   ];
 
   // Add values to Redux
-  const addSeniorReviewToRedux = () => {
-    dispatch(addSeniorReviewReq(seenSeniorReviewRef.current.value));
+  const addCommentsToRedux = () => {
+    dispatch(addSeenComments(seenCommentsRef.current.value));
   };
   const addReasonToRedux = () => {
     dispatch(addSeniorReviewReason(seenReasonRef.current.value));
   };
-  const addCommentsToRedux = () => {
-    dispatch(addSeenComments(seenCommentsRef.current.value));
+  const addSeniorReviewToRedux = () => {
+    dispatch(addSeniorReviewReq(seenSeniorReviewRef.current.value));
   };
 
-  // Effect:
+  // Effect: Populates form with current date/time and user extension on render
   useEffect(() => {
     dispatch(addDateTime(putEditedNewDateTime));
-    // dispatch(addSeenComments("This is a test - seen comment"));
-    // dispatch(addSeniorReviewReq("This is a test - senior review req"));
-    // dispatch(addSeniorReviewReason("This is a test - senior review reason"));
     dispatch(addPractitioner(userExtension));
   }, [dispatch, putEditedNewDateTime, userExtension]);
+
+  // Effect: Populates Review Reason with "false" on render
+  useEffect(() => {
+    dispatch(addSeniorReviewReq("false"));
+  }, [dispatch]);
 
   return (
     <>
@@ -121,21 +139,21 @@ export default function SeenSubPage() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Input
+                    defaultValue={finalDate}
                     htmlFor="seenDate"
                     labelText="Seen Date"
                     ref={seenDateRef}
                     type="date"
-                    defaultValue={finalDate}
                   />
                 </Grid.Item>
 
                 <Grid.Item>
                   <Form.Input
+                    defaultValue={time}
                     htmlFor="seenTime"
                     labelText="Seen Time"
                     ref={seenTimeRef}
                     type="time"
-                    defaultValue={time}
                   />
                 </Grid.Item>
               </Grid.Column>
@@ -148,7 +166,6 @@ export default function SeenSubPage() {
                     onChange={addSeniorReviewToRedux}
                     options={seniorReviewOptions}
                     ref={seenSeniorReviewRef}
-                    defaultValue="false"
                     value={seenForm.SeniorReviewReq}
                   />
                 </Grid.Item>
@@ -168,8 +185,7 @@ export default function SeenSubPage() {
 
                 <Grid.Item>
                   <Form.Display htmlFor="area" labelText="Area">
-                    {/* TODO should be something like ED Waiting room, see if there is a more approprite piece of date to use here. */}
-                    {area}
+                    {area ? area : "N/A"}
                   </Form.Display>
                 </Grid.Item>
 

@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import GPConnect from "./GPConnect.component";
 
 // Test: Checks that GPConnect renders
-it("checkGPConnectRender", () => {
+it("Does the GPConnect subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
       <GPConnect />
     </Router>
   );
-  const page = queryByTestId("gpConnect");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("gpConnect");
+  expect(subPage).toBeTruthy();
 });

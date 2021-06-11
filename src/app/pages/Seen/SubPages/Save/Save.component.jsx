@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  putSeenForm,
-  clearSeenForm,
   clearApiResponse,
+  clearSeenForm,
+  putSeenForm,
 } from "../../../../../redux/slices/seenSlice";
 import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
@@ -17,6 +17,7 @@ import { ReactComponent as WorkflowIcon } from "../../../../../assets/img/icon/w
 import {
   Container,
   IconContainer,
+  Next,
   Suggestion,
   Suggestions,
   Wrapper,
@@ -27,12 +28,20 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: Save
 export default function Save() {
-  // Redux:
-  const apiResponse = useSelector((state) => state.seen.apiResponse);
-  const status = useSelector((state) => state.seen.status);
+  // Redux: useSelector, useDispatch
+  const apiResponse = useSelector((state) => {
+    if (state.seen.apiResponse) {
+      return state.seen.apiResponse;
+    }
+  });
+  const status = useSelector((state) => {
+    if (state.seen.status) {
+      return state.seen.status;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Effect:
+  // Effect: Clears down redux data on render
   useEffect(() => {
     dispatch(clearApiResponse());
   }, [dispatch]);
@@ -40,7 +49,6 @@ export default function Save() {
   // Submit data to API
   const submitSeenForm = async (event) => {
     event.preventDefault();
-
     try {
       dispatch(putSeenForm());
       dispatch(clearSeenForm());
@@ -62,9 +70,9 @@ export default function Save() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Button
-                    type="submit"
-                    text="Save Seen"
                     onClick={submitSeenForm}
+                    text="Save Seen"
+                    type="submit"
                   />
                 </Grid.Item>
 
@@ -95,8 +103,8 @@ export default function Save() {
                   <Suggestions>
                     <Grid.Item>
                       <Link
-                        to="/one-ed/ward/dashboard"
                         onClick={() => dispatch(clearPatient())}
+                        to="/one-ed/ward/dashboard"
                       >
                         <Suggestion>
                           <IconContainer>
@@ -116,9 +124,7 @@ export default function Save() {
                           </IconContainer>
 
                           <span>Continue workflow</span>
-                          <span style={{ fontWeight: "500" }}>
-                            Next: Clinical Notes
-                          </span>
+                          <Next>Next: Clinical Notes</Next>
                         </Suggestion>
                       </Link>
                     </Grid.Item>
