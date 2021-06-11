@@ -44,7 +44,6 @@ import {
 import {
   Alerts,
   Allergies,
-  CDCForms,
   CEDObs,
   NeuroObs,
   NEWS2,
@@ -109,7 +108,7 @@ export default function Triage() {
   const [isPaediatricObs, setIsPaediatricObs] = useState(false);
   const [isPOPSHistory, setIsPOPSHistory] = useState(false);
   const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
-    const [isRWWEdClinicianAssessment, setIsRWWEdClinicianAssessment] =
+  const [isRWWEdClinicianAssessment, setIsRWWEdClinicianAssessment] =
     useState(false);
   const [isRWWEdNurseAssessment, setIsRWWEdNurseAssessment] = useState(false);
   const [isSave, setIsSave] = useState(false);
@@ -217,7 +216,7 @@ export default function Triage() {
     setIsNeuroObs(true);
     setIsNEWS(false);
     setIsNEWS2(false);
-    setIsPaediatricObs(false);
+    setIsPaediatricObs(true);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsRWWEdClinicianAssessment(false);
@@ -350,7 +349,7 @@ export default function Triage() {
     setIsTriageAndStream(false);
     setIsUrineObs(false);
   }
-    function renderSave() {
+  function renderSave() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsCDCForms(false);
@@ -612,10 +611,10 @@ export default function Triage() {
                         onClick={renderRWWEdClinicianAssessment}
                       >
                         <SecondaryNavigation.Icon>
-                          <SaveIcon />
+                          <CEDIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          RWW Ed Clinician Assessment
+                          Clinician Assessment
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
 
@@ -624,10 +623,10 @@ export default function Triage() {
                         onClick={renderRWWEdNurseAssessment}
                       >
                         <SecondaryNavigation.Icon>
-                          <SaveIcon />
+                          <CEDIcon />
                         </SecondaryNavigation.Icon>
                         <SecondaryNavigation.Text>
-                          RWW Ed Nurse Assessment
+                          Nurse Assessment
                         </SecondaryNavigation.Text>
                       </SecondaryNavigation.Item>
                     </>

@@ -4,9 +4,6 @@ export { default as Alerts } from "./Alerts/Alerts.component";
 // Export: Allergies
 export { default as Allergies } from "./Allergies/Allergies.component";
 
-// Exports: CDCForms
-export { default as CDCForms } from "./CDCForms/CDCForms.component";
-
 // Export: CEDObs
 export { default as CEDObs } from "./CEDObs/CEDObs.component";
 

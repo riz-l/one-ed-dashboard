@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import RWWEdClinicianAssessment from "./RWWEdClinicianAssessment.component";
 
 // Test: Checks that RWWEdClinicianAssessment renders
-it("checkRWWEdClinicianAssessmentRender", () => {
+it("Does the RWWEdClinicianAssessment subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
       <RWWEdClinicianAssessment />
     </Router>
   );
-  const page = queryByTestId("rwwEdClinicianAssessment");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("rwwEdClinicianAssessment");
+  expect(subPage).toBeTruthy();
 });
