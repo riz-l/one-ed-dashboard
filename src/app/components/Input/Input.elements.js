@@ -16,7 +16,9 @@ export const Container = styled.div`
           flex-direction: column;
         `}
   margin-bottom: 1rem;
-  margin: ${({ margin }) => margin && margin};
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;
 
 // Element: Label
@@ -34,8 +36,8 @@ export const Label = styled.label`
 
 // Element: InputField
 export const InputField = styled.input`
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   border: 2px solid #edeff2;
   border-radius: 8px;
   color: #4d5e80;
@@ -49,19 +51,23 @@ export const InputField = styled.input`
   width: ${({ width }) => (width ? width : "auto")};
 
   ::-webkit-input-placeholder {
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   ::-moz-placeholder {
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   :-ms-input-placeholder {
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   :-moz-placeholder {
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   /* Input type="password" */
@@ -71,15 +77,16 @@ export const InputField = styled.input`
 
   /* Input type="submit" */
   &[type="submit"] {
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     background-color: #f7f8fa;
     border: 1px solid #edeff2;
     border-radius: 8px;
     color: #6b7a99;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
+    font-weight: 400;
     padding: 0.4rem 1rem;
     transition: all 100ms linear;
 
@@ -101,16 +108,19 @@ export const InputField = styled.input`
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
 
   &[type="number"] {
-    appearance: textfield;
     -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
     background-color: #ffffff;
     color: #4d5e80;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   /* Input type="date" */
@@ -125,8 +135,8 @@ export const InputField = styled.input`
   &[type="date"]::-webkit-calendar-picker-indicator {
     color: #4d5e80;
     cursor: pointer;
-    opacity: 0.6;
     filter: invert(0.5);
+    opacity: 0.6;
     transition: all 100ms linear;
 
     &:hover {
@@ -136,29 +146,31 @@ export const InputField = styled.input`
   }
 
   &[type="date"] {
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     background-color: #ffffff;
     color: #4d5e80;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   /* Input type="time" */
   &[type="time"] {
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     background-color: #ffffff;
     color: #4d5e80;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
   }
 
   &[type="time"]::-webkit-calendar-picker-indicator {
     color: #4d5e80;
     cursor: pointer;
-    opacity: 0.6;
     filter: invert(0.5);
+    opacity: 0.6;
     transition: all 100ms linear;
 
     &:hover {

@@ -19,8 +19,8 @@ export const Container = styled.nav`
         `
       : null};
   overflow-y: auto;
-  position: fixed;
   -webkit-position: fixed;
+  position: fixed;
   top: 80px;
   transition: all 100ms linear;
   width: 300px;
@@ -76,8 +76,9 @@ export const OptionsContainer = styled.div`
 // Element: OptionHeading
 export const OptionHeading = styled.span`
   color: #6b7a99;
-  padding: 0.4rem 0;
+  font-family: "PoppinsMedium", sans-serif;
   font-weight: 500;
+  padding: 0.4rem 0;
 `;
 
 // Element: OptionItem

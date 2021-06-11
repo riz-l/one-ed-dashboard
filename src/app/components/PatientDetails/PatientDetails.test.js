@@ -4,18 +4,18 @@ import { Provider } from "react-redux";
 import store from "../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Import: Page
-import CASCard from "./CASCard.component";
+// Import: Component
+import PatientDetails from "./PatientDetails.component";
 
-// Test: Checks that CASCard renders
-it("Does the CASCard page render?", () => {
+// Test: Checks that PatientDetails renders
+it("Does the PatientDetails component render?", () => {
   const { queryByTestId } = render(
     <Provider store={store}>
       <Router>
-        <CASCard />
+        <PatientDetails />
       </Router>
     </Provider>
   );
-  const page = queryByTestId("casCard");
-  expect(page).toBeTruthy();
+  const component = queryByTestId("patientDetails");
+  expect(component).toBeTruthy();
 });

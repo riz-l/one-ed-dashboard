@@ -9,8 +9,8 @@ export const Container = styled.div`
 // Element: StyledButton
 export const StyledButton = styled.button`
   align-items: center;
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background-color: #f7f8fa;
   border: ${({ borderColor }) =>
     borderColor ? `1px solid ${borderColor}` : "1px solid #edeff2"};
@@ -18,9 +18,9 @@ export const StyledButton = styled.button`
   color: #6b7a99;
   cursor: pointer;
   display: flex;
-  font-family: "Poppins", sans-serif;
-  /* font-size: 1rem; */
+  font-family: "PoppinsRegular", sans-serif;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
+  font-weight: 400;
   justify-content: center;
   padding: ${({ padding }) => (padding ? padding : "0.4rem 1rem")};
   transition: all 100ms linear;

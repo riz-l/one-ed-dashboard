@@ -78,76 +78,100 @@ $ npm install
 
   - Used for state management
 
+- `moment`
+
+  - Used for date/time formatting
+
+- `react-detect-offline`
+
+  - Used for detecting connectivity status
+
+- `react-icons`
+
+  - Used for access to icon library
+
 ### ToDo Tree
 
 ToDo Tree is an extension in VS Code.
 Once installed the tree icon appears on the VS Code side bar.
-When writing comments in your code start the comment with the key words "TODO" or "FIXME" the ToDo tree extension picks out these commenst and pust them in a list allowing developers to quickly jump to parts of the code marked up as needing to be worked on.
-
-### Link to the React to FHIR guide
-
-https://teams.microsoft.com/l/file/0BA35FFD-2ECC-4EC8-A1CA-9C0738346F20?tenantId=93f33571-550f-43cf-b09f-cd331338d086&fileType=docx&objectUrl=https%3A%2F%2Fdxcportal.sharepoint.com%2Fsites%2FOneED404%2FShared%20Documents%2FGeneral%2FAPI%2FOneED%20React%20to%20FHIR%20Guide.docx&baseUrl=https%3A%2F%2Fdxcportal.sharepoint.com%2Fsites%2FOneED404&serviceName=teams&threadId=19:b77fbeb00c734a948660af9bd857c24a@thread.skype&groupId=0e02a59b-4ab4-4502-b8e9-bf1313516494
+When writing comments in your code start the comment with the key words "TODO" or "FIXME" the ToDo tree extension will pick out these comments and put them in a list allowing developers to quickly jump to parts of the code marked up as needing to be worked on.
 
 ## The .env file
 
-For OneED to work it requires a .env file.
-The .env file contains values for the following.
+For OneED to work it requires an .env file. The .env file contains values for the following:
 
-- REACT_APP_CLAIMSET_URL
-- REACT_APP_SERVICE
-- REACT_APP_API_VERSION
-- REACT_APP_API_URL
-- REACT_APP_INCOMING_PATIENTS
-- REACT_APP_INTEGRATION_REPORT
+- `REACT_APP_CLAIMSET_URL`
+- `REACT_APP_SERVICE`
+- `REACT_APP_API_VERSION`
+- `REACT_APP_API_URL`
+- `REACT_APP_INCOMING_PATIENTS`
+- `REACT_APP_INTEGRATION_REPORT`
 
-Changes to the .env file do not get pulled with git pull origin master because the .env file is listed in the .gitignore file.
-To be safe copy the values into a notepad and then into the .env file to remove any formatting.
+Changes to the .env file are not included with the repository files because the .env file is purposefully excluded.
 
-The latest copy of the .env file can be found at:
-
-<!-- TODO Describe where the latest .env file can be found. -->
+The latest copy of the .env file can be found by contacting a member of the OD&amp;T development team.
 
 ## Standard layout of components
 
 Please ensure that the following section titles and orders are used for all components to keep things neat and consistent.
 
-- Import: Packages<br>
-  Order= Import React comes first followed by how the packages are called (e.g. Redux comes first)
+- `// Import: Packages`
 
-- Import: Assets <br>
-  Order= Import the images and icons. Alphabetically.
+  - `import React from "react"` is imported first (in a component file), followed by the order in which any other required packages are used.
+    <br />
 
-- Utils
+- `// Import: Utils`
 
-- Import: Elements <br>
-  Order = List alphabetically.
+  - Used for any utility files (e.g. `capitalizeFirstLetter.js`).
+    <br />
 
-- Import: Components, Pages & subPages <br>
-  Order = first import the components then import the pages and sub pages.
-  List alphabetically.
+- `// Import: Assets`
 
-- Component: _or_ Page: _or_ subPage: <br>
-  Follow by the name of the component, page or subpage.
+  - Used for any fonts, icons or images - all imported alphabetically.
+    <br />
 
-- Redux (selector then dispatch)<br>
+- `// Import: Elements`
 
-- State: <br>
-  Follow the the name of the states being defined. List alphabetically.
+  - Used for any styling files (`.js` or `.css`, etc.) in which elements should be imported alphabetically.
+    <br />
 
-- Use effects <br>
+- `// Import: Components, Pages, SubPages`
 
-- References.<br>
+  - Components, pages and subPages should be imported in this order, and imported alphabetically.
+    <br />
 
-- OnClick<br>
-  Follow by the name of the onClick event. Since OnClick events take up several lines each OnClick event should have its own comment title. List alphabetically.
+- `// Component: ExampleComponent` _or_ `// Page: ExamplePage` _or_ `// SubPage: ExampleSubPage`
+
+  - Components, pages and subPages are declared as above for easy comprehension of files and project searching.
+    <br />
+
+- (Inside the Component, Page or SubPage)
+
+  - Redux
+
+    - Redux hooks should be called with `useSelector()` first, and `useDispatch()` second.
+
+  - State:
+
+    - Any/all local state should be listed alphabetically.
+
+  - React hooks
+
+    - React hooks should be called with `useEffect()` first, and `useState()` second.
+
+  - Any other functionality
 
 ## Reference
 
-TODO: Explain how Reference works.
+_Under construction..._
+
+<!-- TODO: Explain how Reference works. -->
 
 ## UseEffect
 
-TODO: Explain how UseEffect works.
+_Under construction..._
+
+<!-- TODO: Explain how UseEffect works. -->
 
 ## Form Components and their props
 

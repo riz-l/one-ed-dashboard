@@ -23,7 +23,7 @@ import { Display } from "../index";
 // Component: ReportEntry
 export default function ReportEntry({ dateTime, note, user }) {
   return (
-    <Container data-testid={"reportEntry"}>
+    <Container data-testid={"notesEntry"}>
       <Wrapper>
         <EntryContainer>
           <Left>

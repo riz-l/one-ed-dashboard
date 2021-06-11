@@ -37,27 +37,29 @@ export const Wrapper = styled.div`
     margin-bottom: 0.8rem;
   }
 `;
+
+// Element: Logo
 export const Logo = styled.div`
-  width: 200px;
   margin-bottom: 1rem;
+  width: 200px;
 `;
 
 // Element: CompanyLogo
 export const CompanyLogo = styled.div`
   align-items: center;
-  color: #4d5e80;
   bottom: 0px;
+  color: #4d5e80;
   display: flex;
-  flex-direction: row;
   position: absolute;
 
   & img {
     padding: 1rem;
     width: 160px;
   }
+
   & div {
     display: flex;
-    flex-direction: row;
+
     @media screen and (max-width: 360px) {
       flex-direction: column;
     }

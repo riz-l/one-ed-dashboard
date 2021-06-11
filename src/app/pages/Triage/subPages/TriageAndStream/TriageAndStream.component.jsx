@@ -1,6 +1,6 @@
 // Import: Packages
 import React, { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   putTriageForm,
   addTriageFormPatientID,
@@ -22,37 +22,51 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: TriageAndStream
 export default function TriageAndStream() {
-  // Redux:
-  const userExtension = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.extension
-  );
-  const userName = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
-  const location = useSelector(
-    (state) => state.selectedPatient.patientData[0].location
-  );
-  const startDate = useSelector(
-    (state) => state.selectedPatient.patientData[0].StartDate
-  );
-  const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
-  // const formattedStartDate = moment(startDate).format("YYYY-MM-DD, HH:mm");
-  const patient = useSelector((state) => state.selectedPatient.patient);
-  const apiResponse = useSelector(
-    (state) => state.triage.triageFormApiResponse
-  );
-  const triageForm = useSelector((state) => state.triage.triageForm);
+  // Redux: useSelector, useDispatch
+  const userExtension = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension;
+    }
+  });
+  const userName = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName;
+    }
+  });
+  const location = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].location;
+    }
+  });
+  const startDate = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].StartDate;
+    }
+  });
+  const patient = useSelector((state) => {
+    if (state.selectedPatient.patient) {
+      return state.selectedPatient.patient;
+    }
+  });
+  const apiResponse = useSelector((state) => {
+    if (state.triage.triageFormApiResponse) {
+      return state.triage.triageFormApiResponse;
+    }
+  });
+  const triageForm = useSelector((state) => {
+    if (state.triage.triageForm) {
+      return state.triage.triageForm;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Ref:
-  const triageDateRef = useRef();
-  const triageTimeRef = useRef();
-  const triageDiagnosisRef = useRef();
+  // Ref: Used for TriageAndStream form
   const triageCategoryRef = useRef();
+  const triageDateRef = useRef();
+  const triageDiagnosisRef = useRef();
+  const triageTimeRef = useRef();
 
   // Current Date, Time
   const date = new Date();
@@ -66,18 +80,16 @@ export default function TriageAndStream() {
   const newTime = newDateTime.toLocaleTimeString();
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
+  const formattedStartDate = moment(startDate).format("MMMM Do YYYY, HH:mm:ss");
 
-  // Effect:
+  // Effect: Populates TriageAndStream form with default values
   useEffect(() => {
-    dispatch(addTriageFormPatientID(patient));
     dispatch(addTriageFormDateTime(putEditedNewDateTime));
-    // dispatch(addTriageFormTriageCategory("Very urgent"));
-    // dispatch(addTriageFormTriageDiagnosis("Dizziness - light-headed"));
-    // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
+    dispatch(addTriageFormPatientID(patient));
     dispatch(addTriageFormPractitioner(userExtension));
   }, [dispatch, patient, putEditedNewDateTime, userExtension]);
 
-  // Effect:
+  // Effect: Clear down redux data on render
   useEffect(() => {
     dispatch(clearTriageFormApiResponse());
   }, [dispatch]);
@@ -88,14 +100,12 @@ export default function TriageAndStream() {
     const triageDate = triageDateRef.current.value;
     const triageTime = triageTimeRef.current.value;
     if (triageDate === "" || triageTime === "") return;
-
     try {
-      dispatch(putTriageForm());
-      dispatch(clearTriageForm());
       dispatch(addTriageFormPatientID(patient));
       dispatch(addTriageFormDateTime(putEditedNewDateTime));
-      // dispatch(addTriageFormTriageDiagnosisCode("386705008"));
       dispatch(addTriageFormPractitioner(userExtension));
+      dispatch(putTriageForm());
+      dispatch(clearTriageForm());
     } catch (err) {
       console.log(err);
     }
@@ -215,13 +225,13 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.AutoSuggest
+                    codeOnChange={addTriageFormTriageDiagnosisCode}
                     htmlFor="triageDiagnosis"
                     labelText="Triage Diagnosis"
                     onChange={addTriageFormTriageDiagnosis}
-                    codeOnChange={addTriageFormTriageDiagnosisCode}
                     options={autoSuggestOptions}
-                    ref={triageDiagnosisRef}
                     placeholder="Triage diagnosis..."
+                    ref={triageDiagnosisRef}
                   />
                 </Grid.Item>
 
@@ -243,32 +253,14 @@ export default function TriageAndStream() {
                     {userName}
                   </Form.Display>
                 </Grid.Item>
-
-                {/* TODO Waiting for the Allergy API to be ready so the 2 fields below can be linked to it. */}
-                {/* 
-                <Grid.Item>
-                  <Form.Dropdown
-                    htmlFor="checkAllergies"
-                    labelText="Check Allergies"
-                  />
-                </Grid.Item>
-
-                <Grid.Item>
-                  <Form.TextArea
-                    cols="13"
-                    htmlFor="checkAllergiesComments"
-                    labeltext="Comments"
-                    rows="5"
-                  />
-                </Grid.Item> */}
               </Grid.Column>
             </Grid>
 
             <Form.Button
-              text="Save Form"
-              type="submit"
               margin="0 0 1rem 0"
               onClick={submitTriageAndStreamForm}
+              text="Save Form"
+              type="submit"
             />
 
             {apiResponse === "HTTP Response Code: 200" ||

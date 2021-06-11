@@ -3,10 +3,10 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Component
-import Dropdown from "./Dropdown.component";
+import { Dropdown } from "./Dropdown.component";
 
 // Test: Checks that Dropdown renders
-it("checkDropdownRender", () => {
+it("Does the Dropdown component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Dropdown />

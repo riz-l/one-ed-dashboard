@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import SecondaryNavigation from "./SecondaryNavigation.component";
 
 // Test: Checks that SecondaryNavigation renders
-it("checkSecondaryNavigationRender", () => {
+it("Does the SecondaryNavigation component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <SecondaryNavigation />

@@ -3,10 +3,10 @@ import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Components
-import Input from "./Input.component";
+import { Input } from "./Input.component";
 
 // Test: Checks that Input renders
-it("checkInputRender", () => {
+it("Does the Input component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Input />

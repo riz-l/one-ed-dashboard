@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Ambulance from "./Ambulance.component";
 
 // Test: Checks that Ambulance renders
-it("checkAmbulanceRender", () => {
+it("Does the Ambulance subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Ambulance />
     </Router>
   );
-  const page = queryByTestId("ambulance");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("ambulance");
+  expect(subPage).toBeTruthy();
 });

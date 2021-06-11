@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Chart from "./Chart.component";
 
 // Test: Checks that Chart renders
-it("checkChartRender", () => {
+it("Does the Chart subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Chart />
     </Router>
   );
-  const page = queryByTestId("chart");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("chart");
+  expect(subPage).toBeTruthy();
 });

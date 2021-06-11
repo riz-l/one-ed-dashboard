@@ -13,10 +13,12 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Alerts
 export default function Alerts() {
-  // Redux: Extracts patientAlerts from the global state
-  const patientAlerts = useSelector(
-    (state) => state.selectedPatient.patientAlerts
-  );
+  // Redux: useSelector
+  const patientAlerts = useSelector((state) => {
+    if (state.selectedPatient.patientAlerts) {
+      return state.selectedPatient.patientAlerts;
+    }
+  });
 
   // Maps patientAlerts through Alerts
   const alertsRender =
@@ -25,16 +27,15 @@ export default function Alerts() {
           ({
             id,
             alertCode,
-            alertName,
             alertFreeText,
+            alertName,
             status,
             ...otherPatientProps
           }) => (
             <ReportEntry
-              key={id}
               alerts
-              type={alertName}
               details={alertFreeText}
+              key={id}
               openedModal={
                 <>
                   <Grid>
@@ -94,6 +95,7 @@ export default function Alerts() {
                   </Grid>
                 </>
               }
+              type={alertName}
               {...otherPatientProps}
             />
           )

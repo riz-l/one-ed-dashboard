@@ -13,10 +13,12 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Allergies
 export default function Allergies() {
-  // Redux: Extracts patientAllergies from the global state
-  const patientAllergies = useSelector(
-    (state) => state.selectedPatient.patientAllergies
-  );
+  // Redux: useSelector
+  const patientAllergies = useSelector((state) => {
+    if (state.selectedPatient.patientAllergies) {
+      return state.selectedPatient.patientAllergies;
+    }
+  });
 
   // Maps patientAllergies through Allergies
   const allergiesRender =
@@ -29,14 +31,11 @@ export default function Allergies() {
             manifestationDisplay,
             reactionDisplay,
             verificationStatus,
-            ...otherPatientProps
           }) => (
             <ReportEntry
-              key={id}
               allergies
               details={manifestationDisplay}
-              status={clinicalStatus}
-              type={allergyName}
+              key={id}
               openedModal={
                 <>
                   <Grid>
@@ -106,7 +105,8 @@ export default function Allergies() {
                   </Grid>
                 </>
               }
-              //  {...otherPatientProps}
+              status={clinicalStatus}
+              type={allergyName}
             />
           )
         )

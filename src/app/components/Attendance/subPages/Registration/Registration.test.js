@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import Registration from "./Registration.component";
 
 // Test: Checks that Registration renders
-it("checkRegistrationRender", () => {
+it("Does the Registration subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <Registration />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Registration />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("registration");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("registration");
+  expect(subPage).toBeTruthy();
 });

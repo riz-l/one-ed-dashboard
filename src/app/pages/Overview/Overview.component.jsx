@@ -1,11 +1,11 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getPatientDemographics,
-  getPatientAllergies,
   getPatientAlerts,
+  getPatientAllergies,
   getPatientConditions,
+  getPatientDemographics,
 } from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Assets
@@ -21,30 +21,28 @@ import { ReactComponent as SymptomsIcon } from "../../../assets/img/icon/symptom
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Overview.elements";
-import { PatientDetails } from "../../components/index";
 
 // Import: Components, SubPages
 import {
   PageTitle,
+  PatientDetails,
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-
 import {
   Alerts,
   Allergies,
-  PresentingComplaints,
   Complications,
   Diagnosis,
   Findings,
+  PresentingComplaints,
   Procedures,
   Symptoms,
 } from "./subPages";
 
 // Page: Overview
 export default function Overview() {
-  // Redux: Fetches patient, patientData, patientDemographics, patientAlerts,
-  // ... patientAllergies, patientConditions from the global state
+  // Redux: useSelector, useDispatch
   const patient = useSelector((state) => state.selectedPatient.patient);
   const patientAlerts = useSelector(
     (state) => state.selectedPatient.patientAlerts
@@ -55,16 +53,9 @@ export default function Overview() {
   const patientConditions = useSelector(
     (state) => state.selectedPatient.patientConditions
   );
-  // Redux: Extracts Patient Data from the global state
   const dispatch = useDispatch();
 
-  // State: windowDimensions
-  const [windowDimensions, setWindowDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-
-  // State: History SubPages
+  // State: Local state
   const [isAlerts, setIsAlerts] = useState(true);
   const [isAllergies, setIsAllergies] = useState(false);
   const [isComplications, setIsComplications] = useState(false);
@@ -73,6 +64,10 @@ export default function Overview() {
   const [isPresentingComplaints, setIsPresentingComplaints] = useState(false);
   const [isProcedures, setIsProcedures] = useState(false);
   const [isSymptoms, setIsSymptoms] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
 
   // Effect: Checks window height and width
   useEffect(() => {
@@ -82,9 +77,7 @@ export default function Overview() {
         width: window.innerWidth,
       });
     }
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -93,105 +86,91 @@ export default function Overview() {
   // Effect: Fetches patient demographics using the set patientID
   useEffect(() => {
     if (patient !== "") {
-      dispatch(getPatientDemographics());
-      dispatch(getPatientAllergies());
       dispatch(getPatientAlerts());
+      dispatch(getPatientAllergies());
       dispatch(getPatientConditions());
+      dispatch(getPatientDemographics());
     }
-  }, [patient, dispatch]);
+  }, [dispatch, patient]);
 
-  // onClick: Renders Alerts SubPage
+  // onClick: Functions for rendering subPages
   function renderAlerts() {
+    setIsAlerts(true);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsAlerts(true);
   }
-
-  // onClick: Renders Allergies SubPage
   function renderAllergies() {
     setIsAlerts(false);
-    setIsPresentingComplaints(false);
+    setIsAllergies(true);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsAllergies(true);
   }
-
-  // onClick: Renders Complications SubPage
   function renderComplications() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
+    setIsComplications(true);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsComplications(true);
   }
-
-  // onClick: Renders Diagnosis SubPage
   function renderDiagnosis() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
+    setIsDiagnosis(true);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsDiagnosis(true);
   }
-
-  // onClick: Renders Findings SubPage
   function renderFindings() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
+    setIsFindings(true);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsFindings(true);
   }
-
-  // onClick: Renders Complaint SubPage
-  function renderComplaint() {
+  function renderPresentingComplaints() {
     setIsAlerts(false);
     setIsAllergies(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(true);
     setIsProcedures(false);
     setIsSymptoms(false);
-    setIsPresentingComplaints(true);
   }
-
-  // onClick: Renders Procedures SubPage
   function renderProcedures() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
-    setIsSymptoms(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(true);
+    setIsSymptoms(false);
   }
-
-  // onClick: Renders Symptoms SubPage
   function renderSymptoms() {
     setIsAlerts(false);
     setIsAllergies(false);
-    setIsPresentingComplaints(false);
     setIsComplications(false);
     setIsDiagnosis(false);
     setIsFindings(false);
+    setIsPresentingComplaints(false);
     setIsProcedures(false);
     setIsSymptoms(true);
   }
@@ -323,7 +302,7 @@ export default function Overview() {
 
                       <SecondaryNavigation.Item
                         isActive={isPresentingComplaints ? true : false}
-                        onClick={renderComplaint}
+                        onClick={renderPresentingComplaints}
                       >
                         <SecondaryNavigation.Icon
                           isRed={

@@ -16,7 +16,9 @@ export const Container = styled.div`
           flex-direction: column;
         `}
   margin-bottom: ${({ labelText }) => (labelText ? "1rem" : "0")};
-  margin: ${({ margin }) => margin && margin};
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;
 
 // Element: Label

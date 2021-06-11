@@ -10,10 +10,12 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Procedures
 export default function Procedures() {
-  // Redux: Extracts patientConditions from the global state
-  const patientConditions = useSelector(
-    (state) => state.selectedPatient.patientConditions
-  );
+  // Redux: useSelector
+  const patientConditions = useSelector((state) => {
+    if (state.selectedPatient.patientConditions) {
+      return state.selectedPatient.patientConditions;
+    }
+  });
 
   // Maps patientConditions where category === "Procedures"
   const proceduresRender =
@@ -22,9 +24,9 @@ export default function Procedures() {
           .filter((item) => item.category === "Procedures")
           .map(({ id, problemName, status, note, ...otherPatientProps }) => (
             <ReportEntry
+              details={note !== "undefined" ? note : "No further detail"}
               key={id}
               procedures
-              details={note !== "undefined" ? note : "No further detail"}
               status={status}
               type={problemName}
               {...otherPatientProps}

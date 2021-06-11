@@ -1,39 +1,39 @@
 // Import: Packages
 import React from "react";
-import { useSelector } from "react-redux";
+
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Elements
-import { Container, Capitalize } from "./PatientItem.elements";
+import { Container } from "./PatientItem.elements";
 
 // Component: PatientItem
 export default function PatientItem({
-  onClick,
-  patientID,
   colOne,
   colTwo,
   colThree,
   colFour,
   colFive,
   colSix,
-  patientList,
   incomingPatients,
+  onClick,
+  patient,
+  patientID,
+  patientList,
 }) {
-  // Redux: Extract patient from global state
-  const patient = useSelector((state) => state.selectedPatient.patient);
-
   return (
     <>
       <Container
-        onClick={onClick}
         data-testid={"patientItem"}
+        onClick={onClick}
+        incomingPatients={incomingPatients}
         patient={patient}
         patientID={patientID}
         patientList={patientList}
-        incomingPatients={incomingPatients}
       >
-        {colOne && <Capitalize>{colOne}</Capitalize>}
+        {colOne && <td>{capitalizeFirstLetter(colOne)}</td>}
         {colTwo && <td>{colTwo}</td>}
-        {colThree && <Capitalize>{colThree}</Capitalize>}
+        {colThree && <td>{capitalizeFirstLetter(colThree)}</td>}
         {colFour && <td>{colFour}</td>}
         {colFive && <td>{colFive}</td>}
         {colSix && <td>{colSix}</td>}

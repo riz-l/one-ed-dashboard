@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import Alerts from "./Alerts.component";
 
 // Test: Checks that Alerts renders
-it("checkAlertsRender", () => {
+it("Does the Alerts subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <Alerts />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Alerts />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("alerts");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("alerts");
+  expect(subPage).toBeTruthy();
 });

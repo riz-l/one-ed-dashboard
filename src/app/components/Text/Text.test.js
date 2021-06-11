@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Text from "./Text.component";
 
 // Test: Checks that Text renders
-it("checkTextRender", () => {
+it("Does the Text component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Text />

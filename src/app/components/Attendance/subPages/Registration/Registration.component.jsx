@@ -20,7 +20,7 @@ export default function Registration() {
 
             <Grid>
               <Grid.Column>
-                {/* In Lorenzo this field is locked. I'm not sure where the value comes from */}
+                {/* TODO: Is this field needed? */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="nhsNumber"
@@ -29,7 +29,7 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* In Lorenzo this field is locked. I'm not sure where the value comes from */}
+                {/* TODO: Is this field needed? */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="patientID"
@@ -38,7 +38,7 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Should default to the current date. */}
+                {/* TODO: Should default to the current date. */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="registrationDate"
@@ -79,11 +79,14 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Age calculates automatically from date of birth and the user can also enter an age. */}
+                {/* TODO: Age should calculate from Date of Birth */}
+                {/* ... user can also enter age manually */}
                 <Grid.Item>
                   <Form.Input htmlFor="age" labelText="Age" type="number" />
                 </Grid.Item>
 
+                {/* TODO: Estimated Date of Birth possibly to be month and year Dropdown */}
+                {/* ... it should only be editable if the Checkbox has been ticked */}
                 <Grid.Item>
                   <Form.Checkbox
                     htmlFor="estimatedDateOfBirth"
@@ -91,7 +94,6 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Estimated date of birth may need to be a month and year dropdown. It should only be editable if the checkbox for it has been ticked.  */}
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="dateOfBirth"
@@ -108,7 +110,7 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/*Should default to the users healthcare organisation  */}
+                {/* TODO: Should default to the user's healthcare organisation  */}
                 <Grid.Item>
                   <Form.AutoSuggest
                     htmlFor="registeredHealthOrganisation"
@@ -123,7 +125,7 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Confidentiality Reason is mandatory if Confidentiality Status is set to Local Secure. */}
+                {/* TODO: Confidentiality Reason is mandatory if Confidentiality Status is set to Local Secure */}
                 <Grid.Item>
                   <Form.Dropdown
                     htmlFor="confidentialityReason"
@@ -137,7 +139,7 @@ export default function Registration() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.TextArea
-                    htmlFor="additionalBenefits"
+                    htmlFor="additionalDetails"
                     labelText="Additional Details"
                     rows="5"
                   />
@@ -145,7 +147,7 @@ export default function Registration() {
               </Grid.Column>
 
               <Grid.Column>
-                {/* Not selectable in Lorenzo */}
+                {/* TODO: Not selectable in Lorenzo. Is this needed? */}
                 <Grid.Item>
                   <Form.Checkbox
                     htmlFor="nextOfKinDetailsUnavailable"
@@ -153,7 +155,7 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Not selectable in Lorenzo */}
+                {/* TODO: Not selectable in Lorenzo. Is this needed? */}
                 <Grid.Item>
                   <Form.Checkbox
                     htmlFor="educationInformationUnavailable"
@@ -161,10 +163,10 @@ export default function Registration() {
                   />
                 </Grid.Item>
 
-                {/* Not selectable in Lorenzo */}
+                {/* TODO: Not selectable in Lorenzo. Is this needed? */}
                 <Grid.Item>
                   <Form.Checkbox
-                    htmlFor="sendPatientAideInviation"
+                    htmlFor="sendPatientAideInvitation"
                     text="Send PatientAide Invitation"
                   />
                 </Grid.Item>
@@ -230,7 +232,7 @@ export default function Registration() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Display htmlFor="PAF" labelText="PAF">
+                  <Form.Display htmlFor="paf" labelText="PAF">
                     (example)
                   </Form.Display>
                 </Grid.Item>

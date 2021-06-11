@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import PageTitle from "./PageTitle.component";
 
 // Test: Checks that PageTitle renders
-it("checkPageTitleRender", () => {
+it("Does the PageTitle component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <PageTitle />

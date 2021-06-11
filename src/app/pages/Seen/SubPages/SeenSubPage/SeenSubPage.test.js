@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import SeenSubPage from "./SeenSubPage.component";
 
 // Test: Checks that SeenSubPage renders
-it("checkSeenSubPageRender", () => {
+it("Does the SeenSubPage subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <SeenSubPage />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <SeenSubPage />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("seenSubPage");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("seenSubPage");
+  expect(subPage).toBeTruthy();
 });

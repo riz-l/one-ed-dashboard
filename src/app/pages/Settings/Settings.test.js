@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Settings from "./Settings.component";
 
 // Test: Checks that Settings renders
-it("checkSettingsRender", () => {
+it("Does the Settings page render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Settings />

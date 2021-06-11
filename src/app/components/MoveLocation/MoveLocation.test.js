@@ -1,16 +1,20 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: Component
 import MoveLocation from "./MoveLocation.component";
 
 // Test: Checks that MoveLocation renders
-it("checkMoveLocationRender", () => {
+it("Does the MoveLocation component render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <MoveLocation />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <MoveLocation />
+      </Router>
+    </Provider>
   );
   const component = queryByTestId("moveLocation");
   expect(component).toBeTruthy();

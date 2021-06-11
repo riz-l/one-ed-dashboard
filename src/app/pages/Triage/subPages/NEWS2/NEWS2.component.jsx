@@ -107,8 +107,8 @@ export default function NEWS2() {
                   </Form.Text>
                 </Grid.Item>
 
-                {/* Need to add some alert popups. 
-                      See OED37 for an image of how the alerts look in Lorenzo. */}
+                {/* TODO: Need to add some alert popups */}
+                {/* ... see OED37 for an image of how the alerts look in Lorenzo */}
               </Grid.Column>
             </Grid>
           </Form>

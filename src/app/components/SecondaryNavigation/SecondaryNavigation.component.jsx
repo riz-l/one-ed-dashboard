@@ -62,7 +62,7 @@ export default function SecondaryNavigation(props) {
   );
 }
 
-// Export: Item, Icon, Text
+// Export: Shorthands for SecondaryNavigation components
 SecondaryNavigation.Item = Item;
 SecondaryNavigation.Icon = Icon;
 SecondaryNavigation.Text = Text;

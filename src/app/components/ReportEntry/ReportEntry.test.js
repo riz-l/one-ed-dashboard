@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import ReportEntry from "./ReportEntry.component";
 
 // Test: Checks that ReportEntry renders
-it("checkReportEntryRender", () => {
+it("Does the ReportEntry component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <ReportEntry />

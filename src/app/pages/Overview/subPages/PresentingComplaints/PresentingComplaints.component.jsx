@@ -13,10 +13,12 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 
 // SubPage: Complaint
 export default function PresentingComplaints() {
-  // Redux: Extracts patientConditions from the global state
-  const patientConditions = useSelector(
-    (state) => state.selectedPatient.patientConditions
-  );
+  // Redux: useSelector
+  const patientConditions = useSelector((state) => {
+    if (state.selectedPatient.patientConditions) {
+      return state.selectedPatient.patientConditions;
+    }
+  });
 
   // Maps patientConditions where category === "Complaint"
   const complaintRender =
@@ -27,21 +29,18 @@ export default function PresentingComplaints() {
             ({
               category,
               id,
-              problemName,
-              status,
               note,
-              verificationStatus,
               problemCode,
+              problemName,
               onsetDateTime,
+              status,
+              verificationStatus,
               ...otherPatientProps
             }) => (
               <ReportEntry
-                key={id}
                 complaint
                 details={note !== "undefined" ? note : "No further detail"}
-                status={status}
-                type={problemName}
-                {...otherPatientProps}
+                key={id}
                 openedModal={
                   <>
                     <Grid>
@@ -134,6 +133,9 @@ export default function PresentingComplaints() {
                     </Grid>
                   </>
                 }
+                status={status}
+                type={problemName}
+                {...otherPatientProps}
               />
             )
           )
