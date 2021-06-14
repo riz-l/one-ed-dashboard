@@ -70,13 +70,13 @@ export const Content = styled.div`
   min-width: 100%;
 `;
 
-// Elements: ContentContainer
+// Element: ContentContainer
 export const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
 `;
 
-// Elements: ContentWrapper
+// Element: ContentWrapper
 export const ContentWrapper = styled.div`
   background-color: #ffffff;
   border-bottom-left-radius: 8px;
