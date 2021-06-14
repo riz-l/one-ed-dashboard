@@ -18,12 +18,12 @@ export default function Text({
       <StyledText
         as={props.as}
         bold={bold}
+        data-testid={"text"}
         fontSize={fontSize}
         heading={heading}
         subheading={subheading}
         text={text}
         {...props}
-        data-testid={"text"}
       >
         {props.children}
       </StyledText>

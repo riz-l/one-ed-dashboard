@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import NeuroObs from "./NeuroObs.component";
 
 // Test: Checks that NeuroObs renders
-it("checkNeuroObsRender", () => {
+it("Does the NeuroObs subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <NeuroObs />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <NeuroObs />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("neuroObs");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("neuroObs");
+  expect(subPage).toBeTruthy();
 });

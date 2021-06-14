@@ -8,11 +8,11 @@ import { Container, InputField, Label } from "./Input.elements";
 export const Input = React.forwardRef((props, ref) => {
   return (
     <Container
-      onClick={props.onClick}
       center={props.center}
+      data-testid={"input"}
       left={props.left}
       margin={props.margin}
-      data-testid={"input"}
+      onClick={props.onClick}
     >
       {props.labelText && (
         <Label htmlfor={props.htmlFor} left={props.left}>
@@ -26,9 +26,9 @@ export const Input = React.forwardRef((props, ref) => {
         left={props.left}
         name={props.htmlFor}
         onChange={props.onChange}
-        type={props.type ? props.type : "text"}
         placeholder={props.placeholder}
         ref={ref}
+        type={props.type ? props.type : "text"}
         value={props.value}
         width={props.width}
       />

@@ -20,7 +20,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
-  /* padding: 2rem; */
   width: 100%;
 `;
 
@@ -33,13 +32,11 @@ export const Header = styled.div`
   height: auto;
   justify-content: center;
   padding: 1rem 2rem 0 2rem;
-  /* position: sticky;
-  -webkit-position: sticky;
-  top: 0; */
   width: 100%;
 
   & h2 {
     color: #4d5e80;
+    font-family: "PoppinsMedium", sans-serif;
     font-size: 1.6rem;
     font-weight: 500;
   }

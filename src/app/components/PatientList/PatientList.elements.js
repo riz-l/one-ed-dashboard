@@ -30,8 +30,8 @@ export const ListHeader = styled.div`
   height: auto;
   justify-content: flex-start;
   padding-bottom: 1rem;
-  position: sticky;
   -webkit-position: sticky;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 3;
@@ -52,10 +52,11 @@ export const TableWrapper = styled.div``;
 
 // Element: Table
 export const Table = styled.table`
-  border-radius: 8px;
   border-collapse: collapse;
-  font-family: "Poppins", sans-serif;
+  border-radius: 8px;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 0.8rem;
+  font-weight: 400;
   height: 100%;
   margin-bottom: 1rem;
   position: relative;

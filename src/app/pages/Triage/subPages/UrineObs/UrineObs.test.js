@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import UrineObs from "./UrineObs.component";
 
 // Test: Checks that UrineObs renders
-it("checkUrineObsRender", () => {
+it("Does the UrineObs subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <UrineObs />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <UrineObs />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("urineObs");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("urineObs");
+  expect(subPage).toBeTruthy();
 });

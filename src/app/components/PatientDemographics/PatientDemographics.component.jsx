@@ -18,31 +18,32 @@ import {
   ModalButtonWrapper,
   ModalTopWrapper,
   SVGContainer,
-  Wrapper,
   TestGridWrapper,
+  Wrapper,
   WrapperItem1,
   WrapperItem2,
   OverFlowWrapper,
 } from "./PatientDemographics.elements";
 
-// Import: Components
-import { Button } from "../index";
-import { Display, Grid } from "../../components";
-import { Overview } from "../../pages/index";
+// Import: Components, Pages
+import { Button, Display, Grid } from "../../components";
+import { Overview } from "../../pages";
 
 export default function PatientDemographics({ summary }) {
-  // Redux: Extracts Patient Data from the global state
-  const patientData = useSelector((state) => state.selectedPatient.patientData);
+  // Redux: useSelector
+  const patientData = useSelector((state) => {
+    if (state.selectedPatient.patientData) {
+      return state.selectedPatient.patientData;
+    }
+  });
 
-  // State: isModalOpen
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
@@ -166,18 +167,18 @@ export default function PatientDemographics({ summary }) {
       </Wrapper>
 
       <ReactModal
-        isOpen={isModalOpen}
-        contentLabel="Patient Demographics"
-        onRequestClose={closeModal}
-        className="Modal"
-        overlayClassName="Overlay"
-        closeTimeoutMS={100}
         ariaHideApp={false}
+        className="Modal"
+        closeTimeoutMS={100}
+        contentLabel="Patient Demographics"
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        overlayClassName="Overlay"
       >
         <OverFlowWrapper>
           <ModalTopWrapper>
             <ModalButtonWrapper>
-              <Button text="Close" onClick={closeModal} />
+              <Button onClick={closeModal} text="Close" />
             </ModalButtonWrapper>
           </ModalTopWrapper>
 

@@ -1,5 +1,5 @@
 // Import: Packages
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 // Import: Assets
@@ -8,10 +8,10 @@ import { ReactComponent as AssessmentsClinicalIcon } from "../../../assets/img/i
 import { ReactComponent as AssessmentsObservationsIcon } from "../../../assets/img/icon/assessments-observations.svg";
 import { ReactComponent as AssessmentsSeenIcon } from "../../../assets/img/icon/assessments-seen.svg";
 import { ReactComponent as AssessmentsTriageIcon } from "../../../assets/img/icon/assessments-triage.svg";
-import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
 import { ReactComponent as PatientCasIcon } from "../../../assets/img/icon/patient-cas.svg";
-import { ReactComponent as SettingsSettingsIcon } from "../../../assets/img/icon/settings-settings.svg";
+import { ReactComponent as PatientOverviewIcon } from "../../../assets/img/icon/patient-overview.svg";
 import { ReactComponent as SettingsLogoutIcon } from "../../../assets/img/icon/settings-logout.svg";
+import { ReactComponent as SettingsSettingsIcon } from "../../../assets/img/icon/settings-settings.svg";
 import { ReactComponent as TrainingIcon } from "../../../assets/img/icon/training.svg";
 import { ReactComponent as WardDashboardIcon } from "../../../assets/img/icon/ward-dashboard.svg";
 import { ReactComponent as WardEDIcon } from "../../../assets/img/icon/ward-ed.svg";
@@ -35,10 +35,14 @@ export default function Navigation({
   setIsNavigationOpen,
   handleLogout,
 }) {
-  // Redux: Extracts patient from the global state
-  const patient = useSelector((state) => state.selectedPatient.patient);
+  // Redux: useSelector
+  const patient = useSelector((state) => {
+    if (state.selectedPatient.patient) {
+      return state.selectedPatient.patient;
+    }
+  });
 
-  // State: windowDimensions
+  // State: Local state
   const [windowDimensions, setWindowDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -52,9 +56,7 @@ export default function Navigation({
         width: window.innerWidth,
       });
     }
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -70,7 +72,6 @@ export default function Navigation({
               <OptionHeading>Ward</OptionHeading>
 
               <OptionLink
-                to="/one-ed/ward/dashboard"
                 onClick={
                   windowDimensions.width <= 1077
                     ? () =>
@@ -79,6 +80,7 @@ export default function Navigation({
                         )
                     : null
                 }
+                to="/one-ed/ward/dashboard"
               >
                 <OptionItem>
                   <WardDashboardIcon />
@@ -87,7 +89,6 @@ export default function Navigation({
               </OptionLink>
 
               <OptionLink
-                to="/one-ed/ward/ed-overview"
                 onClick={
                   window.innerWidth <= 1077
                     ? () =>
@@ -96,6 +97,7 @@ export default function Navigation({
                         )
                     : null
                 }
+                to="/one-ed/ward/ed-overview"
               >
                 <OptionItem>
                   <WardEDIcon />
@@ -110,7 +112,6 @@ export default function Navigation({
                 <OptionsContainer>
                   <OptionHeading>Patient</OptionHeading>
                   <OptionLink
-                    to="/one-ed/patient/overview"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -119,6 +120,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/patient/overview"
                   >
                     <OptionItem>
                       <PatientOverviewIcon />
@@ -127,7 +129,6 @@ export default function Navigation({
                   </OptionLink>
 
                   <OptionLink
-                    to="/one-ed/patient/cas-card"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -136,6 +137,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/patient/cas-card"
                   >
                     <OptionItem>
                       <PatientCasIcon />
@@ -148,7 +150,6 @@ export default function Navigation({
                 <OptionsContainer>
                   <OptionHeading>Assessments</OptionHeading>
                   <OptionLink
-                    to="/one-ed/assessments/triage"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -157,6 +158,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/assessments/triage"
                   >
                     <OptionItem>
                       <AssessmentsTriageIcon />
@@ -165,7 +167,6 @@ export default function Navigation({
                   </OptionLink>
 
                   <OptionLink
-                    to="/one-ed/assessments/observations"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -174,6 +175,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/assessments/observations"
                   >
                     <OptionItem>
                       <AssessmentsObservationsIcon />
@@ -182,7 +184,6 @@ export default function Navigation({
                   </OptionLink>
 
                   <OptionLink
-                    to="/one-ed/assessments/seen"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -191,6 +192,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/assessments/seen"
                   >
                     <OptionItem>
                       <AssessmentsSeenIcon />
@@ -199,7 +201,6 @@ export default function Navigation({
                   </OptionLink>
 
                   <OptionLink
-                    to="/one-ed/assessments/clinical-notes"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -208,6 +209,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/assessments/clinical-notes"
                   >
                     <OptionItem>
                       <AssessmentsClinicalIcon />
@@ -220,7 +222,6 @@ export default function Navigation({
                 <OptionsContainer>
                   <OptionHeading>Admit or Referral</OptionHeading>
                   <OptionLink
-                    to="/one-ed/admit-or-referral"
                     onClick={
                       window.innerWidth <= 1077
                         ? () =>
@@ -229,6 +230,7 @@ export default function Navigation({
                             )
                         : null
                     }
+                    to="/one-ed/admit-or-referral"
                   >
                     <OptionItem>
                       <AdmitOrReferralIcon />
@@ -245,7 +247,6 @@ export default function Navigation({
             <OptionHeading>User</OptionHeading>
 
             <OptionLink
-              to="/one-ed/training"
               onClick={
                 window.innerWidth <= 1077
                   ? () =>
@@ -254,6 +255,7 @@ export default function Navigation({
                       )
                   : null
               }
+              to="/one-ed/training"
             >
               <SettingsItem>
                 <TrainingIcon />
@@ -262,7 +264,6 @@ export default function Navigation({
             </OptionLink>
 
             <OptionLink
-              to="/one-ed/user/settings"
               onClick={
                 window.innerWidth <= 1077
                   ? () =>
@@ -271,6 +272,7 @@ export default function Navigation({
                       )
                   : null
               }
+              to="/one-ed/user/settings"
             >
               <SettingsItem>
                 <SettingsSettingsIcon />

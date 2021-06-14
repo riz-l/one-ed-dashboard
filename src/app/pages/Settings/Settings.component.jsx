@@ -6,6 +6,7 @@ import { Container, ContentWrapper, Wrapper } from "./Settings.elements";
 
 // Import: Components
 import { PageTitle } from "../../components";
+
 // Page: Settings
 export default function Settings() {
   return (
@@ -17,14 +18,7 @@ export default function Settings() {
             subheading="Customise and Configure OneED"
           />
 
-          <ContentWrapper>
-            {/* <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              tempora veniam tenetur molestiae corporis laudantium aliquam
-              distinctio eos? Cum omnis officiis tempora ipsa esse. Minima unde
-              velit voluptatum doloribus natus.
-            </p> */}
-          </ContentWrapper>
+          <ContentWrapper></ContentWrapper>
         </Wrapper>
       </Container>
     </>

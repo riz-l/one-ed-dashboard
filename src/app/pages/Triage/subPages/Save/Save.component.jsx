@@ -2,12 +2,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 import {
-  postPopsAssessment,
   clearPopsAssessment,
   clearPopsAssessmentApiResponse,
+  postPopsAssessment,
 } from "../../../../../redux/slices/triageSlice";
-import { clearPatient } from "../../../../../redux/slices/selectedPatientSlice";
 
 // Import Assets
 import { ReactComponent as DashboardIcon } from "../../../../../assets/img/icon/ward-dashboard.svg";
@@ -17,6 +17,7 @@ import { ReactComponent as WorkflowIcon } from "../../../../../assets/img/icon/w
 import {
   Container,
   IconContainer,
+  Next,
   Suggestion,
   Suggestions,
   Wrapper,
@@ -27,28 +28,40 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: Save
 export default function Save() {
-  // Redux:
-  const apiResponse = useSelector(
-    (state) => state.triage.popsAssessmentApiResponse
-  );
-  const status = useSelector((state) => state.triage.status);
+  // Redux: useSelector, useDispatch
+  const apiResponse = useSelector((state) => {
+    if (state.triage.popsAssessmentApiResponse) {
+      return state.triage.popsAssessmentApiResponse;
+    }
+  });
+  const popsPatientID = useSelector((state) => {
+    if (state.triage.popsAssessment.PatientID) {
+      return state.triage.popsAssessment.PatientID;
+    }
+  });
+  const status = useSelector((state) => {
+    if (state.triage.status) {
+      return state.triage.status;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Effect:
+  // Effect: Clears down redux data on render
   useEffect(() => {
-    dispatch(clearPopsAssessmentApiResponse());
-  }, [dispatch]);
+    if (popsPatientID !== null) {
+      dispatch(clearPopsAssessmentApiResponse());
+    }
+  }, [dispatch, popsPatientID]);
 
   // Submit POPS Assessment to API
   const submitPopsAssessmentForm = async (event) => {
     event.preventDefault();
-
     try {
       dispatch(postPopsAssessment());
-      dispatch(clearPopsAssessment());
     } catch (err) {
       console.log(err);
     }
+    dispatch(clearPopsAssessment());
   };
 
   return (
@@ -64,9 +77,9 @@ export default function Save() {
               <Grid.Column>
                 <Grid.Item>
                   <Form.Button
-                    type="submit"
-                    text="Save POPS Assessment"
                     onClick={submitPopsAssessmentForm}
+                    text="Save POPS Assessment"
+                    type="submit"
                   />
                 </Grid.Item>
 
@@ -97,8 +110,8 @@ export default function Save() {
                   <Suggestions>
                     <Grid.Item>
                       <Link
-                        to="/one-ed/ward/dashboard"
                         onClick={() => dispatch(clearPatient())}
+                        to="/one-ed/ward/dashboard"
                       >
                         <Suggestion>
                           <IconContainer>
@@ -118,7 +131,7 @@ export default function Save() {
                           </IconContainer>
 
                           <span>Continue workflow</span>
-                          <span style={{ fontWeight: "500" }}>Next: Seen</span>
+                          <Next>Next: Seen</Next>
                         </Suggestion>
                       </Link>
                     </Grid.Item>

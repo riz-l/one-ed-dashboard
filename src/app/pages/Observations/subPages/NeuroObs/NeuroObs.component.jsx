@@ -1,20 +1,20 @@
 // Import: Packages
 import React, { useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  addPopsAssessmentSysObsNeuroEDObsGCSEyes,
-  addPopsAssessmentSysObsNeuroEDObsGCSVerbal,
-  addPopsAssessmentSysObsNeuroEDObsGCSMotor,
-  addPopsAssessmentSysObsNeuroEDObsGCSTotal,
-  addPopsAssessmentSysObsNeuroPupilsEqual,
-  addPopsAssessmentSysObsNeuroPupilSizeLeft,
-  addPopsAssessmentSysObsNeuroPupilSizeRight,
-  addPopsAssessmentSysObsNeuroPupilReactivityLeft,
-  addPopsAssessmentSysObsNeuroPupilReactivityRight,
   addPopsAssessmentRegObsArmLimbMovementLeft,
   addPopsAssessmentRegObsArmLimbMovementRight,
   addPopsAssessmentRegObsLegLimbMovementLeft,
   addPopsAssessmentRegObsLegLimbMovementRight,
+  addPopsAssessmentSysObsNeuroEDObsGCSEyes,
+  addPopsAssessmentSysObsNeuroEDObsGCSMotor,
+  addPopsAssessmentSysObsNeuroEDObsGCSTotal,
+  addPopsAssessmentSysObsNeuroEDObsGCSVerbal,
+  addPopsAssessmentSysObsNeuroPupilsEqual,
+  addPopsAssessmentSysObsNeuroPupilReactivityLeft,
+  addPopsAssessmentSysObsNeuroPupilReactivityRight,
+  addPopsAssessmentSysObsNeuroPupilSizeLeft,
+  addPopsAssessmentSysObsNeuroPupilSizeRight,
 } from "../../../../../redux/slices/triageSlice";
 
 // Import: Elements
@@ -25,66 +25,36 @@ import { Form, Grid, Text } from "../../../../components";
 
 // SubPage: NeuroObs
 export default function NeuroObs() {
-  // Redux:
-  const popsAssessment = useSelector((state) => state.triage.popsAssessment);
+  // Redux: useSelector, useDispatch
+  const popsAssessment = useSelector((state) => {
+    if (state.triage.popsAssessment) {
+      return state.triage.popsAssessment;
+    }
+  });
   const dispatch = useDispatch();
 
-  // Ref:
-  const eyesRef = useRef();
-  const verbalRef = useRef();
-  const motorRef = useRef();
-  const gcsTotalRef = useRef();
+  // Ref: Used for NeuroObs form
   const equalOrUnequalRef = useRef();
-  const leftPupilSizeRef = useRef();
-  const leftPupilReactionRef = useRef();
-  const rightPupilSizeRef = useRef();
-  const rightPupilReactionRef = useRef();
+  const eyesRef = useRef();
+  const gcsTotalRef = useRef();
   const leftArmRef = useRef();
   const leftLegRef = useRef();
+  const leftPupilReactionRef = useRef();
+  const leftPupilSizeRef = useRef();
+  const motorRef = useRef();
   const rightArmRef = useRef();
   const rightLegRef = useRef();
+  const rightPupilReactionRef = useRef();
+  const rightPupilSizeRef = useRef();
+  const verbalRef = useRef();
 
   // Add values to Redux
   const addEyesToRedux = () => {
     dispatch(addPopsAssessmentSysObsNeuroEDObsGCSEyes(eyesRef.current.value));
   };
-  const addVerbalToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsNeuroEDObsGCSVerbal(verbalRef.current.value)
-    );
-  };
-  const addMotorToRedux = () => {
-    dispatch(addPopsAssessmentSysObsNeuroEDObsGCSMotor(motorRef.current.value));
-  };
   const addGcsTotalToRedux = () => {
     dispatch(
       addPopsAssessmentSysObsNeuroEDObsGCSTotal(gcsTotalRef.current.value)
-    );
-  };
-  const leftPupilSizeToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsNeuroPupilSizeLeft(leftPupilSizeRef.current.value)
-    );
-  };
-  const leftPupilReactionToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsNeuroPupilReactivityLeft(
-        leftPupilReactionRef.current.value
-      )
-    );
-  };
-  const rightPupilSizeToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsNeuroPupilSizeRight(
-        rightPupilSizeRef.current.value
-      )
-    );
-  };
-  const rightPupilReactionToRedux = () => {
-    dispatch(
-      addPopsAssessmentSysObsNeuroPupilReactivityRight(
-        rightPupilReactionRef.current.value
-      )
     );
   };
   const leftArmToRedux = () => {
@@ -97,6 +67,26 @@ export default function NeuroObs() {
       addPopsAssessmentRegObsLegLimbMovementLeft(leftLegRef.current.value)
     );
   };
+  const leftPupilReactionToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilReactivityLeft(
+        leftPupilReactionRef.current.value
+      )
+    );
+  };
+  const leftPupilSizeToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilSizeLeft(leftPupilSizeRef.current.value)
+    );
+  };
+  const addMotorToRedux = () => {
+    dispatch(addPopsAssessmentSysObsNeuroEDObsGCSMotor(motorRef.current.value));
+  };
+  const addVerbalToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroEDObsGCSVerbal(verbalRef.current.value)
+    );
+  };
   const rightArmToRedux = () => {
     dispatch(
       addPopsAssessmentRegObsArmLimbMovementRight(rightArmRef.current.value)
@@ -105,6 +95,20 @@ export default function NeuroObs() {
   const rightLegToRedux = () => {
     dispatch(
       addPopsAssessmentRegObsLegLimbMovementRight(rightLegRef.current.value)
+    );
+  };
+  const rightPupilReactionToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilReactivityRight(
+        rightPupilReactionRef.current.value
+      )
+    );
+  };
+  const rightPupilSizeToRedux = () => {
+    dispatch(
+      addPopsAssessmentSysObsNeuroPupilSizeRight(
+        rightPupilSizeRef.current.value
+      )
     );
   };
 
@@ -176,8 +180,7 @@ export default function NeuroObs() {
                   />
                 </Grid.Item>
 
-                {/* GCS Total needs to be a calculated value adding up the scored for Eyes, Verbal and Motor. */}
-
+                {/* TODO: GCS Total needs to be a calculated value adding up the scored for Eyes, Verbal and Motor. */}
                 <Grid.Item>
                   <Form.Input
                     htmlFor="gcsTotal"

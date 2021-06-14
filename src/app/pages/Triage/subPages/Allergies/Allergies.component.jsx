@@ -19,30 +19,31 @@ import {
 
 // SubPage: Allergies
 export default function Allergies() {
-  // Redux: Extracts patientAllergies from the global state
-  const patientAllergies = useSelector(
-    (state) => state.selectedPatient.patientAllergies
-  );
+  // Redux: useSelector
+  const patientAllergies = useSelector((state) => {
+    if (state.selectedPatient.patientAllergies) {
+      return state.selectedPatient.patientAllergies;
+    }
+  });
 
   // Maps patientAllergies through Allergies
   const allergiesRender =
     patientAllergies && patientAllergies.length > 0
       ? patientAllergies.map(
           ({
-            id,
             allergyName,
             clinicalStatus,
+            id,
             manifestationDisplay,
             reactionDisplay,
             verificationStatus,
-            ...otherPatientProps
+            // ...otherPatientProps
           }) => (
             <ReportEntry
-              key={id}
               allergies
               details={manifestationDisplay}
+              key={id}
               status={clinicalStatus}
-              type={allergyName}
               openedModal={
                 <>
                   <Grid>
@@ -112,6 +113,7 @@ export default function Allergies() {
                   </Grid>
                 </>
               }
+              type={allergyName}
               //  {...otherPatientProps}
             />
           )

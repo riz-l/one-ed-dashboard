@@ -1,4 +1,4 @@
-// Import: Dependencies
+// Import: Packages
 import React from "react";
 
 // Import: Elements
@@ -9,8 +9,8 @@ export default function Anchor({
   color,
   colorOnHover,
   fontSize,
-  href,
   heading,
+  href,
   subheading,
   text,
   ...props
@@ -18,16 +18,16 @@ export default function Anchor({
   return (
     <>
       <StyledText
+        {...props}
         color={color}
         colorOnHover={colorOnHover}
-        fontSize={fontSize}
-        href={href}
-        target="_blank"
-        heading={heading}
-        subheading={subheading}
-        text={text}
-        {...props}
         data-testid={"anchor"}
+        fontSize={fontSize}
+        heading={heading}
+        href={href}
+        subheading={subheading}
+        target="_blank"
+        text={text}
       >
         {props.children}
       </StyledText>

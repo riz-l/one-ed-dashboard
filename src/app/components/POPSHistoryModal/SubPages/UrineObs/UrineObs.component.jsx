@@ -10,10 +10,12 @@ import { Display, Grid, Text } from "../../..";
 
 // SubPage: UrineObs
 export default function UrineObs() {
-  // Redux:
-  const questionnaireResponseDetail = useSelector(
-    (state) => state.clinicalNotes.notes.questionnaireResponseDetail
-  );
+  // Redux: useSelector
+  const questionnaireResponseDetail = useSelector((state) => {
+    if (state.clinicalNotes.notes.questionnaireResponseDetail) {
+      return state.clinicalNotes.notes.questionnaireResponseDetail;
+    }
+  });
 
   return (
     <>

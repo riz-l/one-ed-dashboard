@@ -29,10 +29,10 @@ export const ClickableHeader = styled.div`
   border-radius: 8px;
   display: flex;
   height: 8rem;
-  margin: 2rem 2rem 0 2rem;
   max-height: 8rem;
   min-height: 8rem;
   justify-content: flex-start;
+  margin: 2rem 2rem 0 2rem;
   padding: 1rem;
   transition: all 100ms linear;
   width: 100%;
@@ -51,9 +51,9 @@ export const ClickableHeader = styled.div`
 // Element: SVGContainer
 export const SVGContainer = styled.div`
   height: 100%;
-  max-width: auto;
   padding: 0rem 1rem;
   width: auto;
+  max-width: auto;
 
   & svg {
     fill: #6b7a99;
@@ -92,6 +92,7 @@ export const ClickableText = styled.div`
 
   & h2 {
     color: #6b7a99;
+    font-family: "PoppinsSemiBold", sans-serif;
     font-size: 1.8rem;
     font-weight: 600;
     transition: all 100ms linear;
@@ -130,23 +131,24 @@ export const ClickableButtonContainer = styled.div`
 // Element: ClickableButton
 export const ClickableButton = styled.div`
   align-items: center;
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background-color: #4d5e80;
   border-radius: 8px;
   color: #6b7a99;
   cursor: pointer;
   display: flex;
-  font-family: "Poppins", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 0.4rem;
+  font-weight: 400;
   justify-content: center;
-  padding: 0.75rem 1.35rem;
+  padding: 0.8rem 1.2rem;
   transition: all 100ms linear;
   white-space: nowrap;
 
   & p {
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   &:hover {
@@ -162,18 +164,18 @@ export const ClickableButton = styled.div`
 
   @media (max-width: 1024px) {
     font-size: 1rem;
-    padding: 1rem 1.5rem 1rem 1.5rem;
+    padding: 1rem 1.5rem;
     text-align: center;
   }
+
   @media (max-width: 675px) {
     font-size: 0.8rem;
-    padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+    padding: 0.8rem 1.3rem;
   } ;
 `;
 
 // Element: Heading
 export const Heading = styled.div`
-  /* background-color: #f7f8fa; */
   background-color: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -182,7 +184,7 @@ export const Heading = styled.div`
   width: 100%;
 `;
 
-// Element: Heading Image
+// Element: HeadingImage
 export const HeadingImage = styled.div`
   background-color: #ffffff;
   flex: 1;
@@ -195,12 +197,12 @@ export const HeadingImage = styled.div`
   }
 `;
 
-// Element: Heading Content
+// Element: HeadingContent
 export const HeadingContent = styled.div`
   background-color: #ffffff;
+  flex: 4;
   height: 100%;
   max-height: 100%;
-  flex: 4;
 
   & h2 {
     color: #4d5e80;
@@ -208,14 +210,14 @@ export const HeadingContent = styled.div`
   }
 `;
 
-// Element: Modal Top Wrapper
+// Element: ModalTopWrapper
 export const ModalTopWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
 `;
 
-// Element: Modal Button Wrapper
+// Element: ModalButtonWrapper
 export const ModalButtonWrapper = styled.div`
   margin-right: 2rem;
 `;
@@ -228,7 +230,7 @@ export const TestGridWrapper = styled.div`
   width: 100%;
 `;
 
-// Element: Wrapper Item1
+// Element: WrapperItem1
 export const WrapperItem1 = styled.div`
   flex: 2;
 
@@ -241,7 +243,7 @@ export const WrapperItem1 = styled.div`
   } ;
 `;
 
-// Element: Wrapper Item2
+// Element: WrapperItem2
 export const WrapperItem2 = styled.div`
   flex: 5;
 

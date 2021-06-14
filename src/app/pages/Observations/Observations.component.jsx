@@ -1,17 +1,17 @@
 // Import: Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addPopsAssessmentPatientID,
-  addPopsAssessmentPractionerName,
-  addPopsAssessmentPractionerID,
-  addPopsAssessmentPatientName,
-  addPopsAssessmentEncounterID,
   addPopsAssessmentDateTime,
-  addPopsAssessmentSysObsNeuroPatientrackPainScore,
+  addPopsAssessmentEncounterID,
+  addPopsAssessmentPatientID,
+  addPopsAssessmentPatientName,
+  addPopsAssessmentPractionerID,
+  addPopsAssessmentPractionerName,
   addPopsAssessmentRTGCEDObservationsPOPSScore,
-  addPopsAssessmentSysObsNeuroEDObsAVPU,
   addPopsAssessmentRTGChildObsComments,
+  addPopsAssessmentSysObsNeuroEDObsAVPU,
+  addPopsAssessmentSysObsNeuroPatientrackPainScore,
 } from "../../../redux/slices/triageSlice";
 import moment from "moment";
 
@@ -25,7 +25,7 @@ import { ReactComponent as UrineObsIcon } from "../../../assets/img/icon/urineOb
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Observations.elements";
 
-// Import: Components, SubPages
+// Import: Components, subPages
 import {
   PageTitle,
   PatientDemographics,
@@ -33,38 +33,48 @@ import {
   ReportSection,
   SecondaryNavigation,
 } from "../../components";
-import { CEDObs, NeuroObs, POPSHistory, UrineObs, Save } from "./subPages";
+import { CEDObs, NeuroObs, POPSHistory, Save, UrineObs } from "./subPages";
 
 // Page: Observations
 export default function Observations() {
-  // Redux:
-  const userExtension = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.extension
-  );
-  const userName = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0].UserID.identifierName
-  );
-  const patientID = useSelector((state) => state.selectedPatient.patient);
-  const patientName = useSelector(
-    (state) => state.selectedPatient.patientData[0].name
-  );
-  const encounterID = useSelector(
-    (state) => state.selectedPatient.patientData[0].encounterID
-  );
+  // Redux: useSelector, useDispatch
+  const userExtension = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.extension;
+    }
+  });
+  const userName = useSelector((state) => {
+    if (state.userDetails.details.ControlActEvent) {
+      return state.userDetails.details.ControlActEvent.Subject.Value[0]
+        .UserRoleProfile[0].UserID.identifierName;
+    }
+  });
+  const patientID = useSelector((state) => {
+    if (state.selectedPatient.patient) {
+      return state.selectedPatient.patientData[0].patientID;
+    }
+  });
+  const patientName = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].name;
+    }
+  });
+  const encounterID = useSelector((state) => {
+    if (state.selectedPatient.patientData[0]) {
+      return state.selectedPatient.patientData[0].encounterID;
+    }
+  });
   const dispatch = useDispatch();
 
-  // State: isPaediatricObs, isPOPSHistory, isSave
-  const [isPaediatricObs, setIsPaediatricObs] = useState(true);
-  const [isPOPSHistory, setIsPOPSHistory] = useState(false);
-  const [isSave, setIsSave] = useState(false);
+  // State: Local state
   const [isCEDObs, setIsCEDObs] = useState(true);
   const [isNeuroObs, setIsNeuroObs] = useState(false);
-  const [isUrineObs, setIsUrineObs] = useState(false);
+  const [isPaediatricObs, setIsPaediatricObs] = useState(true);
+  const [isPOPSHistory, setIsPOPSHistory] = useState(false);
   const [isPOPSHistorySubPage, setISPOPSHistorySubPage] = useState(false);
+  const [isSave, setIsSave] = useState(false);
+  const [isUrineObs, setIsUrineObs] = useState(false);
 
   // Current Date, Time
   const date = new Date();
@@ -79,87 +89,86 @@ export default function Observations() {
   const editedNewDateTime = moment(newDateTime).format("YYYY-MM-DD");
   const putEditedNewDateTime = editedNewDateTime.concat("T", newTime, "Z");
 
-  // onClick: Renders PaediatricObs SubPage
+  useEffect(() => {
+    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
+    dispatch(addPopsAssessmentEncounterID(encounterID));
+    dispatch(addPopsAssessmentPatientID(patientID));
+    dispatch(addPopsAssessmentPatientName(patientName));
+    dispatch(addPopsAssessmentPractionerName(userName));
+    dispatch(addPopsAssessmentPractionerID(userExtension));
+  }, [
+    dispatch,
+    putEditedNewDateTime,
+    encounterID,
+    patientID,
+    patientName,
+    userName,
+    userExtension,
+  ]);
+
+  // onClick: Functions for rendering subPages
   function renderPaediatricObs() {
+    setIsCEDObs(true);
     setIsNeuroObs(false);
+    setIsPaediatricObs(true);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
     setIsUrineObs(false);
-    setIsSave(false);
-    setIsCEDObs(true);
-    setIsPaediatricObs(true);
-
-    dispatch(addPopsAssessmentPatientID(patientID));
-    dispatch(addPopsAssessmentPractionerName(userName));
-    dispatch(addPopsAssessmentPractionerID(userExtension));
-    dispatch(addPopsAssessmentPatientName(patientName));
-    dispatch(addPopsAssessmentEncounterID(encounterID));
-    dispatch(addPopsAssessmentDateTime(putEditedNewDateTime));
     // TODO: REQUIRES IMMEDIATE ATTENTION
-    dispatch(addPopsAssessmentSysObsNeuroPatientrackPainScore("3"));
     dispatch(addPopsAssessmentRTGCEDObservationsPOPSScore("6"));
-    dispatch(addPopsAssessmentSysObsNeuroEDObsAVPU("Alert"));
     dispatch(
-      addPopsAssessmentRTGChildObsComments("This is a test comment - JLayton")
+      addPopsAssessmentRTGChildObsComments(
+        "This is a test comment - DEVELOPMENT"
+      )
     );
+    dispatch(addPopsAssessmentSysObsNeuroEDObsAVPU("Alert"));
+    dispatch(addPopsAssessmentSysObsNeuroPatientrackPainScore("3"));
   }
-
-  // onClick: Renders POPSHistory SubPage
   function renderPOPSHistory() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
-    setIsSave(false);
-    setIsUrineObs(false);
     setIsPOPSHistory(true);
     setISPOPSHistorySubPage(true);
+    setIsSave(false);
+    setIsUrineObs(false);
   }
-
-  // onClick: Renders CEDObs SubPage
   function renderCEDObs() {
+    setIsCEDObs(true);
     setIsNeuroObs(false);
+    setIsPaediatricObs(true);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
     setIsUrineObs(false);
-    setIsSave(false);
-    setIsCEDObs(true);
-    setIsPaediatricObs(true);
   }
-
-  // onClick: Renders NeuroObs SubPage
   function renderNeuroObs() {
     setIsCEDObs(false);
+    setIsNeuroObs(true);
+    setIsPaediatricObs(true);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
     setIsUrineObs(false);
-    setIsSave(false);
-    setIsNeuroObs(true);
-    setIsPaediatricObs(true);
   }
-
-  // onClick: Renders UrineObs SubPage
   function renderUrineObs() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
+    setIsPaediatricObs(true);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
     setIsSave(false);
-    setIsPaediatricObs(true);
     setIsUrineObs(true);
   }
-
-  // onClick: Renders Save SubPage
   function renderSave() {
     setIsCEDObs(false);
     setIsNeuroObs(false);
     setIsPaediatricObs(false);
     setIsPOPSHistory(false);
     setISPOPSHistorySubPage(false);
-    setIsUrineObs(false);
     setIsSave(true);
+    setIsUrineObs(false);
   }
 
   return (

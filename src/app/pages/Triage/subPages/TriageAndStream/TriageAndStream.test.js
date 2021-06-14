@@ -1,17 +1,21 @@
 // Import: Packages
 import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../../../../redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import: SubPage
 import TriageAndStream from "./TriageAndStream.component";
 
 // Test: Checks that TriageAndStream renders
-it("checkTriageAndStreamRender", () => {
+it("Does the TriageAndStream subPage render?", () => {
   const { queryByTestId } = render(
-    <Router>
-      <TriageAndStream />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <TriageAndStream />
+      </Router>
+    </Provider>
   );
-  const page = queryByTestId("triageAndStream");
-  expect(page).toBeTruthy();
+  const subPage = queryByTestId("triageAndStream");
+  expect(subPage).toBeTruthy();
 });

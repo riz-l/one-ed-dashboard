@@ -86,3 +86,9 @@ export const Suggestion = styled.div`
     transition: all 100ms linear;
   }
 `;
+
+// Element: Next
+export const Next = styled.span`
+  font-family: "PoppinsMedium", sans-serif;
+  font-weight: 500;
+`;

@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Attendance from "./Attendance.component";
 
 // Test: Checks that Attendance renders
-it("checkAttendanceRender", () => {
+it("Does the Attendance component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <Attendance />

@@ -13,9 +13,9 @@ import {
 
 // Component: ReportSection
 export default function ReportSection({
+  content,
   primaryNavigation,
   secondaryNavigation,
-  content,
 }) {
   return (
     <>

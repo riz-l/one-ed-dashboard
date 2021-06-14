@@ -7,7 +7,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.8rem;
-  margin: ${({ margin }) => margin && margin};
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;
 
 // Element: Label
@@ -27,6 +29,7 @@ export const Text = styled.span`
 // Element: Input
 export const Input = styled.input`
   -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   height: 100%;
   opacity: 0;

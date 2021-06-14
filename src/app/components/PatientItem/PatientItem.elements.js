@@ -57,8 +57,3 @@ export const Container = styled.tr`
     transition: all 100ms linear;
   }
 `;
-
-// Element: Capitalize
-export const Capitalize = styled.td`
-  text-transform: capitalize;
-`;

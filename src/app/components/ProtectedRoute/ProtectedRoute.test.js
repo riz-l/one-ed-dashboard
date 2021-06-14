@@ -7,13 +7,13 @@ import ProtectedRoute from "./ProtectedRoute.component";
 import { Dashboard } from "../../pages";
 
 // Test: Checks that ProtectedRoute renders
-it("checkProtectedRouteRender", () => {
+it("Does the ProtectedRoute component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <ProtectedRoute
+        component={Dashboard}
         exact
         path="/one-ed/ward/dashboard"
-        component={Dashboard}
       />
     </Router>
   );

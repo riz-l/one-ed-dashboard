@@ -16,6 +16,12 @@ export { default as NEWS2 } from "./NEWS2/NEWS2.component";
 // Export: POPSHistory
 export { default as POPSHistory } from "./POPSHistory/POPSHistory.component";
 
+// Export: RWW Ed Clinician Report
+export { default as RWWEdClinicianAssessment } from "./RWWEdClinicianAssessment/RWWEdClinicianAssessment.component";
+
+// Export: RWW Ed Nurse Report
+export { default as RWWEdNurseAssessment } from "./RWWEdNurseAssessment/RWWEdNurseAssessment.component";
+
 // Export: UrineObs
 export { default as UrineObs } from "./UrineObs/UrineObs.component";
 

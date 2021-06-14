@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import PrimaryNavigation from "./PrimaryNavigation.component";
 
 // Test: Checks that PrimaryNavigation renders
-it("checkPrimaryNavigationRender", () => {
+it("Does the PrimaryNavigation component render?", () => {
   const { queryByTestId } = render(
     <Router>
       <PrimaryNavigation />

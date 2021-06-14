@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 
 // Import: Assets
-import { ReactComponent as SeenSubPageIcon } from "../../../assets/img/icon/assessments-seen.svg";
 import { ReactComponent as SaveIcon } from "../../../assets/img/icon/save.svg";
+import { ReactComponent as SeenSubPageIcon } from "../../../assets/img/icon/assessments-seen.svg";
 
 // Import: Elements
 import { Container, ContentWrapper, Wrapper } from "./Seen.elements";
 
-// Import: Components & SubPages
+// Import: Components, subPages
 import {
   PageTitle,
   PatientDemographics,
@@ -20,32 +20,26 @@ import { Save, SeenSubPage } from "./subPages";
 
 // Page: Seen
 export default function Seen() {
-  // State: isSeen
-  const [isSeen, setIsSeen] = useState(true);
+  // State: Local state
   const [isSave, setIsSave] = useState(false);
-
-  // State: Seen SubPage
+  const [isSeen, setIsSeen] = useState(true);
   const [isSeenSubPage, setIsSeenSubPage] = useState(true);
 
-  // onClick: Renders Seen Page
+  // onClick: Functions for rendering subPages
+  function renderSave() {
+    setIsSave(true);
+    setIsSeen(false);
+    setIsSeenSubPage(false);
+  }
   function renderSeen() {
     setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
   }
-
-  // onClick: Renders SeenSubPage
   function renderSeenSubPage() {
     setIsSave(false);
     setIsSeen(true);
     setIsSeenSubPage(true);
-  }
-
-  // onClick: Renders Save
-  function renderSave() {
-    setIsSeen(false);
-    setIsSeenSubPage(false);
-    setIsSave(true);
   }
 
   return (

@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactModal from "react-modal";
 
+// Import: Utils
+import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
+
 // Import: Assets
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
 import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
@@ -11,16 +14,12 @@ import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.
 // Import: Elements
 import {
   Container,
-  FormWrapper,
-  Heading,
-  HeadingImage,
-  HeadingContent,
+  ContentWrapper,
   Logo,
   LogoContainer,
   LogoLink,
   MenuContainer,
   ModalTopWrapper,
-  ModalButtonWrapper,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -33,22 +32,20 @@ import { Button, Display, Grid, PageTitle, ReportSection } from "../index";
 
 // Component: Header
 export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
-  // Redux: Fetches user details from the global state
-  const userRoleProfile = useSelector(
-    (state) =>
-      state.userDetails.details.ControlActEvent.Subject.Value[0]
-        .UserRoleProfile[0]
-  );
+  // Redux: useSelector
+  const userDetails = useSelector((state) => {
+    if (state.userDetails) {
+      return state.userDetails;
+    }
+  });
 
-  // State: isModalOpen
+  // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // onClick: Opens Modal
+  // onClick: Functions for opening and closing the modal
   function openModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
-
-  // onClick: Closes Modal
   function closeModal() {
     setIsModalOpen((isModalOpen) => !isModalOpen);
   }
@@ -61,7 +58,6 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             <LogoLink to="/one-ed/ward/dashboard">
               <Logo>
                 <LogoSvg />
-                {/* <span>OneED</span> */}
               </Logo>
             </LogoLink>
 
@@ -80,88 +76,119 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             </UserIcon>
 
             <UserDetails>
-              <span>{userRoleProfile.UserID.identifierName}</span>
+              <span>
+                {userDetails && userDetails.details.ControlActEvent
+                  ? userDetails.details.ControlActEvent.Subject.Value[0]
+                      .UserRoleProfile[0].UserID.identifierName
+                  : "N/A"}
+              </span>
+
               <span style={{ textTransform: "capitalize" }}>
-                {userRoleProfile.UserRole.code}
+                {userDetails && userDetails.details.ControlActEvent
+                  ? userDetails.details.ControlActEvent.Subject.Value[0]
+                      .UserRoleProfile[0].UserRole.code
+                  : "N/A"}
               </span>
             </UserDetails>
           </UserContainer>
         </Wrapper>
 
-        {/* User Information Modal contents */}
         <ReactModal
-          isOpen={isModalOpen}
-          contentLabel="User Information"
-          onRequestClose={closeModal}
-          className="Modal"
-          overlayClassName="Overlay"
-          closeTimeoutMS={100}
           ariaHideApp={false}
+          className="Modal"
+          closeTimeoutMS={100}
+          contentLabel="User Information"
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          overlayClassName="Overlay"
         >
-          <FormWrapper>
+          <ContentWrapper>
             <ModalTopWrapper>
               <PageTitle
-                heading="User Information"
-                subheading="User details and role information"
-                padding="0 0 2rem 0"
                 backgroundColor="transparent"
+                heading="User Information"
+                padding="0 0 2rem 0"
+                subheading="User details and role information"
               />
 
-              <ModalButtonWrapper>
-                <Button
-                  text="Close"
-                  onClick={closeModal}
-                  margin="0 2rem 0.8rem 0"
-                />
-              </ModalButtonWrapper>
+              <Button
+                onClick={closeModal}
+                margin="0 2rem 0.8rem 0"
+                text="Close"
+              />
             </ModalTopWrapper>
 
             <ReportSection
               content={
                 <>
-                  <Heading>
-                    <HeadingImage>
-                      <UserSvg />
-                    </HeadingImage>
+                  <Grid>
+                    <Grid.Column>
+                      <Display htmlFor="userExtension" labelText="Extension">
+                        {userDetails && userDetails.details.ControlActEvent
+                          ? userDetails.details.ControlActEvent.Subject.Value[0]
+                              .UserRoleProfile[0].UserID.extension
+                          : "N/A"}
+                      </Display>
 
-                    <HeadingContent>
-                      <h2>User Information</h2>
+                      <Display
+                        htmlFor="userOrganisation"
+                        labelText="User Organisation"
+                      >
+                        {userDetails && userDetails.details.ControlActEvent
+                          ? userDetails.details.ControlActEvent.Subject.Value[0]
+                              .UserRoleProfile[0].UserOrg.code
+                          : "N/A"}
+                      </Display>
+                    </Grid.Column>
 
-                      <Grid>
-                        <Grid.Column>
-                          {/* TODO will need to be converted into something more useful. */}
-                          <Display htmlFor="extension" labelText="Extension">
-                            {userRoleProfile.UserID.extension}
-                          </Display>
+                    <Grid.Column>
+                      <Display
+                        htmlFor="identifierName"
+                        labelText="Identifier Name"
+                      >
+                        {userDetails && userDetails.details.ControlActEvent
+                          ? userDetails.details.ControlActEvent.Subject.Value[0]
+                              .UserRoleProfile[0].UserID.identifierName
+                          : "N/A"}
+                      </Display>
 
-                          <Display htmlFor="name" labelText="Name">
-                            {userRoleProfile.UserID.identifierName}
-                          </Display>
-                        </Grid.Column>
+                      <Display htmlFor="userRole" labelText="User Role">
+                        {userDetails && userDetails.details.ControlActEvent
+                          ? capitalizeFirstLetter(
+                              userDetails.details.ControlActEvent.Subject
+                                .Value[0].UserRoleProfile[0].UserRole.code
+                            )
+                          : "N/A"}
+                      </Display>
+                    </Grid.Column>
 
-                        <Grid.Column>
-                          <Display
-                            htmlFor="userRole"
-                            labelText="User Role"
-                            style={{ textTransform: "capitalize" }}
-                          >
-                            {userRoleProfile.UserRole.code}
-                          </Display>
-
-                          <Display
-                            htmlFor="userOrg"
-                            labelText="User Organisation"
-                          >
-                            {userRoleProfile.UserOrg.code}
-                          </Display>
-                        </Grid.Column>
-                      </Grid>
-                    </HeadingContent>
-                  </Heading>
+                    <Grid.Column>
+                      {userDetails && userDetails.details.ControlActEvent ? (
+                        userDetails.details.ControlActEvent.Subject.Value[0].UserRoleProfile[0].UserSpeciality.map(
+                          (item) => (
+                            <Display
+                              htmlFor={`userSpeciality${item.id}`}
+                              labelText={`User Speciality (${item.id})`}
+                              key={item.id}
+                            >
+                              {item.code}
+                            </Display>
+                          )
+                        )
+                      ) : (
+                        <Display
+                          htmlFor="noUserSpecialities"
+                          labelText="User Speciality"
+                        >
+                          This User has no specialities
+                        </Display>
+                      )}
+                    </Grid.Column>
+                  </Grid>
                 </>
               }
             />
-          </FormWrapper>
+          </ContentWrapper>
         </ReactModal>
       </Container>
     </>

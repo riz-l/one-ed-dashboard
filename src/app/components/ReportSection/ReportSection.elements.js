@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
-  /* background-color: #ffffff; */
   background-color: transparent;
   display: grid;
   grid-template-areas:
@@ -30,7 +29,6 @@ export const Container = styled.div`
 // Element: PrimaryNavigation
 export const PrimaryNavigation = styled.div`
   align-items: center;
-  /* background-color: #f7f8fa; */
   background-color: transparent;
   display: flex;
   grid-area: primary-navigation;
@@ -46,7 +44,6 @@ export const PrimaryNavigation = styled.div`
 // Element: SecondaryNavigation
 export const SecondaryNavigation = styled.div`
   align-items: center;
-  /* background-color: #f7f8fa; */
   background-color: transparent;
   display: flex;
   grid-area: secondary-navigation;
@@ -62,7 +59,6 @@ export const SecondaryNavigation = styled.div`
 // Element: Content
 export const Content = styled.div`
   align-items: center;
-  /* background-color: #f7f8fa; */
   display: flex;
   grid-area: content;
   height: auto;
