@@ -1,3 +1,6 @@
+// Export: AddAllergy
+export { default as AddAllergy } from "./AddAllergy/AddAllergy.component";
+
 // Export: Anchor
 export { default as Anchor } from "./Anchor/Anchor.component";
 
