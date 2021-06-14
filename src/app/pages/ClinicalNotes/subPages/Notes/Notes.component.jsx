@@ -20,7 +20,7 @@ import {
 import moment from "moment";
 
 // Import: Elements
-import { Container, Wrapper } from "./Notes.elements";
+import { Container, Reverse, Wrapper } from "./Notes.elements";
 
 // Import: Components
 import { Form, NotesEntry, Text } from "../../../../components";
@@ -222,12 +222,14 @@ export default function Notes() {
             Previous Notes
           </Text>
 
-          {questionnaireResponseDetail &&
-          questionnaireResponseDetail.length > 0 ? (
-            previousNotesRender
-          ) : (
-            <Text as="p">The Patient has no historic notes</Text>
-          )}
+          <Reverse>
+            {questionnaireResponseDetail &&
+            questionnaireResponseDetail.length > 0 ? (
+              previousNotesRender
+            ) : (
+              <Text as="p">The Patient has no historic notes</Text>
+            )}
+          </Reverse>
         </Wrapper>
       </Container>
     </>
