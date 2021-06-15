@@ -170,6 +170,8 @@ export default function App() {
           <Route exact path="/one-ed/user/settings">
             <Settings />
           </Route>
+
+          <Redirect to="/" />
         </Switch>
       </Container>
     </div>

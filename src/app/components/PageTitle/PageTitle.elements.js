@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: flex-start;
@@ -12,6 +15,10 @@ export const Container = styled.div`
   justify-content: center;
   padding: ${({ padding }) => (padding ? padding : "1rem 2rem 0 2rem")};
   width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 1rem 1rem 0 1rem;
+  }
 
   & h2 {
     color: #4d5e80;

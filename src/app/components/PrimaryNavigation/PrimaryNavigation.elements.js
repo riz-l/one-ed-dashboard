@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: center;
@@ -10,12 +13,17 @@ export const Container = styled.div`
   margin: ${({ margin }) => margin && margin};
   overflow-x: auto;
   overflow-y: hidden;
+  padding: 1rem 0 0 2rem;
   padding: ${({ padding }) => padding && padding};
   scrollbar-color: #c3cad9 #edeff2;
   scrollbar-width: thin;
   width: 100%;
   max-width: 100%;
   z-index: 4;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 1rem 0 0 1rem;
+  }
 `;
 
 // Element: ItemContainer
@@ -30,6 +38,10 @@ export const TextContainer = styled.span`
   font-size: 1.2rem;
   font-weight: 500;
   transition: all 100ms linear;
+
+  @media ${deviceMaxWidth.mobileL} {
+    font-size: 1.1rem;
+  }
 `;
 
 // Element: SaveContainer

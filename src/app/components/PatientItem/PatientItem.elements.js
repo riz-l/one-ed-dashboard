@@ -1,5 +1,21 @@
 // Import: Packages
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
+
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
+// Element: TableData
+export const TableData = styled.td`
+  ${({ minor }) =>
+    minor &&
+    css`
+      @media ${deviceMaxWidth.laptopL} {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+    `}
+`;
 
 // Element: Container
 export const Container = styled.tr`

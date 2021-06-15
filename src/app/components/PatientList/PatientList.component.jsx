@@ -79,13 +79,13 @@ export default function PatientList() {
   }, [selectedPatient, dispatch]);
 
   // onClick: Functions for rendering different Patient lists
-  function renderPatientList() {
-    setIsIncomingPatients(false);
-    setIsPatientList(true);
-  }
   function renderIncomingPatients() {
     setIsPatientList(false);
     setIsIncomingPatients(true);
+  }
+  function renderPatientList() {
+    setIsIncomingPatients(false);
+    setIsPatientList(true);
   }
 
   // Maps patientListData through PatientItem
@@ -114,7 +114,9 @@ export default function PatientList() {
               ? Triagecategory
               : "N/A"
           }
+          colFiveMinor
           colSix={currentStage ? currentStage : "N/A"}
+          colSixMinor
           key={patientID}
           onClick={() => dispatch(selectPatient(patientID))}
           patient={selectedPatient}
@@ -152,7 +154,9 @@ export default function PatientList() {
             : "N/A"
         }
         colThree={PD_Gender ? PD_Gender : "N/A"}
+        colThreeMinor
         colFour={PD_Ethnicity ? PD_Ethnicity : "N/A"}
+        colFourMinor
         colFive={PD_Reported_Condition ? PD_Reported_Condition : "N/A"}
         colSix={<ReportModal patientID={Master_ePR_ID} />}
         incomingPatients
@@ -171,7 +175,7 @@ export default function PatientList() {
             {/* <Attendance /> */}
           </Item>
 
-          <PrimaryNavigation margin="0 0 0 0" padding="1rem 0 0 2rem">
+          <PrimaryNavigation margin="0">
             <PrimaryNavigation.Item
               isActive={isPatientList ? true : false}
               onClick={renderPatientList}
@@ -201,17 +205,21 @@ export default function PatientList() {
                         Diagnosis
                       </THeading>
                       <THeading isPatientList={isPatientList}>Period</THeading>
-                      <THeading isPatientList={isPatientList}>
+                      <THeading isPatientList={isPatientList} minor>
                         Triage Category
                       </THeading>
-                      <THeading isPatientList={isPatientList}>Status</THeading>
+                      <THeading isPatientList={isPatientList} minor>
+                        Status
+                      </THeading>
                     </>
                   ) : isIncomingPatients ? (
                     <>
                       <THeading isPatientList={isPatientList}>Name</THeading>
                       <THeading isPatientList={isPatientList}>Age</THeading>
-                      <THeading isPatientList={isPatientList}>Gender</THeading>
-                      <THeading isPatientList={isPatientList}>
+                      <THeading isPatientList={isPatientList} minor>
+                        Gender
+                      </THeading>
+                      <THeading isPatientList={isPatientList} minor>
                         Ethnicity
                       </THeading>
                       <THeading isPatientList={isPatientList}>

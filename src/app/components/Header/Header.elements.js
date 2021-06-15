@@ -52,7 +52,11 @@ export const Logo = styled.div`
   height: 100%;
   max-height: 80px;
   justify-content: center;
-  padding: 0 2rem;
+  padding: 0 1rem 0 2rem;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 0 1rem;
+  }
 
   & svg {
     height: 40px;
@@ -73,7 +77,6 @@ export const MenuContainer = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  margin-left: 0.8rem;
   transition: all 100ms linear;
 
   & svg {
@@ -110,6 +113,10 @@ export const UserContainer = styled.div`
   &:hover {
     background-color: #e6e9ef;
     transition: all 100ms linear;
+  }
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 0 1rem;
   }
 `;
 

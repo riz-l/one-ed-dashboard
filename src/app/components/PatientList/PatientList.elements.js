@@ -1,5 +1,8 @@
 // Import: Packages
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
+
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.div`
@@ -89,4 +92,13 @@ export const THeading = styled.th`
   padding: 12px 15px;
   transition: all 100ms linear;
   width: 100%;
+  ${({ minor }) =>
+    minor &&
+    css`
+      @media ${deviceMaxWidth.laptopL} {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+    `}
 `;
