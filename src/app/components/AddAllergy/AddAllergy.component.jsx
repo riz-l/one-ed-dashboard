@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
-// Import: Elements
+// Import: Assets
 import { Container, FormWrapper, Header } from "./AddAllergy.elements";
 import "./AddAllergy.styles.css";
 
@@ -118,11 +118,10 @@ export default function AddAllergy() {
                 <Grid.Column>
                   <Form.Dropdown htmlFor="status" labelText="Status" />
                 </Grid.Column>
+                {/* TODO Hide the closed date column unless the status is set to closed by the user.  */}
                 <Grid.Column>
                   <Form.Dropdown htmlFor="closedDate" labelText="Closed Date" />
-                  {/* Depending on what the user selects in Clsoed Date conditionally display either Date or Month & Year. */}
-                </Grid.Column>
-                <Grid.Column>
+                  {/* TODO Depending on what the user selects in Clsoed Date conditionally display either Date or Month & Year. */}
                   <Form.Input
                     htmlfor="actualClosedDate"
                     labelText="Date"
@@ -135,6 +134,10 @@ export default function AddAllergy() {
                     labelText="Closed Year"
                     type="number"
                   />
+                </Grid.Column>
+                <Grid.Column>
+                  {/* TODO link to API and add onClick attribute*/}
+                  <Button text="Submit" type="submit" />
                 </Grid.Column>
               </Grid>
             </Form>
