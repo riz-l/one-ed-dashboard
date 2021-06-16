@@ -1,6 +1,6 @@
 // Import: Packages
-import React, { useState } from "react";
-import styled from "styled-components/macro";
+import React, { useEffect, useState } from "react";
+import styled, { ThemeProvider } from "styled-components/macro";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearClinicalNotesSlice } from "./redux/slices/clinicalNotesSlice";
@@ -10,6 +10,10 @@ import { clearSeenSlice } from "./redux/slices/seenSlice";
 import { clearSelectedPatientSlice } from "./redux/slices/selectedPatientSlice";
 import { clearTriageSlice } from "./redux/slices/triageSlice";
 import { clearUserDetailsSlice } from "./redux/slices/userDetailsSlice";
+
+// Import: Themes
+import { darkTheme } from "./app/themes/darkTheme";
+import { lightTheme } from "./app/themes/lightTheme";
 
 // Import: Components, Pages
 import { Header, Navigation, ProtectedRoute } from "./app/components";
@@ -32,16 +36,32 @@ import {
 
 // Component: App
 export default function App() {
-  // Redux: useSelector, dispatch
-  const selectedPatient = useSelector(
-    (state) => state.selectedPatient.patientData
-  );
-  const userDetails = useSelector((state) => state.userDetails.details);
+  // Redux: useSelector, useDispatch
+  const isGlobalThemeDark = useSelector((state) => {
+    if (state.globalTheme) {
+      return state.globalTheme.isGlobalThemeDark;
+    }
+  });
+  const selectedPatient = useSelector((state) => {
+    if (state.selectedPatient.patientData) {
+      return state.selectedPatient.patientData;
+    }
+  });
+  const userDetails = useSelector((state) => {
+    if (state.userDetails.details) {
+      return state.userDetails.details;
+    }
+  });
   const dispatch = useDispatch();
 
   // State: Local state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+
+  // Effect: Sets user preference for lightTheme/darkTheme
+  useEffect(() => {
+    localStorage.setItem("dark", JSON.stringify(isGlobalThemeDark));
+  }, [isGlobalThemeDark]);
 
   // Sets isLoggedIn === true
   const handleLogin = (e) => {
@@ -64,117 +84,119 @@ export default function App() {
   };
 
   return (
-    <div data-testid={"app"}>
-      {/* Home */}
-      <Route exact path="/" component={Home} />
+    <ThemeProvider theme={isGlobalThemeDark ? darkTheme : lightTheme}>
+      <div data-testid={"app"}>
+        {/* Home */}
+        <Route exact path="/" component={Home} />
 
-      {/* Login */}
-      <Route
-        exact
-        handleLogin={handleLogin}
-        path="/login"
-        render={(props) => (
-          <Login
-            handleLogin={handleLogin}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            {...props}
-          />
-        )}
-      />
-
-      {/* 403: Unauthorized */}
-      <Route component={Unauthorized} exact path="/unauthorized" />
-
-      <Container isNavigationOpen={isNavigationOpen}>
-        {isLoggedIn && !selectedPatient && (
-          <Redirect to="/one-ed/ward/dashboard" />
-        )}
-        {!userDetails && <Redirect to="/unauthorized" />}
-        {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
-        {!isLoggedIn && <Redirect to="/" />}
-        {isLoggedIn && (
-          <>
-            <Header
-              isNavigationOpen={isNavigationOpen}
-              setIsNavigationOpen={setIsNavigationOpen}
+        {/* Login */}
+        <Route
+          exact
+          handleLogin={handleLogin}
+          path="/login"
+          render={(props) => (
+            <Login
+              handleLogin={handleLogin}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              {...props}
             />
-            <Navigation
-              handleLogout={handleLogout}
-              isNavigationOpen={isNavigationOpen}
-              setIsNavigationOpen={setIsNavigationOpen}
+          )}
+        />
+
+        {/* 403: Unauthorized */}
+        <Route component={Unauthorized} exact path="/unauthorized" />
+
+        <Container isNavigationOpen={isNavigationOpen}>
+          {isLoggedIn && !selectedPatient && (
+            <Redirect to="/one-ed/ward/dashboard" />
+          )}
+          {!userDetails && <Redirect to="/unauthorized" />}
+          {isLoggedIn && <Redirect to="/one-ed/ward/dashboard" />}
+          {!isLoggedIn && <Redirect to="/" />}
+          {isLoggedIn && (
+            <>
+              <Header
+                isNavigationOpen={isNavigationOpen}
+                setIsNavigationOpen={setIsNavigationOpen}
+              />
+              <Navigation
+                handleLogout={handleLogout}
+                isNavigationOpen={isNavigationOpen}
+                setIsNavigationOpen={setIsNavigationOpen}
+              />
+            </>
+          )}
+
+          <Switch>
+            {/* OneED */}
+            <ProtectedRoute
+              component={Dashboard}
+              exact
+              isLoggedIn={isLoggedIn}
+              path="/one-ed/ward/dashboard"
             />
-          </>
-        )}
 
-        <Switch>
-          {/* OneED */}
-          <ProtectedRoute
-            component={Dashboard}
-            exact
-            isLoggedIn={isLoggedIn}
-            path="/one-ed/ward/dashboard"
-          />
+            {/* Ward - Dashboard */}
+            <Route exact path="/one-ed/ward/dashboard">
+              <Dashboard />
+            </Route>
 
-          {/* Ward - Dashboard */}
-          <Route exact path="/one-ed/ward/dashboard">
-            <Dashboard />
-          </Route>
+            {/* Ward - ED Overview */}
+            <Route exact path="/one-ed/ward/ed-overview">
+              <EDOverview />
+            </Route>
 
-          {/* Ward - ED Overview */}
-          <Route exact path="/one-ed/ward/ed-overview">
-            <EDOverview />
-          </Route>
+            {/* Patient - Overview */}
+            <Route exact path="/one-ed/patient/overview">
+              <Overview />
+            </Route>
 
-          {/* Patient - Overview */}
-          <Route exact path="/one-ed/patient/overview">
-            <Overview />
-          </Route>
+            {/* Patient - CAS Card */}
+            <Route exact path="/one-ed/patient/cas-card">
+              <CASCard />
+            </Route>
 
-          {/* Patient - CAS Card */}
-          <Route exact path="/one-ed/patient/cas-card">
-            <CASCard />
-          </Route>
+            {/* Assessments - Triage */}
+            <Route exact path="/one-ed/assessments/triage">
+              <Triage />
+            </Route>
 
-          {/* Assessments - Triage */}
-          <Route exact path="/one-ed/assessments/triage">
-            <Triage />
-          </Route>
+            {/* Assessments - Observations */}
+            <Route exact path="/one-ed/assessments/observations">
+              <Observations />
+            </Route>
 
-          {/* Assessments - Observations */}
-          <Route exact path="/one-ed/assessments/observations">
-            <Observations />
-          </Route>
+            {/* Assessments - Seen */}
+            <Route exact path="/one-ed/assessments/seen">
+              <Seen />
+            </Route>
 
-          {/* Assessments - Seen */}
-          <Route exact path="/one-ed/assessments/seen">
-            <Seen />
-          </Route>
+            {/* Assessments - Clinical Notes */}
+            <Route exact path="/one-ed/assessments/clinical-notes">
+              <ClinicalNotes />
+            </Route>
 
-          {/* Assessments - Clinical Notes */}
-          <Route exact path="/one-ed/assessments/clinical-notes">
-            <ClinicalNotes />
-          </Route>
+            {/* Assessments - Admit or Referral */}
+            <Route exact path="/one-ed/admit-or-referral">
+              <AdmitOrReferral />
+            </Route>
 
-          {/* Assessments - Admit or Referral */}
-          <Route exact path="/one-ed/admit-or-referral">
-            <AdmitOrReferral />
-          </Route>
+            {/* User - Training */}
+            <Route exact path="/one-ed/training">
+              <Training />
+            </Route>
 
-          {/* User - Training */}
-          <Route exact path="/one-ed/training">
-            <Training />
-          </Route>
+            {/* User - Settings */}
+            <Route exact path="/one-ed/user/settings">
+              <Settings />
+            </Route>
 
-          {/* User - Settings */}
-          <Route exact path="/one-ed/user/settings">
-            <Settings />
-          </Route>
-
-          <Redirect to="/" />
-        </Switch>
-      </Container>
-    </div>
+            <Redirect to="/" />
+          </Switch>
+        </Container>
+      </div>
+    </ThemeProvider>
   );
 }
 

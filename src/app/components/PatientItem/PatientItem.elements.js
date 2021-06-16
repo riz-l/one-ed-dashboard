@@ -57,7 +57,7 @@ export const Container = styled.tr`
       }
 
       background-color: ${({ patientList, incomingPatients }) =>
-        patientList ? "#6a7ca0" : incomingPatients ? "#509FB9" : null};
+        patientList ? "#6a7ca0" : incomingPatients ? "#509fb9" : null};
       transition: all 100ms linear;
     }
   }

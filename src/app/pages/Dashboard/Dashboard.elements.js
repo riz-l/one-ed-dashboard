@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   background-color: #f7f8fa;
@@ -32,8 +35,15 @@ export const List = styled.div`
   max-height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
   justify-content: center;
+  transition: all 100ms linear;
   width: 100%;
   max-width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100%")};
+    max-width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100vw")};
+    min-width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100%")};
+  }
 `;
 
 // Element: Summary
@@ -51,4 +61,10 @@ export const Summary = styled.div`
   width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   max-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   min-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
+
+  @media ${deviceMaxWidth.laptopL} {
+    width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "100%")};
+    max-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "100vw")};
+    min-width: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "100%")};
+  }
 `;

@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   background-color: #f7f8fa;
@@ -10,6 +13,12 @@ export const Container = styled.div`
   width: 600px;
   max-width: 600px;
   min-width: 600px;
+
+  @media ${deviceMaxWidth.laptopL} {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 100%;
+  }
 `;
 
 // Element: Header
@@ -65,6 +74,10 @@ export const Suggestions = styled.div`
   padding: 2rem;
   transition: all 150ms linear;
   width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 2rem 1rem;
+  }
 `;
 
 // Element: IconContainer
