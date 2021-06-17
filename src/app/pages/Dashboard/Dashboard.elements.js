@@ -13,6 +13,12 @@ export const Container = styled.div`
   min-height: calc(100vh - 80px);
   width: 100%;
   min-width: calc(100vh - 300px);
+
+  @media ${deviceMaxWidth.laptopL} {
+    width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100%")};
+    max-width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100vw")};
+    min-width: ${({ isSummaryOpen }) => (isSummaryOpen ? "0" : "100%")};
+  }
 `;
 
 // Element: Layout

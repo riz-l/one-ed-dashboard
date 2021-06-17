@@ -80,8 +80,8 @@ export default function PatientList() {
 
   // onClick: Functions for rendering different Patient lists
   function renderIncomingPatients() {
-    setIsPatientList(false);
     setIsIncomingPatients(true);
+    setIsPatientList(false);
   }
   function renderPatientList() {
     setIsIncomingPatients(false);
