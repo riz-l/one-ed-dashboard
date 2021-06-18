@@ -13,6 +13,7 @@ import {
   Container,
   Item,
   ListHeader,
+  NavWrapper,
   Table,
   TableWrapper,
   THeading,
@@ -105,6 +106,7 @@ export default function PatientList() {
         <PatientItem
           colOne={name ? name : "N/A"}
           colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
+          colTwoMinor
           colThree={diagnosis ? diagnosis : "N/A"}
           colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
           colFive={
@@ -114,7 +116,6 @@ export default function PatientList() {
               ? Triagecategory
               : "N/A"
           }
-          colFiveMinor
           colSix={currentStage ? currentStage : "N/A"}
           colSixMinor
           key={patientID}
@@ -175,21 +176,25 @@ export default function PatientList() {
             {/* <Attendance /> */}
           </Item>
 
-          <PrimaryNavigation margin="0">
-            <PrimaryNavigation.Item
-              isActive={isPatientList ? true : false}
-              onClick={renderPatientList}
-            >
-              <PrimaryNavigation.Text>Patient List</PrimaryNavigation.Text>
-            </PrimaryNavigation.Item>
+          <NavWrapper>
+            <PrimaryNavigation margin="0">
+              <PrimaryNavigation.Item
+                isActive={isPatientList ? true : false}
+                onClick={renderPatientList}
+              >
+                <PrimaryNavigation.Text>Patient List</PrimaryNavigation.Text>
+              </PrimaryNavigation.Item>
 
-            <PrimaryNavigation.Item
-              isActive={isIncomingPatients ? true : false}
-              onClick={renderIncomingPatients}
-            >
-              <PrimaryNavigation.Text>Incoming Patients</PrimaryNavigation.Text>
-            </PrimaryNavigation.Item>
-          </PrimaryNavigation>
+              <PrimaryNavigation.Item
+                isActive={isIncomingPatients ? true : false}
+                onClick={renderIncomingPatients}
+              >
+                <PrimaryNavigation.Text>
+                  Incoming Patients
+                </PrimaryNavigation.Text>
+              </PrimaryNavigation.Item>
+            </PrimaryNavigation>
+          </NavWrapper>
         </ListHeader>
 
         <Wrapper>
@@ -200,12 +205,14 @@ export default function PatientList() {
                   {isPatientList ? (
                     <>
                       <THeading isPatientList={isPatientList}>Name</THeading>
-                      <THeading isPatientList={isPatientList}>Age</THeading>
+                      <THeading isPatientList={isPatientList} minor>
+                        Age
+                      </THeading>
                       <THeading isPatientList={isPatientList}>
                         Diagnosis
                       </THeading>
                       <THeading isPatientList={isPatientList}>Period</THeading>
-                      <THeading isPatientList={isPatientList} minor>
+                      <THeading isPatientList={isPatientList}>
                         Triage Category
                       </THeading>
                       <THeading isPatientList={isPatientList} minor>

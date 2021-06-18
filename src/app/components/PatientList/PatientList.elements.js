@@ -9,10 +9,11 @@ export const Container = styled.div`
   background-color: #f7f8fa;
   height: 100%;
   max-height: calc(100vh - 80px);
-  overflow-x: hidden;
+  /* overflow-x: hidden;
   overflow-y: auto;
   scrollbar-color: #c3cad9 #edeff2;
-  scrollbar-width: thin;
+  scrollbar-width: thin; */
+  overflow-y: hidden;
   width: 100%;
 `;
 
@@ -20,8 +21,14 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   background-color: #f7f8fa;
   height: 100%;
+  overflow-y: auto;
   padding: 0 2rem;
   width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-width: thin;
 
   @media ${deviceMaxWidth.laptopL} {
     padding: 0 1rem;
@@ -54,6 +61,20 @@ export const Item = styled.div`
   width: 100%;
 `;
 
+// Element: NavWrapper
+export const NavWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  height: auto;
+  justify-content: flex-start;
+  padding: 1rem 0 0 2rem;
+  width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 1rem 0 0 1rem;
+  }
+`;
+
 // Element: TableWrapper
 export const TableWrapper = styled.div``;
 
@@ -71,8 +92,9 @@ export const Table = styled.table`
   width: 100%;
 
   & thead {
+    -webkit-position: sticky;
     position: sticky;
-    top: 156px;
+    /* top: 156px; */
   }
 
   & thead tr {
@@ -85,6 +107,10 @@ export const Table = styled.table`
   & td {
     color: #4d5e80;
     padding: 12px 15px;
+
+    @media ${deviceMaxWidth.mobileL} {
+      font-size: 0.7rem;
+    }
   }
 `;
 
@@ -105,4 +131,8 @@ export const THeading = styled.th`
         visibility: hidden;
       }
     `}
+
+  @media ${deviceMaxWidth.mobileL} {
+    font-size: 0.7rem;
+  }
 `;

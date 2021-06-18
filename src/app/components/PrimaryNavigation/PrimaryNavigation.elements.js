@@ -13,17 +13,12 @@ export const Container = styled.div`
   margin: ${({ margin }) => margin && margin};
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 1rem 0 0 2rem;
   padding: ${({ padding }) => padding && padding};
   scrollbar-color: #c3cad9 #edeff2;
   scrollbar-width: thin;
   width: 100%;
   max-width: 100%;
   z-index: 4;
-
-  @media ${deviceMaxWidth.laptopL} {
-    padding: 1rem 0 0 1rem;
-  }
 `;
 
 // Element: ItemContainer
