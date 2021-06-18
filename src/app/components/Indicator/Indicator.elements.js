@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: center;
@@ -22,4 +25,9 @@ export const Wrapper = styled.div`
   min-height: 5rem;
   justify-content: center;
   padding: 0.8rem;
+  width: ${({ width }) => (width ? width : "300px")};
+
+  @media ${deviceMaxWidth.tabletL} {
+    width: 150px;
+  }
 `;

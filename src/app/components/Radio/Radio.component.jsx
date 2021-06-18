@@ -16,7 +16,7 @@ export const Radio = React.forwardRef((props, ref) => {
           <Text>{props.text}</Text>
 
           <VisualBox checked={props.checked} onChange={props.onChange}>
-            <TickIcon />
+            {props.checked ? <TickIcon /> : null}
 
             <Input
               checked={props.checked}

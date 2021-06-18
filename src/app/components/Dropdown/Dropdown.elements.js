@@ -1,6 +1,9 @@
 // Import: Dependencies
 import styled, { css } from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: ${({ left }) => (left ? "center" : "flex-start")};
@@ -35,12 +38,13 @@ export const Select = styled.select`
   font-family: "PoppinsRegular", sans-serif;
   font-size: 1rem;
   font-weight: 400;
+  height: 2rem;
   padding: 0.25rem 0.8rem;
   transition: all 100ms linear;
-  width: ${({ width }) => width ?? width};
+  width: ${({ width }) => (width ? width : "300px")};
 
-  @media screen and (max-width: 848px) {
-    width: 180px;
+  @media ${deviceMaxWidth.tabletL} {
+    width: 150px;
   }
 
   &:hover {

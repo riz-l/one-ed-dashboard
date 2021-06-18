@@ -36,6 +36,10 @@ If an installed dependency (see below) is added, removed or altered, you will ne
 $ npm install
 ```
 
+If faced with an error run “npm install react-scripts”.
+This ensures that the react scripts are up to date which will allow for npm install to work.
+Alternatively, it may suggest running “npm audit fix”.
+
 ## Installed dependencies
 
 - `create-react-app`
@@ -161,13 +165,65 @@ Please ensure that the following section titles and orders are used for all comp
 
   - Any other functionality
 
+## Responsiveness
+
+Responsiveness is the changing the styling of the app to suit different screen sizes.
+
+The main way this is done is by creating media queries which change the styling at a specific screen width.
+
+There is a breakPoints.js file in the definitions folder (src/app/definitions/breakPoints.js). This file is used to provide named variables for the screen widths of different devices. For consistency these variables should be used when creating media queries to keep things consistent and allow for any future changes to these values to cascade through the app.
+
+### How to use breakPoints.js file
+
+1. Import the breakPoints.js file into the elements file of the component that will using the breakpoints. See below (filepath will need to be edited):
+
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
+2. Write a media query using the breakpoint as shwone below in the example where the tabletL breakpoint has been used and the margin-right will be 0 below that width.
+
+@media ${deviceMaxWidth.tabletL} {
+margin-right: 0;
+}
+
+### Colours
+
+<!-- TODO add a section about how to reference the standard colours and how the theme provider works.  -->
+
 ## Reference
 
 _Under construction..._
 
 <!-- TODO: Explain how Reference works. -->
 
-## UseEffect
+## Redux
+
+Redux is a module of React. Is is used to create and manage Global State which overcomes a limitation of React by allowing a state to be accessed and updated from anywhere in the app and not just in a component and its children which is the case for local state.
+
+To view Global State download the Redux Development tool for your brower and then select the state tab.
+
+Global state is organised into Slices. The data is populated by APIs.
+
+### useSelector
+
+"useSelector" is used to select a piece of data from global state.
+
+In the below example note the following things:
+
+1. A constant is declared.
+2. Then useSelector accesses the Global State
+3. The "if" check in needed to allow the component to pass testing. This is because it caters for a scenario where there isn't a value for the file path.
+4. The "if" check cannot work if there is an array e.g. [0] in the file path.
+
+// Redux: Extracts username from global state
+const currentUser = useSelector((state) => {
+if (state.userDetails.details.ControlActEvent) {
+return state.userDetails.details.ControlActEvent.Subject.Value[0]
+.UserRoleProfile[0].UserID.identifierName;
+}
+});
+
+### UseEffect
 
 _Under construction..._
 

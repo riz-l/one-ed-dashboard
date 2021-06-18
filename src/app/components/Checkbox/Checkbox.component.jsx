@@ -31,7 +31,7 @@ export const Checkbox = React.forwardRef((props, ref) => {
           />
 
           <VisualBox checked={props.checked}>
-            <TickIcon />
+            {props.checked ? <TickIcon /> : null}
           </VisualBox>
 
           <Text under={props.under}>{props.text}</Text>

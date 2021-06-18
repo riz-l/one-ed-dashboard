@@ -1,6 +1,9 @@
 // Import: Packages
 import styled, { css } from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: flex-start;
@@ -33,6 +36,7 @@ export const Container = styled.div`
     border: 2px solid #edeff2;
     border-radius: 8px;
     color: #4d5e80;
+    height: 2rem;
     padding: 0.4rem 1rem;
     transition: all 100ms linear;
     -webkit-user-select: auto;
@@ -40,7 +44,7 @@ export const Container = styled.div`
     -moz-user-select: auto;
     -ms-user-select: auto;
     user-select: auto;
-    width: ${({ width }) => (width ? width : "auto")};
+    width: ${({ width }) => (width ? width : "300px")};
 
     ::-webkit-input-placeholder {
       font-family: "PoppinsRegular", sans-serif;
@@ -62,9 +66,8 @@ export const Container = styled.div`
       font-weight: 400;
     }
 
-    @media screen and (max-width: 848px) {
-      width: 180px;
-      max-width: 180px;
+    @media ${deviceMaxWidth.tabletL} {
+      width: 150px;
     }
 
     &:hover {
@@ -101,7 +104,8 @@ export const Container = styled.div`
     overflow-y: auto;
     position: absolute;
     top: 3rem;
-    width: 280px;
+    /* width: 280px; */
+    width: 250px;
     z-index: 2;
   }
 
