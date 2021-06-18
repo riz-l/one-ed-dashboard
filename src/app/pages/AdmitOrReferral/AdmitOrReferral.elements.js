@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   background-color: #f7f8fa;
@@ -32,4 +35,8 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   padding: 1rem 2rem;
   width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 1rem;
+  }
 `;

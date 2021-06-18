@@ -37,6 +37,6 @@ export const ContentWrapper = styled.div`
   width: 100%;
 
   @media ${deviceMaxWidth.laptopL} {
-    padding: 0 1rem;
+    padding: 1rem;
   }
 `;
