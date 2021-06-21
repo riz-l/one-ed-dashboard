@@ -1,6 +1,9 @@
 // Import: Dependencies
 import styled, { css } from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: ${({ center }) => (center === true ? "center" : "flex-start")};
@@ -41,6 +44,7 @@ export const InputField = styled.input`
   border: 2px solid #edeff2;
   border-radius: 8px;
   color: #4d5e80;
+  height: 2rem;
   padding: 0.4rem 1rem;
   transition: all 100ms linear;
   -webkit-user-select: auto;
@@ -48,7 +52,11 @@ export const InputField = styled.input`
   -moz-user-select: auto;
   -ms-user-select: auto;
   user-select: auto;
-  width: ${({ width }) => (width ? width : "auto")};
+  width: ${({ width }) => (width ? width : "300px")};
+
+  @media ${deviceMaxWidth.tabletL} {
+    width: ${({ width }) => (width ? width : "150px")};
+  }
 
   ::-webkit-input-placeholder {
     font-family: "PoppinsRegular", sans-serif;
@@ -121,6 +129,7 @@ export const InputField = styled.input`
     cursor: pointer;
     font-family: "PoppinsRegular", sans-serif;
     font-weight: 400;
+    width: ${({ width }) => (width ? width : "150px")};
   }
 
   /* Input type="date" */
@@ -153,6 +162,7 @@ export const InputField = styled.input`
     cursor: pointer;
     font-family: "PoppinsRegular", sans-serif;
     font-weight: 400;
+    width: ${({ width }) => (width ? width : "auto")};
   }
 
   /* Input type="time" */
@@ -164,6 +174,7 @@ export const InputField = styled.input`
     cursor: pointer;
     font-family: "PoppinsRegular", sans-serif;
     font-weight: 400;
+    width: ${({ width }) => (width ? width : "auto")};
   }
 
   &[type="time"]::-webkit-calendar-picker-indicator {
@@ -177,11 +188,6 @@ export const InputField = styled.input`
       opacity: 0.9;
       transition: all 100ms linear;
     }
-  }
-
-  @media screen and (max-width: 848px) {
-    width: 180px;
-    max-width: 180px;
   }
 
   &:hover {

@@ -9,7 +9,13 @@ import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLette
 import { Container, Wrapper } from "./Allergies.elements";
 
 // Import: Components
-import { Display, Grid, ReportEntry, Text } from "../../../../components";
+import {
+  AddAllergy,
+  Display,
+  Grid,
+  ReportEntry,
+  Text,
+} from "../../../../components";
 
 // SubPage: Allergies
 export default function Allergies() {
@@ -117,10 +123,12 @@ export default function Allergies() {
       <>
         <Container data-testid={"allergies"}>
           <Wrapper>
-            <Text as="h2" heading>
-              Allergies
-            </Text>
-
+            <div style={{ display: "flex", flexDirection: "horizontal" }}>
+              <Text as="h2" heading>
+                Allergies
+              </Text>
+              <AddAllergy />
+            </div>
             <Grid>
               <Grid.Item>
                 <Display>This Patient has no historic allergies</Display>
@@ -136,10 +144,12 @@ export default function Allergies() {
     <>
       <Container data-testid={"allergies"}>
         <Wrapper>
-          <Text as="h2" heading>
-            Allergies
-          </Text>
-
+          <div style={{ display: "flex", flexDirection: "horizontal" }}>
+            <Text as="h2" heading>
+              Allergies
+            </Text>
+            <AddAllergy />
+          </div>
           {patientAllergies && patientAllergies.length > 0 ? (
             allergiesRender
           ) : (

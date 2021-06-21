@@ -160,7 +160,7 @@ const FormDropdown = React.forwardRef((props, ref) => {
 });
 
 // Compound Component: Indicator
-function FormIndicator({ amber, green, message, red, title }) {
+function FormIndicator({ amber, green, message, red, title, width }) {
   return (
     <Indicator
       amber={amber}
@@ -168,6 +168,7 @@ function FormIndicator({ amber, green, message, red, title }) {
       message={message}
       red={red}
       title={title}
+      width={width}
     />
   );
 }

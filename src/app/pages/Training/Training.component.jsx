@@ -44,26 +44,59 @@ export default function Training() {
                       <Grid.Item>
                         <Form.Checkbox
                           checked={false}
-                          htmlFor="componentCheckbox"
-                          text="Component: Checkbox"
+                          htmlFor="componentCheckbox2"
+                          text="Component: Checkbox 1"
+                          under={true}
+                        />
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Checkbox
+                          checked={true}
+                          htmlFor="componentCheckbox2"
+                          text="Component: Checkbox 2"
                           under={false}
                         />
                       </Grid.Item>
 
                       <Grid.Item>
+                        <Form.Text as="h2" subheading>
+                          Component: Radio Buttons
+                        </Form.Text>
+                      </Grid.Item>
+                      <Grid.Item horizontal>
                         <Form.Radio
                           checked={false}
                           href="radio1"
                           name="RadioTest"
                           text="Radio1"
                           value="radio1"
+                          margin="0rem 1rem 0rem 0rem"
                         />
                         <Form.Radio
-                          checked={true}
+                          checked={false}
                           href="radio2"
+                          margin="0rem 1rem 0rem 0rem"
                           name="RadioTest"
                           text="Radio2"
                           value="radio2"
+                        />
+                        <Form.Radio
+                          checked={true}
+                          href="radio3"
+                          margin="0rem 1rem 0rem 0rem"
+                          name="RadioTest"
+                          text="Radio3"
+                          value="radio3"
+                        />
+                      </Grid.Item>
+
+                      <Grid.Item>
+                        <Form.Radio
+                          href="radio4"
+                          name="RadioTest"
+                          text="Radio4"
+                          value="radio4"
                         />
                       </Grid.Item>
 
@@ -128,18 +161,18 @@ export default function Training() {
                         />
                       </Grid.Item>
 
-                      <Grid.Item>
+                      <Grid.Item horizontal>
                         <Form.Input
                           htmlFor="componentInputDate"
                           labelText="Component: Input (date)"
+                          margin="0rem 1rem 0rem 0rem"
                           type="date"
                         />
-                      </Grid.Item>
 
-                      <Grid.Item>
                         <Form.Input
                           htmlFor="componentInputTime"
                           labelText="Component: Input (time)"
+                          margin="0rem 1rem 0rem 0rem"
                           type="time"
                         />
                       </Grid.Item>
