@@ -1,6 +1,8 @@
 // Import: Packages
 import React, {
   // useContext,
+  useEffect,
+  useState,
   createContext,
 } from "react";
 
@@ -55,7 +57,25 @@ function Text({ ...props }) {
 }
 
 // Component: PrimaryNavigation
-export default function PrimaryNavigation({ margin, padding, ...props }) {
+export default function PrimaryNavigation({
+  children,
+  margin,
+  padding,
+  ...props
+}) {
+  // State: Local state
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Effect: Checks and updates inner window width
+  useEffect(() => {
+    // Check current windowWidth and assigns current windowWidth to state
+    function updateWindowDimensions() {
+      const newWidth = window.innerWidth;
+      setWindowWidth(newWidth);
+    }
+    window.addEventListener("resize", updateWindowDimensions);
+  }, []);
+
   return (
     <PrimaryNavigationGroupContext.Provider value={props}>
       <Container
@@ -63,7 +83,12 @@ export default function PrimaryNavigation({ margin, padding, ...props }) {
         margin={margin}
         padding={padding}
       >
-        {props.children}
+        {windowWidth <= 1440
+          ? React.Children.map(children, (child, i) => {
+              if (i > 1) return;
+              return child;
+            })
+          : children}
       </Container>
     </PrimaryNavigationGroupContext.Provider>
   );

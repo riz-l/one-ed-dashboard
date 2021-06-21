@@ -20,9 +20,8 @@ export const Container = styled.header`
   max-width: 100vw;
   z-index: 2;
 
-  /* background-color: ${(props) =>
-    props.theme.colors.global.backgroundSecondary};
-  transition: all 100ms linear; */
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
+  transition: all 100ms linear;
 `;
 
 // Element: Wrapper

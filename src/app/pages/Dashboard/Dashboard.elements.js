@@ -55,6 +55,7 @@ export const List = styled.div`
 // Element: Summary
 export const Summary = styled.div`
   align-items: center;
+  border-left: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   display: flex;
   flex: ${({ isSummaryOpen }) => (!isSummaryOpen ? "0" : "600px")};
   height: 100%;
