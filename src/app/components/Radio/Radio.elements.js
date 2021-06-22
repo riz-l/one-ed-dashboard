@@ -41,6 +41,7 @@ export const Input = styled.input`
 export const VisualBox = styled.div`
   align-items: center;
   background: ${({ checked }) => (checked ? "#008ba3" : "#edeff2")};
+  border: 2px solid #6b7a99;
   border-radius: 50%;
   content: "";
   cursor: pointer;
@@ -53,7 +54,7 @@ export const VisualBox = styled.div`
   width: 50px;
 
   & svg {
-    fill: ${({ checked }) => (checked ? "#f1f1f1" : "#6b7a99")};
+    fill: #f1f1f1;
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
@@ -64,7 +65,7 @@ export const VisualBox = styled.div`
     transition: all 100ms linear;
 
     & svg {
-      fill: ${({ checked }) => (checked ? "#ffffff" : "#4d5e80")};
+      fill: #ffffff;
       transition: all 100ms linear;
     }
   }

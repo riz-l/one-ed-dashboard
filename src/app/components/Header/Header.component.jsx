@@ -163,7 +163,10 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
                     </Grid.Column>
 
                     <Grid.Column>
-                      {userDetails && userDetails.details.ControlActEvent ? (
+                      {userDetails &&
+                      userDetails.details.ControlActEvent &&
+                      userDetails.details.ControlActEvent.Subject.Value[0]
+                        .UserRoleProfile[0].UserSpeciality ? (
                         userDetails.details.ControlActEvent.Subject.Value[0].UserRoleProfile[0].UserSpeciality.map(
                           (item) => (
                             <Display
