@@ -50,7 +50,7 @@ export default function Dashboard() {
     <>
       <Container data-testid={"dashboard"}>
         <Layout>
-          <List>
+          <List isSummaryOpen={isSummaryOpen}>
             <PatientList />
           </List>
 

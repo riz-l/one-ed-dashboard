@@ -1,6 +1,9 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
   align-items: center;
@@ -30,6 +33,10 @@ export const TextContainer = styled.span`
   font-size: 1.2rem;
   font-weight: 500;
   transition: all 100ms linear;
+
+  @media ${deviceMaxWidth.mobileL} {
+    font-size: 1.1rem;
+  }
 `;
 
 // Element: SaveContainer

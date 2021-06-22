@@ -5,16 +5,22 @@ import React from "react";
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Elements
-import { Container } from "./PatientItem.elements";
+import { Container, TableData } from "./PatientItem.elements";
 
 // Component: PatientItem
 export default function PatientItem({
   colOne,
+  colOneMinor,
   colTwo,
+  colTwoMinor,
   colThree,
+  colThreeMinor,
   colFour,
+  colFourMinor,
   colFive,
+  colFiveMinor,
   colSix,
+  colSixMinor,
   incomingPatients,
   onClick,
   patient,
@@ -31,12 +37,20 @@ export default function PatientItem({
         patientID={patientID}
         patientList={patientList}
       >
-        {colOne && <td>{capitalizeFirstLetter(colOne)}</td>}
-        {colTwo && <td>{colTwo}</td>}
-        {colThree && <td>{capitalizeFirstLetter(colThree)}</td>}
-        {colFour && <td>{colFour}</td>}
-        {colFive && <td>{colFive}</td>}
-        {colSix && <td>{colSix}</td>}
+        {colOne && (
+          <TableData minor={colOneMinor}>
+            {capitalizeFirstLetter(colOne)}
+          </TableData>
+        )}
+        {colTwo && <TableData minor={colTwoMinor}>{colTwo}</TableData>}
+        {colThree && (
+          <TableData minor={colThreeMinor}>
+            {capitalizeFirstLetter(colThree)}
+          </TableData>
+        )}
+        {colFour && <TableData minor={colFourMinor}>{colFour}</TableData>}
+        {colFive && <TableData minor={colFiveMinor}>{colFive}</TableData>}
+        {colSix && <TableData minor={colSixMinor}>{colSix}</TableData>}
       </Container>
     </>
   );
