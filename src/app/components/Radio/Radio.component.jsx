@@ -20,8 +20,8 @@ export const Radio = React.forwardRef((props, ref) => {
 
             <Input
               checked={props.checked}
-              onChange={props.onChange}
               name={props.name}
+              onChange={props.onChange}
               ref={ref}
               type="radio"
               value={props.value}

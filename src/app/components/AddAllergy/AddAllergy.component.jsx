@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
-// Import: Assets
+// Import: Elements
 import { Container, FormWrapper, Header } from "./AddAllergy.elements";
 import "./AddAllergy.styles.css";
 
@@ -57,7 +57,7 @@ export default function AddAllergy() {
               <Button text="Close" onClick={closeModal} />
             </Header>
 
-            {/* This component needs to be able to create new allergies and amend existing allergies. */}
+            {/* TODO This component needs to be able to create new allergies. It may need to be able to amend existing allergies. */}
 
             <Form>
               <Grid>

@@ -1,3 +1,6 @@
+// EXport: AddAlert
+export { default as AddAlert } from "./AddAlert/AddAlert.component";
+
 // Export: AddAllergy
 export { default as AddAllergy } from "./AddAllergy/AddAllergy.component";
 

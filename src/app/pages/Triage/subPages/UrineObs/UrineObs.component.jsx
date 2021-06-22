@@ -100,6 +100,7 @@ export default function UrineObs() {
                   <Form.Checkbox
                     checked={popsAssessment.AdminNAD}
                     htmlFor="nad"
+                    left
                     name="nad"
                     onChange={addNadToRedux}
                     ref={nadRef}

@@ -44,18 +44,26 @@ export default function Training() {
                       <Grid.Item>
                         <Form.Checkbox
                           checked={false}
-                          htmlFor="componentCheckbox2"
+                          htmlFor="componentCheckbox1"
+                          left
                           text="Component: Checkbox 1"
-                          under={true}
                         />
                       </Grid.Item>
 
-                      <Grid.Item>
+                      <Grid.Item horizontal>
                         <Form.Checkbox
                           checked={true}
-                          htmlFor="componentCheckbox2"
-                          text="Component: Checkbox 2"
-                          under={false}
+                          htmlFor="checkbox2"
+                          left={false}
+                          margin="0rem 0rem 0rem 0rem"
+                          text="Checkbox 2"
+                        />
+                        <Form.Checkbox
+                          checked={true}
+                          htmlFor="checkbox3"
+                          left={false}
+                          margin="0rem 0rem 0rem 1rem"
+                          text="Checkbox 3"
                         />
                       </Grid.Item>
 
