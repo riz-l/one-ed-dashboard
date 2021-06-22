@@ -180,7 +180,7 @@ There is a breakPoints.js file in the definitions folder (src/app/definitions/br
 // Import: Definitions
 import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
-2. Write a media query using the breakpoint as shwone below in the example where the tabletL breakpoint has been used and the margin-right will be 0 below that width.
+2. Write a media query using the breakpoint as shown below in the example where the tabletL breakpoint has been used and the margin-right will be 0 below that width.
 
 @media ${deviceMaxWidth.tabletL} {
 margin-right: 0;
@@ -277,7 +277,7 @@ The checkbox component is a box that can be ticked by the user. It could be part
 
 - checked = If this prop is given (or set to true) then the checkbox starts off as ticked.
 - onChange = Defines what happens when the checkbox is checked or unchecked.
-- under = If this prop is given (or set to true) the flex-direction is set to column which puts the label above the checkbox rather than to the side.
+- left = If this prop is given (or set to true) the flex-direction is set to row which puts the checkbox to the left of its label rather than above it. This is useful where there is just a single checkbox rather than a group of them.
 - text = This is the label for the checkbox visible to the user.
 - htmlFor = This links the label to the checkbox via the id attribute. htmlFor also sets the name attribute of the checkbox which gets submitted along with the value.
 - value = this is the value the checkbox represents which would be used in the onClick event. By default the values are false or true. Potentially we may add a third value of null.
@@ -363,7 +363,7 @@ This is not an input field but is used for headings or paragrpahs within the for
 
 This is used for multi-line free text boxes.
 
-- cols = This is a measure of the width of the input box. It is measured as an average sized character Should be equivalent to REM. It cannot accept height or width which si why cols and rows are used.
+- cols = This is a measure of the width of the input box. It is measured as an average sized character Should be equivalent to REM. It cannot accept height or width which is why cols and rows are used.
 - htmlFor = This links the label to the input box and sets the name of the field for data submission.
 - labelText = This is the title/question for the TextArea field which is visible to the user.
 - onChange = The effect of the user entering or removing data in the input box.

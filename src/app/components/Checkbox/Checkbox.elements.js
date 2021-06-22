@@ -5,24 +5,12 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 0.8rem;
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;
-
-// Element: Wrapper
-export const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: ${({ under }) => (under ? "column" : "row")};
-  justify-content: center;
-  margin-top: 0.8rem;
-  text-align: center;
-  width: 100%;
-`;
-
-// Element: Label
-export const Label = styled.label``;
-
 // Element: InputCheckbox
 export const InputCheckbox = styled.input`
   -webkit-appearance: none;
@@ -32,11 +20,21 @@ export const InputCheckbox = styled.input`
   visibility: hidden;
 `;
 
+// Element: Label
+export const Label = styled.label`
+  align-items: center;
+  display: flex;
+  /* flex-direction: column ; */
+  flex-direction: ${({ left }) => (left ? "row-reverse" : "column")};
+  justify-content: center;
+  width: auto;
+`;
+
 // Element: Text
 export const Text = styled.label`
   color: #6b7a99;
-  margin-left: ${({ under }) => (under ? "0" : "0.8rem")};
-  margin-top: ${({ under }) => (under ? "0.4rem" : "0")};
+  margin-left: ${({ left }) => (left ? "0.8rem" : "0rem")};
+  /* margin-top: ${({ under }) => (under ? "0.4rem" : "0")}; */
 `;
 
 // Element: VisualBox
@@ -50,7 +48,7 @@ export const VisualBox = styled.div`
   display: flex;
   height: 50px;
   justify-content: center;
-
+  margin-top: ${({ left }) => (left ? "0rem" : "0.8rem")};
   transition: all 100ms linear;
   width: 50px;
 

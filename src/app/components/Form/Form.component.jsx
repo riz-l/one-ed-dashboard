@@ -108,10 +108,11 @@ export const FormCheckbox = React.forwardRef((props, ref) => {
     <Checkbox
       checked={props.checked}
       htmlFor={props.htmlFor}
+      margin={props.margin}
       onChange={props.onChange}
       ref={ref}
       text={props.text}
-      under={props.under}
+      left={props.left}
       value={props.value}
     />
   );

@@ -21,11 +21,6 @@ export const Label = styled.label`
   width: auto;
 `;
 
-// Element: Text
-export const Text = styled.span`
-  color: #6b7a99;
-`;
-
 // Element: Input
 export const Input = styled.input`
   -webkit-appearance: none;
@@ -37,6 +32,11 @@ export const Input = styled.input`
   width: 100%;
 `;
 
+// Element: Text
+export const Text = styled.span`
+  color: #6b7a99;
+`;
+
 // Element: VisualBox
 export const VisualBox = styled.div`
   align-items: center;
@@ -44,7 +44,6 @@ export const VisualBox = styled.div`
   border: 2px solid #6b7a99;
   border-radius: 50%;
   content: "";
-  cursor: pointer;
   display: flex;
   height: 50px;
   justify-content: center;
