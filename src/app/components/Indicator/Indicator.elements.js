@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: ${({ red, amber, green }) =>
     red ? "#ee482a" : amber ? "#f3af4a" : green ? "#74e660" : "gray"};
+  /* TODO consider adding the colours to the the theme provider. Confirm what colours will be neede first. */
   border-radius: 8px;
   color: black;
   display: flex;

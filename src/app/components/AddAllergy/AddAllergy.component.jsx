@@ -110,6 +110,7 @@ export default function AddAllergy() {
                   <Grid.Item>
                     <Form.Checkbox
                       htmlFor="mhraFormCompleted"
+                      left
                       text="MHRA form completed"
                     />
                   </Grid.Item>
@@ -122,6 +123,7 @@ export default function AddAllergy() {
                   <Grid.Item>
                     <Form.Checkbox
                       htmlFor="isSignificant"
+                      left
                       text="Is significant"
                     />
                   </Grid.Item>

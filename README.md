@@ -1,6 +1,18 @@
 # OneED - Dashboard
 
+## Updating the ReadMe
+
 Link to a markup guide for a ReadMe file https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md
+
+When adding Code examples surround the examples with backticks for a single line or 3 backticks for multi line code.
+
+`code`
+
+```
+multi
+line
+code
+```
 
 ## Get started
 
@@ -177,18 +189,136 @@ There is a breakPoints.js file in the definitions folder (src/app/definitions/br
 
 1. Import the breakPoints.js file into the elements file of the component that will using the breakpoints. See below (filepath will need to be edited):
 
+```
 // Import: Definitions
 import { deviceMaxWidth } from "../../../definitions/breakPoints";
+```
 
 2. Write a media query using the breakpoint as shown below in the example where the tabletL breakpoint has been used and the margin-right will be 0 below that width.
 
+```
 @media ${deviceMaxWidth.tabletL} {
 margin-right: 0;
 }
+```
 
-### Colours
+### Theme Provider
 
-<!-- TODO add a section about how to reference the standard colours and how the theme provider works.  -->
+A theme provider is where the colours used in the app (for backgrounds, borders and text or anywhere else) are defined in a file as variables. The names given to these colour variables are then used throughout the app in place of hard coded colours.
+The benefit of a theme provider is that it makes it easy and consistent to change a colour once in the theme provider and have it change throughout the app wherever it is used.
+Implementing a theme provider also enables the creation of a Light Mode Dark Mode feature. This si done by defining 2 sets of colours in 2 theme files.
+
+#### Step 1 - Create the theme/s folder and the theme.js file/s
+
+The Theme/s folder is normally located within the app folder.
+
+Example of a lightTheme.js file:
+
+```
+// Theme: lightTheme
+export const lightTheme = {
+colors: {
+global: {
+backgroundPrimary: "#ffffff",
+backgroundSecondary: "#f7f8fa",
+borderPrimary: "#edeff2",
+highlightPrimary: "#4d5e80",
+textPrimary: "#4d5e80",
+textSecondary: "#6b7a99",
+icon: "#c3cad9",
+iconActive: "#6b7a99",
+},
+patientList: {
+header: "#4d5e80",
+rowOdd: "#e6e9ef",
+rowHover: "#6a7ca0",
+},
+incomingPatientsList: {
+header: "#008ba3",
+rowOdd: "#deedf2",
+rowHover: "#509fb9",
+},
+},
+};
+```
+
+#### Step 2 - Import the Theme Provider hook to the app.js file
+
+Import the ThemeProvider hook when importing styled from styled-components package.
+
+```
+// Import: Packages
+import styled, { ThemeProvider } from "styled-components/macro";
+```
+
+#### Step 3 - Import the theme form the theme file/s into the app.js file
+
+```
+// Import: Themes
+import { darkTheme } from "./app/themes/darkTheme";
+import { lightTheme } from "./app/themes/lightTheme";
+```
+
+#### Step 4 - Wrap the return code for App.js in the theme provider
+
+This step allows all components within the app to access the theme provider.
+
+```
+return (
+<ThemeProvider theme={isGlobalThemeDark ? darkTheme : lightTheme}>
+//Other Code
+</ThemeProvider >
+);
+```
+
+#### Step 5 – Use the theme provider colours in the elements.js files.
+
+To use the colours in the theme provider in a component open the component’s elements.js file and use the code shown below.
+
+Example 1:
+
+`background-color: ${(props) => props.theme.colors.global.backgroundSecondary};`
+
+In this example the last 2 navigation locations `global.backgroundSecondary` need to be changed to get to the specific colour you need.
+
+Example 2: Using the theme provider colours within a ternary operator.
+
+`background: ${({ checked }) => checked ? (props) => props.theme.colors.global.tickBoxChecked : (props) => props.theme.colors.global.tickBoxUnchecked};`
+
+Note how the ${} (which shows the codes inside is JavaScript and not CSS) is not needed again because the theme provider code is already inside one.
+
+Note: There seem to be issues using the theme provider path inside of a string in a ternary operator. Workaround is to split the attributes out so it ends up beiang like example 2 above as the example below won't work.
+e.g
+border: ${(propName) => propName ? "1px solid green" : "1px solid ${(props) => props.theme.colors.global.borderPrimary}"};
+
+Replacing the Arrow function `=>` with the traditional JavaScript function as shown below will allow the theme provider to be used.
+
+background-color: ${({ patient, patientID, patientList }) =>
+patientList &&
+patient === patientID &&
+function (props) {
+return props.theme.colors.formComponents.tickBoxCheckedHover;
+}};
+
+CSS files cannot accept JavaScript. To use a theme provider the colours must be defined in the elements files.
+
+#### The Light/Dark mode toggle
+
+Example:
+
+```
+<ThemeToggle isOn={isGlobalThemeDark} handleToggle={() =>
+dispatch(setIsGlobalThemeDark())} onColor="#e6e9ef" />
+```
+
+The toggle works in a similar way to the checkbox component.
+“isOn” determines the appearance of the toggle.
+“handleToggle” is used in Global State.
+
+When implementing an Light/Dark mode it is useful to also add a transition attribute to all components that use colours so that when the Light/Dark mode is changed it doesn't look jerky.
+
+Use the code below in the elements files to achieve this.
+`transition: all 100ms linear;`
 
 ## Reference
 
@@ -215,6 +345,7 @@ In the below example note the following things:
 3. The "if" check in needed to allow the component to pass testing. This is because it caters for a scenario where there isn't a value for the file path.
 4. The "if" check cannot work if there is an array e.g. [0] in the file path.
 
+```
 // Redux: Extracts username from global state
 const currentUser = useSelector((state) => {
 if (state.userDetails.details.ControlActEvent) {
@@ -222,6 +353,7 @@ return state.userDetails.details.ControlActEvent.Subject.Value[0]
 .UserRoleProfile[0].UserID.identifierName;
 }
 });
+```
 
 ### UseEffect
 
@@ -370,3 +502,54 @@ This is used for multi-line free text boxes.
 - placeholder = Greyed out text in the input box. It is replaced when the user starts to enter data into the TextArea input box
 - rows = This is a measure of the height of the input box. It is measured as an average sized character.
 - value = This applies data to the input box so the user must delete or add to it. This would get submitted when the form is submitted.
+
+## React Modals
+
+OneED used Modals in several locations. Modals are popup windows that open in front of the current screen and get the focus.
+Link to modal documentation website: https://reactcommunity.org/react-modal/
+
+### Prerequisites
+
+Install the reactModal to the project by opening the terminal and entering:
+`npm install react-modal`
+
+### Step 1
+
+Inside the component folder for the modal create the following files:
+
+<ul>
+<li>name.component.jsx</li>
+<li>name.elements.js</li>
+<li>name.test.js</li>
+<li>name.styles.css</li>
+</ul>
+Note that Modals have a CSS file in addition to the usual name.component.jsx, name.elements.js and name.test.js files.
+
+### Step 2
+
+In the component file import the react modal package as shown below:
+`import ReactModal from "react-modal";`
+
+### Step 3
+
+As well as importing the elements file also import the css file
+`import "./name.styles.css";`
+
+### Step 4
+
+In the return{} section of the component start with the content teh closed modal should show (usually a button) and then place the content to be shown in the open modal inside the <ReactModal> content</ReactModal>
+
+The <ReactModal> usually contains the following props:
+<ReactModal
+          isOpen={isModalOpen}
+          contentLabel="AddAlert"
+          onRequestClose={closeModal}
+          className="Modal"
+          overlayClassName="Overlay"
+          closeTimeoutMS={100}
+          ariaHideApp={false}
+        >
+
+### Step 5
+
+To style the modal

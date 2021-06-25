@@ -11,7 +11,7 @@ export const Container = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  border: 1px solid #edeff2;
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   display: flex;
   height: auto;
@@ -47,25 +47,28 @@ export const Heading = styled.div`
   margin-bottom: 0.4rem;
 
   & h3 {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     font-family: "PoppinsBold", sans-serif;
     font-weight: 700;
+    transition: all 100ms linear;
   }
 `;
 
 // Element: Icon
 export const Icon = styled.div`
   align-items: center;
-  background-color: #6b7a99;
+  background-color: ${(props) => props.theme.colors.global.iconActive};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   padding: 0.5rem;
   margin-right: 0.6rem;
+  transition: all 100ms linear;
 
   & svg {
-    fill: #ffffff;
+    fill: ${(props) => props.theme.colors.global.backgroundPrimary};
     height: 25px;
+    transition: all 100ms linear;
     width: 25px;
   }
 
@@ -83,7 +86,8 @@ export const Detail = styled.div`
   justify-content: flex-start;
 
   & p {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
 
     &:first-letter {
       text-transform: capitalize;
@@ -98,7 +102,8 @@ export const Status = styled.div`
   justify-content: center;
 
   & p {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
 
     &:first-letter {
       text-transform: capitalize;

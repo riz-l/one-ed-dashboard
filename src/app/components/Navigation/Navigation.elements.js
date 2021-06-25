@@ -5,8 +5,8 @@ const activeClassName = "nav-item-active"; //NavLink: activeClassName
 
 // Element: Container
 export const Container = styled.nav`
-  background-color: #f7f8fa;
-  border-right: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
+  border-right: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   grid-area: navigation;
   height: 100%;
   max-height: calc(100vh - 80px);
@@ -45,12 +45,13 @@ export const Container = styled.nav`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
   padding: 1rem 2rem;
+  transition: all 100ms linear;
   width: 100%;
 `;
 
@@ -75,16 +76,17 @@ export const OptionsContainer = styled.div`
 
 // Element: OptionHeading
 export const OptionHeading = styled.span`
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textSecondary};
   font-family: "PoppinsMedium", sans-serif;
   font-weight: 500;
   padding: 0.4rem 0;
+  transition: all 100ms linear;
 `;
 
 // Element: OptionItem
 export const OptionItem = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -94,7 +96,7 @@ export const OptionItem = styled.div`
   width: 100%;
 
   & svg {
-    fill: #c3cad9;
+    fill: ${(props) => props.theme.colors.global.icon};
     height: 20px;
     margin-right: 0.8rem;
     transition: all 100ms linear;
@@ -102,21 +104,21 @@ export const OptionItem = styled.div`
   }
 
   & span {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.iconActive};
     transition: all 100ms linear;
   }
 
   &:hover {
-    background-color: #eef0f4;
+    background-color: ${(props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 
     & svg {
-      fill: #6b7a99;
+      fill: ${(props) => props.theme.colors.global.textSecondary};
       transition: all 100ms linear;
     }
 
     & span {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
@@ -125,7 +127,7 @@ export const OptionItem = styled.div`
 // Element: SettingsItem
 export const SettingsItem = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -135,7 +137,7 @@ export const SettingsItem = styled.div`
   width: 100%;
 
   & svg {
-    fill: #c3cad9;
+    fill: ${(props) => props.theme.colors.global.icon};
     height: 20px;
     margin-right: 0.8rem;
     transition: all 100ms linear;
@@ -143,21 +145,21 @@ export const SettingsItem = styled.div`
   }
 
   & span {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     transition: all 100ms linear;
   }
 
   &:hover {
-    background-color: #e6e9ef;
+    background-color: ${(props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 
     & svg {
-      fill: #6b7a99;
+      fill: ${(props) => props.theme.colors.global.iconActive};
       transition: all 100ms linear;
     }
 
     & span {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
@@ -169,26 +171,32 @@ export const OptionLink = styled(NavLink).attrs({ activeClassName })`
 
   &.${activeClassName} {
     & ${OptionItem} {
-      background-color: #e6e9ef;
+      background-color: ${(props) => props.theme.colors.global.borderSecondary};
+      transition: all 100ms linear;
 
       & svg {
-        fill: #6b7a99;
+        fill: ${(props) => props.theme.colors.global.iconActive};
+        transition: all 100ms linear;
       }
 
       & span {
-        color: #4d5e80;
+        color: ${(props) => props.theme.colors.global.textPrimary};
+        transition: all 100ms linear;
       }
     }
 
     & ${SettingsItem} {
-      background-color: #e6e9ef;
+      background-color: ${(props) => props.theme.colors.global.borderSecondary};
+      transition: all 100ms linear;
 
       & svg {
-        fill: #6b7a99;
+        fill: ${(props) => props.theme.colors.global.iconActive};
+        transition: all 100ms linear;
       }
 
       & span {
-        color: #4d5e80;
+        color: ${(props) => props.theme.colors.global.textPrimary};
+        transition: all 100ms linear;
       }
     }
   }

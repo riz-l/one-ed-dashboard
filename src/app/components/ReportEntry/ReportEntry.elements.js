@@ -23,7 +23,7 @@ export const Arrow = styled.div`
   justify-content: center;
 
   & svg {
-    fill: #f1f1f1;
+    fill: ${(props) => props.theme.colors.formComponents.tickBoxSVG};
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
@@ -45,24 +45,24 @@ export const ArrowContainer = styled.div`
     themeColor,
   }) =>
     alerts
-      ? "#ff6347"
+      ? (props) => props.theme.colors.reportEntry.alerts
       : allergies
-      ? "#ffaf85"
+      ? (props) => props.theme.colors.reportEntry.allergies
       : complaint
-      ? "#5398be"
+      ? (props) => props.theme.colors.reportEntry.complaint
       : complications
-      ? "#9bc53d"
+      ? (props) => props.theme.colors.reportEntry.complications
       : diagnosis
-      ? "#ba2c73"
+      ? (props) => props.theme.colors.reportEntry.diagnosis
       : findings
-      ? "#1b998b"
+      ? (props) => props.theme.colors.reportEntry.findings
       : procedures
-      ? "#585481"
+      ? (props) => props.theme.colors.reportEntry.procedures
       : symptoms
-      ? "#2978a0"
+      ? (props) => props.theme.colors.reportEntry.symptoms
       : themeColor
       ? themeColor
-      : "#3a3a40"};
+      : (props) => props.theme.colors.reportEntry.noThemeEntered};
   display: flex;
   height: 100%;
   justify-content: center;
@@ -78,7 +78,7 @@ export const ArrowContainer = styled.div`
 
     & ${Arrow} {
       & svg {
-        fill: #ffffff;
+        fill: ${(props) => props.theme.colors.global.backgroundPrimary};
         transition: all 100ms linear;
       }
     }
@@ -88,7 +88,9 @@ export const ArrowContainer = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  border: ${({
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${({
     alerts,
     allergies,
     complaint,
@@ -100,24 +102,24 @@ export const Wrapper = styled.div`
     themeColor,
   }) =>
     alerts
-      ? "1px solid #ff6347"
+      ? (props) => props.theme.colors.reportEntry.alerts
       : allergies
-      ? "1px solid #ffaf85"
+      ? (props) => props.theme.colors.reportEntry.allergies
       : complaint
-      ? "1px solid #5398be"
+      ? (props) => props.theme.colors.reportEntry.complaint
       : complications
-      ? "1px solid #9bc53d"
+      ? (props) => props.theme.colors.reportEntry.complications
       : diagnosis
-      ? "1px solid #ba2c73"
+      ? (props) => props.theme.colors.reportEntry.diagnosis
       : findings
-      ? "1px solid #1b998b"
+      ? (props) => props.theme.colors.reportEntry.findings
       : procedures
-      ? "1px solid #585481"
+      ? (props) => props.theme.colors.reportEntry.procedures
       : symptoms
-      ? "1px solid #2978a0"
+      ? (props) => props.theme.colors.reportEntry.symptoms
       : themeColor
-      ? `1px solid ${themeColor}`
-      : "1px solid #3a3a40"};
+      ? `${themeColor}`
+      : (props) => props.theme.colors.reportEntry.noThemeEntered};
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
   cursor: pointer;
@@ -128,7 +130,7 @@ export const Wrapper = styled.div`
   transition: all 100ms linear;
 
   &:hover {
-    box-shadow: 0 0 20px #edeff2;
+    box-shadow: 0 0 20px ${(props) => props.theme.colors.global.borderPrimary};
     transform: translateY(-4px);
     transition: all 100ms linear;
 
@@ -166,7 +168,8 @@ export const Heading = styled.div`
   margin-bottom: 0.4rem;
 
   & h3 {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
   }
 `;
 
@@ -185,33 +188,35 @@ export const Icon = styled.div`
     themeColor,
   }) =>
     alerts
-      ? "#ff6347"
+      ? (props) => props.theme.colors.reportEntry.alerts
       : allergies
-      ? "#ffaf85"
+      ? (props) => props.theme.colors.reportEntry.allergies
       : complaint
-      ? "#5398be"
+      ? (props) => props.theme.colors.reportEntry.complaint
       : complications
-      ? "#9bc53d"
+      ? (props) => props.theme.colors.reportEntry.complications
       : diagnosis
-      ? "#ba2c73"
+      ? (props) => props.theme.colors.reportEntry.diagnosis
       : findings
-      ? "#1b998b"
+      ? (props) => props.theme.colors.reportEntry.findings
       : procedures
-      ? "#585481"
+      ? (props) => props.theme.colors.reportEntry.procedures
       : symptoms
-      ? "#2978a0"
+      ? (props) => props.theme.colors.reportEntry.symptoms
       : themeColor
       ? themeColor
-      : "#3a3a40"};
+      : (props) => props.theme.colors.reportEntry.noThemeEntered};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   padding: 0.5rem;
   margin-right: 0.6rem;
+  transition: all 100ms linear;
 
   & svg {
-    fill: #ffffff;
+    fill: ${(props) => props.theme.colors.global.backgroundPrimary};
     height: 25px;
+    transition: all 100ms linear;
     width: 25px;
   }
 
@@ -229,7 +234,8 @@ export const Detail = styled.div`
   justify-content: flex-start;
 
   & p {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
 
     &:first-letter {
       text-transform: capitalize;
@@ -247,7 +253,8 @@ export const Right = styled.div`
   padding: 1rem;
 
   & p {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
   }
 `;
 

@@ -20,13 +20,22 @@ export const TableData = styled.td`
 // Element: Container
 export const Container = styled.tr`
   background-color: ${({ patient, patientID, patientList }) =>
-    patientList && patient === patientID && "#6a7ca0"};
+    patientList &&
+    patient === patientID &&
+    function (props) {
+      return props.theme.colors.patientList.rowHover;
+    }};
   cursor: pointer;
   transition: all 100ms linear;
 
   &:nth-of-type(odd) {
     & td {
-      color: ${({ patient, patientID }) => patient === patientID && "#ffffff"};
+      color: ${({ patient, patientID }) =>
+        patient === patientID &&
+        function (props) {
+          return props.theme.colors.global.backgroundPrimary;
+        }};
+      transition: all 100ms linear;
     }
   }
 
@@ -38,38 +47,65 @@ export const Container = styled.tr`
       incomingPatients,
     }) =>
       patientList && patient === patientID
-        ? "#6a7ca0"
+        ? function (props) {
+            return props.theme.colors.formComponents.tickBoxCheckedHover;
+          }
         : incomingPatients
-        ? "#deedf2"
+        ? function (props) {
+            return props.theme.colors.incomingPatientsList.rowOdd;
+          }
         : patientList
-        ? "#e6e9ef"
+        ? function (props) {
+            return props.theme.colors.patientList.rowOdd;
+          }
         : null};
     transition: all 100ms linear;
 
     & td {
-      color: ${({ patient, patientID }) => patient === patientID && "#ffffff"};
+      color: ${({ patient, patientID }) =>
+        patient === patientID &&
+        function (props) {
+          return props.theme.colors.global.backgroundPrimary;
+        }};
+      transition: all 100ms linear;
     }
 
     &:hover {
       & td {
-        color: #ffffff;
+        color: ${(props) => props.theme.colors.global.backgroundPrimary};
         transition: all 100ms linear;
       }
 
       background-color: ${({ patientList, incomingPatients }) =>
-        patientList ? "#6a7ca0" : incomingPatients ? "#509fb9" : null};
+        patientList
+          ? function (props) {
+              return props.theme.colors.patientList.rowHover;
+            }
+          : incomingPatients
+          ? function (props) {
+              return props.theme.colors.incomingPatientsList.rowHover;
+            }
+          : null};
       transition: all 100ms linear;
     }
   }
 
   &:hover {
     & td {
-      color: #ffffff;
+      color: ${(props) => props.theme.colors.global.backgroundPrimary};
       transition: all 100ms linear;
     }
 
     background-color: ${({ patientList, incomingPatients }) =>
-      patientList ? "#6a7ca0" : incomingPatients ? "#509FB9" : null};
+      patientList
+        ? function (props) {
+            return props.theme.colors.patientList.rowHover;
+          }
+        : incomingPatients
+        ? function (props) {
+            return props.theme.colors.incomingPatientsList.rowHover;
+          }
+        : null};
     transition: all 100ms linear;
   }
 `;

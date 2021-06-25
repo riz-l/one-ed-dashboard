@@ -19,11 +19,12 @@ export const Container = styled.div`
   margin: ${({ margin }) =>
     margin &&
     margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
+  transition: all 100ms linear;
 `;
 
 // Element: Label
 export const Label = styled.label`
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textSecondary};
   ${({ labelText, left }) =>
     labelText && left
       ? css`
@@ -39,4 +40,5 @@ export const Label = styled.label`
         `}
   font-size: ${({ fontSize }) => fontSize && fontSize};
   text-transform: capitalize;
+  transition: all 100ms linear;
 `;

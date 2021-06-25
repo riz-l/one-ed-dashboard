@@ -68,7 +68,7 @@ export default function Login(props) {
             <LogoSvg />
           </Logo>
 
-          {/* TODO This redirects to Unauthorized if user is not logged in. Remove when no longer requried */}
+          {/* TODO This redirects to Unauthorized if user is not logged in. Remove when no longer required */}
           <p>
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>

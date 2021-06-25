@@ -7,8 +7,8 @@ import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.header`
-  background-color: #f7f8fa;
-  border-bottom: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
+  border-bottom: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   grid-area: header;
   height: 80px;
   max-height: 80px;
@@ -16,12 +16,10 @@ export const Container = styled.header`
   -webkit-position: sticky;
   position: sticky;
   top: 0;
+  transition: all 100ms linear;
   width: 100%;
   max-width: 100vw;
   z-index: 2;
-
-  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
-  transition: all 100ms linear;
 `;
 
 // Element: Wrapper
@@ -68,9 +66,10 @@ export const Logo = styled.div`
   }
 
   & span {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
     font-size: 2rem;
     font-weight: 600;
+    transition: all 100ms linear;
   }
 `;
 
@@ -83,9 +82,10 @@ export const MenuContainer = styled.div`
   transition: all 100ms linear;
 
   & svg {
-    background-color: #f7f8fa;
+    background-color: ${(props) =>
+      props.theme.colors.global.backgroundSecondary};
     border-radius: 8px;
-    fill: #6b7a99;
+    fill: ${(props) => props.theme.colors.global.iconActive};
     height: 45px;
     padding: 0.6rem;
     transition: all 100ms linear;
@@ -94,8 +94,8 @@ export const MenuContainer = styled.div`
 
   &:hover {
     & svg {
-      background-color: #e6e9ef;
-      fill: #4d5e80;
+      background-color: ${(props) => props.theme.colors.patientList.rowOdd};
+      fill: ${(props) => props.theme.colors.global.highlightPrimary};
       transition: all 100ms linear;
     }
   }
@@ -104,7 +104,7 @@ export const MenuContainer = styled.div`
 // Element: UserContainer
 export const UserContainer = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   cursor: pointer;
   display: flex;
   height: 100%;
@@ -114,7 +114,7 @@ export const UserContainer = styled.div`
   transition: all 100ms linear;
 
   &:hover {
-    background-color: #e6e9ef;
+    background-color: ${(props) => props.theme.colors.patientList.rowOdd};
     transition: all 100ms linear;
   }
 
@@ -137,7 +137,8 @@ export const UserIcon = styled.div`
   }
 
   & svg {
-    fill: #c3cad9;
+    fill: ${(props) => props.theme.colors.global.icon};
+    transition: all 100ms linear;
   }
 `;
 
@@ -158,16 +159,18 @@ export const UserDetails = styled.div`
 
   & span {
     &:nth-child(1) {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       font-family: "PoppinsMedium", sans-serif;
       font-size: 1.2rem;
       font-weight: 500;
       margin-bottom: -0.2rem;
+      transition: all 100ms linear;
     }
 
     &:nth-child(2) {
-      color: #6b7a99;
+      color: ${(props) => props.theme.colors.global.textSecondary};
       font-size: 0.8rem;
+      transition: all 100ms linear;
 
       @media screen and (max-width: 400px) {
         display: none;

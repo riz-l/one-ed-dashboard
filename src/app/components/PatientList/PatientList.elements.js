@@ -6,7 +6,7 @@ import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   height: 100%;
   max-height: calc(100vh - 80px);
   /* overflow-x: hidden;
@@ -14,21 +14,23 @@ export const Container = styled.div`
   scrollbar-color: #c3cad9 #edeff2;
   scrollbar-width: thin; */
   overflow-y: hidden;
+  transition: all 100ms linear;
   width: 100%;
 `;
 
 // Element: Wrapper
 export const Wrapper = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   height: 100%;
   overflow-y: auto;
   padding: 0 2rem;
   width: 100%;
-
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-color: ${(props) => props.theme.colors.global.icon},
+    ${(props) => props.theme.colors.global.borderPrimary};
   scrollbar-width: thin;
+  transition: all 100ms linear;
 
   @media ${deviceMaxWidth.laptopL} {
     padding: 0 1rem;
@@ -38,7 +40,7 @@ export const Wrapper = styled.div`
 // Element: ListHeader
 export const ListHeader = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: flex;
   flex-direction: column;
   height: auto;
@@ -47,6 +49,7 @@ export const ListHeader = styled.div`
   -webkit-position: sticky;
   position: sticky;
   top: 0;
+  transition: all 100ms linear;
   width: 100%;
   z-index: 3;
 `;
@@ -54,10 +57,11 @@ export const ListHeader = styled.div`
 // Element: Item
 export const Item = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: flex;
   height: auto;
   justify-content: flex-start;
+  transition: all 100ms linear;
   width: 100%;
 `;
 
@@ -98,15 +102,17 @@ export const Table = styled.table`
   }
 
   & thead tr {
-    color: #ffffff;
+    color: ${(props) => props.theme.colors.global.backgroundPrimary};
     position: sticky;
     text-align: left;
     top: 0;
+    transition: all 100ms linear;
   }
 
   & td {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
     padding: 12px 15px;
+    transition: all 100ms linear;
 
     @media ${deviceMaxWidth.mobileL} {
       font-size: 0.7rem;
@@ -117,8 +123,10 @@ export const Table = styled.table`
 // Element: THeading
 export const THeading = styled.th`
   background-color: ${({ isPatientList }) =>
-    isPatientList ? "#4d5e80" : "#008ba3"};
-  color: #ffffff;
+    isPatientList
+      ? (props) => props.theme.colors.patientList.header
+      : (props) => props.theme.colors.incomingPatientsList.header};
+  color: ${(props) => props.theme.colors.global.backgroundPrimary};
   padding: 12px 15px;
   transition: all 100ms linear;
   width: 100%;
