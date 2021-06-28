@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 // Element: Container
 export const Container = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,6 +14,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-width: 100%;
+  transition: all 100ms linear;
 `;
 
 // Element Logo
@@ -26,23 +27,26 @@ export const Logo = styled.div`
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+  transition: all 100ms linear;
 
   & h1 {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
+    transition: all 100ms linear;
   }
 
   & a {
-    background-color: #f7f8fa;
-    border: 1px solid #edeff2;
+    background-color: ${(props) =>
+      props.theme.colors.global.backgroundSecondary};
+    border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
     border-radius: 8px;
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     cursor: pointer;
     font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
@@ -51,8 +55,8 @@ export const Wrapper = styled.div`
     transition: all 100ms linear;
 
     &:hover {
-      background-color: #eef0f4;
-      color: #4d5e80;
+      background-color: ${(props) => props.theme.colors.global.borderPrimary};
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }

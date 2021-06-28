@@ -6,7 +6,6 @@ export const lightTheme = {
       backgroundSecondary: "#f7f8fa",
       borderPrimary: "#edeff2",
       borderSecondary: "#dcdfe5",
-      highlightPrimary: "#4d5e80",
       textPrimary: "#4d5e80",
       textSecondary: "#6b7a99",
       icon: "#c3cad9",
@@ -22,6 +21,9 @@ export const lightTheme = {
       tickBoxUnchecked: "#edeff2",
       tickBoxUncheckedHover: "#c3cad9",
       tickBoxSVG: "#f1f1f1",
+      indicatorGreen: "#74e660",
+      indicatorAmber: "#f3af4a",
+      indicatorRed: "#ee482a",
     },
     patientList: {
       header: "#4d5e80",

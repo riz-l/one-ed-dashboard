@@ -6,7 +6,7 @@ import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   grid-area: content;
   height: 100%;
   max-height: calc(100vh - 80px);
@@ -14,6 +14,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-width: calc(100vh - 300px);
+  transition: all 100ms linear;
 `;
 
 // Element: Wrapper

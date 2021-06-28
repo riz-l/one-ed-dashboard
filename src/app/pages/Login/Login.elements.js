@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 // Element: Container
 export const Container = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,26 +14,28 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100%;
   min-width: 100%;
+  transition: all 100ms linear;
 `;
 
 // Element: Wrapper
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   height: auto;
   justify-content: center;
   padding: 2rem;
+  transition: all 100ms linear;
 
   & h1 {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
   }
 
   & p {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     margin-bottom: 0.8rem;
   }
 `;
@@ -48,9 +50,10 @@ export const Logo = styled.div`
 export const CompanyLogo = styled.div`
   align-items: center;
   bottom: 0px;
-  color: #4d5e80;
+  color: ${(props) => props.theme.colors.global.textPrimary};
   display: flex;
   position: absolute;
+  transition: all 100ms linear;
 
   & img {
     padding: 1rem;

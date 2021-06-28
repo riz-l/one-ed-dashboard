@@ -104,7 +104,8 @@ export const OptionItem = styled.div`
   }
 
   & span {
-    color: ${(props) => props.theme.colors.global.iconActive};
+    color: ${(props) => props.theme.colors.global.textSecondary};
+    /* color: ${(props) => props.theme.colors.global.iconActive}; */
     transition: all 100ms linear;
   }
 

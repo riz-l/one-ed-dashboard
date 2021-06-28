@@ -222,7 +222,6 @@ global: {
 backgroundPrimary: "#ffffff",
 backgroundSecondary: "#f7f8fa",
 borderPrimary: "#edeff2",
-highlightPrimary: "#4d5e80",
 textPrimary: "#4d5e80",
 textSecondary: "#6b7a99",
 icon: "#c3cad9",
@@ -535,9 +534,11 @@ In the component file import the react modal package as shown below:
 As well as importing the elements file also import the css file
 `import "./name.styles.css";`
 
+Note: the values in the CSS file don't have an effect unless they are marked as "!important" which overwrites the default values for the modal.
+
 ### Step 4
 
-In the return{} section of the component start with the content teh closed modal should show (usually a button) and then place the content to be shown in the open modal inside the <ReactModal> content</ReactModal>
+In the return{} section of the component start with the content the closed modal should show (usually a button) and then place the content to be shown in the open modal inside the <ReactModal> content</ReactModal>
 
 The <ReactModal> usually contains the following props:
 <ReactModal
@@ -552,4 +553,31 @@ The <ReactModal> usually contains the following props:
 
 ### Step 5
 
-To style the modal
+OneED uses a theme provider package for managing the colours in the app.
+This is not compatible with the styles.css files used in the ReactModals package. This is because javascript cannot be used inside a css file and the references to the theme provider are coded in javascript.
+
+To get round this the colours for the modal need to be managed in the elements file.
+
+#### Step 1
+
+Import the React Modal into the elements file
+
+#### Step 2
+
+In the elements file create a "StyledModal" styled component as shown below:
+
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)` background-color: ${(props) => props.theme.colors.global.backgroundPrimary}; border: 1px solid ${(props) => props.theme.colors.global.borderPrimary}; transition: all 100ms linear;`;
+
+#### Step 3
+
+Import the "StyledModal" into the component and replace "ReactModal" with "StyledModal" as shown below:
+<StyledModal
+          isOpen={isModalOpen}
+          contentLabel="AddAlert"
+          onRequestClose={closeModal}
+          className="Modal"
+          overlayClassName="Overlay"
+          closeTimeoutMS={100}
+          ariaHideApp={false}
+        >

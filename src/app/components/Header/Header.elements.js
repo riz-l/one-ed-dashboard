@@ -1,6 +1,7 @@
 // Import: Packages
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+import ReactModal from "react-modal";
 
 // Import: Definitions
 import { deviceMaxWidth } from "../../../definitions/breakPoints";
@@ -95,7 +96,7 @@ export const MenuContainer = styled.div`
   &:hover {
     & svg {
       background-color: ${(props) => props.theme.colors.patientList.rowOdd};
-      fill: ${(props) => props.theme.colors.global.highlightPrimary};
+      fill: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
@@ -131,7 +132,6 @@ export const UserIcon = styled.div`
   max-height: 80px;
   justify-content: center;
   margin-right: 0.8rem;
-
   @media ${deviceMaxWidth.tabletL} {
     margin-right: 0;
   }
@@ -192,4 +192,11 @@ export const ModalTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)`
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
+  transition: all 100ms linear;
 `;

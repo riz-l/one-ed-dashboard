@@ -31,7 +31,7 @@ export const Label = styled.label`
 
 // Element: Text
 export const Text = styled.label`
-  color: ${(props) => props.theme.colors.global.textSecondary};
+  color: ${(props) => props.theme.colors.global.textPrimary};
   margin-left: ${({ left }) => (left ? "0.8rem" : "0rem")};
   transition: all 100ms linear;
 `;
@@ -43,7 +43,7 @@ export const VisualBox = styled.div`
     checked
       ? (props) => props.theme.colors.formComponents.tickBoxChecked
       : (props) => props.theme.colors.formComponents.tickBoxUnchecked};
-  border: 2px solid #6b7a99;
+  border: 2px solid ${(props) => props.theme.colors.global.textSecondary};
   border-radius: 8px;
   content: "";
   cursor: pointer;

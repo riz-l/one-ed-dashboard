@@ -33,7 +33,7 @@ export const Container = styled.div`
   & .react-autosuggest__input {
     appearance: none;
     -webkit-appearance: none;
-    border: 2px solid #edeff2;
+    border: 2px solid ${(props) => props.theme.colors.global.borderPrimary};
     border-radius: 8px;
     color: ${(props) => props.theme.colors.global.textPrimary};
     height: 2rem;
@@ -128,8 +128,8 @@ export const Container = styled.div`
   }
 
   & .react-autosuggest__suggestion--highlighted {
-    background-color: #ddd;
-    /* TODO see where this colour is used and update it for the Theme Provider. */
+    background-color: ${(props) => props.theme.colors.global.borderPrimary};
+    transition: all 100ms linear;
   }
 `;
 

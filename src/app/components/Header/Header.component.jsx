@@ -1,7 +1,6 @@
 // Import: Packages
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ReactModal from "react-modal";
 
 // Import: Utils
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
@@ -20,6 +19,7 @@ import {
   LogoLink,
   MenuContainer,
   ModalTopWrapper,
+  StyledModal,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -93,7 +93,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           </UserContainer>
         </Wrapper>
 
-        <ReactModal
+        <StyledModal
           ariaHideApp={false}
           className="Modal"
           closeTimeoutMS={100}
@@ -192,7 +192,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
               }
             />
           </ContentWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );

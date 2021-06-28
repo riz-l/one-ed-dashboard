@@ -4,7 +4,12 @@ import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
 // Import: Elements
-import { Container, FormWrapper, Header } from "./AddAlert.elements";
+import {
+  Container,
+  FormWrapper,
+  Header,
+  StyledModal,
+} from "./AddAlert.elements";
 import "./AddAlert.styles.css";
 
 // Import: Components, subPages
@@ -42,7 +47,7 @@ export default function AddAlert() {
           text="Add Alert"
         />
 
-        <ReactModal
+        <StyledModal
           isOpen={isModalOpen}
           contentLabel="AddAlert"
           onRequestClose={closeModal}
@@ -306,7 +311,7 @@ export default function AddAlert() {
               </Grid>
             </Form>
           </FormWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );
