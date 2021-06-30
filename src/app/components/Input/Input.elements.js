@@ -42,6 +42,7 @@ export const Label = styled.label`
 export const InputField = styled.input`
   -webkit-appearance: none;
   appearance: none;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   border: 2px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   color: ${(props) => props.theme.colors.global.textPrimary};

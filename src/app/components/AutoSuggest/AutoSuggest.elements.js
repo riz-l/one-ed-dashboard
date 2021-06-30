@@ -24,6 +24,7 @@ export const Container = styled.div`
     font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
     font-weight: 400;
+    background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   }
 
   & .react-autosuggest__container {

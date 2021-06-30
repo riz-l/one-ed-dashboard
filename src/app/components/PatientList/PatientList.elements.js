@@ -110,6 +110,7 @@ export const Table = styled.table`
   }
 
   & td {
+    /*Text color is defined in the patientItem component. This is just a backup */
     color: ${(props) => props.theme.colors.global.textPrimary};
     padding: 12px 15px;
     transition: all 100ms linear;
@@ -126,7 +127,9 @@ export const THeading = styled.th`
     isPatientList
       ? (props) => props.theme.colors.patientList.header
       : (props) => props.theme.colors.incomingPatientsList.header};
-  color: ${(props) => props.theme.colors.global.backgroundPrimary};
+
+  color: ${(props) => props.theme.colors.patientList.whiteText};
+
   padding: 12px 15px;
   transition: all 100ms linear;
   width: 100%;

@@ -27,12 +27,14 @@ export const lightTheme = {
     },
     patientList: {
       header: "#4d5e80",
-      rowOdd: "#e6e9ef",
+      whiteText: "#ffffff",
+      rowEven: "#e6e9ef",
       rowHover: "#6a7ca0",
     },
     incomingPatientsList: {
       header: "#008ba3",
-      rowOdd: "#deedf2",
+      blackText: "#000000",
+      rowEven: "#deedf2",
       rowHover: "#509fb9",
     },
     reportEntry: {

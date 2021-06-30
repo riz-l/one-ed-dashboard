@@ -217,27 +217,55 @@ Example of a lightTheme.js file:
 ```
 // Theme: lightTheme
 export const lightTheme = {
-colors: {
-global: {
-backgroundPrimary: "#ffffff",
-backgroundSecondary: "#f7f8fa",
-borderPrimary: "#edeff2",
-textPrimary: "#4d5e80",
-textSecondary: "#6b7a99",
-icon: "#c3cad9",
-iconActive: "#6b7a99",
-},
-patientList: {
-header: "#4d5e80",
-rowOdd: "#e6e9ef",
-rowHover: "#6a7ca0",
-},
-incomingPatientsList: {
-header: "#008ba3",
-rowOdd: "#deedf2",
-rowHover: "#509fb9",
-},
-},
+  colors: {
+    global: {
+      backgroundPrimary: "#ffffff",
+      backgroundSecondary: "#f7f8fa",
+      borderPrimary: "#edeff2",
+      borderSecondary: "#dcdfe5",
+      textPrimary: "#4d5e80",
+      textSecondary: "#6b7a99",
+      icon: "#c3cad9",
+      iconActive: "#6b7a99",
+    },
+    formComponents: {
+      inputBoxHover: "#7cf0f4",
+      inputBoxFocus: "#a1f4f7",
+      inputBoxBorderFocus: "#bfbfc5",
+      tickBoxBorder: "#6b7a99",
+      tickBoxChecked: "#008ba3",
+      tickBoxCheckedHover: "#00687a",
+      tickBoxUnchecked: "#edeff2",
+      tickBoxUncheckedHover: "#c3cad9",
+      tickBoxSVG: "#f1f1f1",
+      indicatorGreen: "#74e660",
+      indicatorAmber: "#f3af4a",
+      indicatorRed: "#ee482a",
+    },
+    patientList: {
+      header: "#4d5e80",
+      whiteText: "#ffffff",
+      rowEven: "#e6e9ef",
+      rowHover: "#6a7ca0",
+    },
+    incomingPatientsList: {
+      header: "#008ba3",
+      blackText: "#000000",
+      rowEven: "#deedf2",
+      rowHover: "#509fb9",
+    },
+    reportEntry: {
+      alerts: "#ff6347",
+      allergies: "#ffaf85",
+      complaint: "#5398be",
+      complications: "#9bc53d",
+      diagnosis: "#ba2c73",
+      findings: "#1b998b",
+      procedures: "#585481",
+      symptoms: "#2978a0",
+      noThemeEntered: "#3a3a40",
+    },
+  },
 };
 ```
 
@@ -288,18 +316,36 @@ Note how the ${} (which shows the codes inside is JavaScript and not CSS) is not
 
 Note: There seem to be issues using the theme provider path inside of a string in a ternary operator. Workaround is to split the attributes out so it ends up beiang like example 2 above as the example below won't work.
 e.g
-border: ${(propName) => propName ? "1px solid green" : "1px solid ${(props) => props.theme.colors.global.borderPrimary}"};
+`border: ${(propName) => propName ? "1px solid green" : "1px solid ${(props) => props.theme.colors.global.borderPrimary}"};`
 
 Replacing the Arrow function `=>` with the traditional JavaScript function as shown below will allow the theme provider to be used.
 
+```
 background-color: ${({ patient, patientID, patientList }) =>
 patientList &&
 patient === patientID &&
 function (props) {
 return props.theme.colors.formComponents.tickBoxCheckedHover;
 }};
+```
 
 CSS files cannot accept JavaScript. To use a theme provider the colours must be defined in the elements files.
+To do this:
+
+1. Add `import ReactModal from "react-modal";` to the elements file of the modal
+2. Add this (or similar) to the elements file
+
+```
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)`
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
+  transition: all 100ms linear;
+`;
+```
+
+3. In the component.jsx file change `<ReactModal>` to `<StyledModal>`.
+   The modal now takes its css from the elements file instead of the css file.
 
 #### The Light/Dark mode toggle
 

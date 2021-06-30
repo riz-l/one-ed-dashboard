@@ -7,6 +7,7 @@ import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Assets
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
+import { ReactComponent as LogoWhiteSvg } from "../../../assets/img/logo/logoWhite.svg";
 import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
 import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.svg";
 
@@ -39,6 +40,13 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
     }
   });
 
+  // Redux: useSelector, useDispatch
+  const isGlobalThemeDark = useSelector((state) => {
+    if (state.globalTheme.isGlobalThemeDark) {
+      return state.globalTheme.isGlobalThemeDark;
+    }
+  });
+
   // State: Local state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -57,7 +65,8 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           <LogoContainer>
             <LogoLink to="/one-ed/ward/dashboard">
               <Logo>
-                <LogoSvg />
+                {isGlobalThemeDark ? <LogoWhiteSvg /> : <LogoSvg />}
+                {/* <LogoSvg /> */}
               </Logo>
             </LogoLink>
 
@@ -74,7 +83,6 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             <UserIcon>
               <UserSvg />
             </UserIcon>
-
             <UserDetails>
               <span>
                 {userDetails && userDetails.details.ControlActEvent

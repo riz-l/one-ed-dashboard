@@ -62,7 +62,7 @@ export const ItemWrapper = styled.div`
   align-items: center;
   background-color: ${({ isActive }) =>
     isActive
-      ? (props) => props.theme.colors.patientList.rowOdd
+      ? (props) => props.theme.colors.patientList.rowEven
       : (props) => props.theme.colors.global.backgroundSecondary};
   border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-bottom: none;
@@ -96,7 +96,7 @@ export const ItemWrapper = styled.div`
   &:hover {
     background-color: ${({ isActive }) =>
       isActive
-        ? (props) => props.theme.colors.patientList.rowOdd
+        ? (props) => props.theme.colors.patientList.rowEven
         : (props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 

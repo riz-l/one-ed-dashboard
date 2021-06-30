@@ -95,7 +95,7 @@ export const MenuContainer = styled.div`
 
   &:hover {
     & svg {
-      background-color: ${(props) => props.theme.colors.patientList.rowOdd};
+      background-color: ${(props) => props.theme.colors.patientList.rowEven};
       fill: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
@@ -115,7 +115,7 @@ export const UserContainer = styled.div`
   transition: all 100ms linear;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.patientList.rowOdd};
+    background-color: ${(props) => props.theme.colors.patientList.rowEven};
     transition: all 100ms linear;
   }
 
