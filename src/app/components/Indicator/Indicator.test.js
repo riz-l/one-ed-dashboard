@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../../app/themes/darkTheme";
 
 // Import: Component
 import Indicator from "./Indicator.component";
@@ -9,7 +13,9 @@ import Indicator from "./Indicator.component";
 it("Does the Indicator component render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <Indicator />
+      <ThemeProvider theme={darkTheme}>
+        <Indicator />
+      </ThemeProvider>
     </Router>
   );
   const component = queryByTestId("indicator");

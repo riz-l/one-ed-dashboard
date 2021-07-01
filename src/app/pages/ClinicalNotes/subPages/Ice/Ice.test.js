@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../../../../app/themes/darkTheme";
 
 // Import: SubPage
 import Ice from "./Ice.component";
@@ -9,7 +13,9 @@ import Ice from "./Ice.component";
 it("Does the Ice subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <Ice />
+      <ThemeProvider theme={darkTheme}>
+        <Ice />
+      </ThemeProvider>
     </Router>
   );
   const subPage = queryByTestId("ice");

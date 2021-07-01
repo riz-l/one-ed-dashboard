@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../themes/darkTheme";
 
 // Import: Component
 import NotesEntry from "./NotesEntry.component";
@@ -9,7 +13,9 @@ import NotesEntry from "./NotesEntry.component";
 it("Does the NotesEntry component render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <NotesEntry />
+      <ThemeProvider theme={darkTheme}>
+        <NotesEntry />
+      </ThemeProvider>
     </Router>
   );
   const component = queryByTestId("notesEntry");

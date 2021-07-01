@@ -347,6 +347,26 @@ export const StyledModal = styled(ReactModal)`
 3. In the component.jsx file change `<ReactModal>` to `<StyledModal>`.
    The modal now takes its css from the elements file instead of the css file.
 
+#### Step 6
+
+Update the test.js file.
+The test.js file must:
+
+<ul>
+<li>`import { ThemeProvider } from "styled-components/macro";`</li>
+<li>// Import: Themes
+`import { darkTheme } from "../../../../themes/darkTheme";`
+Note that the file path will be specific for each file.</li>
+<li> Wrap the component in the teheme provider. e.g.
+``` 
+      <Router>
+      <ThemeProvider theme={darkTheme}>
+        <Chart /> 
+        </ThemeProvider>
+      </Router>   
+    ```</li>
+</ul>
+
 #### The Light/Dark mode toggle
 
 Example:
@@ -378,6 +398,8 @@ Redux is a module of React. Is is used to create and manage Global State which o
 To view Global State download the Redux Development tool for your brower and then select the state tab.
 
 Global state is organised into Slices. The data is populated by APIs.
+
+<!-- TODO add info about how using redux in a component required the test.js file to be updated to enable to test to pass.  -->
 
 ### useSelector
 

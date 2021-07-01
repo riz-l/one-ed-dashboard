@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../themes/darkTheme";
 
 // Import: Component
 import SecondaryNavigation from "./SecondaryNavigation.component";
@@ -9,7 +13,9 @@ import SecondaryNavigation from "./SecondaryNavigation.component";
 it("Does the SecondaryNavigation component render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <SecondaryNavigation />
+      <ThemeProvider theme={darkTheme}>
+        <SecondaryNavigation />
+      </ThemeProvider>
     </Router>
   );
   const component = queryByTestId("secondaryNavigation");

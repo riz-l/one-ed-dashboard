@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../../../../app/themes/darkTheme";
 
 // Import: SubPage
 import Ambulance from "./Ambulance.component";
@@ -9,7 +13,9 @@ import Ambulance from "./Ambulance.component";
 it("Does the Ambulance subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <Ambulance />
+      <ThemeProvider theme={darkTheme}>
+        <Ambulance />
+      </ThemeProvider>
     </Router>
   );
   const subPage = queryByTestId("ambulance");
