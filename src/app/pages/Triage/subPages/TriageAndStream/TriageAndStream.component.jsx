@@ -237,7 +237,7 @@ export default function TriageAndStream() {
 
                 <Grid.Item>
                   <Form.Dropdown
-                    htmlFor="Triage Category"
+                    htmlFor="triageCategory"
                     labelText="Triage Category"
                     onChange={addTriageCategoryToRedux}
                     options={dropdownOptions}
