@@ -202,7 +202,7 @@ export default function App() {
 
 // Element: Container
 const Container = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   display: grid;
   grid-template-areas:
     "header header"
@@ -211,6 +211,7 @@ const Container = styled.div`
     isNavigationOpen ? "300px 1fr" : "0 1fr"};
   grid-template-rows: auto auto;
   height: 100%;
+  max-height: 100%;
   transition: all 100ms linear;
   width: 100%;
   max-width: 100vw;

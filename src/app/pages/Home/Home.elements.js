@@ -66,7 +66,7 @@ export const Wrapper = styled.div`
 export const CompanyLogo = styled.div`
   align-items: center;
   bottom: 0px;
-  color: #4d5e80;
+  color: ${(props) => props.theme.colors.global.textPrimary};
   display: flex;
   position: absolute;
 
@@ -77,7 +77,6 @@ export const CompanyLogo = styled.div`
 
   & div {
     display: flex;
-
     @media screen and (max-width: 360px) {
       flex-direction: column;
     }

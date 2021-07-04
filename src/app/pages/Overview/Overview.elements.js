@@ -9,8 +9,8 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   grid-area: content;
   height: 100%;
-  max-height: calc(100vh - 80px);
-  min-height: calc(100vh - 80px);
+  /* max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); */
   transition: all 100ms linear;
   width: 100%;
   max-width: 100%;
@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   justify-content: flex-start;
   width: 100%;
 `;

@@ -40,7 +40,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
     }
   });
 
-  // Redux: useSelector, useDispatch
+  // Redux: useSelector
   const isGlobalThemeDark = useSelector((state) => {
     if (state.globalTheme.isGlobalThemeDark) {
       return state.globalTheme.isGlobalThemeDark;
@@ -64,10 +64,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
         <Wrapper>
           <LogoContainer>
             <LogoLink to="/one-ed/ward/dashboard">
-              <Logo>
-                {isGlobalThemeDark ? <LogoWhiteSvg /> : <LogoSvg />}
-                {/* <LogoSvg /> */}
-              </Logo>
+              <Logo>{isGlobalThemeDark ? <LogoWhiteSvg /> : <LogoSvg />}</Logo>
             </LogoLink>
 
             <MenuContainer

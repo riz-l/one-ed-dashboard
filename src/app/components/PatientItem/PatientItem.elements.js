@@ -93,7 +93,7 @@ if the table data is for the selected patient then use the whiteText color is us
             }
           : incomingPatients
           ? function (props) {
-              return props.theme.colors.incomingPatientsList.blackText;
+              return props.theme.colors.global.textPrimary;
             }
           : patientList
           ? function (props) {

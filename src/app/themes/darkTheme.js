@@ -6,8 +6,8 @@ export const darkTheme = {
       backgroundSecondary: "#28282e",
       borderPrimary: "#4d5e80",
       borderSecondary: "#6b7a99",
-      textPrimary: "#ffffff",
-      textSecondary: "#f7f8fa",
+      textPrimary: "#f2f2f2",
+      textSecondary: "#e5e5e5",
       icon: "#edeff2",
       iconActive: "#f7f8fa",
     },
@@ -27,14 +27,14 @@ export const darkTheme = {
     },
     patientList: {
       header: "#4d5e80",
-      whiteText: "#ffffff",
+      whiteText: "#f2f2f2",
       rowEven: "#666666",
       rowHover: "#6a7ca0",
     },
     incomingPatientsList: {
       header: "#008ba3",
       blackText: "#000000",
-      rowEven: "#deedf2",
+      rowEven: "#66b9c7",
       rowHover: "#509fb9",
     },
     reportEntry: {
