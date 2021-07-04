@@ -28,7 +28,7 @@ export const darkTheme = {
     patientList: {
       header: "#4d5e80",
       whiteText: "#f2f2f2",
-      rowEven: "#666666",
+      rowEven: "#4a556b",
       rowHover: "#6a7ca0",
     },
     incomingPatientsList: {
