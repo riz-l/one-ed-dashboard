@@ -24,7 +24,6 @@ export const InputCheckbox = styled.input`
 export const Label = styled.label`
   align-items: center;
   display: flex;
-  /* flex-direction: column ; */
   flex-direction: ${({ left }) => (left ? "row-reverse" : "column")};
   justify-content: center;
   width: auto;
@@ -32,16 +31,19 @@ export const Label = styled.label`
 
 // Element: Text
 export const Text = styled.label`
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textPrimary};
   margin-left: ${({ left }) => (left ? "0.8rem" : "0rem")};
-  /* margin-top: ${({ under }) => (under ? "0.4rem" : "0")}; */
+  transition: all 100ms linear;
 `;
 
 // Element: VisualBox
 export const VisualBox = styled.div`
   align-items: center;
-  background: ${({ checked }) => (checked ? "#008ba3" : "#edeff2")};
-  border: 2px solid #6b7a99;
+  background: ${({ checked }) =>
+    checked
+      ? (props) => props.theme.colors.formComponents.tickBoxChecked
+      : (props) => props.theme.colors.formComponents.tickBoxUnchecked};
+  border: 2px solid ${(props) => props.theme.colors.global.textSecondary};
   border-radius: 8px;
   content: "";
   cursor: pointer;
@@ -53,19 +55,17 @@ export const VisualBox = styled.div`
   width: 50px;
 
   & svg {
-    fill: #f1f1f1;
+    fill: ${(props) => props.theme.colors.formComponents.tickBoxSVG};
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
   }
 
   &:hover {
-    background: ${({ checked }) => (checked ? "#00687a" : "#c3cad9")};
+    background: ${({ checked }) =>
+      checked
+        ? (props) => props.theme.colors.formComponents.tickBoxCheckedHover
+        : (props) => props.theme.colors.formComponents.tickBoxUncheckedHover};
     transition: all 100ms linear;
-
-    & svg {
-      fill: #ffffff;
-      transition: all 100ms linear;
-    }
   }
 `;

@@ -19,7 +19,6 @@ export const Checkbox = React.forwardRef((props, ref) => {
     <>
       <Container data-testid={"checkbox"} margin={props.margin}>
         <Label htmlFor={props.htmlFor} left={props.left}>
-          {/* <Text under={props.under}>{props.text}</Text> */}
           <Text left={props.left}>{props.text} </Text>
 
           <VisualBox checked={props.checked} left={props.left}>

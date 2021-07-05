@@ -11,6 +11,7 @@ import {
 // Import: Assets
 import DedalusLogo from "../../../assets/img/logo/dedalusLogo.png";
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
+import { ReactComponent as LogoWhiteSvg } from "../../../assets/img/logo/logoWhite.svg";
 
 // Import: Elements
 import { CompanyLogo, Container, Logo, Wrapper } from "./Login.elements";
@@ -23,6 +24,12 @@ export default function Login(props) {
   // Redux: useSelector, useDispatch
   const token = useSelector((state) => state.userDetails.token);
   const dispatch = useDispatch();
+
+  const isGlobalThemeDark = useSelector((state) => {
+    if (state.globalTheme.isGlobalThemeDark) {
+      return state.globalTheme.isGlobalThemeDark;
+    }
+  });
 
   // Ref: Used for login form
   const usernameInputRef = useRef();
@@ -64,11 +71,13 @@ export default function Login(props) {
     <>
       <Container data-testid={"login"}>
         <Wrapper>
-          <Logo>
-            <LogoSvg />
-          </Logo>
+          <Logo>{isGlobalThemeDark ? <LogoWhiteSvg /> : <LogoSvg />}</Logo>
 
-          {/* TODO This redirects to Unauthorized if user is not logged in. Remove when no longer requried */}
+          {/* Below is a link to the unauthorised page. Uncomment if needed for testing. */}
+          {/* <p>
+            <Link to="/unauthorized">unauthorized test page</Link>
+          </p> */}
+
           <p>
             <Link to="/one-ed/ward/dashboard">View Dashboard</Link>
           </p>

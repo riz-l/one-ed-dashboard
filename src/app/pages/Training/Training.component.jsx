@@ -73,9 +73,26 @@ export default function Training() {
                         <Grid.Item>
                           <Form.Checkbox
                             checked={false}
-                            htmlFor="componentCheckbox"
-                            text="Component: Checkbox"
-                            under={false}
+                            htmlFor="componentCheckbox1"
+                            left
+                            text="Component: Checkbox 1"
+                          />
+                        </Grid.Item>
+
+                        <Grid.Item horizontal>
+                          <Form.Checkbox
+                            checked={true}
+                            htmlFor="checkbox2"
+                            left={false}
+                            margin="0rem 0rem 0rem 0rem"
+                            text="Checkbox 2"
+                          />
+                          <Form.Checkbox
+                            checked={true}
+                            htmlFor="checkbox3"
+                            left={false}
+                            margin="0rem 0rem 0rem 1rem"
+                            text="Checkbox 3"
                           />
                         </Grid.Item>
 
@@ -178,6 +195,13 @@ export default function Training() {
                             htmlFor="componentInputTel"
                             labelText="Component: Input (tel)"
                             type="tel"
+                          />
+                        </Grid.Item>
+                        <Grid.Item>
+                          <Form.Input
+                            htmlFor="componentInputSubmit"
+                            labelText="Component: Input (submit)"
+                            type="submit"
                           />
                         </Grid.Item>
                       </Grid.Column>

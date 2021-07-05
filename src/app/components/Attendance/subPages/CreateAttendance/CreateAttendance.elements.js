@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 // Element: Wrapper
 export const Wrapper = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   height: 100%;
   width: 100%;
 `;

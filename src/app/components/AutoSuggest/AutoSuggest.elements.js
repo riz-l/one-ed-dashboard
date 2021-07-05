@@ -24,6 +24,7 @@ export const Container = styled.div`
     font-family: "PoppinsRegular", sans-serif;
     font-size: 1rem;
     font-weight: 400;
+    background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   }
 
   & .react-autosuggest__container {
@@ -33,9 +34,9 @@ export const Container = styled.div`
   & .react-autosuggest__input {
     appearance: none;
     -webkit-appearance: none;
-    border: 2px solid #edeff2;
+    border: 2px solid ${(props) => props.theme.colors.global.borderPrimary};
     border-radius: 8px;
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
     height: 2rem;
     padding: 0.4rem 1rem;
     transition: all 100ms linear;
@@ -71,13 +72,15 @@ export const Container = styled.div`
     }
 
     &:hover {
-      box-shadow: 0 0 5px #7cf0f4;
+      box-shadow: 0 0 5px
+        ${(props) => props.theme.colors.formComponents.inputBoxHover};
       transition: all 100ms linear;
     }
 
     &:focus {
-      border: 2px solid #dcdfe5;
-      box-shadow: 0 0 5px #a1f4f7;
+      border: 2px solid
+        ${(props) => props.theme.colors.formComponents.inputBoxBorderFocus};
+      box-shadow: 0 0 5px #${(props) => props.theme.colors.formComponents.inputBoxFocus};
       outline: none !important;
       transition: all 100ms linear;
     }
@@ -92,10 +95,10 @@ export const Container = styled.div`
   }
 
   & .react-autosuggest__suggestions-container--open {
-    background-color: #ffffff;
-    border: 1px solid #dcdfe5;
+    background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+    border: 1px solid ${(props) => props.theme.colors.global.borderSecondary};
     border-radius: 8px;
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     display: block;
     font-family: "PoppinsRegular", sans-serif;
     font-size: 0.8rem;
@@ -104,7 +107,7 @@ export const Container = styled.div`
     overflow-y: auto;
     position: absolute;
     top: 3rem;
-    /* width: 280px; */
+    transition: all 100ms linear;
     width: 250px;
     z-index: 2;
   }
@@ -119,20 +122,21 @@ export const Container = styled.div`
     transition: all 100ms linear;
 
     &:hover {
-      background-color: #edeff2;
-      color: #4d5e80;
+      background-color: ${(props) => props.theme.colors.global.borderPrimary};
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
 
   & .react-autosuggest__suggestion--highlighted {
-    background-color: #ddd;
+    background-color: ${(props) => props.theme.colors.global.borderPrimary};
+    transition: all 100ms linear;
   }
 `;
 
 // Element: Label
 export const Label = styled.label`
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textSecondary};
   ${({ left }) =>
     left
       ? css`
@@ -141,6 +145,7 @@ export const Label = styled.label`
       : css`
           margin-bottom: 8px;
         `}
+  transition: all 100ms linear;
 `;
 
 // Element: Dropdown

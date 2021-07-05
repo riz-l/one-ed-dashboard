@@ -35,7 +35,7 @@ export const IconContainer = styled.div`
 
 // Element: Indicator
 export const Indicator = styled.div`
-  background-color: tomato;
+  background-color: ${(props) => props.theme.colors.reportEntry.alerts};
   border-radius: 80%;
   content: "";
   height: 10px;
@@ -43,13 +43,14 @@ export const Indicator = styled.div`
   position: absolute;
   right: -4px;
   top: 2px;
+  transition: all 100ms linear;
   visibility: ${({ isRed }) => (isRed ? "1" : "0")};
   width: 10px;
 `;
 
 // Element: TextContainer
 export const TextContainer = styled.span`
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textSecondary};
   font-family: "PoppinsMedium", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
@@ -59,8 +60,11 @@ export const TextContainer = styled.span`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#f7f8fa")};
-  border: 1px solid #edeff2;
+  background-color: ${({ isActive }) =>
+    isActive
+      ? (props) => props.theme.colors.patientList.rowEven
+      : (props) => props.theme.colors.global.backgroundSecondary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-bottom: none;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -74,26 +78,43 @@ export const ItemWrapper = styled.div`
   min-width: 100px;
 
   & ${IconContainer} {
-    fill: ${({ isActive }) => (isActive ? "#6b7a99" : "#c3cad9")};
+    fill: ${({ isActive }) =>
+      isActive
+        ? (props) => props.theme.colors.global.iconActive
+        : (props) => props.theme.colors.global.icon};
+    transition: all 100ms linear;
   }
 
   & ${TextContainer} {
-    color: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+    color: ${({ isActive }) =>
+      isActive
+        ? (props) => props.theme.colors.global.textPrimary
+        : (props) => props.theme.colors.global.textSecondary};
+    transition: all 100ms linear;
   }
 
   &:hover {
-    background-color: ${({ isActive }) => (isActive ? "#e6e9ef" : "#eef0f4")};
+    background-color: ${({ isActive }) =>
+      isActive
+        ? (props) => props.theme.colors.patientList.rowEven
+        : (props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 
     & ${IconContainer} {
       & svg {
-        fill: ${({ isActive }) => (isActive ? "#6b7a99" : "#6b7a99")};
+        fill: ${({ isActive }) =>
+          isActive
+            ? (props) => props.theme.colors.global.iconActive
+            : (props) => props.theme.colors.global.iconActive};
         transition: all 100ms linear;
       }
     }
 
     & ${TextContainer} {
-      color: ${({ isActive }) => (isActive ? "#4d5e80" : "#4d5e80")};
+      color: ${({ isActive }) =>
+        isActive
+          ? (props) => props.theme.colors.global.textPrimary
+          : (props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }

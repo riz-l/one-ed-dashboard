@@ -11,11 +11,16 @@ export const StyledButton = styled.button`
   align-items: center;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #f7f8fa;
-  border: ${({ borderColor }) =>
-    borderColor ? `1px solid ${borderColor}` : "1px solid #edeff2"};
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ borderColor }) =>
+    borderColor
+      ? borderColor
+      : (props) => props.theme.colors.global.borderPrimary};
+
   border-radius: 8px;
-  color: #6b7a99;
+  color: ${(props) => props.theme.colors.global.textSecondary};
   cursor: pointer;
   display: flex;
   font-family: "PoppinsRegular", sans-serif;
@@ -27,7 +32,7 @@ export const StyledButton = styled.button`
   white-space: nowrap;
 
   & svg {
-    fill: #c3cad9;
+    fill: ${(props) => props.theme.colors.global.icon};
     height: 20px;
     max-height: 20px;
     margin-right: 0.4rem;
@@ -36,12 +41,12 @@ export const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: #eef0f4;
-    color: #4d5e80;
+    background-color: ${(props) => props.theme.colors.global.borderPrimary};
+    color: ${(props) => props.theme.colors.global.textPrimary};
     transition: all 100ms linear;
 
     & svg {
-      fill: #6b7a99;
+      fill: ${(props) => props.theme.colors.global.iconActive};
       transition: all 100ms linear;
     }
   }

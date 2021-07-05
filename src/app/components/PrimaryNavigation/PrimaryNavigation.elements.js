@@ -14,10 +14,12 @@ export const Container = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   padding: ${({ padding }) => padding && padding};
-  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-color: ${(props) => props.theme.colors.global.icon},
+    ${(props) => props.theme.colors.global.borderPrimary};
   scrollbar-width: thin;
   width: 100%;
   max-width: 100%;
+  transition: all 100ms linear;
   z-index: 4;
 `;
 
@@ -50,7 +52,10 @@ export const SaveContainer = styled.div`
   max-width: 100%;
 
   & svg {
-    fill: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+    fill: ${({ isActive }) =>
+      isActive
+        ? (props) => props.theme.colors.global.textPrimary
+        : (props) => props.theme.colors.global.iconActive};
     height: 18px;
     margin-right: 0.4rem;
     transition: all 100ms linear;
@@ -59,7 +64,7 @@ export const SaveContainer = styled.div`
 
   &:hover {
     & svg {
-      fill: #4d5e80;
+      fill: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
@@ -68,8 +73,11 @@ export const SaveContainer = styled.div`
 // Element: ItemWrapper
 export const ItemWrapper = styled.div`
   align-items: center;
-  border-bottom: ${({ isActive }) =>
-    isActive ? "2px solid #008ba3" : "2px solid #f7f8fa"};
+  border-bottom: 2px solid;
+  border-color: ${({ isActive }) =>
+    isActive
+      ? (props) => props.theme.colors.incomingPatientsList.header
+      : (props) => props.theme.colors.global.backgroundSecondary};
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -81,12 +89,20 @@ export const ItemWrapper = styled.div`
   width: 100%;
 
   & ${TextContainer} {
-    color: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+    color: ${({ isActive }) =>
+      isActive
+        ? (props) => props.theme.colors.global.textPrimary
+        : (props) => props.theme.colors.global.textSecondary};
+    transition: all 100ms linear;
   }
 
   & ${SaveContainer} {
     & svg {
-      fill: ${({ isActive }) => (isActive ? "#4d5e80" : "#6b7a99")};
+      fill: ${({ isActive }) =>
+        isActive
+          ? (props) => props.theme.colors.global.textPrimary
+          : (props) => props.theme.colors.global.textSecondary};
+      transition: all 100ms linear;
     }
   }
 
@@ -94,7 +110,7 @@ export const ItemWrapper = styled.div`
     transition: all 100ms linear;
 
     & ${TextContainer} {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }

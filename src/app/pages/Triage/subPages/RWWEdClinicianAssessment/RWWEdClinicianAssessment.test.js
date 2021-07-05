@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../../../../app/themes/darkTheme";
 
 // Import: SubPage
 import RWWEdClinicianAssessment from "./RWWEdClinicianAssessment.component";
@@ -9,7 +13,9 @@ import RWWEdClinicianAssessment from "./RWWEdClinicianAssessment.component";
 it("Does the RWWEdClinicianAssessment subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <RWWEdClinicianAssessment />
+      <ThemeProvider theme={darkTheme}>
+        <RWWEdClinicianAssessment />
+      </ThemeProvider>
     </Router>
   );
   const subPage = queryByTestId("rwwEdClinicianAssessment");

@@ -1,5 +1,6 @@
 // Import: Packages
 import styled from "styled-components/macro";
+import ReactModal from "react-modal";
 
 // Element: Container
 export const Container = styled.div`
@@ -22,4 +23,11 @@ export const FormWrapper = styled.div`
 export const FormHeader = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)`
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
+  transition: all 100ms linear;
 `;

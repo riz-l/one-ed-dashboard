@@ -1,9 +1,13 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 
 // Import: Elements
-import { Container, FormWrapper, Header } from "./Attendance.elements";
+import {
+  Container,
+  FormWrapper,
+  Header,
+  StyledModal,
+} from "./Attendance.elements";
 import "./Attendance.styles.css";
 
 // Import: Components, subPages
@@ -40,7 +44,7 @@ export default function Attendance() {
       <Container data-testid={"attendance"}>
         <Button onClick={openModal} text="Attendance" />
 
-        <ReactModal
+        <StyledModal
           ariaHideApp={false}
           className="Modal"
           closeTimeoutMS={100}
@@ -86,7 +90,7 @@ export default function Attendance() {
               }
             />
           </FormWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );

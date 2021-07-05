@@ -1,10 +1,14 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
 // Import: Elements
-import { Container, FormWrapper, Header } from "./AddAllergy.elements";
+import {
+  Container,
+  FormWrapper,
+  Header,
+  StyledModal,
+} from "./AddAllergy.elements";
 import "./AddAllergy.styles.css";
 
 // Import: Components, subPages
@@ -42,7 +46,7 @@ export default function AddAllergy() {
           text="Add Allergy"
         />
 
-        <ReactModal
+        <StyledModal
           isOpen={isModalOpen}
           contentLabel="AddAllergy"
           onRequestClose={closeModal}
@@ -110,6 +114,7 @@ export default function AddAllergy() {
                   <Grid.Item>
                     <Form.Checkbox
                       htmlFor="mhraFormCompleted"
+                      left
                       text="MHRA form completed"
                     />
                   </Grid.Item>
@@ -122,6 +127,7 @@ export default function AddAllergy() {
                   <Grid.Item>
                     <Form.Checkbox
                       htmlFor="isSignificant"
+                      left
                       text="Is significant"
                     />
                   </Grid.Item>
@@ -187,7 +193,7 @@ export default function AddAllergy() {
               </Grid>
             </Form>
           </FormWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );

@@ -12,7 +12,7 @@ export const Button = styled.span``;
 // Styled: Label
 export const Label = styled.label`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.global.highlightPrimary};
+  background-color: ${(props) => props.theme.colors.global.textPrimary};
   border-radius: 100px;
   cursor: pointer;
   display: flex;
@@ -23,20 +23,19 @@ export const Label = styled.label`
   width: 100px;
 
   & ${Button} {
-    background-color: #ffffff;
-    background-color: ${({ isGlobalThemeDark, props }) =>
+    background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+    /* background-color: ${({ isGlobalThemeDark }) =>
       isGlobalThemeDark
-        ? (props) => props.theme.colors.global.highlightPrimary
-        : "#ffffff"};
-    border-radius: 45px;
-    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+        ? (props) => props.theme.colors.global.textPrimary
+        : (props) => props.theme.colors.global.backgroundPrimary}; */
+    border-radius: 46px;
     content: "";
-    height: 45px;
+    height: 46px;
     left: 2px;
     position: absolute;
     top: 2px;
     transition: 0.2s;
-    width: 45px;
+    width: 46px;
   }
 
   &:active ${Button} {
