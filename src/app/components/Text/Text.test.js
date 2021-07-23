@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../themes/darkTheme";
 
 // Import: Component
 import Text from "./Text.component";
@@ -9,7 +13,9 @@ import Text from "./Text.component";
 it("Does the Text component render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <Text />
+      <ThemeProvider theme={darkTheme}>
+        <Text />
+      </ThemeProvider>
     </Router>
   );
   const component = queryByTestId("text");

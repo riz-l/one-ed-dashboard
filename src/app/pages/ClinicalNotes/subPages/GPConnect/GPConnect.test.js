@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../../../../app/themes/darkTheme";
 
 // Import: SubPage
 import GPConnect from "./GPConnect.component";
@@ -9,7 +13,9 @@ import GPConnect from "./GPConnect.component";
 it("Does the GPConnect subPage render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <GPConnect />
+      <ThemeProvider theme={darkTheme}>
+        <GPConnect />
+      </ThemeProvider>
     </Router>
   );
   const subPage = queryByTestId("gpConnect");

@@ -9,7 +9,13 @@ import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLette
 import { Container, Wrapper } from "./Alerts.elements";
 
 // Import: Components
-import { Display, Grid, ReportEntry, Text } from "../../../../components";
+import {
+  AddAlert,
+  Display,
+  Grid,
+  ReportEntry,
+  Text,
+} from "../../../../components";
 
 // SubPage: Alerts
 export default function Alerts() {
@@ -126,10 +132,12 @@ export default function Alerts() {
     <>
       <Container data-testid={"alerts"}>
         <Wrapper>
-          <Text as="h2" heading>
-            Alerts
-          </Text>
-
+          <div style={{ display: "flex", flexDirection: "horizontal" }}>
+            <Text as="h2" heading>
+              Alerts
+            </Text>
+            <AddAlert />
+          </div>
           {patientAlerts && patientAlerts.length > 0 ? (
             alertsRender
           ) : (

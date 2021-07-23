@@ -1,5 +1,6 @@
 // Import: Packages
 import styled from "styled-components/macro";
+import ReactModal from "react-modal";
 
 // Element: Container
 export const Container = styled.div`
@@ -21,8 +22,8 @@ export const FormWrapper = styled.div`
 // Element: Header
 export const Header = styled.div`
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -33,7 +34,7 @@ export const Header = styled.div`
   width: 100%;
 
   & svg {
-    fill: #6b7a99;
+    fill: ${(props) => props.theme.colors.global.iconActive};
     height: 35px;
     margin-right: 0.8rem;
     transition: all 100ms linear;
@@ -41,7 +42,7 @@ export const Header = styled.div`
   }
 
   & h3 {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     font-family: "PoppinsMedium", sans-serif;
     font-size: 1.4rem;
     font-weight: 500;
@@ -49,17 +50,24 @@ export const Header = styled.div`
   }
 
   &:hover {
-    box-shadow: 0 0 20px #edeff2;
+    box-shadow: 0 0 20px ${(props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 
     & svg {
-      fill: #4d5e80;
+      fill: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
 
     & h3 {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
+`;
+
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)`
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
+  transition: all 100ms linear;
 `;

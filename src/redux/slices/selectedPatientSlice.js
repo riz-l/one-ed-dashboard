@@ -21,7 +21,7 @@ export const getSelectedPatient = createAsyncThunk(
 
 // AsyncThunk: getPatientDemographics
 export const getPatientDemographics = createAsyncThunk(
-  "patientList/getPatientDemographics",
+  "selectedPatient/getPatientDemographics",
   async (arg, { getState }) => {
     const state = getState();
     const patient = state.selectedPatient.patient;
@@ -50,7 +50,7 @@ export const getPatientDemographics = createAsyncThunk(
 
 // AsyncThunk: getPatientAllergies
 export const getPatientAllergies = createAsyncThunk(
-  "patientList/getPatientAllergies",
+  "selectedPatient/getPatientAllergies",
   async (arg, { getState }) => {
     const state = getState();
     const patient = state.selectedPatient.patient;
@@ -79,7 +79,7 @@ export const getPatientAllergies = createAsyncThunk(
 
 // AsyncThunk: getPatientAlerts
 export const getPatientAlerts = createAsyncThunk(
-  "patientList/getPatientAlerts",
+  "selectedPatient/getPatientAlerts",
   async (arg, { getState }) => {
     const state = getState();
     const patient = state.selectedPatient.patient;
@@ -108,7 +108,7 @@ export const getPatientAlerts = createAsyncThunk(
 
 // AsyncThunk: getPatientConditions
 export const getPatientConditions = createAsyncThunk(
-  "patientList/getPatientConditions",
+  "selectedPatient/getPatientConditions",
   async (arg, { getState }) => {
     const state = getState();
     const patient = state.selectedPatient.patient;
@@ -120,6 +120,35 @@ export const getPatientConditions = createAsyncThunk(
       var config = {
         method: "get",
         url: `${apiUrl}/GetCondition/${patient}`,
+        headers: {
+          accept: "application/json",
+          "Authorization-Token": token,
+        },
+      };
+
+      const response = await axios(config);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+// AsyncThunk: getPatientProcedures
+export const getPatientProcedures = createAsyncThunk(
+  "selectedPatient/getPatientProcedures",
+  async (arg, { getState }) => {
+    const state = getState();
+    const patient = state.selectedPatient.patient;
+    const token = state.userDetails.token;
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      var config = {
+        method: "get",
+        url: `${apiUrl}/GetProcedures/${patient}`,
         headers: {
           accept: "application/json",
           "Authorization-Token": token,
@@ -150,6 +179,8 @@ export const selectedPatientSlice = createSlice({
     alertsStatus: null,
     patientConditions: [],
     conditionsStatus: null,
+    patientProcedures: [],
+    proceduresStatus: null,
   },
   reducers: {
     selectPatient: (state, { payload }) => {
@@ -162,6 +193,7 @@ export const selectedPatientSlice = createSlice({
       state.patientAllergies = [];
       state.patientAlerts = [];
       state.patientConditions = [];
+      state.patientProcedures = [];
     },
     clearSelectedPatientSlice: (state, { payload }) => {
       state.patient = "";
@@ -175,6 +207,8 @@ export const selectedPatientSlice = createSlice({
       state.alertsStatus = null;
       state.patientConditions = [];
       state.conditionsStatus = null;
+      state.patientProcedures = [];
+      state.proceduresStatus = null;
     },
   },
   extraReducers: {
@@ -247,6 +281,20 @@ export const selectedPatientSlice = createSlice({
     },
     [getPatientConditions.rejected]: (state, action) => {
       state.conditionsStatus = "failed";
+    },
+    [getPatientProcedures.pending]: (state, action) => {
+      state.proceduresStatus = "loading";
+    },
+    [getPatientProcedures.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        state.patientProcedures = payload;
+        state.proceduresStatus = "success";
+      } else {
+        state.proceduresStatus = "failed";
+      }
+    },
+    [getPatientProcedures.rejected]: (state, action) => {
+      state.proceduresStatus = "failed";
     },
   },
 });

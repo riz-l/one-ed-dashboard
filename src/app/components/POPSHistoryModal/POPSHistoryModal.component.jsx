@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getObsQuestionnaireResponseDetail } from "../../../redux/slices/clinicalNotesSlice";
 import moment from "moment";
-import ReactModal from "react-modal";
 
 // Import: Icons
 import { MdKeyboardArrowRight as ArrowIcon } from "react-icons/md";
@@ -24,6 +23,7 @@ import {
   Left,
   Right,
   Status,
+  StyledModal,
   Wrapper,
 } from "./POPSHistoryModal.elements";
 import "./POPSHistoryModal.styles.css";
@@ -119,7 +119,7 @@ export default function POPSHistoryModal({ dateTime, id, user, status }) {
         </EntryContainer>
       </Wrapper>
 
-      <ReactModal
+      <StyledModal
         ariaHideApp={false}
         className="Modal"
         closeTimeoutMS={100}
@@ -200,7 +200,7 @@ export default function POPSHistoryModal({ dateTime, id, user, status }) {
             ) : null
           }
         />
-      </ReactModal>
+      </StyledModal>
     </Container>
   );
 }

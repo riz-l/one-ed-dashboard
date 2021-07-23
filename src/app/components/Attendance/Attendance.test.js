@@ -1,6 +1,10 @@
 // Import: Packages
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components/macro";
+
+// Import: Themes
+import { darkTheme } from "../../themes/darkTheme";
 
 // Import: Component
 import Attendance from "./Attendance.component";
@@ -9,7 +13,9 @@ import Attendance from "./Attendance.component";
 it("Does the Attendance component render?", () => {
   const { queryByTestId } = render(
     <Router>
-      <Attendance />
+      <ThemeProvider theme={darkTheme}>
+        <Attendance />
+      </ThemeProvider>
     </Router>
   );
   const component = queryByTestId("attendance");

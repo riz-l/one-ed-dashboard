@@ -187,7 +187,8 @@
 }
 
 body {
-  background-color: #f7f8fa;
+  /* background-color: #f7f8fa; */
+  /* background-color: brown; */
   font-family: "PoppinsRegular", sans-serif;
   height: auto;
   min-height: 100vh;

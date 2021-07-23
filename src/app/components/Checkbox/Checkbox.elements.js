@@ -5,23 +5,12 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 0.8rem;
+  margin: ${({ margin }) =>
+    margin &&
+    margin}; /* At the bottom on purpose to override previous stylings if margin is passed as a prop */
 `;
-
-// Element: Wrapper
-export const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: ${({ under }) => (under ? "column" : "row")};
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-`;
-
-// Element: Label
-export const Label = styled.label``;
-
 // Element: InputCheckbox
 export const InputCheckbox = styled.input`
   -webkit-appearance: none;
@@ -31,41 +20,52 @@ export const InputCheckbox = styled.input`
   visibility: hidden;
 `;
 
+// Element: Label
+export const Label = styled.label`
+  align-items: center;
+  display: flex;
+  flex-direction: ${({ left }) => (left ? "row-reverse" : "column")};
+  justify-content: center;
+  width: auto;
+`;
+
 // Element: Text
 export const Text = styled.label`
-  color: #6b7a99;
-  margin-left: ${({ under }) => (under ? "0" : "0.8rem")};
-  margin-top: ${({ under }) => (under ? "0.4rem" : "0")};
+  color: ${(props) => props.theme.colors.global.textPrimary};
+  margin-left: ${({ left }) => (left ? "0.8rem" : "0rem")};
+  transition: all 100ms linear;
 `;
 
 // Element: VisualBox
 export const VisualBox = styled.div`
   align-items: center;
-  background: ${({ checked }) => (checked ? "#008ba3" : "#edeff2")};
+  background: ${({ checked }) =>
+    checked
+      ? (props) => props.theme.colors.formComponents.tickBoxChecked
+      : (props) => props.theme.colors.formComponents.tickBoxUnchecked};
+  border: 2px solid ${(props) => props.theme.colors.global.textSecondary};
   border-radius: 8px;
   content: "";
   cursor: pointer;
   display: flex;
   height: 50px;
   justify-content: center;
-  margin-top: 0.8rem;
+  margin-top: ${({ left }) => (left ? "0rem" : "0.8rem")};
   transition: all 100ms linear;
   width: 50px;
 
   & svg {
-    fill: ${({ checked }) => (checked ? "#f1f1f1" : "#6b7a99")};
+    fill: ${(props) => props.theme.colors.formComponents.tickBoxSVG};
     height: 30px;
     transition: all 100ms linear;
     width: 30px;
   }
 
   &:hover {
-    background: ${({ checked }) => (checked ? "#00687a" : "#c3cad9")};
+    background: ${({ checked }) =>
+      checked
+        ? (props) => props.theme.colors.formComponents.tickBoxCheckedHover
+        : (props) => props.theme.colors.formComponents.tickBoxUncheckedHover};
     transition: all 100ms linear;
-
-    & svg {
-      fill: ${({ checked }) => (checked ? "#ffffff" : "#4d5e80")};
-      transition: all 100ms linear;
-    }
   }
 `;

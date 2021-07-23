@@ -11,32 +11,31 @@ import {
   Label,
   Text,
   VisualBox,
-  Wrapper,
 } from "./Checkbox.elements";
 
 // Component: Checkbox
 export const Checkbox = React.forwardRef((props, ref) => {
   return (
-    <Container data-testid={"checkbox"}>
-      <Label htmlFor={props.htmlFor}>
-        <Wrapper under={props.under}>
-          <InputCheckbox
-            checked={props.checked}
-            id={props.htmlFor}
-            name={props.htmlFor}
-            onChange={props.onChange}
-            ref={ref}
-            type="checkbox"
-            value={props.value}
-          />
+    <>
+      <Container data-testid={"checkbox"} margin={props.margin}>
+        <Label htmlFor={props.htmlFor} left={props.left}>
+          <Text left={props.left}>{props.text} </Text>
 
-          <VisualBox checked={props.checked}>
-            <TickIcon />
+          <VisualBox checked={props.checked} left={props.left}>
+            {props.checked ? <TickIcon /> : null}
+
+            <InputCheckbox
+              checked={props.checked}
+              id={props.htmlFor}
+              name={props.htmlFor}
+              onChange={props.onChange}
+              ref={ref}
+              type="checkbox"
+              value={props.value}
+            />
           </VisualBox>
-
-          <Text under={props.under}>{props.text}</Text>
-        </Wrapper>
-      </Label>
-    </Container>
+        </Label>
+      </Container>
+    </>
   );
 });

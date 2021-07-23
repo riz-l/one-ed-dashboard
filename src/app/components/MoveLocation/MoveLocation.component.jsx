@@ -1,11 +1,15 @@
 // Import: Packages
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ReactModal from "react-modal";
 import moment from "moment";
 
 // Import: Elements
-import { Container, FormHeader, FormWrapper } from "./MoveLocation.elements";
+import {
+  Container,
+  FormHeader,
+  FormWrapper,
+  StyledModal,
+} from "./MoveLocation.elements";
 import "./MoveLocation.styles.css";
 
 // Import: Components
@@ -49,7 +53,7 @@ export default function MoveLocation() {
       <Container data-testid={"moveLocation"}>
         <Button onClick={openModal} text="Move Location" />
 
-        <ReactModal
+        <StyledModal
           ariaHideApp={false}
           className="Modal"
           closeTimeoutMS={100}
@@ -148,7 +152,7 @@ export default function MoveLocation() {
               </Grid.Column>
             </Grid>
           </FormWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );

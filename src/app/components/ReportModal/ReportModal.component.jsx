@@ -1,9 +1,14 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 
 // Import: Elements
-import { Container, Frame, Header, Window } from "./ReportModal.elements";
+import {
+  Container,
+  Frame,
+  Header,
+  StyledModal,
+  Window,
+} from "./ReportModal.elements";
 import "./ReportModal.styles.css";
 
 // Import: Components
@@ -36,7 +41,7 @@ export default function ReportModal({ patientID }) {
         />
       </Container>
 
-      <ReactModal
+      <StyledModal
         ariaHideApp={false}
         className="Modal"
         closeTimeoutMS={100}
@@ -57,7 +62,7 @@ export default function ReportModal({ patientID }) {
         <Window>
           <Frame src={`${apiUrl}/?ePRID=${patientID}`} />
         </Window>
-      </ReactModal>
+      </StyledModal>
     </>
   );
 }

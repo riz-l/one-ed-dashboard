@@ -1,6 +1,5 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 
 // Import: Icons
 import { GoAlert as AlertsIcon } from "react-icons/go";
@@ -27,6 +26,7 @@ import {
   Left,
   Right,
   Status,
+  StyledModal,
   Wrapper,
 } from "./ReportEntry.elements";
 import "./ReportEntry.styles.css";
@@ -150,7 +150,7 @@ export default function ReportEntry({
         </EntryContainer>
       </Wrapper>
 
-      <ReactModal
+      <StyledModal
         ariaHideApp={false}
         className="Modal"
         closeTimeoutMS={100}
@@ -225,7 +225,7 @@ export default function ReportEntry({
         </Header>
 
         <ReportSection content={openedModal} />
-      </ReactModal>
+      </StyledModal>
     </Container>
   );
 }

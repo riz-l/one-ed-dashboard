@@ -1,14 +1,15 @@
 // Import: Packages
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+import ReactModal from "react-modal";
 
 // Import: Definitions
 import { deviceMaxWidth } from "../../../definitions/breakPoints";
 
 // Element: Container
 export const Container = styled.header`
-  background-color: #f7f8fa;
-  border-bottom: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
+  border-bottom: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   grid-area: header;
   height: 80px;
   max-height: 80px;
@@ -16,6 +17,7 @@ export const Container = styled.header`
   -webkit-position: sticky;
   position: sticky;
   top: 0;
+  transition: all 100ms linear;
   width: 100%;
   max-width: 100vw;
   z-index: 2;
@@ -52,7 +54,11 @@ export const Logo = styled.div`
   height: 100%;
   max-height: 80px;
   justify-content: center;
-  padding: 0 2rem;
+  padding: 0 1rem 0 2rem;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 0 1rem;
+  }
 
   & svg {
     height: 40px;
@@ -61,9 +67,10 @@ export const Logo = styled.div`
   }
 
   & span {
-    color: #4d5e80;
+    color: ${(props) => props.theme.colors.global.textPrimary};
     font-size: 2rem;
     font-weight: 600;
+    transition: all 100ms linear;
   }
 `;
 
@@ -73,13 +80,13 @@ export const MenuContainer = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  margin-left: 0.8rem;
   transition: all 100ms linear;
 
   & svg {
-    background-color: #f7f8fa;
+    background-color: ${(props) =>
+      props.theme.colors.global.backgroundSecondary};
     border-radius: 8px;
-    fill: #6b7a99;
+    fill: ${(props) => props.theme.colors.global.iconActive};
     height: 45px;
     padding: 0.6rem;
     transition: all 100ms linear;
@@ -88,8 +95,8 @@ export const MenuContainer = styled.div`
 
   &:hover {
     & svg {
-      background-color: #e6e9ef;
-      fill: #4d5e80;
+      background-color: ${(props) => props.theme.colors.patientList.rowEven};
+      fill: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
   }
@@ -98,7 +105,7 @@ export const MenuContainer = styled.div`
 // Element: UserContainer
 export const UserContainer = styled.div`
   align-items: center;
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   cursor: pointer;
   display: flex;
   height: 100%;
@@ -108,8 +115,12 @@ export const UserContainer = styled.div`
   transition: all 100ms linear;
 
   &:hover {
-    background-color: #e6e9ef;
+    background-color: ${(props) => props.theme.colors.patientList.rowEven};
     transition: all 100ms linear;
+  }
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 0 1rem;
   }
 `;
 
@@ -121,13 +132,13 @@ export const UserIcon = styled.div`
   max-height: 80px;
   justify-content: center;
   margin-right: 0.8rem;
-
   @media ${deviceMaxWidth.tabletL} {
     margin-right: 0;
   }
 
   & svg {
-    fill: #c3cad9;
+    fill: ${(props) => props.theme.colors.global.icon};
+    transition: all 100ms linear;
   }
 `;
 
@@ -148,16 +159,18 @@ export const UserDetails = styled.div`
 
   & span {
     &:nth-child(1) {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       font-family: "PoppinsMedium", sans-serif;
       font-size: 1.2rem;
       font-weight: 500;
       margin-bottom: -0.2rem;
+      transition: all 100ms linear;
     }
 
     &:nth-child(2) {
-      color: #6b7a99;
+      color: ${(props) => props.theme.colors.global.textSecondary};
       font-size: 0.8rem;
+      transition: all 100ms linear;
 
       @media screen and (max-width: 400px) {
         display: none;
@@ -179,4 +192,11 @@ export const ModalTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+// Element: StyledModal
+export const StyledModal = styled(ReactModal)`
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
+  transition: all 100ms linear;
 `;

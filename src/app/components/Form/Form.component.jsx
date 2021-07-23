@@ -108,10 +108,11 @@ export const FormCheckbox = React.forwardRef((props, ref) => {
     <Checkbox
       checked={props.checked}
       htmlFor={props.htmlFor}
+      margin={props.margin}
       onChange={props.onChange}
       ref={ref}
       text={props.text}
-      under={props.under}
+      left={props.left}
       value={props.value}
     />
   );
@@ -160,7 +161,7 @@ const FormDropdown = React.forwardRef((props, ref) => {
 });
 
 // Compound Component: Indicator
-function FormIndicator({ amber, green, message, red, title }) {
+function FormIndicator({ amber, green, message, red, title, width }) {
   return (
     <Indicator
       amber={amber}
@@ -168,6 +169,7 @@ function FormIndicator({ amber, green, message, red, title }) {
       message={message}
       red={red}
       title={title}
+      width={width}
     />
   );
 }

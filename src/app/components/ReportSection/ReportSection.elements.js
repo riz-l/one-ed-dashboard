@@ -78,20 +78,22 @@ export const ContentContainer = styled.div`
 
 // Element: ContentWrapper
 export const ContentWrapper = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: ${({ secondaryNavigation }) =>
     secondaryNavigation ? "0" : "8px"};
   border-top-right-radius: 8px;
-  border: 1px solid #edeff2;
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   height: 100%;
   max-height: calc(100vh - 80px - 74px - 60px - 108px);
   min-height: calc(100vh - 80px - 74px - 60px - 108px);
   margin-bottom: 1rem;
   overflow-y: auto;
   padding: 1rem;
-  scrollbar-color: #c3cad9 #edeff2;
+  scrollbar-color: ${(props) => props.theme.colors.global.icon},
+    ${(props) => props.theme.colors.global.borderPrimary};
   scrollbar-width: thin;
+  transition: all 100ms linear;
   width: 100%;
 `;

@@ -10,10 +10,11 @@ export const Container = styled.div`
 
 // Element: Wrapper
 export const Wrapper = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
   height: 100%;
   width: 100%;
   min-width: 100%;
+  transition: all 100ms linear;
 `;
 
 // Element: Suggestions
@@ -38,7 +39,7 @@ export const IconContainer = styled.div`
   width: 100%;
 
   & svg {
-    fill: #6b7a99;
+    fill: ${(props) => props.theme.colors.global.iconActive};
     height: 40px;
     margin-bottom: 0.4rem;
     transition: all 100ms linear;
@@ -49,8 +50,8 @@ export const IconContainer = styled.div`
 // Element: Suggestion
 export const Suggestion = styled.div`
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
+  background-color: ${(props) => props.theme.colors.global.backgroundPrimary};
+  border: 1px solid ${(props) => props.theme.colors.global.borderPrimary};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -64,24 +65,24 @@ export const Suggestion = styled.div`
   width: 100%;
 
   &:hover {
-    box-shadow: 0 0 20px #edeff2;
+    box-shadow: 0 0 20px ${(props) => props.theme.colors.global.borderPrimary};
     transition: all 100ms linear;
 
     & span {
-      color: #4d5e80;
+      color: ${(props) => props.theme.colors.global.textPrimary};
       transition: all 100ms linear;
     }
 
     & ${IconContainer} {
       & svg {
-        fill: #6b7a99;
+        fill: ${(props) => props.theme.colors.global.iconActive};
         transition: all 100ms linear;
       }
     }
   }
 
   & span {
-    color: #6b7a99;
+    color: ${(props) => props.theme.colors.global.textSecondary};
     font-size: 1.2rem;
     transition: all 100ms linear;
   }

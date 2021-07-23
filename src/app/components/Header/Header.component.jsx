@@ -1,13 +1,13 @@
 // Import: Packages
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ReactModal from "react-modal";
 
 // Import: Utils
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 
 // Import: Assets
 import { ReactComponent as LogoSvg } from "../../../assets/img/logo/logoBlue.svg";
+import { ReactComponent as LogoWhiteSvg } from "../../../assets/img/logo/logoWhite.svg";
 import { ReactComponent as MenuIcon } from "../../../assets/img/icon/menu.svg";
 import { ReactComponent as UserSvg } from "../../../assets/img/icon/topbar-user.svg";
 
@@ -20,6 +20,7 @@ import {
   LogoLink,
   MenuContainer,
   ModalTopWrapper,
+  StyledModal,
   UserContainer,
   UserDetails,
   UserIcon,
@@ -36,6 +37,13 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
   const userDetails = useSelector((state) => {
     if (state.userDetails) {
       return state.userDetails;
+    }
+  });
+
+  // Redux: useSelector
+  const isGlobalThemeDark = useSelector((state) => {
+    if (state.globalTheme.isGlobalThemeDark) {
+      return state.globalTheme.isGlobalThemeDark;
     }
   });
 
@@ -56,9 +64,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
         <Wrapper>
           <LogoContainer>
             <LogoLink to="/one-ed/ward/dashboard">
-              <Logo>
-                <LogoSvg />
-              </Logo>
+              <Logo>{isGlobalThemeDark ? <LogoWhiteSvg /> : <LogoSvg />}</Logo>
             </LogoLink>
 
             <MenuContainer
@@ -74,7 +80,6 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
             <UserIcon>
               <UserSvg />
             </UserIcon>
-
             <UserDetails>
               <span>
                 {userDetails && userDetails.details.ControlActEvent
@@ -93,7 +98,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
           </UserContainer>
         </Wrapper>
 
-        <ReactModal
+        <StyledModal
           ariaHideApp={false}
           className="Modal"
           closeTimeoutMS={100}
@@ -163,7 +168,10 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
                     </Grid.Column>
 
                     <Grid.Column>
-                      {userDetails && userDetails.details.ControlActEvent ? (
+                      {userDetails &&
+                      userDetails.details.ControlActEvent &&
+                      userDetails.details.ControlActEvent.Subject.Value[0]
+                        .UserRoleProfile[0].UserSpeciality ? (
                         userDetails.details.ControlActEvent.Subject.Value[0].UserRoleProfile[0].UserSpeciality.map(
                           (item) => (
                             <Display
@@ -189,7 +197,7 @@ export default function Header({ isNavigationOpen, setIsNavigationOpen }) {
               }
             />
           </ContentWrapper>
-        </ReactModal>
+        </StyledModal>
       </Container>
     </>
   );

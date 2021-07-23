@@ -1,15 +1,19 @@
 // Import: Packages
 import styled from "styled-components/macro";
 
+// Import: Definitions
+import { deviceMaxWidth } from "../../../definitions/breakPoints";
+
 // Element: Container
 export const Container = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${(props) => props.theme.colors.global.backgroundSecondary};
   grid-area: content;
   height: 100%;
-  max-height: calc(100vh - 80px);
-  min-height: calc(100vh - 80px);
+  /* max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); */
   width: 100%;
   max-width: 100%;
+  transition: all 100ms linear;
 `;
 
 // Element: Wrapper
@@ -31,4 +35,8 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   padding: 1rem 2rem;
   width: 100%;
+
+  @media ${deviceMaxWidth.laptopL} {
+    padding: 1rem;
+  }
 `;

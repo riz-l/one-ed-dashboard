@@ -6,6 +6,7 @@ import {
   getPatientAllergies,
   getPatientConditions,
   getPatientDemographics,
+  getPatientProcedures,
 } from "../../../redux/slices/selectedPatientSlice";
 
 // Import: Assets
@@ -53,6 +54,9 @@ export default function Overview() {
   const patientConditions = useSelector(
     (state) => state.selectedPatient.patientConditions
   );
+  const patientProcedures = useSelector(
+    (state) => state.selectedPatient.patientProcedures
+  );
   const dispatch = useDispatch();
 
   // State: Local state
@@ -90,6 +94,7 @@ export default function Overview() {
       dispatch(getPatientAllergies());
       dispatch(getPatientConditions());
       dispatch(getPatientDemographics());
+      dispatch(getPatientProcedures());
     }
   }, [dispatch, patient]);
 
@@ -329,11 +334,7 @@ export default function Overview() {
                       >
                         <SecondaryNavigation.Icon
                           isRed={
-                            patientConditions &&
-                            patientConditions.length > 0 &&
-                            patientConditions.find(
-                              ({ category }) => category === "Procedures"
-                            )
+                            patientProcedures && patientProcedures.length > 0
                               ? true
                               : false
                           }

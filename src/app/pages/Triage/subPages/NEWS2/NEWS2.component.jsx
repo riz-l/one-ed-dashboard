@@ -81,6 +81,7 @@ export default function NEWS2() {
                 <Grid.Item>
                   <Form.Checkbox
                     htmlFor="supplementalOxygen"
+                    left
                     text="Supplemental Oxygen"
                   />
                 </Grid.Item>
@@ -92,7 +93,7 @@ export default function NEWS2() {
                 </Grid.Item>
 
                 <Grid.Item>
-                  <Form.Checkbox htmlFor="adultPERLA" text="Adult PERLA" />
+                  <Form.Checkbox htmlFor="adultPERLA" left text="Adult PERLA" />
                 </Grid.Item>
 
                 <Grid.Item>
@@ -107,7 +108,7 @@ export default function NEWS2() {
                   </Form.Text>
                 </Grid.Item>
 
-                {/* TODO: Need to add some alert popups */}
+                {/* TODO: Need to add some conditionally rendered indicator components. */}
                 {/* ... see OED37 for an image of how the alerts look in Lorenzo */}
               </Grid.Column>
             </Grid>

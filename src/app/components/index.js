@@ -1,3 +1,9 @@
+// EXport: AddAlert
+export { default as AddAlert } from "./AddAlert/AddAlert.component";
+
+// Export: AddAllergy
+export { default as AddAllergy } from "./AddAllergy/AddAllergy.component";
+
 // Export: Anchor
 export { default as Anchor } from "./Anchor/Anchor.component";
 
@@ -87,6 +93,9 @@ export { default as SecondaryNavigation } from "./SecondaryNavigation/SecondaryN
 
 // Export: Text
 export { default as Text } from "./Text/Text.component";
+
+// Export: ThemeToggle
+export { default as ThemeToggle } from "./ThemeToggle/ThemeToggle.component";
 
 // Export: TextArea
 export { TextArea } from "./TextArea/TextArea.component";

@@ -1,0 +1,52 @@
+// Theme: darkTheme
+export const darkTheme = {
+  colors: {
+    global: {
+      backgroundPrimary: "#393941",
+      backgroundSecondary: "#28282e",
+      borderPrimary: "#4d5e80",
+      borderSecondary: "#6b7a99",
+      textPrimary: "#f2f2f2",
+      textSecondary: "#e5e5e5",
+      icon: "#edeff2",
+      iconActive: "#f7f8fa",
+    },
+    formComponents: {
+      inputBoxHover: "#7cf0f4",
+      inputBoxFocus: "#a1f4f7",
+      inputBoxBorderFocus: "#bfbfc5",
+      tickBoxBorder: "#f7f8fa",
+      tickBoxChecked: "#008ba3",
+      tickBoxCheckedHover: "#00687a",
+      tickBoxUnchecked: "#4d5e80",
+      tickBoxUncheckedHover: "#6b7a99",
+      tickBoxSVG: "#f1f1f1",
+      indicatorGreen: "#74e660",
+      indicatorAmber: "#f3af4a",
+      indicatorRed: "#ee482a",
+    },
+    patientList: {
+      header: "#4d5e80",
+      whiteText: "#f2f2f2",
+      rowEven: "#4a556b",
+      rowHover: "#6a7ca0",
+    },
+    incomingPatientsList: {
+      header: "#008ba3",
+      blackText: "#000000",
+      rowEven: "#66b9c7",
+      rowHover: "#509fb9",
+    },
+    reportEntry: {
+      alerts: "#ff6347",
+      allergies: "#ffaf85",
+      complaint: "#5398be",
+      complications: "#9bc53d",
+      diagnosis: "#ba2c73",
+      findings: "#1b998b",
+      procedures: "#585481",
+      symptoms: "#2978a0",
+      noThemeEntered: "#3a3a40",
+    },
+  },
+};
