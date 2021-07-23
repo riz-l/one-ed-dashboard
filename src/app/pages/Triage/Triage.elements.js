@@ -13,7 +13,6 @@ export const Container = styled.div`
   min-height: calc(100vh - 80px); */
   width: 100%;
   max-width: 100%;
-  min-width: calc(100vh - 300px);
   transition: all 100ms linear;
 `;
 

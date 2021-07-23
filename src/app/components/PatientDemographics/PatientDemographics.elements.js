@@ -1,5 +1,5 @@
 // Import: Packages
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 
 // Element: Container
 export const Container = styled.div`
@@ -10,71 +10,20 @@ export const Container = styled.div`
   justify-content: flex-start;
   width: 100%;
   max-width: 100%;
-`;
-
-// Element: Wrapper
-export const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  height: auto;
-  justify-content: center;
-  width: 100%;
-`;
-
-// Element: ClickableHeader
-export const ClickableHeader = styled.div`
-  align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #edeff2;
-  border-radius: 8px;
-  display: flex;
-  height: 8rem;
-  max-height: 8rem;
-  min-height: 8rem;
-  justify-content: flex-start;
-  margin: 2rem 2rem 0 2rem;
-  padding: 1rem;
-  transition: all 100ms linear;
-  width: 100%;
-
-  &:hover {
-    box-shadow: 0 0 20px #edeff2;
-    transition: all 100ms linear;
-
-    & svg {
-      fill: #4d5e80;
-      transition: all 100ms linear;
-    }
-  }
-`;
-
-// Element: SVGContainer
-export const SVGContainer = styled.div`
-  height: 100%;
-  padding: 0rem 1rem;
-  width: auto;
-  max-width: auto;
-
-  & svg {
-    fill: #6b7a99;
-    height: 100%;
-    max-height: 100%;
-    transition: all 100ms linear;
-    width: auto;
-  }
 
   @media (max-width: 768px) {
-    display: none;
-  } ;
+    cursor: pointer;
+  }
 `;
 
-// Element: ClickableContent
-export const ClickableContent = styled.div`
+// Element ContentWrapper
+export const ContentWrapper = styled.div`
   align-items: center;
   display: flex;
-  flex: auto;
-  height: 100%;
-  justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  padding: 1rem 2rem;
   width: 100%;
 `;
 
@@ -89,7 +38,6 @@ export const ClickableText = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 100%;
-
   & h2 {
     color: #6b7a99;
     font-family: "PoppinsSemiBold", sans-serif;
@@ -101,31 +49,14 @@ export const ClickableText = styled.div`
   @media (max-width: 1024px) {
     flex: 3;
   }
-
-  @media (max-width: 768px) {
-    align-items: center;
+  @media (max-width:400px) {
+    & h2 {
+      font-size:1.2rem;
+    }
   }
 
-  @media (max-width: 768px) {
-    flex: 1;
-  } ;
-`;
-
-// Element: ClickableButtonContainter
-export const ClickableButtonContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  height: 100%;
-  justify-content: flex-end;
-
-  @media (max-width: 1024px) {
-    flex: 2;
+  
   }
-
-  @media (max-width: 768px) {
-    flex: 1;
-  } ;
 `;
 
 // Element: ClickableButton
@@ -142,6 +73,7 @@ export const ClickableButton = styled.div`
   font-size: 0.4rem;
   font-weight: 400;
   justify-content: center;
+  margin: 0 0 3rem 0;
   padding: 0.8rem 1.2rem;
   transition: all 100ms linear;
   white-space: nowrap;
@@ -166,6 +98,10 @@ export const ClickableButton = styled.div`
     font-size: 1rem;
     padding: 1rem 1.5rem;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 
   @media (max-width: 675px) {
@@ -232,24 +168,31 @@ export const TestGridWrapper = styled.div`
 
 // Element: WrapperItem1
 export const WrapperItem1 = styled.div`
-  flex: 2;
+  flex: ${({ summary }) => (summary ? "1.5" : "5")};
 
-  @media (max-width: 1100px) {
-    flex: 3;
+  @media (max-width: 1300px) {
+    flex: 3.5;
   }
 
+  @media (max-width: 1044px) {
+    padding-top: 0.4rem;
+  }
   @media (max-width: 768px) {
-    display: none;
-  } ;
+    padding-bottom: 0.5rem;
+  }
 `;
 
 // Element: WrapperItem2
 export const WrapperItem2 = styled.div`
-  flex: 5;
+  flex: ${({ summary }) => (summary ? "2" : "5")};
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1300px) {
+    flex: 7;
+  }
+
+  @media (max-width: 1079px) {
     display: none;
-  } ;
+  }
 `;
 
 // Element: OverFlowWrapper
@@ -257,4 +200,160 @@ export const OverFlowWrapper = styled.div`
   height: 100%;
   max-height: 100%;
   overflow-y: scroll;
+`;
+
+// Element: NewWrapper
+export const NewWrapper = styled.div`
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #edeff2;
+  border-radius: 8px;
+  display: flex;
+  height: 8rem;
+  justify-content: center;
+  margin: 2rem 2rem 0 2rem;
+  max-height: 8rem;
+  min-height: 8rem;
+  padding: 1rem 1rem 1rem 3rem;
+  padding: ${({ summary }) => (summary ? "0" : "1rem 1rem 1rem 3rem")};
+  transition: all 100ms linear;
+  width: 100%;
+  max-width: 100%;
+
+  &:hover {
+    box-shadow: 0 0 20px #edeff2;
+    transition: all 100ms linear;
+
+    & svg {
+      fill: #4d5e80;
+      transition: all 100ms linear;
+    }
+  }
+
+  ${({ summary, windowWidth }) => {
+    switch (true) {
+      case summary && windowWidth >= 2500:
+        return css`
+          background-color: red;
+        `;
+      case summary && windowWidth >= 1440:
+        return css``;
+      case summary && windowWidth >= 1024:
+        return css`
+          background-color: green;
+        `;
+      default:
+        return css`
+          background-color: transparent;
+        `;
+    }
+  }};
+  @media (max-width: 610px) {
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+// Element: NewSVGSection
+export const NewSVGSection = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  max-width: auto;
+
+  & svg {
+    fill: #6b7a99;
+    height: 100%;
+    max-height: 100%;
+    transition: all 100ms linear;
+    width: auto;
+  }
+
+  @media (max-width: 610px) {
+    display: none;
+  } ;
+`;
+
+// Element: NewDataSection
+export const NewDataSection = styled.div`
+  align-items: end;
+  flex: 5;
+  height: 100%;
+  padding: ${({ summary }) => (summary ? "1rem" : "2rem 0 0 2rem")};
+  width: 100%;
+  @media (max-width: 1079px) {
+    flex: 2;
+  }
+  @media (max-width: 350px) {
+    padding: 2rem 0 0 0;
+  }
+`;
+
+// Element: NewButtonSection
+export const NewButtonSection = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`;
+
+// Element: Arrow
+export const Arrow = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  & svg {
+    fill: #f1f1f1;
+    height: 30px;
+    transition: all 100ms linear;
+    width: 30px;
+  }
+`;
+
+// Element: ArrowContainer
+export const ArrowContainer = styled.div`
+  align-items: center;
+  background-color: red;
+  cursor: pointer;
+  display: flex;
+  height: 80%;
+  max-height: 100%;
+  justify-content: center;
+  margin: 2rem 0rem 0 0;
+  position: absolute;
+  right: 0;
+  transition: all 100ms linear;
+  width: 30px;
+
+  &:hover {
+    filter: brightness(0.8);
+    transition: all 100ms linear;
+
+    & ${Arrow} {
+      & svg {
+        fill: #ffffff;
+        transition: all 100ms linear;
+      }
+    }
+  }
+  @media (max-width: 610px) {
+    height: 100%;
+    margin: 0rem 2rem 0 0;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const DataAndArrowWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
 `;

@@ -44,6 +44,10 @@ export const IconContainer = styled.div`
     width: auto;
     max-width: 200px;
   }
+
+  @media (max-width: 760px) {
+    display: none;
+  }
 `;
 
 // Element: ContentContainer
@@ -72,4 +76,72 @@ export const Content = styled.div`
   padding: 0.4rem 0.8rem;
   margin: auto 1rem;
   width: 100%;
+
+  @media (max-width: 760px) {
+    height: 100%;
+    margin: 0;
+  }
+  @media (max-width: 500px) {
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+// Element: Column Contain
+export const ColumnContainer = styled.div`
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  margin: auto;
+  padding: 1rem;
+  width: 100%;
+
+  @media (max-width: 500px) {
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+// Element: Column Wrapper
+export const ColumnWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+`;
+
+// Element: Column One Wrapper
+export const ColumnOneWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+// Element: Column Two Wrapper
+export const ColumnTwoWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 520px) {
+    display: none;
+  }
+`;
+
+// Element: Column Three Wrapper
+export const ColumnThreeWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 980px) {
+    display: none;
+  }
+`;
+
+// Element: Column Four Wrapper
+export const ColumnFourWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 1250px) {
+    display: none;
 `;
