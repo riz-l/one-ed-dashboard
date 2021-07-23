@@ -1,8 +1,8 @@
 // Import: Packages
 import React, {
   // useContext,
-  useEffect,
-  useState,
+  // useEffect,
+  // useState,
   createContext,
 } from "react";
 
@@ -57,24 +57,28 @@ function Text({ ...props }) {
 }
 
 // Component: PrimaryNavigation
+// TODO: Responsive design for PrimaryNavigation needs to be finished
+// ... part of the approach/logic is in place but commented out below
+// ... on smaller screens hide any item beyond the second item (index 1)
+// ... and return all hidden items inside a (new) styled dropdown
 export default function PrimaryNavigation({
   children,
   margin,
   padding,
   ...props
 }) {
-  // State: Local state
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // // State: Local state
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Effect: Checks and updates inner window width
-  useEffect(() => {
-    // Check current windowWidth and assigns current windowWidth to state
-    function updateWindowDimensions() {
-      const newWidth = window.innerWidth;
-      setWindowWidth(newWidth);
-    }
-    window.addEventListener("resize", updateWindowDimensions);
-  }, []);
+  // // Effect: Checks and updates inner window width
+  // useEffect(() => {
+  //   // Check current windowWidth and assigns current windowWidth to state
+  //   function updateWindowDimensions() {
+  //     const newWidth = window.innerWidth;
+  //     setWindowWidth(newWidth);
+  //   }
+  //   window.addEventListener("resize", updateWindowDimensions);
+  // }, []);
 
   return (
     <PrimaryNavigationGroupContext.Provider value={props}>
@@ -83,12 +87,13 @@ export default function PrimaryNavigation({
         margin={margin}
         padding={padding}
       >
-        {windowWidth <= 1440
+        {/* {windowWidth <= 1440 
           ? React.Children.map(children, (child, i) => {
               if (i > 1) return;
               return child;
             })
-          : children}
+          : children} */}
+        {children}
       </Container>
     </PrimaryNavigationGroupContext.Provider>
   );

@@ -27,13 +27,11 @@ import {
   NewSVGSection,
   NewDataSection,
   NewButtonSection,
-  NewClickableLayer,
 } from "./PatientDemographics.elements";
 
 // Import: Components, Pages
 import { Button, Display, Grid } from "../../components";
 import { Overview } from "../../pages";
-import { GiCondorEmblem } from "react-icons/gi";
 
 export default function PatientDemographics({ summary }) {
   // Redux: useSelector
