@@ -11,30 +11,40 @@ import { Display, Grid, ReportEntry, Text } from "../../../../components";
 // SubPage: Procedures
 export default function Procedures() {
   // Redux: useSelector
-  const patientConditions = useSelector((state) => {
-    if (state.selectedPatient.patientConditions) {
-      return state.selectedPatient.patientConditions;
+  const patientProcedures = useSelector((state) => {
+    if (state.selectedPatient.patientProcedures) {
+      return state.selectedPatient.patientProcedures;
     }
   });
 
-  // Maps patientConditions where category === "Procedures"
+  // Maps patientProcedures
   const proceduresRender =
-    patientConditions && patientConditions.length > 0
-      ? patientConditions
-          .filter((item) => item.category === "Procedures")
-          .map(({ id, problemName, status, note, ...otherPatientProps }) => (
+    patientProcedures && patientProcedures.length > 0
+      ? patientProcedures.map(
+          ({
+            id,
+            procedureName,
+            status,
+            procedureCode,
+            ...otherPatientProps
+          }) => (
             <ReportEntry
-              details={note !== "undefined" ? note : "No further detail"}
+              details={
+                procedureCode !== "undefined"
+                  ? procedureCode
+                  : "No further detail"
+              }
               key={id}
               procedures
               status={status}
-              type={problemName}
+              type={procedureName}
               {...otherPatientProps}
             />
-          ))
+          )
+        )
       : null;
 
-  if (!patientConditions || patientConditions.length < 0) {
+  if (!patientProcedures || patientProcedures.length < 0) {
     return (
       <>
         <Container data-testid={"procedures"}>
@@ -62,11 +72,7 @@ export default function Procedures() {
             Procedures
           </Text>
 
-          {patientConditions &&
-          patientConditions.length > 0 &&
-          patientConditions.find(
-            ({ category }) => category === "Procedures"
-          ) ? (
+          {patientProcedures && patientProcedures.length > 0 ? (
             proceduresRender
           ) : (
             <Text as="p">The Patient has no historic procedures</Text>

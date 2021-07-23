@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import clinicalNotesReducer from "./slices/clinicalNotesSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import globalThemeReducer from "./slices/globalThemeSlice";
-import incomingPatientListRender from "./slices/incomingPatientsSlice";
+import incomingPatientListReducer from "./slices/incomingPatientsSlice";
 import patientListReducer from "./slices/patientListSlice";
 import selectedPatientReducer from "./slices/selectedPatientSlice";
 import seenReducer from "./slices/seenSlice";
@@ -16,7 +16,7 @@ export default configureStore({
     clinicalNotes: clinicalNotesReducer,
     dashboard: dashboardReducer,
     globalTheme: globalThemeReducer,
-    incomingPatients: incomingPatientListRender,
+    incomingPatients: incomingPatientListReducer,
     patientList: patientListReducer,
     selectedPatient: selectedPatientReducer,
     seen: seenReducer,

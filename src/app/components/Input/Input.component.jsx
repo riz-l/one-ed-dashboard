@@ -15,7 +15,7 @@ export const Input = React.forwardRef((props, ref) => {
       onClick={props.onClick}
     >
       {props.labelText && (
-        <Label htmlfor={props.htmlFor} left={props.left}>
+        <Label htmlFor={props.htmlFor} left={props.left}>
           {props.labelText}
         </Label>
       )}
