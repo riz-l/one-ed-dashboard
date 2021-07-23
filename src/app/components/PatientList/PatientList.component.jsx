@@ -91,41 +91,44 @@ export default function PatientList() {
 
   // Maps patientListData through PatientItem
   const subPatientListRender =
-    patientList &&
-    patientList.map(
-      ({
-        age,
-        currentStage,
-        diagnosis,
-        name,
-        patientID,
-        period,
-        Triagecategory,
-        ...otherPatientProps
-      }) => (
-        <PatientItem
-          colOne={name ? name : "N/A"}
-          colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
-          colTwoMinor
-          colThree={diagnosis ? diagnosis : "N/A"}
-          colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
-          colFive={
-            Triagecategory === "undefined"
-              ? "N/A"
-              : Triagecategory
-              ? Triagecategory
-              : "N/A"
-          }
-          colSix={currentStage ? currentStage : "N/A"}
-          colSixMinor
-          key={patientID}
-          onClick={() => dispatch(selectPatient(patientID))}
-          patient={selectedPatient}
-          patientID={patientID}
-          patientList
-          {...otherPatientProps}
-        />
+    patientList && patientList.length > 0 ? (
+      patientList.map(
+        ({
+          age,
+          currentStage,
+          diagnosis,
+          name,
+          patientID,
+          period,
+          Triagecategory,
+          ...otherPatientProps
+        }) => (
+          <PatientItem
+            colOne={name ? name : "N/A"}
+            colTwo={age === "undefined" ? "N/A" : age ? age : "N/A"}
+            colTwoMinor
+            colThree={diagnosis ? diagnosis : "N/A"}
+            colFour={period === "undefined" ? "N/A" : period ? period : "N/A"}
+            colFive={
+              Triagecategory === "undefined"
+                ? "N/A"
+                : Triagecategory
+                ? Triagecategory
+                : "N/A"
+            }
+            colSix={currentStage ? currentStage : "N/A"}
+            colSixMinor
+            key={patientID}
+            onClick={() => dispatch(selectPatient(patientID))}
+            patient={selectedPatient}
+            patientID={patientID}
+            patientList
+            {...otherPatientProps}
+          />
+        )
       )
+    ) : (
+      <p>Nope</p>
     );
 
   // Maps incomingPatients through PatientItem

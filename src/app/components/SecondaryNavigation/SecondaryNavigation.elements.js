@@ -44,7 +44,7 @@ export const Indicator = styled.div`
   right: -4px;
   top: 2px;
   transition: all 100ms linear;
-  visibility: ${({ isRed }) => (isRed ? "1" : "0")};
+  visibility: ${({ isRed }) => (isRed ? "visible" : "hidden")};
   width: 10px;
 `;
 

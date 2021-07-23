@@ -92,7 +92,6 @@ export default function App() {
         {/* Login */}
         <Route
           exact
-          handleLogin={handleLogin}
           path="/login"
           render={(props) => (
             <Login

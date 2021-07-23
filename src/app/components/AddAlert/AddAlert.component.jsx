@@ -1,6 +1,6 @@
 // Import: Packages
 import React, { useState } from "react";
-import ReactModal from "react-modal";
+// import ReactModal from "react-modal";
 import { useSelector } from "react-redux";
 
 // Import: Elements
