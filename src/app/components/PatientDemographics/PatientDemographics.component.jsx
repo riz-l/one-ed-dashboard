@@ -66,17 +66,13 @@ export default function PatientDemographics({ summary }) {
   return (
     <Container data-testid={"patientDemographics"}>
       <ContentWrapper>
-        <DataAndArrowWrapper>
+        <DataAndArrowWrapper onClick={windowWidth <= 768 ? openModal : null}>
           <ArrowContainer>
             <Arrow>
               <ArrowIcon />
             </Arrow>
           </ArrowContainer>
-          <NewWrapper
-            onClick={windowWidth <= 1440 ? openModal : null}
-            summary={summary}
-            windowWidth={windowWidth}
-          >
+          <NewWrapper summary={summary} windowWidth={windowWidth}>
             {summary ? null : (
               <>
                 <NewSVGSection>

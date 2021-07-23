@@ -169,6 +169,10 @@ export const TestGridWrapper = styled.div`
 // Element: WrapperItem1
 export const WrapperItem1 = styled.div`
   flex: ${({ summary }) => (summary ? "1.5" : "5")};
+  font-size: ${({ summary }) => (summary ? "0.9rem" : "1rem")};
+  & span {
+    font-size: ${({ summary }) => (summary ? "0.9rem" : "1rem")};
+  }
 
   @media (max-width: 1300px) {
     flex: 3.5;
@@ -185,6 +189,10 @@ export const WrapperItem1 = styled.div`
 // Element: WrapperItem2
 export const WrapperItem2 = styled.div`
   flex: ${({ summary }) => (summary ? "2" : "5")};
+  font-size: ${({ summary }) => (summary ? "0.9rem" : "1rem")};
+  & span {
+    font-size: ${({ summary }) => (summary ? "0.9rem" : "1rem")};
+  }
 
   @media (max-width: 1300px) {
     flex: 7;
